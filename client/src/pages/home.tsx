@@ -9,7 +9,7 @@ import StickyCTA from "@/components/sticky-cta";
 import TestimonialsSection from "@/components/testimonials-section";
 import EventTimeline from "@/components/event-timeline";
 import SponsorsCarousel from "@/components/sponsors-carousel";
-import { Search, Inbox, Phone, MapPin } from "lucide-react";
+import { Search, Inbox, Phone, MapPin, Twitter, Facebook, Linkedin } from "lucide-react";
 import logoImage from "@assets/logo-main_1756774330186.png";
 
 export default function Home() {
@@ -146,17 +146,14 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">Follow Us</h4>
               <div className="flex space-x-4">
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-twitter">
-                  <i className="fab fa-twitter text-xl"></i>
+                <a href="https://x.com/shenzhenseoconf" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-twitter" aria-label="Follow us on X (Twitter)">
+                  <Twitter className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-linkedin">
-                  <i className="fab fa-linkedin text-xl"></i>
+                <a href="https://www.facebook.com/shenzhenseoconference/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-facebook" aria-label="Follow us on Facebook">
+                  <Facebook className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-youtube">
-                  <i className="fab fa-youtube text-xl"></i>
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-wechat">
-                  <i className="fab fa-weixin text-xl"></i>
+                <a href="https://www.linkedin.com/company/shenzhen-seo-conference/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-linkedin" aria-label="Follow us on LinkedIn">
+                  <Linkedin className="h-5 w-5" />
                 </a>
               </div>
             </div>
