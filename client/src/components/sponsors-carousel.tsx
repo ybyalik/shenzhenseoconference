@@ -31,14 +31,48 @@ export default function SponsorsCarousel() {
       name: "interamplify",
       tier: "Gold",
       logo: interAmplifyLogo
+    },
+    {
+      name: "eclicktech",
+      tier: "Gold",
+      logo: null
+    },
+    {
+      name: "outreacherio",
+      tier: "Gold",
+      logo: null
+    },
+    {
+      name: "talkheap",
+      tier: "Gold",
+      logo: null
+    },
+    {
+      name: "oneas",
+      tier: "Gold",
+      logo: null
+    },
+    {
+      name: "playstack",
+      tier: "Gold",
+      logo: null
     }
   ];
 
   const getTierColor = (tier: string) => {
     const colors = {
-      Platinum: "border-purple-400 bg-purple-900/80 dark:bg-purple-950/90",
-      Gold: "border-yellow-400 bg-yellow-900/80 dark:bg-yellow-950/90", 
-      Silver: "border-gray-400 bg-gray-900/80 dark:bg-gray-950/90"
+      Platinum: "border-purple-400 bg-purple-900/90 dark:bg-purple-950/95",
+      Gold: "border-purple-400 bg-purple-900/90 dark:bg-purple-950/95", 
+      Silver: "border-purple-400 bg-purple-900/90 dark:bg-purple-950/95"
+    };
+    return colors[tier as keyof typeof colors] || colors.Silver;
+  };
+
+  const getTierTextColor = (tier: string) => {
+    const colors = {
+      Platinum: "text-purple-300",
+      Gold: "text-yellow-400", 
+      Silver: "text-gray-300"
     };
     return colors[tier as keyof typeof colors] || colors.Silver;
   };
@@ -64,14 +98,20 @@ export default function SponsorsCarousel() {
             >
               <CardContent className="p-6 text-center">
                 <div className="h-16 flex items-center justify-center mb-3">
-                  <img 
-                    src={sponsor.logo} 
-                    alt={sponsor.name}
-                    className="max-h-12 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                    data-testid={`img-sponsor-${index}`}
-                  />
+                  {sponsor.logo ? (
+                    <img 
+                      src={sponsor.logo} 
+                      alt={sponsor.name}
+                      className="max-h-12 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                      data-testid={`img-sponsor-${index}`}
+                    />
+                  ) : (
+                    <div className="text-white font-semibold text-sm" data-testid={`text-sponsor-name-${index}`}>
+                      {sponsor.name}
+                    </div>
+                  )}
                 </div>
-                <div className="text-xs font-medium text-muted-foreground" data-testid={`text-sponsor-tier-${index}`}>
+                <div className={`text-xs font-medium ${getTierTextColor(sponsor.tier)}`} data-testid={`text-sponsor-tier-${index}`}>
                   {sponsor.tier} Partner
                 </div>
               </CardContent>
