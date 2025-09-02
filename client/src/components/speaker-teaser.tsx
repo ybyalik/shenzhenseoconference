@@ -82,26 +82,6 @@ export default function SpeakerTeaser() {
     setIsModalOpen(true);
   };
 
-  const speakerCategories = [
-    {
-      title: "Google Search Team",
-      description: "Direct insights from Google's search algorithm experts",
-      iconColor: "text-primary",
-      bgColor: "bg-primary/10",
-    },
-    {
-      title: "Baidu SEO Masters",
-      description: "Top Chinese SEO experts sharing platform secrets",
-      iconColor: "text-accent",
-      bgColor: "bg-accent/10",
-    },
-    {
-      title: "International Consultants",
-      description: "Global SEO leaders from Fortune 500 companies",
-      iconColor: "text-primary",
-      bgColor: "bg-primary/10",
-    },
-  ];
 
   return (
     <section id="speakers" className="py-20 bg-muted" data-testid="section-speakers">
@@ -157,28 +137,6 @@ export default function SpeakerTeaser() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {speakerCategories.map((category, index) => (
-            <Card 
-              key={index}
-              className="text-center hover-lift hover-glow slide-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-              data-testid={`card-speaker-category-${index}`}
-            >
-              <CardContent className="p-6">
-                <div className={`w-20 h-20 ${category.bgColor} rounded-full flex items-center justify-center mx-auto mb-4`}>
-                  <User className={`${category.iconColor} text-2xl h-8 w-8`} />
-                </div>
-                <h3 className="text-lg font-semibold mb-2" data-testid={`text-speaker-category-title-${index}`}>
-                  {category.title}
-                </h3>
-                <p className="text-muted-foreground" data-testid={`text-speaker-category-description-${index}`}>
-                  {category.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
 
         <div className="text-center fade-in">
           <p className="text-lg text-muted-foreground mb-6" data-testid="text-speaker-announcement">
