@@ -10,9 +10,8 @@ export default function CountdownTimer() {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      // Early bird sale end date - approximately 150 days from now
-      const endDate = new Date();
-      endDate.setDate(endDate.getDate() + 150);
+      // Conference date: September 18, 2026
+      const endDate = new Date('2026-09-18T00:00:00');
       
       const now = new Date().getTime();
       const distance = endDate.getTime() - now;
