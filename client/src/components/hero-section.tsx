@@ -9,7 +9,7 @@ export default function HeroSection() {
 
   return (
     <section className="pt-16 min-h-screen gradient-bg relative overflow-hidden" data-testid="hero-section">
-      <div className="absolute inset-0 bg-black/20"></div>
+      <div className="absolute inset-0 bg-black/50"></div>
       <div className="absolute inset-0 hero-bg opacity-30"></div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
