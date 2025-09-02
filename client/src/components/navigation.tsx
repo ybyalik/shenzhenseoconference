@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Search, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logoImage from "@assets/logo-main_1756774330186.png";
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -14,9 +15,12 @@ export default function Navigation() {
     <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-lg border-b border-border z-50" data-testid="navigation">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-2" data-testid="nav-logo">
-            <Search className="text-primary text-2xl" />
-            <span className="text-xl font-bold">Shenzhen SEO 2026</span>
+          <div className="flex items-center" data-testid="nav-logo">
+            <img 
+              src={logoImage} 
+              alt="Shenzhen SEO Conference" 
+              className="h-8 w-auto"
+            />
           </div>
           
           <div className="hidden md:flex items-center space-x-8">

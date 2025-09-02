@@ -6,6 +6,7 @@ import SpeakerTeaser from "@/components/speaker-teaser";
 import VenueInfo from "@/components/venue-info";
 import FaqSection from "@/components/faq-section";
 import { Search, Inbox, Phone, MapPin } from "lucide-react";
+import logoImage from "@assets/logo-main_1756774330186.png";
 
 export default function Home() {
   return (
@@ -97,9 +98,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <Search className="text-primary text-2xl" />
-                <span className="text-xl font-bold">Shenzhen SEO 2026</span>
+              <div className="flex items-center mb-4">
+                <img 
+                  src={logoImage} 
+                  alt="Shenzhen SEO Conference" 
+                  className="h-8 w-auto"
+                />
               </div>
               <p className="text-muted-foreground">
                 Connecting Eastern and Western SEO markets through innovation and collaboration.
