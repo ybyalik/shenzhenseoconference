@@ -3,6 +3,12 @@ import { User, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import SpeakerPreviewModal from "./speaker-preview-modal";
+import garyImage from "@assets/Gary-Illyes-1_1756775848714.webp";
+import kyleImage from "@assets/Kyle-Roof-1_1756775848714.webp";
+import charlesImage from "@assets/Charles-Floate_1756775848714.jpg";
+import aleydaImage from "@assets/Aleyda-Solis-1_1756775848714.webp";
+import mikeImage from "@assets/Mike-Dee-1_1756775848713.webp";
+import terryImage from "@assets/Terry-Kyle_1756775848713.webp";
 
 export default function SpeakerTeaser() {
   const [selectedSpeaker, setSelectedSpeaker] = useState<any>(null);
@@ -11,33 +17,63 @@ export default function SpeakerTeaser() {
   const featuredSpeakers = [
     {
       name: "Gary Illyes",
-      role: "Analyst",
-      company: "Google Search Team",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150",
+      role: "Analyst on the Google Search team",
+      company: "Google",
+      image: garyImage,
       bio: "Gary Illyes is an analyst on Google's Search team, focusing on how search algorithms interpret and rank web content. With years of experience in search technology, Gary provides insights into Google's latest algorithm updates and best practices for SEO professionals worldwide.",
       expertise: ["Google Algorithms", "Technical SEO", "Search Quality", "Web Standards"],
       sessionTitle: "Inside Google Search: Algorithm Updates and Future Directions",
       sessionTime: "September 19, 2026 - 9:00 AM"
     },
     {
+      name: "Kyle Roof",
+      role: "Co-founder of Internet Marketing Gold, High Voltage SEO & Page Optimizer Pro",
+      company: "Internet Marketing Gold",
+      image: kyleImage,
+      bio: "Kyle Roof is a leading SEO expert and co-founder of multiple successful SEO companies including Internet Marketing Gold, High Voltage SEO, and Page Optimizer Pro. He specializes in data-driven SEO strategies and optimization techniques.",
+      expertise: ["SEO Strategy", "Data Analysis", "Page Optimization", "Content Strategy"],
+      sessionTitle: "Data-Driven SEO: From Analysis to Implementation",
+      sessionTime: "September 18, 2026 - 10:30 AM"
+    },
+    {
+      name: "Charles Floate",
+      role: "Founder & CMO at Charles Floate Training",
+      company: "Charles Floate Training",
+      image: charlesImage,
+      bio: "Charles Floate is a renowned SEO expert and founder of Charles Floate Training. He's known for his innovative SEO strategies and has trained thousands of SEO professionals worldwide.",
+      expertise: ["Advanced SEO", "Link Building", "SEO Training", "Technical SEO"],
+      sessionTitle: "Advanced SEO Techniques for 2026",
+      sessionTime: "September 19, 2026 - 2:00 PM"
+    },
+    {
       name: "Aleyda Solis",
-      role: "International SEO Consultant",
+      role: "International SEO Consultant, Founder at Orainti",
       company: "Orainti",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b619?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150",
+      image: aleydaImage,
       bio: "Aleyda Solis is a renowned international SEO consultant and founder of Orainti. She specializes in helping businesses expand globally through strategic SEO implementations across multiple markets and languages.",
       expertise: ["International SEO", "Technical SEO", "Global Strategy", "Multi-language Optimization"],
       sessionTitle: "Mastering International SEO: From Strategy to Implementation",
       sessionTime: "September 18, 2026 - 2:30 PM"
     },
     {
-      name: "SEO Zac",
-      role: "Author & Chinese SEO Expert",
-      company: "Independent",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150",
-      bio: "Author of the best-selling Chinese SEO book with a foreword by Matt Cutts. Zac bridges Eastern and Western SEO practices, providing unique insights into Baidu optimization and Chinese search behavior.",
-      expertise: ["Baidu SEO", "Chinese Search", "Cultural Adaptation", "Content Strategy"],
-      sessionTitle: "Baidu vs Google: Understanding the Fundamental Differences",
+      name: "Mike Dee",
+      role: "CEO at Playstack, 1.2M+ YouTube subscribers",
+      company: "Playstack",
+      image: mikeImage,
+      bio: "Mike Dee is the CEO of Playstack and a successful content creator with over 1.2 million YouTube subscribers. He combines business leadership with content marketing expertise to drive growth across multiple platforms.",
+      expertise: ["Content Marketing", "YouTube SEO", "Business Growth", "Digital Strategy"],
+      sessionTitle: "Content Marketing at Scale: From YouTube to Global Success",
       sessionTime: "September 20, 2026 - 11:00 AM"
+    },
+    {
+      name: "Terry Kyle",
+      role: "Co-founder of WPX Hosting",
+      company: "WPX Hosting",
+      image: terryImage,
+      bio: "Terry Kyle is the co-founder of WPX Hosting, a leading web hosting company known for its speed and performance. He brings technical expertise and business acumen to help websites achieve optimal performance for SEO.",
+      expertise: ["Web Performance", "Technical SEO", "Hosting Optimization", "Site Speed"],
+      sessionTitle: "Technical SEO: Performance Optimization for Better Rankings",
+      sessionTime: "September 20, 2026 - 3:30 PM"
     }
   ];
 
@@ -89,7 +125,7 @@ export default function SpeakerTeaser() {
         </div>
 
         <div className="mb-12">
-          <h3 className="text-2xl font-bold text-center mb-8">Featured Speakers</h3>
+          <h3 className="text-2xl font-bold text-center mb-8">Previous Speakers</h3>
           <div className="grid md:grid-cols-3 gap-6">
             {featuredSpeakers.map((speaker, index) => (
               <Card 
