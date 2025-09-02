@@ -35,7 +35,7 @@ export default function EventHighlights() {
   return (
     <section id="about" className="py-20 bg-background" data-testid="section-highlights">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 fade-in">
           <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-highlights-title">
             Why Shenzhen SEO Conference?
           </h2>
@@ -50,7 +50,8 @@ export default function EventHighlights() {
             return (
               <div 
                 key={index}
-                className="text-center hover-lift bg-card p-6 rounded-xl border border-border"
+                className="text-center hover-lift hover-glow bg-card p-6 rounded-xl border border-border slide-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
                 data-testid={`highlight-${index}`}
               >
                 <div className={`w-16 h-16 ${highlight.bgColor} rounded-full flex items-center justify-center mx-auto mb-4`}>

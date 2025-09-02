@@ -88,7 +88,7 @@ export default function TicketForm() {
   return (
     <section id="tickets" className="py-20 bg-muted" data-testid="section-tickets">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 fade-in">
           <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-ticket-title">
             Secure Your Early Bird Tickets
           </h2>
@@ -102,9 +102,10 @@ export default function TicketForm() {
           {ticketTypes.map((ticket) => (
             <Card 
               key={ticket.type}
-              className={`hover-lift cursor-pointer transition-all ${
+              className={`hover-lift hover-glow cursor-pointer transition-all slide-up ${
                 selectedTicketType === ticket.type ? "border-primary ring-2 ring-primary/20" : ""
               } ${ticket.popular ? "border-2 border-primary relative" : ""}`}
+              style={{ animationDelay: ticket.type === 'standard' ? '0.1s' : '0.2s' }}
               onClick={() => {
                 setSelectedTicketType(ticket.type);
                 form.setValue("ticketType", ticket.type);

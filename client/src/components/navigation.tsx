@@ -26,36 +26,41 @@ export default function Navigation() {
           <div className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('about')} 
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
               data-testid="nav-about"
+              aria-label="Navigate to About section"
             >
               About
             </button>
             <button 
               onClick={() => scrollToSection('speakers')} 
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
               data-testid="nav-speakers"
+              aria-label="Navigate to Speakers section"
             >
               Speakers
             </button>
             <button 
               onClick={() => scrollToSection('tickets')} 
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
               data-testid="nav-tickets"
+              aria-label="Navigate to Tickets section"
             >
               Tickets
             </button>
             <button 
               onClick={() => scrollToSection('venue')} 
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
               data-testid="nav-venue"
+              aria-label="Navigate to Venue section"
             >
               Venue
             </button>
             <Button 
               onClick={() => scrollToSection('tickets')}
-              className="bg-primary text-primary-foreground px-6 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+              className="bg-primary text-primary-foreground px-6 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors focus:ring-4 focus:ring-primary/20"
               data-testid="button-early-access"
+              aria-label="Get early access to conference tickets"
             >
               Get Early Access
             </Button>

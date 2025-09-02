@@ -1,5 +1,6 @@
 import { MapPin, Plane, Train, Bed, Map } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import LazyImage from "./lazy-image";
 
 export default function VenueInfo() {
   return (
@@ -43,16 +44,18 @@ export default function VenueInfo() {
 
             <div className="mt-8">
               <Button 
-                className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors mr-4"
+                className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors mr-4 focus:ring-4 focus:ring-accent/20"
                 data-testid="button-book-hotel"
+                aria-label="Book hotel accommodation"
               >
                 <Bed className="mr-2 h-4 w-4" />
                 Book Hotel
               </Button>
               <Button 
                 variant="outline"
-                className="border border-border px-6 py-3 rounded-lg font-semibold hover:bg-muted transition-colors"
+                className="border border-border px-6 py-3 rounded-lg font-semibold hover:bg-muted transition-colors focus:ring-4 focus:ring-muted/20"
                 data-testid="button-view-map"
+                aria-label="View venue location on map"
               >
                 <Map className="mr-2 h-4 w-4" />
                 View Map
@@ -61,7 +64,7 @@ export default function VenueInfo() {
           </div>
 
           <div className="rounded-2xl overflow-hidden">
-            <img 
+            <LazyImage 
               src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
               alt="Luxury hotel interior" 
               className="w-full h-96 object-cover"

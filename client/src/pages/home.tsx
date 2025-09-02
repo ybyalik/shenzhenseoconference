@@ -5,6 +5,10 @@ import TicketForm from "@/components/ticket-form";
 import SpeakerTeaser from "@/components/speaker-teaser";
 import VenueInfo from "@/components/venue-info";
 import FaqSection from "@/components/faq-section";
+import StickyCTA from "@/components/sticky-cta";
+import TestimonialsSection from "@/components/testimonials-section";
+import EventTimeline from "@/components/event-timeline";
+import SponsorsCarousel from "@/components/sponsors-carousel";
 import { Search, Inbox, Phone, MapPin } from "lucide-react";
 import logoImage from "@assets/logo-main_1756774330186.png";
 
@@ -19,9 +23,10 @@ export default function Home() {
       
       <Navigation />
       <HeroSection />
+      <StickyCTA />
       
       {/* Quick Stats */}
-      <section className="bg-card py-16 border-b border-border" data-testid="section-stats">
+      <section className="bg-card py-16 border-b border-border fade-in" data-testid="section-stats">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div data-testid="stat-attendees">
@@ -46,7 +51,10 @@ export default function Home() {
 
       <TicketForm />
       <EventHighlights />
+      <TestimonialsSection />
+      <EventTimeline />
       <SpeakerTeaser />
+      <SponsorsCarousel />
       <VenueInfo />
       <FaqSection />
 
