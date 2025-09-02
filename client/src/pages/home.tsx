@@ -11,6 +11,7 @@ import EventTimeline from "@/components/event-timeline";
 import SponsorsCarousel from "@/components/sponsors-carousel";
 import { Search, Inbox, Phone, MapPin, Twitter, Facebook, Linkedin } from "lucide-react";
 import logoImage from "@assets/logo-main_1756774330186.png";
+import darkLogoImage from "@assets/logodark_1756775589088.png";
 
 export default function Home() {
   return (
@@ -108,7 +109,7 @@ export default function Home() {
             <div>
               <div className="flex items-center mb-4">
                 <img 
-                  src={logoImage} 
+                  src={darkLogoImage} 
                   alt="Shenzhen SEO Conference" 
                   className="h-8 w-auto"
                 />
