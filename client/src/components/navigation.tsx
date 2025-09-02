@@ -37,7 +37,7 @@ export default function Navigation() {
           <div className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('about')} 
-              className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
+              className="text-white font-semibold hover:text-purple-200 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
               data-testid="nav-about"
               aria-label="Navigate to About section"
             >
@@ -45,7 +45,7 @@ export default function Navigation() {
             </button>
             <button 
               onClick={() => scrollToSection('speakers')} 
-              className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
+              className="text-white font-semibold hover:text-purple-200 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
               data-testid="nav-speakers"
               aria-label="Navigate to Speakers section"
             >
@@ -53,7 +53,7 @@ export default function Navigation() {
             </button>
             <button 
               onClick={() => scrollToSection('tickets')} 
-              className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
+              className="text-white font-semibold hover:text-purple-200 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
               data-testid="nav-tickets"
               aria-label="Navigate to Tickets section"
             >
@@ -61,7 +61,7 @@ export default function Navigation() {
             </button>
             <button 
               onClick={() => scrollToSection('venue')} 
-              className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
+              className="text-white font-semibold hover:text-purple-200 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
               data-testid="nav-venue"
               aria-label="Navigate to Venue section"
             >
@@ -78,7 +78,7 @@ export default function Navigation() {
           </div>
           
           <button 
-            className="md:hidden text-foreground"
+            className="md:hidden text-white"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             data-testid="button-mobile-menu"
           >
@@ -92,28 +92,28 @@ export default function Navigation() {
             <div className="px-4 py-4 space-y-4">
               <button 
                 onClick={() => scrollToSection('about')} 
-                className="block w-full text-left text-muted-foreground hover:text-foreground transition-colors"
+                className="block w-full text-left text-white font-semibold hover:text-purple-200 transition-colors"
                 data-testid="mobile-nav-about"
               >
                 About
               </button>
               <button 
                 onClick={() => scrollToSection('speakers')} 
-                className="block w-full text-left text-muted-foreground hover:text-foreground transition-colors"
+                className="block w-full text-left text-white font-semibold hover:text-purple-200 transition-colors"
                 data-testid="mobile-nav-speakers"
               >
                 Speakers
               </button>
               <button 
                 onClick={() => scrollToSection('tickets')} 
-                className="block w-full text-left text-muted-foreground hover:text-foreground transition-colors"
+                className="block w-full text-left text-white font-semibold hover:text-purple-200 transition-colors"
                 data-testid="mobile-nav-tickets"
               >
                 Tickets
               </button>
               <button 
                 onClick={() => scrollToSection('venue')} 
-                className="block w-full text-left text-muted-foreground hover:text-foreground transition-colors"
+                className="block w-full text-left text-white font-semibold hover:text-purple-200 transition-colors"
                 data-testid="mobile-nav-venue"
               >
                 Venue
