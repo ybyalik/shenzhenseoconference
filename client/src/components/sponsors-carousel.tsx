@@ -1,36 +1,36 @@
 import { Card, CardContent } from "@/components/ui/card";
+import quickCreatorLogo from "@assets/quickcreator-min_1756775972402.png";
+import ecomExpertsLogo from "@assets/ecomexperts_1756775972401.png";
+import whitePressLogo from "@assets/whitepress_1756775972401.png";
+import globalsoLogo from "@assets/globalso_1756775972401.png";
+import interAmplifyLogo from "@assets/interamplify_1756775972401.png";
 
 export default function SponsorsCarousel() {
   const sponsors = [
     {
-      name: "Google",
+      name: "QuickCreator",
       tier: "Platinum",
-      logo: "https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png"
+      logo: quickCreatorLogo
     },
     {
-      name: "Baidu", 
+      name: "ecomexperts", 
       tier: "Platinum",
-      logo: "https://logos-world.net/wp-content/uploads/2020/09/Baidu-Logo.png"
+      logo: ecomExpertsLogo
     },
     {
-      name: "Microsoft",
+      name: "WhitePress",
       tier: "Gold", 
-      logo: "https://logos-world.net/wp-content/uploads/2020/04/Microsoft-Logo.png"
+      logo: whitePressLogo
     },
     {
-      name: "Tencent",
+      name: "Globalso",
       tier: "Gold",
-      logo: "https://logos-world.net/wp-content/uploads/2021/09/Tencent-Logo.png"
+      logo: globalsoLogo
     },
     {
-      name: "Alibaba",
+      name: "interamplify",
       tier: "Gold",
-      logo: "https://logos-world.net/wp-content/uploads/2020/11/Alibaba-Logo.png"
-    },
-    {
-      name: "SEMrush",
-      tier: "Silver",
-      logo: "https://logos-world.net/wp-content/uploads/2021/02/Semrush-Logo.png"
+      logo: interAmplifyLogo
     }
   ];
 
@@ -48,7 +48,7 @@ export default function SponsorsCarousel() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 fade-in">
           <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-sponsors-title">
-            Our Amazing Partners
+            Previous Partners
           </h2>
           <p className="text-xl text-muted-foreground" data-testid="text-sponsors-description">
             Supported by industry leaders from East and West.
