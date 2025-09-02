@@ -36,9 +36,9 @@ export default function SponsorsCarousel() {
 
   const getTierColor = (tier: string) => {
     const colors = {
-      Platinum: "border-purple-300 bg-purple-50 dark:bg-purple-950/20",
-      Gold: "border-yellow-300 bg-yellow-50 dark:bg-yellow-950/20", 
-      Silver: "border-gray-300 bg-gray-50 dark:bg-gray-950/20"
+      Platinum: "border-purple-400 bg-purple-900/80 dark:bg-purple-950/90",
+      Gold: "border-yellow-400 bg-yellow-900/80 dark:bg-yellow-950/90", 
+      Silver: "border-gray-400 bg-gray-900/80 dark:bg-gray-950/90"
     };
     return colors[tier as keyof typeof colors] || colors.Silver;
   };
