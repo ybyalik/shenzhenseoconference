@@ -4,6 +4,11 @@ import ecomExpertsLogo from "@assets/ecomexperts_1756775972401.png";
 import whitePressLogo from "@assets/whitepress_1756775972401.png";
 import globalsoLogo from "@assets/globalso_1756775972401.png";
 import interAmplifyLogo from "@assets/interamplify_1756775972401.png";
+import playstackLogo from "@assets/playstack_1756776455361.png";
+import oneasLogo from "@assets/oneas_1756776455363.png";
+import talkheapLogo from "@assets/talkheap_1756776455364.png";
+import outreacherioLogo from "@assets/outreacherio_1756776455365.png";
+import eclickworldwideLogo from "@assets/eclickworldwide_1756776462379.png";
 
 export default function SponsorsCarousel() {
   const sponsors = [
@@ -33,29 +38,29 @@ export default function SponsorsCarousel() {
       logo: interAmplifyLogo
     },
     {
-      name: "eclicktech",
+      name: "eclickworldwide",
       tier: "Gold",
-      logo: null
+      logo: eclickworldwideLogo
     },
     {
       name: "outreacherio",
       tier: "Gold",
-      logo: null
+      logo: outreacherioLogo
     },
     {
       name: "talkheap",
       tier: "Gold",
-      logo: null
+      logo: talkheapLogo
     },
     {
       name: "oneas",
       tier: "Gold",
-      logo: null
+      logo: oneasLogo
     },
     {
       name: "playstack",
       tier: "Gold",
-      logo: null
+      logo: playstackLogo
     }
   ];
 
