@@ -22,7 +22,7 @@ export default function HeroSection() {
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" data-testid="text-hero-title">
             Shenzhen SEO<br />
-            <span className="text-gradient">Conference 2026</span>
+            <span className="text-white/90">Conference 2026</span>
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto" data-testid="text-hero-description">
