@@ -94,34 +94,36 @@ export default function SponsorsCarousel() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-          {sponsors.map((sponsor, index) => (
-            <Card 
-              key={index}
-              className={`hover-glow transition-all ${getTierColor(sponsor.tier)}`}
-              data-testid={`card-sponsor-${index}`}
-            >
-              <CardContent className="p-6 text-center">
-                <div className="h-16 flex items-center justify-center mb-3">
-                  {sponsor.logo ? (
-                    <img 
-                      src={sponsor.logo} 
-                      alt={sponsor.name}
-                      className="max-h-12 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                      data-testid={`img-sponsor-${index}`}
-                    />
-                  ) : (
-                    <div className="text-white font-semibold text-sm" data-testid={`text-sponsor-name-${index}`}>
-                      {sponsor.name}
-                    </div>
-                  )}
-                </div>
-                <div className={`text-xs font-medium ${getTierTextColor(sponsor.tier)}`} data-testid={`text-sponsor-tier-${index}`}>
-                  {sponsor.tier} Partner
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+        <div className="overflow-hidden">
+          <div className="flex gap-6 animate-scroll">
+            {sponsors.concat(sponsors).map((sponsor, index) => (
+              <Card 
+                key={index}
+                className={`hover-glow transition-all flex-shrink-0 w-48 ${getTierColor(sponsor.tier)}`}
+                data-testid={`card-sponsor-${index}`}
+              >
+                <CardContent className="p-6 text-center">
+                  <div className="h-16 flex items-center justify-center mb-3">
+                    {sponsor.logo ? (
+                      <img 
+                        src={sponsor.logo} 
+                        alt={sponsor.name}
+                        className="max-h-12 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                        data-testid={`img-sponsor-${index}`}
+                      />
+                    ) : (
+                      <div className="text-white font-semibold text-sm" data-testid={`text-sponsor-name-${index}`}>
+                        {sponsor.name}
+                      </div>
+                    )}
+                  </div>
+                  <div className={`text-xs font-medium ${getTierTextColor(sponsor.tier)}`} data-testid={`text-sponsor-tier-${index}`}>
+                    {sponsor.tier} Partner
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>
