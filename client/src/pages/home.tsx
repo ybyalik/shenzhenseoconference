@@ -163,7 +163,7 @@ export default function Home() {
           </div>
 
           <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
-            <p data-testid="text-copyright">&copy; 2024 Shenzhen SEO Conference. All rights reserved.</p>
+            <p data-testid="text-copyright">Copyright &copy; 2025 Shenzhen SEO Conference. All rights reserved.</p>
           </div>
         </div>
       </footer>
