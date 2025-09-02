@@ -157,10 +157,6 @@ export default function TicketForm() {
         {/* Registration Form */}
         <Card className="border border-border" data-testid="card-registration-form">
           <CardContent className="p-8">
-            <h3 className="text-2xl font-semibold mb-6 text-center" data-testid="text-form-title">
-              Reserve Your Spot Now
-            </h3>
-            
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
