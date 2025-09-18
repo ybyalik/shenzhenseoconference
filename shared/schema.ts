@@ -32,7 +32,7 @@ export const insertTicketPreOrderSchema = createInsertSchema(ticketPreOrders).om
   email: z.string().email("Please enter a valid email address"),
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
-  ticketType: z.enum(["standard", "vip"], {
+  ticketType: z.enum(["standard", "deluxe", "vip"], {
     required_error: "Please select a ticket type",
   }),
 });

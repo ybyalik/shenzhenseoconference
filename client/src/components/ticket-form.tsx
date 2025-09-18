@@ -16,7 +16,7 @@ import { Check, Lock } from "lucide-react";
 
 export default function TicketForm() {
   const { toast } = useToast();
-  const [selectedTicketType, setSelectedTicketType] = useState<"standard" | "vip">("standard");
+  const [selectedTicketType, setSelectedTicketType] = useState<"standard" | "deluxe" | "vip">("standard");
 
   const form = useForm<InsertTicketPreOrder>({
     resolver: zodResolver(insertTicketPreOrderSchema),
@@ -58,11 +58,11 @@ export default function TicketForm() {
   const ticketTypes = [
     {
       type: "standard" as const,
-      name: "Early Bird Standard",
-      price: "$299",
-      originalPrice: "$498",
+      name: "Super Early Bird Standard",
+      price: "$390",
+      originalPrice: "$600",
       features: [
-        "Full conference access",
+        "2-day conference access",
         "All meals & coffee breaks",
         "Networking sessions",
         "Digital conference materials",
@@ -70,18 +70,34 @@ export default function TicketForm() {
       popular: false,
     },
     {
-      type: "vip" as const,
-      name: "Early Bird VIP",
-      price: "$599",
-      originalPrice: "$998",
+      type: "deluxe" as const,
+      name: "Super Early Bird Deluxe",
+      price: "$585",
+      originalPrice: "$900",
       features: [
-        "Everything in Standard",
-        "VIP networking dinner",
+        "4-day conference access",
+        "All meals & coffee breaks",
+        "Networking sessions",
+        "Digital conference materials",
+        "Extended workshop access",
+      ],
+      popular: true,
+    },
+    {
+      type: "vip" as const,
+      name: "Super Early Bird VIP",
+      price: "$1,170",
+      originalPrice: "$1,800",
+      features: [
+        "Full 5-day conference access",
+        "All meals & coffee breaks",
+        "VIP networking events",
         "Exclusive speaker meet & greet",
         "Premium conference materials",
         "Front-row seating",
+        "Speaker & sponsor networking",
       ],
-      popular: true,
+      popular: false,
     },
   ];
 
@@ -93,19 +109,19 @@ export default function TicketForm() {
             Secure Your Early Bird Tickets
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto" data-testid="text-ticket-description">
-            Join industry leaders and save up to 40% with our exclusive early bird pricing. 
+            Join industry leaders and save 35% with our exclusive Super Early Bird pricing. 
             Limited spots available.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
           {ticketTypes.map((ticket) => (
             <Card 
               key={ticket.type}
               className={`hover-lift hover-glow cursor-pointer transition-all slide-up ${
                 selectedTicketType === ticket.type ? "border-primary ring-2 ring-primary/20" : ""
               } ${ticket.popular ? "border-2 border-primary relative" : ""}`}
-              style={{ animationDelay: ticket.type === 'standard' ? '0.1s' : '0.2s' }}
+              style={{ animationDelay: ticket.type === 'standard' ? '0.1s' : ticket.type === 'deluxe' ? '0.2s' : '0.3s' }}
               onClick={() => {
                 setSelectedTicketType(ticket.type);
                 form.setValue("ticketType", ticket.type);
