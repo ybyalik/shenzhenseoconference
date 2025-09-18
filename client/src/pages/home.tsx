@@ -6,7 +6,7 @@ import SpeakerTeaser from "@/components/speaker-teaser";
 import VenueInfo from "@/components/venue-info";
 import FaqSection from "@/components/faq-section";
 import StickyCTA from "@/components/sticky-cta";
-import TestimonialsSection from "@/components/testimonials-section";
+
 import EventTimeline from "@/components/event-timeline";
 import SponsorsCarousel from "@/components/sponsors-carousel";
 import { Search, Inbox, Phone, MapPin, Twitter, Facebook, Linkedin } from "lucide-react";
@@ -52,7 +52,7 @@ export default function Home() {
 
       <TicketForm />
       <EventHighlights />
-      <TestimonialsSection />
+      
       <EventTimeline />
       <SpeakerTeaser />
       <SponsorsCarousel />
