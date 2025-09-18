@@ -39,7 +39,7 @@ export default function Home() {
               <div className="text-muted-foreground">World-Class Speakers</div>
             </div>
             <div data-testid="stat-days">
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">4</div>
+              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">5</div>
               <div className="text-muted-foreground">Days of Innovation</div>
             </div>
             <div data-testid="stat-countries">
