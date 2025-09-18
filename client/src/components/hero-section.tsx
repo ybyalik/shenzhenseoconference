@@ -37,7 +37,7 @@ export default function HeroSection() {
             </div>
             <div className="flex items-center text-lg" data-testid="event-location">
               <MapPin className="mr-2 h-5 w-5" />
-              The Ritz-Carlton, Shenzhen
+              Shenzhen, China (Venue TBD)
             </div>
           </div>
 

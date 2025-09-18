@@ -9,19 +9,25 @@ export default function VenueInfo() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6" data-testid="text-venue-title">
-              The Ritz-Carlton, Shenzhen
+              2026 Venue - To Be Announced
             </h2>
             <p className="text-lg text-muted-foreground mb-6" data-testid="text-venue-description">
-              Experience luxury in the heart of Shenzhen's financial district. The Ritz-Carlton provides 
-              world-class facilities and breathtaking views of the city skyline.
+              Our 2026 venue location in Shenzhen is currently being finalized. We're working to secure another 
+              world-class facility that will provide the perfect setting for our international SEO conference.
             </p>
+            <div className="bg-muted/50 border border-border rounded-lg p-4 mb-6">
+              <p className="text-sm text-muted-foreground">
+                <strong>2025 Venue:</strong> The Ritz-Carlton, Shenzhen provided luxury accommodations and 
+                world-class facilities in the heart of Shenzhen's financial district.
+              </p>
+            </div>
             
             <div className="space-y-4">
               <div className="flex items-start" data-testid="venue-location">
                 <MapPin className="text-primary mt-1 mr-3 h-5 w-5" />
                 <div>
-                  <div className="font-semibold">Prime Location</div>
-                  <div className="text-muted-foreground">116 Fuhua Road, Futian District, Shenzhen</div>
+                  <div className="font-semibold">Confirmed Location</div>
+                  <div className="text-muted-foreground">Shenzhen, China - Specific venue coming soon</div>
                 </div>
               </div>
               
@@ -29,7 +35,7 @@ export default function VenueInfo() {
                 <Plane className="text-primary mt-1 mr-3 h-5 w-5" />
                 <div>
                   <div className="font-semibold">Easy Access</div>
-                  <div className="text-muted-foreground">20 minutes from Shenzhen Bao'an International Airport</div>
+                  <div className="text-muted-foreground">Close to Shenzhen Bao'an International Airport</div>
                 </div>
               </div>
               
@@ -37,28 +43,30 @@ export default function VenueInfo() {
                 <Train className="text-primary mt-1 mr-3 h-5 w-5" />
                 <div>
                   <div className="font-semibold">Metro Connected</div>
-                  <div className="text-muted-foreground">Direct access to Shenzhen's extensive metro system</div>
+                  <div className="text-muted-foreground">Connected to Shenzhen's extensive metro system</div>
                 </div>
               </div>
             </div>
 
             <div className="mt-8">
               <Button 
-                className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors mr-4 focus:ring-4 focus:ring-accent/20"
+                disabled
+                className="bg-muted text-muted-foreground px-6 py-3 rounded-lg font-semibold mr-4 cursor-not-allowed"
                 data-testid="button-book-hotel"
-                aria-label="Book hotel accommodation"
+                aria-label="Hotel booking available once venue is announced"
               >
                 <Bed className="mr-2 h-4 w-4" />
-                Book Hotel
+                Hotel Booking (Coming Soon)
               </Button>
               <Button 
                 variant="outline"
+                onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
                 className="border border-border px-6 py-3 rounded-lg font-semibold hover:bg-muted transition-colors focus:ring-4 focus:ring-muted/20"
-                data-testid="button-view-map"
-                aria-label="View venue location on map"
+                data-testid="button-get-updates"
+                aria-label="Get venue updates"
               >
                 <Map className="mr-2 h-4 w-4" />
-                View Map
+                Get Venue Updates
               </Button>
             </div>
           </div>
