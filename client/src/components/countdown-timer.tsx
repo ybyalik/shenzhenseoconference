@@ -10,8 +10,8 @@ export default function CountdownTimer() {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      // Conference date: September 18, 2026
-      const endDate = new Date('2026-09-18T00:00:00');
+      // Conference date: September 17, 2026
+      const endDate = new Date('2026-09-17T00:00:00');
       
       const now = new Date().getTime();
       const distance = endDate.getTime() - now;

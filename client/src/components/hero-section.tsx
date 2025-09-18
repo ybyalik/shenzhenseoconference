@@ -33,7 +33,7 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <div className="flex items-center text-lg" data-testid="event-date">
               <Calendar className="mr-2 h-5 w-5" />
-              September 18-21, 2026
+              September 17-21, 2026
             </div>
             <div className="flex items-center text-lg" data-testid="event-location">
               <MapPin className="mr-2 h-5 w-5" />
