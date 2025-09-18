@@ -132,15 +132,8 @@ export default function SpeakerTeaser() {
 
         <div className="text-center fade-in">
           <p className="text-lg text-muted-foreground mb-6" data-testid="text-speaker-announcement">
-            Full speaker lineup to be announced soon. Get early access to speaker announcements!
+            Full speaker lineup to be announced soon.
           </p>
-          <Button 
-            className="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors hover:scale-105 focus:ring-4 focus:ring-primary/20"
-            onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
-            data-testid="button-speaker-updates"
-          >
-            Get Speaker Updates
-          </Button>
         </div>
         
         <SpeakerPreviewModal 

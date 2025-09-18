@@ -51,22 +51,12 @@ export default function VenueInfo() {
             <div className="mt-8">
               <Button 
                 disabled
-                className="bg-muted text-muted-foreground px-6 py-3 rounded-lg font-semibold mr-4 cursor-not-allowed"
+                className="bg-muted text-muted-foreground px-6 py-3 rounded-lg font-semibold cursor-not-allowed"
                 data-testid="button-book-hotel"
                 aria-label="Hotel booking available once venue is announced"
               >
                 <Bed className="mr-2 h-4 w-4" />
                 Hotel Booking (Coming Soon)
-              </Button>
-              <Button 
-                variant="outline"
-                onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
-                className="border border-border px-6 py-3 rounded-lg font-semibold hover:bg-muted transition-colors focus:ring-4 focus:ring-muted/20"
-                data-testid="button-get-updates"
-                aria-label="Get venue updates"
-              >
-                <Map className="mr-2 h-4 w-4" />
-                Get Venue Updates
               </Button>
             </div>
           </div>
