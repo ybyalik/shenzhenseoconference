@@ -95,14 +95,6 @@ export default function SpeakerTeaser() {
           </p>
         </div>
 
-        <div className="mb-12 rounded-2xl overflow-hidden slide-up">
-          <img 
-            src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600" 
-            alt="Professional conference presentation" 
-            className="w-full h-96 object-cover hover:scale-105 transition-transform duration-500"
-            data-testid="img-conference-presentation"
-          />
-        </div>
 
         <div className="mb-12">
           <h3 className="text-2xl font-bold text-center mb-8">Previous Speakers</h3>
