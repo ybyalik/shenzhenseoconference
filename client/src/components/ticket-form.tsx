@@ -16,7 +16,7 @@ import { Check, Lock } from "lucide-react";
 
 export default function TicketForm() {
   const { toast } = useToast();
-  const [selectedTicketType, setSelectedTicketType] = useState<"standard" | "deluxe" | "vip">("standard");
+  const [selectedTicketType, setSelectedTicketType] = useState<"standard" | "deluxe" | "vip" | null>(null);
 
   const form = useForm<InsertTicketPreOrder>({
     resolver: zodResolver(insertTicketPreOrderSchema),
@@ -119,9 +119,9 @@ export default function TicketForm() {
           {ticketTypes.map((ticket) => (
             <Card 
               key={ticket.type}
-              className={`hover-lift hover-glow cursor-pointer transition-all slide-up ${
-                selectedTicketType === ticket.type ? "border-primary ring-2 ring-primary/20" : ""
-              } ${ticket.popular || ticket.bestValue ? "border-2 border-primary relative" : ""}`}
+              className={`hover-lift hover-glow cursor-pointer transition-all slide-up border ${
+                selectedTicketType === ticket.type ? "border-primary ring-2 ring-primary/20" : "border-border"
+              } ${ticket.popular || ticket.bestValue ? "relative" : ""}`}
               style={{ animationDelay: ticket.type === 'standard' ? '0.1s' : ticket.type === 'deluxe' ? '0.2s' : '0.3s' }}
               onClick={() => {
                 setSelectedTicketType(ticket.type);
