@@ -68,7 +68,14 @@ export default function SpeakerPreviewModal({ open, onOpenChange, speaker }: Spe
           </div>
 
           <div className="flex gap-3">
-            <Button className="flex-1" data-testid="modal-register-button">
+            <Button 
+              className="flex-1" 
+              onClick={() => {
+                onOpenChange(false);
+                document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              data-testid="modal-register-button"
+            >
               Register for Conference
             </Button>
             <Button variant="outline" onClick={() => onOpenChange(false)} data-testid="modal-close-button">
