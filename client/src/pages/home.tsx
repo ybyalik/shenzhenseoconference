@@ -107,7 +107,7 @@ export default function Home() {
 
           <div className="mb-8 rounded-2xl overflow-hidden">
             <img 
-              src="@assets/bg-feature1-1-min_1758248907376.webp" 
+              src="@assets/bg-feature1-1-min_1758249135011.webp" 
               alt="SEO conference audience and speaker interaction" 
               className="w-full h-64 object-cover opacity-80"
               data-testid="img-networking"
