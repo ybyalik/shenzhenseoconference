@@ -7,24 +7,28 @@ export default function FaqSection() {
 
   const faqs = [
     {
-      question: "What visa requirements are there for attending the conference?",
-      answer: "Most international visitors will need a tourist visa (L visa) to enter China. We provide invitation letters to help with your visa application. Start the process early as it can take 2-4 weeks. Some countries have visa-free policies for short stays.",
+      question: "What's your ticket refund policy?",
+      answer: "We offer a full refund 30 days before the conference. If there are less than 30 days before the event begins and you are unable to attend, we are unable to issue refunds in general, however, we encourage you to reach out to our support team, we'll try to help you the best we can.",
     },
     {
-      question: "Is the conference conducted in English?",
-      answer: "Yes, the main conference is conducted entirely in English. We also provide real-time Chinese translation for key sessions. All presentation materials are available in both English and Chinese.",
+      question: "What's the ratio of Chinese attendees versus Western attendees?",
+      answer: "We expect to have 300 Chinese attendees and 200 Western attendees, so the ratio is 60% vs 40%. The actual number may slightly vary. However, we aim to make Shenzhen SEO Conference a truly international conference and will control the attendance diversity.",
     },
     {
-      question: "What apps should I download before arriving in China?",
-      answer: "Essential apps include: A reliable VPN for internet access, WeChat for communication and payments, Alipay for additional payment options, Baidu Maps for navigation, and Google Translate offline mode. We'll send a detailed 'Travel Prep Guide' to all attendees.",
+      question: "Is the conference conducted in English, or will there be translation services?",
+      answer: "All the talks will be 100% in English and there will be no translation services offered. All attendees (including Chinese attendees) are encouraged to have basic to professional English communication skills.",
     },
     {
-      question: "What's your refund policy?",
-      answer: "Full refund available until 60 days before the event. 50% refund available 30-60 days before. No refunds within 30 days of the event, but tickets are transferable. We also offer travel insurance options at checkout.",
+      question: "Will there be sessions focused on Western markets?",
+      answer: "Yes, even though this conference is located in Shenzhen, China. More than 70% of the sessions, talks and panel discussions are related to SEO and marketing for Western markets.",
     },
     {
-      question: "Are there networking opportunities for international attendees?",
-      answer: "Absolutely! We have dedicated international networking sessions, cultural exchange dinners, and organized city tours. Our mobile app includes networking features to connect with other attendees before and during the event.",
+      question: "Is it common for locals to speak English, or should I learn basic Mandarin phrases?",
+      answer: "While Shenzhen is a major city in China with a growing number of English speakers, English proficiency among the general population remains limited. Most locals primarily use Mandarin or Cantonese, so learning basic Mandarin phrases (e.g., greetings, directions, and polite expressions) will be incredibly helpful for navigating the city, interacting with locals, and showing cultural respect. However, in hotels, major tourist areas, and at the conference venue, you'll likely find English-speaking staff or locals. Bringing a translation app can also bridge any language gaps.",
+    },
+    {
+      question: "What is the local currency, and are credit cards widely accepted?",
+      answer: "The local currency in Shenzhen is the Chinese Yuan (CNY), also called Renminbi (RMB). While cash is accepted, mobile payments like WeChat Pay and Alipay are the most widely used. Credit cards (Visa, MasterCard) are not widely accepted except in hotels and shopping malls, so it's best to set up mobile payment apps or carry some cash for smaller transactions. ATMs are available for withdrawing Chinese Yuan, but check with your bank about international fees.",
     },
   ];
 
