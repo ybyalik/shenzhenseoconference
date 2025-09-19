@@ -103,7 +103,7 @@ export default function TicketForm() {
 
   return (
     <section id="tickets" className="py-20 bg-muted" data-testid="section-tickets">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 fade-in">
           <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-ticket-title">
             Secure Your Early Bird Tickets
