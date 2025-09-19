@@ -123,13 +123,6 @@ export default function Home() {
               <Search className="inline mr-2 h-5 w-5" />
               Secure Early Bird Pricing
             </button>
-            <button 
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-colors"
-              data-testid="button-get-updates"
-            >
-              <Inbox className="inline mr-2 h-5 w-5" />
-              Get Event Updates
-            </button>
           </div>
 
           <p className="text-sm text-white/80 mt-6" data-testid="text-countdown-footer">
