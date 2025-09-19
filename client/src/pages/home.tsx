@@ -164,9 +164,6 @@ export default function Home() {
                 <li className="flex items-center" data-testid="contact-email">
                   <Inbox className="mr-2 h-4 w-4" /> info@shenzhenseo.com
                 </li>
-                <li className="flex items-center" data-testid="contact-phone">
-                  <Phone className="mr-2 h-4 w-4" /> +86 755 2222 2222
-                </li>
                 <li className="flex items-center" data-testid="contact-location">
                   <MapPin className="mr-2 h-4 w-4" /> Shenzhen, China
                 </li>
