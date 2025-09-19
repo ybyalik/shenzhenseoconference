@@ -12,6 +12,7 @@ import SponsorsCarousel from "@/components/sponsors-carousel";
 import { Search, Inbox, Phone, MapPin, Twitter, Facebook, Linkedin, Users, Mic, Calendar, Globe } from "lucide-react";
 import logoImage from "@assets/logo-main_1756774330186.png";
 import darkLogoImage from "@assets/logodark_1756775589088.png";
+import conferenceImage from "@assets/bg-feature1-1-min_1758249135011.webp";
 
 export default function Home() {
   return (
@@ -107,7 +108,7 @@ export default function Home() {
 
           <div className="mb-8 rounded-2xl overflow-hidden">
             <img 
-              src="@assets/bg-feature1-1-min_1758249135011.webp" 
+              src={conferenceImage} 
               alt="SEO conference audience and speaker interaction" 
               className="w-full h-64 object-cover opacity-80"
               data-testid="img-networking"
