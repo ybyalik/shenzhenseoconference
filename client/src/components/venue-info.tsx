@@ -22,31 +22,6 @@ export default function VenueInfo() {
               </p>
             </div>
             
-            <div className="space-y-4">
-              <div className="flex items-start" data-testid="venue-location">
-                <MapPin className="text-primary mt-1 mr-3 h-5 w-5" />
-                <div>
-                  <div className="font-semibold">Confirmed Location</div>
-                  <div className="text-muted-foreground">Shenzhen, China - Specific venue coming soon</div>
-                </div>
-              </div>
-              
-              <div className="flex items-start" data-testid="venue-airport">
-                <Plane className="text-primary mt-1 mr-3 h-5 w-5" />
-                <div>
-                  <div className="font-semibold">Easy Access</div>
-                  <div className="text-muted-foreground">Close to Shenzhen Bao'an International Airport</div>
-                </div>
-              </div>
-              
-              <div className="flex items-start" data-testid="venue-metro">
-                <Train className="text-primary mt-1 mr-3 h-5 w-5" />
-                <div>
-                  <div className="font-semibold">Metro Connected</div>
-                  <div className="text-muted-foreground">Connected to Shenzhen's extensive metro system</div>
-                </div>
-              </div>
-            </div>
 
             <div className="mt-8">
               <Button 
