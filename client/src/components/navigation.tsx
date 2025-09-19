@@ -23,7 +23,7 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-lg border-b border-border z-50" data-testid="navigation">
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg border-b border-gray-200' : 'bg-background/80 backdrop-blur-lg border-b border-border'}`} data-testid="navigation">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center" data-testid="nav-logo">
@@ -37,7 +37,11 @@ export default function Navigation() {
           <div className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('about')} 
-              className="text-white font-semibold hover:text-purple-200 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
+              className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
+                isScrolled 
+                  ? 'text-gray-800 hover:text-primary' 
+                  : 'text-white hover:text-purple-200'
+              }`}
               data-testid="nav-about"
               aria-label="Navigate to About section"
             >
@@ -45,7 +49,11 @@ export default function Navigation() {
             </button>
             <button 
               onClick={() => scrollToSection('speakers')} 
-              className="text-white font-semibold hover:text-purple-200 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
+              className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
+                isScrolled 
+                  ? 'text-gray-800 hover:text-primary' 
+                  : 'text-white hover:text-purple-200'
+              }`}
               data-testid="nav-speakers"
               aria-label="Navigate to Speakers section"
             >
@@ -53,7 +61,11 @@ export default function Navigation() {
             </button>
             <button 
               onClick={() => scrollToSection('tickets')} 
-              className="text-white font-semibold hover:text-purple-200 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
+              className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
+                isScrolled 
+                  ? 'text-gray-800 hover:text-primary' 
+                  : 'text-white hover:text-purple-200'
+              }`}
               data-testid="nav-tickets"
               aria-label="Navigate to Tickets section"
             >
@@ -61,7 +73,11 @@ export default function Navigation() {
             </button>
             <button 
               onClick={() => scrollToSection('venue')} 
-              className="text-white font-semibold hover:text-purple-200 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
+              className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
+                isScrolled 
+                  ? 'text-gray-800 hover:text-primary' 
+                  : 'text-white hover:text-purple-200'
+              }`}
               data-testid="nav-venue"
               aria-label="Navigate to Venue section"
             >
@@ -78,7 +94,9 @@ export default function Navigation() {
           </div>
           
           <button 
-            className="md:hidden text-white"
+            className={`md:hidden transition-colors ${
+              isScrolled ? 'text-gray-800' : 'text-white'
+            }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             data-testid="button-mobile-menu"
           >
@@ -88,32 +106,52 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-background border-t border-border" data-testid="mobile-menu">
+          <div className={`md:hidden border-t transition-colors ${
+            isScrolled 
+              ? 'bg-white border-gray-200' 
+              : 'bg-background border-border'
+          }`} data-testid="mobile-menu">
             <div className="px-4 py-4 space-y-4">
               <button 
                 onClick={() => scrollToSection('about')} 
-                className="block w-full text-left text-white font-semibold hover:text-purple-200 transition-colors"
+                className={`block w-full text-left font-semibold transition-colors ${
+                  isScrolled 
+                    ? 'text-gray-800 hover:text-primary' 
+                    : 'text-white hover:text-purple-200'
+                }`}
                 data-testid="mobile-nav-about"
               >
                 About
               </button>
               <button 
                 onClick={() => scrollToSection('speakers')} 
-                className="block w-full text-left text-white font-semibold hover:text-purple-200 transition-colors"
+                className={`block w-full text-left font-semibold transition-colors ${
+                  isScrolled 
+                    ? 'text-gray-800 hover:text-primary' 
+                    : 'text-white hover:text-purple-200'
+                }`}
                 data-testid="mobile-nav-speakers"
               >
                 Speakers
               </button>
               <button 
                 onClick={() => scrollToSection('tickets')} 
-                className="block w-full text-left text-white font-semibold hover:text-purple-200 transition-colors"
+                className={`block w-full text-left font-semibold transition-colors ${
+                  isScrolled 
+                    ? 'text-gray-800 hover:text-primary' 
+                    : 'text-white hover:text-purple-200'
+                }`}
                 data-testid="mobile-nav-tickets"
               >
                 Tickets
               </button>
               <button 
                 onClick={() => scrollToSection('venue')} 
-                className="block w-full text-left text-white font-semibold hover:text-purple-200 transition-colors"
+                className={`block w-full text-left font-semibold transition-colors ${
+                  isScrolled 
+                    ? 'text-gray-800 hover:text-primary' 
+                    : 'text-white hover:text-purple-200'
+                }`}
                 data-testid="mobile-nav-venue"
               >
                 Venue
