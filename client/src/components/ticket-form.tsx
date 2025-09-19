@@ -98,6 +98,7 @@ export default function TicketForm() {
         "Speaker & sponsor networking",
       ],
       popular: false,
+      bestValue: true,
     },
   ];
 
@@ -120,7 +121,7 @@ export default function TicketForm() {
               key={ticket.type}
               className={`hover-lift hover-glow cursor-pointer transition-all slide-up ${
                 selectedTicketType === ticket.type ? "border-primary ring-2 ring-primary/20" : ""
-              } ${ticket.popular ? "border-2 border-primary relative" : ""}`}
+              } ${ticket.popular || ticket.bestValue ? "border-2 border-primary relative" : ""}`}
               style={{ animationDelay: ticket.type === 'standard' ? '0.1s' : ticket.type === 'deluxe' ? '0.2s' : '0.3s' }}
               onClick={() => {
                 setSelectedTicketType(ticket.type);
@@ -132,6 +133,13 @@ export default function TicketForm() {
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <Badge className="bg-primary text-primary-foreground" data-testid="badge-most-popular">
                     Most Popular
+                  </Badge>
+                </div>
+              )}
+              {ticket.bestValue && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <Badge className="bg-green-600 text-white" data-testid="badge-best-value">
+                    Best Value
                   </Badge>
                 </div>
               )}
