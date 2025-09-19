@@ -1,4 +1,4 @@
-import { Calendar, MapPin, Play, Search } from "lucide-react";
+import { Calendar, MapPin, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CountdownTimer from "./countdown-timer";
 
@@ -51,14 +51,6 @@ export default function HeroSection() {
             >
               <Search className="mr-2 h-5 w-5" />
               Get Early Bird Tickets
-            </Button>
-            <Button 
-              variant="outline"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-colors bg-transparent"
-              data-testid="button-watch-highlights"
-            >
-              <Play className="mr-2 h-5 w-5" />
-              Watch 2025 Highlights
             </Button>
           </div>
         </div>
