@@ -83,7 +83,7 @@ export default function EventTimeline() {
       id: 'day5-networking',
       date: '2026-09-21',
       title: 'VIP Networking',
-      description: 'Exclusive networking event for VIP ticket holders with speakers and sponsors',
+      description: 'Exclusive networking event for VIP ticket holders with speakers and sponsors, in a different 5-star hotel (not the conference hotel).',
       eventType: 'networking'
     }
   ];
