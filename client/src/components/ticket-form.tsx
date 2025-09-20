@@ -144,13 +144,23 @@ export default function TicketForm() {
                 <h3 className="text-xl font-semibold mb-2" data-testid={`text-ticket-name-${ticket.type}`}>
                   {ticket.name}
                 </h3>
-                <div className="mb-4">
+                <div className="mb-2">
+                  <Badge variant="secondary" className="text-xs mb-2" data-testid={`badge-super-early-bird-${ticket.type}`}>
+                    Super Early Bird Price
+                  </Badge>
+                </div>
+                <div className="mb-2">
                   <span className="text-4xl font-bold text-primary" data-testid={`text-ticket-price-${ticket.type}`}>
                     {ticket.price}
                   </span>
                   <span className="text-muted-foreground line-through ml-2" data-testid={`text-ticket-original-price-${ticket.type}`}>
                     {ticket.originalPrice}
                   </span>
+                </div>
+                <div className="mb-4">
+                  <p className="text-xs text-muted-foreground" data-testid={`text-deadline-${ticket.type}`}>
+                    Ends September 30, 2025
+                  </p>
                 </div>
                 <ul className="text-left space-y-3 mb-6">
                   {ticket.features.map((feature, index) => (
