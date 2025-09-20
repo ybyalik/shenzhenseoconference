@@ -61,8 +61,8 @@ export default function EventTimeline() {
     {
       id: 'day2-mastermind',
       date: '2026-09-18',
-      title: 'SEO Mastermind Sessions',
-      description: 'Intensive small-group sessions with industry experts covering advanced SEO strategies',
+      title: 'SEO Mastermind',
+      description: 'Intensive small-group mastermind sessions with industry SEO experts and peers',
       eventType: 'mastermind'
     },
     {
