@@ -68,14 +68,14 @@ export default function EventTimeline() {
     {
       id: 'day3-conference',
       date: '2026-09-19',
-      title: 'Main Conference Day 1',
+      title: 'Main Conference Day',
       description: 'Full day of keynotes, panel discussions, and workshops on Eastern SEO markets',
       eventType: 'conference'
     },
     {
       id: 'day4-conference',
       date: '2026-09-20',
-      title: 'Main Conference Day 2',
+      title: 'Main Conference Day',
       description: 'Deep dive into Western market integration and cross-cultural digital marketing strategies',
       eventType: 'conference'
     },
