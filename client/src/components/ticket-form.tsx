@@ -16,7 +16,6 @@ import { Check, Lock } from "lucide-react";
 
 export default function TicketForm() {
   const { toast } = useToast();
-  const [selectedTicketType, setSelectedTicketType] = useState<"standard" | "deluxe" | "vip" | null>(null);
 
   const form = useForm<InsertTicketPreOrder>({
     resolver: zodResolver(insertTicketPreOrderSchema),
@@ -115,14 +114,10 @@ export default function TicketForm() {
           {ticketTypes.map((ticket) => (
             <Card 
               key={ticket.type}
-              className={`hover-lift hover-glow cursor-pointer transition-all slide-up border ${
-                selectedTicketType === ticket.type ? "border-primary ring-2 ring-primary/20" : "border-border"
-              } ${ticket.popular || ticket.bestValue ? "relative" : ""}`}
+              className={`hover-lift hover-glow transition-all slide-up border border-border ${
+                ticket.popular || ticket.bestValue ? "relative" : ""
+              }`}
               style={{ animationDelay: ticket.type === 'standard' ? '0.1s' : ticket.type === 'deluxe' ? '0.2s' : '0.3s' }}
-              onClick={() => {
-                setSelectedTicketType(ticket.type);
-                form.setValue("ticketType", ticket.type);
-              }}
               data-testid={`card-ticket-${ticket.type}`}
             >
               {ticket.popular && (
@@ -172,19 +167,15 @@ export default function TicketForm() {
                 </ul>
                 <Button 
                   asChild
-                  className={`w-full ${
-                    selectedTicketType === ticket.type 
-                      ? "bg-primary text-primary-foreground" 
-                      : "bg-secondary text-secondary-foreground"
-                  }`}
-                  data-testid={`button-select-${ticket.type}`}
+                  className="w-full bg-primary text-primary-foreground"
+                  data-testid={`button-buy-${ticket.type}`}
                 >
                   <a 
                     href="https://luma.com/shenzhen-seo-conference-2026" 
                     target="_blank" 
                     rel="nofollow noopener noreferrer"
                   >
-                    {selectedTicketType === ticket.type ? "Selected" : `Select ${ticket.name}`}
+                    Buy {ticket.name} Ticket
                   </a>
                 </Button>
               </CardContent>
