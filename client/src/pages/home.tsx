@@ -2,7 +2,7 @@ import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
 import EventHighlights from "@/components/event-highlights";
 import TicketForm from "@/components/ticket-form";
-import SpeakerTeaser from "@/components/speaker-teaser";
+// import SpeakerTeaser from "@/components/speaker-teaser";
 import VenueInfo from "@/components/venue-info";
 import FaqSection from "@/components/faq-section";
 import StickyCTA from "@/components/sticky-cta";
@@ -91,7 +91,7 @@ export default function Home() {
       <EventHighlights />
       
       <EventTimeline />
-      <SpeakerTeaser />
+      {/* <SpeakerTeaser /> */}
       {/* <SponsorsCarousel /> */}
       <VenueInfo />
       <FaqSection />
