@@ -122,7 +122,7 @@ export default function Home() {
               data-testid="button-secure-pricing"
             >
               <Search className="inline mr-2 h-5 w-5" />
-              Secure Early Bird Pricing
+              Secure Super Early Bird Pricing
             </button>
           </div>
 
