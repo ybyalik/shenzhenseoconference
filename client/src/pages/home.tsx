@@ -127,7 +127,7 @@ export default function Home() {
           </div>
 
           <p className="text-sm text-white/80 mt-6" data-testid="text-countdown-footer">
-            Early bird pricing ends in <span className="font-semibold">{Math.floor((new Date('2026-09-17T00:00:00').getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))} days</span>
+            Super Early Bird pricing ends in <span className="font-semibold">{Math.floor((new Date('2026-09-17T00:00:00').getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))} days</span>
           </p>
         </div>
       </section>

@@ -14,14 +14,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const existingPreOrder = await storage.getTicketPreOrderByEmail(validatedData.email);
       if (existingPreOrder) {
         return res.status(400).json({ 
-          message: "This email has already been registered for early bird tickets." 
+          message: "This email has already been registered for Super Early Bird tickets." 
         });
       }
 
       const preOrder = await storage.createTicketPreOrder(validatedData);
       
       res.status(201).json({
-        message: "Thank you for your early bird registration! We'll contact you soon with payment details.",
+        message: "Thank you for your Super Early Bird registration! We'll contact you soon with payment details.",
         preOrder: {
           id: preOrder.id,
           firstName: preOrder.firstName,

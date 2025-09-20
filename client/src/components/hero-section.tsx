@@ -16,7 +16,7 @@ export default function HeroSection() {
         <div className="text-center text-white">
           <div className="mb-6">
             <span className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-4" data-testid="badge-early-bird">
-              🎯 Early Bird Pre-Sale Now Open
+              🎯 Super Early Bird Pre-Sale Now Open
             </span>
           </div>
           
@@ -50,7 +50,7 @@ export default function HeroSection() {
               data-testid="button-get-tickets"
             >
               <Search className="mr-2 h-5 w-5" />
-              Get Early Bird Tickets
+              Get Super Early Bird Tickets
             </Button>
           </div>
         </div>
