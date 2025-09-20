@@ -8,7 +8,7 @@ import FaqSection from "@/components/faq-section";
 import StickyCTA from "@/components/sticky-cta";
 
 import EventTimeline from "@/components/event-timeline";
-import SponsorsCarousel from "@/components/sponsors-carousel";
+// import SponsorsCarousel from "@/components/sponsors-carousel";
 import { Search, Inbox, Phone, MapPin, Twitter, Facebook, Linkedin, Users, Mic, Calendar, Globe } from "lucide-react";
 import logoImage from "@assets/logo-main_1756774330186.png";
 import darkLogoImage from "@assets/logodark_1756775589088.png";
@@ -92,7 +92,7 @@ export default function Home() {
       
       <EventTimeline />
       <SpeakerTeaser />
-      <SponsorsCarousel />
+      {/* <SponsorsCarousel /> */}
       <VenueInfo />
       <FaqSection />
 
