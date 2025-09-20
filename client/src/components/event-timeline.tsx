@@ -82,7 +82,7 @@ export default function EventTimeline() {
     {
       id: 'day5-networking',
       date: '2026-09-21',
-      title: 'VIP Networking & Closing',
+      title: 'VIP Networking',
       description: 'Exclusive networking event for VIP ticket holders with speakers and sponsors',
       eventType: 'networking'
     }
