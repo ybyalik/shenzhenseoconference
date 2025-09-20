@@ -54,8 +54,8 @@ export default function EventTimeline() {
     {
       id: 'day1-workshops',
       date: '2026-09-17',
-      title: 'Welcome & City Tours',
-      description: 'Arrival day with welcome reception and optional city tours to explore Shenzhen\'s tech districts',
+      title: 'Workshops & City Tours',
+      description: 'Specialized workshops for Chinese attendees and guided city tours for international visitors to explore Shenzhen\'s tech districts',
       eventType: 'workshop'
     },
     {
