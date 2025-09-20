@@ -180,7 +180,7 @@ export default function TicketForm() {
                   data-testid={`button-select-${ticket.type}`}
                 >
                   <a 
-                    href="https://luma.com/shenzhen-seo" 
+                    href="https://luma.com/shenzhen-seo-conference-2026" 
                     target="_blank" 
                     rel="nofollow noopener noreferrer"
                   >
