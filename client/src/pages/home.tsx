@@ -163,7 +163,7 @@ export default function Home() {
               <h4 className="font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex items-center" data-testid="contact-email">
-                  <Inbox className="mr-2 h-4 w-4" /> jp@shenzhenseoconference.com
+                  <Inbox className="mr-2 h-4 w-4" /> support@shenzhenseoconference.com
                 </li>
                 <li className="flex items-center" data-testid="contact-location">
                   <MapPin className="mr-2 h-4 w-4" /> Shenzhen, China
