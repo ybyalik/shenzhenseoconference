@@ -78,7 +78,7 @@ export default function Home() {
                 <div className="bg-orange-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   <Globe className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-3xl md:text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2 group-hover:text-orange-700 dark:group-hover:text-orange-300 transition-colors">15+</div>
+                <div className="text-3xl md:text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2 group-hover:text-orange-700 dark:group-hover:text-orange-300 transition-colors">30+</div>
                 <div className="text-sm font-medium text-orange-700 dark:text-orange-300">Countries Represented</div>
                 <div className="text-xs text-orange-600/70 dark:text-orange-400/70 mt-1">East meets West</div>
               </div>
