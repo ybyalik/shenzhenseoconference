@@ -35,7 +35,7 @@ export default function CountdownTimer() {
   return (
     <div className="mb-12" data-testid="countdown-timer">
       <h3 className="text-xl font-semibold mb-6" data-testid="text-countdown-title">
-        Early Bird Sale Ends In:
+        Super Early Bird Sale Ends In:
       </h3>
       <div className="flex flex-wrap justify-center gap-4">
         <div className="countdown-item px-6 py-4 rounded-lg text-center min-w-24" data-testid="countdown-days">
