@@ -58,7 +58,7 @@ export default function TicketForm() {
   const ticketTypes = [
     {
       type: "standard" as const,
-      name: "Super Early Bird Standard",
+      name: "Standard",
       price: "$390",
       originalPrice: "$600",
       features: [
@@ -71,7 +71,7 @@ export default function TicketForm() {
     },
     {
       type: "deluxe" as const,
-      name: "Super Early Bird Deluxe",
+      name: "Deluxe",
       price: "$585",
       originalPrice: "$900",
       features: [
@@ -85,7 +85,7 @@ export default function TicketForm() {
     },
     {
       type: "vip" as const,
-      name: "Super Early Bird VIP",
+      name: "VIP",
       price: "$1,170",
       originalPrice: "$1,800",
       features: [
@@ -175,7 +175,7 @@ export default function TicketForm() {
                   }`}
                   data-testid={`button-select-${ticket.type}`}
                 >
-                  {selectedTicketType === ticket.type ? "Selected" : `Select ${ticket.name.split(" ")[2]}`}
+                  {selectedTicketType === ticket.type ? "Selected" : `Select ${ticket.name}`}
                 </Button>
               </CardContent>
             </Card>
