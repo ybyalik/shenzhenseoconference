@@ -10,8 +10,8 @@ export default function CountdownTimer() {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      // Conference date: September 17, 2026
-      const endDate = new Date('2026-09-17T00:00:00');
+      // Super Early Bird sale end date: September 30, 2025 midnight GMT+8
+      const endDate = new Date('2025-09-30T00:00:00+08:00');
       
       const now = new Date().getTime();
       const distance = endDate.getTime() - now;
