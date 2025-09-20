@@ -86,7 +86,7 @@ export default function TicketForm() {
       originalPrice: "$1,800",
       features: [
         "Full 5-day conference access",
-        "Free 1 night stay at 5-star hotel (Day 5)",
+        "1 night stay at 5-star hotel (Day 5)",
         "Lunch and coffee",
         "Front-row seating",
       ],
