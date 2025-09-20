@@ -159,7 +159,7 @@ export default function EventTimeline() {
                           
                           {/* Full Date Display */}
                           <div className="text-lg font-semibold text-primary">
-                            Day {index + 1}
+                            {dateInfo.month} {dateInfo.day}, 2026
                           </div>
                         </div>
                       </CardHeader>
