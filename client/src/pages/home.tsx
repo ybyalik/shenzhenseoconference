@@ -54,7 +54,7 @@ export default function Home() {
                 <div className="bg-purple-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   <Mic className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors">50+</div>
+                <div className="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors">40+</div>
                 <div className="text-sm font-medium text-purple-700 dark:text-purple-300">World-Class Speakers</div>
                 <div className="text-xs text-purple-600/70 dark:text-purple-400/70 mt-1">Industry leaders & experts</div>
               </div>
