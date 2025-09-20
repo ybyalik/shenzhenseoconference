@@ -171,6 +171,7 @@ export default function TicketForm() {
                   ))}
                 </ul>
                 <Button 
+                  asChild
                   className={`w-full ${
                     selectedTicketType === ticket.type 
                       ? "bg-primary text-primary-foreground" 
@@ -178,7 +179,13 @@ export default function TicketForm() {
                   }`}
                   data-testid={`button-select-${ticket.type}`}
                 >
-                  {selectedTicketType === ticket.type ? "Selected" : `Select ${ticket.name}`}
+                  <a 
+                    href="https://luma.com/shenzhen-seo" 
+                    target="_blank" 
+                    rel="nofollow noopener noreferrer"
+                  >
+                    {selectedTicketType === ticket.type ? "Selected" : `Select ${ticket.name}`}
+                  </a>
                 </Button>
               </CardContent>
             </Card>
