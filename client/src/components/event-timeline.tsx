@@ -132,7 +132,7 @@ export default function EventTimeline() {
                     
                     {/* Date Badge */}
                     <div className={`absolute -bottom-2 -right-2 px-2 py-1 rounded-full text-xs font-semibold shadow-md ${eventStyle.color} text-white whitespace-nowrap`}>
-                      {dateInfo.month.slice(0, 3)} {dateInfo.day}
+                      Day {index + 1}
                     </div>
                   </div>
 
@@ -159,7 +159,7 @@ export default function EventTimeline() {
                           
                           {/* Full Date Display */}
                           <div className="text-lg font-semibold text-primary">
-                            {dateInfo.month} {dateInfo.day}, 2026
+                            Day {index + 1}
                           </div>
                         </div>
                       </CardHeader>
