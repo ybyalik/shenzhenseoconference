@@ -48,18 +48,6 @@ export default function Navigation() {
               About
             </button>
             <button 
-              onClick={() => scrollToSection('speakers')} 
-              className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
-                isScrolled 
-                  ? 'text-gray-800 hover:text-primary' 
-                  : 'text-white hover:text-purple-200'
-              }`}
-              data-testid="nav-speakers"
-              aria-label="Navigate to Speakers section"
-            >
-              Speakers
-            </button>
-            <button 
               onClick={() => scrollToSection('tickets')} 
               className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
                 isScrolled 
@@ -122,17 +110,6 @@ export default function Navigation() {
                 data-testid="mobile-nav-about"
               >
                 About
-              </button>
-              <button 
-                onClick={() => scrollToSection('speakers')} 
-                className={`block w-full text-left font-semibold transition-colors ${
-                  isScrolled 
-                    ? 'text-gray-800 hover:text-primary' 
-                    : 'text-white hover:text-purple-200'
-                }`}
-                data-testid="mobile-nav-speakers"
-              >
-                Speakers
               </button>
               <button 
                 onClick={() => scrollToSection('tickets')} 
