@@ -12,7 +12,7 @@ import EventTimeline from "@/components/event-timeline";
 import { Search, Inbox, Phone, MapPin, Twitter, Facebook, Linkedin, Users, Mic, Calendar, Globe } from "lucide-react";
 import logoImage from "@assets/logo-main_1756774330186.png";
 import darkLogoImage from "@assets/logodark_1756775589088.png";
-import conferenceImage from "@assets/bg-feature1-1-min_1758249135011.webp";
+import conferenceImage from "@assets/shenzhen-seo-conference-min_1758443453925.webp";
 
 export default function Home() {
   return (
