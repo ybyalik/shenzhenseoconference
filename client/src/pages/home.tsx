@@ -88,9 +88,9 @@ export default function Home() {
       </section>
 
       <TicketForm />
-      <EventHighlights />
-      
       <EventTimeline />
+      
+      <EventHighlights />
       {/* <SpeakerTeaser /> */}
       {/* <SponsorsCarousel /> */}
       <VenueInfo />
