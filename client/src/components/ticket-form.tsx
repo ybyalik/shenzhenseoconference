@@ -183,10 +183,15 @@ export default function TicketForm() {
           ))}
         </div>
 
-        <div className="text-center mt-8 p-4 bg-card border border-border rounded-lg" data-testid="refund-policy">
-          <p className="text-sm text-muted-foreground">
-            💰 <strong>Full Refund Policy:</strong> Get a 100% refund if you cancel 30 days or more before the conference starts.
+        <div className="text-center mt-8 p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl shadow-lg" data-testid="refund-policy">
+          <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full mb-3">
+            <span className="text-2xl">💰</span>
+          </div>
+          <h3 className="text-lg font-bold text-green-800 mb-2">100% Full Refund Policy</h3>
+          <p className="text-base font-medium text-green-700">
+            Get a complete refund if you cancel <strong>30 days or more</strong> before the conference starts.
           </p>
+          <p className="text-sm text-green-600 mt-1">Risk-free ticket purchase with peace of mind</p>
         </div>
 
       </div>
