@@ -58,11 +58,11 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="pt-16 min-h-screen gradient-bg relative overflow-hidden" data-testid="hero-section">
+    <section className="pt-16 gradient-bg relative overflow-hidden" data-testid="hero-section">
       <div className="absolute inset-0 bg-black/50"></div>
       <div className="absolute inset-0 hero-bg opacity-30"></div>
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-16">
         <div className="text-center text-white">
           <div className="mb-6">
             <span className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-4" data-testid="badge-early-bird">
