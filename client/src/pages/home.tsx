@@ -88,7 +88,6 @@ export default function Home() {
         </div>
       </section>
 
-      <EmailSubscriber />
       <TicketForm />
       <EventTimeline />
       

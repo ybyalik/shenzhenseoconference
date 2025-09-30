@@ -13,6 +13,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Check, Lock } from "lucide-react";
+import EmailSubscriber from "@/components/email-subscriber";
 
 export default function TicketForm() {
   const { toast } = useToast();
@@ -177,6 +178,8 @@ export default function TicketForm() {
             </Card>
           ))}
         </div>
+
+        <EmailSubscriber />
 
         <div className="text-center mt-8 p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl shadow-lg" data-testid="refund-policy">
           <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full mb-3">
