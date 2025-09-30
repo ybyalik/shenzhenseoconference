@@ -99,14 +99,13 @@ export default function TicketForm() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 fade-in">
           <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-ticket-title">
-            Secure Your Super Early Bird Tickets
+            <span className="line-through text-muted-foreground">Secure Your Super Early Bird Tickets</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto" data-testid="text-ticket-description">
-            Join industry leaders and save 35% with our exclusive Super Early Bird pricing. 
-            Limited spots available.
+          <p className="text-xl text-destructive font-semibold max-w-2xl mx-auto" data-testid="text-ticket-description">
+            Super Early Bird pricing has expired. Regular pricing coming soon!
           </p>
           <p className="text-sm text-muted-foreground mt-2" data-testid="text-deadline">
-            🕒 Super Early Bird pricing ends September 30, 2025 (11:59pm, GMT+8)
+            Super Early Bird period ended September 30, 2025
           </p>
         </div>
 
@@ -145,7 +144,7 @@ export default function TicketForm() {
                   </Badge>
                 </div>
                 <div className="mb-2">
-                  <span className="text-4xl font-bold text-primary" data-testid={`text-ticket-price-${ticket.type}`}>
+                  <span className="text-4xl font-bold text-muted-foreground line-through" data-testid={`text-ticket-price-${ticket.type}`}>
                     {ticket.price}
                   </span>
                   <span className="text-muted-foreground line-through ml-2" data-testid={`text-ticket-original-price-${ticket.type}`}>
@@ -153,8 +152,8 @@ export default function TicketForm() {
                   </span>
                 </div>
                 <div className="mb-4">
-                  <p className="text-xs text-muted-foreground" data-testid={`text-deadline-${ticket.type}`}>
-                    Ends September 30, 2025
+                  <p className="text-xs text-destructive font-semibold" data-testid={`text-deadline-${ticket.type}`}>
+                    Super Early Bird EXPIRED
                   </p>
                 </div>
                 <ul className="text-left space-y-3 mb-6">
@@ -166,17 +165,13 @@ export default function TicketForm() {
                   ))}
                 </ul>
                 <Button 
-                  asChild
-                  className="w-full bg-primary text-primary-foreground"
+                  disabled
+                  className="w-full"
                   data-testid={`button-buy-${ticket.type}`}
                 >
-                  <a 
-                    href="https://luma.com/shenzhen-seo-conference-2026" 
-                    target="_blank" 
-                    rel="nofollow noopener noreferrer"
-                  >
+                  <span className="line-through">
                     Buy {ticket.name} Ticket
-                  </a>
+                  </span>
                 </Button>
               </CardContent>
             </Card>
