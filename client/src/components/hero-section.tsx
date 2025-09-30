@@ -1,10 +1,60 @@
-import { Calendar, MapPin, Search } from "lucide-react";
+import { Calendar, MapPin, Search, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import CountdownTimer from "./countdown-timer";
+import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
 
 export default function HeroSection() {
+  const { toast } = useToast();
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
   const scrollToTickets = () => {
     document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const subscribeMutation = useMutation({
+    mutationFn: async (data: { email: string; name: string }) => {
+      const response = await apiRequest("POST", "/api/aweber-subscribe", data);
+      return response.json();
+    },
+    onSuccess: () => {
+      setIsSubscribed(true);
+      toast({
+        title: "Successfully Subscribed!",
+        description: "You'll be notified when Early Bird tickets are released.",
+      });
+      setEmail("");
+      setName("");
+    },
+    onError: (error: any) => {
+      if (error.message && error.message.includes("already subscribed")) {
+        setIsSubscribed(true);
+        toast({
+          title: "Already Subscribed!",
+          description: "You're already on our Early Bird notification list.",
+        });
+        setEmail("");
+        setName("");
+      } else {
+        toast({
+          title: "Subscription Failed",
+          description: error.message || "Please try again later.",
+          variant: "destructive",
+        });
+      }
+    },
+  });
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email && name) {
+      subscribeMutation.mutate({ email, name });
+    }
   };
 
   return (
@@ -43,16 +93,64 @@ export default function HeroSection() {
 
           <CountdownTimer />
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button 
-              onClick={scrollToTickets}
-              className="bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/90 transition-all transform hover:scale-105"
+              disabled
+              className="bg-white/50 text-primary/50 px-8 py-4 rounded-lg font-semibold text-lg cursor-not-allowed"
               data-testid="button-get-tickets"
             >
-              <Search className="mr-2 h-5 w-5" />
-              Get Super Early Bird Tickets
+              <span className="line-through">
+                <Search className="mr-2 h-5 w-5 inline" />
+                Get Super Early Bird Tickets
+              </span>
             </Button>
           </div>
+
+          {!isSubscribed ? (
+            <div className="max-w-md mx-auto bg-white/10 backdrop-blur-md rounded-lg p-6">
+              <h4 className="text-lg font-semibold mb-4">Get Notified When Early Bird Tickets Drop</h4>
+              <form onSubmit={handleSubscribe} className="space-y-3">
+                <Input
+                  type="text"
+                  placeholder="Your Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  className="bg-white/90 text-gray-900"
+                  data-testid="input-hero-name"
+                />
+                <Input
+                  type="email"
+                  placeholder="Your Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="bg-white/90 text-gray-900"
+                  data-testid="input-hero-email"
+                />
+                <Button
+                  type="submit"
+                  disabled={subscribeMutation.isPending}
+                  className="w-full bg-white text-primary hover:bg-white/90"
+                  data-testid="button-hero-subscribe"
+                >
+                  {subscribeMutation.isPending ? (
+                    "Subscribing..."
+                  ) : (
+                    <>
+                      <Mail className="mr-2 h-5 w-5" />
+                      Notify Me
+                    </>
+                  )}
+                </Button>
+              </form>
+            </div>
+          ) : (
+            <div className="max-w-md mx-auto bg-green-500/20 backdrop-blur-md rounded-lg p-6 border border-green-400/30">
+              <p className="text-lg font-semibold">✓ You're subscribed!</p>
+              <p className="text-sm text-white/80 mt-2">We'll notify you when Early Bird tickets are available.</p>
+            </div>
+          )}
         </div>
       </div>
     </section>
