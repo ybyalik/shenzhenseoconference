@@ -42,11 +42,21 @@ export default function EmailSubscriber() {
       form.reset();
     },
     onError: (error: any) => {
-      toast({
-        title: "Subscription Failed",
-        description: error.message || "Please try again later.",
-        variant: "destructive",
-      });
+      // Handle "already subscribed" case as a success
+      if (error.message && error.message.includes("already subscribed")) {
+        setIsSubscribed(true);
+        toast({
+          title: "Already Subscribed!",
+          description: "You're already on our Early Bird notification list.",
+        });
+        form.reset();
+      } else {
+        toast({
+          title: "Subscription Failed",
+          description: error.message || "Please try again later.",
+          variant: "destructive",
+        });
+      }
     },
   });
 
