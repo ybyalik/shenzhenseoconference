@@ -6,6 +6,7 @@ import TicketForm from "@/components/ticket-form";
 import VenueInfo from "@/components/venue-info";
 import FaqSection from "@/components/faq-section";
 import StickyCTA from "@/components/sticky-cta";
+import EmailSubscriber from "@/components/email-subscriber";
 
 import EventTimeline from "@/components/event-timeline";
 // import SponsorsCarousel from "@/components/sponsors-carousel";
@@ -87,6 +88,7 @@ export default function Home() {
         </div>
       </section>
 
+      <EmailSubscriber />
       <TicketForm />
       <EventTimeline />
       
