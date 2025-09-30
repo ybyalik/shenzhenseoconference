@@ -65,7 +65,7 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-16">
         <div className="text-center text-white">
           <div className="mb-6">
-            <span className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-4" data-testid="badge-early-bird">
+            <span className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-4 line-through" data-testid="badge-early-bird">
               🎯 Super Early Bird Pre-Sale Now Open
             </span>
           </div>
