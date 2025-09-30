@@ -71,6 +71,68 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // AWeber token refresh helper
+  let cachedAccessToken: string | null = null;
+  let tokenExpiresAt = 0;
+
+  async function getValidAWeberToken(): Promise<string> {
+    const now = Date.now();
+    
+    // Return cached token if still valid
+    if (cachedAccessToken && now < tokenExpiresAt) {
+      return cachedAccessToken;
+    }
+
+    // Try to refresh token
+    const refreshToken = process.env.AWEBER_REFRESH_TOKEN;
+    const clientId = process.env.AWEBER_CLIENT_ID;
+    const clientSecret = process.env.AWEBER_CLIENT_SECRET;
+
+    if (!refreshToken || !clientId || !clientSecret) {
+      // Fallback to static access token if refresh credentials not available
+      const staticToken = process.env.AWEBER_ACCESS_TOKEN;
+      if (!staticToken) {
+        throw new Error("No AWeber credentials configured");
+      }
+      return staticToken;
+    }
+
+    // Refresh the token
+    const tokenUrl = 'https://auth.aweber.com/oauth2/token';
+    const authHeader = 'Basic ' + Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+
+    const response = await fetch(tokenUrl, {
+      method: 'POST',
+      headers: {
+        'Authorization': authHeader,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        grant_type: 'refresh_token',
+        refresh_token: refreshToken,
+      }).toString(),
+    });
+
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({}));
+      console.error("Token refresh failed:", error);
+      throw new Error("Failed to refresh AWeber token");
+    }
+
+    const tokenData = await response.json();
+    
+    if (!tokenData.access_token) {
+      throw new Error("No access token in refresh response");
+    }
+    
+    const newAccessToken = tokenData.access_token as string;
+    cachedAccessToken = newAccessToken;
+    tokenExpiresAt = now + (tokenData.expires_in * 1000) - 60000; // Refresh 1 min before expiry
+    
+    console.log("AWeber token refreshed successfully");
+    return newAccessToken;
+  }
+
   // AWeber subscriber endpoint
   app.post("/api/aweber-subscribe", async (req, res) => {
     try {
@@ -85,16 +147,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       // Check for required AWeber environment variables
-      const aweberAccessToken = process.env.AWEBER_ACCESS_TOKEN;
       const aweberAccountId = process.env.AWEBER_ACCOUNT_ID;
       const aweberListId = process.env.AWEBER_LIST_ID;
 
-      if (!aweberAccessToken || !aweberAccountId || !aweberListId) {
-        console.error("AWeber credentials not configured");
+      if (!aweberAccountId || !aweberListId) {
+        console.error("AWeber account/list credentials not configured");
         return res.status(500).json({ 
           message: "Email notification service is not configured. Please contact support." 
         });
       }
+
+      // Get valid access token (refreshes if needed)
+      const accessToken = await getValidAWeberToken();
 
       // Add subscriber to AWeber list
       const aweberUrl = `https://api.aweber.com/1.0/accounts/${aweberAccountId}/lists/${aweberListId}/subscribers`;
@@ -102,7 +166,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const aweberResponse = await fetch(aweberUrl, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${aweberAccessToken}`,
+          'Authorization': `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
