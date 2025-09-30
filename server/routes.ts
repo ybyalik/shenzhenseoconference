@@ -191,8 +191,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
         throw new Error(`AWeber API error: ${aweberResponse.status}`);
       }
 
-      const aweberData = await aweberResponse.json();
-      console.log("Subscriber added to AWeber:", aweberData);
+      // Parse response only if there's content
+      let aweberData = null;
+      const contentType = aweberResponse.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        const responseText = await aweberResponse.text();
+        if (responseText) {
+          aweberData = JSON.parse(responseText);
+          console.log("Subscriber added to AWeber:", aweberData);
+        }
+      }
 
       res.json({ 
         message: "Successfully subscribed! You'll be notified when Early Bird tickets are released.",
