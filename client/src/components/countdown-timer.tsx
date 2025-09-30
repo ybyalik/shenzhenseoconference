@@ -33,11 +33,8 @@ export default function CountdownTimer() {
   }, []);
 
   return (
-    <div className="mb-12" data-testid="countdown-timer">
-      <h3 className="text-xl font-semibold mb-6 line-through text-white/60" data-testid="text-countdown-title">
-        Super Early Bird Sale Ends In:
-      </h3>
-      <div className="text-lg text-red-300 font-semibold mb-4">
+    <div className="mb-6" data-testid="countdown-timer">
+      <div className="text-lg text-red-300 font-semibold">
         Super Early Bird Sale Has Ended
       </div>
     </div>
