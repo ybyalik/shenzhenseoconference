@@ -4,7 +4,27 @@ import { storage } from "./storage";
 import { insertTicketPreOrderSchema } from "@shared/schema";
 import { z } from "zod";
 
+// Validate required environment variables
+function validateEnvironment() {
+  const requiredSecrets = [
+    'AWEBER_CLIENT_ID',
+    'AWEBER_CLIENT_SECRET', 
+    'AWEBER_REFRESH_TOKEN',
+    'AWEBER_ACCOUNT_ID',
+    'AWEBER_LIST_ID'
+  ];
+
+  const missing = requiredSecrets.filter(key => !process.env[key]);
+  
+  if (missing.length > 0 && process.env.NODE_ENV === 'production') {
+    console.warn(`Warning: Missing AWeber environment variables: ${missing.join(', ')}`);
+    console.warn('Email subscription feature may not work properly');
+  }
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Validate environment on startup
+  validateEnvironment();
   // Ticket pre-order endpoint
   app.post("/api/ticket-preorders", async (req, res) => {
     try {
