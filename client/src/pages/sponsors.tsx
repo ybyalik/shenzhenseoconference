@@ -170,71 +170,19 @@ export default function Sponsors() {
         </div>
       </section>
 
-      {/* Platinum Sponsors */}
-      <section className="py-16 bg-gradient-to-br from-amber-50/50 to-yellow-50/50 dark:from-amber-950/20 dark:to-yellow-900/20" data-testid="platinum-sponsors">
+      {/* 2025 Previous Partners */}
+      <section className="py-16 bg-gray-900" data-testid="previous-partners">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-6 py-2 rounded-full text-sm font-semibold mb-4">
-              <Sparkles className="w-4 h-4" />
-              Platinum Sponsors
-            </div>
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white" data-testid="text-platinum-title">
-              Premium Partners
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2" data-testid="text-partners-title">
+              2025 (Our Previous Partners)
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {platinumSponsors.map((sponsor, index) => (
-              <Card key={index} className="hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-amber-200 dark:border-amber-800" data-testid={`card-platinum-${index}`}>
-                <CardContent className="p-12 flex items-center justify-center">
-                  <img src={sponsor.logo} alt={sponsor.name} className="max-w-full max-h-32 object-contain" />
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Gold Sponsors */}
-      <section className="py-16 bg-muted" data-testid="gold-sponsors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-600 to-orange-500 text-white px-6 py-2 rounded-full text-sm font-semibold mb-4">
-              Gold Sponsors
-            </div>
-            <h2 className="text-3xl font-bold" data-testid="text-gold-title">
-              Gold Partners
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {goldSponsors.map((sponsor, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:scale-105" data-testid={`card-gold-${index}`}>
-                <CardContent className="p-8 flex items-center justify-center">
-                  <img src={sponsor.logo} alt={sponsor.name} className="max-w-full max-h-24 object-contain" />
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Silver Sponsors */}
-      <section className="py-16" data-testid="silver-sponsors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-gray-400 to-gray-500 text-white px-6 py-2 rounded-full text-sm font-semibold mb-4">
-              Silver Sponsors
-            </div>
-            <h2 className="text-3xl font-bold" data-testid="text-silver-title">
-              Silver Partners
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {silverSponsors.map((sponsor, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300" data-testid={`card-silver-${index}`}>
-                <CardContent className="p-6 flex items-center justify-center">
-                  <img src={sponsor.logo} alt={sponsor.name} className="max-w-full max-h-20 object-contain" />
-                </CardContent>
-              </Card>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+            {[...platinumSponsors, ...goldSponsors, ...silverSponsors].map((sponsor, index) => (
+              <div key={index} className="bg-gray-800/50 rounded-lg p-8 flex items-center justify-center hover:bg-gray-800 transition-all duration-300 hover:scale-105" data-testid={`card-partner-${index}`}>
+                <img src={sponsor.logo} alt={sponsor.name} className="max-w-full max-h-24 object-contain" />
+              </div>
             ))}
           </div>
         </div>
