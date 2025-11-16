@@ -7,6 +7,7 @@ import Home from "@/pages/home";
 import Sponsors from "@/pages/sponsors";
 import PlanYourTrip from "@/pages/plan-your-trip";
 import Contact from "@/pages/contact";
+import TermsConditions from "@/pages/terms-conditions";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -16,6 +17,7 @@ function Router() {
       <Route path="/sponsors" component={Sponsors} />
       <Route path="/plan-your-trip" component={PlanYourTrip} />
       <Route path="/contact" component={Contact} />
+      <Route path="/terms-conditions" component={TermsConditions} />
       <Route component={NotFound} />
     </Switch>
   );
