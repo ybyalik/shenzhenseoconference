@@ -64,3 +64,36 @@ export const insertSponsorshipInquirySchema = createInsertSchema(sponsorshipInqu
 
 export type InsertSponsorshipInquiry = z.infer<typeof insertSponsorshipInquirySchema>;
 export type SponsorshipInquiry = typeof sponsorshipInquiries.$inferSelect;
+
+export const contactRequests = pgTable("contact_requests", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  firstName: text("first_name").notNull(),
+  lastName: text("last_name").notNull(),
+  nationality: text("nationality").notNull(),
+  passportNo: text("passport_no").notNull(),
+  passportIssuingOffice: text("passport_issuing_office").notNull(),
+  dateOfIssue: text("date_of_issue").notNull(),
+  passportExpiration: text("passport_expiration").notNull(),
+  jobTitle: text("job_title").notNull(),
+  durationOfStay: text("duration_of_stay").notNull(),
+  additionalMessage: text("additional_message"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertContactRequestSchema = createInsertSchema(contactRequests).omit({
+  id: true,
+  createdAt: true,
+}).extend({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  nationality: z.string().min(1, "Nationality is required"),
+  passportNo: z.string().min(1, "Passport number is required"),
+  passportIssuingOffice: z.string().min(1, "Passport issuing office is required"),
+  dateOfIssue: z.string().min(1, "Date of issue is required"),
+  passportExpiration: z.string().min(1, "Passport expiration date is required"),
+  jobTitle: z.string().min(1, "Job title is required"),
+  durationOfStay: z.string().min(1, "Duration of stay is required"),
+});
+
+export type InsertContactRequest = z.infer<typeof insertContactRequestSchema>;
+export type ContactRequest = typeof contactRequests.$inferSelect;

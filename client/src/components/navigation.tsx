@@ -97,6 +97,18 @@ export default function Navigation() {
             >
               Plan Your Trip
             </Link>
+            <Link 
+              href="/contact"
+              className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
+                isScrolled 
+                  ? 'text-gray-800 hover:text-primary' 
+                  : 'text-white hover:text-purple-200'
+              }`}
+              data-testid="nav-contact"
+              aria-label="Navigate to Contact page"
+            >
+              Contact
+            </Link>
             <Button 
               onClick={() => scrollToSection('tickets')}
               className="bg-primary text-primary-foreground px-6 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors focus:ring-4 focus:ring-primary/20"
@@ -182,6 +194,18 @@ export default function Navigation() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Plan Your Trip
+              </Link>
+              <Link
+                href="/contact"
+                className={`block w-full text-left font-semibold transition-colors ${
+                  isScrolled 
+                    ? 'text-gray-800 hover:text-primary' 
+                    : 'text-white hover:text-purple-200'
+                }`}
+                data-testid="mobile-nav-contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Contact
               </Link>
               <Button 
                 onClick={() => scrollToSection('tickets')}

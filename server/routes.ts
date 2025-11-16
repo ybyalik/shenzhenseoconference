@@ -1,7 +1,7 @@
 import type { Express} from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertTicketPreOrderSchema, insertSponsorshipInquirySchema } from "@shared/schema";
+import { insertTicketPreOrderSchema, insertSponsorshipInquirySchema, insertContactRequestSchema } from "@shared/schema";
 import { z } from "zod";
 
 // Validate required environment variables
@@ -126,6 +126,44 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(inquiries);
     } catch (error) {
       console.error("Error fetching sponsorship inquiries:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+
+  // Contact form / business invitation letter request
+  app.post("/api/contact", async (req, res) => {
+    try {
+      const validatedData = insertContactRequestSchema.parse(req.body);
+      const request = await storage.createContactRequest(validatedData);
+      
+      res.status(201).json({
+        message: "Thank you for your request! We'll process your business invitation letter and contact you soon.",
+        request: {
+          id: request.id,
+          firstName: request.firstName,
+          lastName: request.lastName,
+        },
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({
+          message: "Please check your form data",
+          errors: error.errors,
+        });
+      }
+      
+      console.error("Error creating contact request:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+
+  // Get all contact requests (for admin purposes)
+  app.get("/api/contact", async (req, res) => {
+    try {
+      const requests = await storage.getAllContactRequests();
+      res.json(requests);
+    } catch (error) {
+      console.error("Error fetching contact requests:", error);
       res.status(500).json({ message: "Internal server error" });
     }
   });

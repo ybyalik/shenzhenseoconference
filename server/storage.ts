@@ -1,4 +1,4 @@
-import { type User, type InsertUser, type TicketPreOrder, type InsertTicketPreOrder, type SponsorshipInquiry, type InsertSponsorshipInquiry } from "@shared/schema";
+import { type User, type InsertUser, type TicketPreOrder, type InsertTicketPreOrder, type SponsorshipInquiry, type InsertSponsorshipInquiry, type ContactRequest, type InsertContactRequest } from "@shared/schema";
 import { randomUUID } from "crypto";
 
 export interface IStorage {
@@ -14,17 +14,23 @@ export interface IStorage {
   // Sponsorship inquiry methods
   createSponsorshipInquiry(inquiry: InsertSponsorshipInquiry): Promise<SponsorshipInquiry>;
   getAllSponsorshipInquiries(): Promise<SponsorshipInquiry[]>;
+  
+  // Contact request methods
+  createContactRequest(request: InsertContactRequest): Promise<ContactRequest>;
+  getAllContactRequests(): Promise<ContactRequest[]>;
 }
 
 export class MemStorage implements IStorage {
   private users: Map<string, User>;
   private ticketPreOrders: Map<string, TicketPreOrder>;
   private sponsorshipInquiries: Map<string, SponsorshipInquiry>;
+  private contactRequests: Map<string, ContactRequest>;
 
   constructor() {
     this.users = new Map();
     this.ticketPreOrders = new Map();
     this.sponsorshipInquiries = new Map();
+    this.contactRequests = new Map();
   }
 
   async getUser(id: string): Promise<User | undefined> {
@@ -82,6 +88,22 @@ export class MemStorage implements IStorage {
 
   async getAllSponsorshipInquiries(): Promise<SponsorshipInquiry[]> {
     return Array.from(this.sponsorshipInquiries.values());
+  }
+
+  async createContactRequest(insertRequest: InsertContactRequest): Promise<ContactRequest> {
+    const id = randomUUID();
+    const request: ContactRequest = {
+      ...insertRequest,
+      id,
+      additionalMessage: insertRequest.additionalMessage || null,
+      createdAt: new Date(),
+    };
+    this.contactRequests.set(id, request);
+    return request;
+  }
+
+  async getAllContactRequests(): Promise<ContactRequest[]> {
+    return Array.from(this.contactRequests.values());
   }
 }
 
