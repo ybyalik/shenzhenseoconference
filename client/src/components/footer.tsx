@@ -9,11 +9,13 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center mb-4">
-              <img 
-                src={darkLogoImage} 
-                alt="Shenzhen SEO Conference" 
-                className="h-8 w-auto"
-              />
+              <Link href="/" className="focus:outline-none focus:ring-2 focus:ring-primary/20 rounded">
+                <img 
+                  src={darkLogoImage} 
+                  alt="Shenzhen SEO Conference" 
+                  className="h-8 w-auto"
+                />
+              </Link>
             </div>
             <p className="text-muted-foreground">
               Connecting Eastern and Western SEO markets through innovation and collaboration.

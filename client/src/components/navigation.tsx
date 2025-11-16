@@ -29,11 +29,13 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center" data-testid="nav-logo">
-            <img 
-              src={isScrolled ? darkLogoImage : logoImage} 
-              alt="Shenzhen SEO Conference" 
-              className="h-8 w-auto"
-            />
+            <Link href="/" className="focus:outline-none focus:ring-2 focus:ring-primary/20 rounded">
+              <img 
+                src={isScrolled ? darkLogoImage : logoImage} 
+                alt="Shenzhen SEO Conference" 
+                className="h-8 w-auto"
+              />
+            </Link>
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
