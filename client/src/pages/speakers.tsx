@@ -1,6 +1,7 @@
 import { Users, Globe } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useEffect } from "react";
+import Navigation from "@/components/navigation";
 
 import adamPalmeterImg from "@assets/Adam-Palmeter_1763288491458.webp";
 import alexZhangImg from "@assets/alex-zhang_1763288491458.jpg";
@@ -154,23 +155,29 @@ export default function Speakers() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white">
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      
+      {/* Hero Section */}
+      <section className="pt-24 pb-16 gradient-bg relative overflow-hidden" data-testid="speakers-hero">
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+            <Users className="w-8 h-8 text-white" />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6" data-testid="text-speakers-title">
+            2025 Conference Speakers
+          </h1>
+          <p className="text-xl text-white/90 max-w-3xl mx-auto" data-testid="text-speakers-subtitle">
+            Presenting the expert lineup from our 2025 conference. These industry leaders shared their insights on international SEO, digital marketing strategies, and cross-border growth.
+          </p>
+        </div>
+      </section>
 
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-600 rounded-full mb-6">
-              <Users className="w-8 h-8 text-white" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              2025 Conference Speakers
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Presenting the expert lineup from our 2025 conference. These industry leaders shared their insights on international SEO, digital marketing strategies, and cross-border growth.
-            </p>
-          </div>
 
-          <Card className="p-6 mb-12 bg-gradient-to-r from-purple-600 to-blue-600 border-0">
+          <Card className="p-6 mb-12 bg-gradient-to-r from-purple-600 to-blue-600 border-0" data-testid="card-join-2026">
             <div className="flex items-start gap-4 text-white">
               <Globe className="w-6 h-6 mt-1 flex-shrink-0" />
               <div>
