@@ -39,42 +39,42 @@ export default function Navigation() {
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection('about')} 
+            <Link 
+              href="/"
               className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-primary' 
                   : 'text-white hover:text-purple-200'
               }`}
-              data-testid="nav-about"
-              aria-label="Navigate to About section"
+              data-testid="nav-home"
+              aria-label="Navigate to Home page"
             >
-              About
-            </button>
-            <button 
-              onClick={() => scrollToSection('tickets')} 
+              Home
+            </Link>
+            <Link 
+              href="/#agenda"
               className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-primary' 
                   : 'text-white hover:text-purple-200'
               }`}
-              data-testid="nav-tickets"
-              aria-label="Navigate to Tickets section"
+              data-testid="nav-agenda"
+              aria-label="Navigate to Agenda section"
             >
-              Tickets
-            </button>
-            <button 
-              onClick={() => scrollToSection('venue')} 
+              Agenda
+            </Link>
+            <Link 
+              href="/speakers"
               className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-primary' 
                   : 'text-white hover:text-purple-200'
               }`}
-              data-testid="nav-venue"
-              aria-label="Navigate to Venue section"
+              data-testid="nav-speakers"
+              aria-label="Navigate to Speakers page"
             >
-              Venue
-            </button>
+              Speakers
+            </Link>
             <Link 
               href="/sponsors"
               className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
@@ -111,14 +111,15 @@ export default function Navigation() {
             >
               Contact
             </Link>
-            <Button 
-              onClick={() => scrollToSection('tickets')}
-              className="bg-primary text-primary-foreground px-6 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors focus:ring-4 focus:ring-primary/20"
-              data-testid="button-early-access"
-              aria-label="Get early access to conference tickets"
-            >
-              Get Early Access
-            </Button>
+            <Link href="/#tickets">
+              <Button 
+                className="bg-primary text-primary-foreground px-6 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors focus:ring-4 focus:ring-primary/20"
+                data-testid="button-buy-tickets"
+                aria-label="Buy conference tickets"
+              >
+                Buy Tickets
+              </Button>
+            </Link>
           </div>
           
           <button 
@@ -140,39 +141,42 @@ export default function Navigation() {
               : 'bg-background border-border'
           }`} data-testid="mobile-menu">
             <div className="px-4 py-4 space-y-4">
-              <button 
-                onClick={() => scrollToSection('about')} 
+              <Link
+                href="/"
                 className={`block w-full text-left font-semibold transition-colors ${
                   isScrolled 
                     ? 'text-gray-800 hover:text-primary' 
                     : 'text-white hover:text-purple-200'
                 }`}
-                data-testid="mobile-nav-about"
+                data-testid="mobile-nav-home"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
-                About
-              </button>
-              <button 
-                onClick={() => scrollToSection('tickets')} 
+                Home
+              </Link>
+              <Link
+                href="/#agenda"
                 className={`block w-full text-left font-semibold transition-colors ${
                   isScrolled 
                     ? 'text-gray-800 hover:text-primary' 
                     : 'text-white hover:text-purple-200'
                 }`}
-                data-testid="mobile-nav-tickets"
+                data-testid="mobile-nav-agenda"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
-                Tickets
-              </button>
-              <button 
-                onClick={() => scrollToSection('venue')} 
+                Agenda
+              </Link>
+              <Link
+                href="/speakers"
                 className={`block w-full text-left font-semibold transition-colors ${
                   isScrolled 
                     ? 'text-gray-800 hover:text-primary' 
                     : 'text-white hover:text-purple-200'
                 }`}
-                data-testid="mobile-nav-venue"
+                data-testid="mobile-nav-speakers"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
-                Venue
-              </button>
+                Speakers
+              </Link>
               <Link
                 href="/sponsors"
                 className={`block w-full text-left font-semibold transition-colors ${
@@ -209,13 +213,14 @@ export default function Navigation() {
               >
                 Contact
               </Link>
-              <Button 
-                onClick={() => scrollToSection('tickets')}
-                className="w-full bg-primary text-primary-foreground"
-                data-testid="mobile-button-early-access"
-              >
-                Get Early Access
-              </Button>
+              <Link href="/#tickets" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button 
+                  className="w-full bg-primary text-primary-foreground"
+                  data-testid="mobile-button-buy-tickets"
+                >
+                  Buy Tickets
+                </Button>
+              </Link>
             </div>
           </div>
         )}
