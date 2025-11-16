@@ -95,6 +95,14 @@ export class MemStorage implements IStorage {
     const request: ContactRequest = {
       ...insertRequest,
       id,
+      requestInvitationLetter: insertRequest.requestInvitationLetter || 'false',
+      nationality: insertRequest.nationality || null,
+      passportNo: insertRequest.passportNo || null,
+      passportIssuingOffice: insertRequest.passportIssuingOffice || null,
+      dateOfIssue: insertRequest.dateOfIssue || null,
+      passportExpiration: insertRequest.passportExpiration || null,
+      jobTitle: insertRequest.jobTitle || null,
+      durationOfStay: insertRequest.durationOfStay || null,
       additionalMessage: insertRequest.additionalMessage || null,
       createdAt: new Date(),
     };

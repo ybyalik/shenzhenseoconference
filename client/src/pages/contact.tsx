@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, Mail, MessageSquare } from "lucide-react";
 import Navigation from "@/components/navigation";
@@ -15,14 +16,31 @@ import Navigation from "@/components/navigation";
 const contactFormSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
-  nationality: z.string().min(1, "Nationality is required"),
-  passportNo: z.string().min(1, "Passport number is required"),
-  passportIssuingOffice: z.string().min(1, "Passport issuing office is required"),
-  dateOfIssue: z.string().min(1, "Date of issue is required"),
-  passportExpiration: z.string().min(1, "Passport expiration date is required"),
-  jobTitle: z.string().min(1, "Job title is required"),
-  durationOfStay: z.string().min(1, "Duration of stay is required"),
+  requestInvitationLetter: z.boolean(),
+  nationality: z.string().optional(),
+  passportNo: z.string().optional(),
+  passportIssuingOffice: z.string().optional(),
+  dateOfIssue: z.string().optional(),
+  passportExpiration: z.string().optional(),
+  jobTitle: z.string().optional(),
+  durationOfStay: z.string().optional(),
   additionalMessage: z.string().optional(),
+}).refine((data) => {
+  if (data.requestInvitationLetter) {
+    return (
+      data.nationality &&
+      data.passportNo &&
+      data.passportIssuingOffice &&
+      data.dateOfIssue &&
+      data.passportExpiration &&
+      data.jobTitle &&
+      data.durationOfStay
+    );
+  }
+  return true;
+}, {
+  message: "All fields are required when requesting a business invitation letter",
+  path: ["requestInvitationLetter"],
 });
 
 type ContactForm = z.infer<typeof contactFormSchema>;
@@ -36,6 +54,7 @@ export default function Contact() {
     defaultValues: {
       firstName: "",
       lastName: "",
+      requestInvitationLetter: false,
       nationality: "",
       passportNo: "",
       passportIssuingOffice: "",
@@ -47,16 +66,25 @@ export default function Contact() {
     },
   });
 
+  const requestInvitationLetter = form.watch("requestInvitationLetter");
+
   const contactMutation = useMutation({
     mutationFn: async (data: ContactForm) => {
-      const response = await apiRequest("POST", "/api/contact", data);
+      const payload = {
+        ...data,
+        requestInvitationLetter: data.requestInvitationLetter ? 'true' : 'false',
+      };
+      const response = await apiRequest("POST", "/api/contact", payload);
       return response.json();
     },
     onSuccess: () => {
       setIsSubmitted(true);
+      const message = requestInvitationLetter 
+        ? "We'll process your business invitation letter request and contact you soon."
+        : "Thank you for your message! We'll get back to you soon.";
       toast({
         title: "Request Submitted!",
-        description: "We'll process your business invitation letter request and contact you soon.",
+        description: message,
       });
       form.reset();
     },
@@ -123,15 +151,15 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Business Invitation Letter Form */}
-      <section className="py-20" data-testid="invitation-letter-form">
+      {/* Contact Form */}
+      <section className="py-20" data-testid="contact-form-section">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-form-title">
-              Request a Business Invitation Letter
+              Get in Touch
             </h2>
             <p className="text-lg text-muted-foreground" data-testid="text-form-subtitle">
-              To request a business invitation letter for your visa application, please provide the following information:
+              Send us a message or request a business invitation letter for your visa application
             </p>
           </div>
 
@@ -169,107 +197,133 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Nationality *</label>
-                      <Input
-                        {...form.register("nationality")}
-                        placeholder="United States"
-                        data-testid="input-nationality"
-                      />
-                      {form.formState.errors.nationality && (
-                        <p className="text-sm text-destructive mt-1" data-testid="error-nationality">
-                          {form.formState.errors.nationality.message}
-                        </p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Passport No. *</label>
-                      <Input
-                        {...form.register("passportNo")}
-                        placeholder="123456789"
-                        data-testid="input-passport-no"
-                      />
-                      {form.formState.errors.passportNo && (
-                        <p className="text-sm text-destructive mt-1" data-testid="error-passport-no">
-                          {form.formState.errors.passportNo.message}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Passport Issuing Office *</label>
-                    <Input
-                      {...form.register("passportIssuingOffice")}
-                      placeholder="U.S. Department of State"
-                      data-testid="input-issuing-office"
+                  <div className="flex items-center space-x-3 p-4 bg-muted rounded-lg">
+                    <Checkbox
+                      id="requestInvitationLetter"
+                      checked={requestInvitationLetter}
+                      onCheckedChange={(checked) => {
+                        form.setValue("requestInvitationLetter", checked as boolean);
+                      }}
+                      data-testid="checkbox-request-invitation"
                     />
-                    {form.formState.errors.passportIssuingOffice && (
-                      <p className="text-sm text-destructive mt-1" data-testid="error-issuing-office">
-                        {form.formState.errors.passportIssuingOffice.message}
-                      </p>
-                    )}
+                    <label
+                      htmlFor="requestInvitationLetter"
+                      className="text-sm font-medium leading-none cursor-pointer"
+                    >
+                      Request a Business Invitation Letter for visa application
+                    </label>
                   </div>
+                  {form.formState.errors.requestInvitationLetter && (
+                    <p className="text-sm text-destructive mt-1" data-testid="error-invitation-letter">
+                      {form.formState.errors.requestInvitationLetter.message}
+                    </p>
+                  )}
 
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Date of Issue *</label>
-                      <Input
-                        type="date"
-                        {...form.register("dateOfIssue")}
-                        data-testid="input-date-issue"
-                      />
-                      {form.formState.errors.dateOfIssue && (
-                        <p className="text-sm text-destructive mt-1" data-testid="error-date-issue">
-                          {form.formState.errors.dateOfIssue.message}
-                        </p>
-                      )}
-                    </div>
+                  {requestInvitationLetter && (
+                    <>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <label className="block text-sm font-medium mb-2">Nationality *</label>
+                          <Input
+                            {...form.register("nationality")}
+                            placeholder="United States"
+                            data-testid="input-nationality"
+                          />
+                          {form.formState.errors.nationality && (
+                            <p className="text-sm text-destructive mt-1" data-testid="error-nationality">
+                              {form.formState.errors.nationality.message}
+                            </p>
+                          )}
+                        </div>
 
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Passport Expiration Date *</label>
-                      <Input
-                        type="date"
-                        {...form.register("passportExpiration")}
-                        data-testid="input-passport-expiration"
-                      />
-                      {form.formState.errors.passportExpiration && (
-                        <p className="text-sm text-destructive mt-1" data-testid="error-passport-expiration">
-                          {form.formState.errors.passportExpiration.message}
-                        </p>
-                      )}
-                    </div>
-                  </div>
+                        <div>
+                          <label className="block text-sm font-medium mb-2">Passport No. *</label>
+                          <Input
+                            {...form.register("passportNo")}
+                            placeholder="123456789"
+                            data-testid="input-passport-no"
+                          />
+                          {form.formState.errors.passportNo && (
+                            <p className="text-sm text-destructive mt-1" data-testid="error-passport-no">
+                              {form.formState.errors.passportNo.message}
+                            </p>
+                          )}
+                        </div>
+                      </div>
 
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Job Title *</label>
-                    <Input
-                      {...form.register("jobTitle")}
-                      placeholder="e.g., SEO Manager at ABC Company"
-                      data-testid="input-job-title"
-                    />
-                    {form.formState.errors.jobTitle && (
-                      <p className="text-sm text-destructive mt-1" data-testid="error-job-title">
-                        {form.formState.errors.jobTitle.message}
-                      </p>
-                    )}
-                  </div>
+                      <div>
+                        <label className="block text-sm font-medium mb-2">Passport Issuing Office *</label>
+                        <Input
+                          {...form.register("passportIssuingOffice")}
+                          placeholder="U.S. Department of State"
+                          data-testid="input-issuing-office"
+                        />
+                        {form.formState.errors.passportIssuingOffice && (
+                          <p className="text-sm text-destructive mt-1" data-testid="error-issuing-office">
+                            {form.formState.errors.passportIssuingOffice.message}
+                          </p>
+                        )}
+                      </div>
 
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Estimated Duration of Stay in China *</label>
-                    <Input
-                      {...form.register("durationOfStay")}
-                      placeholder="e.g., September 17 to September 22, 2025 (5 days in total)"
-                      data-testid="input-duration-stay"
-                    />
-                    {form.formState.errors.durationOfStay && (
-                      <p className="text-sm text-destructive mt-1" data-testid="error-duration-stay">
-                        {form.formState.errors.durationOfStay.message}
-                      </p>
-                    )}
-                  </div>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <label className="block text-sm font-medium mb-2">Date of Issue *</label>
+                          <Input
+                            type="date"
+                            {...form.register("dateOfIssue")}
+                            data-testid="input-date-issue"
+                          />
+                          {form.formState.errors.dateOfIssue && (
+                            <p className="text-sm text-destructive mt-1" data-testid="error-date-issue">
+                              {form.formState.errors.dateOfIssue.message}
+                            </p>
+                          )}
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium mb-2">Passport Expiration Date *</label>
+                          <Input
+                            type="date"
+                            {...form.register("passportExpiration")}
+                            data-testid="input-passport-expiration"
+                          />
+                          {form.formState.errors.passportExpiration && (
+                            <p className="text-sm text-destructive mt-1" data-testid="error-passport-expiration">
+                              {form.formState.errors.passportExpiration.message}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium mb-2">Job Title *</label>
+                        <Input
+                          {...form.register("jobTitle")}
+                          placeholder="e.g., SEO Manager at ABC Company"
+                          data-testid="input-job-title"
+                        />
+                        {form.formState.errors.jobTitle && (
+                          <p className="text-sm text-destructive mt-1" data-testid="error-job-title">
+                            {form.formState.errors.jobTitle.message}
+                          </p>
+                        )}
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium mb-2">Estimated Duration of Stay in China *</label>
+                        <Input
+                          {...form.register("durationOfStay")}
+                          placeholder="e.g., September 17 to September 22, 2025 (5 days in total)"
+                          data-testid="input-duration-stay"
+                        />
+                        {form.formState.errors.durationOfStay && (
+                          <p className="text-sm text-destructive mt-1" data-testid="error-duration-stay">
+                            {form.formState.errors.durationOfStay.message}
+                          </p>
+                        )}
+                      </div>
+                    </>
+                  )}
 
                   <div>
                     <label className="block text-sm font-medium mb-2">Additional Message (Optional)</label>
