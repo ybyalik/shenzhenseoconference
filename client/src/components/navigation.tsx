@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import logoImage from "@assets/logo-main_1756774330186.png";
 import darkLogoImage from "@assets/logodark_1756775589088.png";
@@ -7,6 +8,7 @@ import darkLogoImage from "@assets/logodark_1756775589088.png";
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,6 +73,18 @@ export default function Navigation() {
             >
               Venue
             </button>
+            <Link 
+              href="/sponsors"
+              className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
+                isScrolled 
+                  ? 'text-gray-800 hover:text-primary' 
+                  : 'text-white hover:text-purple-200'
+              }`}
+              data-testid="nav-sponsors"
+              aria-label="Navigate to Sponsors page"
+            >
+              Sponsors
+            </Link>
             <Button 
               onClick={() => scrollToSection('tickets')}
               className="bg-primary text-primary-foreground px-6 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors focus:ring-4 focus:ring-primary/20"
@@ -133,6 +147,18 @@ export default function Navigation() {
               >
                 Venue
               </button>
+              <Link
+                href="/sponsors"
+                className={`block w-full text-left font-semibold transition-colors ${
+                  isScrolled 
+                    ? 'text-gray-800 hover:text-primary' 
+                    : 'text-white hover:text-purple-200'
+                }`}
+                data-testid="mobile-nav-sponsors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Sponsors
+              </Link>
               <Button 
                 onClick={() => scrollToSection('tickets')}
                 className="w-full bg-primary text-primary-foreground"

@@ -1,7 +1,7 @@
-import type { Express } from "express";
+import type { Express} from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertTicketPreOrderSchema } from "@shared/schema";
+import { insertTicketPreOrderSchema, insertSponsorshipInquirySchema } from "@shared/schema";
 import { z } from "zod";
 
 // Validate required environment variables
@@ -87,6 +87,45 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json({ message: "Thank you for subscribing to our newsletter!" });
     } catch (error) {
       console.error("Error with newsletter signup:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+
+  // Sponsorship inquiry endpoint
+  app.post("/api/sponsorship-inquiries", async (req, res) => {
+    try {
+      const validatedData = insertSponsorshipInquirySchema.parse(req.body);
+      const inquiry = await storage.createSponsorshipInquiry(validatedData);
+      
+      res.status(201).json({
+        message: "Thank you for your interest in sponsoring! We'll contact you soon with more information.",
+        inquiry: {
+          id: inquiry.id,
+          companyName: inquiry.companyName,
+          contactName: inquiry.contactName,
+          email: inquiry.email,
+        },
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({
+          message: "Please check your form data",
+          errors: error.errors,
+        });
+      }
+      
+      console.error("Error creating sponsorship inquiry:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+
+  // Get all sponsorship inquiries (for admin purposes)
+  app.get("/api/sponsorship-inquiries", async (req, res) => {
+    try {
+      const inquiries = await storage.getAllSponsorshipInquiries();
+      res.json(inquiries);
+    } catch (error) {
+      console.error("Error fetching sponsorship inquiries:", error);
       res.status(500).json({ message: "Internal server error" });
     }
   });

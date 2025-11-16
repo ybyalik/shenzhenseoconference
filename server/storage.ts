@@ -1,4 +1,4 @@
-import { type User, type InsertUser, type TicketPreOrder, type InsertTicketPreOrder } from "@shared/schema";
+import { type User, type InsertUser, type TicketPreOrder, type InsertTicketPreOrder, type SponsorshipInquiry, type InsertSponsorshipInquiry } from "@shared/schema";
 import { randomUUID } from "crypto";
 
 export interface IStorage {
@@ -10,15 +10,21 @@ export interface IStorage {
   createTicketPreOrder(preOrder: InsertTicketPreOrder): Promise<TicketPreOrder>;
   getTicketPreOrderByEmail(email: string): Promise<TicketPreOrder | undefined>;
   getAllTicketPreOrders(): Promise<TicketPreOrder[]>;
+  
+  // Sponsorship inquiry methods
+  createSponsorshipInquiry(inquiry: InsertSponsorshipInquiry): Promise<SponsorshipInquiry>;
+  getAllSponsorshipInquiries(): Promise<SponsorshipInquiry[]>;
 }
 
 export class MemStorage implements IStorage {
   private users: Map<string, User>;
   private ticketPreOrders: Map<string, TicketPreOrder>;
+  private sponsorshipInquiries: Map<string, SponsorshipInquiry>;
 
   constructor() {
     this.users = new Map();
     this.ticketPreOrders = new Map();
+    this.sponsorshipInquiries = new Map();
   }
 
   async getUser(id: string): Promise<User | undefined> {
@@ -59,6 +65,23 @@ export class MemStorage implements IStorage {
 
   async getAllTicketPreOrders(): Promise<TicketPreOrder[]> {
     return Array.from(this.ticketPreOrders.values());
+  }
+
+  async createSponsorshipInquiry(insertInquiry: InsertSponsorshipInquiry): Promise<SponsorshipInquiry> {
+    const id = randomUUID();
+    const inquiry: SponsorshipInquiry = {
+      ...insertInquiry,
+      id,
+      phone: insertInquiry.phone || null,
+      message: insertInquiry.message || null,
+      createdAt: new Date(),
+    };
+    this.sponsorshipInquiries.set(id, inquiry);
+    return inquiry;
+  }
+
+  async getAllSponsorshipInquiries(): Promise<SponsorshipInquiry[]> {
+    return Array.from(this.sponsorshipInquiries.values());
   }
 }
 

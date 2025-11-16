@@ -42,3 +42,25 @@ export type User = typeof users.$inferSelect;
 
 export type InsertTicketPreOrder = z.infer<typeof insertTicketPreOrderSchema>;
 export type TicketPreOrder = typeof ticketPreOrders.$inferSelect;
+
+export const sponsorshipInquiries = pgTable("sponsorship_inquiries", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  companyName: text("company_name").notNull(),
+  contactName: text("contact_name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone"),
+  message: text("message"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertSponsorshipInquirySchema = createInsertSchema(sponsorshipInquiries).omit({
+  id: true,
+  createdAt: true,
+}).extend({
+  email: z.string().email("Please enter a valid email address"),
+  companyName: z.string().min(1, "Company name is required"),
+  contactName: z.string().min(1, "Contact name is required"),
+});
+
+export type InsertSponsorshipInquiry = z.infer<typeof insertSponsorshipInquirySchema>;
+export type SponsorshipInquiry = typeof sponsorshipInquiries.$inferSelect;
