@@ -170,6 +170,157 @@ export default function Sponsors() {
         </div>
       </section>
 
+      {/* Sponsorship Tiers Comparison */}
+      <section className="py-20 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-800 dark:to-gray-900" data-testid="sponsorship-tiers">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-tiers-title">
+              Elevate Your Brand at the Largest International SEO Conference in China
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-4xl mx-auto" data-testid="text-tiers-subtitle">
+              Sponsoring the Shenzhen SEO Conference isn't just about visibility—it's about aligning your brand with a pioneering event that's shaping the future of SEO across borders. Limited sponsorship slots available—secure your spot today!
+            </p>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-xl" data-testid="table-sponsorship">
+              <thead>
+                <tr className="bg-gray-100 dark:bg-gray-700">
+                  <th className="py-4 px-6 text-left font-semibold text-gray-700 dark:text-gray-200"></th>
+                  <th className="py-4 px-6 text-center font-bold text-gray-700 dark:text-gray-200">Silver</th>
+                  <th className="py-4 px-6 text-center font-bold text-gray-700 dark:text-gray-200">Gold</th>
+                  <th className="py-4 px-6 text-center font-bold text-gray-700 dark:text-gray-200">Platinum</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-750">
+                  <td className="py-4 px-6 font-semibold"></td>
+                  <td className="py-4 px-6 text-center font-bold text-lg">$5,000</td>
+                  <td className="py-4 px-6 text-center font-bold text-lg">$10,000</td>
+                  <td className="py-4 px-6 text-center font-bold text-lg">$20,000</td>
+                </tr>
+                <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <td className="py-4 px-6">Sponsor logo & link included on the website</td>
+                  <td className="py-4 px-6 text-center">
+                    <div className="flex flex-col items-center gap-1">
+                      <span className="text-green-600 text-xl">✅</span>
+                      <span className="text-xs text-gray-500">(less obvious position)</span>
+                    </div>
+                  </td>
+                  <td className="py-4 px-6 text-center">
+                    <div className="flex flex-col items-center gap-1">
+                      <span className="text-green-600 text-xl">✅</span>
+                      <span className="text-xs text-gray-500">(normal position)</span>
+                    </div>
+                  </td>
+                  <td className="py-4 px-6 text-center">
+                    <div className="flex flex-col items-center gap-1">
+                      <span className="text-green-600 text-xl">✅</span>
+                      <span className="text-xs text-gray-500">(most obvious position)</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <td className="py-4 px-6">Sponsor logo included on the event app</td>
+                  <td className="py-4 px-6 text-center">
+                    <div className="flex flex-col items-center gap-1">
+                      <span className="text-green-600 text-xl">✅</span>
+                      <span className="text-xs text-gray-500">(less obvious position)</span>
+                    </div>
+                  </td>
+                  <td className="py-4 px-6 text-center">
+                    <div className="flex flex-col items-center gap-1">
+                      <span className="text-green-600 text-xl">✅</span>
+                      <span className="text-xs text-gray-500">(normal position)</span>
+                    </div>
+                  </td>
+                  <td className="py-4 px-6 text-center">
+                    <div className="flex flex-col items-center gap-1">
+                      <span className="text-green-600 text-xl">✅</span>
+                      <span className="text-xs text-gray-500">(most obvious position)</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <td className="py-4 px-6">1 promotional item can be included in goodie bag</td>
+                  <td className="py-4 px-6 text-center text-green-600 text-xl">✅</td>
+                  <td className="py-4 px-6 text-center text-green-600 text-xl">✅</td>
+                  <td className="py-4 px-6 text-center text-green-600 text-xl">✅</td>
+                </tr>
+                <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <td className="py-4 px-6">Logo on stage backdrop</td>
+                  <td className="py-4 px-6 text-center">Small</td>
+                  <td className="py-4 px-6 text-center">Medium</td>
+                  <td className="py-4 px-6 text-center">Large & Central</td>
+                </tr>
+                <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <td className="py-4 px-6">Number of free Standard tickets (worth $498 each)</td>
+                  <td className="py-4 px-6 text-center">1</td>
+                  <td className="py-4 px-6 text-center">2</td>
+                  <td className="py-4 px-6 text-center">4</td>
+                </tr>
+                <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <td className="py-4 px-6">Number of free VIP tickets (worth $998 each)</td>
+                  <td className="py-4 px-6 text-center">0</td>
+                  <td className="py-4 px-6 text-center">1</td>
+                  <td className="py-4 px-6 text-center">2</td>
+                </tr>
+                <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <td className="py-4 px-6">Free Shenzhen city tours for number of person(s)</td>
+                  <td className="py-4 px-6 text-center">1</td>
+                  <td className="py-4 px-6 text-center">2</td>
+                  <td className="py-4 px-6 text-center">4</td>
+                </tr>
+                <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <td className="py-4 px-6">1 Sponsor Booth for the duration of the event</td>
+                  <td className="py-4 px-6 text-center text-red-600 text-xl">❌</td>
+                  <td className="py-4 px-6 text-center text-green-600 text-xl">✅</td>
+                  <td className="py-4 px-6 text-center text-green-600 text-xl">✅</td>
+                </tr>
+                <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <td className="py-4 px-6">1 Email Promo during the event</td>
+                  <td className="py-4 px-6 text-center text-red-600 text-xl">❌</td>
+                  <td className="py-4 px-6 text-center">
+                    <div className="flex flex-col items-center gap-1">
+                      <span className="text-green-600 text-xl">✅</span>
+                      <span className="text-xs text-gray-500">(roundup mention)</span>
+                    </div>
+                  </td>
+                  <td className="py-4 px-6 text-center">
+                    <div className="flex flex-col items-center gap-1">
+                      <span className="text-green-600 text-xl">✅</span>
+                      <span className="text-xs text-gray-500">(roundup intro)</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <td className="py-4 px-6">Main stage opening & closing intro by MC</td>
+                  <td className="py-4 px-6 text-center text-red-600 text-xl">❌</td>
+                  <td className="py-4 px-6 text-center">
+                    <div className="flex flex-col items-center gap-1">
+                      <span className="text-green-600 text-xl">✅</span>
+                      <span className="text-xs text-gray-500">(mention)</span>
+                    </div>
+                  </td>
+                  <td className="py-4 px-6 text-center">
+                    <div className="flex flex-col items-center gap-1">
+                      <span className="text-green-600 text-xl">✅</span>
+                      <span className="text-xs text-gray-500">(quick intro)</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <td className="py-4 px-6">Main stage sponsor pitch (5 minutes)</td>
+                  <td className="py-4 px-6 text-center text-red-600 text-xl">❌</td>
+                  <td className="py-4 px-6 text-center text-red-600 text-xl">❌</td>
+                  <td className="py-4 px-6 text-center text-green-600 text-xl">✅</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       {/* 2025 Previous Partners */}
       <section className="py-16 bg-gray-900" data-testid="previous-partners">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
