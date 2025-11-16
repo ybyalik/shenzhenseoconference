@@ -85,6 +85,18 @@ export default function Navigation() {
             >
               Sponsors
             </Link>
+            <Link 
+              href="/plan-your-trip"
+              className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
+                isScrolled 
+                  ? 'text-gray-800 hover:text-primary' 
+                  : 'text-white hover:text-purple-200'
+              }`}
+              data-testid="nav-plan-trip"
+              aria-label="Navigate to Plan Your Trip page"
+            >
+              Plan Your Trip
+            </Link>
             <Button 
               onClick={() => scrollToSection('tickets')}
               className="bg-primary text-primary-foreground px-6 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors focus:ring-4 focus:ring-primary/20"
@@ -158,6 +170,18 @@ export default function Navigation() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Sponsors
+              </Link>
+              <Link
+                href="/plan-your-trip"
+                className={`block w-full text-left font-semibold transition-colors ${
+                  isScrolled 
+                    ? 'text-gray-800 hover:text-primary' 
+                    : 'text-white hover:text-purple-200'
+                }`}
+                data-testid="mobile-nav-plan-trip"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Plan Your Trip
               </Link>
               <Button 
                 onClick={() => scrollToSection('tickets')}
