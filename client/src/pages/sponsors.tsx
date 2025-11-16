@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle, Mail, Phone, Building2, User, Sparkles, Globe, TrendingUp, Users } from "lucide-react";
+import { CheckCircle, Mail, Phone, Building2, User, Sparkles, Globe, TrendingUp, Users, PartyPopper, BadgeCheck, Wifi, Droplet, UtensilsCrossed } from "lucide-react";
 import Navigation from "@/components/navigation";
 
 // Import sponsor logos
@@ -104,31 +104,40 @@ export default function Sponsors() {
 
   const opportunities = [
     {
+      icon: <PartyPopper className="w-8 h-8" />,
       title: "Opening & closing party",
       price: "$10,000",
       description: "Your brand displayed at the party venue, on beverage cups, and a back-drop featuring your logo where attendees will take photos to share on social media.",
     },
     {
+      icon: <BadgeCheck className="w-8 h-8" />,
       title: "Attendee badge lanyard sponsorship",
       price: "$5,000",
       description: "Your logo on every attendee's badge lanyard.",
     },
     {
+      icon: <Wifi className="w-8 h-8" />,
       title: "Wi-Fi sponsorship",
       price: "$5,000",
       description: 'Name the Wi-Fi network after your brand (e.g., "BrandName Wi-Fi").',
     },
     {
+      icon: <Droplet className="w-8 h-8" />,
       title: "Water bottle sponsorship",
       price: "$5,000",
       description: "Water bottles will be provided Free to all attendees. You can have your logo printed on every water bottle.",
     },
     {
+      icon: <UtensilsCrossed className="w-8 h-8" />,
       title: "Lunch sponsorship",
       price: "$5,000",
       description: "Sponsor lunch with your branding on tables.",
     },
   ];
+
+  const scrollToSponsorForm = () => {
+    document.getElementById('sponsor-form')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   const benefits = [
     {
@@ -321,6 +330,48 @@ export default function Sponsors() {
         </div>
       </section>
 
+      {/* Additional Sponsorship Opportunities */}
+      <section className="py-20 bg-muted" data-testid="sponsorship-opportunities">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-opportunities-title">
+              Additional sponsorship opportunities
+            </h2>
+            <p className="text-muted-foreground text-lg">1 Slot Each</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {opportunities.map((opportunity, index) => (
+              <Card key={index} className="hover:shadow-xl transition-all" data-testid={`card-opportunity-${index}`}>
+                <CardContent className="p-6">
+                  <div className="bg-primary/10 p-3 rounded-lg text-primary w-fit mb-4">
+                    {opportunity.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-2" data-testid={`text-opportunity-title-${index}`}>
+                    {opportunity.title}
+                  </h3>
+                  <p className="text-2xl font-bold text-primary mb-4" data-testid={`text-opportunity-price-${index}`}>
+                    {opportunity.price}
+                  </p>
+                  <p className="text-muted-foreground" data-testid={`text-opportunity-description-${index}`}>
+                    {opportunity.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          <div className="text-center">
+            <Button 
+              onClick={scrollToSponsorForm}
+              size="lg"
+              className="px-8 py-6 text-lg"
+              data-testid="button-become-sponsor"
+            >
+              Become a Sponsor
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* 2025 Previous Partners */}
       <section className="py-16 bg-gray-900" data-testid="previous-partners">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -381,35 +432,6 @@ export default function Sponsors() {
         </div>
       </section>
 
-      {/* Additional Sponsorship Opportunities */}
-      <section className="py-20 bg-muted" data-testid="sponsorship-opportunities">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-opportunities-title">
-              Additional sponsorship opportunities
-            </h2>
-            <p className="text-muted-foreground text-lg">1 Slot Each</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {opportunities.map((opportunity, index) => (
-              <Card key={index} className="hover:shadow-xl transition-all" data-testid={`card-opportunity-${index}`}>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-2" data-testid={`text-opportunity-title-${index}`}>
-                    {opportunity.title}
-                  </h3>
-                  <p className="text-2xl font-bold text-primary mb-4" data-testid={`text-opportunity-price-${index}`}>
-                    {opportunity.price}
-                  </p>
-                  <p className="text-muted-foreground" data-testid={`text-opportunity-description-${index}`}>
-                    {opportunity.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Why Sponsoring */}
       <section className="py-20" data-testid="why-sponsoring">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -446,7 +468,7 @@ export default function Sponsors() {
       </section>
 
       {/* Become a Sponsor Form */}
-      <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5" data-testid="become-sponsor">
+      <section id="sponsor-form" className="py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5" data-testid="become-sponsor">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-become-sponsor-title">
