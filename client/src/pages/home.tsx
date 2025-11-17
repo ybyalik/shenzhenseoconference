@@ -1,6 +1,7 @@
 import Navigation from "@/components/navigation";
 import ParallaxIntro from "@/components/parallax-intro";
 import HeroSection from "@/components/hero-section";
+import FounderStory from "@/components/founder-story";
 import EventHighlights from "@/components/event-highlights";
 import TicketForm from "@/components/ticket-form";
 // import SpeakerTeaser from "@/components/speaker-teaser";
@@ -93,6 +94,7 @@ export default function Home() {
       <TicketForm />
       <EventTimeline />
       
+      <FounderStory />
       <EventHighlights />
       {/* <SpeakerTeaser /> */}
       {/* <SponsorsCarousel /> */}
