@@ -17,12 +17,12 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/sponsors" component={Sponsors} />
-      <Route path="/speakers" component={Speakers} />
-      <Route path="/plan-your-trip" component={PlanYourTrip} />
-      <Route path="/contact" component={Contact} />
-      <Route path="/terms-conditions" component={TermsConditions} />
-      <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/sponsors/" component={Sponsors} />
+      <Route path="/speakers/" component={Speakers} />
+      <Route path="/plan-your-trip/" component={PlanYourTrip} />
+      <Route path="/contact/" component={Contact} />
+      <Route path="/terms-conditions/" component={TermsConditions} />
+      <Route path="/privacy-policy/" component={PrivacyPolicy} />
       <Route component={NotFound} />
     </Switch>
   );

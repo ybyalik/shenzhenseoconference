@@ -26,27 +26,27 @@ export default function Footer() {
             <h4 className="font-semibold mb-4 text-sm sm:text-base">Quick Links</h4>
             <ul className="space-y-2 text-muted-foreground text-sm">
               <li>
-                <Link href="/sponsors" className="hover:text-foreground transition-colors" data-testid="link-sponsors">
+                <Link href="/sponsors/" className="hover:text-foreground transition-colors" data-testid="link-sponsors">
                   Sponsors
                 </Link>
               </li>
               <li>
-                <Link href="/plan-your-trip" className="hover:text-foreground transition-colors" data-testid="link-plan-trip">
+                <Link href="/plan-your-trip/" className="hover:text-foreground transition-colors" data-testid="link-plan-trip">
                   Plan Your Trip
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-foreground transition-colors" data-testid="link-contact">
+                <Link href="/contact/" className="hover:text-foreground transition-colors" data-testid="link-contact">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link href="/privacy-policy" className="hover:text-foreground transition-colors" data-testid="link-privacy-policy">
+                <Link href="/privacy-policy/" className="hover:text-foreground transition-colors" data-testid="link-privacy-policy">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms-conditions" className="hover:text-foreground transition-colors" data-testid="link-terms-conditions">
+                <Link href="/terms-conditions/" className="hover:text-foreground transition-colors" data-testid="link-terms-conditions">
                   Terms & Conditions
                 </Link>
               </li>

@@ -52,7 +52,7 @@ export default function Navigation() {
               Home
             </Link>
             <Link 
-              href="/speakers"
+              href="/speakers/"
               className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-primary' 
@@ -64,7 +64,7 @@ export default function Navigation() {
               Speakers
             </Link>
             <Link 
-              href="/sponsors"
+              href="/sponsors/"
               className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-primary' 
@@ -76,7 +76,7 @@ export default function Navigation() {
               Sponsors
             </Link>
             <Link 
-              href="/plan-your-trip"
+              href="/plan-your-trip/"
               className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-primary' 
@@ -88,7 +88,7 @@ export default function Navigation() {
               Plan Your Trip
             </Link>
             <Link 
-              href="/contact"
+              href="/contact/"
               className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-primary' 
@@ -139,7 +139,7 @@ export default function Navigation() {
                 Home
               </Link>
               <Link
-                href="/speakers"
+                href="/speakers/"
                 className="block w-full text-left font-semibold text-gray-800 hover:text-primary transition-colors"
                 data-testid="mobile-nav-speakers"
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -147,7 +147,7 @@ export default function Navigation() {
                 Speakers
               </Link>
               <Link
-                href="/sponsors"
+                href="/sponsors/"
                 className="block w-full text-left font-semibold text-gray-800 hover:text-primary transition-colors"
                 data-testid="mobile-nav-sponsors"
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -155,7 +155,7 @@ export default function Navigation() {
                 Sponsors
               </Link>
               <Link
-                href="/plan-your-trip"
+                href="/plan-your-trip/"
                 className="block w-full text-left font-semibold text-gray-800 hover:text-primary transition-colors"
                 data-testid="mobile-nav-plan-trip"
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -163,7 +163,7 @@ export default function Navigation() {
                 Plan Your Trip
               </Link>
               <Link
-                href="/contact"
+                href="/contact/"
                 className="block w-full text-left font-semibold text-gray-800 hover:text-primary transition-colors"
                 data-testid="mobile-nav-contact"
                 onClick={() => setIsMobileMenuOpen(false)}
