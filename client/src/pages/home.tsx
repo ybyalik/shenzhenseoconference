@@ -17,7 +17,6 @@ import { Search, Inbox, Phone, MapPin, Twitter, Facebook, Linkedin, Users, Mic, 
 import logoImage from "@assets/logo-main_1756774330186.png";
 import darkLogoImage from "@assets/logodark_1756775589088.png";
 import conferenceImage from "@assets/shenzhen-seo-conference-min_1758443453925.webp";
-import shenzhenVideo from "@assets/shenzhen_1763384437802.mp4";
 
 export default function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -58,7 +57,7 @@ export default function Home() {
               onPause={() => setIsPlaying(false)}
               style={{ minHeight: '400px' }}
             >
-              <source src={shenzhenVideo} type="video/mp4" />
+              <source src="/shenzhen_1763384437802.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             
