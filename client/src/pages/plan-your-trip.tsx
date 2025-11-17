@@ -39,21 +39,21 @@ export default function PlanYourTrip() {
               <CardContent className="p-6">
                 <Calendar className="w-10 h-10 text-primary mb-4" />
                 <h3 className="font-semibold mb-2">Conference Dates</h3>
-                <p className="text-muted-foreground">September 15-18, 2025</p>
+                <p className="text-muted-foreground">September 14-18, 2026</p>
               </CardContent>
             </Card>
             <Card data-testid="card-venue">
               <CardContent className="p-6">
                 <MapPin className="w-10 h-10 text-primary mb-4" />
                 <h3 className="font-semibold mb-2">Venue</h3>
-                <p className="text-muted-foreground">The Ritz-Carlton, Shenzhen</p>
+                <p className="text-muted-foreground">To be announced at a later date</p>
               </CardContent>
             </Card>
             <Card data-testid="card-contact">
               <CardContent className="p-6">
                 <Mail className="w-10 h-10 text-primary mb-4" />
                 <h3 className="font-semibold mb-2">Contact</h3>
-                <p className="text-muted-foreground">support@shenzhenseoconference.com</p>
+                <p className="text-muted-foreground break-words">support@shenzhenseoconference.com</p>
               </CardContent>
             </Card>
           </div>
