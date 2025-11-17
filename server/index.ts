@@ -1,10 +1,14 @@
 import express, { type Request, Response, NextFunction } from "express";
+import path from "path";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Serve static files from server/public (for videos and other large assets)
+app.use(express.static(path.resolve(import.meta.dirname, "public")));
 
 // Log environment on startup
 const nodeEnv = process.env.NODE_ENV || 'development';
