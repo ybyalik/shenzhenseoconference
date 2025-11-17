@@ -56,7 +56,7 @@ const FloatingImage = ({
       <img
         src={src}
         alt={alt}
-        className="w-40 md:w-56 lg:w-72"
+        className="w-52 md:w-72 lg:w-96"
         style={{ 
           transform: `rotate(${rotation}deg)`,
           filter: 'drop-shadow(0 20px 25px rgb(0 0 0 / 0.15))'
