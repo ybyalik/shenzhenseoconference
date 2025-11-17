@@ -4,6 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Footer from "@/components/footer";
+import ScrollToTop from "@/components/scroll-to-top";
 import Home from "@/pages/home";
 import Sponsors from "@/pages/sponsors";
 import Speakers from "@/pages/speakers";
@@ -15,16 +16,19 @@ import NotFound from "@/pages/not-found";
 
 function Router() {
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/sponsors/" component={Sponsors} />
-      <Route path="/speakers/" component={Speakers} />
-      <Route path="/plan-your-trip/" component={PlanYourTrip} />
-      <Route path="/contact/" component={Contact} />
-      <Route path="/terms-conditions/" component={TermsConditions} />
-      <Route path="/privacy-policy/" component={PrivacyPolicy} />
-      <Route component={NotFound} />
-    </Switch>
+    <>
+      <ScrollToTop />
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/sponsors/" component={Sponsors} />
+        <Route path="/speakers/" component={Speakers} />
+        <Route path="/plan-your-trip/" component={PlanYourTrip} />
+        <Route path="/contact/" component={Contact} />
+        <Route path="/terms-conditions/" component={TermsConditions} />
+        <Route path="/privacy-policy/" component={PrivacyPolicy} />
+        <Route component={NotFound} />
+      </Switch>
+    </>
   );
 }
 
