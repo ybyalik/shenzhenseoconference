@@ -1,4 +1,5 @@
 import Navigation from "@/components/navigation";
+import StickyCTA from "@/components/sticky-cta";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, MapPin } from "lucide-react";
 
@@ -157,6 +158,7 @@ export default function TermsConditions() {
           </Card>
         </div>
       </section>
+      <StickyCTA />
     </div>
   );
 }

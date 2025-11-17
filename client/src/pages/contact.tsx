@@ -12,6 +12,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, Mail, MessageSquare } from "lucide-react";
 import Navigation from "@/components/navigation";
+import StickyCTA from "@/components/sticky-cta";
 
 const contactFormSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -361,6 +362,7 @@ export default function Contact() {
           )}
         </div>
       </section>
+      <StickyCTA />
     </div>
   );
 }

@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, Mail, Phone, Building2, User, Sparkles, Globe, TrendingUp, Users } from "lucide-react";
 import Navigation from "@/components/navigation";
+import StickyCTA from "@/components/sticky-cta";
 
 // Import sponsor logos
 import quickCreatorLogo from "@assets/quickcreator-min_1763283071011.png";
@@ -517,6 +518,7 @@ export default function Sponsors() {
           )}
         </div>
       </section>
+      <StickyCTA />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import Navigation from "@/components/navigation";
+import StickyCTA from "@/components/sticky-cta";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Calendar, Mail, Plane, CreditCard, MessageCircle, Bus, Compass, AlertCircle } from "lucide-react";
 
@@ -259,6 +260,7 @@ export default function PlanYourTrip() {
           </p>
         </div>
       </section>
+      <StickyCTA />
     </div>
   );
 }

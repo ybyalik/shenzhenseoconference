@@ -19,7 +19,12 @@ export default function StickyCTA() {
   }, []);
 
   const scrollToTickets = () => {
-    document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' });
+    const currentPath = window.location.pathname;
+    if (currentPath === '/' || currentPath === '') {
+      document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.href = '/#tickets';
+    }
   };
 
   const scrollToTop = () => {
@@ -40,7 +45,8 @@ export default function StickyCTA() {
       
       <Button
         onClick={scrollToTickets}
-        className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-full shadow-lg animate-pulse-gentle hover:scale-105 transition-transform"
+        className="text-white hover:opacity-90 px-6 py-3 rounded-full shadow-lg animate-pulse-gentle hover:scale-105 transition-transform"
+        style={{ backgroundColor: '#ff007a' }}
         data-testid="button-sticky-tickets"
       >
         <Ticket className="mr-2 h-5 w-5" />

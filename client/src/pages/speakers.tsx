@@ -2,6 +2,7 @@ import { Users, Globe } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useEffect } from "react";
 import Navigation from "@/components/navigation";
+import StickyCTA from "@/components/sticky-cta";
 
 import adamPalmeterImg from "@assets/Adam-Palmeter_1763288491458.webp";
 import alexZhangImg from "@assets/alex-zhang_1763288491458.jpg";
@@ -235,6 +236,7 @@ export default function Speakers() {
           </div>
         </div>
       </section>
+      <StickyCTA />
     </div>
   );
 }

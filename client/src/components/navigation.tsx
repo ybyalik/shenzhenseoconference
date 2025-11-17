@@ -101,7 +101,12 @@ export default function Navigation() {
             </Link>
             <Link href="/#tickets">
               <Button 
-                className="bg-primary text-primary-foreground px-6 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors focus:ring-4 focus:ring-primary/20"
+                className={`px-6 py-2 rounded-lg font-medium transition-colors focus:ring-4 focus:ring-primary/20 ${
+                  isScrolled 
+                    ? 'bg-primary text-primary-foreground hover:bg-primary/90' 
+                    : 'text-white hover:opacity-90'
+                }`}
+                style={!isScrolled ? { backgroundColor: '#ff007a' } : undefined}
                 data-testid="button-buy-tickets"
                 aria-label="Buy conference tickets"
               >
