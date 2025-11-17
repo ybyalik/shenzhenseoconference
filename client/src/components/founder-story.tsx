@@ -7,7 +7,7 @@ export default function FounderStory() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Image */}
           <div className="order-2 md:order-1">
-            <div className="relative">
+            <div className="relative max-w-md mx-auto">
               <img
                 src={jpZhangImg}
                 alt="J.P. Zhang, founder of Shenzhen SEO Conference"
