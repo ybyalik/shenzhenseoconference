@@ -26,8 +26,8 @@ export default function Home() {
       />
       
       <Navigation />
-      <ParallaxIntro />
       <HeroSection />
+      <ParallaxIntro />
       <StickyCTA />
       
       {/* Interactive Stats */}

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
@@ -8,104 +8,116 @@ import feature3Img from "@assets/feature3-png_1763345462343.webp";
 import feature4Img from "@assets/feature9-png_1763345462344.webp";
 import feature5Img from "@assets/home-featured4-png_1763345462344.webp";
 
-export default function ParallaxIntro() {
+const FloatingImage = ({ 
+  src, 
+  alt, 
+  startX, 
+  startY, 
+  rotation, 
+  moveDistance,
+  delay 
+}: { 
+  src: string; 
+  alt: string; 
+  startX: string; 
+  startY: string; 
+  rotation: number; 
+  moveDistance: number;
+  delay: number;
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end start"]
+    offset: ["start end", "end start"]
   });
 
-  const images = [
-    {
-      src: feature1Img,
-      alt: "Conference attendees networking",
-      initialX: -15,
-      initialY: -10,
-      rotation: -15,
-      moveX: -400,
-      moveY: -300
-    },
-    {
-      src: feature2Img,
-      alt: "Speaker presenting on stage",
-      initialX: 55,
-      initialY: -5,
-      rotation: 8,
-      moveX: 400,
-      moveY: -250
-    },
-    {
-      src: feature3Img,
-      alt: "Panel discussion",
-      initialX: 45,
-      initialY: 45,
-      rotation: 12,
-      moveX: 350,
-      moveY: 400
-    },
-    {
-      src: feature4Img,
-      alt: "Keynote speaker",
-      initialX: -10,
-      initialY: 50,
-      rotation: -12,
-      moveX: -350,
-      moveY: 400
-    },
-    {
-      src: feature5Img,
-      alt: "Speaker at conference",
-      initialX: 70,
-      initialY: 25,
-      rotation: 18,
-      moveX: 450,
-      moveY: 200
-    }
-  ];
+  const yOffset = useTransform(scrollYProgress, [0, 1], [0, -moveDistance]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <section 
+    <motion.div
       ref={containerRef}
+      className="absolute pointer-events-none"
+      style={{
+        left: startX,
+        top: startY,
+        y: yOffset,
+        opacity,
+        rotate: rotation,
+      }}
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.6, delay }}
+      viewport={{ once: true }}
+    >
+      <img
+        src={src}
+        alt={alt}
+        className="w-40 md:w-56 lg:w-72 shadow-2xl rounded-lg"
+      />
+    </motion.div>
+  );
+};
+
+export default function ParallaxIntro() {
+  return (
+    <section 
       className="relative min-h-screen bg-white dark:bg-gray-950 overflow-hidden flex items-center justify-center"
       data-testid="parallax-intro"
     >
-      <div className="absolute inset-0 pointer-events-none">
-        {images.map((image, index) => {
-          const x = useTransform(scrollYProgress, [0, 1], [image.initialX, image.moveX]);
-          const y = useTransform(scrollYProgress, [0, 1], [image.initialY, image.moveY]);
-          const rotate = useTransform(scrollYProgress, [0, 1], [image.rotation, image.rotation + 20]);
-          const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.5, 0]);
-          
-          return (
-            <motion.div
-              key={index}
-              style={{ x, y, rotate, opacity }}
-              className="absolute"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-48 md:w-64 lg:w-80 shadow-2xl rounded-lg"
-                style={{
-                  position: 'absolute',
-                  left: `${image.initialX}%`,
-                  top: `${image.initialY}%`,
-                }}
-              />
-            </motion.div>
-          );
-        })}
-      </div>
+      <FloatingImage
+        src={feature1Img}
+        alt="Conference attendees networking"
+        startX="10%"
+        startY="15%"
+        rotation={-15}
+        moveDistance={300}
+        delay={0}
+      />
+      <FloatingImage
+        src={feature2Img}
+        alt="Speaker presenting on stage"
+        startX="70%"
+        startY="10%"
+        rotation={8}
+        moveDistance={350}
+        delay={0.1}
+      />
+      <FloatingImage
+        src={feature3Img}
+        alt="Panel discussion"
+        startX="65%"
+        startY="60%"
+        rotation={12}
+        moveDistance={320}
+        delay={0.2}
+      />
+      <FloatingImage
+        src={feature4Img}
+        alt="Keynote speaker"
+        startX="15%"
+        startY="65%"
+        rotation={-12}
+        moveDistance={340}
+        delay={0.3}
+      />
+      <FloatingImage
+        src={feature5Img}
+        alt="Speaker at conference"
+        startX="80%"
+        startY="35%"
+        rotation={18}
+        moveDistance={380}
+        delay={0.4}
+      />
 
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.h2 
           className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
           data-testid="text-parallax-intro"
         >
           Join us in Shenzhen, the Silicon Valley of China, to learn, network, and explore cutting-edge SEO strategies that bridge Eastern and Western markets.
@@ -113,8 +125,9 @@ export default function ParallaxIntro() {
         
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true }}
           className="mt-12"
         >
           <ChevronDown className="w-8 h-8 mx-auto text-gray-400 animate-bounce" />
