@@ -123,19 +123,11 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className={`md:hidden border-t transition-colors ${
-            isScrolled 
-              ? 'bg-white border-gray-200' 
-              : 'bg-background border-border'
-          }`} data-testid="mobile-menu">
+          <div className="md:hidden bg-white border-t border-gray-200" data-testid="mobile-menu">
             <div className="px-4 py-4 space-y-4">
               <Link
                 href="/"
-                className={`block w-full text-left font-semibold transition-colors ${
-                  isScrolled 
-                    ? 'text-gray-800 hover:text-primary' 
-                    : 'text-white hover:text-purple-200'
-                }`}
+                className="block w-full text-left font-semibold text-gray-800 hover:text-primary transition-colors"
                 data-testid="mobile-nav-home"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -143,11 +135,7 @@ export default function Navigation() {
               </Link>
               <Link
                 href="/speakers"
-                className={`block w-full text-left font-semibold transition-colors ${
-                  isScrolled 
-                    ? 'text-gray-800 hover:text-primary' 
-                    : 'text-white hover:text-purple-200'
-                }`}
+                className="block w-full text-left font-semibold text-gray-800 hover:text-primary transition-colors"
                 data-testid="mobile-nav-speakers"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -155,11 +143,7 @@ export default function Navigation() {
               </Link>
               <Link
                 href="/sponsors"
-                className={`block w-full text-left font-semibold transition-colors ${
-                  isScrolled 
-                    ? 'text-gray-800 hover:text-primary' 
-                    : 'text-white hover:text-purple-200'
-                }`}
+                className="block w-full text-left font-semibold text-gray-800 hover:text-primary transition-colors"
                 data-testid="mobile-nav-sponsors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -167,11 +151,7 @@ export default function Navigation() {
               </Link>
               <Link
                 href="/plan-your-trip"
-                className={`block w-full text-left font-semibold transition-colors ${
-                  isScrolled 
-                    ? 'text-gray-800 hover:text-primary' 
-                    : 'text-white hover:text-purple-200'
-                }`}
+                className="block w-full text-left font-semibold text-gray-800 hover:text-primary transition-colors"
                 data-testid="mobile-nav-plan-trip"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -179,24 +159,22 @@ export default function Navigation() {
               </Link>
               <Link
                 href="/contact"
-                className={`block w-full text-left font-semibold transition-colors ${
-                  isScrolled 
-                    ? 'text-gray-800 hover:text-primary' 
-                    : 'text-white hover:text-purple-200'
-                }`}
+                className="block w-full text-left font-semibold text-gray-800 hover:text-primary transition-colors"
                 data-testid="mobile-nav-contact"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact
               </Link>
-              <Link href="/#tickets" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button 
-                  className="w-full bg-primary text-primary-foreground"
-                  data-testid="mobile-button-buy-tickets"
-                >
-                  Buy Tickets
-                </Button>
-              </Link>
+              <div className="pt-4">
+                <Link href="/#tickets" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button 
+                    className="w-full bg-primary text-primary-foreground"
+                    data-testid="mobile-button-buy-tickets"
+                  >
+                    Buy Tickets
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         )}
