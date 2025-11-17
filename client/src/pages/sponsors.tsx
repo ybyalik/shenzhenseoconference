@@ -154,25 +154,30 @@ export default function Sponsors() {
             </p>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-xl" data-testid="table-sponsorship">
+          <div className="mb-4 md:hidden text-center">
+            <p className="text-sm text-muted-foreground italic">
+              👉 Scroll horizontally to see all tiers
+            </p>
+          </div>
+          <div className="overflow-x-auto -mx-4 sm:mx-0">
+            <table className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-xl min-w-[600px]" data-testid="table-sponsorship">
               <thead>
                 <tr className="bg-gray-100 dark:bg-gray-700">
-                  <th className="py-4 px-6 text-left font-semibold text-gray-700 dark:text-gray-200"></th>
-                  <th className="py-4 px-6 text-center font-bold text-gray-700 dark:text-gray-200">Silver</th>
-                  <th className="py-4 px-6 text-center font-bold text-gray-700 dark:text-gray-200">Gold</th>
-                  <th className="py-4 px-6 text-center font-bold text-gray-700 dark:text-gray-200">Platinum</th>
+                  <th className="py-3 px-3 md:py-4 md:px-6 text-left font-semibold text-gray-700 dark:text-gray-200 text-sm md:text-base"></th>
+                  <th className="py-3 px-3 md:py-4 md:px-6 text-center font-bold text-gray-700 dark:text-gray-200 text-sm md:text-base">Silver</th>
+                  <th className="py-3 px-3 md:py-4 md:px-6 text-center font-bold text-gray-700 dark:text-gray-200 text-sm md:text-base">Gold</th>
+                  <th className="py-3 px-3 md:py-4 md:px-6 text-center font-bold text-gray-700 dark:text-gray-200 text-sm md:text-base">Platinum</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-750">
-                  <td className="py-4 px-6 font-semibold"></td>
-                  <td className="py-4 px-6 text-center font-bold text-lg">$5,000</td>
-                  <td className="py-4 px-6 text-center font-bold text-lg">$10,000</td>
-                  <td className="py-4 px-6 text-center font-bold text-lg">$20,000</td>
+                  <td className="py-3 px-3 md:py-4 md:px-6 font-semibold text-sm md:text-base"></td>
+                  <td className="py-3 px-3 md:py-4 md:px-6 text-center font-bold text-base md:text-lg">$5,000</td>
+                  <td className="py-3 px-3 md:py-4 md:px-6 text-center font-bold text-base md:text-lg">$10,000</td>
+                  <td className="py-3 px-3 md:py-4 md:px-6 text-center font-bold text-base md:text-lg">$20,000</td>
                 </tr>
                 <tr className="border-b border-gray-200 dark:border-gray-700">
-                  <td className="py-4 px-6">Sponsor logo & link included on the website</td>
+                  <td className="py-3 px-3 md:py-4 md:px-6 text-sm md:text-base">Sponsor logo & link included on the website</td>
                   <td className="py-4 px-6 text-center">
                     <div className="flex flex-col items-center gap-1">
                       <span className="text-green-600 text-xl">✅</span>
