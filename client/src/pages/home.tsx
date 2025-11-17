@@ -46,15 +46,17 @@ export default function Home() {
       {/* Video Section */}
       <section className="py-16 bg-background" data-testid="section-video">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer">
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer bg-black" style={{ minHeight: '400px' }}>
             <video 
               ref={videoRef}
               className="w-full h-auto"
               controls
+              preload="metadata"
               data-testid="video-shenzhen"
               aria-label="Shenzhen conference promotional video"
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
+              style={{ minHeight: '400px' }}
             >
               <source src={shenzhenVideo} type="video/mp4" />
               Your browser does not support the video tag.
