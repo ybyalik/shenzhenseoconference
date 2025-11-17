@@ -1,3 +1,4 @@
+import { useState, useRef } from "react";
 import Navigation from "@/components/navigation";
 import ParallaxIntro from "@/components/parallax-intro";
 import HeroSection from "@/components/hero-section";
@@ -12,13 +13,23 @@ import EmailSubscriber from "@/components/email-subscriber";
 
 import EventTimeline from "@/components/event-timeline";
 // import SponsorsCarousel from "@/components/sponsors-carousel";
-import { Search, Inbox, Phone, MapPin, Twitter, Facebook, Linkedin, Users, Mic, Calendar, Globe } from "lucide-react";
+import { Search, Inbox, Phone, MapPin, Twitter, Facebook, Linkedin, Users, Mic, Calendar, Globe, Play } from "lucide-react";
 import logoImage from "@assets/logo-main_1756774330186.png";
 import darkLogoImage from "@assets/logodark_1756775589088.png";
 import conferenceImage from "@assets/shenzhen-seo-conference-min_1758443453925.webp";
 import shenzhenVideo from "@assets/shenzhen_1763384437802.mp4";
 
 export default function Home() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handlePlayClick = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <title>Shenzhen SEO Conference 2026 - Pre-Sale Tickets | Connect Eastern & Western Digital Markets</title>
@@ -35,16 +46,31 @@ export default function Home() {
       {/* Video Section */}
       <section className="py-16 bg-background" data-testid="section-video">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl overflow-hidden shadow-2xl">
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer">
             <video 
+              ref={videoRef}
               className="w-full h-auto"
               controls
               data-testid="video-shenzhen"
               aria-label="Shenzhen conference promotional video"
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
             >
               <source src={shenzhenVideo} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+            
+            {!isPlaying && (
+              <div 
+                className="absolute inset-0 bg-black/30 flex items-center justify-center transition-opacity hover:bg-black/40"
+                onClick={handlePlayClick}
+                data-testid="video-overlay"
+              >
+                <div className="bg-white/90 rounded-full p-6 shadow-2xl transform group-hover:scale-110 transition-transform">
+                  <Play className="w-16 h-16 text-primary fill-current" />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
