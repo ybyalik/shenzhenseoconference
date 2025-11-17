@@ -1,4 +1,5 @@
 import Navigation from "@/components/navigation";
+import ParallaxIntro from "@/components/parallax-intro";
 import HeroSection from "@/components/hero-section";
 import EventHighlights from "@/components/event-highlights";
 import TicketForm from "@/components/ticket-form";
@@ -25,6 +26,7 @@ export default function Home() {
       />
       
       <Navigation />
+      <ParallaxIntro />
       <HeroSection />
       <StickyCTA />
       
