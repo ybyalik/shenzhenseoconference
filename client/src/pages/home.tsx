@@ -16,6 +16,7 @@ import { Search, Inbox, Phone, MapPin, Twitter, Facebook, Linkedin, Users, Mic, 
 import logoImage from "@assets/logo-main_1756774330186.png";
 import darkLogoImage from "@assets/logodark_1756775589088.png";
 import conferenceImage from "@assets/shenzhen-seo-conference-min_1758443453925.webp";
+import shenzhenVideo from "@assets/shenzhen_1763384437802.mp4";
 
 export default function Home() {
   return (
@@ -30,6 +31,23 @@ export default function Home() {
       <HeroSection />
       <ParallaxIntro />
       <StickyCTA />
+      
+      {/* Video Section */}
+      <section className="py-16 bg-background" data-testid="section-video">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl overflow-hidden shadow-2xl">
+            <video 
+              className="w-full h-auto"
+              controls
+              data-testid="video-shenzhen"
+              aria-label="Shenzhen conference promotional video"
+            >
+              <source src={shenzhenVideo} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </section>
       
       {/* Interactive Stats */}
       <section className="bg-gradient-to-br from-primary/5 via-background to-secondary/5 py-20 border-b border-border" data-testid="section-stats">
