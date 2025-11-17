@@ -57,7 +57,7 @@ export default function Home() {
               onPause={() => setIsPlaying(false)}
               style={{ minHeight: '400px' }}
             >
-              <source src="/shenzhen_1763384437802.mp4" type="video/mp4" />
+              <source src="/shenzhen3_1763393585209.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             
