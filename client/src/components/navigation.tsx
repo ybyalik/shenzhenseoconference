@@ -52,18 +52,6 @@ export default function Navigation() {
               Home
             </Link>
             <Link 
-              href="/#agenda"
-              className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
-                isScrolled 
-                  ? 'text-gray-800 hover:text-primary' 
-                  : 'text-white hover:text-purple-200'
-              }`}
-              data-testid="nav-agenda"
-              aria-label="Navigate to Agenda section"
-            >
-              Agenda
-            </Link>
-            <Link 
               href="/speakers"
               className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
                 isScrolled 
@@ -152,18 +140,6 @@ export default function Navigation() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Home
-              </Link>
-              <Link
-                href="/#agenda"
-                className={`block w-full text-left font-semibold transition-colors ${
-                  isScrolled 
-                    ? 'text-gray-800 hover:text-primary' 
-                    : 'text-white hover:text-purple-200'
-                }`}
-                data-testid="mobile-nav-agenda"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Agenda
               </Link>
               <Link
                 href="/speakers"
