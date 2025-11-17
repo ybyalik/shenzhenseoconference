@@ -53,35 +53,35 @@ export default function EventTimeline() {
   const scheduleEvents: ScheduleEvent[] = [
     {
       id: 'day1-workshops',
-      date: '2026-09-17',
+      date: '2026-09-14',
       title: 'Workshops & City Tours',
       description: 'Specialized workshops for Chinese attendees and guided city tours for international visitors to explore Shenzhen\'s tech districts',
       eventType: 'workshop'
     },
     {
       id: 'day2-mastermind',
-      date: '2026-09-18',
+      date: '2026-09-15',
       title: 'SEO Mastermind',
       description: 'Intensive small-group mastermind sessions with industry SEO experts and peers',
       eventType: 'mastermind'
     },
     {
       id: 'day3-conference',
-      date: '2026-09-19',
+      date: '2026-09-16',
       title: 'Main Conference Day',
       description: 'Full day of keynotes, talks, panels, breakout sessions, and opening party.',
       eventType: 'conference'
     },
     {
       id: 'day4-conference',
-      date: '2026-09-20',
+      date: '2026-09-17',
       title: 'Main Conference Day',
       description: 'Full day of talks, panels, breakout sessions, and closing party.',
       eventType: 'conference'
     },
     {
       id: 'day5-networking',
-      date: '2026-09-21',
+      date: '2026-09-18',
       title: 'VIP Networking',
       description: 'Exclusive networking event for VIP ticket holders with speakers and sponsors, in a different 5-star hotel (not the conference hotel).',
       eventType: 'networking'

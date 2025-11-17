@@ -39,7 +39,7 @@ export default function PlanYourTrip() {
               <CardContent className="p-6">
                 <Calendar className="w-10 h-10 text-primary mb-4" />
                 <h3 className="font-semibold mb-2">Conference Dates</h3>
-                <p className="text-muted-foreground">September 18-21, 2025</p>
+                <p className="text-muted-foreground">September 15-18, 2025</p>
               </CardContent>
             </Card>
             <Card data-testid="card-venue">

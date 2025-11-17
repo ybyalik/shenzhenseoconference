@@ -69,7 +69,7 @@ export default function Home() {
                 </div>
                 <div className="text-3xl md:text-4xl font-bold text-green-600 dark:text-green-400 mb-2 group-hover:text-green-700 dark:group-hover:text-green-300 transition-colors">5</div>
                 <div className="text-sm font-medium text-green-700 dark:text-green-300">Days of Innovation</div>
-                <div className="text-xs text-green-600/70 dark:text-green-400/70 mt-1">Sept 17-21, 2026</div>
+                <div className="text-xs text-green-600/70 dark:text-green-400/70 mt-1">Sept 14-18, 2026</div>
               </div>
             </div>
             
