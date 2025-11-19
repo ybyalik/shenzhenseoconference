@@ -174,10 +174,6 @@ export default function Home() {
               Secure Super Early Bird Pricing
             </button>
           </div>
-
-          <p className="text-sm text-white/80 mt-6" data-testid="text-countdown-footer">
-            Super Early Bird pricing ends in <span className="font-semibold">{Math.floor((new Date('2025-09-30T00:00:00+08:00').getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))} days</span>
-          </p>
         </div>
       </section>
 
