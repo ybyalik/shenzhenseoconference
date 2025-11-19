@@ -17,6 +17,7 @@ import { CheckCircle, Mail, MessageSquare } from "lucide-react";
 const contactFormSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
+  email: z.string().email("Please enter a valid email address"),
   requestInvitationLetter: z.boolean(),
   nationality: z.string().optional(),
   passportNo: z.string().optional(),
@@ -55,6 +56,7 @@ export default function Contact() {
     defaultValues: {
       firstName: "",
       lastName: "",
+      email: "",
       requestInvitationLetter: false,
       nationality: "",
       passportNo: "",
@@ -195,6 +197,21 @@ export default function Contact() {
                         </p>
                       )}
                     </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Email Address *</label>
+                    <Input
+                      type="email"
+                      {...form.register("email")}
+                      placeholder="john.doe@example.com"
+                      data-testid="input-email"
+                    />
+                    {form.formState.errors.email && (
+                      <p className="text-sm text-destructive mt-1" data-testid="error-email">
+                        {form.formState.errors.email.message}
+                      </p>
+                    )}
                   </div>
 
                   <div className="flex items-center space-x-3 p-4 bg-muted rounded-lg">
