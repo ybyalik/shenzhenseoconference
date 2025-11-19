@@ -1,0 +1,642 @@
+AWeber API (1.0)
+Download OpenAPI specification:Download
+
+We are constantly working to improve this documentation. If you have feedback and questions, please contact the AWeber API team at api@aweber.com.
+
+The AWeber API is a REST API that uses the OAuth 2.0 authentication model. We also offer webhooks.
+
+Please see the below resources for further information:
+
+Terms of Service
+Showcasing an Integration
+Knowledge Base
+API Status Page
+Getting Started
+Creating a Developer Account
+To start developing, you will first need to create a free developer account. After you create a developer account, log in and create an app.
+
+What does AWeber provide?
+AWeber provides a REST API and Webhooks. For more information about webhooks please navigate to the Webhooks section within this documentation.
+
+What is the AWeber API?
+The AWeber API is a JSON based REST API.
+
+This means that resources are represented as JSON dictionaries and you use a different HTTP verb to do your standard CRUD operations on them:
+
+POST: Create new resources.
+GET: Retrieve a resource.
+PATCH: Update existing resources.
+DELETE: Delete existing resources.
+Note
+Within this document, campaigns is a generic term that refers to both Broadcast and Follow Up messages. Currently the AWeber API does not support Campaigns, which is an email automation platform available to customers within the AWeber web platform.
+
+Authentication
+Before you can make requests to the API, you need to support our authentication protocol. We currently require all new applications using the API to make use of the OAuth 2.0 authentication protocol.
+
+We recommend that you start out by visiting the OAuth 2.0 Overview. This will walk you through the authentication process.
+
+How Resources are Arranged in the AWeber API
+API resources are arranged in the AWeber API based on their relationships to each other. We illustrate these relationships on the image below with the URLs of the resources. When we refer to the relationships of the resources, we say an Account has Lists, a List has Subscribers, etc. We can also say Subscribers belong to a List, or Lists belong to an Account, and so on.
+
+A single resource is referred to as an Entry and is shown as a yellow circle on the image. Entries are contained in Collections which are shown as a blue box on the image. These resources are contained under version '1.0' of the API.
+
+[Resource Map]
+
+ 
+
+How Collections are Represented
+Collections are represented as an ordered sequence of entries. They are paginated using the ws.size and ws.start query parameters where ws.size is the maximum number of entries to return and ws.start is the zero-based index to start the page at. The response represents a page of entries and includes at least the following body properties:
+
+Name	Type	Description
+entries	List of Objects	The entries on the requested page
+start	Non-negative Integer	The starting offset of the page
+total_size	Non-negative Integer	The total size of the collection*
+next_collection_link	URL	Link to the next page unless this is the final page
+prev_collection_link	URL	Link to the previous page unless this is the first page
+Though you can specify the exact page that you want using ws.size and ws.start, you should use the next_collection_link and prev_collection_link properties in the response to traverse the collection. If the prev_collection_link is absent, then the current page is the first page. Likewise, if the next_collection_link is absent, then the current page is the last page in the collection.
+
+Authentication Overview
+The AWeber API uses the OAuth 2.0 specification for authentication. OAuth 2.0 is the successor to OAuth 1, which AWeber’s API formerly used. If you have an existing OAuth 1 application, documentation regarding how to connect with OAuth 1 is available. Please plan to move to OAuth 2.0 as soon as you are able.
+
+Connecting your integration to an AWeber customer account requires the use of OAuth 2.0. This step is required before you start making requests to AWeber’s API in order to do things like add subscribers, check your broadcast stats, or sending messages. We use OAuth 2.0 in order to ensure that an integration has permission to access a given AWeber account.
+
+You'll need the following to get started:
+
+An AWeber developer account
+An app created in that account
+An AWeber customer account
+An HTTP library capable of making OAuth 2.0 requests.
+If you need a customer account you can sign up for a free trial to get started. These examples will be using Python 3 and requests_oauthlib as the HTTP library. You will find there are lots of good libraries available for every programming language. The set up and usage varies between libraries. Be sure to read the documentation for the library you select. For a full sample in Python as well as PHP, C#.NET, Ruby, and Node.js please see our code samples on GitHub.
+
+OAuth 2.0
+The following endpoints and scopes are used to authenticate.
+
+Security Scheme Type: OAuth2
+Flow type: authorizationCode
+Authorization URL: https://auth.aweber.com/oauth2/authorize
+Token URL: https://auth.aweber.com/oauth2/token
+Refresh URL: https://auth.aweber.com/oauth2/token
+Scopes:
+account.read -
+Access account information and associated integrations.
+Required for the following endpoints: get accounts, get account, get integrations, get integration
+landing-page.read -
+Retrieve landing pages
+Required for the following endpoints: get landing pages, get landing page
+list.read -
+Retrieve lists, custom fields, tags, and sign up forms
+Required for the following endpoints: get list, get lists, find lists, get tags for list, get custom fields, get custom field, get webforms for list, get split tests for list, get split test components, get split test component, get webforms for account, get split tests for account
+list.write -
+Create, edit, and delete custom fields
+Required for the following endpoints: add custom field, update custom field, delete custom field
+subscriber.read -
+Retrieve subscribers and their activity
+Required for the following endpoints: get subscribers, get subscriber, get subscriber activity, get subscribers for message, find subscribers for account, find subscribers for list
+subscriber.write -
+Create, edit, delete, retrieve, search for, and move subscribers
+Required for the following endpoints: add subscriber, move subscriber, update subscriber, delete subscriber
+subscriber.read-extended -
+Previously required to retrieve subscriber PII such as name, email, IP address, etc. This functionality was moved to the "subscriber.read" scope
+email.read -
+Retrieve email activity related to broadcasts and follow-ups
+Required for the following endpoints: get messages, get message, get broadcasts, get broadcast, get message opens, get message open, get message tracked events, get message tracked event, get total broadcasts, get campaigns, get campaign, find campaigns, get broadcast statistics, get broadcast statistic
+email.write -
+Create and send email broadcasts
+Required for the following endpoints: create broadcast, update broadcast, delete broadcast, cancel broadcast, schedule broadcast
+See less
+What is OAuth 2.0?
+OAuth is a way for a developer to securely access information without knowing someone’s password or other login details. The end result of OAuth is an access token, which proves that the developer has permission to access the data held in the API and should always be kept safe and secure. If you are creating an application that cannot store secrets in an secure way (e.g. a mobile application or a WordPress plugin) use Proof Key for Code Exchange (PKCE) which does not require the client secret to be used or stored. See Public or confidential? below for more detail.
+
+The general flow of OAuth 2.0 is a back and forth handshake between the developer, the AWeber customer, and AWeber’s API. In this guide you’ll learn to do the following:
+
+Build an authorization URL
+Get an authorization code
+Trade your authorization code for an access token
+Refresh your access token after it expires using the refresh token
+If your client is a public client, then you do not have a client secret and you are required to use the code verifier and code challenge instead of the client secret. The steps required are the same except that the client_secret is not used. See Public or confidential? below for more detail.
+
+Step 1: Build an authorization URL
+The first thing you’ll need to do is create a hyperlink to start the authorization process. This code provides AWeber’s API with information such as which integration is making the request and what access the integration requires. Please review the example below:
+
+https://auth.aweber.com/oauth2/authorize?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_CALLBACK&scope=YOUR_REQUESTED_SCOPES&state=STATE_TOKEN
+The components of this URL are as follows:
+
+The base URL is provided by AWeber and connects you to our servers.
+
+response_type tells AWeber what you want us to send back. For this step you should always use code since you want an authorization code.
+
+client_id is the Client ID listed in your developer account. It uniquely identifies your integration to AWeber.
+
+redirect_uri is your callback. This is where the user-agent (in most cases the customer’s browser) will be sent after the customer clicks authorize. This should be a uri that your application can read because that’s where we’ll provide our response. When you provide your callback, make sure it’s the same one you specified when creating your integration.
+
+If your application will be installed on multiple domains, you can send the authorization code out-of-band (OOB) instead. This will display the code in a page where users can copy and paste it into your application. To do this, configure your application's redirect URI to the special value urn:ietf:wg:oauth:2.0:oob and use this value for your redirect_uri.
+
+To learn more about how to implement OOB, please visit our knowledge base article.
+
+state is a token you provide to AWeber for CSRF protection. You can also use this token as a session token to preserve user data between the auth steps, providing a better experience for your users. We pass this data back to you later and you can check that it matches the value you sent. A random string or a hash of a session cookie is acceptable here, it just needs to be something you know but a potential attacker doesn’t and it should change for each new user.
+scope is a list of space separated permissions your integration requires. To change permissions later, all customers will need to repeat the authorization process. Please ensure you have the ones you need.
+Below is an example using requests_oauthlib.
+
+from requests_oauthlib import OAuth2Session
+
+AUTHORIZE_URL = 'https://auth.aweber.com/oauth2/authorize'
+
+# Replace with your real values
+client_id = '****'
+redirect_uri = 'https://localhost'
+scope = ['account.read', 'list.read', 'subscriber.read', 'email.read']
+
+oauth = OAuth2Session(client_id, redirect_uri=redirect_uri, scope=scope)
+authorization_url, state = oauth.authorization_url(AUTHORIZE_URL)
+print(authorization_url)
+The output will be the authorize URL for your integration user.
+
+Step 2: Get an Authorization Code
+Using the authorization URL you generated in Step 1, create a button or hyperlink that says “Click to connect to AWeber” or something similar.
+
+The link you provide will lead customers to AWeber’s authorization screen. This screen outlines your integration, the access being requested, and an area for customers to provide their username and password. Customers will review the screen, enter their login credentials, and click authorize.
+
+Clicking authorize (after entering valid credentials) redirects the user to the callback URI you specified in Step 1. In the query string of the redirect will be a query parameter containing your authorization code. If you provided a state token in step 1, that is sent back as a second query parameter.
+
+For example, if the redirect_uri you provided was https://app.example.com/auth we would redirect the AWeber customer’s browser to:
+
+https://app.example.com/auth?code=YOUR_NEW_AUTH_CODE&state=STATE_YOU_PROVIDED
+You should collect the query parameters from the URI. Please verify the state token sent to you is the same as the one you gave us. If everything is valid, save the code parameter for the next step. Your chosen library may handle verification of the state token for you.
+
+If you specified urn:ietf:wg:oauth:2.0:oob as your redirect_uri, the code will be displayed in a page for users to copy and paste into your application instead.
+
+Step 3: Trade your Authorization Code for an Access Token
+Now that you have your authorization code you’re ready to get your access token! This involves making a POST request to our access token URL, https://auth.aweber.com/oauth2/token using your client ID and client secret from your developer account. We recommend using HTTP Basic authentication with the client ID as the username and the client secret as the password. Most libraries support this approach. If your library does not support setting the Authorization header, please send them as query parameters called client_id and client_secret.
+
+Here’s what a POST request looks like using basic authentication:
+
+POST /oauth2/token HTTP/1.1
+Host: auth.aweber.com
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic *****************
+
+grant_type=authorization_code&code=YOUR_AUTHORIZATION_CODE&redirect_uri=YOUR_CALLBACK
+The parameters required are as follows:
+
+grant_type is a parameter that tells us if you’re getting a brand new access token or refreshing one. For a new token always pick authorization_code.
+code is the authorization code you obtained in step 2.
+redirect_uri is your callback again. Make sure it’s the same as the one you used before! We use this to help verify it’s still the same app making the request.
+Our response will contain your access_token, an expires_in value, and a refresh_token. Congratulations, you now have the access token required to make requests to AWeber’s API! You can try it out right away, but make sure to save the expires_in and refresh_token information for later.
+
+NOTE: Tokens should not be shared publicly. Please save them somewhere safe.
+
+To use the access_token you must include it with your request using a bearer authentication header. If you cannot set the Authorization header, then you may include the access token in a form-encoded body parameter named access_token or a query parameter of the same name. This access token remains good for the amount of seconds specified by the expires_in field. After that time passes you will need to refresh your token, which is covered in the final step of this walkthrough.
+
+Here is a requests_oauthlib example of fetching a token using the same OAuth2Session that was set up previously:
+
+client_secret = '*****'
+authorization_response = input('Log in and paste the returned URL here: ')
+
+token = oauth.fetch_token(
+    'https://auth.aweber.com/oauth2/token',
+    authorization_response=authorization_response,
+    client_secret=client_secret
+)
+print(token)
+Step 4: Refresh the Access Token
+If it has been a while since you obtained your access token, all requests to AWeber’s API will return an unauthorized error. To correct the error, you need to refresh your access token. This step works much like obtaining an access token. You will make a POST request to AWeber’s token endpoint. This time specify a grant_type of refresh_token and you include your refresh token in the request (instead of the authorization code). The same rules apply to including your client credentials (client_id and client_secret). The following example shows how to refresh a token using requests_oauthlib again.
+
+POST /oauth2/token HTTP/1.1
+Host: auth.aweber.com
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic *******************
+
+grant_type=refresh_token&refresh_token=YOUR_REFRESH_TOKEN
+The response is the same as when you redeem the authorization code for an access token. You will receive a new access_token, an expires_in parameter, and a refresh_token. This is required each time your token expires.
+
+Most libraries manage refreshing tokens for you by reading the expires_in parameter from a file or database location. Please refer to your library’s documentation about automatic refreshing. The implementation may vary slightly. When using Python’s requests_oauthlib library the call looks like this, where oauth is an OAuth2Session:
+
+client_id = '*****'
+client_secret = '*****'
+
+token = oauth.refresh_token('https://auth.aweber.com/oauth2/token',
+                            client_id=client_id, 
+                            client_secret=client_secret)
+Public or confidential?
+The preceding examples assumed that your applications configuration is kept secret since the client secret is used to create and refresh tokens. The client secret is required to be kept secret at all times. Anyone that has access to your client identifier and secret can access the data of every AWeber customer using your application. This works well for applications that you host in a closed environment but it does not work for mobile applications or integrations without secure configuration (e.g., Wordpress plug-ins).
+
+The OAuth 2.0 framework defines two client types in RFC-6749:
+
+Confidential
+
+Clients capable of maintaining the confidentiality of their credentials (e.g., client implemented on a secure server with restricted access to the client credentials), or capable of secure client authentication using other means.
+
+Public
+
+Clients incapable of maintaining the confidentiality of their credentials (e.g., clients executing on the device used by the resource owner, such as an installed native application or a web browser-based application), and incapable of secure client authentication via any other means.
+
+Public clients cannot use the standard OAuth 2.0 Authorization Code flow since they are incapable of maintaining secrets. For this reason, the AWeber API supports supports Proof Key for Code Exchange (PKCE) as specified in RFC-7636 for public clients.
+
+There are a few differences in the authorization flow for PKCE. The most important is that you never include your client secret. Instead of using a client secret that is shared between the client and the authorization server, PKCE has the client create a string of ASCII characters known as the code verifier. A hashed digest of the verifier is sent with the authorization request (step 1) and the verifier is added to the token request (step 3). The server saves the hashed digest (also known as the code challenge) with the authorization code that it generates and compares the verifier to the challenge when redeeming the authorization code.
+
+Let's walk through the differences from the standard flow step-by-step to see how PKCE works without a client secret.
+
+Step 1: Build an authorization URL
+The authorization URL for public clients requires two additional parameters to act as a transient secret. The code challenge is the hashed version of the code verifier. The code challenge method identifies the hash algorithm that was used to generate the challenge. This is required to be S256 since the AWeber API only supports SHA256 hashed challenges.
+
+Before sending the authorization request, the client is required to generate a code verifier that is a random string of at least 43 characters and at most 128 characters. See RFC-7636 for a precise description of the code verifier. Then the client generates the code challenge from the verifier by hashing the verifier using SHA-256 and Base64 encoding the resulting value using the url-safe base64 variant. The challenge and challenge method are sent as the code_challenge and code_challenge_method query parameters in the authorization URL.
+
+The following python snippet will generate an acceptable random verifier and code challenge:
+
+import base64
+import hashlib
+import os
+import uuid
+
+# Generate a ASCII verifier string -- we are using base64.urlsafe_b64encode
+# here to ensure that the characters in the string are valid.  The verifier
+# is NOT REQUIRED to be a base 64 encoded string.  The use of base64 here is
+# for convenience ONLY.
+verifier_bytes = os.urandom(32)
+code_verifier = base64.urlsafe_b64encode(verifier_bytes).rstrip(b'=')
+challenge_bytes = hashlib.sha256(code_verifier).digest()
+code_challenge = base64.urlsafe_b64encode(challenge_bytes).rstrip(b'=')
+state = str(uuid.uuid4())
+
+# Use the following parameters in the authorize URL.
+url_parameters = {
+    'response_type': 'code',
+    'client_id': MY_CLIENT_ID,
+    'redirect_uri': MY_REDIRECT_URI,
+    'scope': REQUESTED_SCOPES,
+    'state': state,
+    'code_challenge': code_challenge,
+    'code_challenge_method': 'S256',
+}
+Remember that the client is REQUIRED to save the code_verifier for use in step 3.
+
+Step 2: Get an Authorization Code
+This step is unchanged from the standard authorization code flow.
+
+Step 3: Trade your Authorization Code for an Access Token
+Instead of using the client secret, the client passes the code verifier that was generated in step 1. It also pass the client_id in the body instead of the Authorization header. This avoids possible issues with libraries that do not support having an empty password.
+
+The POST request should look like the following:
+
+POST /oauth2/token HTTP/1.1
+Host: auth.aweber.com
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&code=YOUR_AUTHORIZATION_CODE&redirect_uri=YOUR_CALLBACK&client_id=YOUR_CLIENT_ID&code_verifier=CODE_VERIFIER_FROM_STEP_1
+Step 4: Refresh the Access Token
+With OAuth 2.0, your access tokens will expire after ~2 hours. Several methods for refreshing are possible. If you do not refresh your token, you will receive an access token expired error.
+
+For Public clients, you omit the client_secret from the authorization parameters. The client should include the client_id in the body instead of using an Authorization header without a password.
+
+Have more than one user?
+Sometimes an integration is used by many AWeber customers. You can have as many users as you like with this authentication process. Just start at the top and make a new request token for each user of your integration. Access tokens are tied to AWeber customer accounts so each account will have a new set of tokens. You can store them safely in a database and use the account ID to differentiate them.
+
+Having trouble?
+Here are some solutions to common problems:
+
+Check the documentation for your chosen library. Are the calls being made correctly and is everything being passed around as it should be?
+Is your access token still valid? Try refreshing the token and see if that fixes any 401 Unauthorized errors.
+Did you copy your client ID and secret correctly? Make sure the ID and secret you’re using are the ones we provided in your developer account.
+Make sure you’re using your AWeber customer account and not your AWeber developer account on the authorization login page.
+If you still can’t figure it out we’re always happy to help you work through any errors. Send us an email at api@aweber.com and be sure to note any errors or information about the problem you’re having.
+
+OAuth 2.0 Examples
+The following examples show how to obtain an access token for an AWeber account using Python. For PHP, C#.NET, Ruby, and Node.js versions please see our PHP, C#.NET, Ruby, and Node.js code samples on GitHub.
+
+Get An Access Token
+Below is a python example using the requests_oauthlib OAuth library to obtain an accounts access tokens.
+
+You will need:
+
+The Client ID, Client Secret, and Redirect URI from your integration, available on the My Apps Page.
+The list of scopes to allow for the customer's account.
+The username and password for an AWeber account that you want to connect.
+from requests_oauthlib import OAuth2Session
+
+AUTHORIZATION_BASE_URL = 'https://auth.aweber.com/oauth2/authorize'
+TOKEN_URL = 'https://auth.aweber.com/oauth2/token'
+
+client_id = '*****'
+client_secret = '*****'
+redirect_uri = 'YOUR_REDIRECT_URI'
+
+# Sample scopes. Put the ones that you need here.
+scope = ['account.read', 'list.read', 'subscriber.read']
+
+# Create a new OAuth2Session with your information.
+aweber = OAuth2Session(client_id, redirect_uri=redirect_uri, scope=scope)
+
+# requests_oauthlib generates a state token for us, 
+# but you can optionally specify your own.
+authorization_url, state = aweber.authorization_url(AUTHORIZATION_BASE_URL)
+
+# Open link in browser to authorize.
+print('Go here to authorize:', authorization_url)
+
+# Get the auth code from the callback.
+redirect_response = input('Enter the full redirect URL: ')
+
+# Use the auth code to get access tokens.
+token = aweber.fetch_token(TOKEN_URL, client_secret=client_secret,
+                           authorization_response=redirect_response)
+
+print('Access Token:  ', token['access_token'])
+print('Refresh Token: ', token['refresh_token'])
+print('Token Type:    ', token['token_type'])
+print('Expires In:    ', token['expires_in'])
+print('Expires At:    ', token['expires_at'])
+
+resp = aweber.get('https://api.aweber.com/1.0/accounts')
+resp.raise_for_status()
+print(resp.json())
+Now you should have your access token and account id from the output. The last call in the example is to retrieve the /accounts resource in order to retrieve the account id. The account id and access token are needed for every api call.
+
+Distributing the application's source code?
+If you are making the source code of your integration public, you may not have a means to distribute the client secret securely. If you cannot guarantee the confidentiality of your client secret, then you are required to use Proof Key for Code Exchange as described in Public or confidential.
+
+Below is an example on how to authenticate using PKCE with the requests_oauthlib library. You will need:
+
+The Client ID, and Redirect URI from your integration, available on the My Apps Page.
+The list of scopes to allow for the customer's account.
+The username and password for an AWeber account that you want to connect.
+import base64
+import hashlib
+import os
+import urllib as parse
+
+from requests_oauthlib import OAuth2Session
+
+AUTHORIZATION_BASE_URL = 'https://auth.aweber.com/oauth2/authorize'
+TOKEN_URL = 'https://auth.aweber.com/oauth2/token'
+
+client_id = input('Your client ID:    ')
+redirect_uri = input('Your redirect URI: ')
+
+# Sample scopes. Put the ones that you need here.
+scope = ['account.read', 'list.read', 'subscriber.read']
+
+# Create a new OAuth2Session with your information.
+aweber = OAuth2Session(client_id, redirect_uri=redirect_uri, scope=scope)
+
+# Generate a valid code verifier and derived code challenge.
+verifier_bytes = os.urandom(32)
+code_verifier = base64.urlsafe_b64encode(verifier_bytes).rstrip(b'=')
+challenge_bytes = hashlib.sha256(code_verifier).digest()
+code_challenge = base64.urlsafe_b64encode(challenge_bytes).rstrip(b'=')
+
+# requests_oauthlib generates a state token for us, 
+# but you can optionally specify your own.
+authorization_url, state = aweber.authorization_url(
+    AUTHORIZATION_BASE_URL, code_challenge=code_challenge,
+    code_challenge_method='S256')
+
+# Open link in browser to authorize.
+print('Go here to authorize:', authorization_url)
+
+# Get the auth code from the callback.
+redirect_response = input('Enter the full redirect URL: ')
+
+# Use the auth code to get access tokens.
+token = aweber.fetch_token(
+    TOKEN_URL, authorization_response=redirect_response, client_secret=None,
+    body=parse.urlencode({'code_verifier': code_verifier}))
+
+print('Access Token:  ', token['access_token'])
+print('Refresh Token: ', token['refresh_token'])
+print('Token Type:    ', token['token_type'])
+print('Expires In:    ', token['expires_in'])
+print('Expires At:    ', token['expires_at'])
+
+resp = aweber.get('https://api.aweber.com/1.0/accounts')
+resp.raise_for_status()
+print(resp.json())
+OAuth 2.0 Traces
+This section contains low-level HTTP traces of the OAuth 2.0 authorization code flow. The client IDs, client secrets, authorization codes, and other details are fictitious and should not be used anywhere else.
+
+
+Confidential protocol flow
+The following HTTP trace shows the entire flow for a Confidential client using the following parameters:
+
+Parameter	Value
+Client ID	N1nwOnhAUyEjJcA0l4eI7dCfYKNVizSDE4Le0J4FRqc
+Client secret	rSu9NU70xOZFN2ojnWq3tLI49kb8vs84_KZQe1bcJy4
+Scopes	account.read list.read subscriber.read
+Redirect URI	https://127.0.0.1/oauth2-callback
+State	62cdb1ee8a5c40f6ba0d5de1dfa83113
+Authorization code	VhXKzYi5paFfs1aYqgikSw
+The web application initiates the authorization flow.
+
+GET /oauth2/authorize?response_type=code&client_id=N1nwOnhAUyEjJcA0l4eI7dCfYKNVizSDE4Le0J4FRqc&redirect_uri=https%3A%2F%2F127.0.0.1%2Foauth2-callback&scope=account.read+list.read+subscriber.read&state=62cdb1ee8a5c40f6ba0d5de1dfa83113 HTTP/1.1
+Host: auth.aweber.com
+
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+<html>.... authorization form ....</html>
+The user authenticates and authorizes the application.
+
+The authorization form action initiates a POST to the AWeber authorization server which redirects the user to the application-specified redirect URL.
+
+POST /oauth2/authorize HTTP/1.1
+Host: auth.aweber.com
+Content-Type: application/x-www-form-urlencoded
+
+parameters-omitted
+
+HTTP/1.1 302 Found
+Location: https://127.0.0.1/oauth2-callback?state=62cdb1ee8a5c40f6ba0d5de1dfa83113&code=VhXKzYi5paFfs1aYqgikSw
+The external application exchanges the authorization code for an access token.
+
+POST /oauth2/token HTTP/1.1
+Host: auth.aweber.com
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+Authorization: Basic TjFud09uaEFVeUVqSmNBMGw0ZUk3ZENmWUtOVml6U0RFNExlMEo0RlJxYzpyU3U5TlU3MHhPWkZOMm9qbldxM3RMSTQ5a2I4dnM4NF9LWlFlMWJjSnk0
+
+grant_type=authorization_code&code=VhXKzYi5paFfs1aYqgikSw&redirect_uri=https%3A%2F%2F127.0.0.1%2Foauth2-callback
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store
+Pragma: no-cache
+
+{
+  "access_token": "uPloUGQL689I9qYk1nkwjb2yZirWnoja",
+  "refresh_token": "XF2OZN3dmSSphGimcoNbq839UGT0lGo2",
+  "expires_in": 7200,
+  "state": "62cdb1ee8a5c40f6ba0d5de1dfa83113"
+}
+
+Public protocol flow
+The following HTTP trace shows the entire flow for a Public client using the following parameters:
+
+Parameter	Value
+Client ID	N1nwOnhAUyEjJcA0l4eI7dCfYKNVizSDE4Le0J4FRqc
+Code verifier	HLBvz1g_bbLZ31kjvlXJ5Rl0W1GgxU8rjYJdQIIEH_Y
+Scopes	account.read list.read subscriber.read
+Redirect URI	https://127.0.0.1/oauth2-callback
+State	62cdb1ee8a5c40f6ba0d5de1dfa83113
+Authorization code	VhXKzYi5paFfs1aYqgikSw
+The web application initiates the authorization flow.
+
+GET /oauth2/authorize?response_type=code&client_id=N1nwOnhAUyEjJcA0l4eI7dCfYKNVizSDE4Le0J4FRqc&code_challenge=-oiamT7-EafhQ27P3V9cGEtu3crg731kec-GWhgrTV8&code_challenge_method=S256&redirect_uri=https%3A%2F%2F127.0.0.1%2Foauth2-callback&scope=account.read+list.read+subscriber.read&state=62cdb1ee8a5c40f6ba0d5de1dfa83113 HTTP/1.1
+Host: auth.aweber.com
+
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+<html>.... authorization form ....</html>
+The authorization form action initiates a POST to the AWeber authorization server which redirects the user to the application-specified redirect URL.
+
+The user authenticates and authorizes the application.
+
+POST /oauth2/authorize HTTP/1.1
+Host: auth.aweber.com
+Content-Type: application/x-www-form-urlencoded
+
+parameters-omitted
+
+HTTP/1.1 302 Found
+Location: https://127.0.0.1/oauth2-callback?state=62cdb1ee8a5c40f6ba0d5de1dfa83113&code=VhXKzYi5paFfs1aYqgikSw
+The external application exchanges the authorization code for an access token.
+
+POST /oauth2/token HTTP/1.1
+Host: auth.aweber.com
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+
+grant_type=authorization_code&code=VhXKzYi5paFfs1aYqgikSw&code_verifier=HLBvz1g_bbLZ31kjvlXJ5Rl0W1GgxU8rjYJdQIIEH_Y&client_id=N1nwOnhAUyEjJcA0l4eI7dCfYKNVizSDE4Le0J4FRqc
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store
+Pragma: no-cache
+
+{
+  "access_token": "uPloUGQL689I9qYk1nkwjb2yZirWnoja",
+  "refresh_token": "XF2OZN3dmSSphGimcoNbq839UGT0lGo2",
+  "expires_in": 7200,
+  "state": "62cdb1ee8a5c40f6ba0d5de1dfa83113"
+}
+OAuth 2.0 Reference
+These endpoints are used to authenticate with the api. The AWeber API uses the OAuth 2.0 model to handle authentication. OAuth is a standardized way for services to grant permission on a user's behalf to another application, without exposing their credentials (ie - username and password).
+
+Get a token
+
+post
+/oauth2/token
+This endpoint is used to get an access token. This endpoint can obtain an access point from one of two grant types.
+
+In the initial authorization, a grant_type of authorization_code is used with the authorization_code received from the URL the user is redirected to after authorizing the integration to their account.
+
+If an access token is expired this endpoint can be used with a grant_type of refresh_token and the refresh_token stored for the user's access token.
+
+This endpoint must be provided with the client_id and client_secret either in the Authorization header (preferred) or in the request body.
+
+header Parameters
+Authorization	
+string
+Example: Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=
+A base-64 encoded string for client_id:client_secret.
+
+Request Body schema: application/json
+One of Authorization CodeRefresh Token (Confidential)Refresh Token (Public)Proof Key for Code Exchange (PKCE)
+client_id
+required
+string
+The client ID of the application. Available on the My Apps Page.
+Not required if Authorization header is set.
+
+client_secret
+required
+string
+The client secret of the application. Available on the My Apps Page.
+Not required if Authorization header is set.
+
+grant_type
+required
+string
+Value: "authorization_code"
+The grant type of the token.
+
+code
+required
+string
+The authorization code received from the authorization call.
+
+Responses
+200 The request completed successfully
+400 The server cannot or will not process the request due to a client error
+401 The request could not be completed due to an authentication error
+410 The request has been blocked
+500 The request failed due to an internal error in the code or because of an external dependency failure
+503 The server is currently unavailable
+Request samples
+Payload
+Content type
+application/json
+Example
+
+Authorization Code
+Authorization Code
+
+Copy
+{
+"client_id": "***************",
+"client_secret": "***************",
+"grant_type": "authorization_code",
+"code": "***************"
+}
+Response samples
+200400401410500503
+Content type
+application/json
+
+Copy
+{
+"access_token": "***************",
+"expires_in": 7200,
+"refresh_token": "***************",
+"token_type": "bearer"
+}
+Revoke a token
+
+post
+/oauth2/revoke
+This endpoint is used to revoke an access or refresh token.
+
+header Parameters
+Authorization	
+string
+Example: Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=
+A base-64 encoded string for client_id:client_secret. The client_secret must be left blank for public clients.
+
+Request Body schema: 
+application/json
+application/json
+One of ConfidentialProof Key for Code Exchange (PKCE)
+client_id
+required
+string
+The client ID of the application. Available on the My Apps Page.
+Not required if Authorization header is set.
+
+client_secret
+required
+string
+The client secret of the application. Available on the My Apps Page.
+Not required if Authorization header is set.
+
+token	
+string
+The access token or refresh token to revoke
+
+token_type_hint	
+string
+Enum: "access_token" "refresh_token"
+Type of token given in the token parameter. Valid values are
+
+access_token
+refresh_token
+
+If not specified, search for both kinds of tokens.

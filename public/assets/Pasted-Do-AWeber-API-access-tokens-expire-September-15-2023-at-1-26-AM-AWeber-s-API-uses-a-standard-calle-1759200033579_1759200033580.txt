@@ -1,0 +1,42 @@
+Do AWeber API access tokens expire?
+September 15, 2023 at 1:26 AM
+AWeber's API uses a standard called OAuth to ensure that a request coming to our API is made by a known integration and the customer has given that integration permission to access their account.
+
+An access token proves a customer has given an integration permission to access their account. It is obtained by a developer after the customer successfully enters their AWeber login information during the OAuth flow.
+
+
+OAuth 2
+AWeber’s OAuth 2 access tokens expire two hours after they are issued.
+
+When using OAuth 2 with AWeber’s API, your access token will contain several pieces of information. You’ll get an expires_in which is the length of time the token is good for, measured in seconds. There is also an expires_at which is the time the token expires at represented as a floating number value (Unix or POSIX Time). Use these values to manage the expiration of tokens in your application.
+
+The access token you have can be refreshed before or after the expiration time. You can refresh it proactively before it expires or wait until it expires. To refresh, you will need the refresh_token that was returned with your access token. There are a couple different ways to handle refreshing described below.
+
+Refreshing Automatically (preferred)
+
+Most OAuth 2 compatible libraries automatically refresh tokens for you. Doing this requires a little set up. Once in place, you can focus on making API calls. We recommend this approach. In most cases, your library will require you to save token information somewhere and have a way for the refreshed token to be saved. This could be as simple as saving the token information to a file or keeping the information in a key/value store owned by your organization. Read the documentation for your chosen library to see if automatic refreshing is available and how to implement it.
+
+Refresh on Start
+
+If you have a cron job or something similar running a small script every day (for example to check for new subscribers), you could refresh the tokens when your script starts up. Make sure you save the refresh token each time. You will need them the next time the script runs!
+
+Refresh on Error
+
+This is the bare minimum amount of refreshing your application must do. When calling AWeber’s API, you should already be catching and handling errors. Simply catch the ‘401 Unauthorized’ error and make a call to refresh the token to handle the error. Be sure to update the access and refresh tokens. You will need them to continue until the next expiration.
+
+How to Refresh
+
+Refreshing is similar to obtaining your access token. Simply make a POST request to AWeber’s token endpoint (https://auth.aweber.com/oauth2/token) with your refresh token and a “refresh_token” grant_type as parameters. The request should look like this:
+
+POST /oauth2/token
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic
+YOUR AUTHENTICATION
+
+https://auth.aweber.com/oauth2/token
+?grant_type=refresh_token
+&refresh_token=YOUR_REFRESH_TOKEN
+Your chosen HTTP library likely has a wrapper around this call to make it super simple for you, be sure to check the library’s documentation!
+
+ 
+
