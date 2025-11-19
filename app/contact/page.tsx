@@ -1,18 +1,18 @@
+'use client';
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { z } from "zod";
 import { apiRequest } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, Mail, MessageSquare } from "lucide-react";
-import Navigation from "@/components/navigation";
-import StickyCTA from "@/components/sticky-cta";
 
 const contactFormSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -104,7 +104,6 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
       
       {/* Hero Section */}
       <section className="pt-24 pb-16 gradient-bg relative overflow-hidden" data-testid="contact-hero">
@@ -362,7 +361,6 @@ export default function Contact() {
           )}
         </div>
       </section>
-      <StickyCTA />
     </div>
   );
 }

@@ -6,6 +6,7 @@ import Footer from '@/components/footer'
 import StickyCTA from '@/components/sticky-cta'
 import { Toaster } from '@/components/ui/toaster'
 import { TooltipProvider } from '@/components/ui/tooltip'
+import { QueryClientProvider } from '@/components/providers/query-client-provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -28,17 +29,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <TooltipProvider>
-          <div className="flex flex-col min-h-screen">
-            <Navigation />
-            <div className="flex-grow">
-              {children}
+        <QueryClientProvider>
+          <TooltipProvider>
+            <div className="flex flex-col min-h-screen">
+              <Navigation />
+              <div className="flex-grow">
+                {children}
+              </div>
+              <Footer />
             </div>
-            <Footer />
-          </div>
-          <StickyCTA />
-          <Toaster />
-        </TooltipProvider>
+            <StickyCTA />
+            <Toaster />
+          </TooltipProvider>
+        </QueryClientProvider>
       </body>
     </html>
   )
