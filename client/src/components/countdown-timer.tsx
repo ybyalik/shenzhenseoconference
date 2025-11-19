@@ -32,11 +32,5 @@ export default function CountdownTimer() {
     return () => clearInterval(timer);
   }, []);
 
-  return (
-    <div className="mb-6" data-testid="countdown-timer">
-      <div className="text-lg text-red-300 font-semibold">
-        Super Early Bird Sale Has Ended
-      </div>
-    </div>
-  );
+  return null;
 }
