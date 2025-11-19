@@ -102,9 +102,6 @@ export default function TicketForm() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-ticket-title">
             <span className="line-through text-muted-foreground">Secure Your Super Early Bird Tickets</span>
           </h2>
-          <p className="text-xl text-destructive font-semibold max-w-2xl mx-auto" data-testid="text-ticket-description">
-            Super Early Bird pricing has expired. Sign up below to be notified when our Early Bird Tickets drop
-          </p>
           <p className="text-sm text-muted-foreground mt-2" data-testid="text-deadline">
             Super Early Bird period ended September 30, 2025
           </p>
