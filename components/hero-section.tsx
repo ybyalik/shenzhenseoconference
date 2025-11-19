@@ -63,7 +63,7 @@ export default function HeroSection() {
     <section className="pt-16 gradient-bg relative overflow-hidden" data-testid="hero-section">
       <div 
         className="absolute inset-0 bg-cover bg-center opacity-20"
-        style={{ backgroundImage: 'url(/assets/home-lecture-1-min_1763345097074.png)' }}
+        style={{ backgroundImage: 'url(/assets/XSIR5227-opq3988955416_1763540674042.webp)' }}
       ></div>
       <div className="absolute inset-0 bg-black/50"></div>
       <div className="absolute inset-0 hero-bg opacity-30"></div>
