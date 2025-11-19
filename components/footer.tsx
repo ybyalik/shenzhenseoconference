@@ -57,7 +57,7 @@ export default function Footer() {
             <ul className="space-y-2 text-muted-foreground text-sm">
               <li className="flex items-start sm:items-center" data-testid="contact-email">
                 <Inbox className="mr-2 h-4 w-4 flex-shrink-0 mt-0.5 sm:mt-0" /> 
-                <span className="break-all">support@shenzhenseoconference.com</span>
+                <span className="break-words">support@shenzhenseoconference.com</span>
               </li>
               <li className="flex items-center" data-testid="contact-location">
                 <MapPin className="mr-2 h-4 w-4 flex-shrink-0" /> Shenzhen, China
@@ -83,9 +83,6 @@ export default function Footer() {
 
         <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground text-xs sm:text-sm">
           <p data-testid="text-copyright">Copyright &copy; 2025 ShenzhenSEOConference.com. All rights reserved.</p>
-          <p className="mt-2">
-            Developed by <a href="https://bridgethegap.ai/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors" data-testid="link-developer">BridgeTheGap.ai</a>
-          </p>
         </div>
       </div>
     </footer>
