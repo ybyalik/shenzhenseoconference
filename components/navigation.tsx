@@ -26,7 +26,7 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="w-full bg-background/80 backdrop-blur-lg border-b border-border" data-testid="navigation">
+    <nav className="w-full gradient-bg border-b border-border/20" data-testid="navigation">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center" data-testid="nav-logo">
