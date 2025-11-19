@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import type { StaticImageData } from "next/image";
 
 import feature1Img from "@assets/home-featured5-png_1763345458785.webp";
 import feature2Img from "@assets/feature2-png_1763345462341.webp";
@@ -18,7 +19,7 @@ const FloatingImage = ({
   moveY,
   delay 
 }: { 
-  src: string; 
+  src: string | StaticImageData; 
   alt: string; 
   startX: number; 
   startY: number; 
@@ -54,7 +55,7 @@ const FloatingImage = ({
       viewport={{ once: true }}
     >
       <img
-        src={src}
+        src={typeof src === 'string' ? src : src.src}
         alt={alt}
         className="w-52 md:w-72 lg:w-96"
         style={{ 
