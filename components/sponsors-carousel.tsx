@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import type { StaticImageData } from "next/image";
 import quickCreatorLogo from "@assets/quickcreator-min_1756775972402.png";
 import ecomExpertsLogo from "@assets/ecomexperts_1756775972401.png";
 import whitePressLogo from "@assets/whitepress_1756775972401.png";
@@ -106,7 +107,7 @@ export default function SponsorsCarousel() {
                   <div className="h-16 flex items-center justify-center mb-3">
                     {sponsor.logo ? (
                       <img 
-                        src={sponsor.logo} 
+                        src={typeof sponsor.logo === 'string' ? sponsor.logo : sponsor.logo.src} 
                         alt={sponsor.name}
                         className="max-h-12 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
                         data-testid={`img-sponsor-${index}`}

@@ -1,0 +1,16 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/contact/route": "/api/contact",
+  "/api/email-subscribe/route": "/api/email-subscribe",
+  "/api/sponsorship-inquiries/route": "/api/sponsorship-inquiries",
+  "/api/tickets/route": "/api/tickets",
+  "/contact/page": "/contact",
+  "/page": "/",
+  "/plan-your-trip/page": "/plan-your-trip",
+  "/privacy-policy/page": "/privacy-policy",
+  "/sitemap.xml/route": "/sitemap.xml",
+  "/speakers/page": "/speakers",
+  "/sponsors/page": "/sponsors",
+  "/terms-conditions/page": "/terms-conditions"
+}

@@ -3,6 +3,7 @@ import { User, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import SpeakerPreviewModal from "./speaker-preview-modal";
+import type { StaticImageData } from "next/image";
 import garyImage from "@assets/Gary-Illyes-1_1756775848714.webp";
 import kyleImage from "@assets/Kyle-Roof-1_1756775848714.webp";
 import charlesImage from "@assets/Charles-Floate_1756775848714.jpg";
@@ -109,7 +110,7 @@ export default function SpeakerTeaser() {
                 <CardContent className="p-6 text-center">
                   <div className="relative mb-4">
                     <img 
-                      src={speaker.image} 
+                      src={typeof speaker.image === 'string' ? speaker.image : speaker.image.src} 
                       alt={speaker.name}
                       className="w-20 h-20 rounded-full object-cover mx-auto mb-3"
                     />

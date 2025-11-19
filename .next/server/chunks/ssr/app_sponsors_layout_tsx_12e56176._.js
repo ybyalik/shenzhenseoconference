@@ -1,0 +1,3 @@
+module.exports=[87433,a=>{"use strict";var b=a.i(7997);function c({children:a}){return(0,b.jsx)(b.Fragment,{children:a})}a.s(["default",()=>c,"metadata",0,{title:"Sponsors - Shenzhen SEO Conference 2026",description:"Become a sponsor of the Shenzhen SEO Conference 2026. Connect with 500+ SEO professionals and showcase your brand at the premier international SEO event.",openGraph:{title:"Sponsors - Shenzhen SEO Conference 2026",description:"Sponsorship opportunities for the premier international SEO conference in Shenzhen.",type:"website"}}])}];
+
+//# sourceMappingURL=app_sponsors_layout_tsx_12e56176._.js.map

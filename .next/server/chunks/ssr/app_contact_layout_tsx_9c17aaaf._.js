@@ -1,0 +1,3 @@
+module.exports=[25940,a=>{"use strict";var b=a.i(7997);function c({children:a}){return(0,b.jsx)(b.Fragment,{children:a})}a.s(["default",()=>c,"metadata",0,{title:"Contact Us - Shenzhen SEO Conference 2026",description:"Get in touch with the Shenzhen SEO Conference team. Request business invitation letters for visa applications or send us your questions and inquiries.",openGraph:{title:"Contact Us - Shenzhen SEO Conference 2026",description:"Get in touch with us for inquiries, visa invitation letters, and general questions.",type:"website"}}])}];
+
+//# sourceMappingURL=app_contact_layout_tsx_9c17aaaf._.js.map
