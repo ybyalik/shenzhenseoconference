@@ -39,7 +39,6 @@ export default function Home() {
       
       <Navigation />
       <HeroSection />
-      <ParallaxIntro />
       <StickyCTA />
       
       {/* Video Section */}
