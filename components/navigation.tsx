@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Ticket } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -90,7 +90,8 @@ export default function Navigation() {
                 data-testid="button-buy-tickets"
                 aria-label="Buy conference tickets"
               >
-                Buy Tickets
+                <Ticket className="mr-2 h-5 w-5" />
+                Get Tickets
               </Button>
             </Link>
           </div>
