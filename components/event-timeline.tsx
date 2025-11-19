@@ -21,23 +21,23 @@ const eventTypeStyles: Record<EventType, {
 }> = {
   workshop: { 
     variant: 'secondary', 
-    color: '#2C1D6C', 
+    color: '#B533FF', 
     bgColor: 'bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/30',
-    borderColor: '#2C1D6C',
+    borderColor: '#B533FF',
     icon: MapPin
   },
   mastermind: { 
     variant: 'outline', 
-    color: '#1A4AFF', 
-    bgColor: 'bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/30',
-    borderColor: '#1A4AFF',
+    color: '#B533FF', 
+    bgColor: 'bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/30',
+    borderColor: '#B533FF',
     icon: Brain
   },
   conference: { 
     variant: 'default', 
-    color: '#FF3E92', 
-    bgColor: 'bg-gradient-to-br from-pink-50 to-pink-100 dark:from-pink-950/20 dark:to-pink-900/30',
-    borderColor: '#FF3E92',
+    color: '#B533FF', 
+    bgColor: 'bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/30',
+    borderColor: '#B533FF',
     icon: Users
   },
   networking: { 

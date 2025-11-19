@@ -73,13 +73,13 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
             {/* Attendees Stat */}
             <div className="group cursor-pointer" data-testid="stat-attendees">
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/30 border rounded-2xl p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300" style={{ borderColor: '#2C1D6C' }}>
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#2C1D6C' }}>
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/30 border rounded-2xl p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300" style={{ borderColor: '#1A4AFF' }}>
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#1A4AFF' }}>
                   <Users className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-3xl md:text-4xl font-bold mb-2 transition-colors" style={{ color: '#2C1D6C' }}>500+</div>
-                <div className="text-sm font-medium" style={{ color: '#2C1D6C' }}>Attendees Expected</div>
-                <div className="text-xs opacity-70 mt-1" style={{ color: '#2C1D6C' }}>From around the world</div>
+                <div className="text-3xl md:text-4xl font-bold mb-2 transition-colors" style={{ color: '#1A4AFF' }}>500+</div>
+                <div className="text-sm font-medium" style={{ color: '#1A4AFF' }}>Attendees Expected</div>
+                <div className="text-xs opacity-70 mt-1" style={{ color: '#1A4AFF' }}>From around the world</div>
               </div>
             </div>
             
@@ -97,25 +97,25 @@ export default function Home() {
             
             {/* Days Stat */}
             <div className="group cursor-pointer" data-testid="stat-days">
-              <div className="bg-gradient-to-br from-pink-50 to-pink-100 dark:from-pink-950/20 dark:to-pink-900/30 border rounded-2xl p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300" style={{ borderColor: '#FF3E92' }}>
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#FF3E92' }}>
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/30 border rounded-2xl p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300" style={{ borderColor: '#1A4AFF' }}>
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#1A4AFF' }}>
                   <Calendar className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-3xl md:text-4xl font-bold mb-2 transition-colors" style={{ color: '#FF3E92' }}>5</div>
-                <div className="text-sm font-medium" style={{ color: '#FF3E92' }}>Days of Innovation</div>
-                <div className="text-xs opacity-70 mt-1" style={{ color: '#FF3E92' }}>Sept 17-21, 2026</div>
+                <div className="text-3xl md:text-4xl font-bold mb-2 transition-colors" style={{ color: '#1A4AFF' }}>5</div>
+                <div className="text-sm font-medium" style={{ color: '#1A4AFF' }}>Days of Innovation</div>
+                <div className="text-xs opacity-70 mt-1" style={{ color: '#1A4AFF' }}>Sept 17-21, 2026</div>
               </div>
             </div>
             
             {/* Countries Stat */}
             <div className="group cursor-pointer" data-testid="stat-countries">
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/30 border rounded-2xl p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300" style={{ borderColor: '#B533FF' }}>
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#B533FF' }}>
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/30 border rounded-2xl p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300" style={{ borderColor: '#1A4AFF' }}>
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#1A4AFF' }}>
                   <Globe className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-3xl md:text-4xl font-bold mb-2 transition-colors" style={{ color: '#B533FF' }}>30+</div>
-                <div className="text-sm font-medium" style={{ color: '#B533FF' }}>Countries Represented</div>
-                <div className="text-xs opacity-70 mt-1" style={{ color: '#B533FF' }}>Global perspectives</div>
+                <div className="text-3xl md:text-4xl font-bold mb-2 transition-colors" style={{ color: '#1A4AFF' }}>30+</div>
+                <div className="text-sm font-medium" style={{ color: '#1A4AFF' }}>Countries Represented</div>
+                <div className="text-xs opacity-70 mt-1" style={{ color: '#1A4AFF' }}>Global perspectives</div>
               </div>
             </div>
           </div>
