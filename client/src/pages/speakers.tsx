@@ -184,8 +184,7 @@ export default function Speakers() {
               <div>
                 <h2 className="text-xl font-semibold mb-2">Join Us in 2026</h2>
                 <p className="text-purple-100">
-                  The 2026 Shenzhen SEO Conference will take place September 17-21, 2026. 
-                  Pre-order your tickets now to secure early bird pricing and be part of the next generation of speakers and attendees shaping the future of international SEO.
+                  The 2026 Shenzhen SEO Conference is on the horizon with this year's speaker lineup soon to be announced. Secure your spot early and be part of the community shaping the future of international SEO.
                 </p>
               </div>
             </div>
