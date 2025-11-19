@@ -1098,10 +1098,6 @@ body {
   margin-left: -1rem;
 }
 
-.-mt-16 {
-  margin-top: -4rem;
-}
-
 .-mt-2 {
   margin-top: -.5rem;
 }
@@ -2567,16 +2563,16 @@ body {
   padding-top: .25rem;
 }
 
+.pt-16 {
+  padding-top: 4rem;
+}
+
 .pt-24 {
   padding-top: 6rem;
 }
 
 .pt-3 {
   padding-top: .75rem;
-}
-
-.pt-32 {
-  padding-top: 8rem;
 }
 
 .pt-4 {
