@@ -1,0 +1,120 @@
+import type { Metadata } from 'next';
+import { Card, CardContent } from "@/components/ui/card";
+import { MapPin, Calendar, Mail, Plane, CreditCard, MessageCircle, Bus, Compass, AlertCircle } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: 'Plan Your Trip - Shenzhen SEO Conference 2026',
+  description: 'Everything you need to know to plan your trip to the Shenzhen SEO Conference 2026. Visa requirements, travel information, accommodation, and local tips.',
+  openGraph: {
+    title: 'Plan Your Trip - Shenzhen SEO Conference 2026',
+    description: 'Everything you need to know to plan your trip to Shenzhen for the SEO Conference 2026.',
+    type: 'website',
+  },
+};
+
+export default function PlanYourTrip() {
+  return (
+    <div className="min-h-screen bg-background">
+      <section className="pt-24 pb-16 gradient-bg relative overflow-hidden" data-testid="plan-trip-hero">
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6" data-testid="text-plan-trip-title">
+            Plan Your Trip
+          </h1>
+          <p className="text-xl text-white/90" data-testid="text-plan-trip-subtitle">
+            Plan Your Trip to the Shenzhen SEO Conference
+          </p>
+        </div>
+      </section>
+
+      <section className="py-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p className="text-lg text-muted-foreground text-center" data-testid="text-intro">
+          We're thrilled to welcome you to the Shenzhen SEO Conference. To make the most of your experience, we encourage you to plan ahead. From visa requirements to local tips, this guide will help ensure a smooth and stress-free trip to Shenzhen.
+        </p>
+      </section>
+
+      <section className="py-12 bg-muted" data-testid="essential-info">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold mb-8 flex items-center gap-3" data-testid="text-essential-title">
+            <AlertCircle className="w-8 h-8 text-primary" />
+            Essential Information
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card data-testid="card-dates">
+              <CardContent className="p-6">
+                <Calendar className="w-10 h-10 text-primary mb-4" />
+                <h3 className="font-semibold mb-2">Conference Dates</h3>
+                <p className="text-muted-foreground">September 17-21, 2026</p>
+              </CardContent>
+            </Card>
+            <Card data-testid="card-venue">
+              <CardContent className="p-6">
+                <MapPin className="w-10 h-10 text-primary mb-4" />
+                <h3 className="font-semibold mb-2">Venue</h3>
+                <p className="text-muted-foreground">To be announced at a later date</p>
+              </CardContent>
+            </Card>
+            <Card data-testid="card-contact">
+              <CardContent className="p-6">
+                <Mail className="w-10 h-10 text-primary mb-4" />
+                <h3 className="font-semibold mb-2">Contact</h3>
+                <p className="text-muted-foreground break-words">support@shenzhenseoconference.com</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16" data-testid="visa-requirements">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold mb-6" data-testid="text-visa-title">Visa Requirements</h2>
+          
+          <p className="text-lg mb-6">
+            If you hold a passport from one of the following countries, you can <strong>travel to China without a visa</strong> as long as your visit does not last longer than the visa-free period listed below:
+          </p>
+
+          <div className="space-y-4 mb-8">
+            <div className="bg-muted p-4 rounded-lg">
+              <p className="font-semibold mb-2">30 days (Temporary, until 31 December 2025):</p>
+              <p className="text-muted-foreground">France, Germany, Italy, Netherlands, Spain, Malaysia, Switzerland, Ireland, Hungary, Austria, Belgium, Luxembourg, New Zealand, Australia, Poland, Portugal, Greece, Cyprus, Slovenia, Slovakia, Norway, Finland, Denmark, Iceland, Republic of Korea, Japan, and more</p>
+            </div>
+          </div>
+
+          <Card className="mb-8 border-primary/20 bg-primary/5">
+            <CardContent className="p-6">
+              <h3 className="font-bold mb-4 text-lg">240-Hour Visa-Free Transit Policy</h3>
+              <p className="mb-4">
+                China also offers a <strong>240-hour visa-free transit</strong> policy for <a href="https://bio.visaforchina.cn/SYD3_EN/tongzhigonggao/329041139338448896.html" className="text-primary underline" target="_blank" rel="noopener noreferrer">54 eligible countries</a> to stay in China for up to 10 days without a visa.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800">
+            <CardContent className="p-6">
+              <p className="text-sm">
+                <strong>Note:</strong> if you need a business invitation letter, our team is more than happy to provide one for you. Please <a href="/contact/" className="text-primary underline">contact us</a> with your personal information and we'll issue the letter promptly.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <section className="py-16 bg-muted" data-testid="flights-section">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3" data-testid="text-flights-title">
+            <Plane className="w-8 h-8 text-primary" />
+            Flights and Airport Transfers
+          </h2>
+          
+          <p className="mb-4">
+            The nearest airport to Shenzhen is <strong>Shenzhen Bao'an International Airport (SZX)</strong>, which offers numerous domestic and international flights.
+          </p>
+
+          <p className="mb-4">
+            For attendees who can visit China with a valid visa or visa-free, <strong>Hong Kong International Airport (HKG)</strong> can be a good option as it's only 30 kilometers away from Shenzhen.
+          </p>
+        </div>
+      </section>
+    </div>
+  );
+}

@@ -1,22 +1,16 @@
+'use client';
+
 import { useState, useRef } from "react";
-import Navigation from "@/components/navigation";
 import ParallaxIntro from "@/components/parallax-intro";
 import HeroSection from "@/components/hero-section";
 import FounderStory from "@/components/founder-story";
 import EventHighlights from "@/components/event-highlights";
 import TicketForm from "@/components/ticket-form";
-// import SpeakerTeaser from "@/components/speaker-teaser";
 import VenueInfo from "@/components/venue-info";
 import FaqSection from "@/components/faq-section";
-import StickyCTA from "@/components/sticky-cta";
 import EmailSubscriber from "@/components/email-subscriber";
-
 import EventTimeline from "@/components/event-timeline";
-// import SponsorsCarousel from "@/components/sponsors-carousel";
-import { Search, Inbox, Phone, MapPin, Twitter, Facebook, Linkedin, Users, Mic, Calendar, Globe, Play } from "lucide-react";
-import logoImage from "@assets/logo-main_1756774330186.png";
-import darkLogoImage from "@assets/logodark_1756775589088.png";
-import conferenceImage from "@assets/shenzhen-seo-conference-min_1758443453925.webp";
+import { Users, Mic, Calendar, Globe, Play } from "lucide-react";
 
 export default function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -31,15 +25,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background">
-      <title>Shenzhen SEO Conference 2026 - Pre-Sale Tickets | Connect Eastern & Western Digital Markets</title>
-      <meta 
-        name="description" 
-        content="Join 500+ SEO professionals at the premier international conference in Shenzhen. Early bird tickets now available for September 18-21, 2026. Bridge Eastern and Western digital marketing strategies." 
-      />
-      
-      <Navigation />
       <HeroSection />
-      <StickyCTA />
       
       {/* Video Section */}
       <section className="py-16 bg-background" data-testid="section-video">
@@ -116,7 +102,7 @@ export default function Home() {
                 </div>
                 <div className="text-3xl md:text-4xl font-bold text-green-600 dark:text-green-400 mb-2 group-hover:text-green-700 dark:group-hover:text-green-300 transition-colors">5</div>
                 <div className="text-sm font-medium text-green-700 dark:text-green-300">Days of Innovation</div>
-                <div className="text-xs text-green-600/70 dark:text-green-400/70 mt-1">Sept 14-18, 2026</div>
+                <div className="text-xs text-green-600/70 dark:text-green-400/70 mt-1">Sept 17-21, 2026</div>
               </div>
             </div>
             
@@ -128,59 +114,25 @@ export default function Home() {
                 </div>
                 <div className="text-3xl md:text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2 group-hover:text-orange-700 dark:group-hover:text-orange-300 transition-colors">30+</div>
                 <div className="text-sm font-medium text-orange-700 dark:text-orange-300">Countries Represented</div>
-                <div className="text-xs text-orange-600/70 dark:text-orange-400/70 mt-1">East meets West</div>
+                <div className="text-xs text-orange-600/70 dark:text-orange-400/70 mt-1">Global perspectives</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <TicketForm />
-      <EventTimeline />
-      
       <FounderStory />
       <EventHighlights />
-      {/* <SpeakerTeaser /> */}
-      {/* <SponsorsCarousel /> */}
-      <VenueInfo />
-      <FaqSection />
-
-      {/* Final CTA */}
-      <section className="py-20 gradient-bg text-white" data-testid="section-final-cta">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-final-cta-title">
-            Don't Miss This Opportunity
-          </h2>
-          <p className="text-xl mb-8 text-white/90" data-testid="text-final-cta-description">
-            Join 500+ SEO professionals in Shenzhen for the ultimate East-West digital marketing experience.
-          </p>
-
-          <div className="mb-8 rounded-2xl overflow-hidden">
-            <img 
-              src={conferenceImage} 
-              alt="SEO conference audience and speaker interaction" 
-              className="w-full h-64 object-cover opacity-80"
-              data-testid="img-networking"
-            />
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
-              className="bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/90 transition-all transform hover:scale-105"
-              onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
-              data-testid="button-secure-pricing"
-            >
-              <Search className="inline mr-2 h-5 w-5" />
-              Secure Super Early Bird Pricing
-            </button>
-          </div>
-
-          <p className="text-sm text-white/80 mt-6" data-testid="text-countdown-footer">
-            Super Early Bird pricing ends in <span className="font-semibold">{Math.floor((new Date('2025-09-30T00:00:00+08:00').getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))} days</span>
-          </p>
-        </div>
+      
+      {/* Tickets Section */}
+      <section id="tickets" className="bg-background py-20 border-t border-border" data-testid="section-tickets">
+        <TicketForm />
       </section>
 
+      <EventTimeline />
+      <VenueInfo />
+      <FaqSection />
+      <EmailSubscriber />
     </div>
   );
 }
