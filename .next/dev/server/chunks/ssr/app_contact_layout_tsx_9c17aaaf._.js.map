@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///home/runner/workspace/app/contact/layout.tsx"],"sourcesContent":["import type { Metadata } from 'next';\n\nexport const metadata: Metadata = {\n  title: 'Contact Us - Shenzhen SEO Conference 2026',\n  description: 'Get in touch with the Shenzhen SEO Conference team. Request business invitation letters for visa applications or send us your questions and inquiries.',\n  openGraph: {\n    title: 'Contact Us - Shenzhen SEO Conference 2026',\n    description: 'Get in touch with us for inquiries, visa invitation letters, and general questions.',\n    type: 'website',\n  },\n};\n\nexport default function ContactLayout({\n  children,\n}: {\n  children: React.ReactNode;\n}) {\n  return <>{children}</>;\n}\n"],"names":[],"mappings":";;;;;;;;AAEO,MAAM,WAAqB;IAChC,OAAO;IACP,aAAa;IACb,WAAW;QACT,OAAO;QACP,aAAa;QACb,MAAM;IACR;AACF;AAEe,SAAS,cAAc,EACpC,QAAQ,EAGT;IACC,qBAAO;kBAAG;;AACZ"}}]
-}
