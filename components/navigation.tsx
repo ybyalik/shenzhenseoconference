@@ -26,13 +26,13 @@ export default function Navigation() {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg border-b border-gray-200' : 'bg-background/80 backdrop-blur-lg border-b border-border'}`} data-testid="navigation">
+    <nav className="w-full bg-background/80 backdrop-blur-lg border-b border-border" data-testid="navigation">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center" data-testid="nav-logo">
             <Link href="/" className="focus:outline-none focus:ring-2 focus:ring-primary/20 rounded">
               <img 
-                src={isScrolled ? "/assets/logodark_1756775589088.png" : "/assets/logo-main_1756774330186.png"} 
+                src="/assets/logo-main_1756774330186.png" 
                 alt="Shenzhen SEO Conference" 
                 className="h-8 w-auto"
               />
@@ -42,11 +42,7 @@ export default function Navigation() {
           <div className="hidden md:flex items-center space-x-8">
             <Link 
               href="/"
-              className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
-                isScrolled 
-                  ? 'text-gray-800 hover:text-primary' 
-                  : 'text-white hover:text-purple-200'
-              }`}
+              className="font-semibold text-white hover:text-purple-200 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
               data-testid="nav-home"
               aria-label="Navigate to Home page"
             >
@@ -54,11 +50,7 @@ export default function Navigation() {
             </Link>
             <Link 
               href="/speakers/"
-              className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
-                isScrolled 
-                  ? 'text-gray-800 hover:text-primary' 
-                  : 'text-white hover:text-purple-200'
-              }`}
+              className="font-semibold text-white hover:text-purple-200 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
               data-testid="nav-speakers"
               aria-label="Navigate to Speakers page"
             >
@@ -66,11 +58,7 @@ export default function Navigation() {
             </Link>
             <Link 
               href="/sponsors/"
-              className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
-                isScrolled 
-                  ? 'text-gray-800 hover:text-primary' 
-                  : 'text-white hover:text-purple-200'
-              }`}
+              className="font-semibold text-white hover:text-purple-200 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
               data-testid="nav-sponsors"
               aria-label="Navigate to Sponsors page"
             >
@@ -78,11 +66,7 @@ export default function Navigation() {
             </Link>
             <Link 
               href="/plan-your-trip/"
-              className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
-                isScrolled 
-                  ? 'text-gray-800 hover:text-primary' 
-                  : 'text-white hover:text-purple-200'
-              }`}
+              className="font-semibold text-white hover:text-purple-200 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
               data-testid="nav-plan-trip"
               aria-label="Navigate to Plan Your Trip page"
             >
@@ -90,11 +74,7 @@ export default function Navigation() {
             </Link>
             <Link 
               href="/contact/"
-              className={`font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1 ${
-                isScrolled 
-                  ? 'text-gray-800 hover:text-primary' 
-                  : 'text-white hover:text-purple-200'
-              }`}
+              className="font-semibold text-white hover:text-purple-200 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-2 py-1"
               data-testid="nav-contact"
               aria-label="Navigate to Contact page"
             >
@@ -102,12 +82,8 @@ export default function Navigation() {
             </Link>
             <Link href="/#tickets">
               <Button 
-                className={`px-6 py-2 rounded-full font-medium transition-colors focus:ring-4 focus:ring-primary/20 ${
-                  isScrolled 
-                    ? 'bg-primary text-primary-foreground hover:bg-primary/90' 
-                    : 'text-white hover:opacity-90'
-                }`}
-                style={!isScrolled ? { backgroundColor: '#ff007a' } : undefined}
+                className="px-6 py-2 rounded-full font-medium text-white hover:opacity-90 transition-colors focus:ring-4 focus:ring-primary/20"
+                style={{ backgroundColor: '#ff007a' }}
                 data-testid="button-buy-tickets"
                 aria-label="Buy conference tickets"
               >
@@ -117,9 +93,7 @@ export default function Navigation() {
           </div>
           
           <button 
-            className={`md:hidden transition-colors ${
-              isScrolled ? 'text-gray-800' : 'text-white'
-            }`}
+            className="md:hidden text-white transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             data-testid="button-mobile-menu"
           >
