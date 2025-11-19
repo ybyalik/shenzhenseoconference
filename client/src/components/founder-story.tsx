@@ -32,15 +32,15 @@ export default function FounderStory() {
 
             <div className="space-y-4 text-lg text-muted-foreground">
               <p data-testid="text-founder-intro">
-                Hi, my name is J.P. Zhang, I'm the host and organizer of the Shenzhen SEO Conference. With over 15 years in Google SEO, I've seen the immense potential of connecting Eastern and Western digital markets.
+                Hi, my name is <a href="https://www.linkedin.com/in/jiangpengzhang/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">J.P. Zhang</a>, the host of the Shenzhen SEO Conference. After 15+ years in the SEO industry, I've seen what's possible when the East and West learn from each other and work together.
               </p>
 
               <p data-testid="text-founder-vision">
-                This conference is more than an event—it's a community where professionals come together to share ideas, build partnerships, and explore China's vibrant digital ecosystem. Through keynotes, hands-on workshops, and networking opportunities, we'll unlock the potential of a truly global SEO community.
+                This conference is meant to be that bridge. A place where global SEO entrepreneurs and professionals can meet, share ideas, build real partnerships – all while exploring China and its fast-moving digital ecosystem.
               </p>
 
               <p className="font-semibold text-foreground" data-testid="text-founder-closing">
-                See you in Shenzhen!
+                My goal is simple: help build a truly global SEO community. See you in Shenzhen!
               </p>
             </div>
           </div>
