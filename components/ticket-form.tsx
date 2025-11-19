@@ -1,10 +1,12 @@
+'use client';
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import { insertTicketPreOrderSchema, type InsertTicketPreOrder } from "@shared/schema";
+import { z } from "zod";
 import { apiRequest } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,11 +17,22 @@ import { Badge } from "@/components/ui/badge";
 import { Check, Lock } from "lucide-react";
 import EmailSubscriber from "@/components/email-subscriber";
 
+const ticketPreOrderSchema = z.object({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  email: z.string().email("Invalid email address"),
+  company: z.string().optional(),
+  ticketType: z.enum(["standard", "deluxe", "vip"]),
+  subscribeNewsletter: z.boolean().default(false),
+});
+
+type TicketPreOrder = z.infer<typeof ticketPreOrderSchema>;
+
 export default function TicketForm() {
   const { toast } = useToast();
 
-  const form = useForm<InsertTicketPreOrder>({
-    resolver: zodResolver(insertTicketPreOrderSchema),
+  const form = useForm<TicketPreOrder>({
+    resolver: zodResolver(ticketPreOrderSchema),
     defaultValues: {
       firstName: "",
       lastName: "",
@@ -31,7 +44,7 @@ export default function TicketForm() {
   });
 
   const preOrderMutation = useMutation({
-    mutationFn: async (data: InsertTicketPreOrder) => {
+    mutationFn: async (data: TicketPreOrder) => {
       const response = await apiRequest("POST", "/api/ticket-preorders", data);
       return response.json();
     },
@@ -51,7 +64,7 @@ export default function TicketForm() {
     },
   });
 
-  const onSubmit = (data: InsertTicketPreOrder) => {
+  const onSubmit = (data: TicketPreOrder) => {
     preOrderMutation.mutate(data);
   };
 

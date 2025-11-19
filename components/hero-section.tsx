@@ -1,3 +1,5 @@
+'use client';
+
 import { Calendar, MapPin, Search, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -5,7 +7,7 @@ import CountdownTimer from "./countdown-timer";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/hooks/use-toast";
 import heroBackgroundImage from "@assets/home-lecture-1-min_1763345097074.png";
 
 export default function HeroSection() {
