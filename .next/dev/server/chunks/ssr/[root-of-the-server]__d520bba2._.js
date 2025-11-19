@@ -366,10 +366,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$speakers$2d$data$2e$t
 ;
 ;
 const metadata = {
-    title: '2025 Speakers - Shenzhen SEO Conference 2026',
+    title: 'Shenzhen SEO Conference 2026 – Meet the Industry Leaders',
     description: 'Meet the expert speakers from the 2025 Shenzhen SEO Conference. Industry leaders sharing insights on international SEO, digital marketing, and cross-border strategies.',
     openGraph: {
-        title: '2025 Speakers - Shenzhen SEO Conference 2026',
+        title: 'Shenzhen SEO Conference 2026 – Meet the Industry Leaders',
         description: 'Meet the expert speakers from the 2025 Shenzhen SEO Conference.',
         type: 'website'
     }

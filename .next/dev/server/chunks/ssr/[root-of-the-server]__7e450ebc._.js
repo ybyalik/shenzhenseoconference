@@ -620,11 +620,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$providers$2f$q
 ;
 ;
 const metadata = {
-    title: 'Shenzhen SEO Conference 2026 - Pre-Sale Tickets | Connect Eastern & Western Digital Markets',
-    description: 'Join 500+ SEO professionals at the premier international conference in Shenzhen. Early bird tickets now available for September 18-21, 2026. Bridge Eastern and Western digital marketing strategies.',
+    title: 'Shenzhen SEO Conference 2026 (September 14–18)',
+    description: 'Join 500+ SEO professionals at the premier international conference in Shenzhen. Early bird tickets now available for September 14-18, 2026. Bridge Eastern and Western digital marketing strategies.',
     openGraph: {
-        title: 'Shenzhen SEO Conference 2026 - Pre-Sale Tickets',
-        description: 'Join 500+ SEO professionals at the premier international conference in Shenzhen. September 18-21, 2026.',
+        title: 'Shenzhen SEO Conference 2026 (September 14–18)',
+        description: 'Join 500+ SEO professionals at the premier international conference in Shenzhen. September 14-18, 2026.',
         type: 'website',
         siteName: 'Shenzhen SEO Conference'
     }

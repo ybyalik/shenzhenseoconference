@@ -121,26 +121,26 @@ export default function Contact() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-6">
             <Card data-testid="card-general-inquiries">
-              <CardContent className="p-8">
+              <CardContent className="p-6 sm:p-8">
                 <Mail className="w-10 h-10 text-primary mb-4" />
                 <h3 className="text-xl font-bold mb-2">General Inquiries</h3>
                 <p className="text-muted-foreground mb-4">
                   For ticketing, visa related, or general questions:
                 </p>
-                <a href="mailto:support@shenzhenseoconference.com" className="text-primary font-semibold hover:underline">
+                <a href="mailto:support@shenzhenseoconference.com" className="text-primary font-semibold hover:underline break-all">
                   support@shenzhenseoconference.com
                 </a>
               </CardContent>
             </Card>
 
             <Card data-testid="card-sponsorship-inquiries">
-              <CardContent className="p-8">
+              <CardContent className="p-6 sm:p-8">
                 <MessageSquare className="w-10 h-10 text-primary mb-4" />
                 <h3 className="text-xl font-bold mb-2">Sponsorship Inquiries</h3>
                 <p className="text-muted-foreground mb-4">
                   For sponsorship related inquiries:
                 </p>
-                <a href="mailto:sponsor@shenzhenseoconference.com" className="text-primary font-semibold hover:underline">
+                <a href="mailto:sponsor@shenzhenseoconference.com" className="text-primary font-semibold hover:underline break-all">
                   sponsor@shenzhenseoconference.com
                 </a>
               </CardContent>
@@ -163,7 +163,7 @@ export default function Contact() {
 
           {!isSubmitted ? (
             <Card className="shadow-xl" data-testid="card-contact-form">
-              <CardContent className="p-8">
+              <CardContent className="p-6 sm:p-8">
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
@@ -361,7 +361,7 @@ export default function Contact() {
             </Card>
           ) : (
             <Card className="shadow-xl bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800" data-testid="card-success">
-              <CardContent className="p-12 text-center">
+              <CardContent className="p-8 sm:p-12 text-center">
                 <CheckCircle className="w-16 h-16 text-green-600 dark:text-green-400 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold mb-2" data-testid="text-success-title">
                   Request Submitted!
