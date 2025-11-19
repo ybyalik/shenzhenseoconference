@@ -75,6 +75,28 @@ Preferred communication style: Simple, everyday language.
 
 The application follows a modern full-stack architecture with strong typing throughout, clean separation of concerns, and a focus on developer experience while maintaining production readiness.
 
+## Email Marketing Integration
+
+### AWeber Integration
+- **Purpose**: Early bird ticket notification system
+- **API Endpoint**: `POST /api/aweber-subscribe`
+- **Implementation**: Direct integration with AWeber API v1.0
+- **Features**:
+  - Automatic subscriber addition to AWeber list
+  - Tags: 'early-bird-notification', 'website-signup'
+  - Ad tracking: 'website-early-bird-form'
+  - Duplicate detection and handling
+  - Error handling with user-friendly messages
+
+### Environment Variables Required
+- `AWEBER_ACCESS_TOKEN`: OAuth 2.0 access token for API authentication
+- `AWEBER_ACCOUNT_ID`: AWeber account identifier
+- `AWEBER_LIST_ID`: Target list ID for subscribers
+
+### Components Using AWeber
+1. **Hero Section** (`components/hero-section.tsx`): Early bird notification form at top of homepage
+2. **Email Subscriber** (`components/email-subscriber.tsx`): Dedicated section below FAQ with full form
+
 ## SEO Optimization
 
 ### Meta Tags and Metadata

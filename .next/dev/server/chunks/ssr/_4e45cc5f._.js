@@ -2641,7 +2641,7 @@ function Home() {
                                                 style: {
                                                     color: '#1A4AFF'
                                                 },
-                                                children: "Sept 17-21, 2026"
+                                                children: "Sept 14-18, 2026"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/page.tsx",
                                                 lineNumber: 109,

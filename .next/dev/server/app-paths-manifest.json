@@ -1,3 +1,4 @@
 {
+  "/api/aweber-subscribe/route": "app/api/aweber-subscribe/route.js",
   "/page": "app/page.js"
 }
