@@ -1,6 +1,11 @@
 export async function GET(request: Request) {
   const url = new URL(request.url);
-  const baseUrl = `${url.protocol}//${url.host}`;
+  
+  // Use production URL if available, otherwise fallback to request URL
+  const productionUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://shenzhenseo.replit.app';
+  const baseUrl = process.env.NODE_ENV === 'production' 
+    ? productionUrl 
+    : `${url.protocol}//${url.host}`;
   
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
