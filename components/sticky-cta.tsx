@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from "react";
-import { Ticket, ArrowUp } from "lucide-react";
+import { Ticket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function StickyCTA() {
@@ -29,22 +29,10 @@ export default function StickyCTA() {
     }
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3" data-testid="sticky-cta">
-      <Button
-        onClick={scrollToTop}
-        className="bg-background/80 backdrop-blur-md border border-border text-foreground hover:bg-background/90 h-12 w-12 rounded-full shadow-lg"
-        data-testid="button-scroll-top"
-      >
-        <ArrowUp className="h-5 w-5" />
-      </Button>
-      
+    <div className="fixed bottom-6 right-6 z-50" data-testid="sticky-cta">
       <Button
         onClick={scrollToTickets}
         className="text-white hover:opacity-90 px-6 py-3 rounded-full shadow-lg animate-pulse-gentle hover:scale-105 transition-transform"
