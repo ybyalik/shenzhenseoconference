@@ -146,14 +146,41 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../app/sitemap.xml/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/sitemap.xml">> = Specific
+  const handler = {} as typeof import("../../../app/sitemap.xml/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
 
 
 
+
+
+// Validate ../../../app/contact/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/contact">> = Specific
+  const handler = {} as typeof import("../../../app/contact/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
 
 // Validate ../../../app/layout.tsx
 {
   type __IsExpected<Specific extends LayoutConfig<"/">> = Specific
   const handler = {} as typeof import("../../../app/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/sponsors/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/sponsors">> = Specific
+  const handler = {} as typeof import("../../../app/sponsors/layout.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

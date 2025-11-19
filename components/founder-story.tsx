@@ -20,13 +20,6 @@ export default function FounderStory() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6" data-testid="text-founder-title">
               Why I Started the Shenzhen SEO Conference
             </h2>
-            
-            {/* Decorative wave */}
-            <div className="flex gap-2 mb-6">
-              <svg width="40" height="8" viewBox="0 0 40 8" fill="none" className="text-primary">
-                <path d="M0 4C2.5 4 2.5 0 5 0C7.5 0 7.5 4 10 4C12.5 4 12.5 8 15 8C17.5 8 17.5 4 20 4C22.5 4 22.5 0 25 0C27.5 0 27.5 4 30 4C32.5 4 32.5 8 35 8C37.5 8 37.5 4 40 4" stroke="currentColor" strokeWidth="2" fill="none"/>
-              </svg>
-            </div>
 
             <div className="space-y-4 text-lg text-muted-foreground">
               <p data-testid="text-founder-intro">

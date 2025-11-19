@@ -1,0 +1,6 @@
+# Robots.txt for Shenzhen SEO Conference 2026
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://shenzhenseoconference.com/sitemap.xml

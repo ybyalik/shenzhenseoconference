@@ -74,3 +74,39 @@ Preferred communication style: Simple, everyday language.
 - **PostgreSQL**: Primary database system
 
 The application follows a modern full-stack architecture with strong typing throughout, clean separation of concerns, and a focus on developer experience while maintaining production readiness.
+
+## SEO Optimization
+
+### Meta Tags and Metadata
+All pages include comprehensive SEO-friendly metadata:
+- **Home Page**: Meta tags in `app/layout.tsx` for the landing page
+- **Speakers Page**: Dedicated metadata for 2025 speakers showcase
+- **Sponsors Page**: Metadata configured via `app/sponsors/layout.tsx`
+- **Plan Your Trip**: Travel and logistics information metadata
+- **Contact Page**: Metadata configured via `app/contact/layout.tsx`
+- **Terms & Conditions**: Legal page metadata
+- **Privacy Policy**: Privacy information metadata
+
+Each page includes:
+- Unique, descriptive title tags
+- Compelling meta descriptions (150-160 characters)
+- Open Graph tags for social media sharing
+- Proper page type definitions
+
+### XML Sitemap
+- **Location**: `/sitemap.xml` (Dynamic route: `app/sitemap.xml/route.ts`)
+- **Content**: All 7 pages with proper priority and change frequency
+- **Format**: XML sitemap compliant with sitemaps.org protocol
+- **Updates**: Automatically includes last modification dates
+- **Priorities**: Home (1.0), main pages (0.8), supporting pages (0.5-0.7)
+
+### Robots.txt
+- **Location**: `/public/robots.txt`
+- **Configuration**: Allows all search engine crawlers
+- **Sitemap Reference**: Includes link to XML sitemap
+- **Purpose**: Guides search engine bots for optimal crawling
+
+### URL Structure
+- All URLs use trailing slashes for consistency
+- Clean, descriptive URL paths matching page content
+- Proper routing configuration via Next.js App Router

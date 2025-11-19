@@ -1,5 +1,16 @@
+import type { Metadata } from 'next';
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, MapPin } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: 'Terms & Conditions - Shenzhen SEO Conference 2026',
+  description: 'Read the terms and conditions for attending the Shenzhen SEO Conference 2026. Information about registration, refunds, and event policies.',
+  openGraph: {
+    title: 'Terms & Conditions - Shenzhen SEO Conference 2026',
+    description: 'Terms and conditions for the Shenzhen SEO Conference 2026.',
+    type: 'website',
+  },
+};
 
 export default function TermsConditions() {
   return (

@@ -1,5 +1,16 @@
+import type { Metadata } from 'next';
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, MapPin } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy - Shenzhen SEO Conference 2026',
+  description: 'Read our privacy policy to understand how we collect, use, and protect your personal information when you register for the Shenzhen SEO Conference 2026.',
+  openGraph: {
+    title: 'Privacy Policy - Shenzhen SEO Conference 2026',
+    description: 'Learn how we protect your privacy and handle your personal information.',
+    type: 'website',
+  },
+};
 
 export default function PrivacyPolicy() {
   return (

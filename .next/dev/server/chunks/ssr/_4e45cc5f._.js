@@ -525,34 +525,6 @@ function FounderStory() {
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex gap-2 mb-6",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                    width: "40",
-                                    height: "8",
-                                    viewBox: "0 0 40 8",
-                                    fill: "none",
-                                    className: "text-primary",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                        d: "M0 4C2.5 4 2.5 0 5 0C7.5 0 7.5 4 10 4C12.5 4 12.5 8 15 8C17.5 8 17.5 4 20 4C22.5 4 22.5 0 25 0C27.5 0 27.5 4 30 4C32.5 4 32.5 8 35 8C37.5 8 37.5 4 40 4",
-                                        stroke: "currentColor",
-                                        strokeWidth: "2",
-                                        fill: "none"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/founder-story.tsx",
-                                        lineNumber: 27,
-                                        columnNumber: 17
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/components/founder-story.tsx",
-                                    lineNumber: 26,
-                                    columnNumber: 15
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/components/founder-story.tsx",
-                                lineNumber: 25,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "space-y-4 text-lg text-muted-foreground",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -567,14 +539,14 @@ function FounderStory() {
                                                 children: "J.P. Zhang"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/founder-story.tsx",
-                                                lineNumber: 33,
+                                                lineNumber: 26,
                                                 columnNumber: 32
                                             }, this),
                                             ", the host of the Shenzhen SEO Conference. After 15+ years in the SEO industry, I've seen what's possible when the East and West learn from each other and work together."
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/founder-story.tsx",
-                                        lineNumber: 32,
+                                        lineNumber: 25,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -582,7 +554,7 @@ function FounderStory() {
                                         children: "This conference is meant to be that bridge. A place where global SEO entrepreneurs and professionals can meet, share ideas, build real partnerships – all while exploring China and its fast-moving digital ecosystem."
                                     }, void 0, false, {
                                         fileName: "[project]/components/founder-story.tsx",
-                                        lineNumber: 36,
+                                        lineNumber: 29,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -591,13 +563,13 @@ function FounderStory() {
                                         children: "My goal is simple: help build a truly global SEO community. See you in Shenzhen!"
                                     }, void 0, false, {
                                         fileName: "[project]/components/founder-story.tsx",
-                                        lineNumber: 40,
+                                        lineNumber: 33,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/founder-story.tsx",
-                                lineNumber: 31,
+                                lineNumber: 24,
                                 columnNumber: 13
                             }, this)
                         ]
