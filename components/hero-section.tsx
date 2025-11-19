@@ -60,7 +60,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="pt-16 gradient-bg relative overflow-hidden" data-testid="hero-section">
+    <section className="-mt-16 pt-32 gradient-bg relative overflow-hidden" data-testid="hero-section">
       <div 
         className="absolute inset-0 bg-cover bg-center opacity-20"
         style={{ backgroundImage: 'url(/assets/home-lecture-1-min_1763345097074.png)' }}

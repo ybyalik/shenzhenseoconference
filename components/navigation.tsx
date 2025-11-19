@@ -28,19 +28,9 @@ export default function Navigation() {
   const isHomePage = pathname === '/';
 
   return (
-    <nav className="w-full gradient-bg relative overflow-hidden border-b border-white/10" data-testid="navigation">
-      {isHomePage && (
-        <>
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-20"
-            style={{ backgroundImage: 'url(/assets/home-lecture-1-min_1763345097074.png)' }}
-          ></div>
-          <div className="absolute inset-0 bg-black/50"></div>
-          <div className="absolute inset-0 hero-bg opacity-30"></div>
-        </>
-      )}
+    <nav className={isHomePage ? "w-full bg-transparent border-b border-white/10" : "w-full gradient-bg relative overflow-hidden border-b border-white/10"} data-testid="navigation">
       {!isHomePage && <div className="absolute inset-0 bg-black/40"></div>}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className={isHomePage ? "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" : "relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center" data-testid="nav-logo">
             <Link href="/" className="focus:outline-none focus:ring-2 focus:ring-primary/20 rounded">
