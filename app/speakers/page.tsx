@@ -23,7 +23,7 @@ export default function Speakers() {
             <Users className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6" data-testid="text-speakers-title">
-            2025 Conference Speakers
+            Conference Speakers
           </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto" data-testid="text-speakers-subtitle">
             Presenting the expert lineup from our 2025 conference. These industry leaders shared their insights on international SEO, digital marketing strategies, and cross-border growth.
