@@ -126,7 +126,7 @@ export default function Sponsors() {
                   <img 
                     src={sponsor.logo} 
                     alt={sponsor.name} 
-                    className={`max-w-full object-contain ${sponsor.name === 'QuickCreator' ? 'max-h-40 md:max-h-32' : 'max-h-32'}`} 
+                    className={`max-w-full object-contain ${sponsor.name === 'QuickCreator' ? 'max-h-56 md:max-h-32' : 'max-h-32'}`} 
                   />
                 </div>
               ))}
