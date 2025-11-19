@@ -1,7 +1,7 @@
 import type { Express} from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertTicketPreOrderSchema, insertSponsorshipInquirySchema, insertContactRequestSchema } from "@shared/schema";
+import { insertTicketPreOrderSchema, insertSponsorshipInquirySchema, insertContactRequestSchema } from "../shared/schema.js";
 import { z } from "zod";
 
 // Validate required environment variables
