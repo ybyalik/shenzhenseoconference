@@ -26,13 +26,11 @@ export default function Navigation() {
   };
 
   const isHomePage = pathname === '/';
-  const navClass = isHomePage 
-    ? "w-full bg-transparent backdrop-blur-sm border-b border-white/10" 
-    : "w-full gradient-bg border-b border-white/10";
 
   return (
-    <nav className={navClass} data-testid="navigation">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className={isHomePage ? "w-full bg-transparent backdrop-blur-sm border-b border-white/10" : "w-full gradient-bg relative border-b border-white/10"} data-testid="navigation">
+      {!isHomePage && <div className="absolute inset-0 bg-black/40"></div>}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center" data-testid="nav-logo">
             <Link href="/" className="focus:outline-none focus:ring-2 focus:ring-primary/20 rounded">
