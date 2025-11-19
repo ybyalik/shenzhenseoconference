@@ -75,7 +75,7 @@ export default function HeroSection() {
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto" data-testid="text-hero-description">
-            Join the premier international SEO event connecting Eastern and Western digital markets. 
+            Join the premier SEO event connecting Eastern and Western digital markets. 
             5 days of innovation in China's Silicon Valley.
           </p>
           
