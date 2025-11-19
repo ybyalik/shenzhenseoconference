@@ -25,8 +25,13 @@ export default function Navigation() {
     setIsMobileMenuOpen(false);
   };
 
+  const isHomePage = pathname === '/';
+  const navClass = isHomePage 
+    ? "w-full bg-transparent backdrop-blur-sm border-b border-white/10" 
+    : "w-full gradient-bg border-b border-white/10";
+
   return (
-    <nav className="w-full gradient-bg border-b border-border/20" data-testid="navigation">
+    <nav className={navClass} data-testid="navigation">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center" data-testid="nav-logo">
