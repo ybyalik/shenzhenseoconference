@@ -36,6 +36,7 @@ export default function Home() {
               className="w-full h-auto"
               controls
               preload="metadata"
+              poster="/assets/videocover_1763538391162.webp"
               data-testid="video-shenzhen"
               aria-label="Shenzhen conference promotional video"
               onPlay={() => setIsPlaying(true)}
