@@ -126,7 +126,7 @@ export default function Sponsors() {
                   <img 
                     src={sponsor.logo} 
                     alt={sponsor.name} 
-                    className={`max-w-full object-contain ${sponsor.name === 'QuickCreator' ? 'max-h-56 md:max-h-32' : 'max-h-32'}`} 
+                    className={`object-contain ${sponsor.name === 'QuickCreator' ? 'w-48 md:w-auto md:max-h-32 md:max-w-full' : 'max-w-full max-h-32'}`} 
                   />
                 </div>
               ))}
@@ -146,7 +146,7 @@ export default function Sponsors() {
                   <img 
                     src={sponsor.logo} 
                     alt={sponsor.name} 
-                    className={`max-w-full object-contain ${sponsor.name === 'One' ? 'max-h-16' : 'max-h-24'}`} 
+                    className={`object-contain ${sponsor.name === 'One' ? 'w-20 max-w-full' : 'max-w-full max-h-24'}`} 
                   />
                 </div>
               ))}
