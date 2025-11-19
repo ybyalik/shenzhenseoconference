@@ -559,7 +559,7 @@ function Sponsors() {
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                 src: sponsor.logo,
                                                 alt: sponsor.name,
-                                                className: `object-contain ${sponsor.name === 'QuickCreator' ? 'h-40 w-auto md:h-auto md:max-h-32 md:max-w-full' : 'max-w-full max-h-32'}`
+                                                className: `max-w-full max-h-32 object-contain ${sponsor.name === 'QuickCreator' ? 'scale-150 md:scale-100' : ''}`
                                             }, void 0, false, {
                                                 fileName: "[project]/app/sponsors/page.tsx",
                                                 lineNumber: 126,
