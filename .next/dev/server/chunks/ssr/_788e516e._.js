@@ -509,7 +509,7 @@ function Sponsors() {
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                 src: sponsor.logo,
                                                 alt: sponsor.name,
-                                                className: "max-w-full max-h-32 object-contain"
+                                                className: `max-w-full object-contain ${sponsor.name === 'QuickCreator' ? 'max-h-40 md:max-h-32' : 'max-h-32'}`
                                             }, void 0, false, {
                                                 fileName: "[project]/app/sponsors/page.tsx",
                                                 lineNumber: 126,
@@ -541,12 +541,12 @@ function Sponsors() {
                                         children: "Gold Sponsors"
                                     }, void 0, false, {
                                         fileName: "[project]/app/sponsors/page.tsx",
-                                        lineNumber: 135,
+                                        lineNumber: 139,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/sponsors/page.tsx",
-                                    lineNumber: 134,
+                                    lineNumber: 138,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -557,26 +557,26 @@ function Sponsors() {
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                 src: sponsor.logo,
                                                 alt: sponsor.name,
-                                                className: "max-w-full max-h-24 object-contain"
+                                                className: `max-w-full object-contain ${sponsor.name === 'One' ? 'max-h-16' : 'max-h-24'}`
                                             }, void 0, false, {
                                                 fileName: "[project]/app/sponsors/page.tsx",
-                                                lineNumber: 142,
+                                                lineNumber: 146,
                                                 columnNumber: 19
                                             }, this)
                                         }, index, false, {
                                             fileName: "[project]/app/sponsors/page.tsx",
-                                            lineNumber: 141,
+                                            lineNumber: 145,
                                             columnNumber: 17
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/app/sponsors/page.tsx",
-                                    lineNumber: 139,
+                                    lineNumber: 143,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/sponsors/page.tsx",
-                            lineNumber: 133,
+                            lineNumber: 137,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -588,12 +588,12 @@ function Sponsors() {
                                         children: "Silver Sponsors"
                                     }, void 0, false, {
                                         fileName: "[project]/app/sponsors/page.tsx",
-                                        lineNumber: 151,
+                                        lineNumber: 159,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/sponsors/page.tsx",
-                                    lineNumber: 150,
+                                    lineNumber: 158,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -607,23 +607,23 @@ function Sponsors() {
                                                 className: "max-w-full max-h-20 object-contain"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/sponsors/page.tsx",
-                                                lineNumber: 158,
+                                                lineNumber: 166,
                                                 columnNumber: 19
                                             }, this)
                                         }, index, false, {
                                             fileName: "[project]/app/sponsors/page.tsx",
-                                            lineNumber: 157,
+                                            lineNumber: 165,
                                             columnNumber: 17
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/app/sponsors/page.tsx",
-                                    lineNumber: 155,
+                                    lineNumber: 163,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/sponsors/page.tsx",
-                            lineNumber: 149,
+                            lineNumber: 157,
                             columnNumber: 11
                         }, this)
                     ]
@@ -651,12 +651,12 @@ function Sponsors() {
                                 children: "Why Sponsoring?"
                             }, void 0, false, {
                                 fileName: "[project]/app/sponsors/page.tsx",
-                                lineNumber: 170,
+                                lineNumber: 178,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/sponsors/page.tsx",
-                            lineNumber: 169,
+                            lineNumber: 177,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -674,7 +674,7 @@ function Sponsors() {
                                                     children: benefit.icon
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/sponsors/page.tsx",
-                                                    lineNumber: 179,
+                                                    lineNumber: 187,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -685,7 +685,7 @@ function Sponsors() {
                                                             children: benefit.title
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/sponsors/page.tsx",
-                                                            lineNumber: 183,
+                                                            lineNumber: 191,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -694,45 +694,45 @@ function Sponsors() {
                                                             children: benefit.description
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/sponsors/page.tsx",
-                                                            lineNumber: 186,
+                                                            lineNumber: 194,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/sponsors/page.tsx",
-                                                    lineNumber: 182,
+                                                    lineNumber: 190,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/sponsors/page.tsx",
-                                            lineNumber: 178,
+                                            lineNumber: 186,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/sponsors/page.tsx",
-                                        lineNumber: 177,
+                                        lineNumber: 185,
                                         columnNumber: 17
                                     }, this)
                                 }, index, false, {
                                     fileName: "[project]/app/sponsors/page.tsx",
-                                    lineNumber: 176,
+                                    lineNumber: 184,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/app/sponsors/page.tsx",
-                            lineNumber: 174,
+                            lineNumber: 182,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/sponsors/page.tsx",
-                    lineNumber: 168,
+                    lineNumber: 176,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/sponsors/page.tsx",
-                lineNumber: 167,
+                lineNumber: 175,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -751,7 +751,7 @@ function Sponsors() {
                                     children: "Become a Sponsor"
                                 }, void 0, false, {
                                     fileName: "[project]/app/sponsors/page.tsx",
-                                    lineNumber: 202,
+                                    lineNumber: 210,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -760,13 +760,13 @@ function Sponsors() {
                                     children: "Interested in sponsoring? Fill out the form below and we'll send you detailed sponsorship information."
                                 }, void 0, false, {
                                     fileName: "[project]/app/sponsors/page.tsx",
-                                    lineNumber: 205,
+                                    lineNumber: 213,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/sponsors/page.tsx",
-                            lineNumber: 201,
+                            lineNumber: 209,
                             columnNumber: 11
                         }, this),
                         !isSubmitted ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -788,7 +788,7 @@ function Sponsors() {
                                                             children: "Company Name *"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/sponsors/page.tsx",
-                                                            lineNumber: 216,
+                                                            lineNumber: 224,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -798,7 +798,7 @@ function Sponsors() {
                                                                     className: "absolute left-3 top-3 h-5 w-5 text-muted-foreground"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/sponsors/page.tsx",
-                                                                    lineNumber: 218,
+                                                                    lineNumber: 226,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -808,13 +808,13 @@ function Sponsors() {
                                                                     "data-testid": "input-company-name"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/sponsors/page.tsx",
-                                                                    lineNumber: 219,
+                                                                    lineNumber: 227,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/sponsors/page.tsx",
-                                                            lineNumber: 217,
+                                                            lineNumber: 225,
                                                             columnNumber: 23
                                                         }, this),
                                                         form.formState.errors.companyName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -823,13 +823,13 @@ function Sponsors() {
                                                             children: form.formState.errors.companyName.message
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/sponsors/page.tsx",
-                                                            lineNumber: 227,
+                                                            lineNumber: 235,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/sponsors/page.tsx",
-                                                    lineNumber: 215,
+                                                    lineNumber: 223,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -839,7 +839,7 @@ function Sponsors() {
                                                             children: "Contact Name *"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/sponsors/page.tsx",
-                                                            lineNumber: 234,
+                                                            lineNumber: 242,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -849,7 +849,7 @@ function Sponsors() {
                                                                     className: "absolute left-3 top-3 h-5 w-5 text-muted-foreground"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/sponsors/page.tsx",
-                                                                    lineNumber: 236,
+                                                                    lineNumber: 244,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -859,13 +859,13 @@ function Sponsors() {
                                                                     "data-testid": "input-contact-name"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/sponsors/page.tsx",
-                                                                    lineNumber: 237,
+                                                                    lineNumber: 245,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/sponsors/page.tsx",
-                                                            lineNumber: 235,
+                                                            lineNumber: 243,
                                                             columnNumber: 23
                                                         }, this),
                                                         form.formState.errors.contactName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -874,19 +874,19 @@ function Sponsors() {
                                                             children: form.formState.errors.contactName.message
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/sponsors/page.tsx",
-                                                            lineNumber: 245,
+                                                            lineNumber: 253,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/sponsors/page.tsx",
-                                                    lineNumber: 233,
+                                                    lineNumber: 241,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/sponsors/page.tsx",
-                                            lineNumber: 214,
+                                            lineNumber: 222,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -899,7 +899,7 @@ function Sponsors() {
                                                             children: "Email *"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/sponsors/page.tsx",
-                                                            lineNumber: 254,
+                                                            lineNumber: 262,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -909,7 +909,7 @@ function Sponsors() {
                                                                     className: "absolute left-3 top-3 h-5 w-5 text-muted-foreground"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/sponsors/page.tsx",
-                                                                    lineNumber: 256,
+                                                                    lineNumber: 264,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -920,13 +920,13 @@ function Sponsors() {
                                                                     "data-testid": "input-email"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/sponsors/page.tsx",
-                                                                    lineNumber: 257,
+                                                                    lineNumber: 265,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/sponsors/page.tsx",
-                                                            lineNumber: 255,
+                                                            lineNumber: 263,
                                                             columnNumber: 23
                                                         }, this),
                                                         form.formState.errors.email && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -935,13 +935,13 @@ function Sponsors() {
                                                             children: form.formState.errors.email.message
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/sponsors/page.tsx",
-                                                            lineNumber: 266,
+                                                            lineNumber: 274,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/sponsors/page.tsx",
-                                                    lineNumber: 253,
+                                                    lineNumber: 261,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -951,7 +951,7 @@ function Sponsors() {
                                                             children: "Phone (Optional)"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/sponsors/page.tsx",
-                                                            lineNumber: 273,
+                                                            lineNumber: 281,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -961,7 +961,7 @@ function Sponsors() {
                                                                     className: "absolute left-3 top-3 h-5 w-5 text-muted-foreground"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/sponsors/page.tsx",
-                                                                    lineNumber: 275,
+                                                                    lineNumber: 283,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -971,25 +971,25 @@ function Sponsors() {
                                                                     "data-testid": "input-phone"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/sponsors/page.tsx",
-                                                                    lineNumber: 276,
+                                                                    lineNumber: 284,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/sponsors/page.tsx",
-                                                            lineNumber: 274,
+                                                            lineNumber: 282,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/sponsors/page.tsx",
-                                                    lineNumber: 272,
+                                                    lineNumber: 280,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/sponsors/page.tsx",
-                                            lineNumber: 252,
+                                            lineNumber: 260,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -999,7 +999,7 @@ function Sponsors() {
                                                     children: "Message (Optional)"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/sponsors/page.tsx",
-                                                    lineNumber: 287,
+                                                    lineNumber: 295,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$textarea$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Textarea"], {
@@ -1009,13 +1009,13 @@ function Sponsors() {
                                                     "data-testid": "textarea-message"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/sponsors/page.tsx",
-                                                    lineNumber: 288,
+                                                    lineNumber: 296,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/sponsors/page.tsx",
-                                            lineNumber: 286,
+                                            lineNumber: 294,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1026,23 +1026,23 @@ function Sponsors() {
                                             children: inquiryMutation.isPending ? "Submitting..." : "Submit Inquiry"
                                         }, void 0, false, {
                                             fileName: "[project]/app/sponsors/page.tsx",
-                                            lineNumber: 296,
+                                            lineNumber: 304,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/sponsors/page.tsx",
-                                    lineNumber: 213,
+                                    lineNumber: 221,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/sponsors/page.tsx",
-                                lineNumber: 212,
+                                lineNumber: 220,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/sponsors/page.tsx",
-                            lineNumber: 211,
+                            lineNumber: 219,
                             columnNumber: 13
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
                             className: "shadow-xl bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800",
@@ -1054,7 +1054,7 @@ function Sponsors() {
                                         className: "w-16 h-16 text-green-600 dark:text-green-400 mx-auto mb-4"
                                     }, void 0, false, {
                                         fileName: "[project]/app/sponsors/page.tsx",
-                                        lineNumber: 310,
+                                        lineNumber: 318,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1063,7 +1063,7 @@ function Sponsors() {
                                         children: "Inquiry Submitted!"
                                     }, void 0, false, {
                                         fileName: "[project]/app/sponsors/page.tsx",
-                                        lineNumber: 311,
+                                        lineNumber: 319,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1072,29 +1072,29 @@ function Sponsors() {
                                         children: "We'll contact you soon with detailed sponsorship information."
                                     }, void 0, false, {
                                         fileName: "[project]/app/sponsors/page.tsx",
-                                        lineNumber: 314,
+                                        lineNumber: 322,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/sponsors/page.tsx",
-                                lineNumber: 309,
+                                lineNumber: 317,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/sponsors/page.tsx",
-                            lineNumber: 308,
+                            lineNumber: 316,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/sponsors/page.tsx",
-                    lineNumber: 200,
+                    lineNumber: 208,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/sponsors/page.tsx",
-                lineNumber: 199,
+                lineNumber: 207,
                 columnNumber: 7
             }, this)
         ]

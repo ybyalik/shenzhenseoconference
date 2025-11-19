@@ -1358,6 +1358,10 @@ body {
   max-height: 3rem;
 }
 
+.max-h-16 {
+  max-height: 4rem;
+}
+
 .max-h-20 {
   max-height: 5rem;
 }
@@ -1368,6 +1372,10 @@ body {
 
 .max-h-32 {
   max-height: 8rem;
+}
+
+.max-h-40 {
+  max-height: 10rem;
 }
 
 .max-h-\[--radix-context-menu-content-available-height\] {
@@ -4396,6 +4404,10 @@ body {
 
   .md\:hidden {
     display: none;
+  }
+
+  .md\:max-h-32 {
+    max-height: 8rem;
   }
 
   .md\:w-72 {

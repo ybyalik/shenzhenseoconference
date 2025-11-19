@@ -123,7 +123,11 @@ export default function Sponsors() {
             <div className="grid grid-cols-2 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {platinumSponsors.map((sponsor, index) => (
                 <div key={index} className="bg-gray-800/50 rounded-lg p-12 flex items-center justify-center hover:bg-gray-800 transition-all duration-300 hover:scale-105" data-testid={`card-platinum-${index}`}>
-                  <img src={sponsor.logo} alt={sponsor.name} className="max-w-full max-h-32 object-contain" />
+                  <img 
+                    src={sponsor.logo} 
+                    alt={sponsor.name} 
+                    className={`max-w-full object-contain ${sponsor.name === 'QuickCreator' ? 'max-h-40 md:max-h-32' : 'max-h-32'}`} 
+                  />
                 </div>
               ))}
             </div>
@@ -139,7 +143,11 @@ export default function Sponsors() {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
               {goldSponsors.map((sponsor, index) => (
                 <div key={index} className="bg-gray-800/50 rounded-lg p-8 flex items-center justify-center hover:bg-gray-800 transition-all duration-300 hover:scale-105" data-testid={`card-gold-${index}`}>
-                  <img src={sponsor.logo} alt={sponsor.name} className="max-w-full max-h-24 object-contain" />
+                  <img 
+                    src={sponsor.logo} 
+                    alt={sponsor.name} 
+                    className={`max-w-full object-contain ${sponsor.name === 'One' ? 'max-h-16' : 'max-h-24'}`} 
+                  />
                 </div>
               ))}
             </div>
