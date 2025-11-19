@@ -21,30 +21,30 @@ const eventTypeStyles: Record<EventType, {
 }> = {
   workshop: { 
     variant: 'secondary', 
-    color: 'bg-purple-500', 
+    color: '#2C1D6C', 
     bgColor: 'bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/30',
-    borderColor: 'border-purple-200 dark:border-purple-800',
+    borderColor: '#2C1D6C',
     icon: MapPin
   },
   mastermind: { 
     variant: 'outline', 
-    color: 'brand-pink', 
-    bgColor: 'bg-gradient-to-br from-pink-50 to-pink-100 dark:from-pink-950/20 dark:to-pink-900/30',
-    borderColor: 'border-pink-200 dark:border-pink-800',
+    color: '#1A4AFF', 
+    bgColor: 'bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/30',
+    borderColor: '#1A4AFF',
     icon: Brain
   },
   conference: { 
     variant: 'default', 
-    color: 'bg-purple-500', 
-    bgColor: 'bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/30',
-    borderColor: 'border-purple-200 dark:border-purple-800',
+    color: '#FF3E92', 
+    bgColor: 'bg-gradient-to-br from-pink-50 to-pink-100 dark:from-pink-950/20 dark:to-pink-900/30',
+    borderColor: '#FF3E92',
     icon: Users
   },
   networking: { 
     variant: 'destructive', 
-    color: 'brand-pink', 
-    bgColor: 'bg-gradient-to-br from-pink-50 to-pink-100 dark:from-pink-950/20 dark:to-pink-900/30',
-    borderColor: 'border-pink-200 dark:border-pink-800',
+    color: '#B533FF', 
+    bgColor: 'bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/30',
+    borderColor: '#B533FF',
     icon: Handshake
   }
 };
@@ -126,22 +126,22 @@ export default function EventTimeline() {
                   {/* Timeline Node */}
                   <div className="relative z-10 flex-shrink-0">
                     {/* Large Circle with Icon */}
-                    <div className={`w-16 h-16 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300 ${eventStyle.color === 'brand-pink' ? '' : eventStyle.color}`}
-                         style={eventStyle.color === 'brand-pink' ? { backgroundColor: '#ff007a' } : undefined}>
+                    <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300"
+                         style={{ backgroundColor: eventStyle.color }}>
                       <IconComponent className="w-8 h-8 text-white" />
                     </div>
                     
                     {/* Date Badge */}
-                    <div className={`absolute -bottom-2 -right-2 px-2 py-1 rounded-full text-xs font-semibold shadow-md text-white whitespace-nowrap ${eventStyle.color === 'brand-pink' ? '' : eventStyle.color}`}
-                         style={eventStyle.color === 'brand-pink' ? { backgroundColor: '#ff007a' } : undefined}>
+                    <div className="absolute -bottom-2 -right-2 px-2 py-1 rounded-full text-xs font-semibold shadow-md text-white whitespace-nowrap"
+                         style={{ backgroundColor: eventStyle.color }}>
                       Day {index + 1}
                     </div>
                   </div>
 
                   {/* Event Card */}
                   <div className="flex-1 -mt-2">
-                    <Card className={`hover-lift slide-up border-l-4 ${eventStyle.borderColor} ${eventStyle.bgColor} group-hover:shadow-xl transition-all duration-300`}
-                          style={{ animationDelay: `${index * 0.1}s` }}>
+                    <Card className={`hover-lift slide-up border-l-4 ${eventStyle.bgColor} group-hover:shadow-xl transition-all duration-300`}
+                          style={{ animationDelay: `${index * 0.1}s`, borderLeftColor: eventStyle.borderColor }}>
                       <CardHeader className="pb-3">
                         <div className="space-y-3">
                           {/* Event Type Badge and Day */}
