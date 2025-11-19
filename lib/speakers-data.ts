@@ -18,7 +18,7 @@ export const speakers = [
   { name: "Georgia Tan", image: "/assets/Georgia-Tan-1_1763288491462.webp" },
   { name: "Greg Gibas", image: "/assets/Greg-Gibas_1763288491462.webp" },
   { name: "Greg Heilers", image: "/assets/Greg-Heilers_1763288491463.webp" },
-  { name: "Speaker", image: "/assets/image6_1763288491463.webp" },
+  { name: "Marc Moeller", image: "/assets/image6_1763288491463.webp" },
   { name: "Jabez Reuben", image: "/assets/Jabez-Reuben_1763288535685.webp" },
   { name: "Jake Stainer", image: "/assets/Jake-Stainer-1_1763288535685.webp" },
   { name: "Jamie If", image: "/assets/jamie-if_1763288535685.webp" },
