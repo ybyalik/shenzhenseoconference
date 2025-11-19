@@ -13,6 +13,9 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Shenzhen SEO Conference 2026 - Pre-Sale Tickets | Connect Eastern & Western Digital Markets',
   description: 'Join 500+ SEO professionals at the premier international conference in Shenzhen. Early bird tickets now available for September 18-21, 2026. Bridge Eastern and Western digital marketing strategies.',
+  icons: {
+    icon: '/favicon.ico',
+  },
   openGraph: {
     title: 'Shenzhen SEO Conference 2026 - Pre-Sale Tickets',
     description: 'Join 500+ SEO professionals at the premier international conference in Shenzhen. September 18-21, 2026.',
