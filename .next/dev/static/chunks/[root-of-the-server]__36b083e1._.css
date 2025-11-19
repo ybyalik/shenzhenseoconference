@@ -4785,6 +4785,12 @@ body {
   }
 }
 
+@media (min-width: 1280px) {
+  .xl\:gap-6 {
+    gap: 1.5rem;
+  }
+}
+
 .\[\&\:has\(\[aria-selected\]\)\]\:bg-accent:has([aria-selected]) {
   background-color: var(--accent);
 }

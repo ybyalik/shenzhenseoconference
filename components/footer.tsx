@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-card border-t border-border py-12" data-testid="footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 xl:gap-6">
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center mb-4">
               <Link href="/" className="focus:outline-none focus:ring-2 focus:ring-primary/20 rounded">
