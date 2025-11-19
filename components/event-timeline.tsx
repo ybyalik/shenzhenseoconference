@@ -21,30 +21,30 @@ const eventTypeStyles: Record<EventType, {
 }> = {
   workshop: { 
     variant: 'secondary', 
-    color: 'bg-blue-500', 
-    bgColor: 'bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/30',
-    borderColor: 'border-blue-200 dark:border-blue-800',
+    color: 'bg-purple-500', 
+    bgColor: 'bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/30',
+    borderColor: 'border-purple-200 dark:border-purple-800',
     icon: MapPin
   },
   mastermind: { 
     variant: 'outline', 
-    color: 'bg-purple-500', 
-    bgColor: 'bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/30',
-    borderColor: 'border-purple-200 dark:border-purple-800',
+    color: 'brand-pink', 
+    bgColor: 'bg-gradient-to-br from-pink-50 to-pink-100 dark:from-pink-950/20 dark:to-pink-900/30',
+    borderColor: 'border-pink-200 dark:border-pink-800',
     icon: Brain
   },
   conference: { 
     variant: 'default', 
-    color: 'bg-green-500', 
-    bgColor: 'bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/20 dark:to-green-900/30',
-    borderColor: 'border-green-200 dark:border-green-800',
+    color: 'bg-purple-500', 
+    bgColor: 'bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/30',
+    borderColor: 'border-purple-200 dark:border-purple-800',
     icon: Users
   },
   networking: { 
     variant: 'destructive', 
-    color: 'bg-orange-500', 
-    bgColor: 'bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/30',
-    borderColor: 'border-orange-200 dark:border-orange-800',
+    color: 'brand-pink', 
+    bgColor: 'bg-gradient-to-br from-pink-50 to-pink-100 dark:from-pink-950/20 dark:to-pink-900/30',
+    borderColor: 'border-pink-200 dark:border-pink-800',
     icon: Handshake
   }
 };
@@ -126,12 +126,14 @@ export default function EventTimeline() {
                   {/* Timeline Node */}
                   <div className="relative z-10 flex-shrink-0">
                     {/* Large Circle with Icon */}
-                    <div className={`w-16 h-16 rounded-full ${eventStyle.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300`}>
+                    <div className={`w-16 h-16 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300 ${eventStyle.color === 'brand-pink' ? '' : eventStyle.color}`}
+                         style={eventStyle.color === 'brand-pink' ? { backgroundColor: '#ff007a' } : undefined}>
                       <IconComponent className="w-8 h-8 text-white" />
                     </div>
                     
                     {/* Date Badge */}
-                    <div className={`absolute -bottom-2 -right-2 px-2 py-1 rounded-full text-xs font-semibold shadow-md ${eventStyle.color} text-white whitespace-nowrap`}>
+                    <div className={`absolute -bottom-2 -right-2 px-2 py-1 rounded-full text-xs font-semibold shadow-md text-white whitespace-nowrap ${eventStyle.color === 'brand-pink' ? '' : eventStyle.color}`}
+                         style={eventStyle.color === 'brand-pink' ? { backgroundColor: '#ff007a' } : undefined}>
                       Day {index + 1}
                     </div>
                   </div>

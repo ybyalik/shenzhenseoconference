@@ -73,49 +73,49 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
             {/* Attendees Stat */}
             <div className="group cursor-pointer" data-testid="stat-attendees">
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-2xl p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300 hover:border-blue-300 dark:hover:border-blue-700">
-                <div className="bg-blue-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/30 border border-purple-200 dark:border-purple-800 rounded-2xl p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300 hover:border-purple-300 dark:hover:border-purple-700">
+                <div className="bg-purple-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   <Users className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">500+</div>
-                <div className="text-sm font-medium text-blue-700 dark:text-blue-300">Attendees Expected</div>
-                <div className="text-xs text-blue-600/70 dark:text-blue-400/70 mt-1">From around the world</div>
+                <div className="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors">500+</div>
+                <div className="text-sm font-medium text-purple-700 dark:text-purple-300">Attendees Expected</div>
+                <div className="text-xs text-purple-600/70 dark:text-purple-400/70 mt-1">From around the world</div>
               </div>
             </div>
             
             {/* Speakers Stat */}
             <div className="group cursor-pointer" data-testid="stat-speakers">
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/30 border border-purple-200 dark:border-purple-800 rounded-2xl p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300 hover:border-purple-300 dark:hover:border-purple-700">
-                <div className="bg-purple-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <div className="bg-gradient-to-br from-pink-50 to-pink-100 dark:from-pink-950/20 dark:to-pink-900/30 border border-pink-200 dark:border-pink-800 rounded-2xl p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300 hover:border-pink-300 dark:hover:border-pink-700">
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#ff007a' }}>
                   <Mic className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors">40+</div>
-                <div className="text-sm font-medium text-purple-700 dark:text-purple-300">World-Class Speakers</div>
-                <div className="text-xs text-purple-600/70 dark:text-purple-400/70 mt-1">Industry leaders & experts</div>
+                <div className="text-3xl md:text-4xl font-bold mb-2 transition-colors" style={{ color: '#ff007a' }}>40+</div>
+                <div className="text-sm font-medium text-pink-700 dark:text-pink-300">World-Class Speakers</div>
+                <div className="text-xs text-pink-600/70 dark:text-pink-400/70 mt-1">Industry leaders & experts</div>
               </div>
             </div>
             
             {/* Days Stat */}
             <div className="group cursor-pointer" data-testid="stat-days">
-              <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/20 dark:to-green-900/30 border border-green-200 dark:border-green-800 rounded-2xl p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300 hover:border-green-300 dark:hover:border-green-700">
-                <div className="bg-green-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/30 border border-purple-200 dark:border-purple-800 rounded-2xl p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300 hover:border-purple-300 dark:hover:border-purple-700">
+                <div className="bg-purple-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   <Calendar className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-3xl md:text-4xl font-bold text-green-600 dark:text-green-400 mb-2 group-hover:text-green-700 dark:group-hover:text-green-300 transition-colors">5</div>
-                <div className="text-sm font-medium text-green-700 dark:text-green-300">Days of Innovation</div>
-                <div className="text-xs text-green-600/70 dark:text-green-400/70 mt-1">Sept 17-21, 2026</div>
+                <div className="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors">5</div>
+                <div className="text-sm font-medium text-purple-700 dark:text-purple-300">Days of Innovation</div>
+                <div className="text-xs text-purple-600/70 dark:text-purple-400/70 mt-1">Sept 17-21, 2026</div>
               </div>
             </div>
             
             {/* Countries Stat */}
             <div className="group cursor-pointer" data-testid="stat-countries">
-              <div className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/30 border border-orange-200 dark:border-orange-800 rounded-2xl p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300 hover:border-orange-300 dark:hover:border-orange-700">
-                <div className="bg-orange-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <div className="bg-gradient-to-br from-pink-50 to-pink-100 dark:from-pink-950/20 dark:to-pink-900/30 border border-pink-200 dark:border-pink-800 rounded-2xl p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300 hover:border-pink-300 dark:hover:border-pink-700">
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#ff007a' }}>
                   <Globe className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-3xl md:text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2 group-hover:text-orange-700 dark:group-hover:text-orange-300 transition-colors">30+</div>
-                <div className="text-sm font-medium text-orange-700 dark:text-orange-300">Countries Represented</div>
-                <div className="text-xs text-orange-600/70 dark:text-orange-400/70 mt-1">Global perspectives</div>
+                <div className="text-3xl md:text-4xl font-bold mb-2 transition-colors" style={{ color: '#ff007a' }}>30+</div>
+                <div className="text-sm font-medium text-pink-700 dark:text-pink-300">Countries Represented</div>
+                <div className="text-xs text-pink-600/70 dark:text-pink-400/70 mt-1">Global perspectives</div>
               </div>
             </div>
           </div>
