@@ -1128,19 +1128,26 @@ function EmailSubscriber() {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
                                 type: "submit",
-                                className: "w-full h-12 text-lg",
+                                className: "w-full h-12 text-sm sm:text-base md:text-lg",
                                 disabled: subscribeMutation.isPending,
                                 "data-testid": "button-subscribe",
                                 children: subscribeMutation.isPending ? "Subscribing..." : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$mail$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Mail$3e$__["Mail"], {
-                                            className: "mr-2 h-5 w-5"
+                                            className: "mr-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0"
                                         }, void 0, false, {
                                             fileName: "[project]/components/email-subscriber.tsx",
                                             lineNumber: 148,
                                             columnNumber: 19
                                         }, this),
-                                        "Notify Me About Early Bird Tickets"
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "whitespace-normal sm:whitespace-nowrap",
+                                            children: "Notify Me About Early Bird Tickets"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/email-subscriber.tsx",
+                                            lineNumber: 149,
+                                            columnNumber: 19
+                                        }, this)
                                     ]
                                 }, void 0, true)
                             }, void 0, false, {
@@ -1160,7 +1167,7 @@ function EmailSubscriber() {
                         children: "🔒 We respect your privacy. Unsubscribe at any time. No spam, just ticket notifications."
                     }, void 0, false, {
                         fileName: "[project]/components/email-subscriber.tsx",
-                        lineNumber: 155,
+                        lineNumber: 157,
                         columnNumber: 11
                     }, this)
                 ]

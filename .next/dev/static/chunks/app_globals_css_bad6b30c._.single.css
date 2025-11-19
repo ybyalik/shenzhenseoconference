@@ -1875,6 +1875,10 @@ body {
   overflow-x: hidden;
 }
 
+.whitespace-normal {
+  white-space: normal;
+}
+
 .whitespace-nowrap {
   white-space: nowrap;
 }
@@ -4200,6 +4204,14 @@ body {
     display: flex;
   }
 
+  .sm\:h-5 {
+    height: 1.25rem;
+  }
+
+  .sm\:w-5 {
+    width: 1.25rem;
+  }
+
   .sm\:max-w-sm {
     max-width: 24rem;
   }
@@ -4248,6 +4260,10 @@ body {
     --tw-space-y-reverse: 0;
     margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(0px * var(--tw-space-y-reverse));
+  }
+
+  .sm\:whitespace-nowrap {
+    white-space: nowrap;
   }
 
   .sm\:rounded-lg {
@@ -4358,6 +4374,11 @@ body {
   .md\:text-6xl {
     font-size: 3.75rem;
     line-height: 1;
+  }
+
+  .md\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 
   .md\:text-sm {

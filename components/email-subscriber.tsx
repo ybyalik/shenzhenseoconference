@@ -137,7 +137,7 @@ export default function EmailSubscriber() {
 
             <Button
               type="submit"
-              className="w-full h-12 text-lg"
+              className="w-full h-12 text-sm sm:text-base md:text-lg"
               disabled={subscribeMutation.isPending}
               data-testid="button-subscribe"
             >
@@ -145,8 +145,10 @@ export default function EmailSubscriber() {
                 "Subscribing..."
               ) : (
                 <>
-                  <Mail className="mr-2 h-5 w-5" />
-                  Notify Me About Early Bird Tickets
+                  <Mail className="mr-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+                  <span className="whitespace-normal sm:whitespace-nowrap">
+                    Notify Me About Early Bird Tickets
+                  </span>
                 </>
               )}
             </Button>
