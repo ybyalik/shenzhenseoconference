@@ -1,5 +1,3 @@
-import jpZhangImg from "@assets/J.P.-Zhang-1_1763346048430.webp";
-
 export default function FounderStory() {
   return (
     <section className="py-20 bg-background" data-testid="founder-story">
@@ -9,7 +7,7 @@ export default function FounderStory() {
           <div className="order-2 md:order-1">
             <div className="relative max-w-md mx-auto">
               <img
-                src={jpZhangImg}
+                src="/assets/J.P.-Zhang-1_1763346048430.webp"
                 alt="J.P. Zhang, founder of Shenzhen SEO Conference"
                 className="w-full h-auto rounded-lg shadow-2xl"
                 data-testid="img-jp-zhang"

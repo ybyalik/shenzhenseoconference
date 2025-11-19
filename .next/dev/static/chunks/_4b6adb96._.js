@@ -166,19 +166,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$countdown$2d$t
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@tanstack/react-query/build/modern/useMutation.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$queryClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/queryClient.ts [app-client] (ecmascript)");
-(()=>{
-    const e = new Error("Cannot find module '@/hooks/use-toast'");
-    e.code = 'MODULE_NOT_FOUND';
-    throw e;
-})();
-(()=>{
-    const e = new Error("Cannot find module '@assets/home-lecture-1-min_1763345097074.png'");
-    e.code = 'MODULE_NOT_FOUND';
-    throw e;
-})();
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$hooks$2f$use$2d$toast$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/hooks/use-toast.ts [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
-;
+'use client';
 ;
 ;
 ;
@@ -189,7 +180,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 function HeroSection() {
     _s();
-    const { toast } = useToast();
+    const { toast } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$hooks$2f$use$2d$toast$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useToast"])();
     const [email, setEmail] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [name, setName] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [isSubscribed, setIsSubscribed] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
@@ -252,25 +243,25 @@ function HeroSection() {
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute inset-0 bg-cover bg-center opacity-20",
                 style: {
-                    backgroundImage: `url(${heroBackgroundImage})`
+                    backgroundImage: 'url(/assets/home-lecture-1-min_1763345097074.png)'
                 }
             }, void 0, false, {
                 fileName: "[project]/components/hero-section.tsx",
-                lineNumber: 63,
+                lineNumber: 64,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute inset-0 bg-black/50"
             }, void 0, false, {
                 fileName: "[project]/components/hero-section.tsx",
-                lineNumber: 67,
+                lineNumber: 68,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute inset-0 hero-bg opacity-30"
             }, void 0, false, {
                 fileName: "[project]/components/hero-section.tsx",
-                lineNumber: 68,
+                lineNumber: 69,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -285,7 +276,7 @@ function HeroSection() {
                                 "Shenzhen SEO",
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                     fileName: "[project]/components/hero-section.tsx",
-                                    lineNumber: 73,
+                                    lineNumber: 74,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -293,13 +284,13 @@ function HeroSection() {
                                     children: "Conference 2026"
                                 }, void 0, false, {
                                     fileName: "[project]/components/hero-section.tsx",
-                                    lineNumber: 74,
+                                    lineNumber: 75,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/hero-section.tsx",
-                            lineNumber: 72,
+                            lineNumber: 73,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -308,7 +299,7 @@ function HeroSection() {
                             children: "Join the premier SEO event connecting Eastern and Western digital markets. 5 days of innovation in China's Silicon Valley."
                         }, void 0, false, {
                             fileName: "[project]/components/hero-section.tsx",
-                            lineNumber: 77,
+                            lineNumber: 78,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -322,14 +313,14 @@ function HeroSection() {
                                             className: "mr-2 h-5 w-5"
                                         }, void 0, false, {
                                             fileName: "[project]/components/hero-section.tsx",
-                                            lineNumber: 84,
+                                            lineNumber: 85,
                                             columnNumber: 15
                                         }, this),
                                         "September 14-18, 2026"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/hero-section.tsx",
-                                    lineNumber: 83,
+                                    lineNumber: 84,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -340,25 +331,25 @@ function HeroSection() {
                                             className: "mr-2 h-5 w-5"
                                         }, void 0, false, {
                                             fileName: "[project]/components/hero-section.tsx",
-                                            lineNumber: 88,
+                                            lineNumber: 89,
                                             columnNumber: 15
                                         }, this),
                                         "Shenzhen, China (Venue TBD)"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/hero-section.tsx",
-                                    lineNumber: 87,
+                                    lineNumber: 88,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/hero-section.tsx",
-                            lineNumber: 82,
+                            lineNumber: 83,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$countdown$2d$timer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                             fileName: "[project]/components/hero-section.tsx",
-                            lineNumber: 93,
+                            lineNumber: 94,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -374,24 +365,24 @@ function HeroSection() {
                                             className: "mr-2 h-5 w-5 inline"
                                         }, void 0, false, {
                                             fileName: "[project]/components/hero-section.tsx",
-                                            lineNumber: 102,
+                                            lineNumber: 103,
                                             columnNumber: 17
                                         }, this),
                                         "Get Super Early Bird Tickets"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/hero-section.tsx",
-                                    lineNumber: 101,
+                                    lineNumber: 102,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/hero-section.tsx",
-                                lineNumber: 96,
+                                lineNumber: 97,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/hero-section.tsx",
-                            lineNumber: 95,
+                            lineNumber: 96,
                             columnNumber: 11
                         }, this),
                         !isSubscribed ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -402,7 +393,7 @@ function HeroSection() {
                                     children: "Get Notified When Early Bird Tickets Drop"
                                 }, void 0, false, {
                                     fileName: "[project]/components/hero-section.tsx",
-                                    lineNumber: 110,
+                                    lineNumber: 111,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -419,7 +410,7 @@ function HeroSection() {
                                             "data-testid": "input-hero-name"
                                         }, void 0, false, {
                                             fileName: "[project]/components/hero-section.tsx",
-                                            lineNumber: 112,
+                                            lineNumber: 113,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -432,7 +423,7 @@ function HeroSection() {
                                             "data-testid": "input-hero-email"
                                         }, void 0, false, {
                                             fileName: "[project]/components/hero-section.tsx",
-                                            lineNumber: 121,
+                                            lineNumber: 122,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -446,7 +437,7 @@ function HeroSection() {
                                                         className: "mr-2 h-5 w-5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/hero-section.tsx",
-                                                        lineNumber: 140,
+                                                        lineNumber: 141,
                                                         columnNumber: 23
                                                     }, this),
                                                     "Notify Me"
@@ -454,19 +445,19 @@ function HeroSection() {
                                             }, void 0, true)
                                         }, void 0, false, {
                                             fileName: "[project]/components/hero-section.tsx",
-                                            lineNumber: 130,
+                                            lineNumber: 131,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/hero-section.tsx",
-                                    lineNumber: 111,
+                                    lineNumber: 112,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/hero-section.tsx",
-                            lineNumber: 109,
+                            lineNumber: 110,
                             columnNumber: 13
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "max-w-md mx-auto bg-green-500/20 backdrop-blur-md rounded-lg p-6 border border-green-400/30",
@@ -476,7 +467,7 @@ function HeroSection() {
                                     children: "✓ You're subscribed!"
                                 }, void 0, false, {
                                     fileName: "[project]/components/hero-section.tsx",
-                                    lineNumber: 149,
+                                    lineNumber: 150,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -484,36 +475,36 @@ function HeroSection() {
                                     children: "We'll notify you when Early Bird tickets are available."
                                 }, void 0, false, {
                                     fileName: "[project]/components/hero-section.tsx",
-                                    lineNumber: 150,
+                                    lineNumber: 151,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/hero-section.tsx",
-                            lineNumber: 148,
+                            lineNumber: 149,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/hero-section.tsx",
-                    lineNumber: 71,
+                    lineNumber: 72,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/hero-section.tsx",
-                lineNumber: 70,
+                lineNumber: 71,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/hero-section.tsx",
-        lineNumber: 62,
+        lineNumber: 63,
         columnNumber: 5
     }, this);
 }
 _s(HeroSection, "SvRNhpvfuoT8zbViXK6WJHlAjIc=", false, function() {
     return [
-        useToast,
+        __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$hooks$2f$use$2d$toast$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useToast"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMutation"]
     ];
 });
@@ -532,12 +523,6 @@ __turbopack_context__.s([
     ()=>FounderStory
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-(()=>{
-    const e = new Error("Cannot find module '@assets/J.P.-Zhang-1_1763346048430.webp'");
-    e.code = 'MODULE_NOT_FOUND';
-    throw e;
-})();
-;
 ;
 function FounderStory() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -553,23 +538,23 @@ function FounderStory() {
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "relative max-w-md mx-auto",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                src: jpZhangImg,
+                                src: "/assets/J.P.-Zhang-1_1763346048430.webp",
                                 alt: "J.P. Zhang, founder of Shenzhen SEO Conference",
                                 className: "w-full h-auto rounded-lg shadow-2xl",
                                 "data-testid": "img-jp-zhang"
                             }, void 0, false, {
                                 fileName: "[project]/components/founder-story.tsx",
-                                lineNumber: 11,
+                                lineNumber: 9,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/founder-story.tsx",
-                            lineNumber: 10,
+                            lineNumber: 8,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/founder-story.tsx",
-                        lineNumber: 9,
+                        lineNumber: 7,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -581,7 +566,7 @@ function FounderStory() {
                                 children: "Why I Started the Shenzhen SEO Conference"
                             }, void 0, false, {
                                 fileName: "[project]/components/founder-story.tsx",
-                                lineNumber: 22,
+                                lineNumber: 20,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -599,17 +584,17 @@ function FounderStory() {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/founder-story.tsx",
-                                        lineNumber: 29,
+                                        lineNumber: 27,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/founder-story.tsx",
-                                    lineNumber: 28,
+                                    lineNumber: 26,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/founder-story.tsx",
-                                lineNumber: 27,
+                                lineNumber: 25,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -627,14 +612,14 @@ function FounderStory() {
                                                 children: "J.P. Zhang"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/founder-story.tsx",
-                                                lineNumber: 35,
+                                                lineNumber: 33,
                                                 columnNumber: 32
                                             }, this),
                                             ", the host of the Shenzhen SEO Conference. After 15+ years in the SEO industry, I've seen what's possible when the East and West learn from each other and work together."
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/founder-story.tsx",
-                                        lineNumber: 34,
+                                        lineNumber: 32,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -642,7 +627,7 @@ function FounderStory() {
                                         children: "This conference is meant to be that bridge. A place where global SEO entrepreneurs and professionals can meet, share ideas, build real partnerships – all while exploring China and its fast-moving digital ecosystem."
                                     }, void 0, false, {
                                         fileName: "[project]/components/founder-story.tsx",
-                                        lineNumber: 38,
+                                        lineNumber: 36,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -651,35 +636,35 @@ function FounderStory() {
                                         children: "My goal is simple: help build a truly global SEO community. See you in Shenzhen!"
                                     }, void 0, false, {
                                         fileName: "[project]/components/founder-story.tsx",
-                                        lineNumber: 42,
+                                        lineNumber: 40,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/founder-story.tsx",
-                                lineNumber: 33,
+                                lineNumber: 31,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/founder-story.tsx",
-                        lineNumber: 21,
+                        lineNumber: 19,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/founder-story.tsx",
-                lineNumber: 7,
+                lineNumber: 5,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/components/founder-story.tsx",
-            lineNumber: 6,
+            lineNumber: 4,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/founder-story.tsx",
-        lineNumber: 5,
+        lineNumber: 3,
         columnNumber: 5
     }, this);
 }
@@ -1012,11 +997,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$hookform$2
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@tanstack/react-query/build/modern/useMutation.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/zod/lib/index.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$queryClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/queryClient.ts [app-client] (ecmascript)");
-(()=>{
-    const e = new Error("Cannot find module '@/hooks/use-toast'");
-    e.code = 'MODULE_NOT_FOUND';
-    throw e;
-})();
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$hooks$2f$use$2d$toast$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/hooks/use-toast.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/button.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/input.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bell$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Bell$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/bell.js [app-client] (ecmascript) <export default as Bell>");
@@ -1024,6 +1005,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2d$big$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/circle-check-big.js [app-client] (ecmascript) <export default as CheckCircle>");
 ;
 var _s = __turbopack_context__.k.signature();
+'use client';
 ;
 ;
 ;
@@ -1040,7 +1022,7 @@ const emailSubscriberSchema = __TURBOPACK__imported__module__$5b$project$5d2f$no
 });
 function EmailSubscriber() {
     _s();
-    const { toast } = useToast();
+    const { toast } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$hooks$2f$use$2d$toast$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useToast"])();
     const [isSubscribed, setIsSubscribed] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const form = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hook$2d$form$2f$dist$2f$index$2e$esm$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useForm"])({
         resolver: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$hookform$2f$resolvers$2f$zod$2f$dist$2f$zod$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["zodResolver"])(emailSubscriberSchema),
@@ -1104,12 +1086,12 @@ function EmailSubscriber() {
                                 className: "w-8 h-8 text-green-600 dark:text-green-400"
                             }, void 0, false, {
                                 fileName: "[project]/components/email-subscriber.tsx",
-                                lineNumber: 73,
+                                lineNumber: 75,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/email-subscriber.tsx",
-                            lineNumber: 72,
+                            lineNumber: 74,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1118,7 +1100,7 @@ function EmailSubscriber() {
                             children: "You're All Set! 🎉"
                         }, void 0, false, {
                             fileName: "[project]/components/email-subscriber.tsx",
-                            lineNumber: 75,
+                            lineNumber: 77,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1127,23 +1109,23 @@ function EmailSubscriber() {
                             children: "We'll notify you as soon as Early Bird tickets are available. Check your inbox for a confirmation email."
                         }, void 0, false, {
                             fileName: "[project]/components/email-subscriber.tsx",
-                            lineNumber: 78,
+                            lineNumber: 80,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/email-subscriber.tsx",
-                    lineNumber: 71,
+                    lineNumber: 73,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/email-subscriber.tsx",
-                lineNumber: 70,
+                lineNumber: 72,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/components/email-subscriber.tsx",
-            lineNumber: 69,
+            lineNumber: 71,
             columnNumber: 7
         }, this);
     }
@@ -1164,12 +1146,12 @@ function EmailSubscriber() {
                                     className: "w-8 h-8 text-primary"
                                 }, void 0, false, {
                                     fileName: "[project]/components/email-subscriber.tsx",
-                                    lineNumber: 93,
+                                    lineNumber: 95,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/email-subscriber.tsx",
-                                lineNumber: 92,
+                                lineNumber: 94,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1178,7 +1160,7 @@ function EmailSubscriber() {
                                 children: "Get Notified When Early Bird Tickets Drop"
                             }, void 0, false, {
                                 fileName: "[project]/components/email-subscriber.tsx",
-                                lineNumber: 95,
+                                lineNumber: 97,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1187,13 +1169,13 @@ function EmailSubscriber() {
                                 children: "Be the first to know when our Early Bird tickets are released. Join our exclusive notification list and never miss out on special pricing!"
                             }, void 0, false, {
                                 fileName: "[project]/components/email-subscriber.tsx",
-                                lineNumber: 98,
+                                lineNumber: 100,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/email-subscriber.tsx",
-                        lineNumber: 91,
+                        lineNumber: 93,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -1213,7 +1195,7 @@ function EmailSubscriber() {
                                                 "data-testid": "input-subscriber-name"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/email-subscriber.tsx",
-                                                lineNumber: 106,
+                                                lineNumber: 108,
                                                 columnNumber: 17
                                             }, this),
                                             form.formState.errors.name && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1222,13 +1204,13 @@ function EmailSubscriber() {
                                                 children: form.formState.errors.name.message
                                             }, void 0, false, {
                                                 fileName: "[project]/components/email-subscriber.tsx",
-                                                lineNumber: 114,
+                                                lineNumber: 116,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/email-subscriber.tsx",
-                                        lineNumber: 105,
+                                        lineNumber: 107,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1241,7 +1223,7 @@ function EmailSubscriber() {
                                                 "data-testid": "input-subscriber-email"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/email-subscriber.tsx",
-                                                lineNumber: 121,
+                                                lineNumber: 123,
                                                 columnNumber: 17
                                             }, this),
                                             form.formState.errors.email && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1250,19 +1232,19 @@ function EmailSubscriber() {
                                                 children: form.formState.errors.email.message
                                             }, void 0, false, {
                                                 fileName: "[project]/components/email-subscriber.tsx",
-                                                lineNumber: 129,
+                                                lineNumber: 131,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/email-subscriber.tsx",
-                                        lineNumber: 120,
+                                        lineNumber: 122,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/email-subscriber.tsx",
-                                lineNumber: 104,
+                                lineNumber: 106,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1276,7 +1258,7 @@ function EmailSubscriber() {
                                             className: "mr-2 h-5 w-5"
                                         }, void 0, false, {
                                             fileName: "[project]/components/email-subscriber.tsx",
-                                            lineNumber: 146,
+                                            lineNumber: 148,
                                             columnNumber: 19
                                         }, this),
                                         "Notify Me About Early Bird Tickets"
@@ -1284,13 +1266,13 @@ function EmailSubscriber() {
                                 }, void 0, true)
                             }, void 0, false, {
                                 fileName: "[project]/components/email-subscriber.tsx",
-                                lineNumber: 136,
+                                lineNumber: 138,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/email-subscriber.tsx",
-                        lineNumber: 103,
+                        lineNumber: 105,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1299,29 +1281,29 @@ function EmailSubscriber() {
                         children: "🔒 We respect your privacy. Unsubscribe at any time. No spam, just ticket notifications."
                     }, void 0, false, {
                         fileName: "[project]/components/email-subscriber.tsx",
-                        lineNumber: 153,
+                        lineNumber: 155,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/email-subscriber.tsx",
-                lineNumber: 90,
+                lineNumber: 92,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/components/email-subscriber.tsx",
-            lineNumber: 89,
+            lineNumber: 91,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/email-subscriber.tsx",
-        lineNumber: 88,
+        lineNumber: 90,
         columnNumber: 5
     }, this);
 }
 _s(EmailSubscriber, "LKEAuT7ihLWVPsqvjqFLK8Ex7Cs=", false, function() {
     return [
-        useToast,
+        __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$hooks$2f$use$2d$toast$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useToast"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hook$2d$form$2f$dist$2f$index$2e$esm$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useForm"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMutation"]
     ];
@@ -1344,17 +1326,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hook$2d$form$2f$dist$2f$index$2e$esm$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-hook-form/dist/index.esm.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$hookform$2f$resolvers$2f$zod$2f$dist$2f$zod$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@hookform/resolvers/zod/dist/zod.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@tanstack/react-query/build/modern/useMutation.js [app-client] (ecmascript)");
-(()=>{
-    const e = new Error("Cannot find module '@shared/schema'");
-    e.code = 'MODULE_NOT_FOUND';
-    throw e;
-})();
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/zod/lib/index.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$queryClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/queryClient.ts [app-client] (ecmascript)");
-(()=>{
-    const e = new Error("Cannot find module '@/hooks/use-toast'");
-    e.code = 'MODULE_NOT_FOUND';
-    throw e;
-})();
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$hooks$2f$use$2d$toast$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/hooks/use-toast.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/button.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/card.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/badge.tsx [app-client] (ecmascript)");
@@ -1362,6 +1336,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$email$2d$subscriber$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/email-subscriber.tsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
+'use client';
 ;
 ;
 ;
@@ -1373,11 +1348,23 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+const ticketPreOrderSchema = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["z"].object({
+    firstName: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["z"].string().min(1, "First name is required"),
+    lastName: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["z"].string().min(1, "Last name is required"),
+    email: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["z"].string().email("Invalid email address"),
+    company: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["z"].string().optional(),
+    ticketType: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["z"].enum([
+        "standard",
+        "deluxe",
+        "vip"
+    ]),
+    subscribeNewsletter: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zod$2f$lib$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["z"].boolean().default(false)
+});
 function TicketForm() {
     _s();
-    const { toast } = useToast();
+    const { toast } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$hooks$2f$use$2d$toast$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useToast"])();
     const form = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hook$2d$form$2f$dist$2f$index$2e$esm$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useForm"])({
-        resolver: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$hookform$2f$resolvers$2f$zod$2f$dist$2f$zod$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["zodResolver"])(insertTicketPreOrderSchema),
+        resolver: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$hookform$2f$resolvers$2f$zod$2f$dist$2f$zod$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["zodResolver"])(ticketPreOrderSchema),
         defaultValues: {
             firstName: "",
             lastName: "",
@@ -1473,12 +1460,12 @@ function TicketForm() {
                                 children: "Secure Your Super Early Bird Tickets"
                             }, void 0, false, {
                                 fileName: "[project]/components/ticket-form.tsx",
-                                lineNumber: 103,
+                                lineNumber: 116,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/ticket-form.tsx",
-                            lineNumber: 102,
+                            lineNumber: 115,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1487,13 +1474,13 @@ function TicketForm() {
                             children: "Super Early Bird period ended September 30, 2025"
                         }, void 0, false, {
                             fileName: "[project]/components/ticket-form.tsx",
-                            lineNumber: 105,
+                            lineNumber: 118,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/ticket-form.tsx",
-                    lineNumber: 101,
+                    lineNumber: 114,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1513,12 +1500,12 @@ function TicketForm() {
                                         children: "Most Popular"
                                     }, void 0, false, {
                                         fileName: "[project]/components/ticket-form.tsx",
-                                        lineNumber: 122,
+                                        lineNumber: 135,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/ticket-form.tsx",
-                                    lineNumber: 121,
+                                    lineNumber: 134,
                                     columnNumber: 17
                                 }, this),
                                 ticket.bestValue && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1529,12 +1516,12 @@ function TicketForm() {
                                         children: "Best Value"
                                     }, void 0, false, {
                                         fileName: "[project]/components/ticket-form.tsx",
-                                        lineNumber: 129,
+                                        lineNumber: 142,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/ticket-form.tsx",
-                                    lineNumber: 128,
+                                    lineNumber: 141,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1546,7 +1533,7 @@ function TicketForm() {
                                             children: ticket.name
                                         }, void 0, false, {
                                             fileName: "[project]/components/ticket-form.tsx",
-                                            lineNumber: 136,
+                                            lineNumber: 149,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1558,12 +1545,12 @@ function TicketForm() {
                                                 children: "Super Early Bird Price"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/ticket-form.tsx",
-                                                lineNumber: 140,
+                                                lineNumber: 153,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/ticket-form.tsx",
-                                            lineNumber: 139,
+                                            lineNumber: 152,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1575,7 +1562,7 @@ function TicketForm() {
                                                     children: ticket.price
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/ticket-form.tsx",
-                                                    lineNumber: 145,
+                                                    lineNumber: 158,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1584,13 +1571,13 @@ function TicketForm() {
                                                     children: ticket.originalPrice
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/ticket-form.tsx",
-                                                    lineNumber: 148,
+                                                    lineNumber: 161,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/ticket-form.tsx",
-                                            lineNumber: 144,
+                                            lineNumber: 157,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1601,12 +1588,12 @@ function TicketForm() {
                                                 children: "Super Early Bird EXPIRED"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/ticket-form.tsx",
-                                                lineNumber: 153,
+                                                lineNumber: 166,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/ticket-form.tsx",
-                                            lineNumber: 152,
+                                            lineNumber: 165,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1619,19 +1606,19 @@ function TicketForm() {
                                                             className: "text-green-500 mr-2 h-4 w-4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/ticket-form.tsx",
-                                                            lineNumber: 160,
+                                                            lineNumber: 173,
                                                             columnNumber: 23
                                                         }, this),
                                                         feature
                                                     ]
                                                 }, index, true, {
                                                     fileName: "[project]/components/ticket-form.tsx",
-                                                    lineNumber: 159,
+                                                    lineNumber: 172,
                                                     columnNumber: 21
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/components/ticket-form.tsx",
-                                            lineNumber: 157,
+                                            lineNumber: 170,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1647,34 +1634,34 @@ function TicketForm() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/ticket-form.tsx",
-                                                lineNumber: 170,
+                                                lineNumber: 183,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/ticket-form.tsx",
-                                            lineNumber: 165,
+                                            lineNumber: 178,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/ticket-form.tsx",
-                                    lineNumber: 135,
+                                    lineNumber: 148,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, ticket.type, true, {
                             fileName: "[project]/components/ticket-form.tsx",
-                            lineNumber: 112,
+                            lineNumber: 125,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/components/ticket-form.tsx",
-                    lineNumber: 110,
+                    lineNumber: 123,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$email$2d$subscriber$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                     fileName: "[project]/components/ticket-form.tsx",
-                    lineNumber: 179,
+                    lineNumber: 192,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1688,12 +1675,12 @@ function TicketForm() {
                                 children: "💰"
                             }, void 0, false, {
                                 fileName: "[project]/components/ticket-form.tsx",
-                                lineNumber: 183,
+                                lineNumber: 196,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/ticket-form.tsx",
-                            lineNumber: 182,
+                            lineNumber: 195,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1701,7 +1688,7 @@ function TicketForm() {
                             children: "100% Full Refund Policy"
                         }, void 0, false, {
                             fileName: "[project]/components/ticket-form.tsx",
-                            lineNumber: 185,
+                            lineNumber: 198,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1712,14 +1699,14 @@ function TicketForm() {
                                     children: "30 days or more"
                                 }, void 0, false, {
                                     fileName: "[project]/components/ticket-form.tsx",
-                                    lineNumber: 187,
+                                    lineNumber: 200,
                                     columnNumber: 49
                                 }, this),
                                 " before the conference starts."
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/ticket-form.tsx",
-                            lineNumber: 186,
+                            lineNumber: 199,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1727,30 +1714,30 @@ function TicketForm() {
                             children: "Risk-free ticket purchase with peace of mind"
                         }, void 0, false, {
                             fileName: "[project]/components/ticket-form.tsx",
-                            lineNumber: 189,
+                            lineNumber: 202,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/ticket-form.tsx",
-                    lineNumber: 181,
+                    lineNumber: 194,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/ticket-form.tsx",
-            lineNumber: 100,
+            lineNumber: 113,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/ticket-form.tsx",
-        lineNumber: 99,
+        lineNumber: 112,
         columnNumber: 5
     }, this);
 }
 _s(TicketForm, "GdWgOdh3f4ufnK1cIYlMTpcw35E=", false, function() {
     return [
-        useToast,
+        __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$hooks$2f$use$2d$toast$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useToast"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hook$2d$form$2f$dist$2f$index$2e$esm$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useForm"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMutation"]
     ];

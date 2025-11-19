@@ -8,7 +8,6 @@ import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/components/hooks/use-toast";
-import heroBackgroundImage from "@assets/home-lecture-1-min_1763345097074.png";
 
 export default function HeroSection() {
   const { toast } = useToast();
@@ -64,7 +63,7 @@ export default function HeroSection() {
     <section className="pt-16 gradient-bg relative overflow-hidden" data-testid="hero-section">
       <div 
         className="absolute inset-0 bg-cover bg-center opacity-20"
-        style={{ backgroundImage: `url(${heroBackgroundImage})` }}
+        style={{ backgroundImage: 'url(/assets/home-lecture-1-min_1763345097074.png)' }}
       ></div>
       <div className="absolute inset-0 bg-black/50"></div>
       <div className="absolute inset-0 hero-bg opacity-30"></div>
