@@ -72,7 +72,7 @@ export default function Home() {
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
             {/* Attendees Stat */}
-            <div className="group cursor-pointer" data-testid="stat-attendees">
+            <div className="group" data-testid="stat-attendees">
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/30 border rounded-2xl p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300" style={{ borderColor: '#1A4AFF' }}>
                 <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#1A4AFF' }}>
                   <Users className="w-8 h-8 text-white" />
@@ -84,7 +84,7 @@ export default function Home() {
             </div>
             
             {/* Speakers Stat */}
-            <div className="group cursor-pointer" data-testid="stat-speakers">
+            <div className="group" data-testid="stat-speakers">
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/30 border rounded-2xl p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300" style={{ borderColor: '#1A4AFF' }}>
                 <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#1A4AFF' }}>
                   <Mic className="w-8 h-8 text-white" />
@@ -96,7 +96,7 @@ export default function Home() {
             </div>
             
             {/* Days Stat */}
-            <div className="group cursor-pointer" data-testid="stat-days">
+            <div className="group" data-testid="stat-days">
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/30 border rounded-2xl p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300" style={{ borderColor: '#1A4AFF' }}>
                 <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#1A4AFF' }}>
                   <Calendar className="w-8 h-8 text-white" />
@@ -108,7 +108,7 @@ export default function Home() {
             </div>
             
             {/* Countries Stat */}
-            <div className="group cursor-pointer" data-testid="stat-countries">
+            <div className="group" data-testid="stat-countries">
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/30 border rounded-2xl p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300" style={{ borderColor: '#1A4AFF' }}>
                 <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#1A4AFF' }}>
                   <Globe className="w-8 h-8 text-white" />
