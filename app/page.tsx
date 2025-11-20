@@ -30,7 +30,7 @@ export default function Home() {
       {/* Video Section */}
       <section className="py-16 bg-background" data-testid="section-video">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer bg-black" style={{ minHeight: '400px' }}>
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl group bg-black" style={{ minHeight: '400px' }}>
             <video 
               ref={videoRef}
               className="w-full h-auto"
@@ -42,9 +42,16 @@ export default function Home() {
               aria-label="Shenzhen conference promotional video"
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
+              onEnded={() => setIsPlaying(false)}
               onLoadedMetadata={() => console.log('Video metadata loaded')}
               onError={(e) => console.error('Video error:', e)}
-              style={{ minHeight: '400px' }}
+              onClick={(e) => {
+                if (!isPlaying && videoRef.current) {
+                  e.preventDefault();
+                  handlePlayClick();
+                }
+              }}
+              style={{ minHeight: '400px', cursor: isPlaying ? 'default' : 'pointer' }}
             >
               <source src="/shenzhen3_1763393585209.mp4" type="video/mp4" />
               Your browser does not support the video tag.
@@ -52,8 +59,7 @@ export default function Home() {
             
             {!isPlaying && (
               <div 
-                className="absolute inset-0 bg-black/30 flex items-center justify-center transition-opacity hover:bg-black/40"
-                onClick={handlePlayClick}
+                className="absolute inset-0 bg-black/30 flex items-center justify-center transition-opacity hover:bg-black/40 pointer-events-none"
                 data-testid="video-overlay"
               >
                 <div className="bg-white/90 rounded-full p-6 shadow-2xl transform group-hover:scale-110 transition-transform">
