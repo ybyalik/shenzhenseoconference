@@ -1,14 +1,45 @@
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp-relay.brevo.com',
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.BREVO_SMTP_EMAIL,
-    pass: process.env.BREVO_API_KEY,
-  },
-});
+let connectionSettings: any;
+
+async function getCredentials() {
+  const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
+  const xReplitToken = process.env.REPL_IDENTITY 
+    ? 'repl ' + process.env.REPL_IDENTITY 
+    : process.env.WEB_REPL_RENEWAL 
+    ? 'depl ' + process.env.WEB_REPL_RENEWAL 
+    : null;
+
+  if (!xReplitToken) {
+    throw new Error('X_REPLIT_TOKEN not found for repl/depl');
+  }
+
+  connectionSettings = await fetch(
+    'https://' + hostname + '/api/v2/connection?include_secrets=true&connector_names=resend',
+    {
+      headers: {
+        'Accept': 'application/json',
+        'X_REPLIT_TOKEN': xReplitToken
+      }
+    }
+  ).then(res => res.json()).then(data => data.items?.[0]);
+
+  if (!connectionSettings || (!connectionSettings.settings.api_key)) {
+    throw new Error('Resend not connected');
+  }
+  return {
+    apiKey: connectionSettings.settings.api_key, 
+    fromEmail: connectionSettings.settings.from_email
+  };
+}
+
+async function getResendClient() {
+  const { apiKey, fromEmail } = await getCredentials();
+  return {
+    client: new Resend(apiKey),
+    fromEmail
+  };
+}
 
 export async function sendEmail({
   to,
@@ -22,16 +53,23 @@ export async function sendEmail({
   text?: string;
 }) {
   try {
-    const info = await transporter.sendMail({
-      from: `"Shenzhen SEO Conference" <${process.env.BREVO_SMTP_EMAIL}>`,
-      to,
+    const { client, fromEmail } = await getResendClient();
+    
+    const { data, error } = await client.emails.send({
+      from: `Shenzhen SEO Conference <${fromEmail}>`,
+      to: [to],
       subject,
       html,
       text: text || html.replace(/<[^>]*>/g, ''),
     });
 
-    console.log('Email sent:', info.messageId);
-    return { success: true, messageId: info.messageId };
+    if (error) {
+      console.error('Error sending email:', error);
+      throw error;
+    }
+
+    console.log('Email sent:', data?.id);
+    return { success: true, messageId: data?.id };
   } catch (error) {
     console.error('Error sending email:', error);
     throw error;
