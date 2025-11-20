@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { sendEmail } from '@/lib/email';
 
 const sponsorshipInquirySchema = z.object({
   companyName: z.string().min(1, "Company name is required"),
@@ -15,6 +16,21 @@ export async function POST(request: NextRequest) {
     const validatedData = sponsorshipInquirySchema.parse(body);
 
     console.log('Sponsorship inquiry received:', validatedData);
+
+    const emailHtml = `
+      <h2>New Sponsorship Inquiry</h2>
+      <p><strong>Company Name:</strong> ${validatedData.companyName}</p>
+      <p><strong>Contact Name:</strong> ${validatedData.contactName}</p>
+      <p><strong>Email:</strong> ${validatedData.email}</p>
+      ${validatedData.phone ? `<p><strong>Phone:</strong> ${validatedData.phone}</p>` : ''}
+      ${validatedData.message ? `<h3>Message</h3><p>${validatedData.message}</p>` : ''}
+    `;
+
+    await sendEmail({
+      to: 'jp@shenzhenseoconference.com',
+      subject: 'New Sponsorship Inquiry',
+      html: emailHtml,
+    });
 
     return NextResponse.json({
       success: true,

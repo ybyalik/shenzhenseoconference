@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { sendEmail } from '@/lib/email';
 
 const contactFormSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -38,6 +39,42 @@ export async function POST(request: NextRequest) {
     const validatedData = contactFormSchema.parse(body);
 
     console.log('Contact form received:', validatedData);
+
+    const emailSubject = validatedData.requestInvitationLetter
+      ? 'New Business Invitation Letter Request'
+      : 'New Contact Form Submission';
+
+    let emailHtml = `
+      <h2>${emailSubject}</h2>
+      <p><strong>Name:</strong> ${validatedData.firstName} ${validatedData.lastName}</p>
+      <p><strong>Email:</strong> ${validatedData.email}</p>
+    `;
+
+    if (validatedData.requestInvitationLetter) {
+      emailHtml += `
+        <h3>Passport Information</h3>
+        <p><strong>Nationality:</strong> ${validatedData.nationality}</p>
+        <p><strong>Passport No.:</strong> ${validatedData.passportNo}</p>
+        <p><strong>Issuing Office:</strong> ${validatedData.passportIssuingOffice}</p>
+        <p><strong>Date of Issue:</strong> ${validatedData.dateOfIssue}</p>
+        <p><strong>Expiration Date:</strong> ${validatedData.passportExpiration}</p>
+        <p><strong>Job Title:</strong> ${validatedData.jobTitle}</p>
+        <p><strong>Duration of Stay:</strong> ${validatedData.durationOfStay}</p>
+      `;
+    }
+
+    if (validatedData.additionalMessage) {
+      emailHtml += `
+        <h3>Additional Message</h3>
+        <p>${validatedData.additionalMessage}</p>
+      `;
+    }
+
+    await sendEmail({
+      to: 'jp@shenzhenseoconference.com',
+      subject: emailSubject,
+      html: emailHtml,
+    });
 
     return NextResponse.json({
       success: true,

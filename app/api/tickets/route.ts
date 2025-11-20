@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { sendEmail } from '@/lib/email';
 
 const ticketSchema = z.object({
   fullName: z.string().min(1, "Full name is required"),
@@ -8,12 +9,33 @@ const ticketSchema = z.object({
   quantity: z.number().min(1).max(10),
 });
 
+const ticketTypeNames: Record<string, string> = {
+  standard: 'Standard ($390)',
+  deluxe: 'Deluxe ($585)',
+  vip: 'VIP ($1170)',
+};
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const validatedData = ticketSchema.parse(body);
 
     console.log('Ticket pre-order received:', validatedData);
+
+    const ticketTypeName = ticketTypeNames[validatedData.ticketType] || validatedData.ticketType;
+    const emailHtml = `
+      <h2>New Ticket Pre-Order</h2>
+      <p><strong>Name:</strong> ${validatedData.fullName}</p>
+      <p><strong>Email:</strong> ${validatedData.email}</p>
+      <p><strong>Ticket Type:</strong> ${ticketTypeName}</p>
+      <p><strong>Quantity:</strong> ${validatedData.quantity}</p>
+    `;
+
+    await sendEmail({
+      to: 'jp@shenzhenseoconference.com',
+      subject: 'New Ticket Pre-Order',
+      html: emailHtml,
+    });
 
     return NextResponse.json({
       success: true,
