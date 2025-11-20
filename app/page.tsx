@@ -29,12 +29,12 @@ export default function Home() {
       <HeroSection />
       
       {/* Video Section */}
-      <section className="py-16 bg-background" data-testid="section-video">
+      <section className="py-8 sm:py-16 bg-background" data-testid="section-video">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl group bg-black" style={{ minHeight: '400px' }}>
+          <div className="relative rounded-lg sm:rounded-2xl overflow-hidden shadow-2xl group bg-black aspect-video">
             <video 
               ref={videoRef}
-              className="w-full h-auto"
+              className="w-full h-full object-cover"
               controls
               preload="metadata"
               playsInline
@@ -46,7 +46,6 @@ export default function Home() {
               onEnded={() => setIsPlaying(false)}
               onLoadedMetadata={() => console.log('Video metadata loaded')}
               onError={(e) => console.error('Video error:', e)}
-              style={{ minHeight: '400px' }}
             >
               <source src="https://yuryfiles.s3.ap-southeast-2.amazonaws.com/shenzhen2.mp4" type="video/mp4" />
               Your browser does not support the video tag.
@@ -59,8 +58,8 @@ export default function Home() {
                 data-testid="video-overlay"
                 style={{ cursor: 'pointer' }}
               >
-                <div className="bg-white/90 rounded-full p-6 shadow-2xl transform group-hover:scale-110 transition-transform">
-                  <Play className="w-16 h-16 text-primary fill-current" />
+                <div className="bg-white/90 rounded-full p-4 sm:p-6 shadow-2xl transform group-hover:scale-110 transition-transform">
+                  <Play className="w-12 h-12 sm:w-16 sm:h-16 text-primary fill-current" />
                 </div>
               </div>
             )}

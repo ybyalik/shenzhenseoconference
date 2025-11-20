@@ -2442,6 +2442,11 @@ body {
   padding-bottom: 1.5rem;
 }
 
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .pb-16 {
   padding-bottom: 4rem;
 }
@@ -4214,8 +4219,16 @@ body {
     display: flex;
   }
 
+  .sm\:h-16 {
+    height: 4rem;
+  }
+
   .sm\:h-5 {
     height: 1.25rem;
+  }
+
+  .sm\:w-16 {
+    width: 4rem;
   }
 
   .sm\:w-5 {
@@ -4276,12 +4289,20 @@ body {
     white-space: nowrap;
   }
 
+  .sm\:rounded-2xl {
+    border-radius: 1rem;
+  }
+
   .sm\:rounded-lg {
     border-radius: var(--radius);
   }
 
   .sm\:p-12 {
     padding: 3rem;
+  }
+
+  .sm\:p-6 {
+    padding: 1.5rem;
   }
 
   .sm\:p-8 {
@@ -4291,6 +4312,11 @@ body {
   .sm\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  .sm\:py-16 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 
   .sm\:text-left {
