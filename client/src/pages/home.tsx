@@ -50,13 +50,18 @@ export default function Home() {
               className="w-full h-auto"
               controls
               preload="metadata"
+              playsInline
+              poster="/assets/videocover_1763538391162.webp"
               data-testid="video-shenzhen"
               aria-label="Shenzhen conference promotional video"
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
+              onEnded={() => setIsPlaying(false)}
+              onLoadedMetadata={() => console.log('Video metadata loaded')}
+              onError={(e) => console.error('Video error:', e)}
               style={{ minHeight: '400px' }}
             >
-              <source src="/shenzhen3_1763393585209.mp4" type="video/mp4" />
+              <source src="https://yuryfiles.s3.ap-southeast-2.amazonaws.com/shenzhen2.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             
