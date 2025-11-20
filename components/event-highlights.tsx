@@ -14,7 +14,7 @@ export default function EventHighlights() {
       iconColor: "text-accent",
       bgColor: "bg-accent/10",
       title: "Global Network",
-      description: "Connect with SEO professionals from 15+ countries and build lasting partnerships.",
+      description: "Connect with SEO professionals from 30+ countries and build lasting partnerships.",
     },
     {
       icon: Rocket,
