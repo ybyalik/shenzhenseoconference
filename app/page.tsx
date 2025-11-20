@@ -48,7 +48,7 @@ export default function Home() {
               onError={(e) => console.error('Video error:', e)}
               style={{ minHeight: '400px' }}
             >
-              <source src="/shenzhen3_1763393585209.mp4" type="video/mp4" />
+              <source src="https://yuryfiles.s3.ap-southeast-2.amazonaws.com/shenzhen2.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             
