@@ -18,8 +18,9 @@ export default function Home() {
 
   const handlePlayClick = () => {
     if (videoRef.current) {
-      videoRef.current.play();
-      setIsPlaying(true);
+      videoRef.current.play().catch(err => {
+        console.error('Video play error:', err);
+      });
     }
   };
 
@@ -45,13 +46,7 @@ export default function Home() {
               onEnded={() => setIsPlaying(false)}
               onLoadedMetadata={() => console.log('Video metadata loaded')}
               onError={(e) => console.error('Video error:', e)}
-              onClick={(e) => {
-                if (!isPlaying && videoRef.current) {
-                  e.preventDefault();
-                  handlePlayClick();
-                }
-              }}
-              style={{ minHeight: '400px', cursor: isPlaying ? 'default' : 'pointer' }}
+              style={{ minHeight: '400px' }}
             >
               <source src="/shenzhen3_1763393585209.mp4" type="video/mp4" />
               Your browser does not support the video tag.
@@ -59,8 +54,10 @@ export default function Home() {
             
             {!isPlaying && (
               <div 
-                className="absolute inset-0 bg-black/30 flex items-center justify-center transition-opacity hover:bg-black/40 pointer-events-none"
+                className="absolute inset-0 bg-black/30 flex items-center justify-center transition-opacity hover:bg-black/40"
+                onClick={handlePlayClick}
                 data-testid="video-overlay"
+                style={{ cursor: 'pointer' }}
               >
                 <div className="bg-white/90 rounded-full p-6 shadow-2xl transform group-hover:scale-110 transition-transform">
                   <Play className="w-16 h-16 text-primary fill-current" />
