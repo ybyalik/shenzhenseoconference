@@ -675,7 +675,7 @@ function EventHighlights() {
             iconColor: "text-accent",
             bgColor: "bg-accent/10",
             title: "Global Network",
-            description: "Connect with SEO professionals from 15+ countries and build lasting partnerships."
+            description: "Connect with SEO professionals from 30+ countries and build lasting partnerships."
         },
         {
             icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$rocket$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Rocket$3e$__["Rocket"],

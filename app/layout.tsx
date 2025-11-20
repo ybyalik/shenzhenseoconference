@@ -18,6 +18,20 @@ export const metadata: Metadata = {
     description: 'Join 500+ SEO professionals at the premier international conference in Shenzhen. September 14-18, 2026.',
     type: 'website',
     siteName: 'Shenzhen SEO Conference',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Shenzhen SEO Conference 2026',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Shenzhen SEO Conference 2026 (September 14–18)',
+    description: 'Join 500+ SEO professionals at the premier international conference in Shenzhen. September 14-18, 2026.',
+    images: ['/og-image.jpg'],
   },
 }
 
