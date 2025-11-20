@@ -60,22 +60,36 @@ let connectionSettings;
 async function getCredentials() {
     const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
     const xReplitToken = process.env.REPL_IDENTITY ? 'repl ' + process.env.REPL_IDENTITY : process.env.WEB_REPL_RENEWAL ? 'depl ' + process.env.WEB_REPL_RENEWAL : null;
+    console.log('Debug - hostname:', hostname);
+    console.log('Debug - has token:', !!xReplitToken);
     if (!xReplitToken) {
+        console.error('X_REPLIT_TOKEN not found, falling back to env vars');
         throw new Error('X_REPLIT_TOKEN not found for repl/depl');
     }
-    connectionSettings = await fetch('https://' + hostname + '/api/v2/connection?include_secrets=true&connector_names=resend', {
-        headers: {
-            'Accept': 'application/json',
-            'X_REPLIT_TOKEN': xReplitToken
+    try {
+        const url = 'https://' + hostname + '/api/v2/connection?include_secrets=true&connector_names=resend';
+        console.log('Fetching connection from:', url);
+        const response = await fetch(url, {
+            headers: {
+                'Accept': 'application/json',
+                'X_REPLIT_TOKEN': xReplitToken
+            }
+        });
+        const data = await response.json();
+        console.log('Connection response:', JSON.stringify(data, null, 2));
+        connectionSettings = data.items?.[0];
+        if (!connectionSettings || !connectionSettings.settings?.api_key) {
+            console.error('Resend not connected or missing API key');
+            throw new Error('Resend not connected');
         }
-    }).then((res)=>res.json()).then((data)=>data.items?.[0]);
-    if (!connectionSettings || !connectionSettings.settings.api_key) {
-        throw new Error('Resend not connected');
+        return {
+            apiKey: connectionSettings.settings.api_key,
+            fromEmail: connectionSettings.settings.from_email
+        };
+    } catch (error) {
+        console.error('Error fetching connection:', error);
+        throw error;
     }
-    return {
-        apiKey: connectionSettings.settings.api_key,
-        fromEmail: connectionSettings.settings.from_email
-    };
 }
 async function getResendClient() {
     const { apiKey, fromEmail } = await getCredentials();
