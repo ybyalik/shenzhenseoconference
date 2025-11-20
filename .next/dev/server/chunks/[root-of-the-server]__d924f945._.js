@@ -56,52 +56,11 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$resend$2f$dist$2f$index$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/resend/dist/index.mjs [app-route] (ecmascript)");
 ;
-let connectionSettings;
-async function getCredentials() {
-    const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
-    const xReplitToken = process.env.REPL_IDENTITY ? 'repl ' + process.env.REPL_IDENTITY : process.env.WEB_REPL_RENEWAL ? 'depl ' + process.env.WEB_REPL_RENEWAL : null;
-    console.log('Debug - hostname:', hostname);
-    console.log('Debug - has token:', !!xReplitToken);
-    if (!xReplitToken) {
-        console.error('X_REPLIT_TOKEN not found, falling back to env vars');
-        throw new Error('X_REPLIT_TOKEN not found for repl/depl');
-    }
-    try {
-        const url = 'https://' + hostname + '/api/v2/connection?include_secrets=true&connector_names=resend';
-        console.log('Fetching connection from:', url);
-        const response = await fetch(url, {
-            headers: {
-                'Accept': 'application/json',
-                'X_REPLIT_TOKEN': xReplitToken
-            }
-        });
-        const data = await response.json();
-        console.log('Connection response:', JSON.stringify(data, null, 2));
-        connectionSettings = data.items?.[0];
-        if (!connectionSettings || !connectionSettings.settings?.api_key) {
-            console.error('Resend not connected or missing API key');
-            throw new Error('Resend not connected');
-        }
-        return {
-            apiKey: connectionSettings.settings.api_key,
-            fromEmail: connectionSettings.settings.from_email
-        };
-    } catch (error) {
-        console.error('Error fetching connection:', error);
-        throw error;
-    }
-}
-async function getResendClient() {
-    const { apiKey, fromEmail } = await getCredentials();
-    return {
-        client: new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$resend$2f$dist$2f$index$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__["Resend"](apiKey),
-        fromEmail
-    };
-}
+const resend = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$resend$2f$dist$2f$index$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__["Resend"](process.env.RESEND_API_KEY);
+const fromEmail = process.env.RESEND_FROM_EMAIL || 'noreply@shenzhenseoconference.com';
 async function sendEmail({ to, subject, html, text }) {
     try {
-        const { client, fromEmail } = await getResendClient();
-        const { data, error } = await client.emails.send({
+        const { data, error } = await resend.emails.send({
             from: `Shenzhen SEO Conference <${fromEmail}>`,
             to: [
                 to
