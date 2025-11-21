@@ -127,6 +127,7 @@ export default function Home() {
         </div>
       </section>
 
+      <EventTimeline />
       <FounderStory />
       <EventHighlights />
       
@@ -135,7 +136,6 @@ export default function Home() {
         <TicketForm />
       </section>
 
-      <EventTimeline />
       <VenueInfo />
       <FaqSection />
       <EmailSubscriber />
