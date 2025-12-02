@@ -2,7 +2,7 @@ export async function GET(request: Request) {
   const url = new URL(request.url);
   
   // Use production URL if available, otherwise fallback to request URL
-  const productionUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://shenzhenseo.replit.app';
+  const productionUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://shenzhenseoconference.com';
   const baseUrl = process.env.NODE_ENV === 'production' 
     ? productionUrl 
     : `${url.protocol}//${url.host}`;
