@@ -14,18 +14,6 @@ run = ["sh", "-c", "next start -p 5000"]
 localPort = 5000
 externalPort = 80
 
-[[ports]]
-localPort = 33639
-externalPort = 3003
-
-[[ports]]
-localPort = 43835
-externalPort = 3001
-
-[[ports]]
-localPort = 44925
-externalPort = 3000
-
 [env]
 PORT = "5000"
 
