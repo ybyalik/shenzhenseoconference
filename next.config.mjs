@@ -4,6 +4,10 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   },
+  turbopack: {
+    root: process.cwd(),
+  },
+  allowedDevOrigins: ['*.replit.dev', '*.spock.replit.dev', 'localhost', '127.0.0.1'],
   async headers() {
     return [
       {
