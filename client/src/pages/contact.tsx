@@ -143,8 +143,8 @@ export default function Contact() {
                 <p className="text-muted-foreground mb-4">
                   For sponsorship related inquiries:
                 </p>
-                <a href="mailto:sponsor@shenzhenseoconference.com" className="text-primary font-semibold hover:underline">
-                  sponsor@shenzhenseoconference.com
+                <a href="mailto:support@shenzhenseoconference.com" className="text-primary font-semibold hover:underline">
+                  support@shenzhenseoconference.com
                 </a>
               </CardContent>
             </Card>
