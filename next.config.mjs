@@ -7,7 +7,7 @@ const nextConfig = {
   turbopack: {
     root: process.cwd(),
   },
-  allowedDevOrigins: ['*.replit.dev', '*.spock.replit.dev', 'localhost', '127.0.0.1'],
+  allowedDevOrigins: ['localhost', '127.0.0.1'],
   async headers() {
     return [
       {

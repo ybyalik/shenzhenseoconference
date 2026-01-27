@@ -1,0 +1,200 @@
+/* Home2 Premium Styles */
+
+/* Custom fonts */
+.font-display {
+  font-family: var(--font-bebas), Impact, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.font-body {
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+/* Scrolling ticker animation */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.ticker-scroll-left {
+  animation: scroll-left 20s linear infinite;
+}
+
+.ticker-scroll-right {
+  animation: scroll-right 20s linear infinite;
+}
+
+/* Diagonal clip paths */
+.clip-diagonal-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.clip-diagonal-top {
+  clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+}
+
+.clip-diagonal-both {
+  clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%);
+}
+
+/* Gradient overlays */
+.gradient-overlay-dark {
+  background: linear-gradient(
+    135deg,
+    rgba(2, 15, 26, 0.92) 0%,
+    rgba(2, 15, 26, 0.75) 50%,
+    rgba(2, 15, 26, 0.85) 100%
+  );
+}
+
+.gradient-overlay-hero {
+  background: linear-gradient(
+    180deg,
+    rgba(2, 15, 26, 0.95) 0%,
+    rgba(2, 15, 26, 0.7) 40%,
+    rgba(2, 15, 26, 0.85) 100%
+  );
+}
+
+/* Floating elements */
+.float-offset-left {
+  position: absolute;
+  left: -80px;
+}
+
+.float-offset-right {
+  position: absolute;
+  right: -80px;
+}
+
+/* Wave SVG backgrounds */
+.wave-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 80px;
+}
+
+/* Ticket card perforated edge */
+.ticket-edge {
+  position: relative;
+}
+
+.ticket-edge::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: var(--bg-color, #020f1a);
+  border-radius: 50%;
+  margin-left: -10px;
+}
+
+.ticket-edge::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: var(--bg-color, #020f1a);
+  border-radius: 50%;
+  margin-right: -10px;
+}
+
+/* Stencil mask effect */
+.stencil-mask {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,0 100,25 100,75 50,100 0,75 0,25' fill='white'/%3E%3C/svg%3E");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+/* Glow effects */
+.glow-lime {
+  box-shadow: 0 0 60px rgba(160, 204, 59, 0.3);
+}
+
+.glow-red {
+  box-shadow: 0 0 40px rgba(202, 8, 14, 0.4);
+}
+
+/* Text gradient */
+.text-gradient-lime {
+  background: linear-gradient(135deg, #a0cc3b 0%, #7cb518 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hover lift */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Speaker card hover */
+.speaker-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.speaker-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(2, 15, 26, 0.9) 0%,
+    transparent 50%
+  );
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.speaker-card:hover::after {
+  opacity: 1;
+}
+
+/* Countdown styling */
+.countdown-box {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Stats counter */
+.stat-number {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Decorative arrow */
+.arrow-decoration {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23a0cc3b' stroke-width='2' opacity='0.3'%3E%3Cpath d='M10,50 L80,50 M60,30 L80,50 L60,70'/%3E%3C/svg%3E") no-repeat center;
+  pointer-events: none;
+}

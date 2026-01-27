@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
-import './globals.css'
+import '../globals.css'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import StickyCTA from '@/components/sticky-cta'
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default function MainLayout({
   children,
 }: {
   children: React.ReactNode
@@ -56,10 +56,10 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <noscript>
-          <iframe 
+          <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-NPXJ7HLK"
-            height="0" 
-            width="0" 
+            height="0"
+            width="0"
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
