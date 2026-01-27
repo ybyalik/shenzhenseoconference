@@ -2,10 +2,11 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { ArrowRight, Play, MapPin, Calendar, Users, ChevronDown, Check, Star } from "lucide-react";
+import { ArrowRight, MapPin, Calendar, Users, ChevronDown, Check, Star } from "lucide-react";
 import { speakers } from "@/lib/speakers-data";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 
 // Animated counter
 function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string }) {
@@ -71,20 +72,14 @@ function Countdown() {
 }
 
 export default function Home2() {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const heroRef = useRef(null);
 
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-
-  const handlePlayClick = () => {
-    videoRef.current?.play().catch(console.error);
-  };
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -347,30 +342,23 @@ export default function Home2() {
                 <div className="absolute -inset-8 border border-[#a0cc3b]/10 -z-20 hidden md:block" />
 
                 <div className="relative aspect-video bg-[#0a0a0a] overflow-hidden">
-                  <video
-                    ref={videoRef}
-                    className="w-full h-full object-cover"
-                    controls
-                    preload="metadata"
-                    playsInline
-                    poster="/assets/videocover_1763538391162.webp"
-                    onPlay={() => setIsPlaying(true)}
-                    onPause={() => setIsPlaying(false)}
-                    onEnded={() => setIsPlaying(false)}
-                  >
-                    <source src="https://yuryfiles.s3.ap-southeast-2.amazonaws.com/shenzhen2.mp4" type="video/mp4" />
-                  </video>
-
-                  {!isPlaying && (
-                    <div
-                      className="absolute inset-0 flex items-center justify-center cursor-pointer bg-black/30 hover:bg-black/20 transition-colors"
-                      onClick={handlePlayClick}
-                    >
-                      <div className="w-24 h-24 flex items-center justify-center bg-[#ca080e] hover:bg-[#a00610] transition-colors glow-red">
-                        <Play className="w-10 h-10 text-white fill-current ml-1" />
-                      </div>
-                    </div>
-                  )}
+                  <div
+                    data-kingsway-player="ee8108f0c9"
+                    data-width="100%"
+                    data-height="100%"
+                    style={{
+                      aspectRatio: '16 / 9',
+                      backgroundImage: "url('https://static.kingswayvideo.com/w1o9d6ta/vod/ee8108f0c9/cover.jpg?imageMogr2/format/webp/thumbnail/!30p?t=1763977822290')",
+                      backgroundSize: 'auto 100%',
+                      backgroundPosition: 'center',
+                      backgroundRepeat: 'no-repeat',
+                      backgroundColor: '#000'
+                    }}
+                  />
+                  <Script
+                    src="https://websdk.kingswayvideo.com/vod-player/latest/vod-player.min.js"
+                    strategy="lazyOnload"
+                  />
                 </div>
               </div>
             </motion.div>
