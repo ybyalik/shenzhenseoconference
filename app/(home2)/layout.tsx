@@ -27,6 +27,10 @@ export const metadata: Metadata = {
   title: 'Shenzhen SEO Conference 2026 | Where East Meets West',
   description: 'Join 500+ SEO professionals for 5 transformative days in Shenzhen. September 14-18, 2026. Bridge Eastern and Western digital marketing.',
   keywords: ['SEO conference', 'Shenzhen', 'digital marketing', 'China SEO', 'international conference', 'Baidu SEO'],
+  robots: {
+    index: false,
+    follow: false,
+  },
   openGraph: {
     title: 'Shenzhen SEO Conference 2026',
     description: 'Where East Meets West. 5 days of groundbreaking SEO insights in China\'s Silicon Valley.',
