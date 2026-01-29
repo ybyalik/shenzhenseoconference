@@ -31,6 +31,7 @@ export default function Home() {
       {/* Video Section */}
       <section className="py-8 sm:py-16 bg-background" data-testid="section-video">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">2025 Recap</h2>
           <div className="relative rounded-lg sm:rounded-2xl overflow-hidden shadow-2xl group bg-black aspect-video">
             <video 
               ref={videoRef}
@@ -71,8 +72,7 @@ export default function Home() {
       <section className="bg-gradient-to-br from-primary/5 via-background to-secondary/5 py-20 border-b border-border" data-testid="section-stats">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 fade-in">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Join the Global SEO Community</h2>
-            <p className="text-muted-foreground">Experience the scale and impact of our international conference</p>
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto">Experience the scale and impact of our international conference, where we are expecting a diverse community of industry experts and practitioners.</p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">

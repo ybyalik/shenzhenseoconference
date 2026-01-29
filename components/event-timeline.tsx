@@ -55,28 +55,28 @@ export default function EventTimeline() {
       id: 'day1-workshops',
       date: '2026-09-14',
       title: 'Workshops & City Tours',
-      description: 'Specialized workshops for Chinese attendees and guided city tours for international visitors to explore Shenzhen\'s tech districts',
+      description: 'Specialized workshops and guided city tours for all attendees to explore Shenzhen\'s tech districts.',
       eventType: 'workshop'
     },
     {
       id: 'day2-mastermind',
       date: '2026-09-15',
       title: 'SEO Mastermind',
-      description: 'Intensive small-group mastermind sessions with industry SEO experts and peers',
+      description: 'Intensive small-group mastermind sessions with industry SEO experts and peers.',
       eventType: 'mastermind'
     },
     {
       id: 'day3-conference',
       date: '2026-09-16',
       title: 'Main Conference Day',
-      description: 'Full day of keynotes, talks, panels, breakout sessions, and opening party.',
+      description: 'Full day of keynotes, field talks, lightning talks and opening/closing party.',
       eventType: 'conference'
     },
     {
       id: 'day4-conference',
       date: '2026-09-17',
       title: 'Main Conference Day',
-      description: 'Full day of talks, panels, breakout sessions, and closing party.',
+      description: 'Full day of keynotes, field talks, lightning talks and opening/closing party.',
       eventType: 'conference'
     },
     {

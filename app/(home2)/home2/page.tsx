@@ -106,7 +106,7 @@ export default function Home2() {
     { day: "02", date: "Sept 15", title: "SEO Mastermind", desc: "Intimate roundtables with industry leaders", color: "#00b4d8" },
     { day: "03", date: "Sept 16", title: "Main Conference Day 1", desc: "Keynotes, panels, and 500+ attendees", color: "#ca080e" },
     { day: "04", date: "Sept 17", title: "Main Conference Day 2", desc: "Advanced talks and closing party", color: "#f77f00" },
-    { day: "05", date: "Sept 18", title: "VIP Networking", desc: "Exclusive 5-star venue access", color: "#9d4edd" },
+    { day: "05", date: "Sept 18", title: "VIP Networking", desc: "Intercontinental Shenzhen Dameisha Resort", color: "#9d4edd" },
   ];
 
   const tickets = [
@@ -312,7 +312,7 @@ export default function Home2() {
             >
               <div className="inline-flex items-center gap-3 mb-6">
                 <div className="w-12 h-px bg-[#a0cc3b]" />
-                <span className="font-body text-xs text-[#a0cc3b] uppercase tracking-[0.2em]">Experience</span>
+                <span className="font-body text-xs text-[#a0cc3b] uppercase tracking-[0.2em]">2025 Recap</span>
               </div>
               <h2 className="font-display text-5xl md:text-6xl mb-6">
                 DISCOVER<br />
@@ -324,7 +324,7 @@ export default function Home2() {
               </p>
               <div className="flex items-center gap-4 text-sm text-white/40">
                 <MapPin className="w-4 h-4 text-[#a0cc3b]" />
-                <span>Venue TBA • 5-star location guaranteed</span>
+                <span>The St. Regis Shenzhen • Intercontinental Dameisha Resort</span>
               </div>
             </motion.div>
 

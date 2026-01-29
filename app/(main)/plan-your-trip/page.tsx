@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Card, CardContent } from "@/components/ui/card";
-import { MapPin, Calendar, Mail, Plane, CreditCard, MessageCircle, Bus, Compass, AlertCircle } from "lucide-react";
+import { MapPin, Calendar, Mail, Plane, CreditCard, MessageCircle, Bus, Compass, AlertCircle, Languages } from "lucide-react";
 
 export const metadata: Metadata = {
   title: 'Plan Your Trip - Shenzhen SEO Conference 2026',
@@ -44,14 +44,14 @@ export default function PlanYourTrip() {
               <CardContent className="p-6">
                 <Calendar className="w-10 h-10 text-primary mb-4" />
                 <h3 className="font-semibold mb-2">Conference Dates</h3>
-                <p className="text-muted-foreground">September 17-21, 2026</p>
+                <p className="text-muted-foreground">14-18 September, 2026</p>
               </CardContent>
             </Card>
             <Card data-testid="card-venue">
               <CardContent className="p-6">
                 <MapPin className="w-10 h-10 text-primary mb-4" />
-                <h3 className="font-semibold mb-2">Venue</h3>
-                <p className="text-muted-foreground">To be announced at a later date</p>
+                <h3 className="font-semibold mb-2">Venues</h3>
+                <p className="text-muted-foreground text-sm">The St. Regis Shenzhen (Main Event)<br />Intercontinental Shenzhen Dameisha Resort (VIP Networking)</p>
               </CardContent>
             </Card>
             <Card data-testid="card-contact">
@@ -112,6 +112,36 @@ export default function PlanYourTrip() {
 
           <p className="mb-4">
             For attendees who can visit China with a valid visa or visa-free, <strong>Hong Kong International Airport (HKG)</strong> can be a good option as it's only 30 kilometers away from Shenzhen.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-16" data-testid="language-section">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3" data-testid="text-language-title">
+            <Languages className="w-8 h-8 text-primary" />
+            Language & Communication
+          </h2>
+
+          <p className="mb-4">
+            While English is common at the venue and major hotels, local proficiency is generally limited. We recommend keeping a translation app handy and learning basic Mandarin phrases. If you're up for the challenge, check out this quick guide to master the essentials and navigate Shenzhen with total confidence!
+          </p>
+        </div>
+      </section>
+
+      <section className="py-16 bg-muted" data-testid="currency-section">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3" data-testid="text-currency-title">
+            <CreditCard className="w-8 h-8 text-primary" />
+            Currency & Payments
+          </h2>
+
+          <p className="mb-4">
+            The local currency is the Chinese Yuan (CNY/RMB). While you'll find that hotels and large malls easily handle international credit cards, the real magic of Shenzhen lies in its world-leading digital economy.
+          </p>
+
+          <p className="mb-4">
+            To truly live like a local and experience China's seamless, cashless society, we recommend setting up <a href="https://www.alipayplus.com/pay-in-the-chinese-mainland" className="text-primary underline" target="_blank" rel="noopener noreferrer">Alipay</a> or <a href="https://www.wechat.com/" className="text-primary underline" target="_blank" rel="noopener noreferrer">WeChat Pay</a> before you arrive. Credit cards (Visa, MasterCard) are not widely accepted except in hotels and shopping malls. ATMs are available for withdrawing Chinese Yuan for smaller transactions, but check with your bank about international fees.
           </p>
         </div>
       </section>

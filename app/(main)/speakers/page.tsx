@@ -39,7 +39,7 @@ export default function Speakers() {
               <div>
                 <h2 className="text-xl font-semibold mb-2">Join Us in 2026</h2>
                 <p className="text-purple-100">
-                  The 2026 Shenzhen SEO Conference is on the horizon with this year's speaker lineup soon to be announced. Secure your spot early and be part of the community shaping the future of international SEO.
+                  Whether you're a seasoned pro or a rising star in digital marketing, we want to hear your insights. <a href="https://forms.gle/rwJ3bsG88txEsyfR6" className="underline font-semibold hover:text-white" target="_blank" rel="noopener noreferrer">Submit your speaker proposal</a> today and help us build the future of SEO.
                 </p>
               </div>
             </div>
@@ -73,14 +73,16 @@ export default function Speakers() {
                 Be Part of 2026
               </h2>
               <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                Experience world-class presentations, networking opportunities, and cutting-edge SEO insights at the 2026 Shenzhen SEO Conference. Pre-order your tickets today and join industry leaders from around the globe.
+                Share your SEO expertise and breakthrough strategies with a global audience at the 2026 Shenzhen SEO Conference.
               </p>
               <a
-                href="/#tickets"
-                data-testid="link-tickets"
+                href="https://forms.gle/rwJ3bsG88txEsyfR6"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="link-apply-speak"
                 className="inline-block bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
               >
-                Pre-Order Tickets
+                Apply to Speak
               </a>
             </Card>
           </div>

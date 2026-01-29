@@ -87,7 +87,7 @@ export default function HeroSection() {
             </div>
             <div className="flex items-center text-lg" data-testid="event-location">
               <MapPin className="mr-2 h-5 w-5" />
-              Shenzhen, China (Venue TBD)
+              The St. Regis Shenzhen
             </div>
           </div>
 

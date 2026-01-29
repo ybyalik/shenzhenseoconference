@@ -9,29 +9,36 @@ export default function VenueInfo() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6" data-testid="text-venue-title">
-              2026 Venue - To Be Announced
+              2026 Venues
             </h2>
             <p className="text-lg text-muted-foreground mb-6" data-testid="text-venue-description">
-              Our 2026 venue location in Shenzhen is currently being finalized. We're working to secure another 
-              world-class facility that will provide the perfect setting for our international SEO conference.
+              Experience the best of Shenzhen at two world-class venues, each offering a unique setting for our international SEO conference.
             </p>
-            <div className="bg-muted/50 border border-border rounded-lg p-4 mb-6">
-              <p className="text-sm text-muted-foreground">
-                <strong>2025 Venue:</strong> The Ritz-Carlton, Shenzhen provided luxury accommodations and 
-                world-class facilities in the heart of Shenzhen's financial district.
-              </p>
+            <div className="space-y-4 mb-6">
+              <div className="bg-muted/50 border border-border rounded-lg p-4">
+                <p className="text-sm text-muted-foreground">
+                  <strong>Main Event:</strong> The St. Regis Shenzhen — Luxury accommodations and world-class facilities in the heart of Shenzhen.
+                </p>
+              </div>
+              <div className="bg-muted/50 border border-border rounded-lg p-4">
+                <p className="text-sm text-muted-foreground">
+                  <strong>VIP Networking:</strong> Intercontinental Shenzhen Dameisha Resort — An exclusive beachfront setting for premium networking experiences.
+                </p>
+              </div>
             </div>
             
 
             <div className="mt-8">
-              <Button 
-                disabled
-                className="bg-muted text-muted-foreground px-6 py-3 rounded-lg font-semibold cursor-not-allowed"
+              <Button
+                className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90"
                 data-testid="button-book-hotel"
-                aria-label="Hotel booking available once venue is announced"
+                aria-label="Book your hotel"
+                asChild
               >
-                <Bed className="mr-2 h-4 w-4" />
-                Hotel Booking (Coming Soon)
+                <a href="https://www.marriott.com/en-us/hotels/szxsr-the-st-regis-shenzhen/overview/" target="_blank" rel="noopener noreferrer">
+                  <Bed className="mr-2 h-4 w-4" />
+                  Book at St. Regis Shenzhen
+                </a>
               </Button>
             </div>
           </div>

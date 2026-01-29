@@ -20,15 +20,7 @@ export default function FaqSection() {
     },
     {
       question: "Will there be sessions focused on Western markets?",
-      answer: "Yes, even though this conference is located in Shenzhen, China. More than 70% of the sessions, talks and panel discussions are related to SEO and marketing for Western markets.",
-    },
-    {
-      question: "Is it common for locals to speak English, or should I learn basic Mandarin phrases?",
-      answer: "While Shenzhen is a major city in China with a growing number of English speakers, English proficiency among the general population remains limited. Most locals primarily use Mandarin or Cantonese, so learning basic Mandarin phrases (e.g., greetings, directions, and polite expressions) will be incredibly helpful for navigating the city, interacting with locals, and showing cultural respect. However, in hotels, major tourist areas, and at the conference venue, you'll likely find English-speaking staff or locals. Bringing a translation app can also bridge any language gaps.",
-    },
-    {
-      question: "What is the local currency, and are credit cards widely accepted?",
-      answer: "The local currency in Shenzhen is the Chinese Yuan (CNY), also called Renminbi (RMB). While cash is accepted, mobile payments like WeChat Pay and Alipay are the most widely used. Credit cards (Visa, MasterCard) are not widely accepted except in hotels and shopping malls, so it's best to set up mobile payment apps or carry some cash for smaller transactions. ATMs are available for withdrawing Chinese Yuan, but check with your bank about international fees.",
+      answer: "Yes, even though this conference is located in Shenzhen, China, more than 80% of the sessions and talks are related to SEO and marketing for international markets.",
     },
   ];
 

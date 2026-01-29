@@ -72,39 +72,43 @@ export default function TicketForm() {
     {
       type: "standard" as const,
       name: "Standard",
-      price: "$390",
-      originalPrice: "$600",
+      price: "$585",
+      originalPrice: "$1,170",
       features: [
-        "2-day conference access (Day 3 & 4)",
-        "Lunch and coffee",
+        "2-day conference access (Days 3 & 4)",
+        "Breakfast, lunch, dinner, and coffee",
+        "Opening & closing parties",
+        "Best for SEO Practitioners",
       ],
       popular: false,
     },
     {
       type: "deluxe" as const,
       name: "Deluxe",
-      price: "$585",
-      originalPrice: "$900",
+      price: "$877",
+      originalPrice: "$1,755",
       features: [
-        "4-day conference access (Day 1-4)",
-        "Lunch and coffee",
+        "Everything in Standard, plus..",
+        "Days 1-2",
         "Front-row seating",
+        "Best for Marketing Managers/Directors",
       ],
       popular: true,
+      hideCheckOnFirst: true,
     },
     {
       type: "vip" as const,
       name: "VIP",
-      price: "$1,170",
-      originalPrice: "$1,800",
+      price: "$1,462",
+      originalPrice: "$2,925",
       features: [
-        "Full 5-day conference access",
-        "1 night stay at 5-star hotel (Day 5)",
-        "Lunch and coffee",
-        "Front-row seating",
+        "Everything in Deluxe, plus..",
+        "1 night stay at 5-star hotel at Intercontinental",
+        "Best for Executives and Founders",
       ],
       popular: false,
       bestValue: true,
+      hideCheckOnFirst: true,
     },
   ];
 
@@ -113,10 +117,10 @@ export default function TicketForm() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 fade-in">
           <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-ticket-title">
-            <span className="line-through text-muted-foreground">Secure Your Super Early Bird Tickets</span>
+            Secure Your Early Bird Tickets
           </h2>
-          <p className="text-sm text-muted-foreground mt-2" data-testid="text-deadline">
-            Super Early Bird period ended September 30, 2025
+          <p className="text-lg text-muted-foreground">
+            Grab your tickets now to lock in these savings before they sell out.
           </p>
         </div>
 
@@ -150,27 +154,22 @@ export default function TicketForm() {
                   {ticket.name}
                 </h3>
                 <div className="mb-2">
-                  <Badge variant="secondary" className="text-xs mb-2" data-testid={`badge-super-early-bird-${ticket.type}`}>
-                    Super Early Bird Price
+                  <Badge variant="secondary" className="text-xs mb-2" data-testid={`badge-early-bird-${ticket.type}`}>
+                    Early Bird Price
                   </Badge>
                 </div>
-                <div className="mb-2">
-                  <span className="text-4xl font-bold text-muted-foreground line-through" data-testid={`text-ticket-price-${ticket.type}`}>
+                <div className="mb-4">
+                  <span className="text-4xl font-bold text-primary" data-testid={`text-ticket-price-${ticket.type}`}>
                     {ticket.price}
                   </span>
                   <span className="text-muted-foreground line-through ml-2" data-testid={`text-ticket-original-price-${ticket.type}`}>
                     {ticket.originalPrice}
                   </span>
                 </div>
-                <div className="mb-4">
-                  <p className="text-xs text-destructive font-semibold" data-testid={`text-deadline-${ticket.type}`}>
-                    Super Early Bird EXPIRED
-                  </p>
-                </div>
                 <ul className="text-left space-y-3 mb-6">
                   {ticket.features.map((feature, index) => (
-                    <li key={index} className="flex items-center" data-testid={`feature-${ticket.type}-${index}`}>
-                      <Check className="text-green-500 mr-2 h-4 w-4" />
+                    <li key={index} className={`flex items-center ${index === 0 && ticket.hideCheckOnFirst ? 'font-semibold text-muted-foreground' : ''}`} data-testid={`feature-${ticket.type}-${index}`}>
+                      {!(index === 0 && ticket.hideCheckOnFirst) && <Check className="text-green-500 mr-2 h-4 w-4" />}
                       {feature}
                     </li>
                   ))}
