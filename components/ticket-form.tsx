@@ -174,14 +174,11 @@ export default function TicketForm() {
                     </li>
                   ))}
                 </ul>
-                <Button 
-                  disabled
+                <Button
                   className="w-full"
                   data-testid={`button-buy-${ticket.type}`}
                 >
-                  <span className="line-through">
-                    Buy {ticket.name} Ticket
-                  </span>
+                  Buy {ticket.name} Ticket
                 </Button>
               </CardContent>
             </Card>
