@@ -8,7 +8,6 @@ import EventHighlights from "@/components/event-highlights";
 import TicketForm from "@/components/ticket-form";
 import VenueInfo from "@/components/venue-info";
 import FaqSection from "@/components/faq-section";
-import EmailSubscriber from "@/components/email-subscriber";
 import EventTimeline from "@/components/event-timeline";
 import { Users, Mic, Calendar, Globe, Play } from "lucide-react";
 
@@ -138,7 +137,6 @@ export default function Home() {
       <VenueInfo />
       <FounderStory />
       <FaqSection />
-      <EmailSubscriber />
     </div>
   );
 }
