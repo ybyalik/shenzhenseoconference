@@ -124,7 +124,7 @@ export default function PlanYourTrip() {
           </h2>
 
           <p className="mb-4">
-            While English is common at the venue and major hotels, local proficiency is generally limited. We recommend keeping a translation app handy and learning basic Mandarin phrases. If you're up for the challenge, check out this quick guide to master the essentials and navigate Shenzhen with total confidence!
+            While English is common at the venue and major hotels, local proficiency is generally limited. We recommend keeping a translation app handy and learning basic Mandarin phrases. If you're up for the challenge, check out this <a href="https://youtube.com/shorts/zEnh7VcuCNk?si=xdY467-9GZxXHqBO" className="text-primary underline" target="_blank" rel="nofollow noopener noreferrer">quick guide</a> to master the essentials and navigate Shenzhen with total confidence!
           </p>
         </div>
       </section>
