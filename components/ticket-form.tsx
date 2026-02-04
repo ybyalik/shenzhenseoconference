@@ -102,13 +102,14 @@ export default function TicketForm() {
       price: "$1,440",
       originalPrice: "$1,800",
       features: [
+        "Everything in Deluxe, plus..",
         "Full conference access: Days 1-5 (5 days total)",
         "1 night stay at a separate 5-star hotel (Day 5)",
         "Best for Executives and Founders",
       ],
       popular: false,
       bestValue: true,
-      hideCheckOnFirst: false,
+      hideCheckOnFirst: true,
     },
   ];
 
