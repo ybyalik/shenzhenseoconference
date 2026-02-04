@@ -175,10 +175,17 @@ export default function TicketForm() {
                   ))}
                 </ul>
                 <Button
+                  asChild
                   className="w-full"
                   data-testid={`button-buy-${ticket.type}`}
                 >
-                  Buy {ticket.name} Ticket
+                  <a
+                    href="https://luma.com/shenzhen-seo-conference-2026"
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                  >
+                    Buy {ticket.name} Ticket
+                  </a>
                 </Button>
               </CardContent>
             </Card>
