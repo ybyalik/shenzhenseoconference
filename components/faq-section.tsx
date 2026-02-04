@@ -7,20 +7,107 @@ export default function FaqSection() {
 
   const faqs = [
     {
-      question: "What's your ticket refund policy?",
-      answer: "We offer a full refund 30 days before the conference. If there are less than 30 days before the event begins and you are unable to attend, we are unable to issue refunds in general, however, we encourage you to reach out to our support team, we'll try to help you the best we can.",
+      question: "How many attendees will there be, and who typically attends?",
+      answer: (
+        <>
+          We expect around 600 attendees, including 300+ from China (mainly in-house SEO and marketing leaders from brands targeting global markets) and 200+ international attendees from agencies, Martech companies, and fractional SEO/marketing consultants.
+        </>
+      ),
     },
     {
-      question: "What's the ratio of Chinese attendees versus Western attendees?",
-      answer: "We expect to have 300 Chinese attendees and 200 Western attendees, so the ratio is 60% vs 40%. The actual number may slightly vary. However, we aim to make Shenzhen SEO Conference a truly international conference and will control the attendance diversity.",
+      question: "What is the official language of the event?",
+      answer: (
+        <>
+          English. All sessions will be conducted entirely in English. While the conference is held in China, it is positioned as a global event.
+        </>
+      ),
     },
     {
-      question: "Is the conference conducted in English, or will there be translation services?",
-      answer: "All the talks will be 100% in English and there will be no translation services offered. All attendees (including Chinese attendees) are encouraged to have basic to professional English communication skills.",
+      question: "I'm from China and have limited English, will simultaneous translation be available?",
+      answer: (
+        <>
+          <p className="mb-3">Yes. Simultaneous interpretation (English → Chinese) will be available in main conference days (Day 3 & Day 4), with headsets provided on-site.</p>
+          <p>Please note that this service is only available on the main conference days (Day 3 & Day 4), and not available on Day 1, Day 2, or Day 5.</p>
+        </>
+      ),
     },
     {
-      question: "Will there be sessions focused on Western markets?",
-      answer: "Yes, even though this conference is located in Shenzhen, China, more than 80% of the sessions and talks are related to SEO and marketing for international markets.",
+      question: "Is the content focused on Western SEO (including traditional search and LLM platforms), China SEO, or both?",
+      answer: (
+        <>
+          Both. Around 80% of the content will focus on Western SEO, while roughly 20% will cover China and the broader APAC search ecosystem.
+        </>
+      ),
+    },
+    {
+      question: "Is this conference suitable for beginners, or only experienced SEOs and marketers?",
+      answer: (
+        <>
+          This conference is best suited for SEOs and marketers with intermediate to advanced experience. If you are completely new to SEO, the sessions may be challenging. That said, if your primary goal is networking, you are still very welcome to attend.
+        </>
+      ),
+    },
+    {
+      question: "What is the ticket refund and transfer policy?",
+      answer: (
+        <>
+          <p className="mb-3"><strong>Refunds:</strong> Full refunds are available up to 30 days before the event. Within 30 days, refunds are generally not available. Please contact our support team if you need help.</p>
+          <p className="mb-3"><strong>Transfers:</strong> Tickets are non-transferable. Attendee identity will be checked on-site. If needed, please request a refund (if eligible) and have the new attendee purchase a ticket.</p>
+          <p><strong>On-site policy:</strong> Our on-site staff will verify tickets during the event. Attendees must hold a valid ticket registered in their own name to enter the venue.</p>
+        </>
+      ),
+    },
+    {
+      question: "Do I need a visa to attend the conference in China?",
+      answer: (
+        <>
+          It depends on your passport. Many Western countries are eligible for a 30-day visa-free entry, some can take advantage of the 10-day-free-transit policy, while others will need to apply for a visa. Please refer to our <a href="https://shenzhenseoconference.com/plan-your-trip" className="text-primary underline hover:text-primary/80">Plan Your Trip</a> page for details.
+        </>
+      ),
+    },
+    {
+      question: "Can you provide an official business invitation letter for visa applications?",
+      answer: (
+        <>
+          <p className="mb-3">Yes. We can provide an official business invitation letter. Please visit our <a href="https://shenzhenseoconference.com/contact" className="text-primary underline hover:text-primary/80">Contact</a> page, under Get in Touch, select "Request a Business Invitation Letter for Visa Application" and complete the form.</p>
+          <p>We aim to issue the letter within 3 business days. If you have any special formatting requirements, please let us know when submitting the request.</p>
+        </>
+      ),
+    },
+    {
+      question: "Are discounted room rates available at the conference hotel for attendees?",
+      answer: (
+        <>
+          <p className="mb-3">Yes. We've partnered with The St. Regis Shenzhen to offer attendees a special booking link with 20-25% off standard rates compared to major booking platforms. Please contact support@shenzhenseoconference.com for how to access these rates.</p>
+          <p>There are many other hotels nearby within walking distance or easy reach by public transport. However, we do not have partner rates or discounts with those hotels.</p>
+        </>
+      ),
+    },
+    {
+      question: "Will you have an event app or networking groups?",
+      answer: (
+        <>
+          <p className="mb-3">Yes. We've partnered with The St. Regis Shenzhen to offer attendees a special booking link with 20–25% off standard rates compared to major booking platforms.</p>
+          <p>There are many other hotels nearby within walking distance or easy reach by public transport. However, we do not have partner rates or discounts with those hotels.</p>
+        </>
+      ),
+    },
+    {
+      question: "Will session recordings or presentation slides be shared after the event?",
+      answer: (
+        <>
+          <p className="mb-3"><strong>Slides:</strong> Presentation slides will be shared after the event for sessions where speakers grant permission.</p>
+          <p><strong>Recordings:</strong> Session recordings will not be provided, and on-site recording by attendees is not permitted.</p>
+        </>
+      ),
+    },
+    {
+      question: "What is the dress code for the conference?",
+      answer: (
+        <>
+          SEOs like to be comfortable, and Shenzhen is generally business casual or tech casual. Dressing comfortably is perfectly fine.
+        </>
+      ),
     },
   ];
 
@@ -52,19 +139,19 @@ export default function FaqSection() {
                   <h3 className="text-lg font-semibold" data-testid={`text-faq-question-${index}`}>
                     {faq.question}
                   </h3>
-                  <ChevronDown 
-                    className={`transform transition-transform h-5 w-5 ${
+                  <ChevronDown
+                    className={`transform transition-transform h-5 w-5 flex-shrink-0 ml-4 ${
                       openFaq === index ? 'rotate-180' : ''
                     }`}
                   />
                 </div>
               </button>
-              
+
               {openFaq === index && (
                 <CardContent className="px-6 pb-6">
-                  <p className="text-muted-foreground" data-testid={`text-faq-answer-${index}`}>
+                  <div className="text-muted-foreground" data-testid={`text-faq-answer-${index}`}>
                     {faq.answer}
-                  </p>
+                  </div>
                 </CardContent>
               )}
             </Card>
