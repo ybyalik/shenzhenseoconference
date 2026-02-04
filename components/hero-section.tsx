@@ -103,52 +103,6 @@ export default function HeroSection() {
               Get Early Bird Tickets
             </Button>
           </div>
-
-          {!isSubscribed ? (
-            <div className="max-w-md mx-auto bg-white/10 backdrop-blur-md rounded-lg p-6">
-              <h4 className="text-lg font-semibold mb-4">Get Notified When Early Bird Tickets Drop</h4>
-              <form onSubmit={handleSubscribe} className="space-y-3">
-                <Input
-                  type="text"
-                  placeholder="Your Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                  className="bg-white/90 text-gray-900"
-                  data-testid="input-hero-name"
-                />
-                <Input
-                  type="email"
-                  placeholder="Your Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="bg-white/90 text-gray-900"
-                  data-testid="input-hero-email"
-                />
-                <Button
-                  type="submit"
-                  disabled={subscribeMutation.isPending}
-                  className="w-full bg-white text-primary hover:bg-white/90"
-                  data-testid="button-hero-subscribe"
-                >
-                  {subscribeMutation.isPending ? (
-                    "Subscribing..."
-                  ) : (
-                    <>
-                      <Mail className="mr-2 h-5 w-5" />
-                      Notify Me
-                    </>
-                  )}
-                </Button>
-              </form>
-            </div>
-          ) : (
-            <div className="max-w-md mx-auto bg-green-500/20 backdrop-blur-md rounded-lg p-6 border border-green-400/30">
-              <p className="text-lg font-semibold">✓ You're subscribed!</p>
-              <p className="text-sm text-white/80 mt-2">We'll notify you when Early Bird tickets are available.</p>
-            </div>
-          )}
         </div>
       </div>
     </section>
