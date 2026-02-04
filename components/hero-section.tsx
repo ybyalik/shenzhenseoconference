@@ -94,15 +94,13 @@ export default function HeroSection() {
           <CountdownTimer />
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Button 
-              disabled
-              className="bg-white/50 text-primary/50 px-8 py-4 rounded-lg font-semibold text-lg cursor-not-allowed"
+            <Button
+              onClick={scrollToTickets}
+              className="bg-white text-primary hover:bg-white/90 px-8 py-4 rounded-lg font-semibold text-lg"
               data-testid="button-get-tickets"
             >
-              <span className="line-through">
-                <Search className="mr-2 h-5 w-5 inline" />
-                Get Super Early Bird Tickets
-              </span>
+              <Search className="mr-2 h-5 w-5 inline" />
+              Get Early Bird Tickets
             </Button>
           </div>
 
