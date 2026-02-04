@@ -22,7 +22,7 @@ export default function VenueInfo() {
               </div>
               <div className="bg-muted/50 border border-border rounded-lg p-4">
                 <p className="text-sm text-muted-foreground">
-                  <strong>VIP Networking:</strong> Intercontinental Shenzhen Dameisha Resort — An exclusive beachfront setting for premium networking experiences.
+                  <strong>Separate 5-Star Hotel (Announcing Soon)</strong> — An exclusive beachfront setting for premium networking experiences.
                 </p>
               </div>
             </div>
