@@ -50,8 +50,8 @@ export default function PlanYourTrip() {
             <Card data-testid="card-venue">
               <CardContent className="p-6">
                 <MapPin className="w-10 h-10 text-primary mb-4" />
-                <h3 className="font-semibold mb-2">Venues</h3>
-                <p className="text-muted-foreground text-sm">The St. Regis Shenzhen (Main Event)<br />Intercontinental Shenzhen Dameisha Resort (VIP Networking)</p>
+                <h3 className="font-semibold mb-2">Venue</h3>
+                <p className="text-muted-foreground text-sm">The St. Regis Shenzhen</p>
               </CardContent>
             </Card>
             <Card data-testid="card-contact">
