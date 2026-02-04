@@ -72,8 +72,8 @@ export default function TicketForm() {
     {
       type: "standard" as const,
       name: "Standard",
-      price: "$585",
-      originalPrice: "$1,170",
+      price: "$480",
+      originalPrice: "$600",
       features: [
         "2-day conference access (Days 3 & 4)",
         "Breakfast, lunch, dinner, and coffee",
@@ -85,8 +85,8 @@ export default function TicketForm() {
     {
       type: "deluxe" as const,
       name: "Deluxe",
-      price: "$877",
-      originalPrice: "$1,755",
+      price: "$720",
+      originalPrice: "$900",
       features: [
         "Everything in Standard, plus..",
         "Days 1-2",
@@ -99,16 +99,16 @@ export default function TicketForm() {
     {
       type: "vip" as const,
       name: "VIP",
-      price: "$1,462",
-      originalPrice: "$2,925",
+      price: "$1,440",
+      originalPrice: "$1,800",
       features: [
-        "Everything in Deluxe, plus..",
-        "1 night stay at 5-star hotel at Intercontinental",
+        "Full conference access: Days 1-5 (5 days total)",
+        "1 night stay at a separate 5-star hotel (Day 5)",
         "Best for Executives and Founders",
       ],
       popular: false,
       bestValue: true,
-      hideCheckOnFirst: true,
+      hideCheckOnFirst: false,
     },
   ];
 
