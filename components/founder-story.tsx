@@ -16,7 +16,7 @@ export default function FounderStory() {
           </div>
 
           {/* Content */}
-          <div className="order-1 md:order-2">
+          <div className="order-1 md:order-2 text-center md:text-left">
             <h2 className="text-3xl md:text-4xl font-bold mb-6" data-testid="text-founder-title">
               Why I Started the Shenzhen SEO Conference
             </h2>

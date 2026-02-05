@@ -78,7 +78,7 @@ export default function FaqSection() {
       question: "Are discounted room rates available at the conference hotel for attendees?",
       answer: (
         <>
-          <p className="mb-3">Yes. We've partnered with The St. Regis Shenzhen to offer attendees a special booking link with 20-25% off standard rates compared to major booking platforms. Please contact support@shenzhenseoconference.com for how to access these rates.</p>
+          <p className="mb-3">Yes. We've partnered with The St. Regis Shenzhen to offer attendees <a href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1770202951216&key=GRP&app=resvlink&_branch_match_id=1547558325661285432&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXTywo0MtNLCrKzC8p0UvOz9UvSi3OyczLtgdK2ALZZSCOWmaKraG5uYGRgZGlqaGRoZpadmqlrXtQgFpdUWpaKlB3Xnp8UlF%2BeXFqka1zRlF%2B" className="text-primary underline hover:text-primary/80" target="_blank" rel="noopener noreferrer">a special booking link</a> with 20–25% off standard rates compared to major booking platforms.</p>
           <p>There are many other hotels nearby within walking distance or easy reach by public transport. However, we do not have partner rates or discounts with those hotels.</p>
         </>
       ),
@@ -87,8 +87,7 @@ export default function FaqSection() {
       question: "Will you have an event app or networking groups?",
       answer: (
         <>
-          <p className="mb-3">Yes. We've partnered with The St. Regis Shenzhen to offer attendees a special booking link with 20–25% off standard rates compared to major booking platforms.</p>
-          <p>There are many other hotels nearby within walking distance or easy reach by public transport. However, we do not have partner rates or discounts with those hotels.</p>
+          Yes. Attendees will have access to a conference app with an attendee directory and messaging to connect before, during, and after the event.
         </>
       ),
     },

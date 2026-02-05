@@ -69,14 +69,14 @@ export default function EventTimeline() {
       id: 'day3-conference',
       date: '2026-09-16',
       title: 'Main Conference Day',
-      description: 'Full day of keynotes, field talks, lightning talks and opening/closing party.',
+      description: 'Full day of keynotes, field talks, lightning talks and opening/closing parties.',
       eventType: 'conference'
     },
     {
       id: 'day4-conference',
       date: '2026-09-17',
       title: 'Main Conference Day',
-      description: 'Full day of keynotes, field talks, lightning talks and opening/closing party.',
+      description: 'Full day of keynotes, field talks, lightning talks and opening/closing parties.',
       eventType: 'conference'
     },
     {

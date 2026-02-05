@@ -74,10 +74,14 @@ export default function TicketForm() {
       price: "$480",
       originalPrice: "$600",
       features: [
-        "2-day conference access (Days 3 & 4)",
-        "Breakfast, lunch, dinner, and coffee",
-        "Opening & closing parties",
-        "Best for SEO Practitioners",
+        { text: "Days 1-2 sessions", included: false },
+        { text: "Days 3-4 sessions", included: true },
+        { text: "Day 5 VIP networking activities", included: false },
+        { text: "Front-row seating", included: false },
+        { text: "All meals & coffee", included: true },
+        { text: "Opening & closing parties", included: true },
+        { text: "1 night stay at VIP Networking Hotel", included: false },
+        { text: "Best for SEO Practitioners", bold: true },
       ],
       popular: false,
     },
@@ -87,13 +91,16 @@ export default function TicketForm() {
       price: "$720",
       originalPrice: "$900",
       features: [
-        "Everything in Standard, plus..",
-        "Days 1-2",
-        "Front-row seating",
-        "Best for Marketing Managers/Directors",
+        { text: "Days 1-2 sessions", included: true },
+        { text: "Days 3-4 sessions", included: true },
+        { text: "Day 5 VIP networking activities", included: false },
+        { text: "Front-row seating", included: true },
+        { text: "All meals & coffee", included: true },
+        { text: "Opening & closing parties", included: true },
+        { text: "1 night stay at VIP Networking Hotel", included: false },
+        { text: "Best for Marketing Managers and Directors", bold: true },
       ],
       popular: true,
-      hideCheckOnFirst: true,
     },
     {
       type: "vip" as const,
@@ -101,14 +108,17 @@ export default function TicketForm() {
       price: "$1,440",
       originalPrice: "$1,800",
       features: [
-        "Everything in Deluxe, plus..",
-        "Full conference access: Days 1-5 (5 days total)",
-        "1 night stay at a separate 5-star hotel (Day 5)",
-        "Best for Executives and Founders",
+        { text: "Days 1-2 sessions", included: true },
+        { text: "Days 3-4 sessions", included: true },
+        { text: "Day 5 VIP networking activities", included: true },
+        { text: "Front-row seating", included: true },
+        { text: "All meals & coffee", included: true },
+        { text: "Opening & closing parties", included: true },
+        { text: "1 night stay at VIP Networking Hotel", included: true },
+        { text: "Best for Executives and Founders", bold: true },
       ],
       popular: false,
       bestValue: true,
-      hideCheckOnFirst: true,
     },
   ];
 
@@ -167,12 +177,26 @@ export default function TicketForm() {
                   </span>
                 </div>
                 <ul className="text-left space-y-3 mb-6">
-                  {ticket.features.map((feature, index) => (
-                    <li key={index} className={`flex items-center ${index === 0 && ticket.hideCheckOnFirst ? 'font-semibold text-muted-foreground' : ''}`} data-testid={`feature-${ticket.type}-${index}`}>
-                      {!(index === 0 && ticket.hideCheckOnFirst) && <Check className="text-green-500 mr-2 h-4 w-4" />}
-                      {feature}
-                    </li>
-                  ))}
+                  {ticket.features.map((feature, index) => {
+                    const isString = typeof feature === 'string';
+                    const featureText = isString ? feature : feature.text;
+                    const isIncluded = isString ? true : feature.included !== false;
+                    const isBold = !isString && feature.bold;
+                    const hideCheck = (index === 0 && ticket.hideCheckOnFirst) || isBold;
+
+                    return (
+                      <li key={index} className={`flex items-center ${index === 0 && ticket.hideCheckOnFirst ? 'font-semibold text-muted-foreground' : ''} ${isBold ? 'font-bold' : ''}`} data-testid={`feature-${ticket.type}-${index}`}>
+                        {!hideCheck && (
+                          isIncluded ? (
+                            <Check className="text-green-500 mr-2 h-4 w-4 flex-shrink-0" />
+                          ) : (
+                            <span className="text-red-500 mr-2 flex-shrink-0">❌</span>
+                          )
+                        )}
+                        {featureText}
+                      </li>
+                    );
+                  })}
                 </ul>
                 <Button
                   asChild

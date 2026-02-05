@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Card, CardContent } from "@/components/ui/card";
-import { MapPin, Calendar, Mail, Plane, CreditCard, MessageCircle, Bus, Compass, AlertCircle, Languages } from "lucide-react";
+import { MapPin, Calendar, Mail, Plane, CreditCard, MessageCircle, Bus, Compass, AlertCircle, Languages, FileText } from "lucide-react";
 
 export const metadata: Metadata = {
   title: 'Plan Your Trip - Shenzhen SEO Conference 2026',
@@ -67,7 +67,10 @@ export default function PlanYourTrip() {
 
       <section className="py-16" data-testid="visa-requirements">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-6" data-testid="text-visa-title">Visa Requirements</h2>
+          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3" data-testid="text-visa-title">
+            <FileText className="w-8 h-8 text-primary" />
+            Visa Requirements
+          </h2>
           
           <p className="text-lg mb-6">
             If you hold a passport from one of the following countries, you can <strong>travel to China without a visa</strong> as long as your visit does not last longer than the visa-free period listed below:
@@ -75,8 +78,8 @@ export default function PlanYourTrip() {
 
           <div className="space-y-4 mb-8">
             <div className="bg-muted p-4 rounded-lg">
-              <p className="font-semibold mb-2">30 days (Temporary, until 31 December 2025):</p>
-              <p className="text-muted-foreground">France, Germany, Italy, Netherlands, Spain, Malaysia, Switzerland, Ireland, Hungary, Austria, Belgium, Luxembourg, New Zealand, Australia, Poland, Portugal, Greece, Cyprus, Slovenia, Slovakia, Norway, Finland, Denmark, Iceland, Republic of Korea, Japan, and more</p>
+              <p className="font-semibold mb-2">30 days:</p>
+              <p className="text-muted-foreground">Andorra, Argentina, Australia, Austria, Bahrain, Belgium, Brazil, Brunei, Bulgaria, Chile, Croatia, Cyprus, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Japan, Kuwait, Latvia, Liechtenstein, Luxembourg, Malta, Monaco, Montenegro, New Zealand, North Macedonia, Norway, Oman, Peru, Poland, Portugal, Romania, Russia, Saudi Arabia, Slovakia, Slovenia, Spain, Sweden, Switzerland, the Netherlands, the Republic of Korea, United Kingdom, Uruguay.</p>
             </div>
           </div>
 
