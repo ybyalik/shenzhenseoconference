@@ -182,10 +182,10 @@ export default function TicketForm() {
                     const featureText = isString ? feature : feature.text;
                     const isIncluded = isString ? true : feature.included !== false;
                     const isBold = !isString && feature.bold;
-                    const hideCheck = (index === 0 && ticket.hideCheckOnFirst) || isBold;
+                    const hideCheck = isBold;
 
                     return (
-                      <li key={index} className={`flex items-center ${index === 0 && ticket.hideCheckOnFirst ? 'font-semibold text-muted-foreground' : ''} ${isBold ? 'font-bold' : ''}`} data-testid={`feature-${ticket.type}-${index}`}>
+                      <li key={index} className={`flex items-center ${isBold ? 'font-bold' : ''}`} data-testid={`feature-${ticket.type}-${index}`}>
                         {!hideCheck && (
                           isIncluded ? (
                             <Check className="text-green-500 mr-2 h-4 w-4 flex-shrink-0" />
