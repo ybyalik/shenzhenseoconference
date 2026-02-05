@@ -52,6 +52,41 @@ export default function VenueInfo() {
             />
           </div>
         </div>
+
+        {/* Interactive Map */}
+        <div className="mt-16">
+          <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center">Location Map</h3>
+          <div className="rounded-2xl overflow-hidden shadow-xl">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.9907789276486!2d114.1247!3d22.5431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403f2c1d0000001%3A0x0!2sThe%20St.%20Regis%20Shenzhen!5e0!3m2!1sen!2s!4v1234567890"
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="The St. Regis Shenzhen Location"
+              className="w-full"
+            ></iframe>
+          </div>
+          <div className="mt-6 text-center">
+            <p className="text-muted-foreground mb-2">
+              <strong>The St. Regis Shenzhen</strong>
+            </p>
+            <p className="text-sm text-muted-foreground">
+              5016 Shennan E Rd, Luohu District, Shenzhen, Guangdong Province, China, 518001
+            </p>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=The+St.+Regis+Shenzhen+5016+Shennan+E+Rd+Luohu+District+Shenzhen"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-4 text-primary hover:underline font-semibold"
+            >
+              <MapPin className="w-4 h-4" />
+              Open in Google Maps
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
