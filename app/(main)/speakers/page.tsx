@@ -23,7 +23,7 @@ export default function Speakers() {
             <Users className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6" data-testid="text-speakers-title">
-            Conference Speakers
+            First Look: 2026 Line Up
           </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto" data-testid="text-speakers-subtitle">
             Presenting the expert lineup from our 2025 conference. These industry leaders shared their insights on international SEO, digital marketing strategies, and cross-border growth.
@@ -44,6 +44,47 @@ export default function Speakers() {
               </div>
             </div>
           </Card>
+
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            2026 Confirmed Speakers
+          </h2>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-20">
+            <div data-testid="speaker-2026-gary" className="group">
+              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
+                  <img
+                    src="/assets/Gary-Illyes-1_1763288491462.webp"
+                    alt="Gary Illyes"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-3 bg-white">
+                  <h3 className="font-semibold text-sm text-gray-900 text-center line-clamp-2">
+                    Gary Illyes
+                  </h3>
+                </div>
+              </Card>
+            </div>
+            <div data-testid="speaker-2026-lily" className="group">
+              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
+                  <img
+                    src="/assets/lily-ray.jpg"
+                    alt="Lily Ray"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-3 bg-white">
+                  <h3 className="font-semibold text-sm text-gray-900 text-center line-clamp-2">
+                    Lily Ray
+                  </h3>
+                </div>
+              </Card>
+            </div>
+          </div>
 
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             Our 2025 Speakers

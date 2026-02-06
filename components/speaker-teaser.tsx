@@ -89,7 +89,7 @@ export default function SpeakerTeaser() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-speakers-title">
-            World-Class Speaker Lineup
+            First Look: 2026 Line Up
           </h2>
           <p className="text-xl text-muted-foreground" data-testid="text-speakers-description">
             Learn from the brightest minds in international SEO and digital marketing.

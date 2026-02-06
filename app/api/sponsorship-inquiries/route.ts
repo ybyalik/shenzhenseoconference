@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
     `;
 
     await sendEmail({
-      to: 'jp@shenzhenseoconference.com',
+      to: 'sponsor@shenzhenseoconference.com',
       subject: 'New Sponsorship Inquiry',
       html: emailHtml,
     });

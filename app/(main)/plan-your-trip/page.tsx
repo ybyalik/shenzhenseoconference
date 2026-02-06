@@ -76,12 +76,12 @@ export default function PlanYourTrip() {
             If you hold a passport from one of the following countries, you can <strong>travel to China without a visa</strong> as long as your visit does not last longer than the visa-free period listed below:
           </p>
 
-          <div className="space-y-4 mb-8">
-            <div className="bg-muted p-4 rounded-lg">
-              <p className="font-semibold mb-2">30 days:</p>
+          <Card className="mb-8 border-primary/20 bg-primary/5">
+            <CardContent className="p-6">
+              <h3 className="font-bold mb-4 text-lg">30 Days</h3>
               <p className="text-muted-foreground">Andorra, Argentina, Australia, Austria, Bahrain, Belgium, Brazil, Brunei, Bulgaria, Chile, Croatia, Cyprus, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Japan, Kuwait, Latvia, Liechtenstein, Luxembourg, Malta, Monaco, Montenegro, New Zealand, North Macedonia, Norway, Oman, Peru, Poland, Portugal, Romania, Russia, Saudi Arabia, Slovakia, Slovenia, Spain, Sweden, Switzerland, the Netherlands, the Republic of Korea, United Kingdom, Uruguay.</p>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
 
           <Card className="mb-8 border-primary/20 bg-primary/5">
             <CardContent className="p-6">

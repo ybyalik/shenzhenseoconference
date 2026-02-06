@@ -14,7 +14,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Check, Lock } from "lucide-react";
+import { Check, X, Lock } from "lucide-react";
 
 const ticketPreOrderSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -108,14 +108,14 @@ export default function TicketForm() {
       price: "$1,440",
       originalPrice: "$1,800",
       features: [
-        { text: "Days 1-2 sessions", included: true },
         { text: "Days 3-4 sessions", included: true },
-        { text: "Day 5 VIP networking activities", included: true },
-        { text: "Front-row seating", included: true },
-        { text: "All meals & coffee", included: true },
+        { text: "Breakfast, lunch, dinner, and coffee", included: true },
         { text: "Opening & closing parties", included: true },
+        { text: "Days 1-2 sessions", included: true },
+        { text: "Front-row seating", included: true },
+        { text: "Day 5 VIP networking activities", included: true },
         { text: "1 night stay at VIP Networking Hotel", included: true },
-        { text: "Best for Executives and Founders", bold: true },
+        { text: "Best for Executives/Founders", bold: true },
       ],
       popular: false,
       bestValue: true,
@@ -176,7 +176,7 @@ export default function TicketForm() {
                     {ticket.originalPrice}
                   </span>
                 </div>
-                <ul className="text-left space-y-3 mb-6">
+                <ul className="text-left mb-6">
                   {ticket.features.map((feature, index) => {
                     const isString = typeof feature === 'string';
                     const featureText = isString ? feature : feature.text;
@@ -185,12 +185,12 @@ export default function TicketForm() {
                     const hideCheck = isBold;
 
                     return (
-                      <li key={index} className={`flex items-center ${isBold ? 'font-bold' : ''}`} data-testid={`feature-${ticket.type}-${index}`}>
+                      <li key={index} className={`flex items-center min-h-[44px] py-1.5 ${index !== 0 ? 'border-t border-border/50' : ''} ${isBold ? 'font-bold' : ''}`} data-testid={`feature-${ticket.type}-${index}`}>
                         {!hideCheck && (
                           isIncluded ? (
                             <Check className="text-green-500 mr-2 h-4 w-4 flex-shrink-0" />
                           ) : (
-                            <span className="text-red-500 mr-2 flex-shrink-0">❌</span>
+                            <X className="text-red-300 mr-2 h-3.5 w-3.5 flex-shrink-0" />
                           )
                         )}
                         {featureText}

@@ -58,7 +58,7 @@ export default function VenueInfo() {
           <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center">Location Map</h3>
           <div className="rounded-2xl overflow-hidden shadow-xl">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.9907789276486!2d114.1247!3d22.5431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403f2c1d0000001%3A0x0!2sThe%20St.%20Regis%20Shenzhen!5e0!3m2!1sen!2s!4v1234567890"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.962410046513!2d114.10408937529955!3d22.54308083405158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403f4374f305385%3A0xfdbc9a07b9f85e03!2sThe%20St%20Regis%20Shenzhen!5e0!3m2!1sen!2suk!4v1770310378635!5m2!1sen!2suk"
               width="100%"
               height="450"
               style={{ border: 0 }}
