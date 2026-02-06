@@ -23,10 +23,10 @@ export default function Speakers() {
             <Users className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6" data-testid="text-speakers-title">
-            First Look: 2026 Line Up
+            Meet Our Speakers
           </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto" data-testid="text-speakers-subtitle">
-            Presenting the expert lineup from our 2025 conference. These industry leaders shared their insights on international SEO, digital marketing strategies, and cross-border growth.
+            These industry leaders shared their insights on international SEO, digital marketing strategies, and cross-border growth.
           </p>
         </div>
       </section>
@@ -46,7 +46,7 @@ export default function Speakers() {
           </Card>
 
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            2026 Confirmed Speakers
+            First Look: 2026 Line Up
           </h2>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-20">
