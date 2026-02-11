@@ -25,6 +25,7 @@ export const speakers = [
   { name: "Kevin Jeppesen", image: "/assets/Kevin-Jeppesen_1763288535686.webp" },
   { name: "Kevin Meng", image: "/assets/Kevin-Meng_1763288535687.webp" },
   { name: "Kyle Roof", image: "/assets/Kyle-Roof-1_1763288535687.webp" },
+  { name: "Lars Lofgren", image: "/assets/lars-lofgren.jpg" },
   { name: "Lawrence Hitches", image: "/assets/Lawrence-Hitches_1763288535687.webp" },
   { name: "Mads Singers", image: "/assets/Mads-Singers-1_1763288535688.webp" },
   { name: "Marc Moller", image: "/assets/Marc-Moller_1763288535688.webp" },
