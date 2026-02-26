@@ -101,6 +101,74 @@ export default function Speakers() {
                 </div>
               </Card>
             </div>
+            <div data-testid="speaker-2026-eli" className="group">
+              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
+                  <img
+                    src="/assets/Eli Schwartz Headshot_SZSEO Background.webp"
+                    alt="Eli Schwartz"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-3 bg-white">
+                  <h3 className="font-semibold text-sm text-gray-900 text-center line-clamp-2">
+                    Eli Schwartz
+                  </h3>
+                </div>
+              </Card>
+            </div>
+            <div data-testid="speaker-2026-victor" className="group">
+              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
+                  <img
+                    src="/assets/Victor Huynh Headshot_SZSEO Background.webp"
+                    alt="Victor Huynh"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-3 bg-white">
+                  <h3 className="font-semibold text-sm text-gray-900 text-center line-clamp-2">
+                    Victor Huynh
+                  </h3>
+                </div>
+              </Card>
+            </div>
+            <div data-testid="speaker-2026-marc" className="group">
+              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
+                  <img
+                    src="/assets/Marc Moeller Headshot_SZSEO Background.webp"
+                    alt="Marc Moeller"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-3 bg-white">
+                  <h3 className="font-semibold text-sm text-gray-900 text-center line-clamp-2">
+                    Marc Moeller
+                  </h3>
+                </div>
+              </Card>
+            </div>
+            <div data-testid="speaker-2026-tupa" className="group">
+              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
+                  <img
+                    src="/assets/Tupa Lee Headshot_SZSEO Background.webp"
+                    alt="Tupa Lee"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-3 bg-white">
+                  <h3 className="font-semibold text-sm text-gray-900 text-center line-clamp-2">
+                    Tupa Lee
+                  </h3>
+                </div>
+              </Card>
+            </div>
           </div>
 
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
