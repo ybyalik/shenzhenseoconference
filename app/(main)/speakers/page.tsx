@@ -105,7 +105,7 @@ export default function Speakers() {
               <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
                   <img
-                    src="/assets/Eli Schwartz Headshot_SZSEO Background.webp"
+                    src="/assets/eli-schwartz.webp"
                     alt="Eli Schwartz"
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     loading="lazy"
@@ -122,7 +122,7 @@ export default function Speakers() {
               <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
                   <img
-                    src="/assets/Victor Huynh Headshot_SZSEO Background.webp"
+                    src="/assets/victor-huynh.webp"
                     alt="Victor Huynh"
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     loading="lazy"
@@ -139,7 +139,7 @@ export default function Speakers() {
               <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
                   <img
-                    src="/assets/Marc Moeller Headshot_SZSEO Background.webp"
+                    src="/assets/marc-moeller.webp"
                     alt="Marc Moeller"
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     loading="lazy"
@@ -156,7 +156,7 @@ export default function Speakers() {
               <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
                   <img
-                    src="/assets/Tupa Lee Headshot_SZSEO Background.webp"
+                    src="/assets/tupa-lee.webp"
                     alt="Tupa Lee"
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     loading="lazy"
