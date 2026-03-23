@@ -53,10 +53,10 @@ export default function Home3RootLayout({
 
         <QueryClientProvider>
           <TooltipProvider>
-            {/* Navigation */}
-            <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-              <div className="max-w-[1280px] mx-auto px-6 lg:px-20 py-4 flex items-center justify-between">
-                <Link href="/home3" className="flex items-center gap-3">
+            {/* Navigation - floating white bar */}
+            <nav className="fixed top-0 left-0 right-0 z-50 p-4 lg:p-5">
+              <div className="max-w-[1400px] mx-auto bg-white rounded-xl shadow-sm px-6 lg:px-8 py-4 flex items-center justify-between">
+                <Link href="/home3" className="flex items-center gap-3 flex-shrink-0">
                   <div className="relative w-10 h-10">
                     <Image
                       src="/assets/logo-main_1756774330186.png"
@@ -65,21 +65,25 @@ export default function Home3RootLayout({
                       className="object-contain"
                     />
                   </div>
+                  <div className="hidden sm:block leading-tight">
+                    <span className="text-xs font-extrabold text-[#020725] uppercase tracking-wide">Shenzhen SEO</span>
+                    <span className="block text-[10px] font-extrabold text-[#020725] uppercase tracking-wide">Conference</span>
+                  </div>
                 </Link>
 
-                <div className="hidden lg:flex items-center gap-8">
-                  <a href="#about" className="text-sm text-[#020725]/70 hover:text-[#4657db] transition-colors">About</a>
-                  <a href="#speakers" className="text-sm text-[#020725]/70 hover:text-[#4657db] transition-colors">Speakers</a>
-                  <a href="#schedule" className="text-sm text-[#020725]/70 hover:text-[#4657db] transition-colors">Agenda</a>
-                  <a href="#sponsors" className="text-sm text-[#020725]/70 hover:text-[#4657db] transition-colors">Sponsors</a>
-                  <a href="#venues" className="text-sm text-[#020725]/70 hover:text-[#4657db] transition-colors">Visiting Shenzhen</a>
-                  <a href="#faq" className="text-sm text-[#020725]/70 hover:text-[#4657db] transition-colors">FAQ</a>
-                  <Link href="/contact" className="text-sm text-[#020725]/70 hover:text-[#4657db] transition-colors">Contact</Link>
+                <div className="hidden lg:flex items-center gap-7">
+                  <a href="#about" className="text-sm text-[#020725] hover:text-[#4657db] transition-colors">About</a>
+                  <a href="#speakers" className="text-sm text-[#020725] hover:text-[#4657db] transition-colors">Speakers</a>
+                  <a href="#schedule" className="text-sm text-[#020725] hover:text-[#4657db] transition-colors">Agenda</a>
+                  <a href="#sponsors" className="text-sm text-[#020725] hover:text-[#4657db] transition-colors">Sponsors</a>
+                  <a href="#venues" className="text-sm text-[#020725] hover:text-[#4657db] transition-colors">Visiting Shenzhen</a>
+                  <a href="#faq" className="text-sm text-[#020725] hover:text-[#4657db] transition-colors">FAQ</a>
+                  <Link href="/contact" className="text-sm text-[#020725] hover:text-[#4657db] transition-colors">Contact</Link>
                 </div>
 
                 <a
                   href="#pricing"
-                  className="text-sm font-normal px-[18px] py-[14px] bg-white text-[#020725] border border-[#020725] rounded hover:bg-[#4657db] hover:text-white hover:border-[#4657db] transition-all"
+                  className="text-sm font-normal px-5 py-3 bg-[#020725] text-white rounded-lg hover:bg-[#020725]/90 transition-all"
                 >
                   Get Tickets
                 </a>
