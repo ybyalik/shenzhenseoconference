@@ -50,125 +50,46 @@ export default function Speakers() {
           </h2>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-20">
-            <div data-testid="speaker-2026-lily" className="group">
-              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
-                  <img
-                    src="/assets/lily-ray.jpg"
-                    alt="Lily Ray"
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-3 bg-white">
-                  <h3 className="font-semibold text-sm text-gray-900 text-center line-clamp-2">
-                    Lily Ray
-                  </h3>
-                </div>
-              </Card>
-            </div>
-            <div data-testid="speaker-2026-gary" className="group">
-              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
-                  <img
-                    src="/assets/Gary-Illyes-1_1763288491462.webp"
-                    alt="Gary Illyes"
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-3 bg-white">
-                  <h3 className="font-semibold text-sm text-gray-900 text-center line-clamp-2">
-                    Gary Illyes
-                  </h3>
-                </div>
-              </Card>
-            </div>
-            <div data-testid="speaker-2026-eli" className="group">
-              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
-                  <img
-                    src="/assets/eli-schwartz.webp"
-                    alt="Eli Schwartz"
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-3 bg-white">
-                  <h3 className="font-semibold text-sm text-gray-900 text-center line-clamp-2">
-                    Eli Schwartz
-                  </h3>
-                </div>
-              </Card>
-            </div>
-            <div data-testid="speaker-2026-lars" className="group">
-              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
-                  <img
-                    src="/assets/lars-lofgren.jpg"
-                    alt="Lars Lofgren"
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-3 bg-white">
-                  <h3 className="font-semibold text-sm text-gray-900 text-center line-clamp-2">
-                    Lars Lofgren
-                  </h3>
-                </div>
-              </Card>
-            </div>
-            <div data-testid="speaker-2026-victor" className="group">
-              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
-                  <img
-                    src="/assets/victor-huynh.webp"
-                    alt="Victor Huynh"
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-3 bg-white">
-                  <h3 className="font-semibold text-sm text-gray-900 text-center line-clamp-2">
-                    Victor Huynh
-                  </h3>
-                </div>
-              </Card>
-            </div>
-            <div data-testid="speaker-2026-marc" className="group">
-              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
-                  <img
-                    src="/assets/marc-moeller.webp"
-                    alt="Marc Moeller"
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-3 bg-white">
-                  <h3 className="font-semibold text-sm text-gray-900 text-center line-clamp-2">
-                    Marc Moeller
-                  </h3>
-                </div>
-              </Card>
-            </div>
-            <div data-testid="speaker-2026-tupa" className="group">
-              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
-                  <img
-                    src="/assets/tupa-lee.webp"
-                    alt="Tupa Lee"
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-3 bg-white">
-                  <h3 className="font-semibold text-sm text-gray-900 text-center line-clamp-2">
-                    Tupa Lee
-                  </h3>
-                </div>
-              </Card>
-            </div>
+            {[
+              { name: "Lily Ray", image: "/assets/lily-ray.jpg", testId: "lily" },
+              { name: "Gary Illyes", image: "/assets/Gary-Illyes-1_1763288491462.webp", testId: "gary" },
+              { name: "Eli Schwartz", image: "/assets/eli-schwartz.webp", testId: "eli" },
+              { name: "Lars Lofgren", image: "/assets/lars-lofgren.jpg", testId: "lars" },
+              { name: "Zac", image: "/assets/zac-2026.webp", testId: "zac" },
+              { name: "Doug Pierce", image: "/assets/doug-pierce.webp", testId: "doug" },
+              { name: "Victor Huynh", image: "/assets/victor-huynh.webp", testId: "victor" },
+              { name: "Marc Moeller", image: "/assets/marc-moeller.webp", testId: "marc" },
+              { name: "Jonathan Kiekbusch", image: "/assets/jonathan-kiekbusch.webp", testId: "jonathan" },
+              { name: "Loki Yan", image: "/assets/loki-yan.webp", testId: "loki" },
+              { name: "Mayi", image: "/assets/mayi.webp", testId: "mayi" },
+              { name: "Owain Lloyd-Williams", image: "/assets/owain-lloyd-williams.webp", testId: "owain" },
+              { name: "Max Hobbs", image: "/assets/max-hobbs.webp", testId: "max" },
+              { name: "David Carrasco", image: "/assets/david-carrasco.webp", testId: "david" },
+              { name: "Mao Kawana", image: "/assets/mao-kawana.webp", testId: "mao" },
+              { name: "Konstantin Sadekiov", image: "/assets/konstantin-sadekov.webp", testId: "konstantin" },
+              { name: "Michael Wu", image: "/assets/michael-wu.webp", testId: "michael" },
+              { name: "Tupa Lee", image: "/assets/tupa-lee.webp", testId: "tupa" },
+              { name: "Gabriele Kahlout", image: "/assets/gabriele-kahlout.webp", testId: "gabriele" },
+              { name: "Jine Wu", image: "/assets/jine-wu.webp", testId: "jine" },
+            ].map((speaker) => (
+              <div key={speaker.testId} data-testid={`speaker-2026-${speaker.testId}`} className="group">
+                <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                  <div className="aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100">
+                    <img
+                      src={speaker.image}
+                      alt={speaker.name}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-3 bg-white">
+                    <h3 className="font-semibold text-sm text-gray-900 text-center line-clamp-2">
+                      {speaker.name}
+                    </h3>
+                  </div>
+                </Card>
+              </div>
+            ))}
           </div>
 
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
