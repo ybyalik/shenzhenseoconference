@@ -105,45 +105,45 @@ function InfoSection() {
   return (
     <section id="about" className="scroll-mt-20">
       {/* Row 1 — What */}
-      <div className="bg-[#f5f5f5] relative overflow-visible">
-        <div className="max-w-[1440px] mx-auto flex items-center justify-between px-6 lg:px-20 py-10 min-h-[194px]">
-          <h2 className="text-4xl md:text-[56px] font-extrabold leading-[1.0] text-[#020725] uppercase max-w-[500px]">
+      <div className="bg-[#f5f5f5] relative overflow-hidden h-[230px]">
+        <div className="max-w-[1440px] mx-auto relative h-full flex items-center px-6 lg:px-20">
+          <h2 className="text-4xl md:text-[56px] font-extrabold leading-[1.0] text-[#020725] uppercase">
             What the<br />
             <span className="pl-6">conference is</span>
           </h2>
-          <div className="relative w-[400px] lg:w-[521px] h-[250px] lg:h-[352px] flex-shrink-0 hidden md:block">
-            <div className="absolute -top-8 right-0 w-full h-full rounded-lg overflow-hidden rotate-[3deg] shadow-xl">
-              <Image src="/assets/home3/info-what-image_4x.webp" alt="What the conference is" fill className="object-cover" />
+          <div className="absolute right-6 lg:right-20 top-8 bottom-0 w-[400px] lg:w-[521px] hidden md:block">
+            <div className="relative w-full h-full rounded-t-lg overflow-hidden">
+              <Image src="/assets/home3/info-what-image_4x.webp" alt="What the conference is" fill className="object-cover object-top" />
             </div>
           </div>
         </div>
       </div>
 
       {/* Row 2 — Who */}
-      <div className="bg-[#020725] relative overflow-visible">
-        <div className="max-w-[1440px] mx-auto flex items-center justify-between px-6 lg:px-20 py-10 min-h-[198px]">
-          <h2 className="text-4xl md:text-[56px] font-extrabold leading-[1.0] text-white uppercase max-w-[500px]">
+      <div className="bg-[#020725] relative overflow-hidden h-[230px]">
+        <div className="max-w-[1440px] mx-auto relative h-full flex items-center px-6 lg:px-20">
+          <h2 className="text-4xl md:text-[56px] font-extrabold leading-[1.0] text-white uppercase">
             Who<br />
             <span className="pl-10">it&apos;s for</span>
           </h2>
-          <div className="relative w-[400px] lg:w-[521px] h-[250px] lg:h-[352px] flex-shrink-0 hidden md:block">
-            <div className="absolute -top-10 right-0 w-full h-full rounded-lg overflow-hidden -rotate-[2deg] shadow-xl">
-              <Image src="/assets/home3/info-who-image_4x.webp" alt="Who it's for" fill className="object-cover" />
+          <div className="absolute right-6 lg:right-20 top-8 bottom-0 w-[400px] lg:w-[521px] hidden md:block">
+            <div className="relative w-full h-full rounded-t-lg overflow-hidden">
+              <Image src="/assets/home3/info-who-image_4x.webp" alt="Who it's for" fill className="object-cover object-top" />
             </div>
           </div>
         </div>
       </div>
 
       {/* Row 3 — Why */}
-      <div className="bg-[#f5f5f5] relative overflow-visible">
-        <div className="max-w-[1440px] mx-auto flex items-center justify-between px-6 lg:px-20 py-10 min-h-[194px]">
-          <h2 className="text-4xl md:text-[56px] font-extrabold leading-[1.0] text-[#020725] uppercase max-w-[500px]">
+      <div className="bg-[#f5f5f5] relative overflow-hidden h-[230px]">
+        <div className="max-w-[1440px] mx-auto relative h-full flex items-center px-6 lg:px-20">
+          <h2 className="text-4xl md:text-[56px] font-extrabold leading-[1.0] text-[#020725] uppercase">
             Why Shenzhen<br />
             <span className="pl-10">matters</span>
           </h2>
-          <div className="relative w-[400px] lg:w-[521px] h-[250px] lg:h-[352px] flex-shrink-0 hidden md:block">
-            <div className="absolute -top-8 right-0 w-full h-full rounded-lg overflow-hidden rotate-[2deg] shadow-xl">
-              <Image src="/assets/home3/info-why-image_4x.webp" alt="Why Shenzhen matters" fill className="object-cover" />
+          <div className="absolute right-6 lg:right-20 top-8 bottom-0 w-[400px] lg:w-[521px] hidden md:block">
+            <div className="relative w-full h-full rounded-t-lg overflow-hidden">
+              <Image src="/assets/home3/info-why-image_4x.webp" alt="Why Shenzhen matters" fill className="object-cover object-top" />
             </div>
           </div>
         </div>
@@ -161,7 +161,7 @@ function WhyAttendSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Title column */}
           <div className="flex flex-col justify-center gap-8 py-8">
-            <h2 className="text-3xl md:text-[40px] font-extrabold leading-[1.0] uppercase">
+            <h2 className="text-3xl md:text-[34px] font-extrabold leading-[1.1] uppercase">
               Why Attend The Shenzhen SEO Conference?
             </h2>
             <p className="text-lg text-[#020725]">
@@ -274,8 +274,8 @@ function SpeakersSection() {
       </div>
 
       {/* Speaker cards - overlapping into dark section */}
-      <div className="-mt-44 px-6 lg:px-20">
-        <div ref={containerRef} className="flex gap-8 overflow-x-auto pb-8 scrollbar-hide max-w-[1280px] mx-auto">
+      <div className="-mt-44">
+        <div ref={containerRef} className="flex gap-8 overflow-x-auto pb-8 scrollbar-hide max-w-[1280px] mx-auto px-6 lg:px-20">
           {featured.map((speaker, i) => (
             <div key={i} className="flex-shrink-0 w-[305px] bg-[#f5f5f5] rounded-lg overflow-hidden flex flex-col">
               {/* Name & role at top */}
@@ -422,26 +422,14 @@ function FounderSection() {
   return (
     <section className="bg-[#f5f5f5] overflow-hidden">
       <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row items-center gap-0 px-6 lg:px-20 py-16">
-        {/* Image with decorative background */}
+        {/* JP photo */}
         <div className="relative w-full lg:w-[460px] h-[500px] lg:h-[560px] flex-shrink-0 -ml-6 lg:-ml-10">
-          {/* Blue geometric decoration behind */}
-          <div className="absolute inset-0">
-            <Image
-              src="/assets/home3/speaker-graphic-default_4x.webp"
-              alt=""
-              fill
-              className="object-contain object-center scale-125"
-            />
-          </div>
-          {/* JP photo */}
-          <div className="absolute inset-0">
-            <Image
-              src="/assets/home3/jp-image_4x.webp"
-              alt="J.P. Zhang"
-              fill
-              className="object-contain object-bottom"
-            />
-          </div>
+          <Image
+            src="/assets/home3/jp-image_4x.webp"
+            alt="J.P. Zhang"
+            fill
+            className="object-contain object-bottom"
+          />
         </div>
 
         {/* Text content */}
@@ -499,9 +487,10 @@ function VenuesSection() {
       mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.1!2d114.057!3d22.536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403f40c0!2sThe+St.+Regis+Shenzhen!5e0!3m2!1sen!2scn!4v1',
       website: 'https://www.marriott.com/hotels/travel/szxrg-the-st-regis-shenzhen/',
       mapsLink: 'https://maps.google.com/?q=The+St.+Regis+Shenzhen',
+      badges: [],
     },
     {
-      name: 'VIP Networking Venue',
+      name: 'A separate\n5 Star Hotel',
       dates: 'Sep 18',
       tabLabel: 'VIP Networking',
       desc: 'Exclusive 5-star venue for the VIP networking day.',
@@ -509,6 +498,7 @@ function VenuesSection() {
       mapUrl: '',
       website: '#',
       mapsLink: '#',
+      badges: ['Announced Soon', 'Exclusive for VIP'],
     },
   ];
 
@@ -545,10 +535,10 @@ function VenuesSection() {
         </div>
 
         {/* Venue card */}
-        <div className="bg-[#f5f5f5] rounded-lg overflow-hidden flex flex-col lg:flex-row">
+        <div className="bg-[#f5f5f5] rounded-lg overflow-hidden flex flex-col lg:flex-row lg:h-[400px] [&>div:last-child]:rounded-none">
           {/* Left content */}
           <div className="flex-1 p-8 lg:p-10 flex flex-col gap-6">
-            <h3 className="text-3xl md:text-[40px] font-extrabold leading-[1.0] uppercase">{active.name}</h3>
+            <h3 className={`font-extrabold leading-[1.1] uppercase whitespace-pre-line ${activeTab === 0 ? 'text-3xl md:text-[40px]' : 'text-2xl md:text-[32px]'}`}>{active.name}</h3>
             <p className="text-base text-[#020725]/70 max-w-[405px]">{active.desc}</p>
 
             <div className="flex flex-wrap gap-3">
@@ -572,7 +562,7 @@ function VenuesSection() {
 
             {/* Map embed */}
             {active.mapUrl && (
-              <div className="w-full max-w-[400px] h-[200px] rounded-lg overflow-hidden mt-2">
+              <div className="w-full h-[200px] rounded-lg overflow-hidden mt-2 lg:mr-6">
                 <iframe
                   src={active.mapUrl}
                   width="100%"
@@ -595,6 +585,16 @@ function VenuesSection() {
               fill
               className="object-cover"
             />
+            {active.badges.length > 0 && (
+              <>
+                <span className="absolute top-0 right-[calc(100%-40px)] z-10 text-sm pl-4 pr-12 py-2 rounded-l whitespace-nowrap bg-[#020725] text-white" style={{ marginRight: '40px' }}>
+                  Announced Soon
+                </span>
+                <span className="absolute top-[44px] z-10 text-sm pl-6 pr-4 py-2 rounded-l whitespace-nowrap bg-[#4657db] text-white" style={{ right: 'calc(100% - 1px)' }}>
+                  Exclusive for VIP
+                </span>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -671,14 +671,20 @@ function PricingSection() {
         <div className="grid md:grid-cols-3 gap-8">
           {tiers.map((tier, i) => (
             <div key={i} className="flex flex-col">
-              {/* Colored header strip */}
-              <div className={`${tier.headerBg} rounded-t-lg px-6 py-5 flex items-center justify-between`}>
-                <h3 className="text-2xl md:text-[40px] font-extrabold text-white uppercase">{tier.name}</h3>
-                {tier.badge && (
-                  <span className={`px-2 py-1 bg-[#f5f5f5] text-xs font-normal rounded ${tier.badgeColor}`}>
-                    {tier.badge}
-                  </span>
-                )}
+              {/* Colored header strip with diagonal left edge */}
+              <div className="relative h-[60px]">
+                <div
+                  className={`${tier.headerBg} absolute inset-0`}
+                  style={{ clipPath: 'polygon(8% 0, 100% 0, 100% 100%, 0% 100%)' }}
+                />
+                <div className="relative z-10 h-full flex items-center pl-6 pr-0">
+                  <h3 className="text-xl md:text-[28px] font-extrabold text-white uppercase">{tier.name}</h3>
+                  {tier.badge && (
+                    <span className={`px-3 py-1 bg-[#f5f5f5] text-xs font-normal ${tier.badgeColor} ml-auto`}>
+                      {tier.badge}
+                    </span>
+                  )}
+                </div>
               </div>
 
               {/* Body */}

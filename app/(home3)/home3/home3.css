@@ -24,10 +24,3 @@
   display: inline-flex;
 }
 
-/* Pricing section header needs dark background behind tier names */
-#pricing .grid > div > div:first-child {
-  background: #020725;
-  border-radius: 8px 8px 0 0;
-  padding-left: 24px;
-  padding-right: 24px;
-}
