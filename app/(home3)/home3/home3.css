@@ -24,3 +24,17 @@
   display: inline-flex;
 }
 
+/* Sponsor logo ticker */
+@keyframes sponsor-ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.sponsor-ticker {
+  animation: sponsor-ticker 25s linear infinite;
+}
+

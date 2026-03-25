@@ -84,7 +84,7 @@ export default function Home3RootLayout({
                 <div className="flex items-center gap-3">
                   <a
                     href="#pricing"
-                    className="text-xs md:text-sm font-normal px-3 md:px-5 py-2.5 md:py-3 bg-[#020725] text-white rounded-lg hover:bg-[#020725]/90 transition-all"
+                    className="text-xs md:text-sm lg:text-base font-normal px-3 md:px-5 py-2.5 md:py-3 bg-[#020725] text-white rounded leading-[1.2] hover:bg-[#4657db] transition-all"
                   >
                     Get Tickets
                   </a>
