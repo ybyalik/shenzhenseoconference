@@ -262,6 +262,24 @@ function SpeakersSection() {
     { name: 'Lars Lofgren', role: 'Company,\nJob title', image: '/assets/home3/speaker-lofgren_4x.webp', linkedin: false },
   ];
 
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const updateScrollState = () => {
+    const el = containerRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 0);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
+  };
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    updateScrollState();
+    el.addEventListener('scroll', updateScrollState);
+    return () => el.removeEventListener('scroll', updateScrollState);
+  }, []);
+
   const scroll = (dir: 'left' | 'right') => {
     if (!containerRef.current) return;
     const amount = 337;
@@ -293,11 +311,19 @@ function SpeakersSection() {
 
             {/* Desktop arrows — right aligned */}
             <div className="hidden lg:flex items-center gap-3">
-              <button onClick={() => scroll('left')} className="w-12 h-12 rounded-lg border border-white/30 flex items-center justify-center transition-colors group">
-                <ChevronLeft className="w-6 h-6 text-white group-hover:text-[#fd6f47] transition-colors" />
+              <button
+                onClick={() => scroll('left')}
+                disabled={!canScrollLeft}
+                className={`w-12 h-12 rounded-lg border border-white/30 flex items-center justify-center transition-colors group ${!canScrollLeft ? 'opacity-30 cursor-default' : 'hover:bg-white active:bg-white'}`}
+              >
+                <ChevronLeft className={`w-6 h-6 text-white transition-colors ${canScrollLeft ? 'group-hover:text-[#020725] group-active:text-[#020725]' : ''}`} />
               </button>
-              <button onClick={() => scroll('right')} className="w-12 h-12 rounded-lg bg-white flex items-center justify-center transition-colors group">
-                <ChevronRight className="w-6 h-6 text-[#020725] group-hover:text-[#fd6f47] transition-colors" />
+              <button
+                onClick={() => scroll('right')}
+                disabled={!canScrollRight}
+                className={`w-12 h-12 rounded-lg bg-white flex items-center justify-center transition-colors group ${!canScrollRight ? 'opacity-30 cursor-default' : 'hover:bg-white active:bg-white'}`}
+              >
+                <ChevronRight className="w-6 h-6 text-[#020725] transition-colors" />
               </button>
             </div>
           </div>
@@ -455,7 +481,7 @@ function ScheduleSection() {
         </div>
 
         {/* Desktop: vertical list */}
-        <div className="hidden lg:flex flex-col divide-y divide-gray-200">
+        <div className="hidden lg:flex flex-col">
           {days.map((d, i) => (
             <div key={i} className="group/day flex flex-row gap-24 py-10 px-10 -mx-10 rounded-lg hover:bg-[#4657db] transition-colors duration-300 relative overflow-hidden">
               {/* Left — date info */}
@@ -540,19 +566,19 @@ function SponsorsSection() {
 function FounderSection() {
   return (
     <section className="bg-[#f5f5f5] overflow-hidden">
-      <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row items-center gap-0 px-5 md:px-6 lg:px-20 py-10 md:py-16">
-        {/* JP photo */}
-        <div className="relative w-full md:w-[280px] lg:w-[460px] h-[360px] md:h-[420px] lg:h-[560px] flex-shrink-0 md:-ml-4 lg:-ml-10">
+      <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-8 lg:gap-0 pl-0 pr-5 md:pl-0 md:pr-6 lg:px-20 py-10 md:py-16">
+        {/* JP photo — tablet & desktop only (left column) */}
+        <div className="relative hidden md:block md:w-[280px] lg:w-[460px] h-[420px] lg:h-[560px] flex-shrink-0 lg:-ml-20">
           <Image
             src="/assets/home3/jp-image_4x.webp"
             alt="J.P. Zhang"
             fill
-            className="object-contain object-bottom"
+            className="object-contain object-bottom object-left"
           />
         </div>
 
         {/* Text content */}
-        <div className="flex-1 flex flex-col gap-5 md:gap-6 lg:gap-8 md:pl-6 lg:pl-10">
+        <div className="flex-1 flex flex-col gap-5 md:gap-6 lg:gap-8 px-5 md:px-0 md:pl-6 lg:pl-10">
           <h2 className="text-[28px] md:text-[40px] font-extrabold leading-[1.0] uppercase">
             Why I Started<br />
             <span className="pl-6 md:pl-8">The Shenzhen</span><br />
@@ -584,7 +610,17 @@ function FounderSection() {
               </span>
               <span className="text-lg md:text-xl font-semibold text-[#020725]">J.P. Zhang</span>
             </div>
-            <span className="text-xs md:text-sm text-[#020725]/60">Host of the Shenzhen SEO Conference</span>
+            <span className="text-xs md:text-sm text-[#020725]">Host of the Shenzhen SEO Conference</span>
+          </div>
+
+          {/* JP photo — mobile only (below author info) */}
+          <div className="relative md:hidden w-full h-[360px] -ml-5">
+            <Image
+              src="/assets/home3/jp-image_4x.webp"
+              alt="J.P. Zhang"
+              fill
+              className="object-contain object-bottom object-left"
+            />
           </div>
         </div>
       </div>
@@ -640,11 +676,11 @@ function VenuesSection() {
             <button
               key={i}
               onClick={() => setActiveTab(i)}
-              className={`flex-1 flex flex-col md:flex-row items-start md:items-center justify-between px-4 md:px-8 lg:px-10 py-2.5 md:py-3.5 rounded transition-colors gap-1 md:gap-0 ${
+              className={`flex-1 flex flex-col md:flex-row items-center md:items-center justify-center md:justify-between px-4 md:px-8 lg:px-10 py-2.5 md:py-3.5 rounded transition-colors gap-1 md:gap-0 ${
                 activeTab === i ? 'bg-[#4657db] text-white' : 'bg-[#f5f5f5] text-[#020725] hover:bg-[#4657db] hover:text-white'
               }`}
             >
-              <span className="text-sm md:text-2xl font-semibold">{v.tabLabel}</span>
+              <span className="text-sm md:text-2xl font-semibold text-center md:text-left">{v.tabLabel}</span>
               <span className="flex items-center gap-1.5 md:gap-2 text-xs md:text-lg font-normal">
                 <Calendar className="w-3.5 h-3.5 md:w-5 md:h-5" />
                 {v.dates}
@@ -697,7 +733,7 @@ function VenuesSection() {
           </div>
 
           {/* Right image */}
-          <div className="relative w-full lg:w-[420px] h-[220px] md:h-[300px] lg:h-auto flex-shrink-0 lg:my-10 lg:mr-10">
+          <div className="relative w-full lg:w-[420px] h-[280px] md:h-[300px] lg:h-auto flex-shrink-0 lg:my-10 lg:mr-10">
             <div className="relative w-full h-full lg:rounded-lg overflow-hidden">
               <Image
                 src={active.image}
@@ -797,7 +833,10 @@ function PricingSection() {
             <div key={i} className="flex flex-col">
               {/* Colored header strip with SVG shape */}
               <div className="relative h-[50px] md:h-[70px] lg:h-[80px]">
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 405 103" fill="none" preserveAspectRatio="none">
+                <svg className="absolute inset-0 w-full h-full md:hidden" viewBox="0 0 405 103" fill="none" preserveAspectRatio="none">
+                  <path d="M405 103V0H25L0 50V103H405Z" fill={tier.headerFill} />
+                </svg>
+                <svg className="absolute inset-0 w-full h-full hidden md:block" viewBox="0 0 405 103" fill="none" preserveAspectRatio="none">
                   <path d="M405 103V0H41.6224L0 36V103H405Z" fill={tier.headerFill} />
                 </svg>
                 <div className="relative z-10 h-full flex items-center pl-5 md:pl-8 pr-0">
@@ -880,7 +919,7 @@ function RecapSection() {
         {/* Video + testimonial */}
         <div className="flex flex-col lg:flex-row gap-5 md:gap-8 mb-10 md:mb-16">
           {/* Video */}
-          <div className="relative flex-1 h-[220px] md:h-[300px] lg:h-[400px] rounded-lg overflow-hidden bg-black">
+          <div className="relative flex-1 h-[220px] md:h-[300px] lg:h-auto rounded-lg overflow-hidden bg-black">
             <div
               data-kingsway-player="ee8108f0c9"
               data-width="100%"

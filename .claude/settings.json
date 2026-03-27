@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv \"Zac_SZSEO Background.webp\" \"zac-2026.webp\")",
+      "Bash(mv \"doug-pierce_SZSEO Background.webp\" \"doug-pierce.webp\")",
+      "Bash(mv \"Jonathan K_SZSEO Background.webp\" \"jonathan-kiekbusch.webp\")",
+      "Bash(mv \"Loki Yan_SZSEO Background.webp\" \"loki-yan.webp\")",
+      "Bash(mv \"Mayi_SZSEO Background.webp\" \"mayi.webp\")",
+      "Bash(git add:*)",
+      "mcp__figma__get_figma_data",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\(''''mcpServers'''',{}\\), indent=2\\)\\)\")",
+      "Bash(find /Users/yurybyalik/.claude -name *.json -path *mcp*)",
+      "Bash(find /Users/yurybyalik/Desktop/ShenzhenSEOPromo -name .mcp* -o -name mcp*.json)",
+      "Read(//Users/yurybyalik/**)",
+      "Bash(ls /Users/yurybyalik/Desktop/ShenzhenSEOPromo/app/\\\\\\(home2\\\\\\)/)",
+      "Bash(npx next:*)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d, indent=2\\)[:500]\\)\")",
+      "Bash(ls -la /Users/yurybyalik/Desktop/ShenzhenSEOPromo/app/\\\\\\(home3\\\\\\)/)",
+      "Bash(while read:*)",
+      "Bash(done)",
+      "Bash(find '/Users/yurybyalik/Desktop/ShenzhenSEOPromo/LP – Main Page/svgs/' -name *.svg -exec sh -c \"echo \"\"=== {} ===\"\"; cat \"\"{}\"\"\")",
+      "Bash(2)"
+    ],
+    "additionalDirectories": [
+      "/Users/yurybyalik/.claude/plugins/cache/claude-plugins-official/figma/1.2.0/figma-power",
+      "/Users/yurybyalik/Desktop/ShenzhenSEOPromo/app/(home3)"
+    ]
+  }
+}

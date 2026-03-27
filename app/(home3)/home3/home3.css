@@ -35,6 +35,12 @@
 }
 
 .sponsor-ticker {
-  animation: sponsor-ticker 25s linear infinite;
+  animation: sponsor-ticker 8s linear infinite;
+}
+
+@media (min-width: 768px) {
+  .sponsor-ticker {
+    animation: sponsor-ticker 25s linear infinite;
+  }
 }
 
