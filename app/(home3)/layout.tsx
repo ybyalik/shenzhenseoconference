@@ -56,18 +56,14 @@ export default function Home3RootLayout({
             {/* Navigation - floating white bar */}
             <nav className="fixed top-0 left-0 right-0 z-50 p-2.5 md:p-4 lg:p-5">
               <div className="max-w-[1400px] mx-auto bg-white rounded-lg shadow-sm px-4 md:px-6 lg:px-8 py-3 md:py-4 flex items-center justify-between">
-                <Link href="/home3" className="flex items-center gap-2 md:gap-3 flex-shrink-0">
-                  <div className="relative w-8 h-8 md:w-10 md:h-10">
+                <Link href="/home3" className="flex items-center flex-shrink-0">
+                  <div className="relative w-[120px] h-[32px] md:w-[150px] md:h-[40px]">
                     <Image
-                      src="/assets/logo-main_1756774330186.png"
+                      src="/assets/home3/conference-logo_4x.webp"
                       alt="Shenzhen SEO Conference"
                       fill
-                      className="object-contain"
+                      className="object-contain object-left"
                     />
-                  </div>
-                  <div className="hidden sm:block leading-tight">
-                    <span className="text-xs font-extrabold text-[#020725] uppercase tracking-wide">Shenzhen SEO</span>
-                    <span className="block text-[10px] font-extrabold text-[#020725] uppercase tracking-wide">Conference</span>
                   </div>
                 </Link>
 
@@ -103,22 +99,18 @@ export default function Home3RootLayout({
             </main>
 
             {/* Footer */}
-            <footer className="bg-[#f5f5f5] pt-10 md:pt-16 pb-6 md:pb-8">
+            <footer className="bg-white pt-10 md:pt-16 pb-6 md:pb-8">
               <div className="max-w-[1280px] mx-auto px-5 md:px-6 lg:px-20">
                 <div className="flex flex-col md:flex-row justify-between gap-8 md:gap-12 mb-8 md:mb-12">
                   <div className="max-w-sm">
-                    <div className="flex items-center gap-3 mb-3 md:mb-4">
-                      <div className="relative w-8 h-8 md:w-10 md:h-10">
+                    <div className="flex items-center mb-3 md:mb-4">
+                      <div className="relative w-[120px] h-[32px] md:w-[150px] md:h-[40px]">
                         <Image
-                          src="/assets/logo-main_1756774330186.png"
+                          src="/assets/home3/conference-logo_4x.webp"
                           alt="Shenzhen SEO Conference"
                           fill
-                          className="object-contain"
+                          className="object-contain object-left"
                         />
-                      </div>
-                      <div className="leading-tight">
-                        <span className="text-[10px] md:text-xs font-extrabold text-[#020725] uppercase tracking-wide">Shenzhen SEO</span>
-                        <span className="block text-[8px] md:text-[10px] font-extrabold text-[#020725] uppercase tracking-wide">Conference</span>
                       </div>
                     </div>
                     <p className="text-xs md:text-sm text-[#020725]/60 leading-relaxed mb-3 md:mb-4">
@@ -152,7 +144,7 @@ export default function Home3RootLayout({
                     <div>
                       <h4 className="font-semibold text-xs md:text-sm mb-3 md:mb-4">Contact</h4>
                       <ul className="space-y-2 md:space-y-3 text-xs md:text-sm text-[#020725]/60">
-                        <li>support@shenzhenseocon<br className="md:hidden" />ference.com</li>
+                        <li><a href="mailto:support@shenzhenseoconference.com" className="hover:text-[#4657db] transition-colors">support@shenzhenseocon<br className="md:hidden" />ference.com</a></li>
                         <li>Shenzhen, China</li>
                       </ul>
                     </div>
