@@ -31,7 +31,7 @@ function WhySponsor() {
   const cards = [
     {
       icon: (
-        <Image src="/assets/home3/icon-flash_4x.webp" alt="Flash" width={44} height={44} />
+        <svg className="w-11 h-11" viewBox="0 0 44 44" fill="none"><path d="M7.57996 24.3932L25.0808 5.25785L23.2195 19.4746H36.4202L17.5803 38.7421L20.8764 24.3932H7.57996Z" stroke="#FD6F47" strokeWidth="4.58333" strokeMiterlimit="3.99393" strokeLinejoin="bevel"/></svg>
       ),
       title: 'Pioneering Opportunity',
       desc: "Be part of history at China's first and largest international SEO conference, putting your brand directly in front of hundreds of decision-makers actively seeking innovative SEO tools, services, and solutions.",
@@ -45,10 +45,7 @@ function WhySponsor() {
     },
     {
       icon: (
-        <svg className="w-11 h-11" viewBox="0 0 44 44" fill="none" stroke="#FD6F47" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M8 32L18 18L26 24L36 10" />
-          <path d="M28 10H36V18" />
-        </svg>
+        <svg className="w-11 h-11" viewBox="0 0 44 44" fill="none"><path d="M5.74207 31.4278L16.4244 20.0265L24.2939 27.2869L38.258 12.5703M38.258 12.5703V26.8275M38.258 12.5703H23.1124" stroke="#FD6F47" strokeWidth="4.58333" strokeLinejoin="bevel"/></svg>
       ),
       title: 'Exclusive Market Access',
       desc: "Tap into China's untapped market for SEO brands by connecting directly with businesses looking for solutions to expand globally, giving you unprecedented access to a high-growth market where your expertise is in high demand.",
@@ -95,7 +92,7 @@ function AudienceOverview() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
           {/* 500+ Attendees */}
           <div className="bg-[#f5f5f5] rounded-lg p-6 md:p-8 flex items-center gap-4 md:gap-6 min-h-[160px] md:min-h-[200px]">
-            <span className="text-[48px] md:text-[64px] font-extrabold text-[#4657db] leading-none tracking-tight">500+</span>
+            <span className="text-[48px] md:text-[64px] font-extrabold text-[#4657db] leading-none tracking-tight flex-shrink-0 w-[140px] md:w-[190px]">500+</span>
             <div>
               <span className="text-lg md:text-xl font-semibold text-[#020725] block leading-[1.2]">Attendees<br />Expected</span>
               <span className="text-sm md:text-base text-[#020725]/50">From around the world</span>
@@ -117,8 +114,8 @@ function AudienceOverview() {
           </div>
 
           {/* Typical Roles */}
-          <div className="bg-[#020725] rounded-lg p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-6 min-h-[160px] md:min-h-[200px]">
-            <div>
+          <div className="bg-[#020725] rounded-lg p-6 md:p-8 flex items-center gap-4 md:gap-6 min-h-[160px] md:min-h-[200px]">
+            <div className="flex-shrink-0 w-[140px] md:w-[190px]">
               <h3 className="text-lg md:text-xl font-semibold text-white leading-[1.2]">Typical Roles</h3>
               <span className="text-sm md:text-base text-white/50">of attendees include</span>
             </div>
@@ -131,7 +128,7 @@ function AudienceOverview() {
 
           {/* 30+ Countries */}
           <div className="bg-[#f5f5f5] rounded-lg p-6 md:p-8 flex items-center gap-4 md:gap-6 min-h-[160px] md:min-h-[200px]">
-            <span className="text-[48px] md:text-[64px] font-extrabold text-[#4657db] leading-none tracking-tight">30+</span>
+            <span className="text-[48px] md:text-[64px] font-extrabold text-[#4657db] leading-none tracking-tight flex-shrink-0 w-[140px] md:w-[190px]">30+</span>
             <div>
               <span className="text-lg md:text-xl font-semibold text-[#020725] block leading-[1.2]">Countries<br />Represented</span>
               <span className="text-sm md:text-base text-[#020725]/50">Global perspectives</span>

@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { Calendar, MapPin } from 'lucide-react';
 
 /* ─── Hero ─── */
 function PlanHero() {
@@ -79,7 +78,7 @@ function ExploreShenzhen() {
                 <h3 className={`text-xl md:text-2xl font-extrabold leading-[1.1] uppercase whitespace-pre-line mb-4 ${card.titleColor}`}>
                   {card.title}
                 </h3>
-                <div className="relative w-full h-[180px] md:h-[220px] rounded-lg overflow-hidden">
+                <div className="relative w-full h-[180px] md:h-[220px] rounded overflow-hidden">
                   <Image src={card.image} alt={card.title} fill className="object-cover" />
                 </div>
               </div>
@@ -112,20 +111,17 @@ function InfoCards() {
       <div className="max-w-[1280px] mx-auto px-5 md:px-6 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
           <div className="bg-[#f5f5f5] rounded-lg p-6 md:p-8 flex flex-col gap-3">
-            <Calendar className="w-8 h-8 text-[#fd6f47]" strokeWidth={1.5} />
+            <svg className="w-8 h-8" viewBox="0 0 44 44" fill="none"><path d="M19.5688 7.07715H24.896V3.66406H29.48V7.07715H39.6079V40.3369H4.39209V7.07715H14.9849V3.66406H19.5688V7.07715ZM8.9751 35.7539H35.0249V23.7969H8.9751V35.7539ZM8.9751 19.2129H35.0249V11.6602H29.48V15.5576H24.896V11.6602H19.5688V15.5576H14.9849V11.6602H8.9751V19.2129Z" fill="#FD6F47"/></svg>
             <h3 className="text-lg font-semibold text-[#020725]">Conference Dates</h3>
             <p className="text-sm text-[#020725]/60">14-18 September, 2026</p>
           </div>
           <div className="bg-[#f5f5f5] rounded-lg p-6 md:p-8 flex flex-col gap-3">
-            <MapPin className="w-8 h-8 text-[#fd6f47]" strokeWidth={1.5} />
+            <svg className="w-8 h-8" viewBox="0 0 44 44" fill="none"><path d="M16.7494 7.33398L6.24878 11.1005V36.5532L16.7494 32.9008M16.7494 7.33398V32.9008M16.7494 7.33398L27.7067 11.1005M16.7494 32.9008L27.7067 36.6674M27.7067 11.1005V36.6674M27.7067 11.1005L37.7512 7.39105V32.9008L27.7067 36.6674" stroke="#FD6F47" strokeWidth="4.58333"/></svg>
             <h3 className="text-lg font-semibold text-[#020725]">Venue</h3>
             <p className="text-sm text-[#020725]/60">The St. Regis Shenzhen</p>
           </div>
           <div className="bg-[#f5f5f5] rounded-lg p-6 md:p-8 flex flex-col gap-3">
-            <svg className="w-8 h-8 text-[#fd6f47]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="2" y="4" width="20" height="16" rx="2" />
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-            </svg>
+            <svg className="w-8 h-8" viewBox="0 0 44 44" fill="none"><path fillRule="evenodd" clipRule="evenodd" d="M39.6079 36.5977H4.39209V7.40234H39.6079V36.5977ZM8.9751 32.0137H35.0249V16.0674L23.52 26.2549L20.4438 26.2207L8.9751 15.6016V32.0137ZM22.0347 21.4473L32.7212 11.9854H11.8149L22.0347 21.4473Z" fill="#FD6F47"/></svg>
             <h3 className="text-lg font-semibold text-[#020725]">Contact</h3>
             <p className="text-sm text-[#020725]/60 break-all"><a href="mailto:support@shenzhenseoconference.com" className="hover:text-[#4657db] transition-colors">support@shenzhenseoconference.com</a></p>
           </div>

@@ -219,7 +219,10 @@ function SpeakerSections() {
 
 /* ─── Past Speakers 2025 ─── */
 function PastSpeakers() {
-  const pastSpeakers = [...speakers, ...speakers];
+  const allPastSpeakers = [...speakers, ...speakers, ...speakers, ...speakers];
+  const [visibleCount, setVisibleCount] = useState(8);
+  const visibleSpeakers = allPastSpeakers.slice(0, visibleCount);
+  const hasMore = visibleCount < allPastSpeakers.length;
 
   return (
     <section className="bg-[#f5f5f5] py-12 md:py-20">
@@ -230,13 +233,18 @@ function PastSpeakers() {
           <span className="text-[#4657db]">2025</span>
         </h2>
 
-        <SpeakerScrollRow speakerList={pastSpeakers} />
+        <SpeakerScrollRow speakerList={visibleSpeakers} />
 
-        <div className="text-center mt-8 md:mt-10">
-          <button className="inline-flex items-center justify-center px-6 py-3 bg-[#020725] text-white text-sm md:text-base rounded hover:bg-[#4657db] transition-colors">
-            View More
-          </button>
-        </div>
+        {hasMore && (
+          <div className="text-center mt-8 md:mt-10">
+            <button
+              onClick={() => setVisibleCount((prev) => prev + 8)}
+              className="inline-flex items-center justify-center px-6 py-3 bg-[#020725] text-white text-sm md:text-base rounded hover:bg-[#4657db] transition-colors"
+            >
+              View More
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

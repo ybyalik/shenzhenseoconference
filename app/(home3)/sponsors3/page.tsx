@@ -118,7 +118,7 @@ function AudienceOverview() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
           <div className="bg-[#f5f5f5] rounded-lg p-6 md:p-8 flex items-center gap-4 md:gap-6 min-h-[160px] md:min-h-[200px]">
-            <span className="text-[48px] md:text-[64px] font-extrabold text-[#4657db] leading-none tracking-tight">500+</span>
+            <span className="text-[48px] md:text-[64px] font-extrabold text-[#4657db] leading-none tracking-tight flex-shrink-0 w-[140px] md:w-[190px]">500+</span>
             <div>
               <span className="text-lg md:text-xl font-semibold text-[#020725] block leading-[1.2]">Attendees<br />Expected</span>
               <span className="text-sm md:text-base text-[#020725]/50">From around the world</span>
@@ -138,8 +138,8 @@ function AudienceOverview() {
             </div>
           </div>
 
-          <div className="bg-[#020725] rounded-lg p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-6 min-h-[160px] md:min-h-[200px]">
-            <div>
+          <div className="bg-[#020725] rounded-lg p-6 md:p-8 flex items-center gap-4 md:gap-6 min-h-[160px] md:min-h-[200px]">
+            <div className="flex-shrink-0 w-[140px] md:w-[190px]">
               <h3 className="text-lg md:text-xl font-semibold text-white leading-[1.2]">Typical Roles</h3>
               <span className="text-sm md:text-base text-white/50">of attendees include</span>
             </div>
@@ -151,7 +151,7 @@ function AudienceOverview() {
           </div>
 
           <div className="bg-[#f5f5f5] rounded-lg p-6 md:p-8 flex items-center gap-4 md:gap-6 min-h-[160px] md:min-h-[200px]">
-            <span className="text-[48px] md:text-[64px] font-extrabold text-[#4657db] leading-none tracking-tight">30+</span>
+            <span className="text-[48px] md:text-[64px] font-extrabold text-[#4657db] leading-none tracking-tight flex-shrink-0 w-[140px] md:w-[190px]">30+</span>
             <div>
               <span className="text-lg md:text-xl font-semibold text-[#020725] block leading-[1.2]">Countries<br />Represented</span>
               <span className="text-sm md:text-base text-[#020725]/50">Global perspectives</span>

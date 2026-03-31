@@ -217,9 +217,7 @@ function ScheduleSection() {
                 onClick={() => setFiltersOpen(!filtersOpen)}
                 className="ml-auto flex items-center gap-2 text-sm text-[#020725]/70 hover:text-[#020725] transition-colors"
               >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
+                <svg className="w-5 h-5" viewBox="0 0 20 20" fill="none"><path d="M14.375 15.625H5.625V13.875H14.375V15.625ZM17.5 10.875H2.5V9.125H17.5V10.875ZM20 6.125H0V4.375H20V6.125Z" fill="currentColor"/></svg>
                 Filter
               </button>
             </div>
@@ -254,8 +252,8 @@ function ScheduleSection() {
 
           {/* Mobile filters */}
           <div className="md:hidden">
-            {/* All Days button + Filter toggle */}
-            <div className="flex items-center justify-between mb-3">
+            {/* Default: All Days + All Activities + Filter toggle */}
+            <div className="flex items-center gap-2 mb-3">
               <button
                 onClick={() => setFiltersOpen(!filtersOpen)}
                 className="px-4 py-2.5 bg-[#f5f5f5] text-[#020725] text-sm rounded font-medium"
@@ -264,11 +262,15 @@ function ScheduleSection() {
               </button>
               <button
                 onClick={() => setFiltersOpen(!filtersOpen)}
-                className="flex items-center gap-2 text-sm text-[#020725]/70"
+                className="px-4 py-2.5 bg-[#f5f5f5] text-[#020725] text-sm rounded font-medium"
               >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
+                {activeType === 'All activities' ? 'All Activities' : activeType}
+              </button>
+              <button
+                onClick={() => setFiltersOpen(!filtersOpen)}
+                className="ml-auto flex items-center gap-2 text-sm text-[#020725]/70"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 20 20" fill="none"><path d="M14.375 15.625H5.625V13.875H14.375V15.625ZM17.5 10.875H2.5V9.125H17.5V10.875ZM20 6.125H0V4.375H20V6.125Z" fill="currentColor"/></svg>
                 Filter
               </button>
             </div>
@@ -291,19 +293,6 @@ function ScheduleSection() {
                       {d}
                     </button>
                   ))}
-                </div>
-
-                {/* All Activities button + Filter */}
-                <div className="flex items-center justify-between">
-                  <button className="px-4 py-2.5 bg-[#f5f5f5] text-[#020725] text-sm rounded font-medium">
-                    All Activities
-                  </button>
-                  <button className="flex items-center gap-2 text-sm text-[#020725]/70">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                    </svg>
-                    Filter
-                  </button>
                 </div>
 
                 {/* Type filters */}

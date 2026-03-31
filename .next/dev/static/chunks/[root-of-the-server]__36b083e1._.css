@@ -1804,6 +1804,10 @@ body {
   width: calc(100% + 40px);
 }
 
+.w-\[140px\] {
+  width: 140px;
+}
+
 .min-w-0 {
   min-width: 0;
 }
@@ -5991,6 +5995,10 @@ body {
 
   .md\:w-\[350px\] {
     width: 350px;
+  }
+
+  .md\:w-\[190px\] {
+    width: 190px;
   }
 
   .md\:min-w-\[90px\] {
