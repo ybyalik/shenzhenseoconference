@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -144,6 +145,34 @@ function AudienceOverview() {
 
 /* ─── Become a Sponsor Form ─── */
 function BecomeASponsor() {
+  const [companyName, setCompanyName] = useState('');
+  const [contactName, setContactName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const inputClass = "px-4 py-3 bg-white border border-gray-200 rounded text-sm text-[#020725] placeholder:text-[#020725]/40 focus:outline-none focus:border-[#4657db] transition-colors";
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await fetch('/api/sponsorship-inquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ companyName, contactName, email, phone, message }),
+      });
+      setSuccess(true);
+      setCompanyName(''); setContactName(''); setEmail(''); setPhone(''); setMessage('');
+    } catch {
+      // handle error
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="bg-[#f5f5f5] py-12 md:py-20">
       <div className="max-w-[1280px] mx-auto px-5 md:px-6 lg:px-20">
@@ -156,60 +185,45 @@ function BecomeASponsor() {
           </p>
         </div>
 
-        <form className="max-w-[900px] mx-auto flex flex-col gap-5 md:gap-6 bg-white p-6 md:p-8">
+        <form onSubmit={handleSubmit} className="max-w-[900px] mx-auto flex flex-col gap-5 md:gap-6 bg-white p-6 md:p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-semibold text-[#020725]">Company Name*</label>
-              <input
-                type="text"
-                placeholder="Your Company"
-                className="px-4 py-3 bg-white border border-gray-200 rounded text-sm text-[#020725] placeholder:text-[#020725]/40 focus:outline-none focus:border-[#4657db] transition-colors"
-              />
+              <input type="text" value={companyName} onChange={(e) => setCompanyName(e.target.value)} placeholder="Your Company" required className={inputClass} />
             </div>
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-semibold text-[#020725]">Contact Name*</label>
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="px-4 py-3 bg-white border border-gray-200 rounded text-sm text-[#020725] placeholder:text-[#020725]/40 focus:outline-none focus:border-[#4657db] transition-colors"
-              />
+              <input type="text" value={contactName} onChange={(e) => setContactName(e.target.value)} placeholder="Your Name" required className={inputClass} />
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-semibold text-[#020725]">Email*</label>
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="px-4 py-3 bg-white border border-gray-200 rounded text-sm text-[#020725] placeholder:text-[#020725]/40 focus:outline-none focus:border-[#4657db] transition-colors"
-              />
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Your Email" required className={inputClass} />
             </div>
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-semibold text-[#020725]">Phone (Optional)</label>
-              <input
-                type="tel"
-                placeholder="Your Phone"
-                className="px-4 py-3 bg-white border border-gray-200 rounded text-sm text-[#020725] placeholder:text-[#020725]/40 focus:outline-none focus:border-[#4657db] transition-colors"
-              />
+              <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Your Phone" className={inputClass} />
             </div>
           </div>
 
           <div className="flex flex-col gap-1.5">
             <label className="text-sm font-semibold text-[#020725]">Message (Optional)</label>
-            <input
-              type="text"
-              placeholder="Your Message"
-              className="px-4 py-3 bg-white border border-gray-200 rounded text-sm text-[#020725] placeholder:text-[#020725]/40 focus:outline-none focus:border-[#4657db] transition-colors"
-            />
+            <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Your Message" rows={4} className={`${inputClass} resize-none`} />
           </div>
 
           <button
             type="submit"
-            className="w-full py-3.5 bg-[#4657db] text-white text-base font-semibold rounded hover:bg-[#4657db]/90 transition-colors"
+            disabled={loading}
+            className="w-full py-3.5 bg-[#4657db] text-white text-base font-semibold rounded hover:bg-[#4657db]/90 transition-colors disabled:opacity-50"
           >
-            Submit Inquiry
+            {loading ? 'Sending...' : 'Submit Inquiry'}
           </button>
+
+          {success && (
+            <p className="text-sm text-green-600 text-center">Thank you for your inquiry! We&apos;ll get back to you soon.</p>
+          )}
         </form>
       </div>
     </section>

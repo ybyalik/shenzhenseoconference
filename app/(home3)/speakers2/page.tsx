@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -133,6 +133,27 @@ function ApplyToSpeak() {
 /* ─── Speaker Scroll Row ─── */
 function SpeakerScrollRow({ speakerList }: { speakerList: typeof speakers }) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const updateScrollState = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 5);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 5);
+  };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    updateScrollState();
+    el.addEventListener('scroll', updateScrollState);
+    window.addEventListener('resize', updateScrollState);
+    return () => {
+      el.removeEventListener('scroll', updateScrollState);
+      window.removeEventListener('resize', updateScrollState);
+    };
+  }, []);
 
   const scroll = (dir: 'left' | 'right') => {
     if (!scrollRef.current) return;
@@ -149,7 +170,7 @@ function SpeakerScrollRow({ speakerList }: { speakerList: typeof speakers }) {
       </div>
       {/* Mobile/Tablet: horizontal scroll */}
       <div className="xl:hidden">
-        <div ref={scrollRef} className="flex gap-4 md:gap-5 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
+        <div ref={scrollRef} className="flex gap-4 md:gap-5 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory px-5 md:px-6 lg:px-20 scroll-pl-5 md:scroll-pl-6 lg:scroll-pl-20">
           {speakerList.map((speaker, j) => (
             <div key={j} className="flex-shrink-0 w-[75vw] md:w-[30vw] snap-start">
               <SpeakerCard speaker={speaker} />
@@ -158,11 +179,17 @@ function SpeakerScrollRow({ speakerList }: { speakerList: typeof speakers }) {
         </div>
         {/* Arrows */}
         <div className="flex items-center justify-center gap-3 mt-4">
-          <button onClick={() => scroll('left')} className="w-11 h-11 rounded-lg border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
-            <ChevronLeft className="w-5 h-5 text-[#020725]/50" />
+          <button
+            onClick={() => canScrollLeft && scroll('left')}
+            className={`w-11 h-11 rounded-lg flex items-center justify-center transition-all group ${canScrollLeft ? 'bg-white border border-gray-300 cursor-pointer' : 'bg-[#6b7280]/40 cursor-default'}`}
+          >
+            <ChevronLeft className={`w-5 h-5 transition-colors ${canScrollLeft ? 'text-[#020725] group-hover:text-[#fd6f47]' : 'text-[#9ca3af]'}`} />
           </button>
-          <button onClick={() => scroll('right')} className="w-11 h-11 rounded-lg bg-[#020725] flex items-center justify-center hover:bg-[#020725]/90 transition-colors">
-            <ChevronRight className="w-5 h-5 text-white" />
+          <button
+            onClick={() => canScrollRight && scroll('right')}
+            className={`w-11 h-11 rounded-lg flex items-center justify-center transition-all group ${canScrollRight ? 'bg-[#020725] cursor-pointer' : 'bg-[#6b7280]/40 cursor-default'}`}
+          >
+            <ChevronRight className={`w-5 h-5 transition-colors ${canScrollRight ? 'text-white group-hover:text-[#fd6f47]' : 'text-[#9ca3af]'}`} />
           </button>
         </div>
       </div>

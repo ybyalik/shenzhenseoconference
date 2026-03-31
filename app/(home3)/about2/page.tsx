@@ -83,16 +83,16 @@ function FounderSection() {
             <span className="text-xs md:text-sm text-[#020725]">Host of the Shenzhen SEO Conference</span>
           </div>
 
-          {/* JP photo — mobile only (below author info) */}
-          <div className="relative md:hidden w-full h-[360px] -ml-5">
-            <Image
-              src="/assets/home3/story-jp-image_4x.webp"
-              alt="J.P. Zhang"
-              fill
-              className="object-contain object-bottom object-left"
-            />
-          </div>
         </div>
+      </div>
+      {/* JP photo — mobile only (below author info, centered) */}
+      <div className="relative md:hidden w-full h-[360px]">
+        <Image
+          src="/assets/home3/story-jp-image_4x.webp"
+          alt="J.P. Zhang"
+          fill
+          className="object-contain object-bottom object-center"
+        />
       </div>
     </section>
   );

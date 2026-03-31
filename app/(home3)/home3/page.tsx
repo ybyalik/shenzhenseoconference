@@ -268,8 +268,8 @@ function SpeakersSection() {
   const updateScrollState = () => {
     const el = containerRef.current;
     if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 0);
-    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
+    setCanScrollLeft(el.scrollLeft > 5);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 5);
   };
 
   useEffect(() => {
@@ -277,7 +277,11 @@ function SpeakersSection() {
     if (!el) return;
     updateScrollState();
     el.addEventListener('scroll', updateScrollState);
-    return () => el.removeEventListener('scroll', updateScrollState);
+    window.addEventListener('resize', updateScrollState);
+    return () => {
+      el.removeEventListener('scroll', updateScrollState);
+      window.removeEventListener('resize', updateScrollState);
+    };
   }, []);
 
   const scroll = (dir: 'left' | 'right') => {
@@ -312,18 +316,16 @@ function SpeakersSection() {
             {/* Desktop arrows — right aligned */}
             <div className="hidden lg:flex items-center gap-3">
               <button
-                onClick={() => scroll('left')}
-                disabled={!canScrollLeft}
-                className={`w-12 h-12 rounded-lg border border-white/30 flex items-center justify-center transition-colors group ${!canScrollLeft ? 'opacity-30 cursor-default' : 'hover:bg-white active:bg-white'}`}
+                onClick={() => canScrollLeft && scroll('left')}
+                className={`w-12 h-12 rounded-lg flex items-center justify-center transition-all group ${canScrollLeft ? 'bg-white cursor-pointer' : 'bg-[#6b7280]/40 cursor-default'}`}
               >
-                <ChevronLeft className={`w-6 h-6 text-white transition-colors ${canScrollLeft ? 'group-hover:text-[#020725] group-active:text-[#020725]' : ''}`} />
+                <ChevronLeft className={`w-6 h-6 transition-colors ${canScrollLeft ? 'text-[#020725] group-hover:text-[#fd6f47]' : 'text-[#9ca3af]'}`} />
               </button>
               <button
-                onClick={() => scroll('right')}
-                disabled={!canScrollRight}
-                className={`w-12 h-12 rounded-lg bg-white flex items-center justify-center transition-colors group ${!canScrollRight ? 'opacity-30 cursor-default' : 'hover:bg-white active:bg-white'}`}
+                onClick={() => canScrollRight && scroll('right')}
+                className={`w-12 h-12 rounded-lg flex items-center justify-center transition-all group ${canScrollRight ? 'bg-white cursor-pointer' : 'bg-[#6b7280]/40 cursor-default'}`}
               >
-                <ChevronRight className="w-6 h-6 text-[#020725] transition-colors" />
+                <ChevronRight className={`w-6 h-6 transition-colors ${canScrollRight ? 'text-[#020725] group-hover:text-[#fd6f47]' : 'text-[#9ca3af]'}`} />
               </button>
             </div>
           </div>
@@ -332,7 +334,7 @@ function SpeakersSection() {
 
       {/* Speaker cards - overlapping into dark section */}
       <div className="-mt-32 md:-mt-44">
-        <div ref={containerRef} className="flex gap-5 md:gap-8 overflow-x-auto pb-6 md:pb-8 scrollbar-hide max-w-[1280px] mx-auto px-5 md:px-6 lg:px-20 snap-x snap-mandatory">
+        <div ref={containerRef} className="flex gap-5 md:gap-8 overflow-x-auto pb-6 md:pb-8 scrollbar-hide max-w-[1280px] mx-auto px-5 md:px-6 lg:px-20 snap-x snap-mandatory scroll-pl-5 md:scroll-pl-6 lg:scroll-pl-20">
           {featured.map((speaker, i) => (
             <div key={i} className="flex-shrink-0 w-[280px] md:w-[220px] lg:w-[305px] bg-[#f5f5f5] rounded-lg overflow-hidden flex flex-col snap-start group/speaker">
               {/* Name & role at top */}
@@ -386,8 +388,11 @@ function SpeakersSection() {
 
         {/* Mobile/tablet controls — centered */}
         <div className="flex lg:hidden items-center justify-center gap-3 mt-2 px-5 md:px-6 max-w-[1280px] mx-auto">
-          <button onClick={() => scroll('left')} className="w-11 h-11 md:w-12 md:h-12 rounded-lg border border-gray-300 flex items-center justify-center hover:bg-[#fd6f47] hover:border-[#fd6f47] hover:text-white transition-colors">
-            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-[#020725]/50" />
+          <button
+            onClick={() => canScrollLeft && scroll('left')}
+            className={`w-11 h-11 md:w-12 md:h-12 rounded-lg flex items-center justify-center transition-all group ${canScrollLeft ? 'border border-gray-300 bg-white cursor-pointer' : 'bg-[#6b7280]/40 cursor-default'}`}
+          >
+            <ChevronLeft className={`w-5 h-5 md:w-6 md:h-6 transition-colors ${canScrollLeft ? 'text-[#020725] group-hover:text-[#fd6f47]' : 'text-[#9ca3af]'}`} />
           </button>
           <Link
             href="/speakers"
@@ -395,8 +400,11 @@ function SpeakersSection() {
           >
             View All
           </Link>
-          <button onClick={() => scroll('right')} className="w-11 h-11 md:w-12 md:h-12 rounded-lg bg-[#020725] flex items-center justify-center hover:bg-[#fd6f47] transition-colors">
-            <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
+          <button
+            onClick={() => canScrollRight && scroll('right')}
+            className={`w-11 h-11 md:w-12 md:h-12 rounded-lg flex items-center justify-center transition-all group ${canScrollRight ? 'bg-[#020725] cursor-pointer' : 'bg-[#6b7280]/40 cursor-default'}`}
+          >
+            <ChevronRight className={`w-5 h-5 md:w-6 md:h-6 transition-colors ${canScrollRight ? 'text-white group-hover:text-[#fd6f47]' : 'text-[#9ca3af]'}`} />
           </button>
         </div>
       </div>
@@ -613,16 +621,16 @@ function FounderSection() {
             <span className="text-xs md:text-sm text-[#020725]">Host of the Shenzhen SEO Conference</span>
           </div>
 
-          {/* JP photo — mobile only (below author info) */}
-          <div className="relative md:hidden w-full h-[360px] -ml-5">
-            <Image
-              src="/assets/home3/jp-image_4x.webp"
-              alt="J.P. Zhang"
-              fill
-              className="object-contain object-bottom object-left"
-            />
-          </div>
         </div>
+      </div>
+      {/* JP photo — mobile only (below author info, centered) */}
+      <div className="relative md:hidden w-full h-[360px]">
+        <Image
+          src="/assets/home3/jp-image_4x.webp"
+          alt="J.P. Zhang"
+          fill
+          className="object-contain object-bottom object-center"
+        />
       </div>
     </section>
   );

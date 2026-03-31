@@ -70,8 +70,12 @@ export async function POST(request: NextRequest) {
       `;
     }
 
+    const recipient = validatedData.requestInvitationLetter
+      ? 'jp@shenzhenseoconference.com'
+      : 'amanda@shenzhenseoconference.com';
+
     await sendEmail({
-      to: 'jp@shenzhenseoconference.com',
+      to: recipient,
       subject: emailSubject,
       html: emailHtml,
     });

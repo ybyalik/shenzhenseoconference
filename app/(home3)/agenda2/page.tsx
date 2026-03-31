@@ -111,10 +111,11 @@ function DayOverviewCards() {
     <section className="pb-10 md:pb-16">
       <div className="max-w-[1280px] mx-auto px-5 md:px-6 lg:px-20">
         {/* Desktop: 5 cols. Tablet: first 3 in row, last 2 at 50%. Mobile: 2 cols */}
-        <div className="hidden md:grid lg:hidden grid-cols-2 gap-4">
-          <div className="col-span-2 grid grid-cols-3 gap-4">
-            {daysOverview.slice(0, 3).map((d, i) => (
-              <div key={i} className="bg-[#f5f5f5] rounded-lg p-5 md:p-6 flex flex-col justify-between min-h-[200px]">
+        <div className="hidden md:flex lg:hidden flex-col gap-4">
+          {/* Row 1: Day 1 + Day 2 */}
+          <div className="grid grid-cols-2 gap-4">
+            {daysOverview.slice(0, 2).map((d, i) => (
+              <div key={i} className="bg-[#f5f5f5] rounded-lg p-6 flex flex-col justify-between min-h-[200px]">
                 <span className="text-[36px] font-extrabold text-[#4657db] leading-none uppercase">{d.day}</span>
                 <div>
                   <span className="text-base font-semibold text-[#020725] block">{d.date}</span>
@@ -123,18 +124,29 @@ function DayOverviewCards() {
               </div>
             ))}
           </div>
-          {daysOverview.slice(3).map((d, i) => (
-            <div key={i} className="bg-[#f5f5f5] rounded-lg p-5 md:p-6 flex flex-col justify-between min-h-[200px]">
-              <span className="text-[36px] font-extrabold text-[#4657db] leading-none uppercase">{d.day}</span>
-              <div>
-                <span className="text-base font-semibold text-[#020725] block">{d.date}</span>
-                <span className="text-sm text-[#020725]/50">{d.title}</span>
+          {/* Row 2: Day 3 + Day 4 */}
+          <div className="grid grid-cols-2 gap-4">
+            {daysOverview.slice(2, 4).map((d, i) => (
+              <div key={i} className="bg-[#f5f5f5] rounded-lg p-6 flex flex-col justify-between min-h-[200px]">
+                <span className="text-[36px] font-extrabold text-[#4657db] leading-none uppercase">{d.day}</span>
+                <div>
+                  <span className="text-base font-semibold text-[#020725] block">{d.date}</span>
+                  <span className="text-sm text-[#020725]/50">{d.title}</span>
+                </div>
               </div>
+            ))}
+          </div>
+          {/* Row 3: Day 5 at 100% */}
+          <div className="bg-[#f5f5f5] rounded-lg p-6 flex flex-col justify-between min-h-[200px]">
+            <span className="text-[36px] font-extrabold text-[#4657db] leading-none uppercase">{daysOverview[4].day}</span>
+            <div>
+              <span className="text-base font-semibold text-[#020725] block">{daysOverview[4].date}</span>
+              <span className="text-sm text-[#020725]/50">{daysOverview[4].title}</span>
             </div>
-          ))}
+          </div>
         </div>
-        {/* Mobile: 2 cols */}
-        <div className="grid md:hidden grid-cols-2 gap-4">
+        {/* Mobile: 1 col */}
+        <div className="grid md:hidden grid-cols-1 gap-4">
           {daysOverview.map((d, i) => (
             <div key={i} className="bg-[#f5f5f5] rounded-lg p-5 flex flex-col justify-between min-h-[160px]">
               <span className="text-[28px] font-extrabold text-[#4657db] leading-none uppercase">{d.day}</span>
