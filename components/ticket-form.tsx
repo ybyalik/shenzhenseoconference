@@ -71,7 +71,7 @@ export default function TicketForm() {
     {
       type: "standard" as const,
       name: "Standard",
-      price: "$540",
+      price: "$550",
       originalPrice: "$600",
       features: [
         { text: "Days 3-4 sessions", included: true },
@@ -88,7 +88,7 @@ export default function TicketForm() {
     {
       type: "deluxe" as const,
       name: "Deluxe",
-      price: "$810",
+      price: "$825",
       originalPrice: "$900",
       features: [
         { text: "Days 3-4 sessions", included: true },
@@ -105,7 +105,7 @@ export default function TicketForm() {
     {
       type: "vip" as const,
       name: "VIP",
-      price: "$1,620",
+      price: "$1,650",
       originalPrice: "$1,800",
       features: [
         { text: "Days 3-4 sessions", included: true },
