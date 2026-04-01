@@ -772,7 +772,7 @@ function PricingSection() {
   const tiers = [
     {
       name: 'Standard',
-      price: '$530',
+      price: '$550',
       original: '$530',
       badge: null,
       headerBg: 'bg-[#020725]',
@@ -791,7 +791,7 @@ function PricingSection() {
     },
     {
       name: 'Deluxe',
-      price: '$795',
+      price: '$825',
       original: '$900',
       badge: 'Most Popular',
       badgeColor: 'text-[#fd6f47]',
@@ -811,7 +811,7 @@ function PricingSection() {
     },
     {
       name: 'VIP',
-      price: '$1590',
+      price: '$1,650',
       original: '$1800',
       badge: 'Best Value',
       badgeColor: 'text-[#4657db]',
