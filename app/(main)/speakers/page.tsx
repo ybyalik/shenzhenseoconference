@@ -66,7 +66,7 @@ export default function Speakers() {
               { name: "Max Hobbs", image: "/assets/max-hobbs.webp", testId: "max" },
               { name: "David Carrasco", image: "/assets/david-carrasco.webp", testId: "david" },
               { name: "Mao Kawana", image: "/assets/mao-kawana.webp", testId: "mao" },
-              { name: "Konstantin Sadekiov", image: "/assets/konstantin-sadekov.webp", testId: "konstantin" },
+              { name: "Konstantin Sadekov", image: "/assets/konstantin-sadekov.webp", testId: "konstantin" },
               { name: "Michael Wu", image: "/assets/michael-wu.webp", testId: "michael" },
               { name: "Tupa Lee", image: "/assets/tupa-lee.webp", testId: "tupa" },
               { name: "Gabriele Kahlout", image: "/assets/gabriele-kahlout.webp", testId: "gabriele" },
