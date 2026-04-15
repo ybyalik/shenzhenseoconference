@@ -59,7 +59,7 @@ export default function TicketForm() {
     {
       type: "standard" as const,
       name: "Standard",
-      price: "$390",
+      price: "$560",
       originalPrice: "$600",
       features: [
         "2-day conference access (Day 3 & 4)",
@@ -70,7 +70,7 @@ export default function TicketForm() {
     {
       type: "deluxe" as const,
       name: "Deluxe",
-      price: "$585",
+      price: "$840",
       originalPrice: "$900",
       features: [
         "4-day conference access (Day 1-4)",
@@ -82,7 +82,7 @@ export default function TicketForm() {
     {
       type: "vip" as const,
       name: "VIP",
-      price: "$1,170",
+      price: "$1,680",
       originalPrice: "$1,800",
       features: [
         "Full 5-day conference access",

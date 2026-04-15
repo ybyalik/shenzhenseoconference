@@ -10,9 +10,9 @@ const ticketSchema = z.object({
 });
 
 const ticketTypeNames: Record<string, string> = {
-  standard: 'Standard ($390)',
-  deluxe: 'Deluxe ($585)',
-  vip: 'VIP ($1170)',
+  standard: 'Standard ($560)',
+  deluxe: 'Deluxe ($840)',
+  vip: 'VIP ($1,680)',
 };
 
 export async function POST(request: NextRequest) {
