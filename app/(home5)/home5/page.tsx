@@ -900,11 +900,11 @@ function Pricing() {
         // Figma fill stack (top → bottom in panel = first → last in CSS):
         //   1) Linear: horizontal vignette  #03060D 0% → transparent 50% → #03060D 100%
         //   2) #03060D at 65% (dim)
-        //   3) Linear: diagonal brand  #118BAC 0% → #EB3030 100%
+        //   3) Linear: horizontal brand  #118BAC 0% → #EB3030 100%
         background:
           'linear-gradient(90deg, #03060D 0%, rgba(3,6,13,0) 50%, #03060D 100%),' +
           'linear-gradient(0deg, rgba(3,6,13,0.65), rgba(3,6,13,0.65)),' +
-          'linear-gradient(135deg, #118BAC 0%, #EB3030 100%)',
+          'linear-gradient(90deg, #118BAC 0%, #EB3030 100%)',
       }}
     >
       <div className="container">
