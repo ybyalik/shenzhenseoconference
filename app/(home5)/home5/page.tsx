@@ -897,11 +897,14 @@ function Pricing() {
       id="pricing"
       className="py-24 md:py-32 border-t border-white/10"
       style={{
+        // Figma fill stack (top → bottom in panel = first → last in CSS):
+        //   1) Linear: horizontal vignette  #03060D 0% → transparent 50% → #03060D 100%
+        //   2) #03060D at 65% (dim)
+        //   3) Linear: diagonal brand  #118BAC 0% → #EB3030 100%
         background:
-          // Figma fills, top→bottom: Linear 100%, #03060D 65%, Linear 100%
-          'linear-gradient(180deg, rgba(17,139,172,0.18) 0%, rgba(17,139,172,0) 60%),' +
+          'linear-gradient(90deg, #03060D 0%, rgba(3,6,13,0) 50%, #03060D 100%),' +
           'linear-gradient(0deg, rgba(3,6,13,0.65), rgba(3,6,13,0.65)),' +
-          'linear-gradient(135deg, #118bac 0%, #eb3030 100%), #03060d',
+          'linear-gradient(135deg, #118BAC 0%, #EB3030 100%)',
       }}
     >
       <div className="container">
