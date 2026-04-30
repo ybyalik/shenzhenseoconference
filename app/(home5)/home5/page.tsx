@@ -315,7 +315,7 @@ function FounderLetter() {
         <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
           WHAT IS SZSEO?
         </div>
-        <h2 className="display text-[28px] md:text-[36px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-10 md:mb-12">
+        <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-10 md:mb-12">
           A Letter From The Founder
         </h2>
 
@@ -512,7 +512,7 @@ function Audiences() {
           <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
             WHO IS THIS FOR
           </div>
-          <h2 className="display text-[28px] md:text-[36px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-14 md:mb-16">
+          <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-14 md:mb-16">
             Two Audiences, One Room
           </h2>
         </div>
@@ -614,7 +614,7 @@ function WhyShenzhen() {
               <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
                 WHY SHENZHEN
               </div>
-              <h2 className="display text-[28px] md:text-[36px] font-semibold uppercase leading-[1.05] tracking-[-0.005em]">
+              <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em]">
                 Come Expecting The Unknown
               </h2>
             </div>
@@ -681,7 +681,7 @@ function Speakers() {
             <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
               WHO&apos;S SPEAKING
             </div>
-            <h2 className="display text-[28px] md:text-[44px] lg:text-[52px] font-semibold uppercase leading-[1.02] tracking-[-0.005em] max-w-[820px]">
+            <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.02] tracking-[-0.005em] max-w-[820px]">
               <span className="block text-white">On Stage: Practitioners,</span>
               <span className="block text-white/30">Not Theorists.</span>
             </h2>
@@ -699,45 +699,38 @@ function Speakers() {
         </div>
 
         <ul className="grid gap-4 md:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {list.map((s, i) => {
-            const featured = i === 0;
-            return (
-              <li
-                key={s.name}
-                className={`rounded-2xl overflow-hidden bg-[#06101a]/60 ${
-                  featured
-                    ? 'ring-2 ring-[var(--red)]'
-                    : 'ring-1 ring-white/[0.06]'
-                }`}
-              >
-                <div className="relative aspect-[246/280] bg-white/5">
-                  <Image
-                    src={portraits[i % portraits.length]}
-                    alt={s.name}
-                    fill
-                    className="object-cover grayscale-[12%]"
-                    sizes="(max-width: 768px) 50vw, 246px"
-                  />
-                  {s.tag && (
-                    <span className="absolute right-3 top-3 px-2 py-1 rounded-full text-[10px] font-bold tracking-[0.16em] uppercase bg-[var(--teal)] text-white">
-                      {s.tag}
-                    </span>
-                  )}
+          {list.map((s, i) => (
+            <li
+              key={s.name}
+              className="rounded-2xl bg-[#06101a]/60 p-6 border border-white/[0.06] hover:border-[var(--red)] transition-colors"
+            >
+              <div className="relative aspect-square rounded-xl overflow-hidden bg-white/5">
+                <Image
+                  src={portraits[i % portraits.length]}
+                  alt={s.name}
+                  fill
+                  className="object-cover grayscale-[12%]"
+                  sizes="(max-width: 768px) 50vw, 246px"
+                />
+              </div>
+              <div className="mt-5 flex items-center justify-between gap-3">
+                <div className="text-[11px] font-semibold tracking-[0.2em] text-white/60">
+                  {s.country}
                 </div>
-                <div className="px-4 pt-3.5 pb-4">
-                  <div className="text-[11px] font-semibold tracking-[0.2em] text-white/55 mb-1.5">
-                    {s.country}
-                  </div>
-                  <div className="text-[15px] md:text-[16px] font-bold text-white leading-tight">
-                    {s.name}
-                  </div>
-                  <div className="mt-1 text-[12px] md:text-[13px] text-white/55 leading-snug line-clamp-2">
-                    {s.sub}
-                  </div>
-                </div>
-              </li>
-            );
-          })}
+                {s.tag && (
+                  <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-[0.16em] uppercase bg-[var(--teal)] text-white">
+                    {s.tag}
+                  </span>
+                )}
+              </div>
+              <div className="mt-3 text-[18px] md:text-[20px] font-bold text-white leading-tight">
+                {s.name}
+              </div>
+              <div className="mt-1.5 text-[13px] md:text-[14px] text-white/55 leading-snug line-clamp-2">
+                {s.sub}
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
     </section>
@@ -796,7 +789,7 @@ function Agenda() {
           <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
             WHAT&apos;S THE AGENDA
           </div>
-          <h2 className="display text-[28px] md:text-[44px] lg:text-[52px] font-semibold uppercase leading-[1.02] tracking-[-0.005em] max-w-[820px]">
+          <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.02] tracking-[-0.005em] max-w-[820px]">
             <span className="text-white">Five Days,</span>{' '}
             <span className="text-white/30">Pick Your Depth</span>
           </h2>
@@ -906,7 +899,7 @@ function Pricing() {
           <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
             HOW MUCH IS THE TICKET
           </div>
-          <h2 className="display text-[28px] md:text-[36px] font-semibold uppercase leading-[1.05] tracking-[-0.005em]">
+          <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em]">
             Get Early Bird Tickets
           </h2>
           <p className="mx-auto mt-5 max-w-[680px] text-[15px] md:text-[16px] text-white/70 leading-[1.6]">
@@ -1010,7 +1003,7 @@ function Venues() {
         <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
           WHERE IS THE EVENT HAPPENING
         </div>
-        <h2 className="display text-[28px] md:text-[36px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-5 max-w-[900px]">
+        <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-5 max-w-[900px]">
           Two Venues. Both Picked On Purpose.
         </h2>
         <p className="text-[15px] md:text-[16px] text-white/70 leading-[1.6] max-w-[820px] mb-12 md:mb-14">
@@ -1093,7 +1086,7 @@ function Testimonials() {
         <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
           WHAT DID THE PREVIOUS ATTENDEES SAY
         </div>
-        <h2 className="display text-[28px] md:text-[36px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-12 max-w-[900px] text-white">
+        <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-12 max-w-[900px] text-white">
           What 2025 Attendees Told Us.
         </h2>
 
@@ -1219,7 +1212,7 @@ function Faq() {
         <div className="text-center text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
           FAQ
         </div>
-        <h2 className="text-center display text-[28px] md:text-[36px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-12 text-white">
+        <h2 className="text-center display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-12 text-white">
           Real Questions. Direct Answers.
         </h2>
         <div className="max-w-[920px] mx-auto space-y-3">
@@ -1319,7 +1312,7 @@ function Sponsors() {
             <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
               2026 PARTNERS
             </div>
-            <h2 className="display text-[28px] md:text-[36px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] text-white">
+            <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] text-white">
               Our Sponsors
             </h2>
             <p className="mt-4 text-[15px] md:text-[16px] text-white/65 leading-[1.6] max-w-[640px]">
