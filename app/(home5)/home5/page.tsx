@@ -8,6 +8,7 @@ const A = {
   heroBg: '/figma-assets/dfd8cb68f2097a3164c042d67b3231672354f49a.jpg',
   founderPortrait: '/figma-assets/4b74d4aeb017232f0cbf2605ea7ff274d76f858d.jpg',
   founderAvatar: '/figma-assets/380e15aa93aee5a8bf00f2f1a76f3f8a883e85be.png',
+  founderSignature: '/figma-assets/jp-signature.png',
   recap: '/figma-assets/de3b4552f3cbd3a8a34ebb172a16b1bf278b9bae.png',
   audInternational: '/figma-assets/7c46b04752f234637e502b81cc363e979777fb68.jpg',
   audChinese: '/figma-assets/09ff6550fd1fd1e5f699132475d75b82291fb6f1.jpg',
@@ -282,62 +283,101 @@ function Hero() {
 }
 
 /* ───────────────────────────── FOUNDER LETTER (28:136) ───────────────────────────── */
+function QuoteGlyph({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 56 44" className={className} aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M0 44V25.6C0 18 1.7 11.6 5.1 6.5 8.5 1.4 13.7-.8 20.6 0v8.6c-3.3.4-5.8 1.7-7.5 4-1.7 2.3-2.6 5.5-2.7 9.7H22V44H0Zm34 0V25.6c0-7.6 1.7-14 5.1-19.1C42.5 1.4 47.7-.8 54.6 0v8.6c-3.3.4-5.8 1.7-7.5 4-1.7 2.3-2.6 5.5-2.7 9.7H56V44H34Z"
+      />
+    </svg>
+  );
+}
+
 function FounderLetter() {
   return (
     <section className="bg-[#03060d] py-24 md:py-32">
       <div className="container">
-        <div className="text-[12px] md:text-[14px] font-semibold tracking-[0.2em] text-[var(--red)] mb-3">
+        <div className="text-[14px] font-bold tracking-[0.2em] text-[var(--red)] mb-3">
           WHAT IS SZSEO?
         </div>
-        <h2 className="display text-[36px] md:text-[44px] font-semibold uppercase leading-[1.05] mb-12">
-          A LETTER FROM THE FOUNDER
+        <h2 className="display text-[28px] md:text-[36px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-10 md:mb-12">
+          A Letter From The Founder
         </h2>
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] items-start">
-          <div className="relative aspect-[501/720] max-w-[520px] rounded-2xl overflow-hidden bg-white/5">
-            <Image
-              src={A.founderPortrait}
-              alt="JP Zhang, Founder of Shenzhen SEO Conference"
-              fill
-              sizes="(max-width: 1024px) 100vw, 520px"
-              className="object-cover"
-            />
-          </div>
-          <div>
-            <div className="text-[var(--red)] text-[40px] leading-none mb-4 font-serif italic">
-              &ldquo;
+
+        <div className="rounded-[28px] border border-white/10 bg-[#06101a]/40 p-6 md:p-10 lg:p-12">
+          <div className="grid gap-10 lg:gap-14 lg:grid-cols-[minmax(0,440px)_1fr] items-start">
+            {/* Portrait */}
+            <div className="relative aspect-[440/640] w-full max-w-[440px] rounded-2xl overflow-hidden bg-white/5">
+              <Image
+                src={A.founderPortrait}
+                alt="JP Zhang, Founder of Shenzhen SEO Conference"
+                fill
+                sizes="(max-width: 1024px) 100vw, 440px"
+                className="object-cover"
+                priority={false}
+              />
             </div>
-            <div className="space-y-4 text-[16px] md:text-[17px] text-white/85 leading-[1.6]">
-              <p>
-                In 2019 I ran a half-day SEO event in Shenzhen. 300 people, 95% Chinese. It was
-                good. Then COVID shut things down.
-              </p>
-              <p>
-                In 2025 I brought it back. Five days, 500 people, a third of the room flown in
-                from outside China. Speakers from Google. Agencies from Europe and Australia.
-                In-house teams from Chinese tech. All in one room — for the first time.
-              </p>
-              <p>
-                Partnerships formed at coffee breaks. A UK YouTube agency walked in with no
-                Chinese clients and left with a clear ROI path. A German-Australian SEO agency
-                already working with 20+ Chinese brands going global — found new partners before
-                the closing party. Gary Illyes closed his keynote with &ldquo;Don&apos;t panic.
-                Figure it out.&rdquo; Every other line was exactly that.
-              </p>
-              <p>
-                This year we&apos;re scaling to 600. Same hotel. Same idea. Bigger room. More
-                countries. Same filter — SEO entrepreneurs and practitioners who&apos;ve done the
-                work.
-              </p>
-              <p>If you&apos;ve been on the fence, come.</p>
-            </div>
-            <div className="mt-8 flex items-center gap-4">
-              <div className="relative w-12 h-12 rounded-full overflow-hidden bg-white/10">
-                <Image src={A.founderAvatar} alt="JP Zhang" fill className="object-cover" sizes="48px" />
+
+            {/* Letter */}
+            <div className="relative">
+              <QuoteGlyph className="w-10 h-8 md:w-11 md:h-9 text-[var(--red)] mb-5" />
+
+              <div className="space-y-5 text-[15px] md:text-[16px] italic text-white/85 leading-[1.65] max-w-[560px]">
+                <p>
+                  In 2019 I ran a half-day SEO event in Shenzhen. 300 people, 95% Chinese. It
+                  was good. Then COVID shut things down.
+                </p>
+                <p>
+                  In 2025 I brought it back. Five days, 500 people, a third of the room flown
+                  in from outside China. Speakers from Google. Agencies from Europe and
+                  Australia. In-house teams from Chinese tech. All in one room — for the first
+                  time.
+                </p>
+                <p>
+                  Partnerships formed at coffee breaks. A UK YouTube agency walked in with no
+                  Chinese clients and left with a clear ROI path. A German-Australian SEO
+                  agency already working with 20+ Chinese brands going global — found new
+                  partners before the closing party. Gary Illyes closed his keynote with
+                  &ldquo;Don&apos;t panic. Figure it out.&rdquo; Every year since, people do
+                  exactly that.
+                </p>
+                <p>
+                  This year we&apos;re scaling to 600. Same hotel. Same idea. Bigger room.
+                  More countries. Same filter — SEO entrepreneurs and practitioners
+                  who&apos;ve done the work.
+                </p>
+                <p>If you&apos;ve been on the fence, come.</p>
               </div>
-              <div>
-                <div className="text-[16px] font-semibold">JP/John Zhang</div>
-                <div className="text-[14px] text-white/60">
-                  Founder, Shenzhen SEO Conference
+
+              {/* Signature */}
+              <div className="mt-8 mb-10 max-w-[560px]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={A.founderSignature}
+                  alt="JP Zhang signature"
+                  className="h-[88px] md:h-[110px] w-auto opacity-95"
+                />
+              </div>
+
+              {/* Author */}
+              <div className="flex items-center gap-3 max-w-[560px]">
+                <div className="relative w-10 h-10 md:w-11 md:h-11 rounded-full overflow-hidden bg-white/10 ring-2 ring-white/15">
+                  <Image
+                    src={A.founderAvatar}
+                    alt="JP Zhang"
+                    fill
+                    className="object-cover"
+                    sizes="44px"
+                  />
+                </div>
+                <div>
+                  <div className="text-[15px] md:text-[16px] font-bold leading-tight">
+                    JP/John Zhang
+                  </div>
+                  <div className="text-[13px] md:text-[14px] font-semibold text-white/60 leading-tight mt-0.5">
+                    Founder, Shenzhen SEO Conference
+                  </div>
                 </div>
               </div>
             </div>
