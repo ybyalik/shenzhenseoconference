@@ -1,0 +1,89 @@
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap');
+
+.home5-root {
+  --bg: #03060d;
+  --bg-2: #06222d;
+  --bg-3: #020e19;
+  --fg: #f9f9f9;
+  --muted: rgba(249, 249, 249, 0.65);
+  --muted-2: rgba(249, 249, 249, 0.45);
+  --line: rgba(249, 249, 249, 0.08);
+  --line-2: rgba(249, 249, 249, 0.16);
+  --red: #eb3030;
+  --red-2: #fd4c4c;
+  --teal: #118bac;
+  --teal-2: #86dff7;
+
+  font-family: 'General Sans', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 100vh;
+}
+
+.home5-root .display {
+  font-family: var(--font-unbounded), 'Unbounded', system-ui, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.home5-root .gradient-brand {
+  background: linear-gradient(90deg, var(--teal) 0%, var(--red) 100%);
+}
+.home5-root .gradient-text-brand {
+  background: linear-gradient(90deg, var(--teal) 0%, var(--red) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.home5-root .gradient-cta {
+  background: linear-gradient(135deg, #eb3030 0%, #fd4c4c 100%);
+}
+
+.home5-root .accent-bar::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background: var(--red);
+  margin-right: 0.6em;
+  vertical-align: -2px;
+}
+
+/* Subtle grid lines for the desktop max-width container guides (8px grid x 12 columns) */
+.home5-root .container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+@media (min-width: 1024px) {
+  .home5-root .container {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+/* Smooth FAQ open animation handled by <details>/<summary> default; rotate +/- */
+.home5-root details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.home5-root details > summary::-webkit-details-marker {
+  display: none;
+}
+.home5-root details[open] .faq-icon {
+  transform: rotate(45deg);
+}
+.home5-root .faq-icon {
+  transition: transform 0.2s ease;
+}
+
+/* Hide horizontal scrollbar on speakers carousel etc. */
+.home5-root .no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.home5-root .no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
