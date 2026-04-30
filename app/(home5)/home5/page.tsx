@@ -813,15 +813,15 @@ function Agenda() {
               className="grid grid-cols-1 md:grid-cols-[180px_1fr_auto] items-center gap-4 md:gap-8 py-7 md:py-8 border-t border-white/10"
             >
               <div>
-                <div className="display text-[20px] md:text-[22px] font-bold leading-none text-white">
+                <div className="display text-[24px] font-bold leading-none text-white">
                   {d.n}
                 </div>
-                <div className="mt-2 text-[12px] md:text-[13px] font-semibold tracking-[0.14em] text-[var(--teal-2)]">
+                <div className="mt-2 text-[16px] font-semibold tracking-[0.12em] text-[#86DFF7]">
                   {d.date}
                 </div>
               </div>
               <div>
-                <div className="display text-[18px] md:text-[22px] font-bold uppercase leading-tight tracking-[-0.005em]">
+                <div className="display text-[24px] font-bold uppercase leading-tight tracking-[-0.005em]">
                   {d.title}
                   {d.note && (
                     <span className="ml-3 text-[13px] md:text-[14px] font-medium italic text-white/55 normal-case">
