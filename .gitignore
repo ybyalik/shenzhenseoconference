@@ -17,4 +17,8 @@ attached_assets/*.mov
 public/assets/*.mp4
 public/assets/*.mov
 public/*.mp4
-public/*.movtsconfig.tsbuildinfo
+public/*.mov
+
+# TypeScript incremental build cache
+tsconfig.tsbuildinfo
+*.tsbuildinfo
