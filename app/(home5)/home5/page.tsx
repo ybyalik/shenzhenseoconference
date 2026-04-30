@@ -739,6 +739,7 @@ function Agenda() {
       title: 'Workshops & City Tours',
       desc: "Hands-on in the morning. Shenzhen's tech districts in the afternoon.",
       tier: 'Deluxe + VIP',
+      note: '',
     },
     {
       n: 'DAY 2',
@@ -746,20 +747,23 @@ function Agenda() {
       title: 'SEO Masterminds',
       desc: '6–7 people per table. One expert at each. Bring your real problems.',
       tier: 'Deluxe + VIP',
+      note: '',
     },
     {
       n: 'DAY 3',
       date: 'WEDNESDAY, SEP 16',
-      title: 'MAIN CONFERENCE',
+      title: 'Main Conference',
       desc: '4 keynotes. 8 field talks. 6 lightning rounds. Opening party at night.',
       tier: 'Standard',
+      note: '',
     },
     {
       n: 'DAY 4',
       date: 'THURSDAY, SEP 17',
-      title: 'MAIN CONFERENCE',
+      title: 'Main Conference',
       desc: 'Same format. More speakers. Closing party.',
       tier: 'Standard',
+      note: '',
     },
     {
       n: 'DAY 5',
@@ -767,76 +771,63 @@ function Agenda() {
       title: 'VIP Networking',
       desc: 'Different hotel. Smaller group. Where the real deals get made.',
       tier: 'VIP only',
+      note: 'Includes one night stay',
     },
   ];
-  const tierClass = (t: string) =>
-    t === 'Standard'
-      ? 'border-[var(--teal)] text-[var(--teal-2)]'
-      : t === 'VIP only'
-      ? 'border-[var(--red)] text-[var(--red)]'
-      : 'border-white/30 text-white/80';
 
   return (
-    <section id="agenda" className="bg-[#03060d] py-24 md:py-32 border-t border-[var(--line)]">
+    <section id="agenda" className="bg-[#03060d] py-24 md:py-32 border-t border-white/10">
       <div className="container">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-          <div>
-            <div className="text-[12px] md:text-[14px] font-semibold tracking-[0.2em] text-[var(--red)] mb-3">
-              WHAT&apos;S THE AGENDA
-            </div>
-            <h2 className="display text-[36px] md:text-[56px] font-semibold uppercase leading-[1.02]">
-              Five Days,
-              <br />
-              <span className="gradient-text-brand">Pick Your Depth</span>
-            </h2>
+        <div className="mb-10 md:mb-12">
+          <div className="text-[14px] font-bold tracking-[0.2em] text-[var(--red)] mb-3">
+            WHAT&apos;S THE AGENDA
           </div>
-          <a
-            href="#"
-            className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-semibold tracking-[0.16em] text-white border border-[var(--line-2)] hover:bg-white/5 self-start md:self-end"
-          >
-            VIEW FULL AGENDA
-            <ArrowUpRight className="w-3 h-3" />
-          </a>
+          <h2 className="display text-[28px] md:text-[44px] lg:text-[52px] font-semibold uppercase leading-[1.02] tracking-[-0.005em] max-w-[820px]">
+            <span className="text-white">Five Days,</span>{' '}
+            <span className="text-white/30">Pick Your Depth</span>
+          </h2>
         </div>
 
-        <div className="rounded-2xl border border-[var(--line)] p-5 md:p-6 mb-8 bg-[#06101a]/40">
-          <div className="display text-[16px] md:text-[20px] font-semibold uppercase tracking-tight">
-            Pre-Events · Sat (Sep 12) + Sun (Sep 13) afternoons
+        {/* Pre-events banner */}
+        <div className="mb-2 md:mb-3">
+          <div className="display text-[14px] md:text-[16px] font-bold uppercase tracking-[0.16em] text-white">
+            Pre-Events · Sat (Sep 12) + Sun (Sep 13) Afternoons
           </div>
-          <p className="mt-2 text-[14px] md:text-[15px] text-white/70 leading-[1.55]">
+          <p className="mt-2 text-[13px] md:text-[14px] text-white/55 leading-[1.55]">
             Two free side events open to everyone — no conference ticket required. (Details May
-            2026.)
+            2026)
           </p>
         </div>
 
-        <ul className="space-y-4">
+        <ul className="mt-8 md:mt-10">
           {days.map((d) => (
             <li
               key={d.n}
-              className="grid grid-cols-1 md:grid-cols-[180px_1fr_auto] items-center gap-4 md:gap-8 rounded-2xl border border-[var(--line)] p-5 md:p-7 bg-[#06101a]/40"
+              className="grid grid-cols-1 md:grid-cols-[180px_1fr_auto] items-center gap-4 md:gap-8 py-7 md:py-8 border-t border-white/10"
             >
               <div>
-                <div className="display text-[20px] md:text-[24px] font-semibold leading-none">
+                <div className="display text-[20px] md:text-[22px] font-bold leading-none text-white">
                   {d.n}
                 </div>
-                <div className="mt-2 text-[12px] md:text-[13px] font-semibold tracking-[0.14em] text-white/70">
+                <div className="mt-2 text-[12px] md:text-[13px] font-semibold tracking-[0.14em] text-[var(--teal-2)]">
                   {d.date}
                 </div>
               </div>
               <div>
-                <div className="display text-[20px] md:text-[24px] font-semibold uppercase leading-tight">
+                <div className="display text-[18px] md:text-[22px] font-bold uppercase leading-tight tracking-[-0.005em]">
                   {d.title}
+                  {d.note && (
+                    <span className="ml-3 text-[13px] md:text-[14px] font-medium italic text-white/55 normal-case">
+                      ({d.note})
+                    </span>
+                  )}
                 </div>
-                <p className="mt-2 text-[15px] md:text-[16px] text-white/70 leading-[1.55] max-w-[640px]">
+                <p className="mt-2 text-[14px] md:text-[15px] text-white/65 leading-[1.55] max-w-[640px]">
                   {d.desc}
                 </p>
               </div>
-              <span
-                className={`justify-self-start md:justify-self-end inline-flex items-center px-4 py-2 rounded-full border text-[12px] font-semibold tracking-[0.14em] ${tierClass(
-                  d.tier,
-                )}`}
-              >
-                {d.tier.toUpperCase()}
+              <span className="justify-self-start md:justify-self-end inline-flex items-center px-4 py-2 rounded-full border border-white/40 text-[11px] font-bold tracking-[0.18em] uppercase text-white">
+                {d.tier}
               </span>
             </li>
           ))}
