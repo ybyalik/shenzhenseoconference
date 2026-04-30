@@ -1109,34 +1109,34 @@ function Testimonials() {
           {videos.map((v, i) => (
             <div
               key={i}
-              className={`relative rounded-2xl overflow-hidden aspect-[548/289] bg-white/5 ${
-                i === 0 ? 'ring-2 ring-[var(--red)]' : 'ring-1 ring-white/[0.06]'
-              }`}
+              className="rounded-2xl border border-white/10 hover:border-[var(--red)] transition-colors p-8"
             >
-              <Image
-                src={v.img}
-                alt={v.name}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 548px"
-              />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    'linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.65) 100%)',
-                }}
-              />
-              <button
-                className="absolute inset-0 grid place-items-center"
-                type="button"
-                aria-label="Play video"
-              >
-                <span className="grid place-items-center w-12 h-12 rounded-full bg-[var(--teal)] ring-1 ring-white/30 text-white">
-                  <PlayIcon className="w-5 h-5 translate-x-[1px]" />
-                </span>
-              </button>
-              <div className="absolute left-5 bottom-4">
+              <div className="relative rounded-xl overflow-hidden aspect-[548/289] bg-white/5">
+                <Image
+                  src={v.img}
+                  alt={v.name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 548px"
+                />
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background:
+                      'linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.65) 100%)',
+                  }}
+                />
+                <button
+                  className="absolute inset-0 grid place-items-center"
+                  type="button"
+                  aria-label="Play video"
+                >
+                  <span className="grid place-items-center w-12 h-12 rounded-full bg-[var(--teal)] ring-1 ring-white/30 text-white">
+                    <PlayIcon className="w-5 h-5 translate-x-[1px]" />
+                  </span>
+                </button>
+              </div>
+              <div className="mt-5">
                 <div className="text-[15px] font-bold text-white">{v.name}</div>
                 <div className="text-[12px] text-white/70 mt-0.5">{v.role}</div>
               </div>
@@ -1150,7 +1150,12 @@ function Testimonials() {
               key={q.name}
               className="rounded-2xl border border-white/10 p-6 md:p-7 bg-[#06101a]/40 flex flex-col"
             >
-              <QuoteGlyph className="w-7 h-6 text-[var(--red)] mb-4" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/figma-assets/quote-red.png"
+                alt=""
+                className="w-9 h-auto mb-4"
+              />
               <blockquote className="text-[15px] md:text-[16px] text-white/85 leading-[1.55] flex-1">
                 {q.q}
               </blockquote>
