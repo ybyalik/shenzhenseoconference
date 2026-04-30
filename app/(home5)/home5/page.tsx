@@ -129,17 +129,31 @@ function MapPinIcon({ className = '' }: { className?: string }) {
   );
 }
 
+function MenuIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        d="M4 7h16M4 12h16M4 17h16"
+      />
+    </svg>
+  );
+}
+
 /* ───────────────────────────── NAV ───────────────────────────── */
 function Nav() {
   return (
     <header className="absolute top-0 inset-x-0 z-30">
-      <div className="container flex items-center justify-between h-[88px]">
+      <div className="container flex items-center justify-between h-[72px] md:h-[88px]">
         <Link href="/home5" className="flex items-center" aria-label="Shenzhen SEO Conference">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/figma-assets/logo-szseo.png"
             alt="Shenzhen SEO Conference"
-            className="h-[30px] w-auto"
+            className="h-[26px] md:h-[30px] w-auto"
           />
         </Link>
         <nav className="hidden lg:flex items-center gap-10">
@@ -155,11 +169,18 @@ function Nav() {
         </nav>
         <a
           href="#pricing"
-          className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white gradient-cta"
+          className="hidden md:inline-flex display items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white gradient-cta"
         >
           GET TICKETS
           <ArrowUpRight className="w-3 h-3" />
         </a>
+        <button
+          type="button"
+          aria-label="Open menu"
+          className="md:hidden grid place-items-center w-10 h-10 -mr-2 text-white"
+        >
+          <MenuIcon className="w-6 h-6" />
+        </button>
       </div>
     </header>
   );
@@ -204,11 +225,16 @@ function Hero() {
       <Nav />
 
       {/* Headline + right column */}
-      <div className="container pt-[260px] md:pt-[300px] lg:pt-[340px] pb-12 md:pb-14">
-        <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
-          {/* LEFT: title + date */}
-          <div>
-            <h1 className="display font-semibold uppercase leading-[1.02] tracking-[-0.005em] text-white text-[clamp(38px,6.2vw,72px)]">
+      <div className="container pt-[140px] md:pt-[300px] lg:pt-[340px] pb-12 md:pb-14">
+        <div className="grid gap-8 lg:gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          {/* LEFT: title + date (date above on mobile, below on desktop) */}
+          <div className="flex flex-col">
+            <div className="order-1 lg:order-2 lg:mt-7 flex items-center gap-3 text-[13px] md:text-[14px] text-white/90 mb-5 lg:mb-0">
+              <span className="font-bold">September 14–18, 2026</span>
+              <span className="w-1 h-1 rounded-full bg-white/55" aria-hidden />
+              <span className="font-medium">The St. Regis Shenzhen</span>
+            </div>
+            <h1 className="order-2 lg:order-1 display font-semibold uppercase leading-[1.02] tracking-[-0.005em] text-white text-[clamp(34px,6.2vw,72px)]">
               <span className="block">East Meets West</span>
               <HeroTitleLine label="IN" word="SEO" colorClass="text-[var(--teal-2)]" />
               <HeroTitleLine
@@ -217,23 +243,24 @@ function Hero() {
                 colorClass="gradient-text-brand"
               />
             </h1>
-
-            <div className="mt-7 flex items-center gap-3 text-[13px] md:text-[14px] text-white/85">
-              <span className="font-bold">September 14–18, 2026</span>
-              <span className="w-1 h-1 rounded-full bg-white/55" aria-hidden />
-              <span className="font-medium">The St. Regis Shenzhen</span>
-            </div>
           </div>
 
-          {/* RIGHT: description + outline CTA */}
-          <div className="lg:max-w-[360px] lg:text-right flex flex-col lg:items-end gap-6">
+          {/* RIGHT: description + CTA (filled red on mobile, outline on desktop) */}
+          <div className="lg:max-w-[360px] lg:text-right flex flex-col lg:items-end gap-5 lg:gap-6">
             <p className="text-[15px] md:text-[16px] text-white leading-[1.55]">
               5 days of talks, workshops, masterminds, city tours, and the kind of network
               connections you don&apos;t make on LinkedIn
             </p>
             <a
               href="#pricing"
-              className="display inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] text-white border border-white/55 bg-black/25 backdrop-blur-sm hover:bg-black/40"
+              className="lg:hidden display inline-flex items-center justify-center gap-2 w-full px-7 py-3.5 rounded-full text-[13px] font-bold tracking-[0.18em] text-white gradient-cta"
+            >
+              GET TICKETS
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href="#pricing"
+              className="hidden lg:inline-flex display items-center gap-2 px-7 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] text-white border border-white/55 bg-black/25 backdrop-blur-sm hover:bg-black/40"
             >
               GET TICKETS
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -246,11 +273,11 @@ function Hero() {
       <div className="container">
         <div className="border-t border-white/15" />
       </div>
-      <div className="container py-10 md:py-12">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+      <div className="container py-8 md:py-12">
+        <div className="grid gap-7 lg:gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
           {/* Quote */}
-          <figure className="flex items-center gap-4">
-            <span className="relative w-12 h-12 rounded-full overflow-hidden bg-white/10 flex-none ring-2 ring-white/15">
+          <figure className="flex items-center gap-3 md:gap-4">
+            <span className="relative w-11 h-11 md:w-12 md:h-12 rounded-full overflow-hidden bg-white/10 flex-none ring-2 ring-white/15">
               {/* Use first speaker portrait as Gary placeholder */}
               <Image
                 src={A.spkA}
@@ -260,20 +287,20 @@ function Hero() {
                 sizes="48px"
               />
             </span>
-            <div>
-              <p className="text-[14px] md:text-[15px] italic text-white leading-[1.45]">
+            <div className="min-w-0">
+              <p className="text-[13px] md:text-[15px] italic text-white leading-[1.45]">
                 &ldquo;Don&apos;t panic. Things change. They always do. Figure it out.&rdquo;
               </p>
-              <figcaption className="mt-1.5 text-[12px] md:text-[13px] text-white/65">
+              <figcaption className="mt-1.5 text-[11px] md:text-[13px] text-white/65 leading-snug">
                 <span className="font-semibold text-white">Gary Illyes</span>
-                <span className="mx-2 text-white/30">|</span>
+                <span className="mx-1.5 md:mx-2 text-white/30">|</span>
                 <span>Search Relations, Google · Keynote Speaker</span>
               </figcaption>
             </div>
           </figure>
 
           {/* Stats */}
-          <dl className="flex items-end gap-7 md:gap-10 lg:justify-end">
+          <dl className="grid grid-cols-4 gap-4 md:flex md:items-end md:gap-10 lg:justify-end">
             {[
               ['600', 'SEATS'],
               ['40+', 'SPEAKERS'],
