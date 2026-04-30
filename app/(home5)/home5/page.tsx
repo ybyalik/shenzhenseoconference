@@ -190,11 +190,14 @@ function Hero() {
     <section id="top" className="relative isolate overflow-hidden bg-[#03060d]">
       <div className="absolute inset-0 -z-10">
         <Image src={A.heroBg} alt="" fill priority className="object-cover" sizes="100vw" />
+        {/* 80% black overlay on the photo */}
+        <div className="absolute inset-0 bg-black/80" />
+        {/* Soft fade into the page background at the bottom */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(3,6,13,0.55) 0%, rgba(3,6,13,0) 25%, rgba(3,6,13,0.35) 60%, rgba(3,6,13,0.95) 92%, #03060d 100%)',
+              'linear-gradient(180deg, rgba(3,6,13,0) 70%, rgba(3,6,13,0.85) 92%, #03060d 100%)',
           }}
         />
       </div>
@@ -224,7 +227,7 @@ function Hero() {
 
           {/* RIGHT: description + outline CTA */}
           <div className="lg:max-w-[360px] lg:text-right flex flex-col lg:items-end gap-6">
-            <p className="text-[15px] md:text-[16px] text-white/85 leading-[1.55]">
+            <p className="text-[15px] md:text-[16px] text-white leading-[1.55]">
               5 days of talks, workshops, masterminds, city tours, and the kind of network
               connections you don&apos;t make on LinkedIn
             </p>
@@ -258,7 +261,7 @@ function Hero() {
               />
             </span>
             <div>
-              <p className="text-[14px] md:text-[15px] italic text-white/90 leading-[1.45]">
+              <p className="text-[14px] md:text-[15px] italic text-white leading-[1.45]">
                 &ldquo;Don&apos;t panic. Things change. They always do. Figure it out.&rdquo;
               </p>
               <figcaption className="mt-1.5 text-[12px] md:text-[13px] text-white/65">
@@ -278,10 +281,10 @@ function Hero() {
               ['5', 'DAYS'],
             ].map(([n, l]) => (
               <div key={l} className="text-center">
-                <dt className="display text-[28px] md:text-[32px] font-semibold leading-none text-white">
+                <dt className="display text-[28px] md:text-[32px] font-semibold leading-none text-[#f9f9f9]">
                   {n}
                 </dt>
-                <dd className="mt-2 text-[11px] md:text-[12px] font-semibold tracking-[0.22em] text-white/60">
+                <dd className="mt-2 text-[11px] md:text-[12px] font-semibold tracking-[0.22em] text-[#f9f9f9]/60">
                   {l}
                 </dd>
               </div>
