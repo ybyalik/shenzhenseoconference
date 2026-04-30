@@ -519,17 +519,21 @@ function Audiences() {
   const cols = [
     {
       title: 'International Attendees',
+      shortTitle: "Int'l Attendees",
       img: A.audInternational,
       lead: "You're in Europe, the US, Southeast Asia, Australia, New Zealand, or the Middle East. You run SEO campaigns, agencies, or in-house teams. You want:",
       items: intl,
     },
     {
       title: 'Chinese Attendees',
+      shortTitle: 'Chinese Attendees',
       img: A.audChinese,
       lead: "You're running SEO in China. Agency clients, in-house projects, or global brand mandates. You want:",
       items: cn,
     },
   ];
+
+  const [activeTab, setActiveTab] = useState(0);
 
   return (
     <section className="bg-[#03060d] py-24 md:py-32">
@@ -539,9 +543,27 @@ function Audiences() {
           <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
             WHO IS THIS FOR
           </div>
-          <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-14 md:mb-16">
+          <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-8 md:mb-16">
             Two Audiences, One Room
           </h2>
+        </div>
+
+        {/* Mobile-only tab bar */}
+        <div className="flex gap-3 mb-8 md:hidden">
+          {cols.map((col, idx) => (
+            <button
+              key={col.title}
+              type="button"
+              onClick={() => setActiveTab(idx)}
+              className={`flex-1 display px-4 py-3 rounded-full text-[12px] font-bold tracking-[0.16em] uppercase ${
+                activeTab === idx
+                  ? 'gradient-cta text-white'
+                  : 'border border-white/40 text-white bg-transparent'
+              }`}
+            >
+              {col.shortTitle}
+            </button>
+          ))}
         </div>
 
         {/* Two columns with vertical divider on desktop */}
@@ -549,11 +571,13 @@ function Audiences() {
           {cols.map((col, idx) => (
             <div
               key={col.title}
-              className={
+              className={`${
+                activeTab === idx ? 'block' : 'hidden'
+              } md:block ${
                 idx === 0
                   ? 'md:pr-8 lg:pr-12 md:border-r md:border-white/10'
                   : 'md:pl-8 lg:pl-12'
-              }
+              }`}
             >
               <div className="relative aspect-[560/429] rounded-2xl overflow-hidden mb-7 bg-white/5">
                 <Image
