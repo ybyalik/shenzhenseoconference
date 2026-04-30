@@ -893,7 +893,17 @@ function Pricing() {
   ];
 
   return (
-    <section id="pricing" className="bg-[#03060d] py-24 md:py-32 border-t border-white/10">
+    <section
+      id="pricing"
+      className="py-24 md:py-32 border-t border-white/10"
+      style={{
+        background:
+          // Figma fills, top→bottom: Linear 100%, #03060D 65%, Linear 100%
+          'linear-gradient(180deg, rgba(17,139,172,0.18) 0%, rgba(17,139,172,0) 60%),' +
+          'linear-gradient(0deg, rgba(3,6,13,0.65), rgba(3,6,13,0.65)),' +
+          'linear-gradient(135deg, #118bac 0%, #eb3030 100%), #03060d',
+      }}
+    >
       <div className="container">
         <div className="text-center">
           <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
@@ -912,18 +922,14 @@ function Pricing() {
           {tiers.map((t) => (
             <div
               key={t.name}
-              className={`relative rounded-2xl p-7 ${
-                t.popular
-                  ? 'bg-gradient-to-b from-[#13262f] to-[#070d15] ring-2 ring-[var(--red)]/60'
-                  : 'border border-white/10 bg-[#06101a]/40'
-              }`}
+              className="relative rounded-2xl p-7 border border-white/10 bg-[#06101a]/40"
             >
               {t.tag && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase bg-[var(--teal)] text-white">
                   {t.tag}
                 </span>
               )}
-              <div className="display text-[18px] font-bold uppercase tracking-[0.04em] text-[var(--teal-2)]">
+              <div className="display text-[18px] font-bold uppercase tracking-[0.04em] text-white">
                 {t.name}
               </div>
               <div className="mt-4 flex items-end gap-3">
