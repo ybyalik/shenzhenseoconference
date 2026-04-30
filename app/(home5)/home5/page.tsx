@@ -1483,10 +1483,10 @@ function Faq() {
   return (
     <section className="bg-[#03060d] py-24 md:py-32 border-t border-[var(--line)]">
       <div className="container">
-        <div className="text-center text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
+        <div className="md:text-center text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
           FAQ
         </div>
-        <h2 className="text-center display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-12 text-white">
+        <h2 className="md:text-center display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-12 text-white">
           Real Questions. Direct Answers.
         </h2>
         <div className="max-w-[920px] mx-auto space-y-3">
@@ -1559,7 +1559,7 @@ function Sponsors() {
       <h3 className="display text-[12px] md:text-[13px] font-bold tracking-[0.2em] uppercase mb-8 text-white/85">
         {title}
       </h3>
-      <div className="flex flex-wrap items-center justify-center gap-x-14 md:gap-x-20 gap-y-10">
+      <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-items-center sm:justify-center gap-x-8 sm:gap-x-14 md:gap-x-20 gap-y-10">
         {items.map((s) => (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -1569,7 +1569,7 @@ function Sponsors() {
             style={{
               height: `${Math.min(s.h, max)}px`,
               width: 'auto',
-              maxWidth: '200px',
+              maxWidth: '160px',
               objectFit: 'contain',
             }}
             className="opacity-85 hover:opacity-100 transition-opacity"
@@ -1595,7 +1595,7 @@ function Sponsors() {
           </div>
           <a
             href="#"
-            className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 self-start md:self-end"
+            className="display inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] text-white border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 w-full md:w-auto md:self-end"
           >
             BECOME A 2026 SPONSOR
             <ArrowUpRight className="w-3 h-3" />
