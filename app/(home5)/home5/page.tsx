@@ -594,46 +594,43 @@ function WhyShenzhen() {
   return (
     <section id="visit" className="bg-[#03060d] pb-24 md:pb-32">
       <div className="container">
-        <div className="rounded-3xl border border-[var(--line)] p-8 md:p-12 bg-[#03060d]">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div className="rounded-[28px] border border-white/10 bg-[#03060d] p-6 md:p-10 lg:p-14">
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8">
             <div>
-              <div className="text-[12px] md:text-[14px] font-semibold tracking-[0.2em] text-[var(--red)] mb-3">
+              <div className="text-[14px] font-bold tracking-[0.2em] text-[var(--red)] mb-3">
                 WHY SHENZHEN
               </div>
-              <h2 className="display text-[32px] md:text-[40px] font-semibold uppercase leading-[1.05]">
-                Come expecting the unknown
+              <h2 className="display text-[28px] md:text-[36px] font-semibold uppercase leading-[1.05] tracking-[-0.005em]">
+                Come Expecting The Unknown
               </h2>
             </div>
             <a
               href="#"
-              className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-semibold tracking-[0.16em] text-white border border-[var(--line-2)] hover:bg-white/5"
+              className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 self-start md:self-auto"
             >
               VISIT SHENZHEN
               <ArrowUpRight className="w-3 h-3" />
             </a>
           </div>
-          <p className="text-[16px] md:text-[17px] text-white/80 leading-[1.6] max-w-[920px] mb-2">
+          <p className="text-[15px] md:text-[16px] text-white/85 leading-[1.6] max-w-[760px] mb-3">
             Most conferences ask you to fly to a city you&apos;ve already been to. This one
             doesn&apos;t.
           </p>
-          <p className="text-[15px] text-white/65 leading-[1.6] max-w-[920px] mb-12">
-            Shenzhen is the fastest-moving city on earth that most Westerners have never set foot
-            in. 18 million people. Average age 32. More patents filed here than anywhere else in
-            China. Tencent, DJI, Huawei, BYD — all within a 30-minute drive.
+          <p className="text-[14px] md:text-[15px] text-white/65 leading-[1.6] max-w-[760px] mb-12 md:mb-14">
+            Shenzhen is the fastest-moving city on earth that most Westerners have never set
+            foot in. 18 million people. Average age 32. More patents filed here than anywhere
+            else in China. Tencent, DJI, Huawei, BYD — all within a 30-minute drive.
           </p>
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-x-8 gap-y-10 md:grid-cols-2">
             {cards.map((c) => (
-              <article
-                key={c.h}
-                className="rounded-2xl border border-[var(--line)] p-4 md:p-5 bg-[#06101a]/60"
-              >
+              <article key={c.h}>
                 <div className="relative aspect-[544/280] rounded-xl overflow-hidden bg-white/5">
                   <Image src={c.img} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 544px" />
                 </div>
-                <h3 className="display mt-5 text-[18px] font-semibold uppercase tracking-tight">
+                <h3 className="display mt-5 text-[16px] md:text-[18px] font-bold uppercase tracking-[-0.005em]">
                   {c.h}
                 </h3>
-                <p className="mt-2 text-[14px] md:text-[15px] text-white/70 leading-[1.55]">
+                <p className="mt-2.5 text-[14px] md:text-[15px] text-white/70 leading-[1.55] max-w-[460px]">
                   {c.p}
                 </p>
               </article>
