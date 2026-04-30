@@ -509,7 +509,7 @@ function Audiences() {
       <div className="container">
         {/* Centered eyebrow + heading */}
         <div className="text-center">
-          <div className="text-[14px] font-bold tracking-[0.2em] text-[var(--red)] mb-3">
+          <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
             WHO IS THIS FOR
           </div>
           <h2 className="display text-[28px] md:text-[36px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-14 md:mb-16">
@@ -552,7 +552,7 @@ function Audiences() {
                         key={it.h}
                         className="rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4"
                       >
-                        <div className="text-[12px] md:text-[13px] tracking-[0.18em] uppercase font-bold mb-1.5 text-[var(--red)]">
+                        <div className="text-[12px] md:text-[13px] tracking-[0.18em] uppercase font-bold mb-1.5 text-white">
                           {it.h}
                         </div>
                         <div className="text-[14px] md:text-[15px] text-white/70 leading-[1.55]">
