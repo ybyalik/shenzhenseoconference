@@ -7,7 +7,7 @@ import { useState } from 'react';
 const A = {
   heroBg: '/figma-assets/dfd8cb68f2097a3164c042d67b3231672354f49a.jpg',
   founderPortrait: '/figma-assets/4b74d4aeb017232f0cbf2605ea7ff274d76f858d.jpg',
-  founderAvatar: '/figma-assets/380e15aa93aee5a8bf00f2f1a76f3f8a883e85be.png',
+  founderAvatar: '/figma-assets/jp-avatar.png',
   founderSignature: '/figma-assets/jp-signature.png',
   recap: '/figma-assets/de3b4552f3cbd3a8a34ebb172a16b1bf278b9bae.png',
   audInternational: '/figma-assets/7c46b04752f234637e502b81cc363e979777fb68.jpg',
