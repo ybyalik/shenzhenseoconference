@@ -662,61 +662,62 @@ function Speakers() {
   return (
     <section id="speakers" className="bg-[#03060d] py-24 md:py-32">
       <div className="container">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+        <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end mb-12 md:mb-14">
           <div>
-            <div className="text-[12px] md:text-[14px] font-semibold tracking-[0.2em] text-[var(--red)] mb-3">
+            <div className="text-[14px] font-bold tracking-[0.2em] text-[var(--red)] mb-3">
               WHO&apos;S SPEAKING
             </div>
-            <h2 className="display text-[36px] md:text-[56px] font-semibold uppercase leading-[1.02] max-w-[820px]">
-              On stage: practitioners,
-              <br />
-              not theorists.
+            <h2 className="display text-[28px] md:text-[44px] lg:text-[52px] font-semibold uppercase leading-[1.02] tracking-[-0.005em] max-w-[820px]">
+              <span className="block text-white">On Stage: Practitioners,</span>
+              <span className="block text-white/30">Not Theorists.</span>
             </h2>
-            <p className="mt-5 text-[16px] md:text-[18px] text-white/75 leading-[1.55] max-w-[640px]">
+            <p className="mt-5 text-[15px] md:text-[16px] text-white/75 leading-[1.55] max-w-[640px]">
               Every speaker has shipped real work. No theorists. No fluff.
             </p>
           </div>
           <a
             href="#"
-            className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-semibold tracking-[0.16em] text-white border border-[var(--line-2)] hover:bg-white/5 self-start md:self-end"
+            className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 self-start md:self-end"
           >
             SEE ALL SPEAKERS
             <ArrowUpRight className="w-3 h-3" />
           </a>
         </div>
 
-        <ul className="grid gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <ul className="grid gap-4 md:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {list.map((s, i) => {
             const featured = i === 0;
             return (
               <li
                 key={s.name}
-                className={`rounded-2xl overflow-hidden border ${
-                  featured ? 'border-[var(--red)]' : 'border-[var(--line)]'
-                } bg-[#06101a]/60`}
+                className={`rounded-2xl overflow-hidden bg-[#06101a]/60 ${
+                  featured
+                    ? 'ring-2 ring-[var(--red)]'
+                    : 'ring-1 ring-white/[0.06]'
+                }`}
               >
                 <div className="relative aspect-[246/280] bg-white/5">
                   <Image
                     src={portraits[i % portraits.length]}
                     alt={s.name}
                     fill
-                    className="object-cover grayscale-[10%]"
+                    className="object-cover grayscale-[12%]"
                     sizes="(max-width: 768px) 50vw, 246px"
                   />
-                  <span className="absolute left-3 top-3 px-2 py-1 rounded-full text-[10px] font-semibold tracking-[0.16em] bg-black/60 backdrop-blur-sm">
-                    {s.country}
-                  </span>
                   {s.tag && (
-                    <span className="absolute right-3 top-3 px-2 py-1 rounded-full text-[10px] display font-semibold tracking-[0.16em] gradient-cta">
-                      {s.tag.toUpperCase()}
+                    <span className="absolute right-3 top-3 px-2 py-1 rounded-full text-[10px] font-bold tracking-[0.16em] uppercase bg-[var(--teal)] text-white">
+                      {s.tag}
                     </span>
                   )}
                 </div>
-                <div className="p-4">
-                  <div className="display text-[16px] md:text-[18px] font-semibold leading-tight">
+                <div className="px-4 pt-3.5 pb-4">
+                  <div className="text-[11px] font-semibold tracking-[0.2em] text-white/55 mb-1.5">
+                    {s.country}
+                  </div>
+                  <div className="text-[15px] md:text-[16px] font-bold text-white leading-tight">
                     {s.name}
                   </div>
-                  <div className="mt-1 text-[12px] md:text-[13px] text-white/65 leading-snug line-clamp-2">
+                  <div className="mt-1 text-[12px] md:text-[13px] text-white/55 leading-snug line-clamp-2">
                     {s.sub}
                   </div>
                 </div>
