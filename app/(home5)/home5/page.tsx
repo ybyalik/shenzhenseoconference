@@ -1247,26 +1247,26 @@ function FinalCta() {
     <section className="bg-[#03060d] py-16 md:py-20">
       <div className="container">
         <div
-          className="rounded-3xl py-16 md:py-20 px-6 text-center"
+          className="rounded-[28px] py-14 md:py-20 px-6 text-center"
           style={{
             background:
-              'linear-gradient(135deg, #114555 0%, #06222d 70%, #03060d 100%)',
+              'linear-gradient(160deg, #114555 0%, #0a3142 35%, #06222d 70%, #051820 100%)',
           }}
         >
-          <h2 className="display text-[32px] md:text-[48px] font-medium leading-[1.1] uppercase max-w-[920px] mx-auto">
-            One room. Five days. <span className="gradient-text-brand">September.</span>
+          <h2 className="display text-[28px] md:text-[40px] font-semibold leading-[1.1] uppercase tracking-[-0.005em] max-w-[920px] mx-auto text-white">
+            One Room. Five Days. September.
           </h2>
-          <p className="mt-6 max-w-[720px] mx-auto text-[15px] md:text-[17px] text-white/75 leading-[1.6]">
+          <p className="mt-5 max-w-[720px] mx-auto text-[14px] md:text-[15px] text-white/75 leading-[1.6]">
             If the question is whether Shenzhen is worth the trip — the answer is yes.
             <br className="hidden md:block" /> If the question is whether you should wait for
             2027 — the answer is no. Seats cap at 600.
           </p>
           <a
             href="#pricing"
-            className="mt-8 display inline-flex items-center gap-2 px-7 py-4 rounded-full text-[14px] font-semibold tracking-[0.16em] gradient-cta text-white"
+            className="mt-8 display inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] gradient-cta text-white"
           >
             GET TICKETS TODAY
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <ArrowUpRight className="w-3 h-3" />
           </a>
         </div>
       </div>
@@ -1276,50 +1276,63 @@ function FinalCta() {
 
 /* ───────────────────────────── SPONSORS (28:701) ───────────────────────────── */
 function Sponsors() {
-  const Row = ({ title, items, max }: { title: string; items: { src: string; alt: string; h: number }[]; max: number }) => (
+  const Row = ({
+    title,
+    items,
+    max,
+  }: {
+    title: string;
+    items: { src: string; alt: string; h: number }[];
+    max: number;
+  }) => (
     <div className="text-center">
-      <h3 className="display text-[16px] md:text-[18px] font-semibold tracking-[0.18em] uppercase mb-7">
+      <h3 className="display text-[12px] md:text-[13px] font-bold tracking-[0.2em] uppercase mb-8 text-white/85">
         {title}
       </h3>
-      <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
+      <div className="flex flex-wrap items-center justify-center gap-x-14 md:gap-x-20 gap-y-10">
         {items.map((s) => (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             key={s.src}
             src={s.src}
             alt={s.alt}
-            style={{ height: `${Math.min(s.h, max)}px`, width: 'auto', maxWidth: '180px', objectFit: 'contain' }}
-            className="opacity-90 hover:opacity-100 transition-opacity"
+            style={{
+              height: `${Math.min(s.h, max)}px`,
+              width: 'auto',
+              maxWidth: '200px',
+              objectFit: 'contain',
+            }}
+            className="opacity-85 hover:opacity-100 transition-opacity"
           />
         ))}
       </div>
     </div>
   );
   return (
-    <section id="sponsors" className="bg-[#03060d] py-24 md:py-32 border-t border-[var(--line)]">
+    <section id="sponsors" className="bg-[#03060d] py-24 md:py-32 border-t border-white/10">
       <div className="container">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+        <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-end mb-16 md:mb-20">
           <div>
-            <div className="text-[12px] md:text-[14px] font-semibold tracking-[0.2em] text-[var(--red)] mb-3">
+            <div className="text-[14px] font-bold tracking-[0.2em] text-[var(--red)] mb-3">
               2026 PARTNERS
             </div>
-            <h2 className="display text-[32px] md:text-[44px] font-semibold uppercase leading-[1.05]">
+            <h2 className="display text-[28px] md:text-[36px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] text-white">
               Our Sponsors
             </h2>
-            <p className="mt-5 text-[16px] md:text-[17px] text-white/75 leading-[1.6] max-w-[640px]">
+            <p className="mt-4 text-[15px] md:text-[16px] text-white/65 leading-[1.6] max-w-[640px]">
               Thank you to the sponsors who made this event possible.
             </p>
           </div>
           <a
             href="#"
-            className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-semibold tracking-[0.16em] text-white border border-[var(--line-2)] hover:bg-white/5 self-start md:self-end"
+            className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 self-start md:self-end"
           >
             BECOME A 2026 SPONSOR
             <ArrowUpRight className="w-3 h-3" />
           </a>
         </div>
         <div className="space-y-16 md:space-y-20">
-          <Row title="Platinum Sponsors" items={SPONSORS.platinum} max={88} />
+          <Row title="Platinum Sponsors" items={SPONSORS.platinum} max={96} />
           <Row title="Gold Sponsors" items={SPONSORS.gold} max={56} />
           <Row title="Silver Sponsors" items={SPONSORS.silver} max={48} />
         </div>
@@ -1334,28 +1347,34 @@ function Contact() {
   return (
     <section id="contact" className="bg-[#03060d] py-16 md:py-24">
       <div className="container">
-        <div className="rounded-3xl p-8 md:p-14 bg-[#0a131c] border border-[var(--line)]">
+        <div className="rounded-[28px] p-8 md:p-12 lg:p-14 bg-[#06101a]/60 border border-white/10">
           <div className="grid gap-10 md:grid-cols-2">
             <div>
-              <div className="text-[12px] md:text-[14px] font-semibold tracking-[0.2em] text-[var(--red)] mb-3">
+              <div className="text-[14px] font-bold tracking-[0.2em] text-[var(--red)] mb-3">
                 CONTACT
               </div>
-              <h2 className="display text-[40px] md:text-[56px] font-semibold uppercase leading-none mb-5">
+              <h2 className="display text-[36px] md:text-[52px] font-bold uppercase leading-none tracking-[-0.005em] mb-5 text-white">
                 Questions?
               </h2>
-              <p className="text-[16px] md:text-[17px] text-white/75 leading-[1.6] mb-8">
+              <p className="text-[15px] md:text-[16px] text-white/70 leading-[1.6] mb-8 max-w-[440px]">
                 Tickets, invitation letters, inquiries — we read everything.
               </p>
-              <ul className="space-y-3 text-[15px] text-white/85">
+              <ul className="space-y-3 text-[14px] md:text-[15px] text-white/85">
                 <li className="flex items-center gap-3">
-                  <MailIcon className="w-5 h-5 text-white/60" />
-                  <a href="mailto:support@shenzhenseoconference.com" className="hover:underline">
+                  <MailIcon className="w-4 h-4 text-white/55 flex-none" />
+                  <a
+                    href="mailto:support@shenzhenseoconference.com"
+                    className="hover:underline"
+                  >
                     support@shenzhenseoconference.com
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <MailIcon className="w-5 h-5 text-white/60" />
-                  <a href="mailto:sponsor@shenzhenseoconference.com" className="hover:underline">
+                  <MailIcon className="w-4 h-4 text-white/55 flex-none" />
+                  <a
+                    href="mailto:sponsor@shenzhenseoconference.com"
+                    className="hover:underline"
+                  >
                     sponsor@shenzhenseoconference.com
                   </a>
                 </li>
@@ -1366,27 +1385,27 @@ function Contact() {
                 <input
                   type="text"
                   placeholder="John"
-                  className="w-full px-4 py-4 rounded-xl bg-[#03060d] border border-[var(--line-2)] text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)]"
+                  className="w-full px-4 py-3.5 rounded-xl bg-[#03060d] border border-white/15 text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)]"
                 />
                 <input
                   type="text"
                   placeholder="Last Name"
-                  className="w-full px-4 py-4 rounded-xl bg-[#03060d] border border-[var(--line-2)] text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)]"
+                  className="w-full px-4 py-3.5 rounded-xl bg-[#03060d] border border-white/15 text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)]"
                 />
               </div>
               <input
                 type="email"
                 placeholder="E-mail Address"
-                className="w-full px-4 py-4 rounded-xl bg-[#03060d] border border-[var(--line-2)] text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)]"
+                className="w-full px-4 py-3.5 rounded-xl bg-[#03060d] border border-white/15 text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)]"
               />
-              <label className="flex items-start gap-3 text-[14px] text-white/75 cursor-pointer select-none">
+              <label className="flex items-start gap-3 text-[13px] md:text-[14px] text-white/70 cursor-pointer select-none">
                 <span
                   onClick={() => setCheck((v) => !v)}
                   role="checkbox"
                   aria-checked={check}
                   tabIndex={0}
-                  className={`mt-0.5 grid place-items-center w-5 h-5 rounded border ${
-                    check ? 'bg-[var(--teal)] border-[var(--teal)]' : 'border-[var(--line-2)]'
+                  className={`mt-0.5 grid place-items-center w-[18px] h-[18px] rounded-[4px] border ${
+                    check ? 'bg-[var(--teal)] border-[var(--teal)]' : 'border-white/30'
                   }`}
                   onKeyDown={(e) => {
                     if (e.key === ' ' || e.key === 'Enter') {
@@ -1395,21 +1414,21 @@ function Contact() {
                     }
                   }}
                 >
-                  {check && <CheckIcon className="w-3.5 h-3.5 text-white" />}
+                  {check && <CheckIcon className="w-3 h-3 text-white" />}
                 </span>
                 I need a business invitation letter for my visa.
               </label>
               <textarea
                 placeholder="Message (Optional)"
-                rows={4}
-                className="w-full px-4 py-4 rounded-xl bg-[#03060d] border border-[var(--line-2)] text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] resize-none"
+                rows={5}
+                className="w-full px-4 py-3.5 rounded-xl bg-[#03060d] border border-white/15 text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] resize-none"
               />
               <button
                 type="submit"
-                className="display w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full text-[14px] font-semibold tracking-[0.16em] gradient-cta text-white"
+                className="display w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full text-[12px] font-bold tracking-[0.18em] gradient-cta text-white"
               >
                 SEND MESSAGE
-                <ArrowUpRight className="w-3.5 h-3.5" />
+                <ArrowUpRight className="w-3 h-3" />
               </button>
             </form>
           </div>
