@@ -120,25 +120,22 @@ function PlusIcon({ className = '' }: { className?: string }) {
 /* ───────────────────────────── NAV ───────────────────────────── */
 function Nav() {
   return (
-    <header
-      className="absolute top-0 inset-x-0 z-30"
-      style={{ background: 'transparent' }}
-    >
-      <div className="container flex items-center justify-between h-[72px]">
-        <Link href="/home5" className="flex items-center gap-3">
-          <span className="block w-7 h-7 rounded-sm gradient-brand" aria-hidden />
-          <span className="text-[14px] font-semibold tracking-[0.18em] leading-tight">
-            SHENZHEN
-            <br />
-            SEO CONFERENCE
-          </span>
+    <header className="absolute top-0 inset-x-0 z-30">
+      <div className="container flex items-center justify-between h-[88px]">
+        <Link href="/home5" className="flex items-center" aria-label="Shenzhen SEO Conference">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/figma-assets/logo-szseo.png"
+            alt="Shenzhen SEO Conference"
+            className="h-[30px] w-auto"
+          />
         </Link>
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-10">
           {NAV.map((n) => (
             <a
               key={n.label}
               href={n.href}
-              className="text-[12px] font-semibold tracking-[0.14em] text-white/85 hover:text-white"
+              className="text-[12px] font-semibold tracking-[0.18em] text-white/90 hover:text-white"
             >
               {n.label}
             </a>
@@ -146,7 +143,7 @@ function Nav() {
         </nav>
         <a
           href="#pricing"
-          className="display inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[12px] font-semibold tracking-[0.16em] text-white gradient-cta"
+          className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white gradient-cta"
         >
           GET TICKETS
           <ArrowUpRight className="w-3 h-3" />
@@ -157,6 +154,25 @@ function Nav() {
 }
 
 /* ───────────────────────────── HERO (28:65) ───────────────────────────── */
+function HeroTitleLine({
+  label,
+  word,
+  colorClass,
+}: {
+  label: string;
+  word: string;
+  colorClass: string;
+}) {
+  return (
+    <span className="flex items-baseline gap-3 md:gap-5">
+      <span className="display text-[14px] md:text-[16px] font-medium tracking-[0.18em] text-white/85 translate-y-[-0.15em]">
+        {label}
+      </span>
+      <span className={`display ${colorClass}`}>{word}</span>
+    </span>
+  );
+}
+
 function Hero() {
   return (
     <section id="top" className="relative isolate overflow-hidden bg-[#03060d]">
@@ -166,73 +182,94 @@ function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(3,6,13,0) 20%, rgba(3,6,13,0.75) 60%, #03060d 100%)',
+              'linear-gradient(180deg, rgba(3,6,13,0.55) 0%, rgba(3,6,13,0) 25%, rgba(3,6,13,0.35) 60%, rgba(3,6,13,0.95) 92%, #03060d 100%)',
           }}
         />
       </div>
       <Nav />
-      <div className="container pt-44 pb-28 md:pt-56 md:pb-36 lg:pt-64 lg:pb-44">
-        <h1 className="display font-semibold leading-[1.02] text-[clamp(40px,7vw,84px)] uppercase tracking-tight max-w-[1100px]">
-          East Meets West{' '}
-          <span className="text-[0.32em] tracking-[0.2em] align-middle text-white/70 mx-2 font-medium">
-            IN
-          </span>
-          <br className="hidden md:block" /> SEO{' '}
-          <span className="text-[0.32em] tracking-[0.2em] align-middle text-white/70 mx-2 font-medium">
-            IN
-          </span>{' '}
-          <span className="gradient-text-brand">SHENZHEN, CHINA</span>
-        </h1>
 
-        <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div className="flex flex-wrap items-center gap-4 text-[14px]">
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--line-2)] bg-white/5 backdrop-blur-sm font-semibold">
-              September 14–18, 2026
-            </span>
-            <span className="text-white/60">·</span>
-            <span className="text-white/85">The St. Regis Shenzhen</span>
+      {/* Headline + right column */}
+      <div className="container pt-[260px] md:pt-[300px] lg:pt-[340px] pb-12 md:pb-14">
+        <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          {/* LEFT: title + date */}
+          <div>
+            <h1 className="display font-semibold uppercase leading-[1.02] tracking-[-0.005em] text-white text-[clamp(38px,6.2vw,72px)]">
+              <span className="block">East Meets West</span>
+              <HeroTitleLine label="IN" word="SEO" colorClass="text-[var(--teal-2)]" />
+              <HeroTitleLine
+                label="IN"
+                word="Shenzhen, China"
+                colorClass="gradient-text-brand"
+              />
+            </h1>
+
+            <div className="mt-7 flex items-center gap-3 text-[13px] md:text-[14px] text-white/85">
+              <span className="font-bold">September 14–18, 2026</span>
+              <span className="w-1 h-1 rounded-full bg-white/55" aria-hidden />
+              <span className="font-medium">The St. Regis Shenzhen</span>
+            </div>
           </div>
-          <p className="lg:max-w-[420px] text-[16px] text-white/80 leading-[1.55]">
-            5 days of talks, workshops, masterminds, city tours, and the kind of network
-            connections you don&apos;t make on LinkedIn.
-          </p>
-        </div>
 
-        <div className="mt-10 flex flex-wrap items-center gap-4">
-          <a
-            href="#pricing"
-            className="display inline-flex items-center gap-2 px-7 py-4 rounded-full text-[14px] font-semibold tracking-[0.16em] text-white gradient-cta"
-          >
-            GET TICKETS
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
+          {/* RIGHT: description + outline CTA */}
+          <div className="lg:max-w-[360px] lg:text-right flex flex-col lg:items-end gap-6">
+            <p className="text-[15px] md:text-[16px] text-white/85 leading-[1.55]">
+              5 days of talks, workshops, masterminds, city tours, and the kind of network
+              connections you don&apos;t make on LinkedIn
+            </p>
+            <a
+              href="#pricing"
+              className="display inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] text-white border border-white/55 bg-black/25 backdrop-blur-sm hover:bg-black/40"
+            >
+              GET TICKETS
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* Quote + stats strip */}
-      <div className="container -mt-2 pb-12">
-        <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr] items-end border-t border-[var(--line)] pt-8">
-          <figure>
-            <p className="text-[18px] md:text-[20px] italic text-white/85 leading-[1.45] max-w-[640px]">
-              &ldquo;Don&apos;t panic. Things change. They always do. Figure it out.&rdquo;
-            </p>
-            <figcaption className="mt-3 text-[14px] text-white/70">
-              <span className="font-semibold text-white">Gary Illyes</span>
-              <span className="text-white/50"> — Search Relations, Google · Keynote Speaker</span>
-            </figcaption>
+      {/* Divider + quote/stats strip */}
+      <div className="container">
+        <div className="border-t border-white/15" />
+      </div>
+      <div className="container py-10 md:py-12">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+          {/* Quote */}
+          <figure className="flex items-center gap-4">
+            <span className="relative w-12 h-12 rounded-full overflow-hidden bg-white/10 flex-none ring-2 ring-white/15">
+              {/* Use first speaker portrait as Gary placeholder */}
+              <Image
+                src={A.spkA}
+                alt="Gary Illyes"
+                fill
+                className="object-cover"
+                sizes="48px"
+              />
+            </span>
+            <div>
+              <p className="text-[14px] md:text-[15px] italic text-white/90 leading-[1.45]">
+                &ldquo;Don&apos;t panic. Things change. They always do. Figure it out.&rdquo;
+              </p>
+              <figcaption className="mt-1.5 text-[12px] md:text-[13px] text-white/65">
+                <span className="font-semibold text-white">Gary Illyes</span>
+                <span className="mx-2 text-white/30">|</span>
+                <span>Search Relations, Google · Keynote Speaker</span>
+              </figcaption>
+            </div>
           </figure>
-          <dl className="grid grid-cols-4 gap-4 lg:gap-8">
+
+          {/* Stats */}
+          <dl className="flex items-end gap-7 md:gap-10 lg:justify-end">
             {[
               ['600', 'SEATS'],
               ['40+', 'SPEAKERS'],
               ['30+', 'COUNTRIES'],
               ['5', 'DAYS'],
             ].map(([n, l]) => (
-              <div key={l}>
-                <dt className="display text-[28px] md:text-[32px] font-semibold leading-none">
+              <div key={l} className="text-center">
+                <dt className="display text-[28px] md:text-[32px] font-semibold leading-none text-white">
                   {n}
                 </dt>
-                <dd className="mt-2 text-[12px] font-semibold tracking-[0.18em] text-white/60">
+                <dd className="mt-2 text-[11px] md:text-[12px] font-semibold tracking-[0.22em] text-white/60">
                   {l}
                 </dd>
               </div>
