@@ -895,14 +895,15 @@ function Pricing() {
   return (
     <section
       id="pricing"
-      className="py-24 md:py-32 border-t border-white/10"
+      className="py-24 md:py-32"
       style={{
         // Figma fill stack (top → bottom in panel = first → last in CSS):
-        //   1) Linear: horizontal vignette  #03060D 0% → transparent 50% → #03060D 100%
+        //   1) Linear: vertical fade-in/out  #03060D 0% → transparent 50% → #03060D 100%
+        //      (lets top and bottom edges blend into adjacent sections seamlessly)
         //   2) #03060D at 65% (dim)
         //   3) Linear: horizontal brand  #118BAC 0% → #EB3030 100%
         background:
-          'linear-gradient(90deg, #03060D 0%, rgba(3,6,13,0) 50%, #03060D 100%),' +
+          'linear-gradient(180deg, #03060D 0%, rgba(3,6,13,0) 50%, #03060D 100%),' +
           'linear-gradient(0deg, rgba(3,6,13,0.65), rgba(3,6,13,0.65)),' +
           'linear-gradient(90deg, #118BAC 0%, #EB3030 100%)',
       }}
@@ -1012,7 +1013,7 @@ function Venues() {
     },
   ];
   return (
-    <section className="bg-[#03060d] py-24 md:py-32 border-t border-white/10">
+    <section className="bg-[#03060d] py-24 md:py-32">
       <div className="container">
         <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
           WHERE IS THE EVENT HAPPENING
