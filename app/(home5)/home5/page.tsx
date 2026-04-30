@@ -284,7 +284,7 @@ function Hero() {
                 <dt className="display text-[28px] md:text-[32px] font-semibold leading-none text-[#f9f9f9]">
                   {n}
                 </dt>
-                <dd className="mt-2 text-[11px] md:text-[12px] font-semibold tracking-[0.22em] text-[#f9f9f9]/60">
+                <dd className="mt-2 text-[11px] md:text-[12px] font-semibold tracking-[0.22em] text-[#f9f9f9]">
                   {l}
                 </dd>
               </div>
