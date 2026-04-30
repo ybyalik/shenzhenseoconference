@@ -143,6 +143,46 @@ function MenuIcon({ className = '' }: { className?: string }) {
   );
 }
 
+/** Tracks which carousel card is currently in view inside a scroll-snap container. */
+function useCarouselActive(trackRef: React.RefObject<HTMLDivElement | null>) {
+  const [activeIdx, setActiveIdx] = useState(0);
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const items = Array.from(track.querySelectorAll<HTMLElement>('[data-card-idx]'));
+    if (!items.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            const idx = Number(e.target.getAttribute('data-card-idx'));
+            setActiveIdx(idx);
+          }
+        }
+      },
+      { root: track, threshold: 0.6 },
+    );
+    items.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [trackRef]);
+  return activeIdx;
+}
+
+function CarouselDots({ count, active }: { count: number; active: number }) {
+  return (
+    <div className="mt-4 flex items-center justify-center gap-2">
+      {Array.from({ length: count }, (_, i) => (
+        <span
+          key={i}
+          className={`h-1.5 rounded-full transition-all duration-200 ${
+            i === active ? 'w-6 bg-white' : 'w-1.5 bg-white/30'
+          }`}
+        />
+      ))}
+    </div>
+  );
+}
+
 /* ───────────────────────────── NAV ───────────────────────────── */
 function Nav() {
   return (
@@ -635,27 +675,7 @@ function Audiences() {
 /* ───────────────────────────── WHY SHENZHEN (28:210) ───────────────────────────── */
 function WhyShenzhen() {
   const trackRef = useRef<HTMLDivElement | null>(null);
-  const [activeCard, setActiveCard] = useState(0);
-
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    const items = Array.from(track.querySelectorAll<HTMLElement>('[data-card-idx]'));
-    if (!items.length) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) {
-            const idx = Number(e.target.getAttribute('data-card-idx'));
-            setActiveCard(idx);
-          }
-        }
-      },
-      { root: track, threshold: 0.6 },
-    );
-    items.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
+  const activeCard = useCarouselActive(trackRef);
 
   const cards = [
     {
@@ -739,17 +759,7 @@ function WhyShenzhen() {
                 ))}
               </div>
             </div>
-            {/* Dot pagination — reflects active card via IntersectionObserver */}
-            <div className="mt-4 flex items-center justify-center gap-2">
-              {cards.map((_, i) => (
-                <span
-                  key={i}
-                  className={`h-1.5 rounded-full transition-all duration-200 ${
-                    i === activeCard ? 'w-6 bg-white' : 'w-1.5 bg-white/30'
-                  }`}
-                />
-              ))}
-            </div>
+            <CarouselDots count={cards.length} active={activeCard} />
           </div>
 
           {/* Desktop: 2x2 grid */}
@@ -1215,6 +1225,11 @@ function Venues() {
 
 /* ───────────────────────────── TESTIMONIALS (28:556) ───────────────────────────── */
 function Testimonials() {
+  const videosRef = useRef<HTMLDivElement | null>(null);
+  const quotesRef = useRef<HTMLDivElement | null>(null);
+  const activeVideo = useCarouselActive(videosRef);
+  const activeQuote = useCarouselActive(quotesRef);
+
   const videos = [
     { img: A.testimonial1, name: 'Liam Bouchard', role: 'VP SEO, Amsive Digital' },
     { img: A.testimonial2, name: 'Liam Bouchard', role: 'VP SEO, Amsive Digital' },
@@ -1249,7 +1264,55 @@ function Testimonials() {
           What 2025 Attendees Told Us.
         </h2>
 
-        <div className="grid gap-5 md:grid-cols-2 mb-5">
+        {/* Videos: carousel on mobile, 2-col grid on md+ */}
+        <div className="md:hidden mb-8">
+          <div
+            ref={videosRef}
+            className="-mx-6 px-6 overflow-x-auto no-scrollbar snap-x snap-mandatory"
+          >
+            <div className="flex gap-4 pb-2">
+              {videos.map((v, i) => (
+                <div
+                  key={i}
+                  data-card-idx={i}
+                  className="flex-none w-[85%] snap-start rounded-2xl border border-white/10 p-6"
+                >
+                  <div className="relative rounded-xl overflow-hidden aspect-[548/289] bg-white/5">
+                    <Image
+                      src={v.img}
+                      alt={v.name}
+                      fill
+                      className="object-cover"
+                      sizes="85vw"
+                    />
+                    <div
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        background:
+                          'linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.65) 100%)',
+                      }}
+                    />
+                    <button
+                      className="absolute inset-0 grid place-items-center"
+                      type="button"
+                      aria-label="Play video"
+                    >
+                      <span className="grid place-items-center w-12 h-12 rounded-full bg-[var(--teal)] ring-1 ring-white/30 text-white">
+                        <PlayIcon className="w-5 h-5 translate-x-[1px]" />
+                      </span>
+                    </button>
+                  </div>
+                  <div className="mt-5">
+                    <div className="text-[15px] font-bold text-white">{v.name}</div>
+                    <div className="text-[12px] text-white/70 mt-0.5">{v.role}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <CarouselDots count={videos.length} active={activeVideo} />
+        </div>
+        <div className="hidden md:grid gap-5 md:grid-cols-2 mb-5">
           {videos.map((v, i) => (
             <div
               key={i}
@@ -1288,7 +1351,54 @@ function Testimonials() {
           ))}
         </div>
 
-        <div className="grid gap-5 md:grid-cols-3">
+        {/* Quotes: carousel on mobile, 3-col grid on md+ */}
+        <div className="md:hidden">
+          <div
+            ref={quotesRef}
+            className="-mx-6 px-6 overflow-x-auto no-scrollbar snap-x snap-mandatory"
+          >
+            <div className="flex gap-4 pb-2">
+              {quotes.map((q, i) => (
+                <figure
+                  key={q.name}
+                  data-card-idx={i}
+                  className="flex-none w-[85%] snap-start rounded-2xl border border-white/10 p-6 bg-[#06101a]/40 flex flex-col"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/figma-assets/quote-red.png"
+                    alt=""
+                    className="w-9 h-auto mb-4"
+                  />
+                  <blockquote className="text-[15px] text-white/85 leading-[1.55] flex-1">
+                    {q.q}
+                  </blockquote>
+                  <figcaption className="mt-6 flex items-center gap-3">
+                    <div className="relative w-10 h-10 rounded-full overflow-hidden bg-white/10 ring-1 ring-white/15">
+                      <Image
+                        src={q.av}
+                        alt={q.name}
+                        fill
+                        className="object-cover"
+                        sizes="40px"
+                      />
+                    </div>
+                    <div>
+                      <div className="text-[14px] font-bold text-white leading-tight">
+                        {q.name}
+                      </div>
+                      <div className="text-[12px] text-white/55 leading-tight mt-0.5">
+                        {q.role}
+                      </div>
+                    </div>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+          <CarouselDots count={quotes.length} active={activeQuote} />
+        </div>
+        <div className="hidden md:grid gap-5 md:grid-cols-3">
           {quotes.map((q) => (
             <figure
               key={q.name}
