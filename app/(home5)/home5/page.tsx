@@ -118,6 +118,17 @@ function PlusIcon({ className = '' }: { className?: string }) {
   );
 }
 
+function MapPinIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 16 16" className={className} aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M8 0a5.5 5.5 0 0 0-5.5 5.5c0 4 5.5 10.5 5.5 10.5s5.5-6.5 5.5-10.5A5.5 5.5 0 0 0 8 0Zm0 7.5a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"
+      />
+    </svg>
+  );
+}
+
 /* ───────────────────────────── NAV ───────────────────────────── */
 function Nav() {
   return (
@@ -886,49 +897,50 @@ function Pricing() {
   ];
 
   return (
-    <section id="pricing" className="bg-[#03060d] py-24 md:py-32 border-t border-[var(--line)]">
-      <div className="container text-center">
-        <div className="text-[12px] md:text-[14px] font-semibold tracking-[0.2em] text-[var(--red)] mb-3">
-          HOW MUCH IS THE TICKET
+    <section id="pricing" className="bg-[#03060d] py-24 md:py-32 border-t border-white/10">
+      <div className="container">
+        <div className="text-center">
+          <div className="text-[14px] font-bold tracking-[0.2em] text-[var(--red)] mb-3">
+            HOW MUCH IS THE TICKET
+          </div>
+          <h2 className="display text-[28px] md:text-[36px] font-semibold uppercase leading-[1.05] tracking-[-0.005em]">
+            Get Early Bird Tickets
+          </h2>
+          <p className="mx-auto mt-5 max-w-[680px] text-[15px] md:text-[16px] text-white/70 leading-[1.6]">
+            One night at The St. Regis costs more than a Standard ticket. You get 5 days, every
+            meal, and two parties.
+          </p>
         </div>
-        <h2 className="display text-[32px] md:text-[44px] font-semibold uppercase leading-[1.05]">
-          Get Early Bird Tickets
-        </h2>
-        <p className="mx-auto mt-5 max-w-[680px] text-[16px] md:text-[17px] text-white/75 leading-[1.6]">
-          One night at The St. Regis costs more than a Standard ticket. You get 5 days, every
-          meal, and two parties.
-        </p>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3 text-left">
+        <div className="mt-14 grid gap-5 md:grid-cols-3">
           {tiers.map((t) => (
             <div
               key={t.name}
-              className={`relative rounded-2xl p-7 border ${
+              className={`relative rounded-2xl p-7 ${
                 t.popular
-                  ? 'border-transparent bg-gradient-to-b from-[#10242e] to-[#06101a]'
-                  : 'border-[var(--line)] bg-[#06101a]/40'
+                  ? 'bg-gradient-to-b from-[#13262f] to-[#070d15] ring-2 ring-[var(--red)]/60'
+                  : 'border border-white/10 bg-[#06101a]/40'
               }`}
-              style={
-                t.popular
-                  ? { boxShadow: '0 0 0 1px rgba(235,48,48,0.45) inset' }
-                  : undefined
-              }
             >
               {t.tag && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-bold tracking-[0.18em] uppercase gradient-cta text-white">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase bg-[var(--teal)] text-white">
                   {t.tag}
                 </span>
               )}
-              <div className="display text-[20px] font-semibold uppercase">{t.name}</div>
-              <div className="mt-5 flex items-end gap-3">
-                <span className="display text-[40px] md:text-[44px] font-semibold leading-none">
+              <div className="display text-[18px] font-bold uppercase tracking-[0.04em] text-[var(--teal-2)]">
+                {t.name}
+              </div>
+              <div className="mt-4 flex items-end gap-3">
+                <span className="display text-[36px] md:text-[40px] font-bold leading-none text-white">
                   {t.price}
                 </span>
-                <span className="display text-[16px] text-white/40 line-through pb-1">
+                <span className="display text-[15px] text-white/40 line-through pb-1">
                   {t.old}
                 </span>
               </div>
-              <div className="mt-2 text-[14px] font-semibold text-white/85">{t.forWho}</div>
+              <div className="mt-2 text-[14px] font-semibold text-white/80 leading-snug">
+                {t.forWho}
+              </div>
               <ul className="mt-7 space-y-3">
                 {t.bullets.map((b) => (
                   <li key={b} className="flex items-start gap-3 text-[14px] text-white/80">
@@ -939,10 +951,10 @@ function Pricing() {
               </ul>
               <a
                 href="#"
-                className={`mt-8 display inline-flex items-center justify-center gap-2 w-full px-5 py-3.5 rounded-full text-[12px] font-semibold tracking-[0.16em] uppercase ${
+                className={`mt-8 display inline-flex items-center justify-center gap-2 w-full px-5 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase ${
                   t.popular
                     ? 'gradient-cta text-white'
-                    : 'border border-[var(--line-2)] text-white hover:bg-white/5'
+                    : 'border border-white/40 text-white hover:bg-white/5'
                 }`}
               >
                 {t.cta}
@@ -951,10 +963,15 @@ function Pricing() {
             </div>
           ))}
         </div>
-        <p className="mt-10 text-[13px] text-white/55">
-          100% Full Refund Policy — Get a complete refund if you cancel before the conference
-          starts. Risk-free ticket purchase with peace of mind.
-        </p>
+        <div className="mt-12 text-center">
+          <div className="display text-[14px] font-bold tracking-[0.18em] uppercase text-white">
+            100% Full Refund Policy
+          </div>
+          <p className="mt-2 text-[14px] text-white/60 leading-[1.6] max-w-[640px] mx-auto">
+            Get a complete refund if you cancel 30 days or more before the conference starts.
+            <br className="hidden md:block" /> Risk-free ticket purchase with peace of mind.
+          </p>
+        </div>
       </div>
     </section>
   );
@@ -976,58 +993,61 @@ function Venues() {
     {
       tag: 'VIP Workshop Venue',
       name: 'MGM Shenzhen',
-      days: 'Day 5 VIP networking',
+      days: 'Day 5 VIP Networking',
       img: A.venueMgm,
       desc: 'An intimate setting away from the main conference. Smaller room. Deeper conversations. One night included with your VIP ticket.',
       whyTitle: 'Why this one',
-      why: 'The St. Regis gets you the main stage. MGM gets you the after-hours. Two venues — two logbooks, one paddle facing and shape lit, one private and close-in.',
+      why: 'The St. Regis gets you the main stage. MGM gets you the after-hours. Two venues, two registers — one public-facing and stage-lit, one private and close-in.',
       addr: '33 Yanmei Rd, Yantian District, Shenzhen, Guangdong 518000',
     },
   ];
   return (
-    <section className="bg-[#03060d] py-24 md:py-32 border-t border-[var(--line)]">
+    <section className="bg-[#03060d] py-24 md:py-32 border-t border-white/10">
       <div className="container">
-        <div className="text-[12px] md:text-[14px] font-semibold tracking-[0.2em] text-[var(--red)] mb-3">
+        <div className="text-[14px] font-bold tracking-[0.2em] text-[var(--red)] mb-3">
           WHERE IS THE EVENT HAPPENING
         </div>
-        <h2 className="display text-[32px] md:text-[44px] font-semibold uppercase leading-[1.05] mb-5 max-w-[900px]">
-          Two venues. <span className="gradient-text-brand">Both picked on purpose.</span>
+        <h2 className="display text-[28px] md:text-[36px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-5 max-w-[900px]">
+          Two Venues. Both Picked On Purpose.
         </h2>
-        <p className="text-[16px] md:text-[17px] text-white/75 leading-[1.6] max-w-[820px] mb-14">
+        <p className="text-[15px] md:text-[16px] text-white/70 leading-[1.6] max-w-[820px] mb-12 md:mb-14">
           We personally vetted 29 five-star hotels. These two are what good looks like.
         </p>
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-5 md:grid-cols-2">
           {venues.map((v) => (
             <article
               key={v.name}
-              className="rounded-2xl border border-[var(--line)] overflow-hidden bg-[#06101a]/40"
+              className="rounded-2xl border border-white/10 overflow-hidden bg-[#06101a]/40"
             >
               <div className="relative aspect-[544/440] bg-white/5">
-                <Image src={v.img} alt={v.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 544px" />
-                <div className="absolute left-5 bottom-5 px-3 py-1 rounded-full text-[10px] font-semibold tracking-[0.18em] uppercase bg-black/60 backdrop-blur-sm">
-                  {v.tag}
-                </div>
+                <Image
+                  src={v.img}
+                  alt={v.name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 544px"
+                />
               </div>
               <div className="p-6 md:p-8">
-                <div className="flex items-baseline justify-between gap-4 mb-2">
-                  <h3 className="display text-[22px] md:text-[24px] font-semibold uppercase">
-                    {v.name}
-                  </h3>
-                  <span className="display text-[12px] tracking-[0.16em] text-white/60">
-                    {v.days.toUpperCase()}
-                  </span>
+                <div className="text-[12px] font-bold tracking-[0.2em] uppercase text-[var(--red)] mb-2">
+                  {v.tag}
                 </div>
-                <p className="text-[15px] md:text-[16px] text-white/75 leading-[1.6]">
-                  {v.desc}
-                </p>
-                <div className="mt-6 pt-6 border-t border-[var(--line)]">
-                  <div className="display text-[13px] tracking-[0.16em] uppercase text-white/70 mb-2">
+                <h3 className="display text-[22px] md:text-[24px] font-bold uppercase tracking-[-0.005em]">
+                  {v.name}
+                </h3>
+                <div className="mt-1 mb-4 display text-[12px] font-semibold tracking-[0.18em] uppercase text-white/55">
+                  {v.days}
+                </div>
+                <p className="text-[14px] md:text-[15px] text-white/75 leading-[1.6]">{v.desc}</p>
+                <div className="mt-6">
+                  <div className="text-[12px] font-bold tracking-[0.2em] uppercase text-[var(--red)] mb-2">
                     {v.whyTitle}
                   </div>
                   <p className="text-[14px] text-white/65 leading-[1.55]">{v.why}</p>
                 </div>
-                <div className="mt-5 text-[13px] font-semibold text-[var(--teal-2)] accent-bar">
-                  {v.addr}
+                <div className="mt-6 flex items-start gap-2 text-[13px] font-semibold text-white/85">
+                  <MapPinIcon className="w-3.5 h-3.5 mt-[3px] text-[var(--red)] flex-none" />
+                  <span>{v.addr}</span>
                 </div>
               </div>
             </article>
