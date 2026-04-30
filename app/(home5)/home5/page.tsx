@@ -686,16 +686,57 @@ function WhyShenzhen() {
             foot in. 18 million people. Average age 32. More patents filed here than anywhere
             else in China. Tencent, DJI, Huawei, BYD — all within a 30-minute drive.
           </p>
-          <div className="grid gap-x-8 gap-y-10 md:grid-cols-2">
+          {/* Mobile: horizontal swipe carousel with snap */}
+          <div className="md:hidden -mx-6 px-6 overflow-x-auto no-scrollbar snap-x snap-mandatory">
+            <div className="flex gap-4 pb-2">
+              {cards.map((c) => (
+                <article key={c.h} className="flex-none w-[85%] snap-start">
+                  <div className="relative aspect-[544/280] rounded-xl overflow-hidden bg-white/5">
+                    <Image
+                      src={c.img}
+                      alt=""
+                      fill
+                      className="object-cover"
+                      sizes="85vw"
+                    />
+                  </div>
+                  <h3 className="display mt-4 text-[16px] font-bold uppercase tracking-[-0.005em]">
+                    {c.h}
+                  </h3>
+                  <p className="mt-2.5 text-[14px] text-white/70 leading-[1.55]">{c.p}</p>
+                </article>
+              ))}
+            </div>
+            {/* Decorative dot pagination (visual only — scroll-snap handles the actual swipe) */}
+            <div className="mt-4 flex items-center justify-center gap-2">
+              {cards.map((_, i) => (
+                <span
+                  key={i}
+                  className={`h-1.5 rounded-full transition-all ${
+                    i === 0 ? 'w-6 bg-white' : 'w-1.5 bg-white/30'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop: 2x2 grid */}
+          <div className="hidden md:grid gap-x-8 gap-y-10 md:grid-cols-2">
             {cards.map((c) => (
               <article key={c.h}>
                 <div className="relative aspect-[544/280] rounded-xl overflow-hidden bg-white/5">
-                  <Image src={c.img} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 544px" />
+                  <Image
+                    src={c.img}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 544px"
+                  />
                 </div>
-                <h3 className="display mt-5 text-[16px] md:text-[18px] font-bold uppercase tracking-[-0.005em]">
+                <h3 className="display mt-5 text-[18px] font-bold uppercase tracking-[-0.005em]">
                   {c.h}
                 </h3>
-                <p className="mt-2.5 text-[14px] md:text-[15px] text-white/70 leading-[1.55] max-w-[460px]">
+                <p className="mt-2.5 text-[15px] text-white/70 leading-[1.55] max-w-[460px]">
                   {c.p}
                 </p>
               </article>
@@ -724,6 +765,10 @@ function Speakers() {
     { country: 'US', tag: '', name: 'Shane Dutka', sub: 'SEO Practitioner' },
     { country: 'CZ', tag: '', name: 'Sarah Pokorná', sub: 'WritePress' },
   ];
+
+  const [showAll, setShowAll] = useState(false);
+  const MOBILE_INITIAL = 3;
+
   return (
     <section id="speakers" className="bg-[#03060d] py-24 md:py-32">
       <div className="container">
@@ -749,11 +794,13 @@ function Speakers() {
           </a>
         </div>
 
-        <ul className="grid gap-4 md:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <ul className="grid gap-4 md:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {list.map((s, i) => (
             <li
               key={s.name}
-              className="rounded-2xl bg-[#06101a]/60 p-6 border border-white/[0.06] hover:border-[var(--red)] transition-colors"
+              className={`${
+                !showAll && i >= MOBILE_INITIAL ? 'hidden sm:block' : ''
+              } rounded-2xl bg-[#06101a]/60 p-6 border border-white/[0.06] hover:border-[var(--red)] transition-colors`}
             >
               <div className="relative aspect-square rounded-xl overflow-hidden bg-white/5">
                 <Image
@@ -761,7 +808,7 @@ function Speakers() {
                   alt={s.name}
                   fill
                   className="object-cover grayscale-[12%]"
-                  sizes="(max-width: 768px) 50vw, 246px"
+                  sizes="(max-width: 768px) 100vw, 246px"
                 />
               </div>
               <div className="mt-5 flex items-center justify-between gap-3">
@@ -783,6 +830,19 @@ function Speakers() {
             </li>
           ))}
         </ul>
+
+        {!showAll && list.length > MOBILE_INITIAL && (
+          <div className="mt-8 flex justify-center sm:hidden">
+            <button
+              type="button"
+              onClick={() => setShowAll(true)}
+              className="display inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] text-white border border-white/55 bg-black/20 hover:bg-black/40"
+            >
+              LOAD MORE
+              <ArrowUpRight className="w-3 h-3" />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
