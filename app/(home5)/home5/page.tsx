@@ -1085,31 +1085,49 @@ function Testimonials() {
     },
   ];
   return (
-    <section className="bg-[#03060d] py-24 md:py-32 border-t border-[var(--line)]">
+    <section className="bg-[#03060d] py-24 md:py-32 border-t border-white/10">
       <div className="container">
-        <div className="text-[12px] md:text-[14px] font-semibold tracking-[0.2em] text-[var(--red)] mb-3">
+        <div className="text-[14px] font-bold tracking-[0.2em] text-[var(--red)] mb-3">
           WHAT DID THE PREVIOUS ATTENDEES SAY
         </div>
-        <h2 className="display text-[32px] md:text-[44px] font-semibold uppercase leading-[1.05] mb-12 max-w-[900px]">
-          What 2025 attendees told us.
+        <h2 className="display text-[28px] md:text-[36px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-12 max-w-[900px] text-white">
+          What 2025 Attendees Told Us.
         </h2>
 
-        <div className="grid gap-5 md:grid-cols-2 mb-6">
+        <div className="grid gap-5 md:grid-cols-2 mb-5">
           {videos.map((v, i) => (
             <div
               key={i}
-              className="relative rounded-2xl overflow-hidden aspect-[548/289] bg-white/5"
+              className={`relative rounded-2xl overflow-hidden aspect-[548/289] bg-white/5 ${
+                i === 0 ? 'ring-2 ring-[var(--red)]' : 'ring-1 ring-white/[0.06]'
+              }`}
             >
-              <Image src={v.img} alt={v.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 548px" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent" />
-              <button className="absolute inset-0 grid place-items-center" type="button" aria-label="Play video">
-                <span className="grid place-items-center w-14 h-14 rounded-full bg-[var(--teal)] text-white">
-                  <PlayIcon className="w-6 h-6" />
+              <Image
+                src={v.img}
+                alt={v.name}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 548px"
+              />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    'linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.65) 100%)',
+                }}
+              />
+              <button
+                className="absolute inset-0 grid place-items-center"
+                type="button"
+                aria-label="Play video"
+              >
+                <span className="grid place-items-center w-12 h-12 rounded-full bg-[var(--teal)] ring-1 ring-white/30 text-white">
+                  <PlayIcon className="w-5 h-5 translate-x-[1px]" />
                 </span>
               </button>
               <div className="absolute left-5 bottom-4">
-                <div className="display text-[15px] font-semibold">{v.name}</div>
-                <div className="text-[12px] text-white/70">{v.role}</div>
+                <div className="text-[15px] font-bold text-white">{v.name}</div>
+                <div className="text-[12px] text-white/70 mt-0.5">{v.role}</div>
               </div>
             </div>
           ))}
@@ -1119,21 +1137,23 @@ function Testimonials() {
           {quotes.map((q) => (
             <figure
               key={q.name}
-              className="rounded-2xl border border-[var(--line)] p-6 md:p-7 bg-[#06101a]/40"
+              className="rounded-2xl border border-white/10 p-6 md:p-7 bg-[#06101a]/40 flex flex-col"
             >
-              <div className="text-[28px] leading-none text-[var(--red)] mb-4 font-serif italic">
-                &ldquo;
-              </div>
-              <blockquote className="text-[16px] md:text-[18px] text-white/85 leading-[1.5]">
+              <QuoteGlyph className="w-7 h-6 text-[var(--red)] mb-4" />
+              <blockquote className="text-[15px] md:text-[16px] text-white/85 leading-[1.55] flex-1">
                 {q.q}
               </blockquote>
               <figcaption className="mt-6 flex items-center gap-3">
-                <div className="relative w-10 h-10 rounded-full overflow-hidden bg-white/10">
+                <div className="relative w-10 h-10 rounded-full overflow-hidden bg-white/10 ring-1 ring-white/15">
                   <Image src={q.av} alt={q.name} fill className="object-cover" sizes="40px" />
                 </div>
                 <div>
-                  <div className="display text-[14px] font-semibold">{q.name}</div>
-                  <div className="text-[12px] text-white/60">{q.role}</div>
+                  <div className="text-[14px] font-bold text-white leading-tight">
+                    {q.name}
+                  </div>
+                  <div className="text-[12px] text-white/55 leading-tight mt-0.5">
+                    {q.role}
+                  </div>
                 </div>
               </figcaption>
             </figure>
@@ -1193,11 +1213,11 @@ function Faq() {
   return (
     <section className="bg-[#03060d] py-24 md:py-32 border-t border-[var(--line)]">
       <div className="container">
-        <div className="text-center text-[12px] md:text-[14px] font-semibold tracking-[0.2em] text-[var(--red)] mb-3">
+        <div className="text-center text-[14px] font-bold tracking-[0.2em] text-[var(--red)] mb-3">
           FAQ
         </div>
-        <h2 className="text-center display text-[32px] md:text-[44px] font-semibold uppercase leading-[1.05] mb-12">
-          Real questions. <span className="gradient-text-brand">Direct answers.</span>
+        <h2 className="text-center display text-[28px] md:text-[36px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-12 text-white">
+          Real Questions. Direct Answers.
         </h2>
         <div className="max-w-[920px] mx-auto space-y-3">
           {items.map((it, i) => (
