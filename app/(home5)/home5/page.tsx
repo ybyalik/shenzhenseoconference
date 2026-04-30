@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const A = {
   heroBg: '/figma-assets/dfd8cb68f2097a3164c042d67b3231672354f49a.jpg',
@@ -634,6 +634,29 @@ function Audiences() {
 
 /* ───────────────────────────── WHY SHENZHEN (28:210) ───────────────────────────── */
 function WhyShenzhen() {
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [activeCard, setActiveCard] = useState(0);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const items = Array.from(track.querySelectorAll<HTMLElement>('[data-card-idx]'));
+    if (!items.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            const idx = Number(e.target.getAttribute('data-card-idx'));
+            setActiveCard(idx);
+          }
+        }
+      },
+      { root: track, threshold: 0.6 },
+    );
+    items.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   const cards = [
     {
       img: A.why1,
@@ -687,33 +710,42 @@ function WhyShenzhen() {
             else in China. Tencent, DJI, Huawei, BYD — all within a 30-minute drive.
           </p>
           {/* Mobile: horizontal swipe carousel with snap */}
-          <div className="md:hidden -mx-6 px-6 overflow-x-auto no-scrollbar snap-x snap-mandatory">
-            <div className="flex gap-4 pb-2">
-              {cards.map((c) => (
-                <article key={c.h} className="flex-none w-[85%] snap-start">
-                  <div className="relative aspect-[544/280] rounded-xl overflow-hidden bg-white/5">
-                    <Image
-                      src={c.img}
-                      alt=""
-                      fill
-                      className="object-cover"
-                      sizes="85vw"
-                    />
-                  </div>
-                  <h3 className="display mt-4 text-[16px] font-bold uppercase tracking-[-0.005em]">
-                    {c.h}
-                  </h3>
-                  <p className="mt-2.5 text-[14px] text-white/70 leading-[1.55]">{c.p}</p>
-                </article>
-              ))}
+          <div className="md:hidden">
+            <div
+              ref={trackRef}
+              className="-mx-6 px-6 overflow-x-auto no-scrollbar snap-x snap-mandatory"
+            >
+              <div className="flex gap-4 pb-2">
+                {cards.map((c, i) => (
+                  <article
+                    key={c.h}
+                    data-card-idx={i}
+                    className="flex-none w-[85%] snap-start"
+                  >
+                    <div className="relative aspect-[544/280] rounded-xl overflow-hidden bg-white/5">
+                      <Image
+                        src={c.img}
+                        alt=""
+                        fill
+                        className="object-cover"
+                        sizes="85vw"
+                      />
+                    </div>
+                    <h3 className="display mt-4 text-[16px] font-bold uppercase tracking-[-0.005em]">
+                      {c.h}
+                    </h3>
+                    <p className="mt-2.5 text-[14px] text-white/70 leading-[1.55]">{c.p}</p>
+                  </article>
+                ))}
+              </div>
             </div>
-            {/* Decorative dot pagination (visual only — scroll-snap handles the actual swipe) */}
+            {/* Dot pagination — reflects active card via IntersectionObserver */}
             <div className="mt-4 flex items-center justify-center gap-2">
               {cards.map((_, i) => (
                 <span
                   key={i}
-                  className={`h-1.5 rounded-full transition-all ${
-                    i === 0 ? 'w-6 bg-white' : 'w-1.5 bg-white/30'
+                  className={`h-1.5 rounded-full transition-all duration-200 ${
+                    i === activeCard ? 'w-6 bg-white' : 'w-1.5 bg-white/30'
                   }`}
                 />
               ))}
@@ -917,25 +949,26 @@ function Agenda() {
           </p>
         </div>
 
-        <ul className="mt-8 md:mt-10">
+        <ul className="mt-8 md:mt-10 space-y-4 md:space-y-0">
           {days.map((d) => (
             <li
               key={d.n}
-              className="grid grid-cols-1 md:grid-cols-[180px_1fr_auto] items-center gap-4 md:gap-8 py-7 md:py-8 border-t border-white/10"
+              className="rounded-2xl border border-white/10 p-6 md:rounded-none md:border-0 md:border-t md:border-white/10 md:p-0 grid grid-cols-1 md:grid-cols-[180px_1fr_auto] md:items-center gap-4 md:gap-8 md:py-8"
             >
-              <div>
-                <div className="display text-[24px] font-bold leading-none text-white">
+              {/* Mobile: top row weekday left + DAY N right; Desktop: stacked left column */}
+              <div className="flex items-center justify-between md:block">
+                <div className="order-2 md:order-1 display text-[20px] md:text-[24px] font-bold leading-none text-white">
                   {d.n}
                 </div>
-                <div className="mt-2 text-[16px] font-semibold tracking-[0.12em] text-[#86DFF7]">
+                <div className="order-1 md:order-2 md:mt-2 text-[13px] md:text-[16px] font-semibold tracking-[0.12em] text-[#86DFF7]">
                   {d.date}
                 </div>
               </div>
               <div>
-                <div className="display text-[24px] font-bold uppercase leading-tight tracking-[-0.005em]">
+                <div className="display text-[20px] md:text-[24px] font-bold uppercase leading-tight tracking-[-0.005em]">
                   {d.title}
                   {d.note && (
-                    <span className="ml-3 text-[13px] md:text-[14px] font-medium italic text-white/55 normal-case">
+                    <span className="ml-2 md:ml-3 text-[12px] md:text-[14px] font-medium italic text-white/55 normal-case">
                       ({d.note})
                     </span>
                   )}
