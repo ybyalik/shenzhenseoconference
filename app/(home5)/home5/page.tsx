@@ -393,23 +393,40 @@ function Recap() {
   return (
     <section className="bg-[#03060d] pb-24 md:pb-32">
       <div className="container">
-        <div className="relative rounded-3xl overflow-hidden aspect-[1248/702] max-w-[1248px] mx-auto bg-white/5">
-          <Image src={A.recap} alt="2025 Recap video poster" fill className="object-cover" sizes="(max-width: 1280px) 100vw, 1248px" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+        <div className="relative rounded-2xl overflow-hidden aspect-[1248/702] mx-auto bg-white/5">
+          <Image
+            src={A.recap}
+            alt="2025 Recap video poster"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1440px) 100vw, 1280px"
+          />
+          {/* subtle bottom-only darken */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                'linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%)',
+            }}
+          />
 
           <button
-            className="absolute left-6 bottom-6 md:left-10 md:bottom-10 inline-flex items-center gap-3 text-[14px] font-semibold tracking-[0.16em] uppercase text-white"
             type="button"
+            className="absolute left-5 bottom-5 md:left-8 md:bottom-8 inline-flex items-center gap-3 text-white"
           >
-            <span className="grid place-items-center w-12 h-12 rounded-full gradient-cta">
-              <PlayIcon className="w-5 h-5" />
+            <span className="grid place-items-center w-10 h-10 rounded-full bg-[var(--teal)] ring-1 ring-white/30">
+              <PlayIcon className="w-4 h-4 translate-x-[1px]" />
             </span>
-            Watch the 2025 Recap
+            <span className="display text-[12px] md:text-[13px] font-bold tracking-[0.2em] uppercase">
+              Watch the 2025 Recap
+            </span>
           </button>
 
-          <div className="absolute right-6 bottom-6 md:right-10 md:bottom-10 text-right">
-            <div className="display text-[40px] md:text-[56px] font-bold leading-none">500+</div>
-            <div className="mt-1 text-[12px] tracking-[0.2em] font-semibold text-white/80">
+          <div className="absolute right-5 bottom-5 md:right-8 md:bottom-8 text-right">
+            <div className="display text-[40px] md:text-[52px] font-bold leading-none text-white">
+              500+
+            </div>
+            <div className="mt-1 text-[11px] md:text-[12px] tracking-[0.22em] font-semibold text-white/80">
               ATTENDEES · 2025
             </div>
           </div>
@@ -458,45 +475,81 @@ function Audiences() {
     },
   ];
 
+  const cols = [
+    {
+      title: 'International Attendees',
+      img: A.audInternational,
+      lead: "You're in Europe, the US, Southeast Asia, Australia, New Zealand, or the Middle East. You run SEO campaigns, agencies, or in-house teams. You want:",
+      items: intl,
+    },
+    {
+      title: 'Chinese Attendees',
+      img: A.audChinese,
+      lead: "You're running SEO in China. Agency clients, in-house projects, or global brand mandates. You want:",
+      items: cn,
+    },
+  ];
+
   return (
     <section className="bg-[#03060d] py-24 md:py-32">
-      <div className="container text-center">
-        <div className="text-[12px] md:text-[14px] font-semibold tracking-[0.2em] text-[var(--red)] mb-3">
-          WHO IS THIS FOR
+      <div className="container">
+        {/* Centered eyebrow + heading */}
+        <div className="text-center">
+          <div className="text-[14px] font-bold tracking-[0.2em] text-[var(--red)] mb-3">
+            WHO IS THIS FOR
+          </div>
+          <h2 className="display text-[28px] md:text-[36px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-14 md:mb-16">
+            Two Audiences, One Room
+          </h2>
         </div>
-        <h2 className="display text-[36px] md:text-[48px] font-semibold uppercase leading-[1.05] mb-14">
-          Two audiences, One room
-        </h2>
-        <div className="grid gap-8 md:grid-cols-2 text-left">
-          {[
-            { title: 'International Attendees', img: A.audInternational, lead: "You're in Europe, the US, Southeast Asia, Australia, New Zealand, or the Middle East. You run SEO campaigns, agencies, or in-house teams. You want:", items: intl },
-            { title: 'Chinese Attendees', img: A.audChinese, lead: "You're running SEO in China. Agency clients, in-house projects, or global brand mandates. You want:", items: cn },
-          ].map((col) => (
-            <div key={col.title}>
+
+        {/* Two columns with vertical divider on desktop */}
+        <div className="grid gap-12 md:gap-0 md:grid-cols-2">
+          {cols.map((col, idx) => (
+            <div
+              key={col.title}
+              className={
+                idx === 0
+                  ? 'md:pr-8 lg:pr-12 md:border-r md:border-white/10'
+                  : 'md:pl-8 lg:pl-12'
+              }
+            >
               <div className="relative aspect-[560/429] rounded-2xl overflow-hidden mb-7 bg-white/5">
-                <Image src={col.img} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 560px" />
+                <Image
+                  src={col.img}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 560px"
+                />
               </div>
-              <h3 className="display text-[22px] md:text-[24px] font-semibold mb-3 uppercase">
+              <h3 className="display text-[22px] md:text-[24px] font-semibold mb-3 uppercase tracking-[-0.005em]">
                 {col.title}
               </h3>
-              <p className="text-[16px] md:text-[17px] text-white/75 leading-[1.6] mb-7">
+              <p className="text-[15px] md:text-[16px] text-white/75 leading-[1.6] mb-7 max-w-[520px]">
                 {col.lead}
               </p>
               <ul className="space-y-5">
                 {col.items.map((it) => {
                   const isNotFor = it.h === 'Not for';
-                  return (
-                    <li
-                      key={it.h}
-                      className={`pl-5 border-l-[3px] ${
-                        isNotFor ? 'border-[var(--red)]' : 'border-[var(--teal)]'
-                      }`}
-                    >
-                      <div
-                        className={`text-[14px] tracking-[0.06em] uppercase font-bold mb-1 ${
-                          isNotFor ? 'text-[var(--red)]' : 'text-white'
-                        }`}
+                  if (isNotFor) {
+                    return (
+                      <li
+                        key={it.h}
+                        className="rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4"
                       >
+                        <div className="text-[12px] md:text-[13px] tracking-[0.18em] uppercase font-bold mb-1.5 text-[var(--red)]">
+                          {it.h}
+                        </div>
+                        <div className="text-[14px] md:text-[15px] text-white/70 leading-[1.55]">
+                          {it.p}
+                        </div>
+                      </li>
+                    );
+                  }
+                  return (
+                    <li key={it.h} className="pl-5 border-l-2 border-[var(--red)]">
+                      <div className="text-[12px] md:text-[13px] tracking-[0.16em] uppercase font-bold mb-1.5 text-white">
                         {it.h}
                       </div>
                       <div className="text-[14px] md:text-[15px] text-white/70 leading-[1.55]">
