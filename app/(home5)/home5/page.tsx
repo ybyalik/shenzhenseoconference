@@ -1024,9 +1024,9 @@ function Venues() {
           {venues.map((v) => (
             <article
               key={v.name}
-              className="rounded-2xl border border-white/10 overflow-hidden bg-[#06101a]/40"
+              className="rounded-2xl border border-white/10 p-8"
             >
-              <div className="relative aspect-[544/440] bg-white/5">
+              <div className="relative aspect-[544/440] rounded-xl overflow-hidden bg-white/5">
                 <Image
                   src={v.img}
                   alt={v.name}
@@ -1035,7 +1035,7 @@ function Venues() {
                   sizes="(max-width: 768px) 100vw, 544px"
                 />
               </div>
-              <div className="p-6 md:p-8">
+              <div className="pt-8">
                 <div className="text-[12px] font-bold tracking-[0.2em] uppercase text-[var(--red)] mb-2">
                   {v.tag}
                 </div>
