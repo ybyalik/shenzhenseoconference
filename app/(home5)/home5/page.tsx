@@ -940,7 +940,12 @@ function Pricing() {
               <ul className="mt-7 space-y-3">
                 {t.bullets.map((b) => (
                   <li key={b} className="flex items-start gap-3 text-[14px] text-white/80">
-                    <CheckIcon className="w-4 h-4 mt-0.5 text-[var(--teal-2)] flex-none" />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/figma-assets/check-red.png"
+                      alt=""
+                      className="w-4 h-4 mt-0.5 flex-none"
+                    />
                     <span>{b}</span>
                   </li>
                 ))}
