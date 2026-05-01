@@ -1326,12 +1326,31 @@ function Pricing() {
                   {t.old}
                 </span>
               </div>
-              <div className="mt-2 text-[14px] font-semibold text-white/80 leading-snug">
+              <div
+                className="mt-2"
+                style={{
+                  color: '#F9F9F9',
+                  fontSize: '16px',
+                  fontWeight: 600,
+                  lineHeight: '160%',
+                  opacity: 0.6,
+                }}
+              >
                 {t.forWho}
               </div>
               <ul className="mt-7 space-y-3">
                 {t.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-3 text-[14px] text-white/80">
+                  <li
+                    key={b}
+                    className="flex items-start gap-3"
+                    style={{
+                      color: '#F9F9F9',
+                      fontSize: '14px',
+                      fontWeight: 500,
+                      lineHeight: '160%',
+                      opacity: 0.7,
+                    }}
+                  >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src="/figma-assets/check-red.png"
