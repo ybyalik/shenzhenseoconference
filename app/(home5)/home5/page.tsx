@@ -42,6 +42,9 @@ const SPONSORS = {
     { src: '/figma-assets/00951c792ee58aee59e616fc8b656d29d1d17c81.png', alt: 'Outreacher', h: 40 },
     { src: '/figma-assets/da2f1dfdedf0a1e4dca70567d4e2156988fba686.png', alt: 'TalkHeap', h: 48 },
     { src: '/figma-assets/4cc238343519de7f3aeb23fa02dc6007d491df82.png', alt: 'One', h: 32 },
+    { src: '/figma-assets/sponsor-swishdm.png', alt: 'Swish DM', h: 56 },
+    { src: '/figma-assets/sponsor-dynadot.png', alt: 'Dynadot', h: 48 },
+    { src: '/figma-assets/sponsor-convertbetter.png', alt: 'ConvertBetter', h: 48 },
   ],
   silver: [
     { src: '/figma-assets/ebdf03b1659fef7181556f677b8191fd318148e2.png', alt: 'Jademond', h: 48 },
