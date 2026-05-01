@@ -1008,10 +1008,22 @@ function Speakers() {
           </div>
           <a
             href="#"
-            className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 self-start md:self-end"
+            className="display rounded-full border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 self-start md:self-end uppercase"
+            style={{
+              display: 'flex',
+              padding: '16px 24px',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '16px',
+              color: '#F9F9F9',
+              textAlign: 'center',
+              fontSize: '16px',
+              fontWeight: 600,
+              lineHeight: '150%',
+            }}
           >
             SEE ALL SPEAKERS
-            <ArrowUpRight className="w-3 h-3" />
+            <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>
 
