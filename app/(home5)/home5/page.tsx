@@ -364,7 +364,7 @@ function Hero() {
       <Nav />
 
       {/* Headline + right column */}
-      <div className="container pt-[140px] md:pt-[220px] lg:pt-[200px] xl:pt-[260px] pb-12 md:pb-14">
+      <div className="container pt-[140px] md:pt-[260px] lg:pt-[440px] xl:pt-[480px] pb-12 md:pb-14">
         <div className="grid gap-8 lg:gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
           {/* LEFT: title + date (date above on mobile, below on desktop) */}
           <div className="flex flex-col">
