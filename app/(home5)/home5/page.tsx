@@ -1145,9 +1145,19 @@ function Agenda() {
           <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
             WHAT&apos;S THE AGENDA
           </div>
-          <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] max-w-[820px]">
-            <span className="text-white">Five Days,</span>{' '}
-            <span className="text-white/30">Pick Your Depth</span>
+          <h2
+            className="display uppercase self-stretch max-w-[820px]"
+            style={{
+              color: '#F9F9F9',
+              fontFamily: 'Unbounded, system-ui, sans-serif',
+              fontSize: '48px',
+              fontWeight: 600,
+              lineHeight: '120%',
+              letterSpacing: '-2px',
+            }}
+          >
+            <span>Five Days,</span>{' '}
+            <span style={{ opacity: 0.3 }}>Pick Your Depth</span>
           </h2>
         </div>
 
