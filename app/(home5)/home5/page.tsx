@@ -1420,7 +1420,7 @@ function Venues() {
           WHERE IS THE EVENT HAPPENING
         </div>
         <h2
-          className="display uppercase self-stretch mb-5 max-w-[900px]"
+          className="display uppercase self-stretch mb-5 lg:whitespace-nowrap"
           style={{
             color: '#F9F9F9',
             fontFamily: 'Unbounded, system-ui, sans-serif',
