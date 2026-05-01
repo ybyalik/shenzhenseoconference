@@ -349,8 +349,7 @@ function Hero() {
           alt=""
           fill
           priority
-          className="object-cover"
-          style={{ objectPosition: 'center 75%' }}
+          className="object-cover object-center"
           sizes="100vw"
         />
         {/* Exact Figma gradient overlay */}
