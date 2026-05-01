@@ -1966,12 +1966,27 @@ function Sponsors() {
     max: number;
     tier: 'platinum' | 'gold' | 'silver';
   }) => {
+    // OPTION 2 — flatten every logo to a uniform silhouette before tinting,
+    // so the hover color reads identically across all logos in a tier
+    // regardless of source colors. Trade-off: internal color details (e.g.
+    // ConvertBetter's green arrow) are lost.
+    //   Step 1: brightness(0) → black silhouette
+    //   Step 2: invert(1)     → white silhouette
+    //   Step 3: tier tint     → applied on top of the white
+    const baseFlatten = 'brightness(0) invert(1)';
+    const defaultFilter = `${baseFlatten}`;
+    const defaultOpacity = '0.5';
     const hoverFilter =
       tier === 'gold'
-        ? 'sepia(1) saturate(2.4) hue-rotate(-12deg) brightness(1.05)'
+        ? // gold ~#D4AF37
+          `${baseFlatten} sepia(1) saturate(4) hue-rotate(-5deg) brightness(0.95)`
         : tier === 'silver'
-        ? 'grayscale(1) brightness(1.15) contrast(0.95)'
-        : 'none'; // platinum: full color
+        ? // silver ~#C0C0C0
+          `${baseFlatten} brightness(0.82)`
+        : // platinum ~ near-white
+          `${baseFlatten}`;
+    const hoverOpacity = '1';
+
     return (
       <div className={`text-center sponsor-row sponsor-${tier}`}>
         <h3
@@ -1993,23 +2008,22 @@ function Sponsors() {
               key={s.src}
               src={s.src}
               alt={s.alt}
-              data-hover-filter={hoverFilter}
               style={{
                 height: `${Math.min(s.h, max)}px`,
                 width: 'auto',
                 maxWidth: '160px',
                 objectFit: 'contain',
-                filter: 'grayscale(1) brightness(0.85)',
-                opacity: 0.5,
+                filter: defaultFilter,
+                opacity: defaultOpacity,
                 transition: 'filter 0.25s ease, opacity 0.25s ease',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.filter = hoverFilter;
-                e.currentTarget.style.opacity = '1';
+                e.currentTarget.style.opacity = hoverOpacity;
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.filter = 'grayscale(1) brightness(0.85)';
-                e.currentTarget.style.opacity = '0.5';
+                e.currentTarget.style.filter = defaultFilter;
+                e.currentTarget.style.opacity = defaultOpacity;
               }}
             />
           ))}
