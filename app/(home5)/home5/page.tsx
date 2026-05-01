@@ -1462,7 +1462,7 @@ function Venues() {
               </div>
               <div className="pt-8">
                 <div
-                  className="inline-flex rounded-full border border-white/20 bg-white/5 backdrop-blur-sm uppercase mb-3 w-fit"
+                  className="inline-flex rounded-full border border-white/20 uppercase mb-3 w-fit"
                   style={{
                     display: 'flex',
                     padding: '8px 16px',
