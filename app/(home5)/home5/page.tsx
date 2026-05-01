@@ -418,7 +418,7 @@ function QuoteGlyph({ className = '' }: { className?: string }) {
 
 function FounderLetter() {
   return (
-    <section className="bg-[#03060d] py-24 md:py-32">
+    <section className="bg-[#03060d] py-24">
       <div className="container">
         <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
           WHAT IS SZSEO?
@@ -522,7 +522,7 @@ function Recap() {
   };
 
   return (
-    <section className="bg-[#03060d] pb-24 md:pb-32">
+    <section className="bg-[#03060d] py-24">
       <div className="container">
         <div className="relative rounded-2xl overflow-hidden aspect-[1248/702] mx-auto bg-white/5">
           <video
@@ -681,7 +681,7 @@ function Audiences() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section className="bg-[#03060d] py-24 md:py-32">
+    <section className="bg-[#03060d] py-24">
       <div className="container">
         {/* Centered eyebrow + heading */}
         <div className="text-center">
@@ -845,7 +845,7 @@ function WhyShenzhen() {
     },
   ];
   return (
-    <section id="visit" className="bg-[#03060d] pb-24 md:pb-32">
+    <section id="visit" className="bg-[#03060d] py-24">
       <div className="container">
         <div className="rounded-[28px] border border-white/10 bg-[#03060d] p-6 md:p-10 lg:p-14">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8">
@@ -979,7 +979,7 @@ function Speakers() {
   const MOBILE_INITIAL = 3;
 
   return (
-    <section id="speakers" className="bg-[#03060d] py-24 md:py-32">
+    <section id="speakers" className="bg-[#03060d] py-24">
       <div className="container">
         <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end mb-12 md:mb-14">
           <div>
@@ -1103,7 +1103,7 @@ function Agenda() {
   ];
 
   return (
-    <section id="agenda" className="bg-[#03060d] py-24 md:py-32 border-t border-white/10">
+    <section id="agenda" className="bg-[#03060d] py-24 border-t border-white/10">
       <div className="container">
         <div className="mb-10 md:mb-12">
           <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
@@ -1216,7 +1216,7 @@ function Pricing() {
   return (
     <section
       id="pricing"
-      className="py-24 md:py-32"
+      className="py-24"
       style={{
         // Figma fill stack (top → bottom in panel = first → last in CSS):
         //   1) Linear: vertical fade-in/out  #03060D 0% → transparent 50% → #03060D 100%
@@ -1334,7 +1334,7 @@ function Venues() {
     },
   ];
   return (
-    <section className="bg-[#03060d] py-24 md:py-32">
+    <section className="bg-[#03060d] py-24">
       <div className="container">
         <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
           WHERE IS THE EVENT HAPPENING
@@ -1422,7 +1422,7 @@ function Testimonials() {
     },
   ];
   return (
-    <section className="bg-[#03060d] py-24 md:py-32 border-t border-white/10">
+    <section className="bg-[#03060d] py-24 border-t border-white/10">
       <div className="container">
         <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
           WHAT DID THE PREVIOUS ATTENDEES SAY
@@ -1648,7 +1648,7 @@ function Faq() {
     },
   ];
   return (
-    <section className="bg-[#03060d] py-24 md:py-32 border-t border-[var(--line)]">
+    <section className="bg-[#03060d] py-24 border-t border-[var(--line)]">
       <div className="container">
         <div className="md:text-center text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
           FAQ
@@ -1681,7 +1681,7 @@ function Faq() {
 /* ───────────────────────────── FINAL CTA (28:692) ───────────────────────────── */
 function FinalCta() {
   return (
-    <section className="bg-[#03060d] py-16 md:py-20">
+    <section className="bg-[#03060d] py-24">
       <div className="container">
         <div
           className="rounded-[28px] py-14 md:py-20 px-6 text-center"
@@ -1746,7 +1746,7 @@ function Sponsors() {
     </div>
   );
   return (
-    <section id="sponsors" className="bg-[#03060d] py-24 md:py-32 border-t border-white/10">
+    <section id="sponsors" className="bg-[#03060d] py-24 border-t border-white/10">
       <div className="container">
         <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-end mb-16 md:mb-20">
           <div>
@@ -1782,7 +1782,7 @@ function Sponsors() {
 function Contact() {
   const [check, setCheck] = useState(false);
   return (
-    <section id="contact" className="bg-[#03060d] py-16 md:py-24">
+    <section id="contact" className="bg-[#03060d] py-24">
       <div className="container">
         <div className="rounded-[28px] p-8 md:p-12 lg:p-14 bg-[#06101a]/60 border border-white/10">
           <div className="grid gap-10 md:grid-cols-2">
