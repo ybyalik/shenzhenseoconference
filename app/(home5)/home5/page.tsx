@@ -31,26 +31,16 @@ const A = {
 
 const SPONSORS = {
   platinum: [
-    { src: '/figma-assets/73b861094a7ce5e5553ff2eacca50af9313eddc6.png', alt: 'ecomeXperts', h: 96 },
     { src: '/figma-assets/9add4b1aed067330ac161c840fbecee2473b160e.png', alt: 'QuickCreator', h: 96 },
   ],
   gold: [
-    { src: '/figma-assets/f0e3f8d61df36d854e27745af7d05b9bcc1aea5c.png', alt: 'WhitePress', h: 56 },
-    { src: '/figma-assets/5d44f4aa95e3e0cb5f75f6e92517a822bb547d10.png', alt: 'GlobalSou', h: 56 },
-    { src: '/figma-assets/e2be1f52c8341431f2e0142282b3bdefb0b34054.png', alt: 'Interamplify', h: 56 },
-    { src: '/figma-assets/8728f57b7619192ecc39e1207b73dfd04124cab3.png', alt: 'eClickTech', h: 40 },
-    { src: '/figma-assets/00951c792ee58aee59e616fc8b656d29d1d17c81.png', alt: 'Outreacher', h: 40 },
-    { src: '/figma-assets/da2f1dfdedf0a1e4dca70567d4e2156988fba686.png', alt: 'TalkHeap', h: 48 },
-    { src: '/figma-assets/4cc238343519de7f3aeb23fa02dc6007d491df82.png', alt: 'One', h: 32 },
     { src: '/figma-assets/sponsor-swishdm.png', alt: 'Swish DM', h: 56 },
     { src: '/figma-assets/sponsor-dynadot.png', alt: 'Dynadot', h: 48 },
+    { src: '/figma-assets/73b861094a7ce5e5553ff2eacca50af9313eddc6.png', alt: 'ecomeXperts', h: 56 },
     { src: '/figma-assets/sponsor-convertbetter.png', alt: 'ConvertBetter', h: 48 },
   ],
   silver: [
-    { src: '/figma-assets/ebdf03b1659fef7181556f677b8191fd318148e2.png', alt: 'Jademond', h: 48 },
     { src: '/figma-assets/8842dd91b89a6d7f26f78f6178e930f87bc16a6b.png', alt: 'CLOOM TECH', h: 44 },
-    { src: '/figma-assets/f322340b321ddd2210efee3f4ed32b7517bf5764.png', alt: 'Pro SEO', h: 40 },
-    { src: '/figma-assets/4339518ac99baca90b5adeac28a69ea6b35b60b3.png', alt: 'Now Shenzhen', h: 44 },
   ],
 };
 
