@@ -923,11 +923,29 @@ function WhyShenzhen() {
               <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>
-          <p className="text-[15px] md:text-[16px] text-white/85 leading-[1.6] max-w-[760px] mb-3">
+          <p
+            className="self-stretch max-w-[760px] mb-3"
+            style={{
+              color: '#F9F9F9',
+              fontSize: '18px',
+              fontWeight: 500,
+              lineHeight: '160%',
+              opacity: 0.8,
+            }}
+          >
             Most conferences ask you to fly to a city you&apos;ve already been to. This one
             doesn&apos;t.
           </p>
-          <p className="text-[14px] md:text-[15px] text-white/65 leading-[1.6] max-w-[760px] mb-12 md:mb-14">
+          <p
+            className="self-stretch max-w-[760px] mb-12 md:mb-14"
+            style={{
+              color: '#F9F9F9',
+              fontSize: '18px',
+              fontWeight: 500,
+              lineHeight: '160%',
+              opacity: 0.8,
+            }}
+          >
             Shenzhen is the fastest-moving city on earth that most Westerners have never set
             foot in. 18 million people. Average age 32. More patents filed here than anywhere
             else in China. Tencent, DJI, Huawei, BYD — all within a 30-minute drive.
