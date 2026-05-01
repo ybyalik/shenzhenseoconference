@@ -321,7 +321,15 @@ function Hero() {
   return (
     <section id="top" className="relative isolate overflow-hidden bg-[#03060d]">
       <div className="absolute inset-0 -z-10">
-        <Image src={A.heroBg} alt="" fill priority className="object-cover object-center" sizes="100vw" />
+        <Image
+          src={A.heroBg}
+          alt=""
+          fill
+          priority
+          className="object-cover"
+          style={{ objectPosition: 'center 75%' }}
+          sizes="100vw"
+        />
         {/* Exact Figma gradient overlay */}
         <div
           className="absolute inset-0"
