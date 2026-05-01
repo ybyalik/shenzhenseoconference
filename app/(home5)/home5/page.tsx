@@ -271,7 +271,7 @@ function Hero() {
       <Nav />
 
       {/* Headline + right column */}
-      <div className="container pt-[140px] md:pt-[300px] lg:pt-[340px] pb-12 md:pb-14">
+      <div className="container pt-[140px] md:pt-[220px] lg:pt-[200px] xl:pt-[260px] pb-12 md:pb-14">
         <div className="grid gap-8 lg:gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
           {/* LEFT: title + date (date above on mobile, below on desktop) */}
           <div className="flex flex-col">
@@ -280,7 +280,7 @@ function Hero() {
               <span className="w-1 h-1 rounded-full bg-white/55" aria-hidden />
               <span className="font-medium">The St. Regis Shenzhen</span>
             </div>
-            <h1 className="order-2 lg:order-1 display font-semibold uppercase leading-[1.02] tracking-[-0.005em] text-white text-[clamp(34px,6.2vw,72px)]">
+            <h1 className="order-2 lg:order-1 display font-semibold uppercase leading-[1.02] tracking-[-0.005em] text-white text-[clamp(28px,4.8vw,64px)]">
               <span className="block">East Meets West</span>
               <HeroTitleLine label="IN" word="SEO" colorClass="text-[var(--teal-2)]" />
               <HeroTitleLine
