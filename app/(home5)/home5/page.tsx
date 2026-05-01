@@ -776,6 +776,7 @@ function Audiences() {
                   fontSize: '18px',
                   fontWeight: 500,
                   lineHeight: '170%',
+                  opacity: 0.8,
                 }}
               >
                 {col.lead}
@@ -807,6 +808,7 @@ function Audiences() {
                             fontSize: '16px',
                             fontWeight: 500,
                             lineHeight: '170%',
+                            opacity: 0.6,
                           }}
                         >
                           {it.p}
@@ -834,6 +836,7 @@ function Audiences() {
                           fontSize: '16px',
                           fontWeight: 500,
                           lineHeight: '170%',
+                          opacity: 0.6,
                         }}
                       >
                         {it.p}
