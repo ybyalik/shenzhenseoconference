@@ -591,11 +591,27 @@ function Recap() {
               </div>
 
               <div className="absolute right-5 bottom-5 md:right-8 md:bottom-8 text-right">
-                <div className="display text-[40px] md:text-[52px] font-bold leading-none text-white">
+                <div
+                  className="display uppercase"
+                  style={{
+                    color: '#F9F9F9',
+                    fontSize: '32px',
+                    fontWeight: 700,
+                    lineHeight: 'normal',
+                  }}
+                >
                   500+
                 </div>
-                <div className="mt-1 text-[11px] md:text-[12px] tracking-[0.22em] font-semibold text-white/80">
-                  ATTENDEES · 2025
+                <div
+                  className="display uppercase mt-1"
+                  style={{
+                    color: '#F9F9F9',
+                    fontSize: '18px',
+                    fontWeight: 700,
+                    lineHeight: '160%',
+                  }}
+                >
+                  Attendees · 2025
                 </div>
               </div>
             </>
