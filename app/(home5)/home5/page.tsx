@@ -1232,7 +1232,7 @@ function Pricing() {
       name: 'Deluxe',
       price: '$795',
       old: '$900',
-      forWho: 'For marketing directors and agency leads.',
+      forWho: 'For marketing directors and agency leads',
       tag: 'Most popular',
       bullets: [
         'Everything in Standard',
