@@ -257,8 +257,8 @@ function Hero() {
     <section id="top" className="relative isolate overflow-hidden bg-[#03060d]">
       <div className="absolute inset-0 -z-10">
         <Image src={A.heroBg} alt="" fill priority className="object-cover" sizes="100vw" />
-        {/* 80% black overlay on the photo */}
-        <div className="absolute inset-0 bg-black/80" />
+        {/* 20% black overlay on the photo */}
+        <div className="absolute inset-0 bg-black/20" />
         {/* Soft fade into the page background at the bottom */}
         <div
           className="absolute inset-0"
