@@ -1277,7 +1277,17 @@ function Pricing() {
     >
       <div className="container">
         <div className="text-center">
-          <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
+          <div
+            className="uppercase mb-3"
+            style={{
+              color: '#EB3030',
+              textAlign: 'center',
+              fontSize: '18px',
+              fontWeight: 700,
+              lineHeight: '150%',
+              letterSpacing: '0.9px',
+            }}
+          >
             HOW MUCH IS THE TICKET
           </div>
           <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9]">
