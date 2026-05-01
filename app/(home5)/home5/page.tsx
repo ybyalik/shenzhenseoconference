@@ -1879,7 +1879,7 @@ function Sponsors() {
     </div>
   );
   return (
-    <section id="sponsors" className="bg-[#03060d] py-24 border-t border-white/10">
+    <section id="sponsors" className="bg-[#03060d] py-24">
       <div className="container">
         <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-end mb-16 md:mb-20">
           <div>
