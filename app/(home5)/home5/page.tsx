@@ -1484,8 +1484,26 @@ function Venues() {
                   {v.days}
                 </div>
                 <p className="text-[14px] md:text-[15px] text-white/75 leading-[1.6]">{v.desc}</p>
-                <div className="mt-6">
-                  <div className="text-[12px] font-bold tracking-[0.2em] uppercase text-[var(--red)] mb-2">
+                <div
+                  className="mt-6 self-stretch"
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    gap: '8px',
+                    paddingLeft: '24px',
+                    borderLeft: '2px solid #EB3030',
+                  }}
+                >
+                  <div
+                    className="display uppercase"
+                    style={{
+                      color: '#F9F9F9',
+                      fontSize: '14px',
+                      fontWeight: 500,
+                      lineHeight: '160%',
+                    }}
+                  >
                     {v.whyTitle}
                   </div>
                   <p className="text-[14px] text-white/65 leading-[1.55]">{v.why}</p>
