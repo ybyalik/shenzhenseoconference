@@ -423,7 +423,7 @@ function FounderLetter() {
         <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
           WHAT IS SZSEO?
         </div>
-        <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-10 md:mb-12">
+        <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] text-center self-stretch text-[#F9F9F9] mb-10 md:mb-12">
           A Letter From The Founder
         </h2>
 
@@ -688,7 +688,7 @@ function Audiences() {
           <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
             WHO IS THIS FOR
           </div>
-          <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-8 md:mb-16">
+          <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] text-center self-stretch text-[#F9F9F9] mb-8 md:mb-16">
             Two Audiences, One Room
           </h2>
         </div>
@@ -813,7 +813,7 @@ function WhyShenzhen() {
               <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
                 WHY SHENZHEN
               </div>
-              <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em]">
+              <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] text-center self-stretch text-[#F9F9F9]">
                 Come Expecting The Unknown
               </h2>
             </div>
@@ -924,7 +924,7 @@ function Speakers() {
             <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
               WHO&apos;S SPEAKING
             </div>
-            <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.02] tracking-[-0.005em] max-w-[820px]">
+            <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] text-center self-stretch text-[#F9F9F9] max-w-[820px]">
               <span className="block text-white">On Stage: Practitioners,</span>
               <span className="block text-white/30">Not Theorists.</span>
             </h2>
@@ -1047,7 +1047,7 @@ function Agenda() {
           <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
             WHAT&apos;S THE AGENDA
           </div>
-          <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.02] tracking-[-0.005em] max-w-[820px]">
+          <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] text-center self-stretch text-[#F9F9F9] max-w-[820px]">
             <span className="text-white">Five Days,</span>{' '}
             <span className="text-white/30">Pick Your Depth</span>
           </h2>
@@ -1172,7 +1172,7 @@ function Pricing() {
           <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
             HOW MUCH IS THE TICKET
           </div>
-          <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em]">
+          <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] text-center self-stretch text-[#F9F9F9]">
             Get Early Bird Tickets
           </h2>
           <p className="mx-auto mt-5 max-w-[680px] text-[15px] md:text-[16px] text-white/70 leading-[1.6]">
@@ -1277,7 +1277,7 @@ function Venues() {
         <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
           WHERE IS THE EVENT HAPPENING
         </div>
-        <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-5 max-w-[900px]">
+        <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] text-center self-stretch text-[#F9F9F9] mb-5 max-w-[900px]">
           Two Venues. Both Picked On Purpose.
         </h2>
         <p className="text-[15px] md:text-[16px] text-white/70 leading-[1.6] max-w-[820px] mb-12 md:mb-14">
@@ -1365,7 +1365,7 @@ function Testimonials() {
         <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
           WHAT DID THE PREVIOUS ATTENDEES SAY
         </div>
-        <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-12 max-w-[900px] text-white">
+        <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] text-center self-stretch text-[#F9F9F9] mb-12 max-w-[900px] text-white">
           What 2025 Attendees Told Us.
         </h2>
 
@@ -1591,7 +1591,7 @@ function Faq() {
         <div className="md:text-center text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
           FAQ
         </div>
-        <h2 className="md:text-center display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] mb-12 text-white">
+        <h2 className="md:text-center display text-[36px] font-semibold uppercase leading-[1.2] text-center self-stretch text-[#F9F9F9] mb-12 text-white">
           Real Questions. Direct Answers.
         </h2>
         <div className="max-w-[920px] mx-auto space-y-3">
@@ -1691,7 +1691,7 @@ function Sponsors() {
             <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
               2026 PARTNERS
             </div>
-            <h2 className="display text-[28px] md:text-[48px] font-semibold uppercase leading-[1.05] tracking-[-0.005em] text-white">
+            <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] text-center self-stretch text-[#F9F9F9] text-white">
               Our Sponsors
             </h2>
             <p className="mt-4 text-[15px] md:text-[16px] text-white/65 leading-[1.6] max-w-[640px]">
