@@ -331,110 +331,106 @@ function Hero() {
           }}
         />
       </div>
+      <Nav />
 
-      {/*
-        Desktop frame: 1440x862, flex-column, padding 0 96 56 96,
-        justify-content: space-between, align-items: center.
-        Mobile keeps natural document flow.
-      */}
-      <div className="relative mx-auto w-full max-w-[1440px] lg:flex lg:flex-col lg:items-center lg:justify-between lg:h-[862px] lg:px-24 lg:pb-14 lg:pt-0">
-        {/* TOP: nav */}
-        <Nav />
-
-        {/* MIDDLE: headline + right column */}
-        <div className="w-full container lg:container-none lg:p-0 pt-[140px] md:pt-[220px] lg:pt-0 pb-12 lg:pb-0">
-          <div className="grid gap-8 lg:gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
-            {/* LEFT: title + date (date above on mobile, below on desktop) */}
-            <div className="flex flex-col">
-              <div className="order-1 lg:order-2 lg:mt-7 flex items-center gap-3 text-[13px] md:text-[14px] text-white/90 mb-5 lg:mb-0">
-                <span className="font-bold">September 14–18, 2026</span>
-                <span className="w-1 h-1 rounded-full bg-white/55" aria-hidden />
-                <span className="font-medium">The St. Regis Shenzhen</span>
-              </div>
-              <h1 className="order-2 lg:order-1 display font-semibold uppercase leading-[1.02] tracking-[-0.005em] text-white text-[clamp(28px,4.8vw,64px)]">
-                <span className="block">East Meets West</span>
-                <HeroTitleLine label="IN" word="SEO" colorClass="text-[var(--teal-2)]" />
-                <HeroTitleLine
-                  label="IN"
-                  word="Shenzhen, China"
-                  colorClass="gradient-text-brand"
-                />
-              </h1>
+      {/* Headline + right column */}
+      <div className="container pt-[140px] md:pt-[220px] lg:pt-[200px] xl:pt-[260px] pb-12 md:pb-14">
+        <div className="grid gap-8 lg:gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          {/* LEFT: title + date (date above on mobile, below on desktop) */}
+          <div className="flex flex-col">
+            <div className="order-1 lg:order-2 lg:mt-7 flex items-center gap-3 text-[13px] md:text-[14px] text-white/90 mb-5 lg:mb-0">
+              <span className="font-bold">September 14–18, 2026</span>
+              <span className="w-1 h-1 rounded-full bg-white/55" aria-hidden />
+              <span className="font-medium">The St. Regis Shenzhen</span>
             </div>
+            <h1 className="order-2 lg:order-1 display font-semibold uppercase leading-[1.02] tracking-[-0.005em] text-white text-[clamp(28px,4.8vw,64px)]">
+              <span className="block">East Meets West</span>
+              <HeroTitleLine label="IN" word="SEO" colorClass="text-[var(--teal-2)]" />
+              <HeroTitleLine
+                label="IN"
+                word="Shenzhen, China"
+                colorClass="gradient-text-brand"
+              />
+            </h1>
+          </div>
 
-            {/* RIGHT: description + CTA (filled red on mobile, outline on desktop) */}
-            <div className="lg:max-w-[360px] lg:text-right flex flex-col lg:items-end gap-5 lg:gap-6">
-              <p className="text-[16px] text-white leading-[1.7] lg:w-[332px] lg:h-[81px]">
-                5 days of talks, workshops, masterminds, city tours, and the kind of network
-                connections you don&apos;t make on LinkedIn
-              </p>
-              <a
-                href="#pricing"
-                className="lg:hidden display inline-flex items-center justify-center gap-2 w-full px-7 py-3.5 rounded-full text-[13px] font-bold tracking-[0.18em] text-white gradient-cta"
-              >
-                GET TICKETS
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href="#pricing"
-                className="hidden lg:inline-flex display items-center gap-2 rounded-full text-[14px] font-semibold tracking-[0.18em] text-white border border-white/55 bg-black/25 backdrop-blur-sm hover:bg-black/40"
-                style={{ padding: '12px 32px', lineHeight: '28px' }}
-              >
-                GET TICKETS
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
+          {/* RIGHT: description + CTA (filled red on mobile, outline on desktop) */}
+          <div className="lg:max-w-[360px] lg:text-right flex flex-col lg:items-end gap-5 lg:gap-6">
+            <p
+              className="text-[16px] text-white leading-[1.7] lg:w-[332px] lg:h-[81px]"
+            >
+              5 days of talks, workshops, masterminds, city tours, and the kind of network
+              connections you don&apos;t make on LinkedIn
+            </p>
+            <a
+              href="#pricing"
+              className="lg:hidden display inline-flex items-center justify-center gap-2 w-full px-7 py-3.5 rounded-full text-[13px] font-bold tracking-[0.18em] text-white gradient-cta"
+            >
+              GET TICKETS
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href="#pricing"
+              className="hidden lg:inline-flex display items-center gap-2 rounded-full text-[14px] font-semibold tracking-[0.18em] text-white border border-white/55 bg-black/25 backdrop-blur-sm hover:bg-black/40"
+              style={{ padding: '12px 32px', lineHeight: '28px' }}
+            >
+              GET TICKETS
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
+      </div>
 
-        {/* BOTTOM: divider + quote/stats strip */}
-        <div className="w-full container lg:container-none lg:p-0">
-          <div className="border-t border-white/15" />
-          <div className="py-8 lg:py-0 lg:pt-10">
-            <div className="grid gap-7 lg:gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
-              {/* Quote */}
-              <figure className="flex items-center gap-3 md:gap-4">
-                <span className="relative w-11 h-11 md:w-12 md:h-12 rounded-full overflow-hidden bg-white/10 flex-none ring-2 ring-white/15">
-                  <Image
-                    src={A.spkA}
-                    alt="Gary Illyes"
-                    fill
-                    className="object-cover"
-                    sizes="48px"
-                  />
-                </span>
-                <div className="min-w-0">
-                  <p className="text-[13px] md:text-[15px] italic text-white leading-[1.45]">
-                    &ldquo;Don&apos;t panic. Things change. They always do. Figure it out.&rdquo;
-                  </p>
-                  <figcaption className="mt-1.5 text-[11px] md:text-[13px] text-white/65 leading-snug">
-                    <span className="font-semibold text-white">Gary Illyes</span>
-                    <span className="mx-1.5 md:mx-2 text-white/30">|</span>
-                    <span>Search Relations, Google · Keynote Speaker</span>
-                  </figcaption>
-                </div>
-              </figure>
-
-              {/* Stats */}
-              <dl className="grid grid-cols-4 gap-4 md:flex md:items-start md:gap-[42px] lg:justify-end self-stretch opacity-60">
-                {[
-                  ['600', 'SEATS'],
-                  ['40+', 'SPEAKERS'],
-                  ['30+', 'COUNTRIES'],
-                  ['5', 'DAYS'],
-                ].map(([n, l]) => (
-                  <div key={l} className="text-center">
-                    <dt className="display text-[28px] md:text-[32px] font-semibold leading-none text-[#f9f9f9]">
-                      {n}
-                    </dt>
-                    <dd className="mt-2 text-[11px] md:text-[12px] font-semibold tracking-[0.22em] text-[#f9f9f9]">
-                      {l}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
+      {/* Divider + quote/stats strip */}
+      <div className="container">
+        <div className="border-t border-white/15" />
+      </div>
+      <div className="container py-8 md:py-12">
+        <div className="grid gap-7 lg:gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+          {/* Quote */}
+          <figure className="flex items-center gap-3 md:gap-4">
+            <span className="relative w-11 h-11 md:w-12 md:h-12 rounded-full overflow-hidden bg-white/10 flex-none ring-2 ring-white/15">
+              {/* Use first speaker portrait as Gary placeholder */}
+              <Image
+                src={A.spkA}
+                alt="Gary Illyes"
+                fill
+                className="object-cover"
+                sizes="48px"
+              />
+            </span>
+            <div className="min-w-0">
+              <p className="text-[13px] md:text-[15px] italic text-white leading-[1.45]">
+                &ldquo;Don&apos;t panic. Things change. They always do. Figure it out.&rdquo;
+              </p>
+              <figcaption className="mt-1.5 text-[11px] md:text-[13px] text-white/65 leading-snug">
+                <span className="font-semibold text-white">Gary Illyes</span>
+                <span className="mx-1.5 md:mx-2 text-white/30">|</span>
+                <span>Search Relations, Google · Keynote Speaker</span>
+              </figcaption>
             </div>
-          </div>
+          </figure>
+
+          {/* Stats */}
+          <dl
+            className="grid grid-cols-4 gap-4 md:flex md:items-start md:gap-[42px] lg:justify-end self-stretch opacity-60"
+          >
+            {[
+              ['600', 'SEATS'],
+              ['40+', 'SPEAKERS'],
+              ['30+', 'COUNTRIES'],
+              ['5', 'DAYS'],
+            ].map(([n, l]) => (
+              <div key={l} className="text-center">
+                <dt className="display text-[28px] md:text-[32px] font-semibold leading-none text-[#f9f9f9]">
+                  {n}
+                </dt>
+                <dd className="mt-2 text-[11px] md:text-[12px] font-semibold tracking-[0.22em] text-[#f9f9f9]">
+                  {l}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>
