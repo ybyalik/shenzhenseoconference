@@ -1400,8 +1400,19 @@ function Venues() {
         <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
           WHERE IS THE EVENT HAPPENING
         </div>
-        <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] mb-5 max-w-[900px]">
-          Two Venues. Both Picked On Purpose.
+        <h2
+          className="display uppercase self-stretch mb-5 max-w-[900px]"
+          style={{
+            color: '#F9F9F9',
+            fontFamily: 'Unbounded, system-ui, sans-serif',
+            fontSize: '48px',
+            fontWeight: 600,
+            lineHeight: '120%',
+            letterSpacing: '-2px',
+          }}
+        >
+          <span>Two Venues. </span>
+          <span style={{ opacity: 0.3 }}>Both Picked On Purpose.</span>
         </h2>
         <p className="text-[15px] md:text-[16px] text-white/70 leading-[1.6] max-w-[820px] mb-12 md:mb-14">
           We personally vetted 29 five-star hotels. These two are what good looks like.
