@@ -143,6 +143,38 @@ function MenuIcon({ className = '' }: { className?: string }) {
   );
 }
 
+function ArrowUpIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 19V5M5 12l7-7 7 7"
+      />
+    </svg>
+  );
+}
+
+function BackToTop() {
+  return (
+    <button
+      type="button"
+      aria-label="Back to top"
+      onClick={() =>
+        typeof window !== 'undefined' &&
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+      className="fixed grid place-items-center w-12 h-12 rounded-full gradient-cta text-white shadow-lg z-40 hover:scale-105 transition-transform"
+      style={{ right: '50px', bottom: '50px' }}
+    >
+      <ArrowUpIcon className="w-5 h-5" />
+    </button>
+  );
+}
+
 /** Tracks which carousel card is currently in view inside a scroll-snap container. */
 function useCarouselActive(trackRef: React.RefObject<HTMLDivElement | null>) {
   const [activeIdx, setActiveIdx] = useState(0);
@@ -1815,6 +1847,7 @@ export default function Home5Page() {
       <Sponsors />
       <Contact />
       <Footer />
+      <BackToTop />
     </main>
   );
 }
