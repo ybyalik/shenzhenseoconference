@@ -288,15 +288,13 @@ function Hero() {
   return (
     <section id="top" className="relative isolate overflow-hidden bg-[#03060d]">
       <div className="absolute inset-0 -z-10">
-        <Image src={A.heroBg} alt="" fill priority className="object-cover" sizes="100vw" />
-        {/* 20% black overlay on the photo */}
-        <div className="absolute inset-0 bg-black/20" />
-        {/* Soft fade into the page background at the bottom */}
+        <Image src={A.heroBg} alt="" fill priority className="object-cover object-center" sizes="100vw" />
+        {/* Exact Figma gradient overlay */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(3,6,13,0) 70%, rgba(3,6,13,0.85) 92%, #03060d 100%)',
+              'linear-gradient(180deg, rgba(3, 6, 13, 0) 19.95%, rgba(3, 6, 13, 0.75) 59.98%, #03060D 100%)',
           }}
         />
       </div>
@@ -381,7 +379,9 @@ function Hero() {
           </figure>
 
           {/* Stats */}
-          <dl className="grid grid-cols-4 gap-4 md:flex md:items-end md:gap-10 lg:justify-end">
+          <dl
+            className="grid grid-cols-4 gap-4 md:flex md:items-start md:gap-[42px] lg:justify-end self-stretch opacity-60"
+          >
             {[
               ['600', 'SEATS'],
               ['40+', 'SPEAKERS'],
