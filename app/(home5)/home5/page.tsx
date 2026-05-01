@@ -1403,7 +1403,7 @@ function Venues() {
       addr: '5016 Shennan East Rd, Luohu District',
     },
     {
-      tag: 'VIP Workshop Venue',
+      tag: 'VIP Networking Venue',
       name: 'MGM Shenzhen',
       days: 'Day 5 VIP Networking',
       img: A.venueMgm,
