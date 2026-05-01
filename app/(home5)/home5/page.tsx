@@ -342,10 +342,7 @@ function HeroTitleLine({
 
 function Hero() {
   return (
-    <section
-      id="top"
-      className="relative isolate overflow-hidden bg-[#03060d] lg:aspect-[1440/862]"
-    >
+    <section id="top" className="relative isolate overflow-hidden bg-[#03060d]">
       <div className="absolute inset-0 -z-10">
         <Image
           src={A.heroBg}
