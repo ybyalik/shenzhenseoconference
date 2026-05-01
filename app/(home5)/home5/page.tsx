@@ -1961,7 +1961,8 @@ function Contact() {
               </p>
               <ul className="space-y-3 text-[14px] md:text-[15px] text-white/85">
                 <li className="flex items-center gap-3">
-                  <MailIcon className="w-4 h-4 text-white/55 flex-none" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/figma-assets/mail.svg" alt="" className="w-5 h-5 flex-none" />
                   <a
                     href="mailto:support@shenzhenseoconference.com"
                     className="hover:underline"
@@ -1970,7 +1971,8 @@ function Contact() {
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <MailIcon className="w-4 h-4 text-white/55 flex-none" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/figma-assets/mail.svg" alt="" className="w-5 h-5 flex-none" />
                   <a
                     href="mailto:sponsor@shenzhenseoconference.com"
                     className="hover:underline"
