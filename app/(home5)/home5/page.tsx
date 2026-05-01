@@ -512,46 +512,94 @@ function FounderLetter() {
 
 /* ───────────────────────────── 2025 RECAP (28:153) ───────────────────────────── */
 function Recap() {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handlePlay = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.play().catch(() => {});
+  };
+
   return (
     <section className="bg-[#03060d] pb-24 md:pb-32">
       <div className="container">
         <div className="relative rounded-2xl overflow-hidden aspect-[1248/702] mx-auto bg-white/5">
-          <Image
-            src={A.recap}
-            alt="2025 Recap video poster"
-            fill
-            className="object-cover"
-            sizes="(max-width: 1440px) 100vw, 1280px"
-          />
-          {/* subtle bottom-only darken */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background:
-                'linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%)',
-            }}
-          />
-
-          <button
-            type="button"
-            className="absolute left-5 bottom-5 md:left-8 md:bottom-8 inline-flex items-center gap-3 text-white"
+          <video
+            ref={videoRef}
+            className="absolute inset-0 w-full h-full object-cover"
+            preload="metadata"
+            playsInline
+            controls={isPlaying}
+            poster={A.recap}
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
+            onEnded={() => setIsPlaying(false)}
+            aria-label="Shenzhen SEO Conference 2025 recap video"
           >
-            <span className="grid place-items-center w-10 h-10 rounded-full bg-[var(--teal)] ring-1 ring-white/30">
-              <PlayIcon className="w-4 h-4 translate-x-[1px]" />
-            </span>
-            <span className="display text-[12px] md:text-[13px] font-bold tracking-[0.2em] uppercase">
-              Watch the 2025 Recap
-            </span>
-          </button>
+            <source
+              src="https://yuryfiles.s3.ap-southeast-2.amazonaws.com/shenzhen2.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
 
-          <div className="absolute right-5 bottom-5 md:right-8 md:bottom-8 text-right">
-            <div className="display text-[40px] md:text-[52px] font-bold leading-none text-white">
-              500+
-            </div>
-            <div className="mt-1 text-[11px] md:text-[12px] tracking-[0.22em] font-semibold text-white/80">
-              ATTENDEES · 2025
-            </div>
-          </div>
+          {!isPlaying && (
+            <>
+              {/* subtle bottom-only darken */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    'linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%)',
+                }}
+              />
+
+              {/* full-card click target to start playback */}
+              <button
+                type="button"
+                aria-label="Play 2025 Recap video"
+                onClick={handlePlay}
+                className="absolute inset-0"
+              />
+
+              {/* visible play affordance */}
+              <div className="absolute left-5 bottom-5 md:left-8 md:bottom-8 inline-flex items-center gap-4 pointer-events-none">
+                <span
+                  className="flex justify-center items-center"
+                  style={{
+                    width: '64px',
+                    height: '64px',
+                    padding: '0 16px',
+                    borderRadius: '100px',
+                    background: '#118BAC',
+                  }}
+                >
+                  <PlayIcon className="w-7 h-7 text-white translate-x-[1px]" />
+                </span>
+                <span
+                  className="display uppercase"
+                  style={{
+                    color: '#F9F9F9',
+                    fontSize: '18px',
+                    fontWeight: 700,
+                    lineHeight: '160%',
+                  }}
+                >
+                  Watch the 2025 Recap
+                </span>
+              </div>
+
+              <div className="absolute right-5 bottom-5 md:right-8 md:bottom-8 text-right">
+                <div className="display text-[40px] md:text-[52px] font-bold leading-none text-white">
+                  500+
+                </div>
+                <div className="mt-1 text-[11px] md:text-[12px] tracking-[0.22em] font-semibold text-white/80">
+                  ATTENDEES · 2025
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>
