@@ -1400,7 +1400,7 @@ function Venues() {
       desc: 'The tallest hotel in Shenzhen. Panoramic views of the bay from the 80th-floor sky lobby. Professionally built for international conferences. 20–25% discounted room rates for attendees.',
       whyTitle: 'Why this one',
       why: "It's what a 5-star conference venue looks like when the city has unlimited ambition.",
-      addr: '5016 Shennan East Rd, Luohu District',
+      addr: '5016 Shennan E Rd, Luohu District, Shenzhen, Guangdong, 518001',
     },
     {
       tag: 'VIP Networking Venue',
