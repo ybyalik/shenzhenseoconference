@@ -788,7 +788,7 @@ function Audiences() {
                     return (
                       <li
                         key={it.h}
-                        className="rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4"
+                        className="rounded-2xl border border-white/10 px-5 py-4"
                       >
                         <div
                           className="uppercase mb-1.5"
