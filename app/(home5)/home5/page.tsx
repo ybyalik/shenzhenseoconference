@@ -1909,47 +1909,73 @@ function FinalCta() {
 
 /* ───────────────────────────── SPONSORS (28:701) ───────────────────────────── */
 function Sponsors() {
+  // Tier-specific hover color filters. Default is dull/gray for all logos;
+  // hover reveals a tier-tinted full-color version.
+  //   platinum → full natural color (logos read as silver/chrome)
+  //   gold     → warm gold sepia tint
+  //   silver   → cool muted silver tint
   const Row = ({
     title,
     items,
     max,
+    tier,
   }: {
     title: string;
     items: { src: string; alt: string; h: number }[];
     max: number;
-  }) => (
-    <div className="text-center">
-      <h3
-        className="display uppercase mb-8"
-        style={{
-          color: '#F9F9F9',
-          textAlign: 'center',
-          fontSize: '18px',
-          fontWeight: 500,
-          lineHeight: '140%',
-        }}
-      >
-        {title}
-      </h3>
-      <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-items-center sm:justify-center gap-x-8 sm:gap-x-14 md:gap-x-20 gap-y-10">
-        {items.map((s) => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            key={s.src}
-            src={s.src}
-            alt={s.alt}
-            style={{
-              height: `${Math.min(s.h, max)}px`,
-              width: 'auto',
-              maxWidth: '160px',
-              objectFit: 'contain',
-            }}
-            className="opacity-85 hover:opacity-100 transition-opacity"
-          />
-        ))}
+    tier: 'platinum' | 'gold' | 'silver';
+  }) => {
+    const hoverFilter =
+      tier === 'gold'
+        ? 'sepia(1) saturate(2.4) hue-rotate(-12deg) brightness(1.05)'
+        : tier === 'silver'
+        ? 'grayscale(1) brightness(1.15) contrast(0.95)'
+        : 'none'; // platinum: full color
+    return (
+      <div className={`text-center sponsor-row sponsor-${tier}`}>
+        <h3
+          className="display uppercase mb-8"
+          style={{
+            color: '#F9F9F9',
+            textAlign: 'center',
+            fontSize: '18px',
+            fontWeight: 500,
+            lineHeight: '140%',
+          }}
+        >
+          {title}
+        </h3>
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-items-center sm:justify-center gap-x-8 sm:gap-x-14 md:gap-x-20 gap-y-10">
+          {items.map((s) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={s.src}
+              src={s.src}
+              alt={s.alt}
+              data-hover-filter={hoverFilter}
+              style={{
+                height: `${Math.min(s.h, max)}px`,
+                width: 'auto',
+                maxWidth: '160px',
+                objectFit: 'contain',
+                filter: 'grayscale(1) brightness(0.85)',
+                opacity: 0.5,
+                transition: 'filter 0.25s ease, opacity 0.25s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.filter = hoverFilter;
+                e.currentTarget.style.opacity = '1';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.filter = 'grayscale(1) brightness(0.85)';
+                e.currentTarget.style.opacity = '0.5';
+              }}
+            />
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
   return (
     <section id="sponsors" className="bg-[#03060d] py-24">
       <div className="container">
@@ -1986,9 +2012,9 @@ function Sponsors() {
           </a>
         </div>
         <div className="space-y-16 md:space-y-20">
-          <Row title="Platinum Sponsors" items={SPONSORS.platinum} max={96} />
-          <Row title="Gold Sponsors" items={SPONSORS.gold} max={56} />
-          <Row title="Silver Sponsors" items={SPONSORS.silver} max={48} />
+          <Row title="Platinum Sponsors" items={SPONSORS.platinum} max={96} tier="platinum" />
+          <Row title="Gold Sponsors" items={SPONSORS.gold} max={56} tier="gold" />
+          <Row title="Silver Sponsors" items={SPONSORS.silver} max={48} tier="silver" />
         </div>
       </div>
     </section>
