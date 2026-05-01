@@ -301,18 +301,41 @@ function Nav() {
 function HeroTitleLine({
   label,
   word,
-  colorClass,
+  gradient,
 }: {
   label: string;
   word: string;
-  colorClass: string;
+  /** CSS background value to clip to the word text. */
+  gradient: string;
 }) {
   return (
     <span className="flex items-baseline gap-3 md:gap-5">
-      <span className="display text-[14px] md:text-[16px] font-medium tracking-[0.18em] text-white/85 translate-y-[-0.15em]">
+      <span
+        className="display"
+        style={{
+          color: '#F9F9F9',
+          fontSize: '16px',
+          fontWeight: 600,
+          lineHeight: '100%',
+        }}
+      >
         {label}
       </span>
-      <span className={`display ${colorClass}`}>{word}</span>
+      <span
+        className="display"
+        style={{
+          fontSize: '48px',
+          fontWeight: 600,
+          lineHeight: '100%',
+          background: gradient,
+          backgroundClip: 'text',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          color: 'transparent',
+        }}
+      >
+        {word}
+      </span>
     </span>
   );
 }
@@ -351,13 +374,25 @@ function Hero() {
               <span className="w-1 h-1 rounded-full bg-white/55" aria-hidden />
               <span className="font-medium">The St. Regis Shenzhen</span>
             </div>
-            <h1 className="order-2 lg:order-1 display font-semibold uppercase leading-[1.02] tracking-[-0.005em] text-white text-[clamp(28px,4.8vw,64px)]">
+            <h1
+              className="order-2 lg:order-1 display uppercase"
+              style={{
+                color: '#F9F9F9',
+                fontSize: '48px',
+                fontWeight: 600,
+                lineHeight: '100%',
+              }}
+            >
               <span className="block">East Meets West</span>
-              <HeroTitleLine label="IN" word="SEO" colorClass="text-[var(--teal-2)]" />
+              <HeroTitleLine
+                label="IN"
+                word="SEO"
+                gradient="linear-gradient(90deg, #128AAB 0%, #427E97 100%)"
+              />
               <HeroTitleLine
                 label="IN"
                 word="Shenzhen, China"
-                colorClass="gradient-text-brand"
+                gradient="linear-gradient(90deg, #118BAC 0%, #FD4C4C 100%)"
               />
             </h1>
           </div>
