@@ -306,7 +306,8 @@ function Hero() {
             </a>
             <a
               href="#pricing"
-              className="hidden lg:inline-flex display items-center gap-2 px-7 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] text-white border border-white/55 bg-black/25 backdrop-blur-sm hover:bg-black/40"
+              className="hidden lg:inline-flex display items-center gap-2 rounded-full text-[14px] font-semibold tracking-[0.18em] text-white border border-white/55 bg-black/25 backdrop-blur-sm hover:bg-black/40"
+              style={{ padding: '12px 32px', lineHeight: '28px' }}
             >
               GET TICKETS
               <ArrowUpRight className="w-3.5 h-3.5" />
