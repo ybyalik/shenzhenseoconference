@@ -1069,10 +1069,22 @@ function Speakers() {
             <button
               type="button"
               onClick={() => setShowAll(true)}
-              className="display inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] text-white border border-white/55 bg-black/20 hover:bg-black/40"
+              className="display rounded-full border border-white/55 bg-black/20 hover:bg-black/40 uppercase"
+              style={{
+                display: 'flex',
+                padding: '16px 24px',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: '16px',
+                color: '#F9F9F9',
+                textAlign: 'center',
+                fontSize: '16px',
+                fontWeight: 600,
+                lineHeight: '150%',
+              }}
             >
               LOAD MORE
-              <ArrowUpRight className="w-3 h-3" />
+              <ArrowUpRight className="w-4 h-4" />
             </button>
           </div>
         )}
@@ -1127,7 +1139,7 @@ function Agenda() {
   ];
 
   return (
-    <section id="agenda" className="bg-[#03060d] py-24 border-t border-white/10">
+    <section id="agenda" className="bg-[#03060d] py-24">
       <div className="container">
         <div className="mb-10 md:mb-12">
           <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
@@ -1786,10 +1798,22 @@ function Sponsors() {
           </div>
           <a
             href="#"
-            className="display inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] text-white border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 w-full md:w-auto md:self-end"
+            className="display rounded-full border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 w-full md:w-auto md:self-end uppercase"
+            style={{
+              display: 'flex',
+              padding: '16px 24px',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '16px',
+              color: '#F9F9F9',
+              textAlign: 'center',
+              fontSize: '16px',
+              fontWeight: 600,
+              lineHeight: '150%',
+            }}
           >
             BECOME A 2026 SPONSOR
-            <ArrowUpRight className="w-3 h-3" />
+            <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>
         <div className="space-y-16 md:space-y-20">
