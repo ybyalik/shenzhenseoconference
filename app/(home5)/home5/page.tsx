@@ -1252,7 +1252,6 @@ function Pricing() {
         'Everything in Deluxe',
         'Day 5 VIP networking at MGM',
         'One night stay at MGM included',
-        'Private dinners with speakers',
       ],
       cta: 'Buy VIP Ticket',
       popular: false,
@@ -1303,7 +1302,7 @@ function Pricing() {
           {tiers.map((t) => (
             <div
               key={t.name}
-              className="relative rounded-2xl p-7 border border-white/10 bg-[#06101a]/40"
+              className="relative rounded-2xl p-7 border border-white/10"
             >
               {t.tag && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase bg-[var(--teal)] text-white">
@@ -1314,10 +1313,16 @@ function Pricing() {
                 {t.name}
               </div>
               <div className="mt-4 flex items-end gap-3">
-                <span className="display text-[36px] md:text-[40px] font-bold leading-none text-white">
+                <span
+                  className="display text-[36px] md:text-[40px] font-bold leading-none text-white"
+                  style={{ opacity: 0.9 }}
+                >
                   {t.price}
                 </span>
-                <span className="display text-[15px] text-white/40 line-through pb-1">
+                <span
+                  className="display text-[15px] text-white line-through pb-1"
+                  style={{ opacity: 0.5 }}
+                >
                   {t.old}
                 </span>
               </div>
