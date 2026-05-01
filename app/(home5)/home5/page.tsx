@@ -187,37 +187,43 @@ function CarouselDots({ count, active }: { count: number; active: number }) {
 function Nav() {
   return (
     <header className="absolute top-0 inset-x-0 z-30">
-      <div className="container flex items-center justify-between h-[72px] md:h-[88px]">
+      <div className="container flex items-center justify-between h-[72px] lg:h-[88px]">
         <Link href="/home5" className="flex items-center" aria-label="Shenzhen SEO Conference">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/figma-assets/logo-szseo.png"
             alt="Shenzhen SEO Conference"
-            className="h-[26px] md:h-[30px] w-auto"
+            className="h-[26px] lg:h-[30px] w-auto"
           />
         </Link>
-        <nav className="hidden lg:flex items-center gap-10">
-          {NAV.map((n) => (
-            <a
-              key={n.label}
-              href={n.href}
-              className="text-[12px] font-semibold tracking-[0.18em] text-white/90 hover:text-white"
-            >
-              {n.label}
-            </a>
-          ))}
-        </nav>
-        <a
-          href="#pricing"
-          className="hidden md:inline-flex display items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white gradient-cta"
-        >
-          GET TICKETS
-          <ArrowUpRight className="w-3 h-3" />
-        </a>
+
+        {/* Desktop: nav links + CTA, right-aligned. 32px between items, 42px before CTA. */}
+        <div className="hidden lg:flex items-center" style={{ gap: '42px' }}>
+          <nav className="flex items-center" style={{ gap: '32px' }}>
+            {NAV.map((n) => (
+              <a
+                key={n.label}
+                href={n.href}
+                className="text-[12px] font-semibold tracking-[0.18em] text-white/90 hover:text-white"
+              >
+                {n.label}
+              </a>
+            ))}
+          </nav>
+          <a
+            href="#pricing"
+            className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white gradient-cta"
+          >
+            GET TICKETS
+            <ArrowUpRight className="w-3 h-3" />
+          </a>
+        </div>
+
+        {/* Mobile: hamburger */}
         <button
           type="button"
           aria-label="Open menu"
-          className="md:hidden grid place-items-center w-10 h-10 -mr-2 text-white"
+          className="lg:hidden grid place-items-center w-10 h-10 -mr-2 text-white"
         >
           <MenuIcon className="w-6 h-6" />
         </button>

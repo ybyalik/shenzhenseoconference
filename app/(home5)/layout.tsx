@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: 'Shenzhen SEO Conference 2026 — East Meets West',
   description:
     'September 14–18, 2026 at The St. Regis Shenzhen. The premier SEO event connecting Eastern and Western digital markets.',
+  robots: { index: false, follow: false },
 };
 
 export default function Home5Layout({ children }: { children: React.ReactNode }) {
