@@ -1823,7 +1823,8 @@ function FinalCta() {
           }}
         >
           <h2 className="display text-[28px] md:text-[40px] font-semibold leading-[1.1] uppercase tracking-[-0.005em] max-w-[920px] mx-auto text-white">
-            One Room. Five Days. September.
+            <span className="block">One Room. Five Days.</span>
+            <span className="block">September.</span>
           </h2>
           <p className="mt-5 max-w-[720px] mx-auto text-[14px] md:text-[15px] text-white/75 leading-[1.6]">
             If the question is whether Shenzhen is worth the trip — the answer is yes.
