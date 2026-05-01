@@ -744,18 +744,16 @@ function Audiences() {
           ))}
         </div>
 
-        {/* Two columns with vertical divider on desktop */}
-        <div className="grid gap-12 md:gap-0 md:grid-cols-2">
+        {/* Two columns: flex with 64px gap, each column flex-1 align-stretch */}
+        <div
+          className="flex flex-col md:flex-row md:items-start gap-12"
+          style={{ alignSelf: 'stretch', columnGap: '64px' }}
+        >
           {cols.map((col, idx) => (
             <div
               key={col.title}
-              className={`${
-                activeTab === idx ? 'block' : 'hidden'
-              } md:block ${
-                idx === 0
-                  ? 'md:pr-8 lg:pr-12 md:border-r md:border-white/10'
-                  : 'md:pl-8 lg:pl-12'
-              }`}
+              className={`${activeTab === idx ? 'flex' : 'hidden'} md:flex flex-col items-start`}
+              style={{ flex: '1 0 0', alignSelf: 'stretch' }}
             >
               <div className="relative aspect-[560/429] rounded-2xl overflow-hidden mb-7 bg-white/5">
                 <Image
@@ -766,7 +764,15 @@ function Audiences() {
                   sizes="(max-width: 768px) 100vw, 560px"
                 />
               </div>
-              <h3 className="display text-[22px] md:text-[24px] font-semibold mb-3 uppercase tracking-[-0.005em]">
+              <h3
+                className="display uppercase mb-3"
+                style={{
+                  color: '#F9F9F9',
+                  fontSize: '24px',
+                  fontWeight: 600,
+                  lineHeight: '120%',
+                }}
+              >
                 {col.title}
               </h3>
               <p
