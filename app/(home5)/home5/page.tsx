@@ -869,17 +869,22 @@ function WhyShenzhen() {
             </div>
             <a
               href="#"
-              className="display rounded-full text-white border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 self-start md:self-auto text-[12px] font-bold tracking-[0.18em]"
+              className="display rounded-full border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 self-start md:self-auto uppercase"
               style={{
                 display: 'flex',
                 padding: '16px 24px',
                 justifyContent: 'center',
                 alignItems: 'center',
                 gap: '16px',
+                color: '#F9F9F9',
+                textAlign: 'center',
+                fontSize: '16px',
+                fontWeight: 600,
+                lineHeight: '150%',
               }}
             >
               VISIT SHENZHEN
-              <ArrowUpRight className="w-3 h-3" />
+              <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>
           <p className="text-[15px] md:text-[16px] text-white/85 leading-[1.6] max-w-[760px] mb-3">
