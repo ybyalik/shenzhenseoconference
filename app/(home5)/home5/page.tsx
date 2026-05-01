@@ -1433,7 +1433,16 @@ function Venues() {
           <span>Two Venues. </span>
           <span style={{ opacity: 0.3 }}>Both Picked On Purpose.</span>
         </h2>
-        <p className="text-[15px] md:text-[16px] text-white/70 leading-[1.6] max-w-[820px] mb-12 md:mb-14">
+        <p
+          className="max-w-[820px] mb-12 md:mb-14"
+          style={{
+            color: '#F9F9F9',
+            fontSize: '18px',
+            fontWeight: 500,
+            lineHeight: '150%',
+            opacity: 0.6,
+          }}
+        >
           We personally vetted 29 five-star hotels. These two are what good looks like.
         </p>
         <div className="grid gap-5 md:grid-cols-2">
