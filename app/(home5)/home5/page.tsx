@@ -1826,7 +1826,16 @@ function FinalCta() {
             <span className="block">One Room. Five Days.</span>
             <span className="block">September.</span>
           </h2>
-          <p className="mt-5 max-w-[720px] mx-auto text-[14px] md:text-[15px] text-white/75 leading-[1.6]">
+          <p
+            className="mt-5 max-w-[720px] mx-auto self-stretch"
+            style={{
+              color: '#F9F9F9',
+              textAlign: 'center',
+              fontSize: '18px',
+              fontWeight: 500,
+              lineHeight: '160%',
+            }}
+          >
             If the question is whether Shenzhen is worth the trip — the answer is yes.
             <br className="hidden md:block" /> If the question is whether you should wait for
             2027 — the answer is no. Seats cap at 600.
