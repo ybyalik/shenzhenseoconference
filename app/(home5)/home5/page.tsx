@@ -1461,7 +1461,20 @@ function Venues() {
                 />
               </div>
               <div className="pt-8">
-                <div className="text-[12px] font-bold tracking-[0.2em] uppercase text-[var(--red)] mb-2">
+                <div
+                  className="inline-flex rounded-full border border-white/20 bg-white/5 backdrop-blur-sm uppercase mb-3 w-fit"
+                  style={{
+                    display: 'flex',
+                    padding: '8px 16px',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    gap: '8px',
+                    color: '#F9F9F9',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    lineHeight: 'normal',
+                  }}
+                >
                   {v.tag}
                 </div>
                 <h3 className="display text-[22px] md:text-[24px] font-bold uppercase tracking-[-0.005em]">
