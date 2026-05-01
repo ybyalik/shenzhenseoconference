@@ -1318,7 +1318,7 @@ function Pricing() {
   const tiers = [
     {
       name: 'Standard',
-      price: '$530',
+      price: '$560',
       old: '$600',
       forWho: 'For SEO Practitioners',
       tag: '',
@@ -1332,7 +1332,7 @@ function Pricing() {
     },
     {
       name: 'Deluxe',
-      price: '$795',
+      price: '$840',
       old: '$900',
       forWho: 'For marketing directors and agency leads',
       tag: 'Most popular',
@@ -1346,7 +1346,7 @@ function Pricing() {
     },
     {
       name: 'VIP',
-      price: '$1,590',
+      price: '$1,680',
       old: '$1,800',
       forWho: 'For executives and founders',
       tag: '',
@@ -1392,7 +1392,7 @@ function Pricing() {
             HOW MUCH IS THE TICKET
           </div>
           <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9]">
-            Get Early Bird Tickets
+            Get Tickets
           </h2>
           <p className="mx-auto mt-5 max-w-[680px] text-[15px] md:text-[16px] text-white/70 leading-[1.6]">
             One night at The St. Regis costs more than a Standard ticket. You get 5 days, every
@@ -2072,6 +2072,57 @@ function Sponsors() {
 /* ───────────────────────────── CONTACT (28:745) ───────────────────────────── */
 function Contact() {
   const [check, setCheck] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState<null | { ok: boolean; message: string }>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (submitting) return;
+    setStatus(null);
+    setSubmitting(true);
+    try {
+      const fd = new FormData(e.currentTarget);
+      const payload = {
+        firstName: String(fd.get('firstName') ?? ''),
+        lastName: String(fd.get('lastName') ?? ''),
+        email: String(fd.get('email') ?? ''),
+        requestInvitationLetter: check,
+        nationality: String(fd.get('nationality') ?? ''),
+        passportNo: String(fd.get('passportNo') ?? ''),
+        passportIssuingOffice: String(fd.get('passportIssuingOffice') ?? ''),
+        dateOfIssue: String(fd.get('dateOfIssue') ?? ''),
+        passportExpiration: String(fd.get('passportExpiration') ?? ''),
+        jobTitle: String(fd.get('jobTitle') ?? ''),
+        durationOfStay: String(fd.get('durationOfStay') ?? ''),
+        additionalMessage: String(fd.get('additionalMessage') ?? ''),
+      };
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err?.message || 'Submission failed. Please try again.');
+      }
+      setStatus({
+        ok: true,
+        message: check
+          ? "We'll process your business invitation letter request and contact you soon."
+          : "Thanks — we got your message and will reply soon.",
+      });
+      e.currentTarget.reset();
+      setCheck(false);
+    } catch (err) {
+      setStatus({
+        ok: false,
+        message: err instanceof Error ? err.message : 'Submission failed. Please try again.',
+      });
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="bg-[#03060d] py-24">
       <div className="container">
@@ -2126,11 +2177,13 @@ function Contact() {
                 </li>
               </ul>
             </div>
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="flex gap-4">
                 <input
                   type="text"
+                  name="firstName"
                   placeholder="John"
+                  required
                   className="text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                   style={{
                     flex: '1 0 0',
@@ -2146,7 +2199,9 @@ function Contact() {
                 />
                 <input
                   type="text"
+                  name="lastName"
                   placeholder="Last Name"
+                  required
                   className="text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                   style={{
                     flex: '1 0 0',
@@ -2163,7 +2218,9 @@ function Contact() {
               </div>
               <input
                 type="email"
+                name="email"
                 placeholder="E-mail Address"
+                required
                 className="w-full text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                 style={{
                   display: 'flex',
@@ -2212,6 +2269,8 @@ function Contact() {
                   <div className="flex gap-4">
                     <input
                       type="text"
+                      name="nationality"
+                      required
                       placeholder="Nationality (e.g. United States)"
                       className="text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                       style={{
@@ -2227,6 +2286,8 @@ function Contact() {
                     />
                     <input
                       type="text"
+                      name="passportNo"
+                      required
                       placeholder="Passport No."
                       className="text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                       style={{
@@ -2243,6 +2304,8 @@ function Contact() {
                   </div>
                   <input
                     type="text"
+                    name="passportIssuingOffice"
+                    required
                     placeholder="Passport Issuing Office (e.g. U.S. Department of State)"
                     className="w-full text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                     style={{
@@ -2258,6 +2321,8 @@ function Contact() {
                   <div className="flex gap-4">
                     <input
                       type="date"
+                      name="dateOfIssue"
+                      required
                       placeholder="Date of Issue"
                       aria-label="Date of Issue"
                       className="text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white [color-scheme:dark]"
@@ -2274,6 +2339,8 @@ function Contact() {
                     />
                     <input
                       type="date"
+                      name="passportExpiration"
+                      required
                       placeholder="Passport Expiration Date"
                       aria-label="Passport Expiration Date"
                       className="text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white [color-scheme:dark]"
@@ -2291,6 +2358,8 @@ function Contact() {
                   </div>
                   <input
                     type="text"
+                    name="jobTitle"
+                    required
                     placeholder="Job Title (e.g. SEO Manager at ABC Company)"
                     className="w-full text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                     style={{
@@ -2305,6 +2374,8 @@ function Contact() {
                   />
                   <input
                     type="text"
+                    name="durationOfStay"
+                    required
                     placeholder="Estimated Duration of Stay in China"
                     className="w-full text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                     style={{
@@ -2321,13 +2392,25 @@ function Contact() {
               )}
 
               <textarea
+                name="additionalMessage"
                 placeholder="Message (Optional)"
                 rows={5}
                 className="w-full px-4 py-3.5 rounded-xl bg-[#03060d] border border-white/15 text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] resize-none"
               />
+
+              {status && (
+                <div
+                  className={`text-[14px] leading-[150%] ${
+                    status.ok ? 'text-[var(--teal-2)]' : 'text-[var(--red)]'
+                  }`}
+                >
+                  {status.message}
+                </div>
+              )}
               <button
                 type="submit"
-                className="display rounded-full gradient-cta uppercase"
+                disabled={submitting}
+                className="display rounded-full gradient-cta uppercase disabled:opacity-60 disabled:cursor-not-allowed"
                 style={{
                   display: 'flex',
                   padding: '16px 24px',
@@ -2343,7 +2426,7 @@ function Contact() {
                   lineHeight: '150%',
                 }}
               >
-                SEND MESSAGE
+                {submitting ? 'SENDING…' : 'SEND MESSAGE'}
                 <ArrowUpRight className="w-4 h-4" />
               </button>
             </form>
