@@ -2205,6 +2205,121 @@ function Contact() {
                 </span>
                 I need a business invitation letter for my visa.
               </label>
+
+              {/* Conditional invitation-letter fields (mirror of /contact) */}
+              {check && (
+                <div className="space-y-4">
+                  <div className="flex gap-4">
+                    <input
+                      type="text"
+                      placeholder="Nationality (e.g. United States)"
+                      className="text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                      style={{
+                        flex: '1 0 0',
+                        display: 'flex',
+                        height: '64px',
+                        padding: '22px 24px',
+                        alignItems: 'center',
+                        borderRadius: '20px',
+                        border: '1px solid rgba(249, 249, 249, 0.10)',
+                        background: '#03060D',
+                      }}
+                    />
+                    <input
+                      type="text"
+                      placeholder="Passport No."
+                      className="text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                      style={{
+                        flex: '1 0 0',
+                        display: 'flex',
+                        height: '64px',
+                        padding: '22px 24px',
+                        alignItems: 'center',
+                        borderRadius: '20px',
+                        border: '1px solid rgba(249, 249, 249, 0.10)',
+                        background: '#03060D',
+                      }}
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Passport Issuing Office (e.g. U.S. Department of State)"
+                    className="w-full text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                    style={{
+                      display: 'flex',
+                      height: '64px',
+                      padding: '22px 24px',
+                      alignItems: 'center',
+                      borderRadius: '20px',
+                      border: '1px solid rgba(249, 249, 249, 0.10)',
+                      background: '#03060D',
+                    }}
+                  />
+                  <div className="flex gap-4">
+                    <input
+                      type="date"
+                      placeholder="Date of Issue"
+                      aria-label="Date of Issue"
+                      className="text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white [color-scheme:dark]"
+                      style={{
+                        flex: '1 0 0',
+                        display: 'flex',
+                        height: '64px',
+                        padding: '22px 24px',
+                        alignItems: 'center',
+                        borderRadius: '20px',
+                        border: '1px solid rgba(249, 249, 249, 0.10)',
+                        background: '#03060D',
+                      }}
+                    />
+                    <input
+                      type="date"
+                      placeholder="Passport Expiration Date"
+                      aria-label="Passport Expiration Date"
+                      className="text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white [color-scheme:dark]"
+                      style={{
+                        flex: '1 0 0',
+                        display: 'flex',
+                        height: '64px',
+                        padding: '22px 24px',
+                        alignItems: 'center',
+                        borderRadius: '20px',
+                        border: '1px solid rgba(249, 249, 249, 0.10)',
+                        background: '#03060D',
+                      }}
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Job Title (e.g. SEO Manager at ABC Company)"
+                    className="w-full text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                    style={{
+                      display: 'flex',
+                      height: '64px',
+                      padding: '22px 24px',
+                      alignItems: 'center',
+                      borderRadius: '20px',
+                      border: '1px solid rgba(249, 249, 249, 0.10)',
+                      background: '#03060D',
+                    }}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Estimated Duration of Stay in China"
+                    className="w-full text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                    style={{
+                      display: 'flex',
+                      height: '64px',
+                      padding: '22px 24px',
+                      alignItems: 'center',
+                      borderRadius: '20px',
+                      border: '1px solid rgba(249, 249, 249, 0.10)',
+                      background: '#03060D',
+                    }}
+                  />
+                </div>
+              )}
+
               <textarea
                 placeholder="Message (Optional)"
                 rows={5}
