@@ -853,13 +853,30 @@ function WhyShenzhen() {
               <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
                 WHY SHENZHEN
               </div>
-              <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9]">
+              <h2
+                className="display uppercase self-stretch"
+                style={{
+                  color: '#F9F9F9',
+                  fontFamily: 'Unbounded, system-ui, sans-serif',
+                  fontSize: '36px',
+                  fontWeight: 600,
+                  lineHeight: '120%',
+                  letterSpacing: '-2px',
+                }}
+              >
                 Come Expecting The Unknown
               </h2>
             </div>
             <a
               href="#"
-              className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 self-start md:self-auto"
+              className="display rounded-full text-white border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 self-start md:self-auto text-[12px] font-bold tracking-[0.18em]"
+              style={{
+                display: 'flex',
+                padding: '16px 24px',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: '16px',
+              }}
             >
               VISIT SHENZHEN
               <ArrowUpRight className="w-3 h-3" />
