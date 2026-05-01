@@ -986,9 +986,21 @@ function Speakers() {
             <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
               WHO&apos;S SPEAKING
             </div>
-            <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] max-w-[820px]">
-              <span className="block text-white">On Stage: Practitioners,</span>
-              <span className="block text-white/30">Not Theorists.</span>
+            <h2
+              className="display uppercase self-stretch max-w-[820px]"
+              style={{
+                color: '#F9F9F9',
+                fontFamily: 'Unbounded, system-ui, sans-serif',
+                fontSize: '48px',
+                fontWeight: 600,
+                lineHeight: '120%',
+                letterSpacing: '-1px',
+              }}
+            >
+              <span className="block">On Stage: Practitioners,</span>
+              <span className="block" style={{ opacity: 0.3 }}>
+                Not Theorists.
+              </span>
             </h2>
             <p className="mt-5 text-[15px] md:text-[16px] text-white/75 leading-[1.55] max-w-[640px]">
               Every speaker has shipped real work. No theorists. No fluff.
