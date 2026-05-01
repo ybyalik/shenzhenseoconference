@@ -1400,7 +1400,7 @@ function Venues() {
       desc: 'The tallest hotel in Shenzhen. Panoramic views of the bay from the 80th-floor sky lobby. Professionally built for international conferences. 20–25% discounted room rates for attendees.',
       whyTitle: 'Why this one',
       why: "It's what a 5-star conference venue looks like when the city has unlimited ambition.",
-      addr: '5016 Shennan E Rd, Luohu District, Shenzhen, Guangdong, 518001',
+      addr: '5016 Shennan E Rd, Luohu District, Shenzhen',
     },
     {
       tag: 'VIP Networking Venue',
@@ -1410,7 +1410,7 @@ function Venues() {
       desc: 'An intimate setting away from the main conference. Smaller room. Deeper conversations. One night included with your VIP ticket.',
       whyTitle: 'Why this one',
       why: 'The St. Regis gets you the main stage. MGM gets you the after-hours. Two venues, two registers — one public-facing and stage-lit, one private and close-in.',
-      addr: '33 Yanmei Rd, Yantian District, Shenzhen, Guangdong 518000',
+      addr: '33 Yanmei Rd, Yantian District, Shenzhen',
     },
   ];
   return (
@@ -1553,7 +1553,7 @@ function Testimonials() {
     },
   ];
   return (
-    <section className="bg-[#03060d] py-24 border-t border-white/10">
+    <section className="bg-[#03060d] py-24">
       <div className="container">
         <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
           WHAT DID THE PREVIOUS ATTENDEES SAY
