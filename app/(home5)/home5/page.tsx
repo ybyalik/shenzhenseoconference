@@ -2202,17 +2202,20 @@ function Footer() {
                 {col.title}
               </div>
               <ul className="space-y-3">
-                {col.links.map(({ label, href, Icon }) => (
-                  <li key={label}>
-                    <a
-                      href={href}
-                      className="inline-flex items-center gap-2 text-[14px] font-semibold tracking-[0.06em] text-white/75 hover:text-white"
-                    >
-                      {Icon && <Icon className="w-4 h-4" />}
-                      {label}
-                    </a>
-                  </li>
-                ))}
+                {col.links.map((lnk) => {
+                  const Icon = 'Icon' in lnk ? lnk.Icon : undefined;
+                  return (
+                    <li key={lnk.label}>
+                      <a
+                        href={lnk.href}
+                        className="inline-flex items-center gap-2 text-[14px] font-semibold tracking-[0.06em] text-white/75 hover:text-white"
+                      >
+                        {Icon && <Icon className="w-4 h-4" />}
+                        {lnk.label}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
