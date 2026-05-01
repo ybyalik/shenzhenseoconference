@@ -2155,13 +2155,13 @@ function Footer() {
       <div className="container py-16 md:py-20">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <div className="flex items-center gap-3 mb-5">
-              <span className="block w-8 h-8 rounded-md gradient-brand" aria-hidden />
-              <span className="text-[15px] font-semibold tracking-[0.18em] leading-tight">
-                SHENZHEN
-                <br />
-                SEO CONFERENCE
-              </span>
+            <div className="flex items-center mb-5">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/figma-assets/logo-szseo.png"
+                alt="Shenzhen SEO Conference"
+                className="h-[30px] w-auto"
+              />
             </div>
             <p className="text-[16px] md:text-[18px] text-white/85 mb-6">
               Connecting Eastern and Western SEO
