@@ -11,7 +11,7 @@ const A = {
   founderSignature: '/figma-assets/jp-signature.png',
   recap: '/figma-assets/de3b4552f3cbd3a8a34ebb172a16b1bf278b9bae.png',
   audInternational: '/figma-assets/audience-international.png',
-  audChinese: '/figma-assets/09ff6550fd1fd1e5f699132475d75b82291fb6f1.jpg',
+  audChinese: '/figma-assets/audience-chinese.png',
   why1: '/figma-assets/6e1365b901e58c47813d8a9a6c17f43ff4c0f557.png',
   why2: '/figma-assets/c180b122845d182aed2c6a1c3b0f9c898e707c2f.jpg',
   why3: '/figma-assets/ea9863f1c46347ee75ce39500df9c0b12b743af6.png',
@@ -736,7 +736,15 @@ function Audiences() {
               <h3 className="display text-[22px] md:text-[24px] font-semibold mb-3 uppercase tracking-[-0.005em]">
                 {col.title}
               </h3>
-              <p className="text-[15px] md:text-[16px] text-white/75 leading-[1.6] mb-7 max-w-[520px]">
+              <p
+                className="self-stretch mb-7 max-w-[520px]"
+                style={{
+                  color: '#F9F9F9',
+                  fontSize: '18px',
+                  fontWeight: 500,
+                  lineHeight: '170%',
+                }}
+              >
                 {col.lead}
               </p>
               <ul className="space-y-5">
@@ -748,10 +756,26 @@ function Audiences() {
                         key={it.h}
                         className="rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4"
                       >
-                        <div className="text-[12px] md:text-[13px] tracking-[0.18em] uppercase font-bold mb-1.5 text-white">
+                        <div
+                          className="uppercase mb-1.5"
+                          style={{
+                            color: '#F9F9F9',
+                            fontSize: '16px',
+                            fontWeight: 700,
+                            lineHeight: '170%',
+                            letterSpacing: '0.8px',
+                          }}
+                        >
                           {it.h}
                         </div>
-                        <div className="text-[14px] md:text-[15px] text-white/70 leading-[1.55]">
+                        <div
+                          style={{
+                            color: '#F9F9F9',
+                            fontSize: '16px',
+                            fontWeight: 500,
+                            lineHeight: '170%',
+                          }}
+                        >
                           {it.p}
                         </div>
                       </li>
@@ -759,10 +783,26 @@ function Audiences() {
                   }
                   return (
                     <li key={it.h} className="pl-5 border-l-2 border-[var(--red)]">
-                      <div className="text-[12px] md:text-[13px] tracking-[0.16em] uppercase font-bold mb-1.5 text-white">
+                      <div
+                        className="uppercase mb-1.5"
+                        style={{
+                          color: '#F9F9F9',
+                          fontSize: '16px',
+                          fontWeight: 700,
+                          lineHeight: '170%',
+                          letterSpacing: '0.8px',
+                        }}
+                      >
                         {it.h}
                       </div>
-                      <div className="text-[14px] md:text-[15px] text-white/70 leading-[1.55]">
+                      <div
+                        style={{
+                          color: '#F9F9F9',
+                          fontSize: '16px',
+                          fontWeight: 500,
+                          lineHeight: '170%',
+                        }}
+                      >
                         {it.p}
                       </div>
                     </li>
