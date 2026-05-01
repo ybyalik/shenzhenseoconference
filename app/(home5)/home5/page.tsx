@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
 const A = {
-  heroBg: '/figma-assets/dfd8cb68f2097a3164c042d67b3231672354f49a.jpg',
+  heroBg: '/figma-assets/hero-bg.png',
   founderPortrait: '/figma-assets/jp-portrait.png',
   founderAvatar: '/figma-assets/jp-avatar.png',
   founderSignature: '/figma-assets/jp-signature.png',
