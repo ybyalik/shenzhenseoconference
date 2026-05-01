@@ -143,6 +143,39 @@ function MenuIcon({ className = '' }: { className?: string }) {
   );
 }
 
+function LinkedInIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.36-1.85c3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.97 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"
+      />
+    </svg>
+  );
+}
+
+function XIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"
+      />
+    </svg>
+  );
+}
+
+function FacebookIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07c0 6.02 4.39 11.01 10.13 11.93v-8.44h-3.05v-3.49h3.05V9.41c0-3.02 1.79-4.68 4.53-4.68 1.31 0 2.69.23 2.69.23v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.27h3.33l-.53 3.49h-2.8V24c5.74-.92 10.13-5.91 10.13-11.93Z"
+      />
+    </svg>
+  );
+}
+
 function ArrowUpIcon({ className = '' }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
@@ -1956,10 +1989,26 @@ function Contact() {
               <h2 className="display text-[36px] md:text-[52px] font-bold uppercase leading-none tracking-[-0.005em] mb-5 text-white">
                 Questions?
               </h2>
-              <p className="text-[15px] md:text-[16px] text-white/70 leading-[1.6] mb-8 max-w-[440px]">
+              <p
+                className="mb-8 max-w-[440px]"
+                style={{
+                  color: '#F9F9F9',
+                  fontSize: '18px',
+                  fontWeight: 500,
+                  lineHeight: '160%',
+                }}
+              >
                 Tickets, invitation letters, inquiries — we read everything.
               </p>
-              <ul className="space-y-3 text-[14px] md:text-[15px] text-white/85">
+              <ul
+                className="space-y-3"
+                style={{
+                  color: '#F9F9F9',
+                  fontSize: '18px',
+                  fontWeight: 500,
+                  lineHeight: '160%',
+                }}
+              >
                 <li className="flex items-center gap-3">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="/figma-assets/mail.svg" alt="" className="w-5 h-5 flex-none" />
@@ -1983,24 +2032,65 @@ function Contact() {
               </ul>
             </div>
             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="flex gap-4">
                 <input
                   type="text"
                   placeholder="John"
-                  className="w-full px-4 py-3.5 rounded-xl bg-[#03060d] border border-white/15 text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)]"
+                  className="text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                  style={{
+                    flex: '1 0 0',
+                    display: 'flex',
+                    height: '64px',
+                    padding: '22px 24px',
+                    alignItems: 'center',
+                    gap: '8px',
+                    borderRadius: '20px',
+                    border: '1px solid rgba(249, 249, 249, 0.10)',
+                    background: '#03060D',
+                  }}
                 />
                 <input
                   type="text"
                   placeholder="Last Name"
-                  className="w-full px-4 py-3.5 rounded-xl bg-[#03060d] border border-white/15 text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)]"
+                  className="text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                  style={{
+                    flex: '1 0 0',
+                    display: 'flex',
+                    height: '64px',
+                    padding: '22px 24px',
+                    alignItems: 'center',
+                    gap: '8px',
+                    borderRadius: '20px',
+                    border: '1px solid rgba(249, 249, 249, 0.10)',
+                    background: '#03060D',
+                  }}
                 />
               </div>
               <input
                 type="email"
                 placeholder="E-mail Address"
-                className="w-full px-4 py-3.5 rounded-xl bg-[#03060d] border border-white/15 text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)]"
+                className="w-full text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                style={{
+                  display: 'flex',
+                  height: '64px',
+                  padding: '22px 24px',
+                  alignItems: 'flex-end',
+                  gap: '8px',
+                  alignSelf: 'stretch',
+                  borderRadius: '20px',
+                  border: '1px solid rgba(249, 249, 249, 0.10)',
+                  background: '#03060D',
+                }}
               />
-              <label className="flex items-start gap-3 text-[13px] md:text-[14px] text-white/70 cursor-pointer select-none">
+              <label
+                className="flex items-start gap-3 cursor-pointer select-none"
+                style={{
+                  color: '#F9F9F9',
+                  fontSize: '14px',
+                  fontWeight: 500,
+                  lineHeight: '150%',
+                }}
+              >
                 <span
                   onClick={() => setCheck((v) => !v)}
                   role="checkbox"
@@ -2027,10 +2117,24 @@ function Contact() {
               />
               <button
                 type="submit"
-                className="display w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full text-[12px] font-bold tracking-[0.18em] gradient-cta text-white"
+                className="display rounded-full gradient-cta uppercase"
+                style={{
+                  display: 'flex',
+                  padding: '16px 24px',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: '12px',
+                  alignSelf: 'stretch',
+                  width: '100%',
+                  color: '#F9F9F9',
+                  textAlign: 'center',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  lineHeight: '150%',
+                }}
               >
                 SEND MESSAGE
-                <ArrowUpRight className="w-3 h-3" />
+                <ArrowUpRight className="w-4 h-4" />
               </button>
             </form>
           </div>
@@ -2070,26 +2174,26 @@ function Footer() {
             {
               title: 'NAVIGATE',
               links: [
-                ['HOME', '#top'],
-                ['SPEAKERS', '#speakers'],
-                ['SPONSORS', '#sponsors'],
-                ['VISIT SHENZHEN', '#visit'],
-                ['CONTACT', '#contact'],
+                { label: 'HOME', href: '#top' },
+                { label: 'SPEAKERS', href: '#speakers' },
+                { label: 'SPONSORS', href: '#sponsors' },
+                { label: 'VISIT SHENZHEN', href: '#visit' },
+                { label: 'CONTACT', href: '#contact' },
               ],
             },
             {
               title: 'FOLLOW',
               links: [
-                ['LINKEDIN', '#'],
-                ['X', '#'],
-                ['WE CHAT', '#'],
+                { label: 'LINKEDIN', href: '#', Icon: LinkedInIcon },
+                { label: 'X', href: '#', Icon: XIcon },
+                { label: 'FACEBOOK', href: '#', Icon: FacebookIcon },
               ],
             },
             {
               title: 'MISC',
               links: [
-                ['Privacy Policy', '#'],
-                ['Terms & Conditions', '#'],
+                { label: 'Privacy Policy', href: '#' },
+                { label: 'Terms & Conditions', href: '#' },
               ],
             },
           ].map((col) => (
@@ -2098,9 +2202,13 @@ function Footer() {
                 {col.title}
               </div>
               <ul className="space-y-3">
-                {col.links.map(([label, href]) => (
+                {col.links.map(({ label, href, Icon }) => (
                   <li key={label}>
-                    <a href={href} className="text-[14px] font-semibold tracking-[0.06em] text-white/75 hover:text-white">
+                    <a
+                      href={href}
+                      className="inline-flex items-center gap-2 text-[14px] font-semibold tracking-[0.06em] text-white/75 hover:text-white"
+                    >
+                      {Icon && <Icon className="w-4 h-4" />}
                       {label}
                     </a>
                   </li>
@@ -2110,8 +2218,7 @@ function Footer() {
           ))}
         </div>
         <hr className="my-12 border-white/10" />
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-[14px] text-white/60">
-          <div>support@shenzhenseoconference.com · Shenzhen, China</div>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-end gap-3 text-[14px] text-white/60">
           <div>© 2026 ShenzhenSEOConference.com | All rights reserved</div>
         </div>
       </div>
