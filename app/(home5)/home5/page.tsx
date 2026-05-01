@@ -1865,7 +1865,16 @@ function Sponsors() {
     max: number;
   }) => (
     <div className="text-center">
-      <h3 className="display text-[12px] md:text-[13px] font-bold tracking-[0.2em] uppercase mb-8 text-white/85">
+      <h3
+        className="display uppercase mb-8"
+        style={{
+          color: '#F9F9F9',
+          textAlign: 'center',
+          fontSize: '18px',
+          fontWeight: 500,
+          lineHeight: '140%',
+        }}
+      >
         {title}
       </h3>
       <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-items-center sm:justify-center gap-x-8 sm:gap-x-14 md:gap-x-20 gap-y-10">
