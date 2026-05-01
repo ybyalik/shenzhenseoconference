@@ -420,7 +420,7 @@ function FounderLetter() {
   return (
     <section className="bg-[#03060d] py-24">
       <div className="container">
-        <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
+        <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
           WHAT IS SZSEO?
         </div>
         <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] mb-10 md:mb-12">
@@ -685,7 +685,7 @@ function Audiences() {
       <div className="container">
         {/* Centered eyebrow + heading */}
         <div className="text-center">
-          <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
+          <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
             WHO IS THIS FOR
           </div>
           <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] mb-8 md:mb-16">
@@ -850,7 +850,7 @@ function WhyShenzhen() {
         <div className="rounded-[28px] border border-white/10 bg-[#03060d] p-6 md:p-10 lg:p-14">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8">
             <div>
-              <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
+              <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
                 WHY SHENZHEN
               </div>
               <h2
@@ -983,7 +983,7 @@ function Speakers() {
       <div className="container">
         <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end mb-12 md:mb-14">
           <div>
-            <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
+            <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
               WHO&apos;S SPEAKING
             </div>
             <h2
@@ -1142,7 +1142,7 @@ function Agenda() {
     <section id="agenda" className="bg-[#03060d] py-24">
       <div className="container">
         <div className="mb-10 md:mb-12">
-          <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
+          <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
             WHAT&apos;S THE AGENDA
           </div>
           <h2
@@ -1392,7 +1392,7 @@ function Venues() {
   return (
     <section className="bg-[#03060d] py-24">
       <div className="container">
-        <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
+        <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
           WHERE IS THE EVENT HAPPENING
         </div>
         <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] mb-5 max-w-[900px]">
@@ -1480,7 +1480,7 @@ function Testimonials() {
   return (
     <section className="bg-[#03060d] py-24 border-t border-white/10">
       <div className="container">
-        <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
+        <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
           WHAT DID THE PREVIOUS ATTENDEES SAY
         </div>
         <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] mb-12 max-w-[900px] text-white">
@@ -1706,7 +1706,7 @@ function Faq() {
   return (
     <section className="bg-[#03060d] py-24 border-t border-[var(--line)]">
       <div className="container">
-        <div className="md:text-center text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
+        <div className="md:text-center text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
           FAQ
         </div>
         <h2 className="md:text-center display text-[36px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] mb-12 text-white">
@@ -1806,7 +1806,7 @@ function Sponsors() {
       <div className="container">
         <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-end mb-16 md:mb-20">
           <div>
-            <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
+            <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
               2026 PARTNERS
             </div>
             <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] text-white">
@@ -1855,7 +1855,7 @@ function Contact() {
         <div className="rounded-[28px] p-8 md:p-12 lg:p-14 bg-[#06101a]/60 border border-white/10">
           <div className="grid gap-10 md:grid-cols-2">
             <div>
-              <div className="text-[18px] font-bold tracking-[0.16em] text-[var(--red)] mb-3">
+              <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
                 CONTACT
               </div>
               <h2 className="display text-[36px] md:text-[52px] font-bold uppercase leading-none tracking-[-0.005em] mb-5 text-white">
