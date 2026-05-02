@@ -657,7 +657,19 @@ function FounderLetter() {
           A Letter From The Founder
         </h2>
 
-        <div className="rounded-[28px] border border-white/10 bg-[#06101a]/40 p-6 md:p-10 lg:p-12">
+        <div
+          style={{
+            display: 'flex',
+            padding: '20px',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            gap: '40px',
+            alignSelf: 'stretch',
+            borderRadius: '32px',
+            border: '1px solid rgba(249, 249, 249, 0.10)',
+            background: '#03060D',
+          }}
+        >
           <div className="grid gap-10 lg:gap-14 lg:grid-cols-[minmax(0,440px)_1fr] items-start">
             {/* Portrait */}
             <div className="relative aspect-[440/640] w-full max-w-[440px] rounded-2xl overflow-hidden bg-white/5">
