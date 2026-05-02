@@ -806,24 +806,26 @@ function Recap() {
               />
 
               {/* visible play affordance */}
-              <div className="absolute left-5 bottom-5 md:left-8 md:bottom-8 inline-flex items-center gap-4 pointer-events-none">
+              <div className="absolute left-5 bottom-5 md:left-8 md:bottom-8 inline-flex items-center gap-3 pointer-events-none">
                 <span
-                  className="flex justify-center items-center"
                   style={{
-                    width: '64px',
-                    height: '64px',
-                    padding: '0 16px',
-                    borderRadius: '100px',
+                    display: 'flex',
+                    width: '40px',
+                    height: '40px',
+                    padding: '0 10px',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    borderRadius: '62.5px',
                     background: '#118BAC',
                   }}
                 >
-                  <PlayIcon className="w-7 h-7 text-white translate-x-[1px]" />
+                  <PlayIcon className="w-4 h-4 text-white translate-x-[1px]" />
                 </span>
                 <span
                   className="display uppercase"
                   style={{
                     color: '#F9F9F9',
-                    fontSize: '18px',
+                    fontSize: '8px',
                     fontWeight: 700,
                     lineHeight: '160%',
                   }}
@@ -837,7 +839,7 @@ function Recap() {
                   className="display uppercase"
                   style={{
                     color: '#F9F9F9',
-                    fontSize: '32px',
+                    fontSize: '12px',
                     fontWeight: 700,
                     lineHeight: 'normal',
                   }}
@@ -845,10 +847,10 @@ function Recap() {
                   500+
                 </div>
                 <div
-                  className="display uppercase mt-1"
+                  className="display uppercase"
                   style={{
                     color: '#F9F9F9',
-                    fontSize: '18px',
+                    fontSize: '8px',
                     fontWeight: 700,
                     lineHeight: '160%',
                   }}
