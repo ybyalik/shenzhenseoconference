@@ -359,11 +359,12 @@ function Nav() {
                     <a
                       href={n.href}
                       onClick={() => handleNavClick(n.href)}
-                      className="display uppercase font-bold"
+                      className="display uppercase mobile-menu-link"
                       style={{
                         fontSize: '24px',
-                        lineHeight: '120%',
-                        letterSpacing: '-0.5px',
+                        fontWeight: 500,
+                        lineHeight: '21px',
+                        letterSpacing: '1px',
                         color: isActive ? '#EB3030' : '#F9F9F9',
                       }}
                     >

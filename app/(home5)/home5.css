@@ -88,3 +88,13 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Mobile menu link hover */
+.home5-root .mobile-menu-link {
+  transition: color 0.15s ease;
+}
+.home5-root .mobile-menu-link:hover,
+.home5-root .mobile-menu-link:active,
+.home5-root .mobile-menu-link:focus {
+  color: var(--red) !important;
+}
