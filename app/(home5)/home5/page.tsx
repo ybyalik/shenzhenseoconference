@@ -908,7 +908,8 @@ function Audiences() {
   const cols = [
     {
       title: 'International Attendees',
-      shortTitle: "Int'l Attendees",
+      shortTitle: "Int'l Attendes",
+      icon: '/figma-assets/icon-globe.svg',
       img: A.audInternational,
       lead: "You're in Europe, the US, Southeast Asia, Australia, New Zealand, or the Middle East. You run SEO campaigns, agencies, or in-house teams. You want:",
       items: intl,
@@ -916,6 +917,7 @@ function Audiences() {
     {
       title: 'Chinese Attendees',
       shortTitle: 'Chinese Attendees',
+      icon: '/figma-assets/icon-china-flag.svg',
       img: A.audChinese,
       lead: "You're running SEO in China. Agency clients, in-house projects, or global brand mandates. You want:",
       items: cn,
@@ -939,20 +941,47 @@ function Audiences() {
 
         {/* Mobile-only tab bar */}
         <div className="flex gap-3 mb-8 md:hidden">
-          {cols.map((col, idx) => (
-            <button
-              key={col.title}
-              type="button"
-              onClick={() => setActiveTab(idx)}
-              className={`flex-1 display px-4 py-3 rounded-full text-[12px] font-bold tracking-[0.16em] uppercase ${
-                activeTab === idx
-                  ? 'gradient-cta text-white'
-                  : 'border border-white/40 text-white bg-transparent'
-              }`}
-            >
-              {col.shortTitle}
-            </button>
-          ))}
+          {cols.map((col, idx) => {
+            const isActive = activeTab === idx;
+            return (
+              <button
+                key={col.title}
+                type="button"
+                onClick={() => setActiveTab(idx)}
+                className="display"
+                style={{
+                  display: 'flex',
+                  height: '80px',
+                  padding: '12px',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  alignItems: 'flex-start',
+                  flex: '1 0 0',
+                  borderRadius: '16px',
+                  border: isActive
+                    ? '1px solid #EB3030'
+                    : '1px solid rgba(249, 249, 249, 0.20)',
+                  background: 'transparent',
+                  transition: 'border-color 0.15s ease',
+                }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={col.icon} alt="" className="w-6 h-6" />
+                <span
+                  className="uppercase"
+                  style={{
+                    color: '#F9F9F9',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    lineHeight: '150%',
+                    letterSpacing: '0.6px',
+                  }}
+                >
+                  {col.shortTitle}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Two columns: flex with 64px gap, each column flex-1 align-stretch */}
