@@ -554,25 +554,56 @@ function Hero() {
       <div className="container py-8 md:py-12">
         <div className="grid gap-7 lg:gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
           {/* Quote */}
-          <figure className="flex items-center gap-3 md:gap-4">
-            <span className="relative w-11 h-11 md:w-12 md:h-12 rounded-full overflow-hidden bg-white/10 flex-none ring-2 ring-white/15">
-              {/* Use first speaker portrait as Gary placeholder */}
+          <figure className="flex items-center gap-4">
+            <span
+              className="relative rounded-full overflow-hidden bg-white/10 flex-none"
+              style={{ width: '88px', aspectRatio: '1 / 1' }}
+            >
               <Image
                 src={A.spkA}
                 alt="Gary Illyes"
                 fill
                 className="object-cover"
-                sizes="48px"
+                sizes="88px"
               />
             </span>
             <div className="min-w-0">
-              <p className="text-[13px] md:text-[15px] italic text-white leading-[1.45]">
+              <p
+                style={{
+                  color: '#F9F9F9',
+                  fontSize: '14px',
+                  fontStyle: 'italic',
+                  fontWeight: 500,
+                  lineHeight: '150%',
+                }}
+              >
                 &ldquo;Don&apos;t panic. Things change. They always do. Figure it out.&rdquo;
               </p>
-              <figcaption className="mt-1.5 text-[11px] md:text-[13px] text-white/65 leading-snug">
-                <span className="font-semibold text-white">Gary Illyes</span>
-                <span className="mx-1.5 md:mx-2 text-white/30">|</span>
-                <span>Search Relations, Google · Keynote Speaker</span>
+              <figcaption className="mt-1.5">
+                <span
+                  className="block"
+                  style={{
+                    color: '#F9F9F9',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    lineHeight: '150%',
+                    opacity: 0.6,
+                  }}
+                >
+                  Gary Illyes
+                </span>
+                <span
+                  className="block"
+                  style={{
+                    color: '#F9F9F9',
+                    fontSize: '10px',
+                    fontWeight: 500,
+                    lineHeight: '200%',
+                    opacity: 0.6,
+                  }}
+                >
+                  Search Relations, Google · Keynote Speaker
+                </span>
               </figcaption>
             </div>
           </figure>
@@ -619,10 +650,10 @@ function FounderLetter() {
   return (
     <section className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
-        <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
+        <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
           WHAT IS SZSEO?
         </div>
-        <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] mb-10 md:mb-12">
+        <h2 className="display text-[28px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] mb-10 md:mb-12">
           A Letter From The Founder
         </h2>
 
@@ -884,10 +915,10 @@ function Audiences() {
       <div className="container">
         {/* Centered eyebrow + heading */}
         <div className="text-center">
-          <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
+          <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
             WHO IS THIS FOR
           </div>
-          <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] mb-8 md:mb-16">
+          <h2 className="display text-[28px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] mb-8 md:mb-16">
             Two Audiences, One Room
           </h2>
         </div>
@@ -1058,7 +1089,7 @@ function WhyShenzhen() {
         <div className="rounded-[28px] border border-white/10 bg-[#03060d] p-6 md:p-10 lg:p-14">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8">
             <div>
-              <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
+              <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
                 WHY SHENZHEN
               </div>
               <h2
@@ -1209,7 +1240,7 @@ function Speakers() {
       <div className="container">
         <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end mb-12 md:mb-14">
           <div>
-            <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
+            <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
               WHO&apos;S SPEAKING
             </div>
             <h2
@@ -1368,7 +1399,7 @@ function Agenda() {
     <section id="agenda" className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
         <div className="mb-10 md:mb-12">
-          <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
+          <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
             WHAT&apos;S THE AGENDA
           </div>
           <h2
@@ -1515,7 +1546,7 @@ function Pricing() {
           >
             HOW MUCH IS THE TICKET
           </div>
-          <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9]">
+          <h2 className="display text-[28px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9]">
             Get Tickets
           </h2>
           <p className="mx-auto mt-5 max-w-[680px] text-[15px] md:text-[16px] text-white/70 leading-[1.6]">
@@ -1642,7 +1673,7 @@ function Venues() {
   return (
     <section className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
-        <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
+        <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
           WHERE IS THE EVENT HAPPENING
         </div>
         <h2
@@ -1781,10 +1812,10 @@ function Testimonials() {
   return (
     <section className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
-        <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
+        <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
           WHAT DID THE PREVIOUS ATTENDEES SAY
         </div>
-        <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] mb-12 max-w-[900px] text-white">
+        <h2 className="display text-[28px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] mb-12 max-w-[900px] text-white">
           What 2025 Attendees Told Us.
         </h2>
 
@@ -2007,10 +2038,10 @@ function Faq() {
   return (
     <section className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
-        <div className="md:text-center text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
+        <div className="md:text-center text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
           FAQ
         </div>
-        <h2 className="md:text-center display text-[36px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] mb-12">
+        <h2 className="md:text-center display text-[28px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] mb-12">
           <span>Real Questions. </span>
           <span style={{ opacity: 0.3 }}>Direct Answers.</span>
         </h2>
@@ -2167,10 +2198,10 @@ function Sponsors() {
       <div className="container">
         <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-end mb-16 md:mb-20">
           <div>
-            <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
+            <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
               2026 PARTNERS
             </div>
-            <h2 className="display text-[36px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] text-white">
+            <h2 className="display text-[28px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] text-white">
               Our Sponsors
             </h2>
             <p className="mt-4 text-[15px] md:text-[16px] text-white/65 leading-[1.6] max-w-[640px]">
@@ -2267,7 +2298,7 @@ function Contact() {
         <div className="rounded-[28px] p-8 md:p-12 lg:p-14 bg-[#06101a]/60 border border-white/10">
           <div className="grid gap-10 md:grid-cols-2">
             <div>
-              <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
+              <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
                 CONTACT
               </div>
               <h2 className="display text-[36px] md:text-[52px] font-bold uppercase leading-none tracking-[-0.005em] mb-5 text-white">
