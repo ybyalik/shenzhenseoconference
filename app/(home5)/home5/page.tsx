@@ -193,8 +193,7 @@ function BackToTop() {
         typeof window !== 'undefined' &&
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }
-      className="fixed grid place-items-center w-12 h-12 rounded-full gradient-cta text-white shadow-lg z-40 hover:scale-105 transition-transform"
-      style={{ right: '50px', bottom: '50px' }}
+      className="fixed grid place-items-center w-12 h-12 rounded-full gradient-cta text-white shadow-lg z-40 hover:scale-105 transition-transform right-4 bottom-4 lg:right-[50px] lg:bottom-[50px]"
     >
       <ArrowUpIcon className="w-5 h-5" />
     </button>

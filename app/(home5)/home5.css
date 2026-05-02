@@ -18,6 +18,7 @@
   background: var(--bg);
   color: var(--fg);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .home5-root .display {
