@@ -917,7 +917,7 @@ function Audiences() {
     {
       title: 'Chinese Attendees',
       shortTitle: 'Chinese Attendees',
-      icon: '/figma-assets/icon-china-flag.svg',
+      icon: '🇨🇳',
       img: A.audChinese,
       lead: "You're running SEO in China. Agency clients, in-house projects, or global brand mandates. You want:",
       items: cn,
@@ -965,8 +965,14 @@ function Audiences() {
                   transition: 'border-color 0.15s ease',
                 }}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={col.icon} alt="" className="w-6 h-6" />
+                {col.icon.startsWith('/') ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={col.icon} alt="" className="w-6 h-6" />
+                ) : (
+                  <span className="text-[20px] leading-none" aria-hidden>
+                    {col.icon}
+                  </span>
+                )}
                 <span
                   className="uppercase"
                   style={{
