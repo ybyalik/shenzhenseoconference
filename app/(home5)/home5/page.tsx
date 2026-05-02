@@ -241,51 +241,164 @@ function CarouselDots({ count, active }: { count: number; active: number }) {
 }
 
 /* ───────────────────────────── NAV ───────────────────────────── */
-function Nav() {
+function CloseIcon({ className = '' }: { className?: string }) {
   return (
-    <header className="absolute top-0 inset-x-0 z-30">
-      <div className="container flex items-center justify-between h-[72px] lg:h-[88px]">
-        <Link href="/home5" className="flex items-center" aria-label="Shenzhen SEO Conference">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/figma-assets/logo-szseo.png"
-            alt="Shenzhen SEO Conference"
-            className="h-[26px] lg:h-[30px] w-auto"
-          />
-        </Link>
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        d="M6 6l12 12M18 6L6 18"
+      />
+    </svg>
+  );
+}
 
-        {/* Desktop: nav links + CTA, right-aligned. 32px between items, 42px before CTA. */}
-        <div className="hidden lg:flex items-center" style={{ gap: '42px' }}>
-          <nav className="flex items-center" style={{ gap: '32px' }}>
-            {NAV.map((n) => (
-              <a
-                key={n.label}
-                href={n.href}
-                className="text-[12px] font-semibold tracking-[0.18em] text-white/90 hover:text-white"
-              >
-                {n.label}
-              </a>
-            ))}
-          </nav>
-          <a
-            href="#pricing"
-            className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white gradient-cta"
+function Nav() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState('#top');
+
+  // Lock body scroll while menu is open
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    const prev = document.body.style.overflow;
+    if (menuOpen) document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [menuOpen]);
+
+  const handleNavClick = (href: string) => {
+    setActiveHref(href);
+    setMenuOpen(false);
+  };
+
+  return (
+    <>
+      <header className="absolute top-0 inset-x-0 z-30">
+        <div className="container flex items-center justify-between h-[72px] lg:h-[88px]">
+          <Link href="/home5" className="flex items-center" aria-label="Shenzhen SEO Conference">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/figma-assets/logo-szseo.png"
+              alt="Shenzhen SEO Conference"
+              className="h-[26px] lg:h-[30px] w-auto"
+            />
+          </Link>
+
+          {/* Desktop: nav links + CTA, right-aligned. 32px between items, 42px before CTA. */}
+          <div className="hidden lg:flex items-center" style={{ gap: '42px' }}>
+            <nav className="flex items-center" style={{ gap: '32px' }}>
+              {NAV.map((n) => (
+                <a
+                  key={n.label}
+                  href={n.href}
+                  className="text-[12px] font-semibold tracking-[0.18em] text-white/90 hover:text-white"
+                >
+                  {n.label}
+                </a>
+              ))}
+            </nav>
+            <a
+              href="#pricing"
+              className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white gradient-cta"
+            >
+              GET TICKETS
+              <ArrowUpRight className="w-3 h-3" />
+            </a>
+          </div>
+
+          {/* Mobile: hamburger */}
+          <button
+            type="button"
+            aria-label="Open menu"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(true)}
+            className="lg:hidden grid place-items-center w-10 h-10 -mr-2 text-white"
           >
-            GET TICKETS
-            <ArrowUpRight className="w-3 h-3" />
-          </a>
+            <MenuIcon className="w-6 h-6" />
+          </button>
         </div>
+      </header>
 
-        {/* Mobile: hamburger */}
-        <button
-          type="button"
-          aria-label="Open menu"
-          className="lg:hidden grid place-items-center w-10 h-10 -mr-2 text-white"
+      {/* Mobile menu drawer (full-screen) */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 z-50 lg:hidden flex flex-col"
+          style={{ background: '#03060D' }}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site navigation"
         >
-          <MenuIcon className="w-6 h-6" />
-        </button>
-      </div>
-    </header>
+          <div className="flex items-center justify-between h-[72px] px-6 border-b border-white/10">
+            <Link href="/home5" className="flex items-center" onClick={() => setMenuOpen(false)}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/figma-assets/logo-szseo.png"
+                alt="Shenzhen SEO Conference"
+                className="h-[26px] w-auto"
+              />
+            </Link>
+            <button
+              type="button"
+              aria-label="Close menu"
+              onClick={() => setMenuOpen(false)}
+              className="grid place-items-center w-10 h-10 -mr-2 text-white"
+            >
+              <CloseIcon className="w-6 h-6" />
+            </button>
+          </div>
+
+          <nav className="flex-1 overflow-y-auto px-6 py-8">
+            <ul className="flex flex-col gap-7">
+              {NAV.map((n) => {
+                const isActive = activeHref === n.href;
+                return (
+                  <li key={n.label}>
+                    <a
+                      href={n.href}
+                      onClick={() => handleNavClick(n.href)}
+                      className="display uppercase font-bold"
+                      style={{
+                        fontSize: '24px',
+                        lineHeight: '120%',
+                        letterSpacing: '-0.5px',
+                        color: isActive ? '#EB3030' : '#F9F9F9',
+                      }}
+                    >
+                      {n.label}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          <div className="px-6 pb-8 pt-4">
+            <a
+              href="#pricing"
+              onClick={() => setMenuOpen(false)}
+              className="display rounded-full gradient-cta uppercase w-full"
+              style={{
+                display: 'flex',
+                padding: '16px 24px',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: '12px',
+                color: '#F9F9F9',
+                fontSize: '14px',
+                fontWeight: 600,
+                lineHeight: '150%',
+              }}
+            >
+              GET TICKETS
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -485,7 +598,7 @@ function QuoteGlyph({ className = '' }: { className?: string }) {
 
 function FounderLetter() {
   return (
-    <section className="bg-[#03060d] py-24">
+    <section className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
         <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
           WHAT IS SZSEO?
@@ -589,7 +702,7 @@ function Recap() {
   };
 
   return (
-    <section className="bg-[#03060d] py-24">
+    <section className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
         <div className="relative rounded-2xl overflow-hidden aspect-[1248/702] mx-auto bg-white/5">
           <video
@@ -748,7 +861,7 @@ function Audiences() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section className="bg-[#03060d] py-24">
+    <section className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
         {/* Centered eyebrow + heading */}
         <div className="text-center">
@@ -921,7 +1034,7 @@ function WhyShenzhen() {
     },
   ];
   return (
-    <section id="visit" className="bg-[#03060d] py-24">
+    <section id="visit" className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
         <div className="rounded-[28px] border border-white/10 bg-[#03060d] p-6 md:p-10 lg:p-14">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8">
@@ -1073,7 +1186,7 @@ function Speakers() {
   const MOBILE_INITIAL = 3;
 
   return (
-    <section id="speakers" className="bg-[#03060d] py-24">
+    <section id="speakers" className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
         <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end mb-12 md:mb-14">
           <div>
@@ -1233,7 +1346,7 @@ function Agenda() {
   ];
 
   return (
-    <section id="agenda" className="bg-[#03060d] py-24">
+    <section id="agenda" className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
         <div className="mb-10 md:mb-12">
           <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
@@ -1355,7 +1468,7 @@ function Pricing() {
   return (
     <section
       id="pricing"
-      className="py-24"
+      className="py-12 lg:py-24"
       style={{
         // Figma fill stack (top → bottom in panel = first → last in CSS):
         //   1) Linear: vertical fade-in/out  #03060D 0% → transparent 50% → #03060D 100%
@@ -1508,7 +1621,7 @@ function Venues() {
     },
   ];
   return (
-    <section className="bg-[#03060d] py-24">
+    <section className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
         <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
           WHERE IS THE EVENT HAPPENING
@@ -1647,7 +1760,7 @@ function Testimonials() {
     },
   ];
   return (
-    <section className="bg-[#03060d] py-24">
+    <section className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
         <div className="text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
           WHAT DID THE PREVIOUS ATTENDEES SAY
@@ -1873,7 +1986,7 @@ function Faq() {
     },
   ];
   return (
-    <section className="bg-[#03060d] py-24">
+    <section className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
         <div className="md:text-center text-[18px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
           FAQ
@@ -1907,7 +2020,7 @@ function Faq() {
 /* ───────────────────────────── FINAL CTA (28:692) ───────────────────────────── */
 function FinalCta() {
   return (
-    <section className="bg-[#03060d] py-24">
+    <section className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
         <div
           className="rounded-[28px] py-14 md:py-20 px-6 text-center"
@@ -2031,7 +2144,7 @@ function Sponsors() {
     );
   };
   return (
-    <section id="sponsors" className="bg-[#03060d] py-24">
+    <section id="sponsors" className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
         <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-end mb-16 md:mb-20">
           <div>
@@ -2130,7 +2243,7 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-[#03060d] py-24">
+    <section id="contact" className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
         <div className="rounded-[28px] p-8 md:p-12 lg:p-14 bg-[#06101a]/60 border border-white/10">
           <div className="grid gap-10 md:grid-cols-2">
