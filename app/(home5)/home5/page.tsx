@@ -433,12 +433,11 @@ function HeroTitleLine({
   gradient: string;
 }) {
   return (
-    <span className="flex items-baseline gap-3 md:gap-5">
+    <span className="flex items-baseline gap-2 md:gap-5">
       <span
-        className="display"
+        className="display text-[12px] md:text-[16px]"
         style={{
           color: '#F9F9F9',
-          fontSize: '16px',
           fontWeight: 600,
           lineHeight: '100%',
         }}
@@ -446,9 +445,8 @@ function HeroTitleLine({
         {label}
       </span>
       <span
-        className="display"
+        className="display text-[24px] md:text-[48px]"
         style={{
-          fontSize: '48px',
           fontWeight: 600,
           lineHeight: '100%',
           background: gradient,
@@ -498,10 +496,9 @@ function Hero() {
               <span className="font-medium">The St. Regis Shenzhen</span>
             </div>
             <h1
-              className="order-2 lg:order-1 display uppercase"
+              className="order-2 lg:order-1 display uppercase text-[24px] md:text-[48px]"
               style={{
                 color: '#F9F9F9',
-                fontSize: '48px',
                 fontWeight: 600,
                 lineHeight: '100%',
               }}
@@ -654,7 +651,7 @@ function FounderLetter() {
           WHAT IS SZSEO?
         </div>
         <h2 className="display text-[28px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] mb-10 md:mb-12">
-          A Letter From The Founder
+          A Letter From <br className="md:hidden" />The Founder
         </h2>
 
         <div
@@ -929,8 +926,8 @@ function Audiences() {
   return (
     <section className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
-        {/* Centered eyebrow + heading */}
-        <div className="text-center">
+        {/* Centered on desktop, left-aligned on mobile */}
+        <div className="md:text-center">
           <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
             WHO IS THIS FOR
           </div>
@@ -1156,9 +1153,8 @@ function WhyShenzhen() {
             </div>
             <a
               href="#"
-              className="display rounded-full border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 self-start md:self-auto uppercase"
+              className="hidden md:flex display rounded-full border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 self-start md:self-auto uppercase"
               style={{
-                display: 'flex',
                 padding: '16px 24px',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -1188,7 +1184,7 @@ function WhyShenzhen() {
             doesn&apos;t.
           </p>
           <p
-            className="self-stretch max-w-[760px] mb-12 md:mb-14"
+            className="self-stretch max-w-[760px] mb-8 md:mb-14"
             style={{
               color: '#F9F9F9',
               fontSize: '18px',
@@ -1201,6 +1197,24 @@ function WhyShenzhen() {
             foot in. 18 million people. Average age 32. More patents filed here than anywhere
             else in China. Tencent, DJI, Huawei, BYD — all within a 30-minute drive.
           </p>
+          <a
+            href="#"
+            className="md:hidden display rounded-full border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 uppercase mb-12 self-start inline-flex"
+            style={{
+              padding: '16px 24px',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '16px',
+              color: '#F9F9F9',
+              textAlign: 'center',
+              fontSize: '16px',
+              fontWeight: 600,
+              lineHeight: '150%',
+            }}
+          >
+            VISIT SHENZHEN
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
           {/* Mobile: horizontal swipe carousel with snap */}
           <div className="md:hidden">
             <div
@@ -1214,7 +1228,7 @@ function WhyShenzhen() {
                     data-card-idx={i}
                     className="flex-none w-[85%] snap-start"
                   >
-                    <div className="relative aspect-[544/280] rounded-xl overflow-hidden bg-white/5">
+                    <div className="relative aspect-square rounded-xl overflow-hidden bg-white/5">
                       <Image
                         src={c.img}
                         alt=""
@@ -1312,9 +1326,9 @@ function Speakers() {
           </div>
           <a
             href="#"
-            className="display rounded-full border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 self-start md:self-end uppercase"
+            className="display rounded-full border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 self-start md:self-end uppercase w-fit"
             style={{
-              display: 'flex',
+              display: 'inline-flex',
               padding: '16px 24px',
               justifyContent: 'center',
               alignItems: 'center',
@@ -1369,11 +1383,11 @@ function Speakers() {
         </ul>
 
         {!showAll && list.length > MOBILE_INITIAL && (
-          <div className="mt-8 flex justify-center sm:hidden">
+          <div className="mt-8 sm:hidden">
             <button
               type="button"
               onClick={() => setShowAll(true)}
-              className="display rounded-full border border-white/55 bg-black/20 hover:bg-black/40 uppercase"
+              className="display rounded-full border border-white/55 bg-black/20 hover:bg-black/40 uppercase w-full"
               style={{
                 display: 'flex',
                 padding: '16px 24px',
@@ -1459,15 +1473,15 @@ function Agenda() {
               letterSpacing: '-2px',
             }}
           >
-            <span>Five Days,</span>{' '}
-            <span style={{ opacity: 0.3 }}>Pick Your Depth</span>
+            <span className="block md:inline">Five Days,</span>{' '}
+            <span className="block md:inline" style={{ opacity: 0.3 }}>Pick Your Depth</span>
           </h2>
         </div>
 
         {/* Pre-events banner */}
         <div className="mb-2 md:mb-3">
           <div className="display text-[18px] md:text-[16px] font-semibold uppercase tracking-[0.04em] md:tracking-[0.16em] text-white leading-[120%]">
-            Pre-Events · Sat (Sep 12) + Sun (Sep 13) Afternoons
+            Pre-Events · Sat (Sep 12) +<br className="md:hidden" /> Sun (Sep 13) Afternoons
           </div>
           <p className="mt-2 text-[13px] md:text-[14px] text-white/55 leading-[1.55]">
             Two free side events open to everyone — no conference ticket required. (Details May
@@ -1578,12 +1592,11 @@ function Pricing() {
       }}
     >
       <div className="container">
-        <div className="text-center">
+        <div className="md:text-center">
           <div
             className="uppercase mb-3"
             style={{
               color: '#EB3030',
-              textAlign: 'center',
               fontSize: '18px',
               fontWeight: 700,
               lineHeight: '150%',
@@ -1595,7 +1608,7 @@ function Pricing() {
           <h2 className="display text-[28px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9]">
             Get Tickets
           </h2>
-          <p className="mx-auto mt-5 max-w-[680px] text-[15px] md:text-[16px] text-white/70 leading-[1.6]">
+          <p className="md:mx-auto mt-5 max-w-[680px] text-[15px] md:text-[16px] text-white/70 leading-[1.6]">
             One night at The St. Regis costs more than a Standard ticket. You get 5 days, every
             meal, and two parties.
           </p>
@@ -1617,7 +1630,7 @@ function Pricing() {
               </div>
               <div className="mt-4 flex items-end gap-3">
                 <span
-                  className="display text-[36px] md:text-[40px] font-bold leading-none text-white"
+                  className="display text-[24px] md:text-[40px] font-semibold leading-[160%] md:leading-none text-white uppercase"
                   style={{ opacity: 0.9 }}
                 >
                   {t.price}
@@ -1860,8 +1873,8 @@ function Testimonials() {
         <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
           WHAT DID THE PREVIOUS ATTENDEES SAY
         </div>
-        <h2 className="display text-[28px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] mb-12 max-w-[900px] text-white">
-          What 2025 Attendees Told Us.
+        <h2 className="display text-[28px] md:text-[36px] font-semibold uppercase leading-[120%] tracking-[-2px] md:tracking-normal self-stretch text-[#F9F9F9] mb-12 max-w-[900px]">
+          What 2025<br className="md:hidden" /> Attendees Told Us.
         </h2>
 
         {/* Videos: carousel on mobile, 2-col grid on md+ */}
@@ -1877,7 +1890,7 @@ function Testimonials() {
                   data-card-idx={i}
                   className="flex-none w-[85%] snap-start rounded-2xl border border-white/10 p-6"
                 >
-                  <div className="relative rounded-xl overflow-hidden aspect-[548/289] bg-white/5">
+                  <div className="relative rounded-xl overflow-hidden aspect-square bg-white/5">
                     <Image
                       src={v.img}
                       alt={v.name}
@@ -2118,21 +2131,20 @@ function FinalCta() {
     <section className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
         <div
-          className="rounded-[28px] py-14 md:py-20 px-6 text-center"
+          className="rounded-[28px] py-14 md:py-20 px-6 md:text-center"
           style={{
             background:
               'linear-gradient(160deg, #114555 0%, #0a3142 35%, #06222d 70%, #051820 100%)',
           }}
         >
-          <h2 className="display text-[28px] md:text-[40px] font-semibold leading-[1.1] uppercase tracking-[-0.005em] max-w-[920px] mx-auto text-white">
+          <h2 className="display text-[28px] md:text-[40px] font-semibold leading-[1.1] uppercase tracking-[-0.005em] max-w-[920px] md:mx-auto text-white">
             <span className="block">One Room. Five Days.</span>
             <span className="block">September.</span>
           </h2>
           <p
-            className="mt-5 max-w-[720px] mx-auto self-stretch"
+            className="mt-5 max-w-[720px] md:mx-auto self-stretch"
             style={{
               color: '#F9F9F9',
-              textAlign: 'center',
               fontSize: '18px',
               fontWeight: 500,
               lineHeight: '160%',
@@ -2208,7 +2220,7 @@ function Sponsors() {
         >
           {title}
         </h3>
-        <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-items-center sm:justify-center gap-x-8 sm:gap-x-14 md:gap-x-20 gap-y-10">
+        <div className={`${items.length === 1 ? 'flex justify-center' : 'grid grid-cols-2'} sm:flex sm:flex-wrap items-center justify-items-center sm:justify-center gap-x-8 sm:gap-x-14 md:gap-x-20 gap-y-10`}>
           {items.map((s) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -2340,20 +2352,19 @@ function Contact() {
   return (
     <section id="contact" className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
-        <div className="rounded-[28px] p-8 md:p-12 lg:p-14 bg-[#06101a]/60 border border-white/10">
+        <div className="rounded-[28px] p-5 md:p-12 lg:p-14 bg-[#06101a]/60 border border-white/10">
           <div className="grid gap-10 md:grid-cols-2">
             <div>
               <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
                 CONTACT
               </div>
-              <h2 className="display text-[36px] md:text-[52px] font-bold uppercase leading-none tracking-[-0.005em] mb-5 text-white">
+              <h2 className="display text-[28px] md:text-[52px] font-semibold md:font-bold uppercase leading-[120%] md:leading-none tracking-[-2px] md:tracking-[-0.005em] mb-5 text-white">
                 Questions?
               </h2>
               <p
-                className="mb-8 max-w-[440px]"
+                className="mb-8 max-w-[440px] text-[16px] md:text-[18px]"
                 style={{
                   color: '#F9F9F9',
-                  fontSize: '18px',
                   fontWeight: 500,
                   lineHeight: '160%',
                 }}
@@ -2361,10 +2372,9 @@ function Contact() {
                 Tickets, invitation letters, inquiries — we read everything.
               </p>
               <ul
-                className="space-y-3"
+                className="space-y-3 text-[14px] md:text-[18px]"
                 style={{
                   color: '#F9F9F9',
-                  fontSize: '18px',
                   fontWeight: 500,
                   lineHeight: '160%',
                 }}
@@ -2392,15 +2402,15 @@ function Contact() {
               </ul>
             </div>
             <form className="space-y-4" onSubmit={handleSubmit}>
-              <div className="flex gap-4">
+              <div className="flex flex-col md:flex-row gap-4">
                 <input
                   type="text"
                   name="firstName"
                   placeholder="John"
                   required
-                  className="text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                  className="text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                   style={{
-                    flex: '1 0 0',
+                    flex: '1 1 0',
                     display: 'flex',
                     height: '64px',
                     padding: '22px 24px',
@@ -2416,9 +2426,9 @@ function Contact() {
                   name="lastName"
                   placeholder="Last Name"
                   required
-                  className="text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                  className="text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                   style={{
-                    flex: '1 0 0',
+                    flex: '1 1 0',
                     display: 'flex',
                     height: '64px',
                     padding: '22px 24px',
@@ -2435,7 +2445,7 @@ function Contact() {
                 name="email"
                 placeholder="E-mail Address"
                 required
-                className="w-full text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                className="w-full text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                 style={{
                   display: 'flex',
                   height: '64px',
@@ -2480,15 +2490,15 @@ function Contact() {
               {/* Conditional invitation-letter fields (mirror of /contact) */}
               {check && (
                 <div className="space-y-4">
-                  <div className="flex gap-4">
+                  <div className="flex flex-col md:flex-row gap-4">
                     <input
                       type="text"
                       name="nationality"
                       required
                       placeholder="Nationality (e.g. United States)"
-                      className="text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                      className="text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                       style={{
-                        flex: '1 0 0',
+                        flex: '1 1 0',
                         display: 'flex',
                         height: '64px',
                         padding: '22px 24px',
@@ -2503,9 +2513,9 @@ function Contact() {
                       name="passportNo"
                       required
                       placeholder="Passport No."
-                      className="text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                      className="text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                       style={{
-                        flex: '1 0 0',
+                        flex: '1 1 0',
                         display: 'flex',
                         height: '64px',
                         padding: '22px 24px',
@@ -2521,7 +2531,7 @@ function Contact() {
                     name="passportIssuingOffice"
                     required
                     placeholder="Passport Issuing Office (e.g. U.S. Department of State)"
-                    className="w-full text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                    className="w-full text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                     style={{
                       display: 'flex',
                       height: '64px',
@@ -2532,16 +2542,16 @@ function Contact() {
                       background: '#03060D',
                     }}
                   />
-                  <div className="flex gap-4">
+                  <div className="flex flex-col md:flex-row gap-4">
                     <input
                       type="date"
                       name="dateOfIssue"
                       required
                       placeholder="Date of Issue"
                       aria-label="Date of Issue"
-                      className="text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white [color-scheme:dark]"
+                      className="text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white [color-scheme:dark]"
                       style={{
-                        flex: '1 0 0',
+                        flex: '1 1 0',
                         display: 'flex',
                         height: '64px',
                         padding: '22px 24px',
@@ -2557,9 +2567,9 @@ function Contact() {
                       required
                       placeholder="Passport Expiration Date"
                       aria-label="Passport Expiration Date"
-                      className="text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white [color-scheme:dark]"
+                      className="text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white [color-scheme:dark]"
                       style={{
-                        flex: '1 0 0',
+                        flex: '1 1 0',
                         display: 'flex',
                         height: '64px',
                         padding: '22px 24px',
@@ -2575,7 +2585,7 @@ function Contact() {
                     name="jobTitle"
                     required
                     placeholder="Job Title (e.g. SEO Manager at ABC Company)"
-                    className="w-full text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                    className="w-full text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                     style={{
                       display: 'flex',
                       height: '64px',
@@ -2591,7 +2601,7 @@ function Contact() {
                     name="durationOfStay"
                     required
                     placeholder="Estimated Duration of Stay in China"
-                    className="w-full text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                    className="w-full text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                     style={{
                       display: 'flex',
                       height: '64px',
@@ -2609,7 +2619,7 @@ function Contact() {
                 name="additionalMessage"
                 placeholder="Message (Optional)"
                 rows={5}
-                className="w-full px-4 py-3.5 rounded-xl bg-[#03060d] border border-white/15 text-[15px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] resize-none"
+                className="w-full px-4 py-3.5 rounded-xl bg-[#03060d] border border-white/15 text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] resize-none"
               />
 
               {status && (
