@@ -488,7 +488,7 @@ function Hero() {
       <Nav />
 
       {/* Headline + right column */}
-      <div className="container pt-[140px] md:pt-[260px] lg:pt-[440px] xl:pt-[480px] pb-12 md:pb-14">
+      <div className="container pt-[188px] md:pt-[260px] lg:pt-[440px] xl:pt-[480px] pb-12 md:pb-14">
         <div className="grid gap-8 lg:gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
           {/* LEFT: title + date (date above on mobile, below on desktop) */}
           <div className="flex flex-col">
@@ -610,7 +610,7 @@ function Hero() {
 
           {/* Stats */}
           <dl
-            className="grid grid-cols-4 gap-4 md:flex md:items-start md:gap-[42px] lg:justify-end self-stretch opacity-60"
+            className="grid grid-cols-4 gap-4 md:flex md:items-start md:gap-[42px] lg:justify-end self-stretch opacity-40 md:opacity-60"
           >
             {[
               ['600', 'SEATS'],
@@ -687,7 +687,7 @@ function FounderLetter() {
             <div className="relative">
               <QuoteGlyph className="w-10 h-8 md:w-11 md:h-9 text-[var(--red)] mb-5" />
 
-              <div className="space-y-5 text-[15px] md:text-[16px] italic text-white/85 leading-[1.65] max-w-[560px]">
+              <div className="space-y-5 text-[14px] md:text-[16px] italic text-white/85 leading-[1.8] md:leading-[1.65] max-w-[560px]">
                 <p>
                   In 2019 I ran a half-day SEO event in Shenzhen. 300 people, 95% Chinese. It
                   was good. Then COVID shut things down.
@@ -764,7 +764,7 @@ function Recap() {
   };
 
   return (
-    <section className="bg-[#03060d] py-12 lg:py-24">
+    <section className="bg-[#03060d] py-8 lg:py-24">
       <div className="container">
         <div className="relative rounded-2xl overflow-hidden aspect-[1248/702] mx-auto bg-white/5">
           <video
@@ -978,9 +978,9 @@ function Audiences() {
                   style={{
                     color: '#F9F9F9',
                     fontSize: '12px',
-                    fontWeight: 700,
+                    fontWeight: 800,
                     lineHeight: '150%',
-                    letterSpacing: '0.6px',
+                    letterSpacing: '1px',
                   }}
                 >
                   {col.shortTitle}
@@ -1142,11 +1142,10 @@ function WhyShenzhen() {
                 WHY SHENZHEN
               </div>
               <h2
-                className="display uppercase self-stretch"
+                className="display uppercase self-stretch text-[28px] md:text-[36px]"
                 style={{
                   color: '#F9F9F9',
                   fontFamily: 'Unbounded, system-ui, sans-serif',
-                  fontSize: '36px',
                   fontWeight: 600,
                   lineHeight: '120%',
                   letterSpacing: '-2px',
@@ -1293,11 +1292,10 @@ function Speakers() {
               WHO&apos;S SPEAKING
             </div>
             <h2
-              className="display uppercase self-stretch max-w-[820px]"
+              className="display uppercase self-stretch max-w-[820px] text-[28px] md:text-[48px]"
               style={{
                 color: '#F9F9F9',
                 fontFamily: 'Unbounded, system-ui, sans-serif',
-                fontSize: '48px',
                 fontWeight: 600,
                 lineHeight: '120%',
                 letterSpacing: '-1px',
@@ -1452,11 +1450,10 @@ function Agenda() {
             WHAT&apos;S THE AGENDA
           </div>
           <h2
-            className="display uppercase self-stretch max-w-[820px]"
+            className="display uppercase self-stretch max-w-[820px] text-[28px] md:text-[48px]"
             style={{
               color: '#F9F9F9',
               fontFamily: 'Unbounded, system-ui, sans-serif',
-              fontSize: '48px',
               fontWeight: 600,
               lineHeight: '120%',
               letterSpacing: '-2px',
@@ -1469,7 +1466,7 @@ function Agenda() {
 
         {/* Pre-events banner */}
         <div className="mb-2 md:mb-3">
-          <div className="display text-[14px] md:text-[16px] font-bold uppercase tracking-[0.16em] text-white">
+          <div className="display text-[18px] md:text-[16px] font-semibold uppercase tracking-[0.04em] md:tracking-[0.16em] text-white leading-[120%]">
             Pre-Events · Sat (Sep 12) + Sun (Sep 13) Afternoons
           </div>
           <p className="mt-2 text-[13px] md:text-[14px] text-white/55 leading-[1.55]">
@@ -1482,14 +1479,14 @@ function Agenda() {
           {days.map((d) => (
             <li
               key={d.n}
-              className="rounded-2xl border border-white/10 p-6 md:rounded-none md:border-0 md:border-t md:border-white/10 md:p-0 grid grid-cols-1 md:grid-cols-[180px_1fr_auto] md:items-center gap-4 md:gap-8 md:py-8"
+              className="rounded-2xl border border-white/15 p-4 md:rounded-none md:border md:border-white/10 md:border-x-0 md:border-b-0 md:p-0 grid grid-cols-1 md:grid-cols-[180px_1fr_auto] md:items-center gap-4 md:gap-8 md:py-8"
             >
               {/* Mobile: top row weekday left + DAY N right; Desktop: stacked left column */}
               <div className="flex items-center justify-between md:block">
-                <div className="order-2 md:order-1 display text-[20px] md:text-[24px] font-bold leading-none text-white">
+                <div className="order-2 md:order-1 display text-[12px] md:text-[24px] font-semibold leading-[120%] text-white uppercase">
                   {d.n}
                 </div>
-                <div className="order-1 md:order-2 md:mt-2 text-[13px] md:text-[16px] font-semibold tracking-[0.12em] text-[#86DFF7]">
+                <div className="order-1 md:order-2 md:mt-2 text-[12px] md:text-[16px] font-semibold leading-[120%] tracking-normal md:tracking-[0.12em] uppercase text-[#86DFF7]">
                   {d.date}
                 </div>
               </div>
@@ -1726,11 +1723,10 @@ function Venues() {
           WHERE IS THE EVENT HAPPENING
         </div>
         <h2
-          className="display uppercase self-stretch mb-5 lg:whitespace-nowrap"
+          className="display uppercase self-stretch mb-5 lg:whitespace-nowrap text-[28px] md:text-[48px]"
           style={{
             color: '#F9F9F9',
             fontFamily: 'Unbounded, system-ui, sans-serif',
-            fontSize: '48px',
             fontWeight: 600,
             lineHeight: '120%',
             letterSpacing: '-2px',

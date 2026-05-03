@@ -18,5 +18,9 @@ export const metadata: Metadata = {
 };
 
 export default function Home5Layout({ children }: { children: React.ReactNode }) {
-  return <div className={`${unbounded.variable} home5-root`}>{children}</div>;
+  return (
+    <html lang="en">
+      <body className={`${unbounded.variable} home5-root`}>{children}</body>
+    </html>
+  );
 }
