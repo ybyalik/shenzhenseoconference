@@ -1001,7 +1001,7 @@ function Audiences() {
               className={`${activeTab === idx ? 'flex' : 'hidden'} md:flex flex-col items-start`}
               style={{ flex: '1 0 0', alignSelf: 'stretch' }}
             >
-              <div className="relative aspect-[560/429] rounded-2xl overflow-hidden mb-7 bg-white/5">
+              <div className="relative w-full aspect-[560/429] rounded-2xl overflow-hidden mb-7 bg-white/5">
                 <Image
                   src={col.img}
                   alt=""
