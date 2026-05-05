@@ -743,7 +743,7 @@ function Recap() {
   return (
     <section className="bg-[#03060d] py-8 lg:py-24">
       <div className="container">
-        <div className="relative rounded-2xl overflow-hidden aspect-[1248/702] mx-auto bg-white/5">
+        <div className="relative rounded-2xl overflow-hidden aspect-[1248/702] mx-auto bg-white/5 lg:max-w-[80%]">
           <video
             ref={videoRef}
             className="absolute inset-0 w-full h-full object-cover"
