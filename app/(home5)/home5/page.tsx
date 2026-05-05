@@ -22,7 +22,7 @@ const A = {
   spkC: '/figma-assets/a1bad36616537f10b8dfb095a790d57f0a93de74.jpg',
   spkD: '/figma-assets/423641b5b8fba6de7b4b21cd2a4d1251130007c3.jpg',
   venueStRegis: '/figma-assets/688936701b4bc80748c25feedf98d48b907a3e4b.png',
-  venueMgm: '/figma-assets/a9c3ff3d80ef6b361ff110539eb6262a02a3edd2.png',
+  venueMgm: '/figma-assets/mgm.png',
   testimonial1: '/figma-assets/32b31077323cc00c521e68046604026524586096.jpg',
   testimonial2: '/figma-assets/5d3a381b1ca81cf042afc9c25229fa75dfb6885c.jpg',
   avMike: '/figma-assets/7a90223f2bdbdefbbf62ffc8e1abc252b472d417.jpg',
