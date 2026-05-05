@@ -2078,7 +2078,7 @@ function Faq() {
         <div className="md:text-center text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
           FAQ
         </div>
-        <h2 className="md:text-center display text-[28px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] mb-12">
+        <h2 className="md:text-center display text-[28px] md:text-[36px] font-semibold uppercase leading-[120%] tracking-[-2px] md:tracking-normal self-stretch text-[#F9F9F9] mb-12">
           <span>Real Questions. </span>
           <span style={{ opacity: 0.3 }}>Direct Answers.</span>
         </h2>
