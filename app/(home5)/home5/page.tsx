@@ -688,29 +688,31 @@ function FounderLetter() {
 
               <div className="space-y-5 text-[14px] md:text-[16px] italic text-white/85 leading-[1.8] md:leading-[1.65] max-w-[560px]">
                 <p>
-                  In 2019 I ran a half-day SEO event in Shenzhen. 300 people, 95% Chinese. It
-                  was good. Then COVID shut things down.
+                  In 2019, I hosted a half-day SEO event in Shenzhen. 300 people, mostly
+                  local, with a few international speakers like Aleyda Solis. It worked, but
+                  then the world paused.
                 </p>
                 <p>
-                  In 2025 I brought it back. Five days, 500 people, a third of the room flown
-                  in from outside China. Speakers from Google. Agencies from Europe and
-                  Australia. In-house teams from Chinese tech. All in one room — for the first
-                  time.
+                  When we brought it back in 2025, the scale changed: 4 days, 500 people, and
+                  a full English track on the stage. A third of the room flew in from overseas.
                 </p>
                 <p>
-                  Partnerships formed at coffee breaks. A UK YouTube agency walked in with no
-                  Chinese clients and left with a clear ROI path. A German-Australian SEO
-                  agency already working with 20+ Chinese brands going global — found new
-                  partners before the closing party. Gary Illyes closed his keynote with
-                  &ldquo;Don&apos;t panic. Figure it out.&rdquo; Every year since, people do
-                  exactly that.
+                  For the first time in my 16-year SEO career, I saw Western entrepreneurs
+                  and professionals sitting right next to peers from China, Japan, and Korea.
                 </p>
                 <p>
-                  This year we&apos;re scaling to 600. Same hotel. Same idea. Bigger room.
-                  More countries. Same filter — SEO entrepreneurs and practitioners
-                  who&apos;ve done the work.
+                  More importantly, they actually started working together. Seeing that
+                  bridge finally built between East and West has been the highlight of my
+                  career so far.
                 </p>
-                <p>If you&apos;ve been on the fence, come.</p>
+                <p>
+                  That&apos;s why we&apos;re doing it again. We&apos;re moving to a larger
+                  hotel to accommodate 600 people, but the filter remains the same: no fluff,
+                  just SEO practitioners and entrepreneurs who have done the work.
+                </p>
+                <p>
+                  If you&apos;ve been on the fence, come. I&apos;ll see you in Shenzhen.
+                </p>
               </div>
 
               {/* Author */}
