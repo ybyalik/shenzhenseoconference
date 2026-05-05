@@ -669,7 +669,7 @@ function FounderLetter() {
             background: '#03060D',
           }}
         >
-          <div className="grid gap-10 lg:gap-14 lg:grid-cols-[minmax(0,440px)_1fr] items-start">
+          <div className="grid gap-10 lg:gap-14 lg:grid-cols-[minmax(0,440px)_minmax(0,560px)] lg:justify-center items-start">
             {/* Portrait */}
             <div className="relative aspect-[440/640] w-full max-w-[440px] rounded-2xl overflow-hidden bg-white/5">
               <Image
