@@ -31,9 +31,7 @@ const A = {
 };
 
 const SPONSORS = {
-  platinum: [
-    { src: '/figma-assets/9add4b1aed067330ac161c840fbecee2473b160e.png', alt: 'QuickCreator', h: 96 },
-  ],
+  platinum: [] as { src: string; alt: string; h: number }[],
   gold: [
     { src: '/figma-assets/sponsor-swishdm.png', alt: 'Swish DM', h: 56 },
     { src: '/figma-assets/sponsor-dynadot.png', alt: 'Dynadot', h: 48 },
@@ -2121,7 +2119,7 @@ function FinalCta() {
             <span className="block">September.</span>
           </h2>
           <p
-            className="mt-5 max-w-[720px] md:mx-auto self-stretch"
+            className="mt-5 max-w-[720px] md:max-w-none md:mx-auto md:whitespace-nowrap self-stretch"
             style={{
               color: '#F9F9F9',
               fontSize: '18px',
@@ -2265,9 +2263,15 @@ function Sponsors() {
           </a>
         </div>
         <div className="space-y-16 md:space-y-20">
-          <Row title="Platinum Sponsors" items={SPONSORS.platinum} max={96} tier="platinum" />
-          <Row title="Gold Sponsors" items={SPONSORS.gold} max={56} tier="gold" />
-          <Row title="Silver Sponsors" items={SPONSORS.silver} max={48} tier="silver" />
+          {SPONSORS.platinum.length > 0 && (
+            <Row title="Platinum Sponsors" items={SPONSORS.platinum} max={96} tier="platinum" />
+          )}
+          {SPONSORS.gold.length > 0 && (
+            <Row title="Gold Sponsors" items={SPONSORS.gold} max={56} tier="gold" />
+          )}
+          {SPONSORS.silver.length > 0 && (
+            <Row title="Silver Sponsors" items={SPONSORS.silver} max={48} tier="silver" />
+          )}
         </div>
       </div>
     </section>
