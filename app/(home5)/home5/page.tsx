@@ -502,11 +502,11 @@ function Hero() {
       <Nav />
 
       {/* Headline + right column */}
-      <div className="container pt-[188px] md:pt-[260px] lg:pt-[440px] xl:pt-[480px] pb-12 md:pb-14">
+      <div className="container pt-[140px] md:pt-[260px] lg:pt-[440px] xl:pt-[480px] pb-8 md:pb-14">
         <div className="grid gap-8 lg:gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
           {/* LEFT: title + date (date above on mobile, below on desktop) */}
           <div className="flex flex-col">
-            <div className="order-1 lg:order-2 lg:mt-7 flex items-center gap-3 text-[13px] md:text-[14px] text-white/90 mb-5 lg:mb-0">
+            <div className="order-1 lg:order-2 lg:mt-7 flex items-center gap-3 text-[13px] md:text-[14px] text-white/90 mb-8 lg:mb-0">
               <span className="font-bold">September 14–18, 2026</span>
               <span className="w-1 h-1 rounded-full bg-white/55" aria-hidden />
               <span className="font-medium">The St. Regis Shenzhen</span>
