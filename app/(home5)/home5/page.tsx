@@ -703,7 +703,7 @@ function FounderLetter() {
               </div>
 
               {/* Author */}
-              <div className="flex items-center gap-3 max-w-[560px]">
+              <div className="flex items-center gap-3 max-w-[560px] mt-8">
                 <div className="relative w-10 h-10 md:w-11 md:h-11 rounded-full overflow-hidden bg-white/10 ring-2 ring-white/15">
                   <Image
                     src={A.founderAvatar}
