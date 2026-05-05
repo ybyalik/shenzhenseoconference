@@ -17,6 +17,7 @@ const A = {
   why3: '/figma-assets/ea9863f1c46347ee75ce39500df9c0b12b743af6.png',
   why4: '/figma-assets/1a227bbe08c421d3cc2d14d7b8c4b6b82263e2bc.jpg',
   spkA: '/figma-assets/a98cc2407eac3ef826ce296466a19c22b89a4777.jpg',
+  garyIllyes: '/figma-assets/gary-illyes.jpg',
   spkB: '/figma-assets/4b767e80b2b757091a90554414ca31841996deeb.jpg',
   spkC: '/figma-assets/a1bad36616537f10b8dfb095a790d57f0a93de74.jpg',
   spkD: '/figma-assets/423641b5b8fba6de7b4b21cd2a4d1251130007c3.jpg',
@@ -554,14 +555,14 @@ function Hero() {
           <figure className="flex items-center gap-4">
             <span
               className="relative rounded-full overflow-hidden bg-white/10 flex-none"
-              style={{ width: '88px', aspectRatio: '1 / 1' }}
+              style={{ width: '48px', aspectRatio: '1 / 1' }}
             >
               <Image
-                src={A.spkA}
+                src={A.garyIllyes}
                 alt="Gary Illyes"
                 fill
                 className="object-cover"
-                sizes="88px"
+                sizes="48px"
               />
             </span>
             <div className="min-w-0">
@@ -576,29 +577,13 @@ function Hero() {
               >
                 &ldquo;Don&apos;t panic. Things change. They always do. Figure it out.&rdquo;
               </p>
-              <figcaption className="mt-1.5">
-                <span
-                  className="block"
-                  style={{
-                    color: '#F9F9F9',
-                    fontSize: '12px',
-                    fontWeight: 600,
-                    lineHeight: '150%',
-                    opacity: 0.6,
-                  }}
-                >
-                  Gary Illyes
-                </span>
-                <span
-                  className="block"
-                  style={{
-                    color: '#F9F9F9',
-                    fontSize: '10px',
-                    fontWeight: 500,
-                    lineHeight: '200%',
-                    opacity: 0.6,
-                  }}
-                >
+              <figcaption
+                className="mt-1.5 flex flex-wrap items-baseline gap-x-2"
+                style={{ color: '#F9F9F9', fontSize: '14px', opacity: 0.6 }}
+              >
+                <span style={{ fontWeight: 500, lineHeight: '24px' }}>Gary Illyes</span>
+                <span aria-hidden style={{ fontWeight: 400, lineHeight: '20px' }}>|</span>
+                <span style={{ fontWeight: 400, lineHeight: '20px' }}>
                   Search Relations, Google · Keynote Speaker
                 </span>
               </figcaption>
