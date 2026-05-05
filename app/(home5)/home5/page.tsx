@@ -449,7 +449,7 @@ function HeroTitleLine({
   gradient: string;
 }) {
   return (
-    <span className="flex items-baseline gap-2 md:gap-5">
+    <span className="flex flex-col items-start gap-3">
       <span
         className="display text-[12px] md:text-[16px]"
         style={{
