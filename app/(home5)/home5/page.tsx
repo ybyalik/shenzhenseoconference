@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 const A = {
   heroBg: '/figma-assets/hero-bg.png',
   founderPortrait: '/figma-assets/jp-portrait.png',
-  founderAvatar: '/figma-assets/jp-avatar.png',
+  founderAvatar: '/figma-assets/jp-avatar.webp',
   founderSignature: '/figma-assets/jp-signature.png',
   recap: '/figma-assets/de3b4552f3cbd3a8a34ebb172a16b1bf278b9bae.png',
   audInternational: '/figma-assets/audience-international.png',
