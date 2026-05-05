@@ -1277,9 +1277,6 @@ function Speakers() {
     { country: 'AU · CN', name: 'Loki Yan', sub: 'Co-founder, First Optimise (壹优化)', img: '/figma-assets/Loki-Yan1.jpg' },
   ];
 
-  const [showAll, setShowAll] = useState(false);
-  const MOBILE_INITIAL = 3;
-
   return (
     <section id="speakers" className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
@@ -1309,9 +1306,8 @@ function Speakers() {
           </div>
           <a
             href="#"
-            className="display rounded-full border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 self-start md:self-end uppercase w-fit"
+            className="hidden md:inline-flex display rounded-full border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 self-start md:self-end uppercase w-fit"
             style={{
-              display: 'inline-flex',
               padding: '16px 24px',
               justifyContent: 'center',
               alignItems: 'center',
@@ -1328,13 +1324,11 @@ function Speakers() {
           </a>
         </div>
 
-        <ul className="grid gap-4 md:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {list.map((s, i) => (
+        <ul className="grid gap-4 md:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {list.map((s) => (
             <li
               key={s.name}
-              className={`${
-                !showAll && i >= MOBILE_INITIAL ? 'hidden sm:block' : ''
-              } rounded-2xl bg-[#06101a]/60 p-6 border border-white/[0.06] hover:border-[var(--red)] transition-colors`}
+              className="rounded-2xl bg-[#06101a]/60 p-4 md:p-6 border border-white/[0.06] hover:border-[var(--red)] transition-colors"
             >
               <div className="relative aspect-square rounded-xl overflow-hidden bg-white/5">
                 <Image
@@ -1342,7 +1336,7 @@ function Speakers() {
                   alt={s.name}
                   fill
                   className="object-cover grayscale-[12%]"
-                  sizes="(max-width: 768px) 100vw, 246px"
+                  sizes="(max-width: 768px) 50vw, 246px"
                 />
               </div>
               <div className="mt-5 flex items-center justify-between gap-3">
@@ -1355,40 +1349,36 @@ function Speakers() {
                   </span>
                 )}
               </div>
-              <div className="mt-3 text-[18px] md:text-[20px] font-bold text-white leading-tight">
+              <div className="mt-3 text-[16px] md:text-[20px] font-bold text-white leading-tight">
                 {s.name}
               </div>
-              <div className="mt-1.5 text-[13px] md:text-[14px] text-white/55 leading-snug line-clamp-2">
+              <div className="mt-1.5 text-[12px] md:text-[14px] text-white/55 leading-snug line-clamp-2">
                 {s.sub}
               </div>
             </li>
           ))}
         </ul>
 
-        {!showAll && list.length > MOBILE_INITIAL && (
-          <div className="mt-8 sm:hidden">
-            <button
-              type="button"
-              onClick={() => setShowAll(true)}
-              className="display rounded-full border border-white/55 bg-black/20 hover:bg-black/40 uppercase w-full"
-              style={{
-                display: 'flex',
-                padding: '16px 24px',
-                justifyContent: 'center',
-                alignItems: 'center',
-                gap: '16px',
-                color: '#F9F9F9',
-                textAlign: 'center',
-                fontSize: '16px',
-                fontWeight: 600,
-                lineHeight: '150%',
-              }}
-            >
-              LOAD MORE
-              <ArrowUpRight className="w-4 h-4" />
-            </button>
-          </div>
-        )}
+        <div className="mt-8 flex justify-center md:hidden">
+          <a
+            href="#"
+            className="display inline-flex rounded-full border border-white/55 bg-black/20 hover:bg-black/40 uppercase"
+            style={{
+              padding: '16px 24px',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '16px',
+              color: '#F9F9F9',
+              textAlign: 'center',
+              fontSize: '16px',
+              fontWeight: 600,
+              lineHeight: '150%',
+            }}
+          >
+            SEE ALL SPEAKERS
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
+        </div>
       </div>
     </section>
   );
