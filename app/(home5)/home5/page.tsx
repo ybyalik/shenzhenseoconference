@@ -2236,37 +2236,16 @@ function Sponsors() {
   return (
     <section id="sponsors" className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
-        <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-end mb-16 md:mb-20">
-          <div>
-            <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
-              2026 PARTNERS
-            </div>
-            <h2 className="display text-[28px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] text-white">
-              Our Sponsors
-            </h2>
-            <p className="mt-4 text-[15px] md:text-[16px] text-white/65 leading-[1.6] max-w-[640px]">
-              Thank you to the sponsors who made this event possible.
-            </p>
+        <div className="mb-16 md:mb-20">
+          <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
+            2026 PARTNERS
           </div>
-          <a
-            href="#"
-            className="display rounded-full border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 w-full md:w-auto md:self-end uppercase"
-            style={{
-              display: 'flex',
-              padding: '16px 24px',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: '16px',
-              color: '#F9F9F9',
-              textAlign: 'center',
-              fontSize: '16px',
-              fontWeight: 600,
-              lineHeight: '150%',
-            }}
-          >
-            BECOME A 2026 SPONSOR
-            <ArrowUpRight className="w-4 h-4" />
-          </a>
+          <h2 className="display text-[28px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] text-white">
+            Our Sponsors
+          </h2>
+          <p className="mt-4 text-[15px] md:text-[16px] text-white/65 leading-[1.6] max-w-[640px]">
+            Thank you to the sponsors who made this event possible.
+          </p>
         </div>
         <div className="space-y-16 md:space-y-20">
           {SPONSORS.platinum.length > 0 && (
@@ -2278,6 +2257,15 @@ function Sponsors() {
           {SPONSORS.silver.length > 0 && (
             <Row title="Silver Sponsors" items={SPONSORS.silver} max={48} tier="silver" />
           )}
+        </div>
+        <div className="mt-16 md:mt-20 flex justify-center">
+          <a
+            href="#"
+            className="display inline-flex items-center justify-center gap-4 px-6 py-4 rounded-full border border-[#F9F9F9] uppercase whitespace-nowrap text-[14px] font-semibold leading-[150%] text-[#F9F9F9] hover:bg-white/5"
+          >
+            BECOME A 2026 SPONSOR
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
         </div>
       </div>
     </section>
