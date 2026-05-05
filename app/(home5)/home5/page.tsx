@@ -186,6 +186,21 @@ function ArrowUpIcon({ className = '' }: { className?: string }) {
 }
 
 function BackToTop() {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const update = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = max > 0 ? window.scrollY / max : 0;
+      setShow(pct >= 0.2);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
   return (
     <button
       type="button"
@@ -194,7 +209,9 @@ function BackToTop() {
         typeof window !== 'undefined' &&
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }
-      className="fixed grid place-items-center w-12 h-12 rounded-full gradient-cta text-white shadow-lg z-40 hover:scale-105 transition-transform right-4 bottom-4 lg:right-[50px] lg:bottom-[50px]"
+      className={`fixed grid place-items-center w-12 h-12 rounded-full gradient-cta text-white shadow-lg z-40 hover:scale-105 right-4 bottom-4 lg:right-[50px] lg:bottom-[50px] transition-opacity duration-200 ${
+        show ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+      }`}
     >
       <ArrowUpIcon className="w-5 h-5" />
     </button>
@@ -694,16 +711,6 @@ function FounderLetter() {
                   who&apos;ve done the work.
                 </p>
                 <p>If you&apos;ve been on the fence, come.</p>
-              </div>
-
-              {/* Signature */}
-              <div className="mt-8 mb-10 max-w-[560px]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={A.founderSignature}
-                  alt="JP Zhang signature"
-                  className="h-[88px] md:h-[110px] w-auto opacity-95"
-                />
               </div>
 
               {/* Author */}
