@@ -656,22 +656,9 @@ function FounderLetter() {
           A Letter From <br className="md:hidden" />The Founder
         </h2>
 
-        <div
-          style={{
-            display: 'flex',
-            padding: '20px',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            gap: '40px',
-            alignSelf: 'stretch',
-            borderRadius: '32px',
-            border: '1px solid rgba(249, 249, 249, 0.10)',
-            background: '#03060D',
-          }}
-        >
-          <div className="grid gap-10 lg:gap-14 lg:grid-cols-[minmax(0,440px)_minmax(0,560px)] lg:justify-center items-start">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center p-6 lg:p-12 gap-10 lg:gap-16 self-stretch rounded-[32px] border border-white/10 bg-[#03060d]">
             {/* Portrait */}
-            <div className="relative aspect-[440/640] w-full max-w-[440px] rounded-2xl overflow-hidden bg-white/5">
+            <div className="relative aspect-[440/640] w-full lg:w-[440px] lg:flex-shrink-0 rounded-2xl overflow-hidden bg-white/5">
               <Image
                 src={A.founderPortrait}
                 alt="JP Zhang, Founder of Shenzhen SEO Conference"
@@ -683,7 +670,7 @@ function FounderLetter() {
             </div>
 
             {/* Letter */}
-            <div className="relative">
+            <div className="relative w-full lg:max-w-[560px] lg:flex-shrink-0">
               <QuoteGlyph className="w-10 h-8 md:w-11 md:h-9 text-[var(--red)] mb-5" />
 
               <div className="space-y-5 text-[14px] md:text-[16px] italic text-white/85 leading-[1.8] md:leading-[1.65] max-w-[560px]">
@@ -736,7 +723,6 @@ function FounderLetter() {
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </section>
