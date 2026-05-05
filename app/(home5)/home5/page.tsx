@@ -570,14 +570,14 @@ function Hero() {
           <figure className="flex items-center gap-4">
             <span
               className="relative rounded-full overflow-hidden bg-white/10 flex-none"
-              style={{ width: '48px', aspectRatio: '1 / 1' }}
+              style={{ width: '88px', aspectRatio: '1 / 1' }}
             >
               <Image
                 src={A.garyIllyes}
                 alt="Gary Illyes"
                 fill
                 className="object-cover"
-                sizes="48px"
+                sizes="88px"
               />
             </span>
             <div className="min-w-0">
@@ -592,13 +592,29 @@ function Hero() {
               >
                 &ldquo;Don&apos;t panic. Things change. They always do. Figure it out.&rdquo;
               </p>
-              <figcaption
-                className="mt-1.5 flex flex-wrap items-baseline gap-x-2"
-                style={{ color: '#F9F9F9', fontSize: '14px', opacity: 0.6 }}
-              >
-                <span style={{ fontWeight: 500, lineHeight: '24px' }}>Gary Illyes</span>
-                <span aria-hidden style={{ fontWeight: 400, lineHeight: '20px' }}>|</span>
-                <span style={{ fontWeight: 400, lineHeight: '20px' }}>
+              <figcaption className="mt-1.5">
+                <span
+                  className="block"
+                  style={{
+                    color: '#F9F9F9',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    lineHeight: '150%',
+                    opacity: 0.6,
+                  }}
+                >
+                  Gary Illyes
+                </span>
+                <span
+                  className="block"
+                  style={{
+                    color: '#F9F9F9',
+                    fontSize: '10px',
+                    fontWeight: 500,
+                    lineHeight: '200%',
+                    opacity: 0.6,
+                  }}
+                >
                   Search Relations, Google · Keynote Speaker
                 </span>
               </figcaption>
