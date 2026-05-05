@@ -25,9 +25,9 @@ const A = {
   venueMgm: '/figma-assets/mgm.png',
   testimonial1: '/figma-assets/32b31077323cc00c521e68046604026524586096.jpg',
   testimonial2: '/figma-assets/5d3a381b1ca81cf042afc9c25229fa75dfb6885c.jpg',
-  avMike: '/figma-assets/7a90223f2bdbdefbbf62ffc8e1abc252b472d417.jpg',
-  avMads: '/figma-assets/e044c1d1ffbfde2851b2664f657b6ae145322c51.png',
-  avZack: '/figma-assets/bca373271b6020b0151ad3f4590d216edf8d05a2.jpg',
+  avMike: '/figma-assets/Mike-Dee1.jpg',
+  avMads: '/figma-assets/Mads-Singers1.jpg',
+  avZack: '/figma-assets/Zack-Franklin1.jpg',
 };
 
 const SPONSORS = {
