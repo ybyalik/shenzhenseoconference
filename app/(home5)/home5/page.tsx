@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
 const A = {
-  heroBg: '/figma-assets/hero-bg.png',
+  heroBg: '/figma-assets/herohome.jpg',
   founderPortrait: '/figma-assets/jp-portrait.png',
   founderAvatar: '/figma-assets/jp-avatar.webp',
   founderSignature: '/figma-assets/jp-signature.png',
@@ -495,7 +495,7 @@ function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(3, 6, 13, 0) 19.95%, rgba(3, 6, 13, 0.6) 59.98%, #03060D 100%)',
+              'linear-gradient(180deg, rgba(3, 6, 13, 0) 30%, rgba(3, 6, 13, 0.35) 65%, #03060D 100%)',
           }}
         />
       </div>
