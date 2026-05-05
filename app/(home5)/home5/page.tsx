@@ -490,9 +490,17 @@ function Hero() {
           className="object-cover object-center"
           sizes="100vw"
         />
-        {/* Exact Figma gradient overlay */}
+        {/* Mobile overlay: darker so the title reads cleanly */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 md:hidden"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(3, 6, 13, 0.15) 5%, rgba(3, 6, 13, 0.85) 55%, #03060D 100%)',
+          }}
+        />
+        {/* Desktop overlay: lighter so the skyline shows through */}
+        <div
+          className="absolute inset-0 hidden md:block"
           style={{
             background:
               'linear-gradient(180deg, rgba(3, 6, 13, 0) 15%, rgba(3, 6, 13, 0.65) 60%, #03060D 100%)',
