@@ -1247,20 +1247,19 @@ function WhyShenzhen() {
 
 /* ───────────────────────────── SPEAKERS (28:242) ───────────────────────────── */
 function Speakers() {
-  const portraits = [A.spkA, A.spkB, A.spkC, A.spkD];
   const list = [
-    { country: 'US', tag: 'Keynote', name: 'Gary Illyes', sub: 'Search Relations, Google' },
-    { country: 'CA', tag: 'Keynote', name: 'Aleyda Solis', sub: 'International SEO Consultant · Founder, Orainti' },
-    { country: 'US', tag: 'Keynote', name: 'Mads Singers', sub: 'Management Consultant · Runs his own SEO conf in Vietnam' },
-    { country: 'CN', tag: '', name: 'Zack Franklin', sub: 'SEO agency owner · 9 years in Shenzhen' },
-    { country: 'US', tag: '', name: 'Terry Kyle', sub: 'Founder, WPX.net' },
-    { country: 'CN', tag: '', name: 'Stewart Vickers', sub: 'SEO Practitioner' },
-    { country: 'AU', tag: '', name: 'Natalia Witczyk', sub: 'Technical SEO, Australia' },
-    { country: 'UK', tag: '', name: 'Charles Floate', sub: 'SEO Consultant' },
-    { country: 'US', tag: '', name: 'Greg Hellers', sub: 'SEO Practitioner' },
-    { country: 'AU', tag: '', name: 'Lawrence Hitches', sub: 'SEO Practitioner' },
-    { country: 'US', tag: '', name: 'Shane Dutka', sub: 'SEO Practitioner' },
-    { country: 'CZ', tag: '', name: 'Sarah Pokorná', sub: 'WritePress' },
+    { country: 'US', name: 'Lily Ray', sub: 'VP of SEO Strategy & Research, Amsive', img: '/figma-assets/Lily-Ray1.jpg' },
+    { country: 'CH', name: 'Gary Illyes', sub: 'Analyst, Google Search', img: A.garyIllyes },
+    { country: 'US', name: 'Eli Schwartz', sub: 'Author, Product-Led SEO', img: '/figma-assets/Eli-Schwartz1.jpg' },
+    { country: 'US', name: 'Lars Lofgren', sub: 'Fractional VP of Marketing', img: '/figma-assets/Lars-Lofgren1.jpg' },
+    { country: 'US', name: 'Bernard Huang', sub: 'Co-founder, Clearscope', img: '/figma-assets/Bernard-Huang1.jpg' },
+    { country: 'AU', name: 'Nick Drewe', sub: 'Founder & CEO, Wethrift', img: '/figma-assets/Nick-Drewe1.jpg' },
+    { country: 'CA', name: 'Megan Gougeon', sub: 'Founder, Portable Professional', img: '/figma-assets/Megan-Gougeon1.jpg' },
+    { country: 'US', name: 'Doug Pierce', sub: 'Founder, Cogney', img: '/figma-assets/Doug-Pierce1.jpg' },
+    { country: 'US', name: 'Victor Huynh', sub: 'CEO and Head of Digital Strategy, Ready Artwork', img: '/figma-assets/Victor-Huynh1.jpg' },
+    { country: 'UK · DE', name: 'Jonathan Kiekbusch', sub: 'Founder, SwishDM', img: A.spkA },
+    { country: 'UK', name: 'Owain Lloyd-Williams', sub: 'Independent SEO Consultant', img: '/figma-assets/Owain-Lloyd-Williams1.jpg' },
+    { country: 'AU · CN', name: 'Loki Yan', sub: 'Co-founder, First Optimise (壹优化)', img: '/figma-assets/Loki-Yan1.jpg' },
   ];
 
   const [showAll, setShowAll] = useState(false);
@@ -1324,7 +1323,7 @@ function Speakers() {
             >
               <div className="relative aspect-square rounded-xl overflow-hidden bg-white/5">
                 <Image
-                  src={portraits[i % portraits.length]}
+                  src={s.img}
                   alt={s.name}
                   fill
                   className="object-cover grayscale-[12%]"
