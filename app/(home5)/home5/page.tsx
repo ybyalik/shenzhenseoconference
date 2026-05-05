@@ -1247,7 +1247,8 @@ function WhyShenzhen() {
 
 /* ───────────────────────────── SPEAKERS (28:242) ───────────────────────────── */
 function Speakers() {
-  const list = [
+  type Speaker = { country: string; name: string; sub: string; img: string; tag?: string };
+  const list: Speaker[] = [
     { country: 'US', name: 'Lily Ray', sub: 'VP of SEO Strategy & Research, Amsive', img: '/figma-assets/Lily-Ray1.jpg' },
     { country: 'CH', name: 'Gary Illyes', sub: 'Analyst, Google Search', img: A.garyIllyes },
     { country: 'US', name: 'Eli Schwartz', sub: 'Author, Product-Led SEO', img: '/figma-assets/Eli-Schwartz1.jpg' },
@@ -1576,7 +1577,7 @@ function Pricing() {
           <h2 className="display text-[28px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9]">
             Get Tickets
           </h2>
-          <p className="md:mx-auto mt-5 max-w-[680px] text-[15px] md:text-[16px] text-white/70 leading-[1.6]">
+          <p className="md:mx-auto mt-5 max-w-[680px] md:max-w-none md:whitespace-nowrap text-[15px] md:text-[16px] text-white/70 leading-[1.6]">
             One night at The St. Regis costs more than a Standard ticket. You get 5 days, every
             meal, and two parties.
           </p>
@@ -1635,12 +1636,22 @@ function Pricing() {
                       opacity: 0.7,
                     }}
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="/figma-assets/check-red.png"
-                      alt=""
-                      className="w-4 h-4 mt-0.5 flex-none"
-                    />
+                    <svg
+                      width="18"
+                      height="13"
+                      viewBox="0 0 18 13"
+                      fill="none"
+                      className="mt-1.5 flex-none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M17 1L6 12L1 7"
+                        stroke="#EB3030"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                     <span>{b}</span>
                   </li>
                 ))}
