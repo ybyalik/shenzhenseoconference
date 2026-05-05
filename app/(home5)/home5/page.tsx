@@ -495,7 +495,7 @@ function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(3, 6, 13, 0) 19.95%, rgba(3, 6, 13, 0.75) 59.98%, #03060D 100%)',
+              'linear-gradient(180deg, rgba(3, 6, 13, 0) 19.95%, rgba(3, 6, 13, 0.6) 59.98%, #03060D 100%)',
           }}
         />
       </div>
