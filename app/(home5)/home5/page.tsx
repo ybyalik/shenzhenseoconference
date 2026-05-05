@@ -449,7 +449,7 @@ function HeroTitleLine({
   gradient: string;
 }) {
   return (
-    <span className="flex flex-col items-start gap-3">
+    <span className="flex items-baseline gap-2 md:gap-5">
       <span
         className="display text-[12px] md:text-[16px]"
         style={{
@@ -512,14 +512,14 @@ function Hero() {
               <span className="font-medium">The St. Regis Shenzhen</span>
             </div>
             <h1
-              className="order-2 lg:order-1 display uppercase text-[24px] md:text-[48px]"
+              className="order-2 lg:order-1 display uppercase text-[24px] md:text-[48px] flex flex-col items-start gap-3"
               style={{
                 color: '#F9F9F9',
                 fontWeight: 600,
                 lineHeight: '100%',
               }}
             >
-              <span className="block">East Meets West</span>
+              <span>East Meets West</span>
               <HeroTitleLine
                 label="IN"
                 word="SEO"
