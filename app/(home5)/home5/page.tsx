@@ -783,26 +783,17 @@ function Recap() {
               />
 
               {/* visible play affordance */}
-              <div className="absolute left-5 bottom-5 md:left-8 md:bottom-8 inline-flex items-center gap-3 pointer-events-none">
+              <div className="absolute left-5 bottom-5 md:left-8 md:bottom-8 inline-flex items-center gap-3 lg:gap-4 pointer-events-none">
                 <span
-                  style={{
-                    display: 'flex',
-                    width: '40px',
-                    height: '40px',
-                    padding: '0 10px',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    borderRadius: '62.5px',
-                    background: '#118BAC',
-                  }}
+                  className="flex items-center justify-center w-10 h-10 lg:w-16 lg:h-16 rounded-full"
+                  style={{ background: '#118BAC' }}
                 >
-                  <PlayIcon className="w-4 h-4 text-white translate-x-[1px]" />
+                  <PlayIcon className="w-4 h-4 lg:w-6 lg:h-6 text-white translate-x-[1px]" />
                 </span>
                 <span
-                  className="display uppercase"
+                  className="display uppercase text-[8px] lg:text-[18px]"
                   style={{
                     color: '#F9F9F9',
-                    fontSize: '8px',
                     fontWeight: 700,
                     lineHeight: '160%',
                   }}
@@ -813,10 +804,9 @@ function Recap() {
 
               <div className="absolute right-5 bottom-5 md:right-8 md:bottom-8 text-right">
                 <div
-                  className="display uppercase"
+                  className="display uppercase text-[12px] lg:text-[32px]"
                   style={{
                     color: '#F9F9F9',
-                    fontSize: '12px',
                     fontWeight: 700,
                     lineHeight: 'normal',
                   }}
@@ -824,10 +814,9 @@ function Recap() {
                   500+
                 </div>
                 <div
-                  className="display uppercase"
+                  className="display uppercase text-[8px] lg:text-[18px]"
                   style={{
                     color: '#F9F9F9',
-                    fontSize: '8px',
                     fontWeight: 700,
                     lineHeight: '160%',
                   }}
