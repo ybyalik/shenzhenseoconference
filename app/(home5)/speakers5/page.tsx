@@ -74,22 +74,22 @@ const BENEFITS = [
   {
     title: 'Full Logistics, Handled.',
     body: 'Visa invitation letters. Airport pick-up and drop-off. Hotel. Interpreters if you need one. You land and focus on the talk.',
-    img: '/figma-assets/c180b122845d182aed2c6a1c3b0f9c898e707c2f.jpg',
+    img: '/assets/full-logistics.png',
   },
   {
     title: '1 Full Day of Guided Shenzhen.',
     body: 'Hardware lab, Huaqiangbei electronics market, the bay, the factories. Not a tourist loop — the working city.',
-    img: '/figma-assets/1a227bbe08c421d3cc2d14d7b8c4b6b82263e2bc.jpg',
+    img: '/assets/guided-shenzhen.png',
   },
   {
     title: "A Chinese Audience You Won't Find at Brighton or Pubcon.",
     body: "500+ in-house SEOs decision-makers from brands going global. They don't travel to London or San Diego.",
-    img: '/figma-assets/audience-chinese.png',
+    img: '/assets/chinese-audience.png',
   },
   {
     title: 'Speakers Talk, Then They Stay.',
     body: 'Most stay through the week. The actual conversations happen on Day 3 and Day 5 — after the stage.',
-    img: '/figma-assets/audience-international.png',
+    img: '/assets/speakers-talk.png',
   },
 ];
 
@@ -124,13 +124,12 @@ const DONT_WANT = [
   { n: 4, body: "Anyone who won't share numbers" },
 ];
 
-const ROOM_GALLERY = [
-  '/figma-assets/de3b4552f3cbd3a8a34ebb172a16b1bf278b9bae.png',
-  '/figma-assets/32b31077323cc00c521e68046604026524586096.jpg',
-  '/figma-assets/5d3a381b1ca81cf042afc9c25229fa75dfb6885c.jpg',
+const DAYS = [
+  { label: 'Day 1 of 4', a: '/assets/day1a.png', b: '/assets/day1b.png', c: '/assets/day1c.png' },
+  { label: 'Day 2 of 4', a: '/assets/day2a.png', b: '/assets/day2b.png', c: '/assets/day2c.png' },
+  { label: 'Day 3 of 4', a: '/assets/day3a.png', b: '/assets/day3b.png', c: '/assets/day3c.png' },
+  { label: 'Day 4 of 4', a: '/assets/day4a.png', b: '/assets/day4b.png', c: '/assets/day4c.png' },
 ];
-
-const DAYS = ['Day 1 of 4', 'Day 2 of 4', 'Day 3 of 4', 'Day 4 of 4'];
 
 const SPEAKER_QUOTES = [
   {
@@ -238,25 +237,28 @@ function Hero() {
     <section id="top" className="relative isolate overflow-hidden bg-[#03060d]">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/figma-assets/de3b4552f3cbd3a8a34ebb172a16b1bf278b9bae.png"
+          src="/assets/speakers-hero.jpg"
           alt=""
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-top"
           sizes="100vw"
+          style={{ opacity: 0.7 }}
         />
+        {/* Mobile overlay */}
         <div
           className="absolute inset-0 md:hidden"
           style={{
             background:
-              'linear-gradient(180deg, rgba(3,6,13,0.35) 5%, rgba(3,6,13,0.9) 55%, #03060D 100%)',
+              'linear-gradient(180deg, rgba(3, 6, 13, 0.55) 0%, rgba(3, 6, 13, 0.92) 55%, #03060D 100%)',
           }}
         />
+        {/* Desktop overlay */}
         <div
           className="absolute inset-0 hidden md:block"
           style={{
             background:
-              'linear-gradient(180deg, rgba(3,6,13,0.25) 10%, rgba(3,6,13,0.7) 60%, #03060D 100%)',
+              'linear-gradient(180deg, rgba(3, 6, 13, 0.45) 0%, rgba(3, 6, 13, 0.85) 55%, #03060D 100%)',
           }}
         />
       </div>
@@ -458,7 +460,7 @@ function Room2025() {
                 letterSpacing: 2,
               }}
             >
-              {DAYS[day]}
+              {DAYS[day].label}
             </span>
             <span
               className="display uppercase"
@@ -493,29 +495,29 @@ function Room2025() {
           </div>
         </div>
 
-        {/* Gallery: 1 large + 2 stacked */}
+        {/* Gallery: 1 large + 2 stacked, swapped per active day */}
         <div className="grid gap-4 md:grid-cols-[1.6fr_1fr] md:auto-rows-[210px]">
           <div className="relative md:row-span-2 rounded-lg overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={ROOM_GALLERY[0]}
-              alt="Main stage 2025"
+              src={DAYS[day].a}
+              alt={`${DAYS[day].label} main`}
               className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
           <div className="relative rounded-lg overflow-hidden h-[180px] md:h-auto">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={ROOM_GALLERY[1]}
-              alt="Audience 2025"
+              src={DAYS[day].b}
+              alt={`${DAYS[day].label} top right`}
               className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
           <div className="relative rounded-lg overflow-hidden h-[180px] md:h-auto">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={ROOM_GALLERY[2]}
-              alt="Audience 2025"
+              src={DAYS[day].c}
+              alt={`${DAYS[day].label} bottom right`}
               className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
@@ -1006,7 +1008,7 @@ function Criteria() {
           className="mt-4 flex flex-col md:flex-row md:items-stretch self-stretch"
           style={{
             padding: 'clamp(24px, 5vw, 64px)',
-            gap: 'clamp(24px, 4vw, 48px)',
+            gap: 'clamp(16px, 2vw, 24px)',
             justifyContent: 'space-between',
             borderRadius: 48,
             border: '1px solid rgba(249, 249, 249, 0.20)',
@@ -1014,16 +1016,18 @@ function Criteria() {
           }}
         >
           <div
-            className="self-stretch min-h-[280px] md:min-h-0"
+            className="min-h-[280px] md:min-h-0 shrink-0"
             aria-hidden
             style={{
-              flex: '1 0 0',
+              width: 505,
+              maxWidth: '100%',
+              height: 517,
               borderRadius: 24,
               background:
-                "linear-gradient(0deg, rgba(55, 79, 116, 0.55), rgba(55, 79, 116, 0.55)), url('/figma-assets/de3b4552f3cbd3a8a34ebb172a16b1bf278b9bae.png') 50% / cover no-repeat #d3d3d3",
+                "linear-gradient(0deg, rgba(55, 79, 116, 0.55), rgba(55, 79, 116, 0.55)), url('/assets/jp-talk.png') 50% / cover no-repeat #d3d3d3",
             }}
           />
-          <div className="flex flex-col gap-6 md:max-w-[440px] md:w-full">
+          <div className="flex flex-col gap-6 md:max-w-[560px] md:w-full md:flex-1">
             <div className="flex flex-col gap-3">
               <span
                 className="uppercase"

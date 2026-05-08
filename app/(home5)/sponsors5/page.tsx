@@ -264,25 +264,28 @@ function Hero() {
     <section id="top" className="relative isolate overflow-hidden bg-[#03060d]">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/figma-assets/de3b4552f3cbd3a8a34ebb172a16b1bf278b9bae.png"
+          src="/assets/sponsors-hero.jpg"
           alt=""
           fill
           priority
           className="object-cover object-center"
           sizes="100vw"
+          style={{ opacity: 0.7 }}
         />
+        {/* Mobile overlay */}
         <div
           className="absolute inset-0 md:hidden"
           style={{
             background:
-              'linear-gradient(180deg, rgba(3,6,13,0.35) 5%, rgba(3,6,13,0.9) 55%, #03060D 100%)',
+              'linear-gradient(180deg, rgba(3, 6, 13, 0.55) 0%, rgba(3, 6, 13, 0.92) 55%, #03060D 100%)',
           }}
         />
+        {/* Desktop overlay */}
         <div
           className="absolute inset-0 hidden md:block"
           style={{
             background:
-              'linear-gradient(180deg, rgba(3,6,13,0.25) 10%, rgba(3,6,13,0.7) 60%, #03060D 100%)',
+              'linear-gradient(180deg, rgba(3, 6, 13, 0.45) 0%, rgba(3, 6, 13, 0.85) 55%, #03060D 100%)',
           }}
         />
       </div>
