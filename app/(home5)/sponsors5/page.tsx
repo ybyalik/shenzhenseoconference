@@ -185,21 +185,20 @@ function SponsorLogoBox({
       : baseFlatten;
 
   // All tiers use the same rounded 24px card with red-on-hover; only the
-  // fixed height / padding shape differs per tier.
-  const fixedHeight =
-    tier === 'gold' ? 208 : tier === 'silver' ? 176 : undefined;
-  // Note: the figma spec for silver is asymmetric (64/64/48/64) but that
-  // visually offsets the logo upward. Using symmetric 64 so logos sit at the
-  // true vertical center of the card.
-  const padding = 64;
+  // fixed height differs per tier. Padding shrinks on mobile so cards don't
+  // overflow narrow viewports.
+  const heightClass =
+    tier === 'gold'
+      ? 'h-[140px] md:h-[208px]'
+      : tier === 'silver'
+      ? 'h-[120px] md:h-[176px]'
+      : '';
 
   return (
     <div
-      className="flex flex-col justify-center items-center group transition-colors self-stretch"
+      className={`flex flex-col justify-center items-center group transition-colors self-stretch min-w-0 p-6 md:p-16 ${heightClass}`}
       style={{
         flex: '1 0 0',
-        height: fixedHeight,
-        padding,
         gap: 10,
         borderRadius: 24,
         border: '1px solid rgba(249, 249, 249, 0.10)',
@@ -216,11 +215,11 @@ function SponsorLogoBox({
       <img
         src={logo.src}
         alt={logo.alt}
+        className="block max-w-full"
         style={{
-          display: 'block',
-          height: logo.h,
+          height: 'auto',
+          maxHeight: logo.h,
           width: 'auto',
-          maxWidth: 220,
           margin: 'auto',
           objectFit: 'contain',
           filter: defaultFilter,
@@ -247,7 +246,7 @@ function TierLabel({ children }: { children: React.ReactNode }) {
       style={{
         color: '#EB3030',
         fontFamily: 'Unbounded, system-ui, sans-serif',
-        fontSize: 24,
+        fontSize: 'clamp(18px, 2.4vw, 24px)',
         fontWeight: 500,
         lineHeight: '140%',
       }}
@@ -325,7 +324,7 @@ function Hero() {
           <span
             className="block gradient-text-brand"
             style={{
-              fontSize: 'clamp(40px, 7vw, 64px)',
+              fontSize: 'clamp(28px, 6vw, 64px)',
               fontWeight: 600,
               lineHeight: '120%',
             }}
@@ -335,7 +334,7 @@ function Hero() {
           <span
             className="block"
             style={{
-              fontSize: 'clamp(40px, 7vw, 64px)',
+              fontSize: 'clamp(28px, 6vw, 64px)',
               fontWeight: 600,
               lineHeight: '120%',
             }}
@@ -345,7 +344,7 @@ function Hero() {
           <span
             className="block"
             style={{
-              fontSize: 'clamp(40px, 7vw, 64px)',
+              fontSize: 'clamp(28px, 6vw, 64px)',
               fontWeight: 600,
               lineHeight: '120%',
             }}
@@ -367,19 +366,34 @@ function Hero() {
           Chinese and international SEO leaders share a coffee break.
         </p>
 
+        {/* Mobile: solid red pill */}
         <Link
           href="#apply"
-          className="mt-8 inline-flex items-center gap-3 rounded-full uppercase"
+          className="md:hidden mt-8 display gradient-cta flex uppercase text-white whitespace-nowrap text-[14px] font-semibold leading-[150%]"
+          style={{
+            width: '323.728px',
+            maxWidth: '100%',
+            padding: '12px 32px',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: 12,
+            borderRadius: 1000,
+          }}
+        >
+          Become a 2026 Sponsor
+          <ArrowUpRight className="w-4 h-4" />
+        </Link>
+
+        {/* Desktop: outlined pill */}
+        <Link
+          href="#apply"
+          className="hidden md:inline-flex mt-8 btn-outline-white items-center gap-3 rounded-full uppercase"
           style={{
             padding: '16px 28px',
-            border: '1px solid #F9F9F9',
-            color: '#F9F9F9',
             fontFamily: 'General Sans, system-ui, sans-serif',
             fontSize: 14,
             fontWeight: 700,
             letterSpacing: '0.18em',
-            background: 'rgba(0,0,0,0.25)',
-            backdropFilter: 'blur(2px)',
           }}
         >
           Become a 2026 Sponsor
@@ -397,24 +411,29 @@ function Confirmed2026() {
     <section className="bg-[#03060d]">
       <div
         className="container flex flex-col items-center self-stretch"
-        style={{ padding: 'clamp(40px, 7vw, 96px)', gap: 72 }}
+        style={{
+          paddingTop: 'clamp(48px, 6vw, 96px)',
+          paddingBottom: 'clamp(48px, 6vw, 96px)',
+          gap: 'clamp(40px, 5vw, 72px)',
+        }}
       >
         {/* Heading */}
-        <div className="flex flex-col items-center self-stretch" style={{ gap: 16 }}>
+        <div className="flex flex-col items-start md:items-center self-stretch" style={{ gap: 16 }}>
           <h2
-            className="display uppercase text-center"
+            className="display uppercase text-left md:text-center"
             style={{
               color: '#F9F9F9',
               fontFamily: 'Unbounded, system-ui, sans-serif',
-              fontSize: 36,
-              fontWeight: 700,
-              lineHeight: '40px',
+              fontSize: 'clamp(28px, 4vw, 36px)',
+              fontWeight: 600,
+              lineHeight: '120%',
+              letterSpacing: '-2px',
             }}
           >
             2026 Confirmed.
           </h2>
           <p
-            className="text-center"
+            className="text-left md:text-center"
             style={{
               color: '#F9F9F9',
               fontFamily: 'General Sans, system-ui, sans-serif',
@@ -477,24 +496,29 @@ function ThreeTiers() {
       }}
     >
       <div
-        className="container relative flex flex-col items-center"
-        style={{ padding: 'clamp(64px, 10vw, 128px) 24px', gap: 64 }}
+        className="container relative flex flex-col items-start md:items-center"
+        style={{
+          paddingTop: 'clamp(48px, 8vw, 128px)',
+          paddingBottom: 'clamp(48px, 8vw, 128px)',
+          gap: 64,
+        }}
       >
-        <div className="flex flex-col items-center self-stretch" style={{ gap: 16 }}>
+        <div className="flex flex-col items-start md:items-center self-stretch" style={{ gap: 16 }}>
           <h2
-            className="display uppercase text-center"
+            className="display uppercase text-left md:text-center"
             style={{
               color: '#F9F9F9',
               fontFamily: 'Unbounded, system-ui, sans-serif',
-              fontSize: 36,
-              fontWeight: 700,
-              lineHeight: '40px',
+              fontSize: 'clamp(28px, 4vw, 36px)',
+              fontWeight: 600,
+              lineHeight: '120%',
+              letterSpacing: '-2px',
             }}
           >
             Three Tiers. Clear What You Get.
           </h2>
           <p
-            className="text-center"
+            className="text-left md:text-center"
             style={{
               color: '#F9F9F9',
               fontFamily: 'General Sans, system-ui, sans-serif',
@@ -567,10 +591,10 @@ function ThreeTiers() {
                   marginTop: 32,
                 }}
               >
-                <div className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#EB3030]">
+                <div className="text-[11px] font-bold tracking-[0.18em] uppercase text-white">
                   Best For
                 </div>
-                <p className="text-[14px] font-medium leading-[160%] text-white/70">
+                <p className="text-[14px] font-medium leading-[160%] text-white">
                   {t.bestFor}
                 </p>
               </div>
@@ -580,14 +604,13 @@ function ThreeTiers() {
 
         <Link
           href="#apply"
-          className="display inline-flex uppercase whitespace-nowrap text-[14px] font-semibold leading-[150%] text-[#F9F9F9] hover:bg-white/5"
+          className="display btn-outline-white flex uppercase whitespace-nowrap text-[14px] font-semibold leading-[150%] self-stretch md:self-auto md:inline-flex md:-mt-6"
           style={{
             padding: '16px 48px',
             justifyContent: 'center',
             alignItems: 'center',
             gap: 12,
             borderRadius: 1000,
-            border: '1px solid #F9F9F9',
           }}
         >
           Talk to Us
@@ -605,7 +628,7 @@ function WhyThisEvent() {
     <section className="bg-[#03060d]">
       <div
         className="container flex flex-col"
-        style={{ padding: 'clamp(48px, 8vw, 96px) 24px', gap: 'clamp(48px, 7vw, 96px)' }}
+        style={{ padding: 'clamp(48px, 6vw, 96px) 24px', gap: 'clamp(48px, 7vw, 96px)' }}
       >
         <div className="flex flex-col gap-4 max-w-[860px]">
           <h2
@@ -613,12 +636,14 @@ function WhyThisEvent() {
             style={{
               color: '#F9F9F9',
               fontFamily: 'Unbounded, system-ui, sans-serif',
-              fontSize: 36,
-              fontWeight: 700,
-              lineHeight: '40px',
+              fontSize: 'clamp(28px, 4vw, 36px)',
+              fontWeight: 600,
+              lineHeight: '120%',
+              letterSpacing: '-2px',
             }}
           >
-            Why This Event. Not Another One.
+            <span className="block">Why This Event.</span>
+            <span className="block">Not Another One.</span>
           </h2>
           <p
             style={{
@@ -635,15 +660,18 @@ function WhyThisEvent() {
 
         <div className="grid gap-x-12 gap-y-12 md:grid-cols-2">
           {REASONS.map((r) => (
-            <div key={r.n} className="flex flex-col" style={{ gap: 12 }}>
-              <div className="flex items-center" style={{ gap: 16 }}>
+            <div
+              key={r.n}
+              className="flex flex-col items-start self-stretch gap-4 md:gap-3 p-4 md:p-0 rounded-3xl md:rounded-none border-[1.5px] border-white/15 md:border-0"
+            >
+              <div className="flex flex-col md:flex-row md:items-center self-stretch" style={{ gap: 16 }}>
                 <div
                   className="uppercase shrink-0"
                   style={{
                     width: 58,
                     color: '#118BAC',
                     fontFamily: 'Unbounded, system-ui, sans-serif',
-                    fontSize: 32,
+                    fontSize: 'clamp(24px, 3.5vw, 32px)',
                     fontWeight: 700,
                     lineHeight: '120%',
                   }}
@@ -655,7 +683,7 @@ function WhyThisEvent() {
                   style={{
                     color: '#F9F9F9',
                     fontFamily: 'Unbounded, system-ui, sans-serif',
-                    fontSize: 24,
+                    fontSize: 'clamp(18px, 2.5vw, 24px)',
                     fontWeight: 700,
                     lineHeight: '160%',
                   }}
@@ -683,12 +711,40 @@ function WhyThisEvent() {
 
 /* ──────────────────────────────── 4. QUOTE ───────────────────────────────── */
 
+const SPONSOR_QUOTES = [
+  {
+    text:
+      "There are very few opportunities for Western and Chinese to get together in one event like this. It's very unique.",
+    name: 'Zack Franklin',
+    role: 'SEO agency owner, 9 years in Shenzhen',
+    img: '/figma-assets/Zack-Franklin1.jpg',
+  },
+  {
+    text:
+      'I got to tour around a little bit and it kind of reminded me, this is like the US. Super developed. Very quiet, very organized.',
+    name: 'Stewart Vickers',
+    role: '2025 Speaker',
+    img: '/figma-assets/Mike-Dee1.jpg',
+  },
+  {
+    text:
+      'The clearest business ROI of any conference I have attended. I should have tapped this market years ago.',
+    name: 'Mike Dee',
+    role: '2025 Speaker',
+    img: '/figma-assets/Mike-Dee1.jpg',
+  },
+];
+
 function QuoteBlock() {
+  const [idx, setIdx] = useState(0);
+  const total = SPONSOR_QUOTES.length;
+  const q = SPONSOR_QUOTES[idx];
+
   return (
     <section className="bg-[#03060d]">
       <div
-        className="container"
-        style={{ padding: 'clamp(48px, 8vw, 96px) 24px' }}
+        className="container flex flex-col self-stretch"
+        style={{ padding: 'clamp(48px, 6vw, 96px) 24px', gap: 24 }}
       >
         <div
           className="flex flex-col items-center self-stretch text-center"
@@ -721,40 +777,93 @@ function QuoteBlock() {
               textTransform: 'uppercase',
             }}
           >
-            There are very few opportunities for Western and Chinese to get together in one
-            event like this. It&apos;s very unique.
+            {q.text}
           </p>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 self-start md:self-auto">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/figma-assets/Zack-Franklin1.jpg"
-              alt="Zack Franklin"
-              className="w-10 h-10 rounded-full object-cover"
+              src={q.img}
+              alt={q.name}
+              className="w-12 h-12 rounded-full object-cover"
             />
-            <div className="flex flex-col items-start">
+            <div className="flex flex-col items-start text-left">
+              <span
+                className="display"
+                style={{
+                  color: '#F9F9F9',
+                  fontFamily: 'Unbounded, system-ui, sans-serif',
+                  fontSize: 16,
+                  fontWeight: 500,
+                  lineHeight: '160%',
+                }}
+              >
+                {q.name}
+              </span>
               <span
                 style={{
                   color: '#F9F9F9',
                   fontFamily: 'General Sans, system-ui, sans-serif',
-                  fontSize: 14,
-                  fontWeight: 600,
-                  lineHeight: '20px',
+                  fontSize: 12,
+                  fontWeight: 500,
+                  lineHeight: '160%',
                 }}
               >
-                Zack Franklin
-              </span>
-              <span
-                style={{
-                  color: 'rgba(249, 249, 249, 0.50)',
-                  fontFamily: 'General Sans, system-ui, sans-serif',
-                  fontSize: 14,
-                  fontWeight: 400,
-                  lineHeight: '20px',
-                }}
-              >
-                SEO agency owner, 9 years in Shenzhen
+                {q.role}
               </span>
             </div>
+          </div>
+        </div>
+
+        {/* Carousel controls — dashes left, arrows right (below the box) */}
+        <div className="flex items-center justify-between self-stretch gap-4">
+          <div className="flex items-center gap-1.5">
+            {SPONSOR_QUOTES.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                aria-label={`Show quote ${i + 1}`}
+                onClick={() => setIdx(i)}
+                className="h-[2px] transition-all"
+                style={{
+                  width: 28,
+                  background: i === idx ? '#eb3030' : 'rgba(249,249,249,0.18)',
+                }}
+              />
+            ))}
+          </div>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              aria-label="Previous quote"
+              onClick={() => setIdx((i) => (i - 1 + total) % total)}
+              className="flex items-center justify-center hover:bg-white/5 transition-colors"
+              style={{
+                padding: 16,
+                gap: 8,
+                borderRadius: 100,
+                border: '1px solid rgba(249, 249, 249, 0.20)',
+                background: 'transparent',
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/figma-assets/arrow-left.svg" alt="" className="w-6 h-6" />
+            </button>
+            <button
+              type="button"
+              aria-label="Next quote"
+              onClick={() => setIdx((i) => (i + 1) % total)}
+              className="flex items-center justify-center hover:bg-white/5 transition-colors"
+              style={{
+                padding: 16,
+                gap: 8,
+                borderRadius: 100,
+                border: '1px solid rgba(249, 249, 249, 0.20)',
+                background: 'transparent',
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/figma-assets/arrow-right.svg" alt="" className="w-6 h-6" />
+            </button>
           </div>
         </div>
       </div>
@@ -769,7 +878,7 @@ function WhoWeLetIn() {
     <section className="bg-[#03060d]">
       <div
         className="container flex flex-col"
-        style={{ padding: 'clamp(48px, 8vw, 96px) 24px', gap: 64 }}
+        style={{ padding: 'clamp(48px, 6vw, 96px) 24px', gap: 64 }}
       >
         <div className="flex flex-col gap-3">
           <span
@@ -791,9 +900,10 @@ function WhoWeLetIn() {
             style={{
               color: '#F9F9F9',
               fontFamily: 'Unbounded, system-ui, sans-serif',
-              fontSize: 36,
-              fontWeight: 700,
-              lineHeight: '40px',
+              fontSize: 'clamp(28px, 4vw, 36px)',
+              fontWeight: 600,
+              lineHeight: '120%',
+              letterSpacing: '-2px',
             }}
           >
             Who We Let In. Who We Don&apos;t.
@@ -817,7 +927,7 @@ function WhoWeLetIn() {
             className="flex flex-col items-start"
             style={{
               flex: '1 0 0',
-              padding: 48,
+              padding: 'clamp(24px, 4vw, 48px)',
               gap: 32,
               borderRadius: 32,
               border: '1px solid #118BAC',
@@ -829,7 +939,7 @@ function WhoWeLetIn() {
               style={{
                 color: '#118BAC',
                 fontFamily: 'Unbounded, system-ui, sans-serif',
-                fontSize: 24,
+                fontSize: 'clamp(18px, 2.5vw, 24px)',
                 fontWeight: 600,
                 lineHeight: '120%',
               }}
@@ -863,7 +973,7 @@ function WhoWeLetIn() {
             style={{
               width: 480,
               maxWidth: '100%',
-              padding: 48,
+              padding: 'clamp(24px, 4vw, 48px)',
               gap: 32,
               borderRadius: 32,
               border: '1px solid rgba(249, 249, 249, 0.30)',
@@ -874,7 +984,7 @@ function WhoWeLetIn() {
               style={{
                 color: '#EB3030',
                 fontFamily: 'Unbounded, system-ui, sans-serif',
-                fontSize: 24,
+                fontSize: 'clamp(18px, 2.5vw, 24px)',
                 fontWeight: 600,
                 lineHeight: '120%',
               }}
@@ -946,7 +1056,7 @@ function ApplyToSponsor() {
     <section id="apply" className="bg-[#03060d]">
       <div
         className="container"
-        style={{ padding: 'clamp(48px, 8vw, 96px) 24px' }}
+        style={{ padding: 'clamp(48px, 6vw, 96px) 24px' }}
       >
         <div
           className="flex flex-col md:flex-row md:items-stretch self-stretch"
@@ -979,9 +1089,10 @@ function ApplyToSponsor() {
               style={{
                 color: '#F9F9F9',
                 fontFamily: 'Unbounded, system-ui, sans-serif',
-                fontSize: 36,
-                fontWeight: 700,
-                lineHeight: '40px',
+                fontSize: 'clamp(28px, 4vw, 36px)',
+                fontWeight: 600,
+                lineHeight: '120%',
+                letterSpacing: '-2px',
               }}
             >
               Apply to Sponsor
@@ -1001,11 +1112,10 @@ function ApplyToSponsor() {
             </p>
             <a
               href="mailto:sponsor@shenzhenseoconference.com"
-              className="inline-flex items-center gap-2 hover:underline"
+              className="inline-flex items-center gap-2 hover:underline text-[14px] md:text-[18px]"
               style={{
                 color: '#F9F9F9',
                 fontFamily: 'General Sans, system-ui, sans-serif',
-                fontSize: 18,
                 fontWeight: 500,
                 lineHeight: '160%',
               }}
@@ -1096,7 +1206,7 @@ function ApplyToSponsor() {
 
             <button
               type="submit"
-              className="display rounded-full uppercase mt-2"
+              className="display gradient-cta rounded-full uppercase mt-2"
               style={{
                 display: 'flex',
                 padding: '16px 24px',
@@ -1105,7 +1215,6 @@ function ApplyToSponsor() {
                 gap: 12,
                 width: '100%',
                 color: '#F9F9F9',
-                background: '#EB3030',
                 fontFamily: 'General Sans, system-ui, sans-serif',
                 fontSize: 16,
                 fontWeight: 600,
@@ -1148,7 +1257,7 @@ function YearOne2025() {
     <section className="bg-[#03060d]">
       <div
         className="container flex flex-col self-stretch"
-        style={{ padding: 'clamp(48px, 8vw, 96px) 24px', gap: 64 }}
+        style={{ padding: 'clamp(48px, 6vw, 96px) 24px', gap: 64 }}
       >
         <div className="flex flex-col gap-3 max-w-[860px]">
           <span
@@ -1168,9 +1277,10 @@ function YearOne2025() {
             style={{
               color: '#F9F9F9',
               fontFamily: 'Unbounded, system-ui, sans-serif',
-              fontSize: 36,
-              fontWeight: 700,
-              lineHeight: '40px',
+              fontSize: 'clamp(28px, 4vw, 36px)',
+              fontWeight: 600,
+              lineHeight: '120%',
+              letterSpacing: '-2px',
             }}
           >
             2025 — Who Bet on Year One.
@@ -1186,18 +1296,32 @@ function YearOne2025() {
           >
             Thank you to the sponsors who made the first international edition possible.
           </p>
+          <a
+            href="#apply"
+            className="md:hidden display btn-outline-white flex uppercase whitespace-nowrap text-[14px] font-semibold leading-[150%] self-stretch mt-6"
+            style={{
+              padding: '16px 48px',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: 12,
+              borderRadius: 1000,
+            }}
+          >
+            Become a 2026 Sponsor
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
         </div>
 
         <div className="flex flex-col self-stretch" style={{ gap: 48 }}>
           <YearOneRow label={['Platinum', 'Sponsors']} logos={SPONSORS_2025.platinum} tier="platinum" />
           <div
-            className="self-stretch"
+            className="hidden md:block self-stretch"
             style={{ height: 1, background: 'rgba(249, 249, 249, 0.10)' }}
             aria-hidden
           />
           <YearOneRow label={['Gold', 'Sponsors']} logos={SPONSORS_2025.gold} tier="gold" />
           <div
-            className="self-stretch"
+            className="hidden md:block self-stretch"
             style={{ height: 1, background: 'rgba(249, 249, 249, 0.10)' }}
             aria-hidden
           />
@@ -1222,42 +1346,34 @@ function YearOneRow({
   const hasTwoRows = logos.length > 4;
   return (
     <div
-      className={`flex flex-col md:flex-row items-start self-stretch ${
+      className={`flex flex-col md:flex-row items-start self-stretch gap-6 md:gap-12 ${
         hasTwoRows ? 'md:items-start' : 'md:items-center'
       }`}
-      style={{ gap: 48 }}
     >
       <div
-        className="display uppercase shrink-0"
+        className="display uppercase shrink-0 w-full md:w-[417px] text-center md:text-left text-[16px] md:text-[18px] opacity-80 md:opacity-100"
         style={{
-          width: 417,
-          maxWidth: '100%',
           color: '#F9F9F9',
           fontFamily: 'Unbounded, system-ui, sans-serif',
-          fontSize: 18,
           fontWeight: 500,
           lineHeight: '140%',
         }}
       >
-        {label[0]}
-        <br />
+        {label[0]}{' '}
+        <br className="hidden md:block" />
         {label[1]}
       </div>
       <div
+        className="grid grid-cols-2 md:grid-cols-4 self-stretch md:flex-1"
         style={{
-          display: 'inline-grid',
-          flex: '1 0 0',
-          rowGap: 48,
-          columnGap: 64,
-          gridAutoRows: 'fit-content(100%)',
-          gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
-          borderRadius: 32,
+          rowGap: 32,
+          columnGap: 24,
           opacity: 0.65,
           alignItems: 'center',
         }}
       >
         {logos.map((l, i) => (
-          <div key={`year-one-${tier}-${i}`} className="flex items-center justify-center">
+          <div key={`year-one-${tier}-${i}`} className="flex items-center justify-center min-w-0">
             <BareLogo logo={l} tier={tier} />
           </div>
         ))}
@@ -1276,28 +1392,30 @@ function BareLogo({ logo, tier }: { logo: Logo; tier: 'platinum' | 'gold' | 'sil
       : baseFlatten;
 
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={logo.src}
-      alt={logo.alt}
-      style={{
-        height: logo.h,
-        width: 'auto',
-        maxWidth: 160,
-        objectFit: 'contain',
-        filter: baseFlatten,
-        opacity: 0.5,
-        transition: 'filter 0.25s ease, opacity 0.25s ease',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.filter = hoverFilter;
-        e.currentTarget.style.opacity = '1';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.filter = baseFlatten;
-        e.currentTarget.style.opacity = '0.5';
-      }}
-    />
+    <div className="flex items-center justify-center w-[120px] md:w-auto">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={logo.src}
+        alt={logo.alt}
+        className="max-w-full max-h-9 md:max-h-none"
+        style={{
+          height: logo.h,
+          width: 'auto',
+          objectFit: 'contain',
+          filter: baseFlatten,
+          opacity: 0.5,
+          transition: 'filter 0.25s ease, opacity 0.25s ease',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.filter = hoverFilter;
+          e.currentTarget.style.opacity = '1';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.filter = baseFlatten;
+          e.currentTarget.style.opacity = '0.5';
+        }}
+      />
+    </div>
   );
 }
 

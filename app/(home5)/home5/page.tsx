@@ -258,18 +258,18 @@ function Hero() {
             </p>
             <a
               href="#pricing"
-              className="lg:hidden display inline-flex items-center justify-center gap-2 w-full px-7 py-3.5 rounded-full text-[13px] font-bold tracking-[0.18em] text-white gradient-cta"
+              className="lg:hidden display inline-flex items-center justify-center gap-3 w-full px-7 py-3.5 rounded-full text-[13px] font-bold tracking-[0.18em] text-white gradient-cta"
             >
               GET TICKETS
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <ArrowUpRight className="w-4 h-4" />
             </a>
             <a
               href="#pricing"
-              className="hidden lg:inline-flex display items-center gap-2 rounded-full text-[14px] font-semibold tracking-[0.18em] text-white border border-white/55 bg-black/25 backdrop-blur-sm hover:bg-black/40"
+              className="hidden lg:inline-flex btn-outline-white display items-center gap-3 rounded-full text-[14px] font-semibold tracking-[0.18em] backdrop-blur-sm"
               style={{ padding: '12px 32px', lineHeight: '28px' }}
             >
               GET TICKETS
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>
         </div>
@@ -851,13 +851,12 @@ function WhyShenzhen() {
             </div>
             <a
               href="#"
-              className="hidden md:flex display rounded-full border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 self-start md:self-auto uppercase"
+              className="hidden md:flex btn-outline-white display rounded-full backdrop-blur-sm self-start md:self-auto uppercase"
               style={{
                 padding: '16px 24px',
                 justifyContent: 'center',
                 alignItems: 'center',
-                gap: '16px',
-                color: '#F9F9F9',
+                gap: '12px',
                 textAlign: 'center',
                 fontSize: '16px',
                 fontWeight: 600,
@@ -897,13 +896,12 @@ function WhyShenzhen() {
           </p>
           <a
             href="#"
-            className="md:hidden display rounded-full border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 uppercase mb-12 self-start inline-flex"
+            className="md:hidden btn-outline-white display rounded-full backdrop-blur-sm uppercase mb-12 self-start inline-flex"
             style={{
               padding: '16px 24px',
               justifyContent: 'center',
               alignItems: 'center',
-              gap: '16px',
-              color: '#F9F9F9',
+              gap: '12px',
               textAlign: 'center',
               fontSize: '16px',
               fontWeight: 600,
@@ -1021,13 +1019,12 @@ function Speakers() {
           </div>
           <a
             href="#"
-            className="hidden md:inline-flex display rounded-full border border-white/55 bg-black/20 backdrop-blur-sm hover:bg-black/40 self-start md:self-end uppercase w-fit"
+            className="hidden md:inline-flex btn-outline-white display rounded-full backdrop-blur-sm self-start md:self-end uppercase w-fit"
             style={{
               padding: '16px 24px',
               justifyContent: 'center',
               alignItems: 'center',
-              gap: '16px',
-              color: '#F9F9F9',
+              gap: '12px',
               textAlign: 'center',
               fontSize: '16px',
               fontWeight: 600,
@@ -1077,13 +1074,12 @@ function Speakers() {
         <div className="mt-8 flex justify-center md:hidden">
           <a
             href="#"
-            className="display inline-flex rounded-full border border-white/55 bg-black/20 hover:bg-black/40 uppercase"
+            className="display btn-outline-white inline-flex rounded-full uppercase"
             style={{
               padding: '16px 24px',
               justifyContent: 'center',
               alignItems: 'center',
-              gap: '16px',
-              color: '#F9F9F9',
+              gap: '12px',
               textAlign: 'center',
               fontSize: '16px',
               fontWeight: 600,
@@ -1177,11 +1173,11 @@ function Agenda() {
           </p>
         </div>
 
-        <ul className="mt-8 md:mt-10 space-y-4 md:space-y-0">
+        <ul className="mt-8 md:mt-10 space-y-6 md:space-y-0">
           {days.map((d) => (
             <li
               key={d.n}
-              className="rounded-2xl border border-white/15 p-4 md:rounded-none md:border md:border-white/10 md:border-x-0 md:border-b-0 md:p-0 grid grid-cols-1 md:grid-cols-[180px_1fr_auto] md:items-center gap-4 md:gap-8 md:py-8"
+              className="rounded-2xl border border-white/15 p-6 md:rounded-none md:border md:border-white/10 md:border-x-0 md:border-b-0 md:p-0 grid grid-cols-1 md:grid-cols-[180px_1fr_auto] md:items-center gap-4 md:gap-8 md:py-8"
             >
               {/* Mobile: top row weekday left + DAY N right; Desktop: stacked left column */}
               <div className="flex items-center justify-between md:block">
@@ -1377,14 +1373,12 @@ function Pricing() {
               </ul>
               <a
                 href="#"
-                className={`mt-8 display inline-flex items-center justify-center gap-2 w-full px-5 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase ${
-                  t.popular
-                    ? 'gradient-cta text-white'
-                    : 'border border-white/40 text-white hover:bg-white/5'
+                className={`mt-8 display inline-flex items-center justify-center gap-3 w-full px-5 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase ${
+                  t.popular ? 'gradient-cta text-white' : 'btn-outline-white'
                 }`}
               >
                 {t.cta}
-                <ArrowUpRight className="w-3 h-3" />
+                <ArrowUpRight className="w-4 h-4" />
               </a>
             </div>
           ))}
@@ -1537,9 +1531,7 @@ function Venues() {
 /* ───────────────────────────── TESTIMONIALS (28:556) ───────────────────────────── */
 function Testimonials() {
   const videosRef = useRef<HTMLDivElement | null>(null);
-  const quotesRef = useRef<HTMLDivElement | null>(null);
   const activeVideo = useCarouselActive(videosRef);
-  const activeQuote = useCarouselActive(quotesRef);
 
   const videos = [
     { img: A.testimonial1, name: 'Liam Bouchard', role: 'VP SEO, Amsive Digital' },
@@ -1571,8 +1563,18 @@ function Testimonials() {
         <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
           WHAT DID THE PREVIOUS ATTENDEES SAY
         </div>
-        <h2 className="display text-[28px] md:text-[36px] font-semibold uppercase leading-[120%] tracking-[-2px] md:tracking-normal self-stretch text-[#F9F9F9] mb-12 max-w-[900px]">
-          What 2025<br className="md:hidden" /> Attendees Told Us.
+        <h2
+          className="display uppercase self-stretch mb-12 max-w-[900px]"
+          style={{
+            color: '#F9F9F9',
+            fontFamily: 'Unbounded, system-ui, sans-serif',
+            fontSize: 28,
+            fontWeight: 600,
+            lineHeight: '120%',
+            letterSpacing: '-2px',
+          }}
+        >
+          What 2025 Attendees Told Us.
         </h2>
 
         {/* Videos: carousel on mobile, 2-col grid on md+ */}
@@ -1608,7 +1610,7 @@ function Testimonials() {
                       type="button"
                       aria-label="Play video"
                     >
-                      <span className="grid place-items-center w-12 h-12 rounded-full bg-[var(--teal)] ring-1 ring-white/30 text-white">
+                      <span className="grid place-items-center btn-play text-white">
                         <PlayIcon className="w-5 h-5 translate-x-[1px]" />
                       </span>
                     </button>
@@ -1649,7 +1651,7 @@ function Testimonials() {
                   type="button"
                   aria-label="Play video"
                 >
-                  <span className="grid place-items-center w-12 h-12 rounded-full bg-[var(--teal)] ring-1 ring-white/30 text-white">
+                  <span className="grid place-items-center btn-play text-white">
                     <PlayIcon className="w-5 h-5 translate-x-[1px]" />
                   </span>
                 </button>
@@ -1662,53 +1664,7 @@ function Testimonials() {
           ))}
         </div>
 
-        {/* Quotes: carousel on mobile, 3-col grid on md+ */}
-        <div className="md:hidden">
-          <div
-            ref={quotesRef}
-            className="-mx-6 px-6 overflow-x-auto no-scrollbar snap-x snap-mandatory"
-          >
-            <div className="flex gap-4 pb-2">
-              {quotes.map((q, i) => (
-                <figure
-                  key={q.name}
-                  data-card-idx={i}
-                  className="flex-none w-[85%] snap-start rounded-2xl border border-white/10 p-6 bg-[#06101a]/40 flex flex-col"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/figma-assets/quote-red.png"
-                    alt=""
-                    className="w-9 h-auto mb-4"
-                  />
-                  <blockquote className="text-[15px] text-white/85 leading-[1.55] flex-1">
-                    {q.q}
-                  </blockquote>
-                  <figcaption className="mt-6 flex items-center gap-3">
-                    <div className="relative w-10 h-10 rounded-full overflow-hidden bg-white/10 ring-1 ring-white/15">
-                      <Image
-                        src={q.av}
-                        alt={q.name}
-                        fill
-                        className="object-cover"
-                        sizes="40px"
-                      />
-                    </div>
-                    <div>
-                      <div className="text-[14px] font-bold text-white leading-tight">
-                        {q.name}
-                      </div>
-                      <div className="text-[12px] text-white/55 leading-tight mt-0.5">
-                        {q.role}
-                      </div>
-                    </div>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
-          <CarouselDots count={quotes.length} active={activeQuote} />
-        </div>
+        {/* Quotes: 3-col grid on md+ only (mobile carousel removed) */}
         <div className="hidden md:grid gap-5 md:grid-cols-3">
           {quotes.map((q) => (
             <figure
@@ -1854,10 +1810,17 @@ function FinalCta() {
           </p>
           <a
             href="#pricing"
-            className="mt-8 display inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] gradient-cta text-white"
+            className="mt-8 display flex w-full rounded-full text-[12px] font-bold tracking-[0.18em] gradient-cta text-white"
+            style={{
+              padding: '16px 24px',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: 12,
+              alignSelf: 'stretch',
+            }}
           >
             GET TICKETS TODAY
-            <ArrowUpRight className="w-3 h-3" />
+            <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>
       </div>
@@ -1961,6 +1924,14 @@ function Sponsors() {
           <p className="mt-4 text-[15px] md:text-[16px] text-white/65 leading-[1.6] max-w-[640px]">
             Thank you to the sponsors who made this event possible.
           </p>
+          {/* Mobile: button right after the subtitle */}
+          <a
+            href="#"
+            className="md:hidden display btn-outline-white flex items-center justify-center gap-3 px-6 py-4 rounded-full uppercase whitespace-nowrap text-[14px] font-semibold leading-[150%] mt-6 self-stretch"
+          >
+            BECOME A 2026 SPONSOR
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
         </div>
         <div className="space-y-16 md:space-y-20">
           {SPONSORS.platinum.length > 0 && (
@@ -1973,10 +1944,11 @@ function Sponsors() {
             <Row title="Silver Sponsors" items={SPONSORS.silver} max={48} tier="silver" />
           )}
         </div>
-        <div className="mt-16 md:mt-20 flex justify-center">
+        {/* Desktop: button at the bottom of the section */}
+        <div className="hidden md:flex mt-16 md:mt-20 justify-center">
           <a
             href="#"
-            className="display inline-flex items-center justify-center gap-4 px-6 py-4 rounded-full border border-[#F9F9F9] uppercase whitespace-nowrap text-[14px] font-semibold leading-[150%] text-[#F9F9F9] hover:bg-white/5"
+            className="display btn-outline-white inline-flex items-center justify-center gap-3 px-6 py-4 rounded-full uppercase whitespace-nowrap text-[14px] font-semibold leading-[150%]"
           >
             BECOME A 2026 SPONSOR
             <ArrowUpRight className="w-4 h-4" />

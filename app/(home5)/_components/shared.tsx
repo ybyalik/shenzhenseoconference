@@ -14,10 +14,10 @@ export const NAV_ITEMS = [
 
 export function ArrowUpRight({ className = '' }: { className?: string }) {
   return (
-    <svg viewBox="0 0 16 16" className={className} aria-hidden="true">
+    <svg viewBox="0 0 15 15" className={className} aria-hidden="true">
       <path
         fill="currentColor"
-        d="M4.5 3.75v1.5h6.69L3.22 13.22l1.06 1.06 7.97-7.97v6.69h1.5V3.75H4.5Z"
+        d="M0.292893 13.0209C-0.0976309 13.4114 -0.0976309 14.0446 0.292893 14.4351C0.683418 14.8257 1.31658 14.8257 1.70711 14.4351L1 13.728L0.292893 13.0209ZM14.7279 1.00011C14.7279 0.447823 14.2802 0.000107554 13.7279 0.000107301L4.72792 0.000107427C4.17564 0.00010709 3.72792 0.447823 3.72792 1.00011C3.72792 1.55239 4.17564 2.00011 4.72792 2.00011L12.7279 2.00011L12.7279 10.0001C12.7279 10.5524 13.1756 11.0001 13.7279 11.0001C14.2802 11.0001 14.7279 10.5524 14.7279 10.0001L14.7279 1.00011ZM1 13.728L1.70711 14.4351L14.435 1.70721L13.7279 1.00011L13.0208 0.293001L0.292893 13.0209L1 13.728Z"
       />
     </svg>
   );
@@ -123,9 +123,10 @@ export function BackToTop() {
         typeof window !== 'undefined' &&
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }
-      className={`fixed grid place-items-center w-12 h-12 rounded-full gradient-cta text-white shadow-lg z-40 hover:scale-105 right-4 bottom-4 lg:right-[50px] lg:bottom-[50px] transition-opacity duration-200 ${
+      className={`fixed grid place-items-center w-12 h-12 rounded-full text-white shadow-lg z-40 right-4 bottom-4 lg:right-[50px] lg:bottom-[50px] btn-back-to-top ${
         show ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
       }`}
+      style={{ aspectRatio: '1 / 1' }}
     >
       <ArrowUpIcon className="w-5 h-5" />
     </button>
@@ -176,7 +177,14 @@ export function Nav({ linkBase = '' }: { linkBase?: string } = {}) {
                 <Link
                   key={n.label}
                   href={`${linkBase}${n.anchor}`}
-                  className="text-[12px] font-semibold tracking-[0.18em] text-white/90 hover:text-white"
+                  className="text-[#F9F9F9] hover:text-[#EB3030] transition-colors"
+                  style={{
+                    fontFamily: 'General Sans, system-ui, sans-serif',
+                    fontSize: 12,
+                    fontWeight: 600,
+                    lineHeight: '20px',
+                    letterSpacing: '1px',
+                  }}
                 >
                   {n.label}
                 </Link>
@@ -184,10 +192,10 @@ export function Nav({ linkBase = '' }: { linkBase?: string } = {}) {
             </nav>
             <Link
               href={ticketsHref}
-              className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white gradient-cta"
+              className="display inline-flex items-center gap-3 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white gradient-cta"
             >
               GET TICKETS
-              <ArrowUpRight className="w-3 h-3" />
+              <ArrowUpRight className="w-4 h-4" />
             </Link>
           </div>
 
@@ -333,7 +341,7 @@ export function Footer({ linkBase = '' }: { linkBase?: string } = {}) {
               className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-semibold tracking-[0.16em] gradient-cta text-white"
             >
               GET YOUR TICKETS TODAY
-              <ArrowUpRight className="w-3 h-3" />
+              <ArrowUpRight className="w-4 h-4" />
             </Link>
           </div>
 

@@ -38,6 +38,91 @@
 }
 .home5-root .gradient-cta {
   background: linear-gradient(135deg, #eb3030 0%, #fd4c4c 100%);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.home5-root .gradient-cta:hover {
+  background: #f9f9f9 !important;
+  color: #eb3030 !important;
+}
+/* Make any SVG inside the red CTA inherit the hover color too */
+.home5-root .gradient-cta:hover svg path[fill="currentColor"],
+.home5-root .gradient-cta:hover svg path[stroke="currentColor"] {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+/* Outlined white-border button: clear bg → white bg w/ dark text on hover */
+.home5-root .btn-outline-white {
+  background: transparent;
+  border: 1px solid #f9f9f9;
+  color: #f9f9f9;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.home5-root .btn-outline-white:hover {
+  background: #f9f9f9 !important;
+  color: #03060d !important;
+  border-color: #03060d !important;
+}
+
+/* On hover swap the up-right arrow svg for a down-pointing arrow icon
+   tinted to match each button's hover text color. */
+.home5-root .gradient-cta::after,
+.home5-root .btn-outline-white::after {
+  content: '';
+  display: none;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.home5-root .gradient-cta:hover > svg,
+.home5-root .btn-outline-white:hover > svg {
+  display: none;
+}
+.home5-root .gradient-cta:hover::after {
+  display: inline-block;
+  background-image: url('/assets/arrow-bottom-red.svg');
+}
+.home5-root .btn-outline-white:hover::after {
+  display: inline-block;
+  background-image: url('/assets/arrow-bottom-black.svg');
+}
+
+/* Solid white button: bg stays, white border appears on hover */
+.home5-root .btn-white {
+  background: #f9f9f9;
+  color: #03060d;
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+.home5-root .btn-white:hover {
+  border-color: #f9f9f9;
+}
+
+/* Back-to-top button: red gradient by default, transparent + red border on hover */
+.home5-root .btn-back-to-top {
+  background: linear-gradient(135deg, #eb3030 0%, #fd4c4c 100%);
+  border: 1px solid transparent;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.home5-root .btn-back-to-top:hover {
+  background: transparent !important;
+  border-color: #eb3030 !important;
+}
+
+/* Video play button hover (the round teal play disc in Testimonials) */
+.home5-root .btn-play {
+  width: 64px;
+  height: 64px;
+  border-radius: 100px;
+  background: var(--teal);
+  border: 2px solid transparent;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.home5-root .btn-play:hover {
+  background: transparent;
+  border-color: var(--teal);
 }
 
 .home5-root .accent-bar::before {

@@ -78,12 +78,12 @@ const BENEFITS = [
   },
   {
     title: '1 Full Day of Guided Shenzhen.',
-    body: 'Hardware lab, Huaqiangbei electronics market, the bay, the factories. Not a tourist loop — the working city.',
+    body: 'Huaqiangbei, Nantou walled city, tech companies, the bay, the factories. Not a tourist loop — the working city.',
     img: '/assets/guided-shenzhen.png',
   },
   {
     title: "A Chinese Audience You Won't Find at Brighton or Pubcon.",
-    body: "500+ in-house SEOs decision-makers from brands going global. They don't travel to London or San Diego.",
+    body: "300+ in-house SEO decision makers from brands going global. They don't travel to London or San Diego.",
     img: '/assets/chinese-audience.png',
   },
   {
@@ -241,9 +241,8 @@ function Hero() {
           alt=""
           fill
           priority
-          className="object-cover object-top"
+          className="object-cover object-top opacity-80 md:opacity-70"
           sizes="100vw"
-          style={{ opacity: 0.7 }}
         />
         {/* Mobile overlay */}
         <div
@@ -265,7 +264,7 @@ function Hero() {
 
       <Nav linkBase="/home5" />
 
-      <div className="container pt-[140px] md:pt-[260px] lg:pt-[340px] pb-12 md:pb-20">
+      <div className="container pt-[220px] md:pt-[260px] lg:pt-[340px] pb-12 md:pb-20">
         {/* Date / venue badge */}
         <div className="flex items-center gap-2 mb-6 md:mb-8">
           <span
@@ -294,36 +293,21 @@ function Hero() {
         </div>
 
         {/* Headline */}
-        <h1 className="display uppercase text-white" style={{ letterSpacing: '-0.01em' }}>
-          <span
-            className="block"
-            style={{
-              fontSize: 'clamp(40px, 7vw, 64px)',
-              fontWeight: 600,
-              lineHeight: '120%',
-            }}
-          >
-            40+ Practitioners.
-          </span>
-          <span
-            className="block gradient-text-brand"
-            style={{
-              fontSize: 'clamp(40px, 7vw, 64px)',
-              fontWeight: 600,
-              lineHeight: '120%',
-            }}
-          >
-            One Stage.
-          </span>
+        <h1
+          className="display uppercase text-white text-[24px] leading-[140%] md:text-[clamp(40px,7vw,64px)] md:leading-[120%]"
+          style={{ letterSpacing: '-0.01em', fontWeight: 600 }}
+        >
+          <span className="block">40+ Practitioners.</span>
+          <span className="block gradient-text-brand">One Stage.</span>
         </h1>
 
         <p
-          className="mt-6 md:mt-8 text-white max-w-[640px]"
+          className="mt-6 md:mt-8 max-w-[640px] text-[14px] leading-[160%] md:text-[18px] md:leading-[170%]"
           style={{
+            color: '#F9F9F9',
             fontFamily: 'General Sans, system-ui, sans-serif',
-            fontSize: 18,
             fontWeight: 500,
-            lineHeight: '170%',
+            opacity: 0.7,
           }}
         >
           Every speaker has shipped real work. No theorists. No professional keynoters.
@@ -341,15 +325,20 @@ function Lineup() {
 
   return (
     <section id="speakers" className="bg-[#03060d]">
-      <div className="container py-20 md:py-24 lg:py-[96px] flex flex-col gap-16">
-        {/* Heading + intro */}
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-12">
-          <h2
-            className="display uppercase text-white"
-            style={{ fontSize: 'clamp(36px, 5vw, 48px)', fontWeight: 700, lineHeight: '100%' }}
-          >
-            2026 Lineup
-          </h2>
+      <div className="container py-12 md:py-24 lg:py-[96px] flex flex-col" style={{ gap: 16 }}>
+        <h2
+          className="display uppercase text-white"
+          style={{
+            fontSize: 'clamp(28px, 5vw, 48px)',
+            fontWeight: 600,
+            lineHeight: '120%',
+            letterSpacing: '-2px',
+          }}
+        >
+          2026 Lineup
+        </h2>
+
+        <div className="flex flex-col items-start" style={{ gap: 48 }}>
           <p
             className="text-white/80 max-w-[640px]"
             style={{
@@ -362,49 +351,60 @@ function Lineup() {
             Each speaker is vetted for three things: a real case study, one concrete tactic
             attendees can run Monday morning, and willingness to take hard questions from the floor.
           </p>
-        </div>
 
-        {/* Keynotes */}
-        <div className="flex flex-col gap-6">
-          <h3
-            className="display uppercase text-white"
-            style={{ fontSize: 'clamp(24px, 3vw, 32px)', fontWeight: 700, lineHeight: '100%' }}
-          >
-            Keynotes
-          </h3>
-          <div className="grid gap-4 md:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {KEYNOTES.map((s) => (
-              <SpeakerCard key={s.name} s={s} />
-            ))}
-          </div>
-        </div>
-
-        {/* Workshops & Talks */}
-        <div className="flex flex-col gap-6">
-          <h3
-            className="display uppercase text-white"
-            style={{ fontSize: 'clamp(24px, 3vw, 32px)', fontWeight: 700, lineHeight: '100%' }}
-          >
-            Workshops & Talks
-          </h3>
-          <div className="grid gap-4 md:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {visible.map((s, i) => (
-              <SpeakerCard key={`${s.name}-${i}`} s={s} />
-            ))}
-          </div>
-
-          {WORKSHOPS.length > 10 && (
-            <div className="flex justify-center mt-4">
-              <button
-                type="button"
-                onClick={() => setShowAll((v) => !v)}
-                className="h-11 px-6 rounded border border-white/20 text-white text-[14px] font-medium tracking-[0.04em] hover:bg-white/5 transition-colors"
-                style={{ fontFamily: 'General Sans, system-ui, sans-serif' }}
+          <div className="flex flex-col items-start self-stretch" style={{ gap: 48 }}>
+            {/* Keynotes */}
+            <div className="flex flex-col gap-6 self-stretch">
+              <h3
+                className="display uppercase text-white"
+                style={{ fontSize: 'clamp(24px, 3vw, 32px)', fontWeight: 700, lineHeight: '100%' }}
               >
-                {showAll ? 'SHOW LESS' : 'LOAD MORE'}
-              </button>
+                Keynotes
+              </h3>
+              <div className="grid gap-4 md:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                {KEYNOTES.map((s) => (
+                  <SpeakerCard key={s.name} s={s} />
+                ))}
+              </div>
             </div>
-          )}
+
+            {/* Workshops & Talks */}
+            <div className="flex flex-col gap-6 self-stretch">
+              <h3
+                className="display uppercase text-white"
+                style={{ fontSize: 'clamp(24px, 3vw, 32px)', fontWeight: 700, lineHeight: '100%' }}
+              >
+                Workshops & Talks
+              </h3>
+              <div className="grid gap-4 md:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                {visible.map((s, i) => (
+                  <SpeakerCard key={`${s.name}-${i}`} s={s} />
+                ))}
+              </div>
+
+              {WORKSHOPS.length > 10 && (
+                <div className="flex justify-center mt-4">
+                  <button
+                    type="button"
+                    onClick={() => setShowAll((v) => !v)}
+                    className="display btn-outline-white inline-flex uppercase"
+                    style={{
+                      padding: '16px 48px',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      gap: 12,
+                      borderRadius: 1000,
+                      fontSize: 14,
+                      fontWeight: 600,
+                      lineHeight: '150%',
+                    }}
+                  >
+                    {showAll ? 'Show Less' : 'Load More'}
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -418,16 +418,16 @@ function Room2025() {
 
   return (
     <section className="bg-[#03060d]">
-      <div className="container py-20 md:py-24 lg:py-[96px] flex flex-col gap-12 lg:gap-16">
+      <div className="container py-12 md:py-24 lg:py-[96px] flex flex-col gap-12 lg:gap-16">
         {/* Heading + side blurb */}
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-12">
           <h2
             className="display uppercase text-white"
             style={{
               fontSize: 'clamp(28px, 3.5vw, 40px)',
-              fontWeight: 800,
+              fontWeight: 600,
               lineHeight: '120%',
-              letterSpacing: '-0.02em',
+              letterSpacing: '-2px',
             }}
           >
             <span className="block">What the Room</span>
@@ -448,7 +448,7 @@ function Room2025() {
         </div>
 
         {/* Day slider header — single day shown, arrows cycle through */}
-        <div className="flex items-center justify-between flex-wrap gap-4">
+        <div className="flex items-end justify-between gap-4 flex-wrap md:flex-nowrap">
           <div className="flex flex-col items-start gap-1 text-left">
             <span
               className="uppercase"
@@ -480,17 +480,33 @@ function Room2025() {
               type="button"
               aria-label="Previous day"
               onClick={() => setDay((d) => (d - 1 + DAYS.length) % DAYS.length)}
-              className="grid place-items-center w-8 h-8 rounded-full border border-white/20 text-white hover:bg-white/5"
+              className="flex items-center justify-center hover:bg-white/5 transition-colors"
+              style={{
+                padding: 16,
+                gap: 8,
+                borderRadius: 100,
+                border: '1px solid rgba(249, 249, 249, 0.20)',
+                background: 'transparent',
+              }}
             >
-              <ArrowLeftIcon className="w-4 h-4" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/figma-assets/arrow-left.svg" alt="" className="w-6 h-6" />
             </button>
             <button
               type="button"
               aria-label="Next day"
               onClick={() => setDay((d) => (d + 1) % DAYS.length)}
-              className="grid place-items-center w-8 h-8 rounded-full border border-white/20 text-white hover:bg-white/5"
+              className="flex items-center justify-center hover:bg-white/5 transition-colors"
+              style={{
+                padding: 16,
+                gap: 8,
+                borderRadius: 100,
+                border: '1px solid rgba(249, 249, 249, 0.20)',
+                background: 'transparent',
+              }}
             >
-              <ArrowRightIcon className="w-4 h-4" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/figma-assets/arrow-right.svg" alt="" className="w-6 h-6" />
             </button>
           </div>
         </div>
@@ -524,8 +540,16 @@ function Room2025() {
         </div>
 
         {/* Who took that stage */}
-        <div className="flex flex-col gap-6 mt-4">
-          <div className="flex flex-col gap-2">
+        <div
+          className="flex flex-col items-start self-stretch mt-4"
+          style={{
+            padding: 'clamp(24px, 4vw, 48px)',
+            gap: 'clamp(24px, 4vw, 48px)',
+            borderRadius: 40,
+            border: '1px solid rgba(249, 249, 249, 0.15)',
+          }}
+        >
+          <div className="flex flex-col gap-2 self-stretch">
             <span
               className="uppercase"
               style={{
@@ -547,35 +571,56 @@ function Room2025() {
               Who Took That Stage.
             </h3>
           </div>
-          <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 self-stretch">
             {WHO_TOOK_STAGE.map((p) => (
               <div
                 key={p.name}
-                className="flex items-center gap-3 px-2 py-2 pr-4 rounded-lg border border-white/15 bg-white/5"
+                className="flex items-start transition-all"
+                style={{
+                  flex: '1 0 0',
+                  padding: 18,
+                  gap: 16,
+                  borderRadius: 16,
+                  border: '1px solid rgba(249, 249, 249, 0.15)',
+                  background: 'rgba(249, 249, 249, 0.05)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderRadius = '24px';
+                  e.currentTarget.style.border = '1px solid #EB3030';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderRadius = '16px';
+                  e.currentTarget.style.border = '1px solid rgba(249, 249, 249, 0.15)';
+                }}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={p.img}
-                  alt={p.name}
-                  className="w-10 h-10 rounded-full object-cover"
+                <div
+                  aria-label={p.name}
+                  role="img"
+                  className="shrink-0"
+                  style={{
+                    width: 72,
+                    height: 72,
+                    aspectRatio: '1 / 1',
+                    borderRadius: 1000,
+                    background: `url('${p.img}') #d3d3d3 50% / cover no-repeat`,
+                  }}
                 />
-                <div className="flex flex-col">
-                  <div className="flex items-center gap-2">
-                    <span
-                      className="uppercase text-white/50"
-                      style={{
-                        fontFamily: 'General Sans, system-ui, sans-serif',
-                        fontSize: 10,
-                        fontWeight: 500,
-                        letterSpacing: 1,
-                      }}
-                    >
-                      {p.country}
-                    </span>
-                  </div>
+                <div className="flex flex-col gap-3 justify-center self-stretch">
+                  <span
+                    className="uppercase text-white/50"
+                    style={{
+                      fontFamily: 'General Sans, system-ui, sans-serif',
+                      fontSize: 10,
+                      fontWeight: 500,
+                      letterSpacing: 1,
+                      lineHeight: '100%',
+                    }}
+                  >
+                    {p.country}
+                  </span>
                   <span
                     className="display text-white"
-                    style={{ fontSize: 14, fontWeight: 500, lineHeight: '140%' }}
+                    style={{ fontSize: 14, fontWeight: 500, lineHeight: '100%' }}
                   >
                     {p.name}
                   </span>
@@ -584,7 +629,7 @@ function Room2025() {
                     style={{
                       fontFamily: 'General Sans, system-ui, sans-serif',
                       fontSize: 12,
-                      lineHeight: '140%',
+                      lineHeight: '100%',
                     }}
                   >
                     {p.title}
@@ -608,7 +653,7 @@ function PullQuoteCarousel() {
 
   return (
     <div
-      className="relative flex flex-col items-center mt-4 self-stretch"
+      className="relative flex flex-col items-start md:items-center mt-4 self-stretch"
       style={{
         padding: 'clamp(40px, 6vw, 64px) clamp(24px, 10vw, 144px)',
         gap: 32,
@@ -632,7 +677,7 @@ function PullQuoteCarousel() {
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/figma-assets/arrow-left.svg" alt="" className="w-4 h-4" />
+        <img src="/figma-assets/arrow-left.svg" alt="" className="w-6 h-6" />
       </button>
       <button
         type="button"
@@ -648,7 +693,7 @@ function PullQuoteCarousel() {
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/figma-assets/arrow-right.svg" alt="" className="w-4 h-4" />
+        <img src="/figma-assets/arrow-right.svg" alt="" className="w-6 h-6" />
       </button>
 
       {/* Big red quotation mark */}
@@ -669,7 +714,7 @@ function PullQuoteCarousel() {
       </svg>
 
       <p
-        className="display text-white text-center max-w-[860px]"
+        className="display text-white text-left md:text-center max-w-[860px]"
         style={{
           fontSize: 'clamp(20px, 2.6vw, 32px)',
           fontWeight: 700,
@@ -682,31 +727,36 @@ function PullQuoteCarousel() {
       </p>
 
       <div className="flex items-center gap-3">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={q.img}
-          alt={q.name}
-          className="w-11 h-11 rounded-full object-cover"
+        <div
+          aria-label={q.name}
+          role="img"
+          style={{
+            width: 48,
+            height: 48,
+            borderRadius: 48,
+            background: `url('${q.img}') #d3d3d3 0px -4.32px / 100% 150% no-repeat`,
+          }}
         />
         <div className="flex flex-col items-start">
           <span
-            className="text-white"
+            className="display"
             style={{
-              fontFamily: 'General Sans, system-ui, sans-serif',
-              fontSize: 15,
-              fontWeight: 700,
-              lineHeight: '150%',
+              color: '#F9F9F9',
+              fontFamily: 'Unbounded, system-ui, sans-serif',
+              fontSize: 16,
+              fontWeight: 500,
+              lineHeight: '160%',
             }}
           >
             {q.name}
           </span>
           <span
-            className="text-white/55"
             style={{
+              color: '#F9F9F9',
               fontFamily: 'General Sans, system-ui, sans-serif',
-              fontSize: 13,
-              fontWeight: 400,
-              lineHeight: '150%',
+              fontSize: 12,
+              fontWeight: 500,
+              lineHeight: '160%',
             }}
           >
             {q.role}
@@ -714,21 +764,59 @@ function PullQuoteCarousel() {
         </div>
       </div>
 
-      {/* Pagination dashes */}
-      <div className="flex items-center gap-1.5">
-        {SPEAKER_QUOTES.map((_, i) => (
+      {/* Bottom row: dashes (left) + mobile arrows (right). On md+ the
+          arrows show on the sides instead so this row centers the dashes. */}
+      <div className="flex items-center justify-between md:justify-center gap-4 self-stretch">
+        <div className="flex items-center gap-1.5">
+          {SPEAKER_QUOTES.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`Show quote ${i + 1}`}
+              onClick={() => setIdx(i)}
+              className="h-[2px] transition-all"
+              style={{
+                width: 28,
+                background: i === idx ? '#eb3030' : 'rgba(249,249,249,0.18)',
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="flex items-center gap-3 md:hidden">
           <button
-            key={i}
             type="button"
-            aria-label={`Show quote ${i + 1}`}
-            onClick={() => setIdx(i)}
-            className="h-[2px] transition-all"
+            aria-label="Previous quote"
+            onClick={() => setIdx((i) => (i - 1 + total) % total)}
+            className="flex items-center justify-center hover:bg-white/5 transition-colors"
             style={{
-              width: 28,
-              background: i === idx ? '#eb3030' : 'rgba(249,249,249,0.18)',
+              padding: 12,
+              gap: 8,
+              borderRadius: 100,
+              border: '1px solid rgba(249, 249, 249, 0.20)',
+              background: 'transparent',
             }}
-          />
-        ))}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/figma-assets/arrow-left.svg" alt="" className="w-5 h-5" />
+          </button>
+          <button
+            type="button"
+            aria-label="Next quote"
+            onClick={() => setIdx((i) => (i + 1) % total)}
+            className="flex items-center justify-center hover:bg-white/5 transition-colors"
+            style={{
+              padding: 12,
+              gap: 8,
+              borderRadius: 100,
+              border: '1px solid rgba(249, 249, 249, 0.20)',
+              background: 'transparent',
+            }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/figma-assets/arrow-right.svg" alt="" className="w-5 h-5" />
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -737,19 +825,23 @@ function PullQuoteCarousel() {
 function SpeakersGet() {
   return (
     <section className="bg-[#03060d]">
-      <div className="container py-20 md:py-24 lg:py-[96px] flex flex-col gap-12 lg:gap-16">
+      <div className="container py-12 md:py-24 lg:py-[96px] flex flex-col gap-12 lg:gap-16">
         <div className="flex flex-col gap-6">
           <h2
             className="display uppercase text-white"
             style={{
-              fontSize: 'clamp(32px, 4.5vw, 40px)',
-              fontWeight: 800,
-              lineHeight: '110%',
-              letterSpacing: '-0.01em',
+              width: 691,
+              maxWidth: '100%',
+              color: '#F9F9F9',
+              fontFamily: 'Unbounded, system-ui, sans-serif',
+              fontSize: 'clamp(28px, 4vw, 36px)',
+              fontWeight: 600,
+              lineHeight: '140%',
+              letterSpacing: '-1px',
             }}
           >
-            <span className="block">What Speakers Get Here,</span>
-            <span className="block">They Don&apos;t Get Elsewhere.</span>
+            <span className="inline md:block">What Speakers Get Here, </span>
+            <span className="inline md:block">They Don&apos;t Get Elsewhere.</span>
           </h2>
           <p
             className="text-white/70 lg:whitespace-nowrap"
@@ -815,7 +907,7 @@ function SpeakersGet() {
         <div className="flex justify-center">
           <a
             href="#apply"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/25 text-white hover:bg-white/5 transition-colors"
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-white/25 text-white hover:bg-white/5 transition-colors"
           >
             <span
               className="display uppercase tracking-[0.16em]"
@@ -823,7 +915,7 @@ function SpeakersGet() {
             >
               Apply to Speak for 2027
             </span>
-            <ArrowUpRight className="w-3 h-3" />
+            <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>
       </div>
@@ -836,16 +928,17 @@ function SpeakersGet() {
 function Criteria() {
   return (
     <section className="bg-[#03060d]">
-      <div className="container py-20 md:py-24 lg:py-[96px] flex flex-col gap-12 lg:gap-16">
+      <div className="container py-12 md:py-24 lg:py-[96px] flex flex-col gap-12 lg:gap-16">
         <div className="flex flex-col gap-3">
           <span
             className="uppercase"
             style={{
-              color: '#eb3030',
+              color: '#EB3030',
               fontFamily: 'General Sans, system-ui, sans-serif',
-              fontSize: 11,
-              fontWeight: 600,
-              letterSpacing: 2,
+              fontSize: 18,
+              fontWeight: 700,
+              lineHeight: '150%',
+              letterSpacing: '0.9px',
             }}
           >
             How We Pick Speakers
@@ -854,9 +947,10 @@ function Criteria() {
             className="display uppercase text-white"
             style={{
               fontFamily: 'Unbounded, system-ui, sans-serif',
-              fontSize: 32,
-              fontWeight: 800,
+              fontSize: 'clamp(28px, 3.5vw, 32px)',
+              fontWeight: 600,
               lineHeight: '120%',
+              letterSpacing: '-2px',
             }}
           >
             What We Look For. What We Don&apos;t.
@@ -1005,10 +1099,9 @@ function Criteria() {
         {/* Apply form */}
         <div
           id="apply"
-          className="mt-4 flex flex-col md:flex-row md:items-stretch self-stretch"
+          className="mt-4 flex flex-col md:flex-row md:items-stretch self-stretch gap-16 md:gap-6"
           style={{
             padding: 'clamp(24px, 5vw, 64px)',
-            gap: 'clamp(16px, 2vw, 24px)',
             justifyContent: 'space-between',
             borderRadius: 48,
             border: '1px solid rgba(249, 249, 249, 0.20)',
@@ -1016,19 +1109,16 @@ function Criteria() {
           }}
         >
           <div
-            className="min-h-[280px] md:min-h-0 shrink-0"
+            className="shrink-0 w-[297px] h-[297px] md:w-[505px] md:h-[517px] max-w-full"
             aria-hidden
             style={{
-              width: 505,
-              maxWidth: '100%',
-              height: 517,
               borderRadius: 24,
               background:
                 "linear-gradient(0deg, rgba(55, 79, 116, 0.55), rgba(55, 79, 116, 0.55)), url('/assets/jp-talk.png') 50% / cover no-repeat #d3d3d3",
             }}
           />
           <div className="flex flex-col gap-6 md:max-w-[560px] md:w-full md:flex-1">
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-4 md:gap-3">
               <span
                 className="uppercase"
                 style={{
@@ -1184,10 +1274,10 @@ function FinalCta() {
           </p>
           <Link
             href="/home5#pricing"
-            className="mt-8 display inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] gradient-cta text-white"
+            className="mt-8 display inline-flex items-center gap-3 px-7 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] gradient-cta text-white"
           >
             GET TICKETS TODAY
-            <ArrowUpRight className="w-3 h-3" />
+            <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>
       </div>
