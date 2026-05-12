@@ -187,7 +187,10 @@ function HeroTitleLine({
 
 function Hero() {
   return (
-    <section id="top" className="relative isolate overflow-hidden bg-[#03060d]">
+    <section
+      id="top"
+      className="relative isolate overflow-hidden bg-[#03060d] min-h-[100dvh] md:min-h-0 flex flex-col"
+    >
       <div className="absolute inset-0 -z-10">
         <Image
           src={A.heroBg}
@@ -215,7 +218,7 @@ function Hero() {
         />
       </div>
       {/* Headline + right column */}
-      <div className="container pt-[140px] md:pt-[260px] lg:pt-[440px] xl:pt-[480px] pb-16 md:pb-24">
+      <div className="container pt-[200px] md:pt-[260px] lg:pt-[380px] xl:pt-[400px] 2xl:pt-[480px] pb-10 md:pb-16 2xl:pb-24">
         <div className="grid gap-8 lg:gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
           {/* LEFT: title + date (date below H1 on desktop only; on mobile date is in RIGHT column under the paragraph) */}
           <div className="flex flex-col">
@@ -249,11 +252,10 @@ function Hero() {
           {/* RIGHT: description + CTA (filled red on mobile, outline on desktop) */}
           <div className="lg:max-w-[360px] lg:text-right flex flex-col lg:items-end gap-5 lg:gap-6">
             <p
-              className="text-[16px] text-white leading-[1.7] lg:w-[420px]"
+              className="text-[16px] text-white leading-[1.7] lg:w-[500px] text-balance"
             >
-              China&apos;s largest international SEO event. 5 days of actionable English-only
-              talks, city tours, masterminds, and connections that other SEO conferences simply
-              cannot replicate.
+              China&apos;s largest international SEO event. 5 days of English-only talks, city
+              tours, masterminds, and connections you don&apos;t make on LinkedIn.
             </p>
             {/* Mobile-only date/venue under the paragraph */}
             <div className="flex lg:hidden items-center gap-3 text-[13px] text-white/90 my-4">
@@ -261,13 +263,6 @@ function Hero() {
               <span className="w-1 h-1 rounded-full bg-white/55" aria-hidden />
               <span className="font-medium">The St. Regis Shenzhen</span>
             </div>
-            <a
-              href="#pricing"
-              className="lg:hidden display inline-flex items-center justify-center gap-3 w-full px-7 py-3.5 rounded-full text-[13px] font-bold tracking-[0.18em] text-white gradient-cta"
-            >
-              GET TICKETS
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
             <a
               href="#pricing"
               className="hidden lg:inline-flex btn-outline-white display items-center gap-3 rounded-full text-[14px] font-semibold tracking-[0.18em] backdrop-blur-sm"
@@ -280,11 +275,22 @@ function Hero() {
         </div>
       </div>
 
-      {/* Divider + quote/stats strip */}
-      <div className="container">
+      {/* Mobile-only CTA pinned to the bottom of the hero */}
+      <div className="lg:hidden mt-auto px-6 pb-8">
+        <a
+          href="#pricing"
+          className="display inline-flex items-center justify-center gap-3 w-full px-7 py-3.5 rounded-full text-[13px] font-bold tracking-[0.18em] text-white gradient-cta"
+        >
+          GET TICKETS
+          <ArrowUpRight className="w-4 h-4" />
+        </a>
+      </div>
+
+      {/* Divider + quote/stats strip — hidden on mobile so the hero fills the viewport */}
+      <div className="container hidden md:block">
         <div className="border-t border-white/15" />
       </div>
-      <div className="container pt-12 md:pt-16 pb-8 md:pb-12">
+      <div className="container hidden md:block pt-12 md:pt-16 pb-8 md:pb-12">
         <div className="grid gap-7 lg:gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
           {/* Quote */}
           <figure className="flex items-center gap-4">
@@ -1503,7 +1509,9 @@ function Venues() {
 /* ───────────────────────────── TESTIMONIALS (28:556) ───────────────────────────── */
 function Testimonials() {
   const videosRef = useRef<HTMLDivElement | null>(null);
+  const quotesRef = useRef<HTMLDivElement | null>(null);
   const activeVideo = useCarouselActive(videosRef);
+  const activeQuote = useCarouselActive(quotesRef);
 
   const videos = [
     { img: A.testimonial1, name: 'Liam Bouchard', role: 'VP SEO, Amsive Digital' },
@@ -1526,7 +1534,7 @@ function Testimonials() {
       av: A.avZack,
       name: 'Zack Franklin',
       role: 'SEO agency owner, 9 years living in Shenzhen',
-      q: '“There are very few opportunities for Western and Chinese to get together in one room in real life. It’s very unique.”',
+      q: 'There are very few opportunities for Western and Chinese to get together in one room in real life. It’s very unique.',
     },
   ];
   return (
@@ -1636,7 +1644,47 @@ function Testimonials() {
           ))}
         </div>
 
-        {/* Quotes: 3-col grid on md+ only (mobile carousel removed) */}
+        {/* Quotes: snap-x carousel on mobile, 3-col grid on md+ */}
+        <div className="md:hidden">
+          <div
+            ref={quotesRef}
+            className="-mx-6 overflow-x-auto no-scrollbar snap-x snap-mandatory"
+          >
+            <div className="flex gap-4 pb-2 px-8">
+              {quotes.map((q, i) => (
+                <figure
+                  key={q.name}
+                  data-card-idx={i}
+                  className="flex-none w-[85%] snap-start rounded-2xl border border-white/10 p-6 bg-[#06101a]/40 flex flex-col"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/figma-assets/quote-red.png"
+                    alt=""
+                    className="w-9 h-auto mb-4"
+                  />
+                  <blockquote className="text-[15px] text-white/85 leading-[1.55] flex-1">
+                    {q.q}
+                  </blockquote>
+                  <figcaption className="mt-6 flex items-center gap-3">
+                    <div className="relative w-10 h-10 shrink-0 rounded-full overflow-hidden bg-white/10 ring-1 ring-white/15">
+                      <Image src={q.av} alt={q.name} fill className="object-cover" sizes="40px" />
+                    </div>
+                    <div>
+                      <div className="text-[14px] font-bold text-white leading-tight">
+                        {q.name}
+                      </div>
+                      <div className="text-[12px] text-white/55 leading-tight mt-0.5">
+                        {q.role}
+                      </div>
+                    </div>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+          <CarouselDots count={quotes.length} active={activeQuote} />
+        </div>
         <div className="hidden md:grid gap-5 md:grid-cols-3">
           {quotes.map((q) => (
             <figure
@@ -1700,20 +1748,7 @@ function Faq() {
     },
     {
       q: 'Do I need a visa?',
-      a: (
-        <>
-          Citizens of 54+ countries currently enjoy visa-free entry for up to 30 days. Passport
-          holders from some countries (including the USA) are eligible for 10-day free transit. If
-          neither applies, you will need a tourist or business visa.{' '}
-          <a
-            href="https://shenzhenseoconference.com/plan-your-trip"
-            className="underline text-white hover:text-[var(--red)]"
-          >
-            Learn more
-          </a>
-          .
-        </>
-      ),
+      a: 'Citizens of 54+ countries currently enjoy visa-free entry for up to 30 days. Passport holders from some countries (including the USA) are eligible for 10-day free transit. If neither applies, you will need a tourist or business visa.',
     },
     {
       q: 'Can you send me a business invitation letter for the visa?',
@@ -1936,7 +1971,7 @@ function Sponsors() {
             </p>
             {/* Mobile: button right after the subtitle */}
             <a
-              href="/sponsors"
+              href="#"
               className="md:hidden display btn-outline-white flex items-center justify-center gap-3 px-6 py-4 rounded-full uppercase whitespace-nowrap text-[14px] font-semibold leading-[150%] mt-6 self-stretch"
             >
               BECOME A 2026 SPONSOR
@@ -1945,7 +1980,7 @@ function Sponsors() {
           </div>
           {/* Desktop: button to the right of the heading, bottom-aligned */}
           <a
-            href="/sponsors"
+            href="#"
             className="hidden md:inline-flex display btn-outline-white items-center justify-center gap-3 px-6 py-4 rounded-full uppercase whitespace-nowrap text-[14px] font-semibold leading-[150%] self-end"
           >
             BECOME A 2026 SPONSOR

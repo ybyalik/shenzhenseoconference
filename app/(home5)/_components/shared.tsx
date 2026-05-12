@@ -179,7 +179,7 @@ export function Nav({ linkBase = '' }: { linkBase?: string } = {}) {
           <Link href="/home5" className="flex items-center" aria-label="Shenzhen SEO Conference">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/assets/color-logo.webp"
+              src="/logo-white.webp"
               alt="Shenzhen SEO Conference"
               className="h-[26px] lg:h-[30px] w-auto"
             />
@@ -237,7 +237,7 @@ export function Nav({ linkBase = '' }: { linkBase?: string } = {}) {
             <Link href="/home5" className="flex items-center" onClick={() => setMenuOpen(false)}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/assets/color-logo.webp"
+                src="/logo-white.webp"
                 alt="Shenzhen SEO Conference"
                 className="h-[26px] w-auto"
               />
@@ -342,7 +342,7 @@ export function Footer({ linkBase = '' }: { linkBase?: string } = {}) {
             <div className="flex items-center mb-5">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/assets/color-logo.webp"
+                src="/logo-white.webp"
                 alt="Shenzhen SEO Conference"
                 className="h-[30px] w-auto"
               />
