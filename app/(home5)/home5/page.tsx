@@ -249,7 +249,7 @@ function Hero() {
           {/* RIGHT: description + CTA (filled red on mobile, outline on desktop) */}
           <div className="lg:max-w-[360px] lg:text-right flex flex-col lg:items-end gap-5 lg:gap-6">
             <p
-              className="text-[16px] text-white leading-[1.7] lg:w-[332px] lg:h-[81px]"
+              className="text-[16px] text-white leading-[1.7] lg:w-[420px]"
             >
               China&apos;s largest international SEO event. 5 days of actionable English-only
               talks, city tours, masterminds, and connections that other SEO conferences simply
