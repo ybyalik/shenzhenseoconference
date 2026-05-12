@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, BackToTop, Footer, Nav } from '../_components/shared';
+import { ArrowUpRight, BackToTop, Footer, Nav } from './_components/shared';
 
 const A = {
   heroBg: '/figma-assets/herohome.jpg',
@@ -189,7 +189,7 @@ function Hero() {
   return (
     <section
       id="top"
-      className="relative isolate overflow-hidden bg-[#03060d] min-h-[100dvh] md:min-h-0 flex flex-col"
+      className="relative isolate overflow-hidden bg-[#03060d] min-h-screen md:min-h-0 flex flex-col"
     >
       <div className="absolute inset-0 -z-10">
         <Image
@@ -275,8 +275,8 @@ function Hero() {
         </div>
       </div>
 
-      {/* Mobile-only CTA pinned to the bottom of the hero */}
-      <div className="lg:hidden mt-auto px-6 pb-8">
+      {/* Mobile-only CTA */}
+      <div className="lg:hidden mt-auto px-6">
         <a
           href="#pricing"
           className="display inline-flex items-center justify-center gap-3 w-full px-7 py-3.5 rounded-full text-[13px] font-bold tracking-[0.18em] text-white gradient-cta"
@@ -286,14 +286,71 @@ function Hero() {
         </a>
       </div>
 
-      {/* Divider + quote/stats strip — hidden on mobile so the hero fills the viewport */}
+      {/* Mobile-only Gary quote below the CTA */}
+      <div className="lg:hidden px-6 pt-10 pb-12">
+        <figure className="flex items-center gap-4">
+          <span
+            className="relative rounded-full overflow-hidden bg-white/10 flex-none"
+            style={{ width: '64px', aspectRatio: '1 / 1' }}
+          >
+            <Image
+              src={A.garyIllyes}
+              alt="Gary Illyes"
+              fill
+              className="object-cover"
+              sizes="64px"
+            />
+          </span>
+          <div className="min-w-0">
+            <p
+              style={{
+                color: '#F9F9F9',
+                fontSize: '13px',
+                fontStyle: 'italic',
+                fontWeight: 500,
+                lineHeight: '150%',
+              }}
+            >
+              &ldquo;Don&apos;t panic. Things change. They always do. Figure it out.&rdquo;
+            </p>
+            <figcaption className="mt-1.5">
+              <span
+                className="block"
+                style={{
+                  color: '#F9F9F9',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  lineHeight: '150%',
+                  opacity: 0.6,
+                }}
+              >
+                Gary Illyes
+              </span>
+              <span
+                className="block"
+                style={{
+                  color: '#F9F9F9',
+                  fontSize: '10px',
+                  fontWeight: 500,
+                  lineHeight: '180%',
+                  opacity: 0.6,
+                }}
+              >
+                Search Relations, Google | 2025 Keynote Speaker
+              </span>
+            </figcaption>
+          </div>
+        </figure>
+      </div>
+
+      {/* Divider + quote/stats strip */}
       <div className="container hidden md:block">
         <div className="border-t border-white/15" />
       </div>
-      <div className="container hidden md:block pt-12 md:pt-16 pb-8 md:pb-12">
+      <div className="container pt-12 md:pt-16 pb-8 md:pb-12">
         <div className="grid gap-7 lg:gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
-          {/* Quote */}
-          <figure className="flex items-center gap-4">
+          {/* Quote — desktop only; the mobile copy lives inside the hero */}
+          <figure className="hidden md:flex items-center gap-4">
             <span
               className="relative rounded-full overflow-hidden bg-white/10 flex-none"
               style={{ width: '88px', aspectRatio: '1 / 1' }}
@@ -1350,7 +1407,9 @@ function Pricing() {
                 ))}
               </ul>
               <a
-                href="#"
+                href="https://luma.com/shenzhen-seo-conference-2026"
+                target="_blank"
+                rel="nofollow noopener noreferrer"
                 className={`mt-8 display inline-flex items-center justify-center gap-3 w-full px-5 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase ${
                   t.popular ? 'gradient-cta text-white' : 'btn-outline-white'
                 }`}

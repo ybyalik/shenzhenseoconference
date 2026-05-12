@@ -1422,7 +1422,7 @@ function BareLogo({ logo, tier }: { logo: Logo; tier: 'platinum' | 'gold' | 'sil
 export default function Sponsors5Page() {
   return (
     <main className="home5-root">
-      <Nav linkBase="/home5" />
+      <Nav linkBase="/" />
       <Hero />
       <Confirmed2026 />
       <ThreeTiers />
@@ -1431,7 +1431,7 @@ export default function Sponsors5Page() {
       <WhoWeLetIn />
       <ApplyToSponsor />
       <YearOne2025 />
-      <Footer linkBase="/home5" />
+      <Footer linkBase="/" />
       <BackToTop />
     </main>
   );

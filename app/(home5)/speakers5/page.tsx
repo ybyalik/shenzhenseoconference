@@ -1271,7 +1271,7 @@ function FinalCta() {
             600 seats. 40+ speakers. 30+ countries. Five days.
           </p>
           <Link
-            href="/home5#pricing"
+            href="/#pricing"
             className="mt-8 display inline-flex items-center gap-3 px-7 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] gradient-cta text-white"
           >
             GET TICKETS TODAY
@@ -1288,14 +1288,14 @@ function FinalCta() {
 export default function Speakers5Page() {
   return (
     <main className="home5-root">
-      <Nav linkBase="/home5" />
+      <Nav linkBase="/" />
       <Hero />
       <Lineup />
       <Room2025 />
       <SpeakersGet />
       <Criteria />
       <FinalCta />
-      <Footer linkBase="/home5" />
+      <Footer linkBase="/" />
       <BackToTop />
     </main>
   );

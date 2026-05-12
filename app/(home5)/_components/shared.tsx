@@ -176,7 +176,7 @@ export function Nav({ linkBase = '' }: { linkBase?: string } = {}) {
         }`}
       >
         <div className="container flex items-center justify-between h-[72px] lg:h-[88px]">
-          <Link href="/home5" className="flex items-center" aria-label="Shenzhen SEO Conference">
+          <Link href="/" className="flex items-center" aria-label="Shenzhen SEO Conference">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/logo-white.webp"
@@ -234,7 +234,7 @@ export function Nav({ linkBase = '' }: { linkBase?: string } = {}) {
           aria-label="Site navigation"
         >
           <div className="flex items-center justify-between h-[72px] px-6 border-b border-white/10">
-            <Link href="/home5" className="flex items-center" onClick={() => setMenuOpen(false)}>
+            <Link href="/" className="flex items-center" onClick={() => setMenuOpen(false)}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/logo-white.webp"
