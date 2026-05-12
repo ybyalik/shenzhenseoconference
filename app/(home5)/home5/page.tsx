@@ -10,7 +10,7 @@ const A = {
   founderPortrait: '/figma-assets/jp-portrait.png',
   founderAvatar: '/figma-assets/jp-avatar.webp',
   founderSignature: '/figma-assets/jp-signature.png',
-  recap: '/figma-assets/de3b4552f3cbd3a8a34ebb172a16b1bf278b9bae.png',
+  recap: '/assets/video-cover.webp',
   audInternational: '/figma-assets/audience-international.png',
   audChinese: '/figma-assets/audience-chinese.png',
   why1: '/figma-assets/6e1365b901e58c47813d8a9a6c17f43ff4c0f557.png',
@@ -214,20 +214,18 @@ function Hero() {
           }}
         />
       </div>
-      <Nav />
-
       {/* Headline + right column */}
-      <div className="container pt-[140px] md:pt-[260px] lg:pt-[440px] xl:pt-[480px] pb-8 md:pb-14">
+      <div className="container pt-[140px] md:pt-[260px] lg:pt-[440px] xl:pt-[480px] pb-16 md:pb-24">
         <div className="grid gap-8 lg:gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
-          {/* LEFT: title + date (date above on mobile, below on desktop) */}
+          {/* LEFT: title + date (date below H1 on desktop only; on mobile date is in RIGHT column under the paragraph) */}
           <div className="flex flex-col">
-            <div className="order-1 lg:order-2 lg:mt-7 flex items-center gap-3 text-[13px] md:text-[14px] text-white/90 mb-8 lg:mb-0">
+            <div className="hidden lg:flex order-2 lg:mt-7 items-center gap-3 text-[14px] text-white/90 lg:mb-0">
               <span className="font-bold">September 14–18, 2026</span>
               <span className="w-1 h-1 rounded-full bg-white/55" aria-hidden />
               <span className="font-medium">The St. Regis Shenzhen</span>
             </div>
             <h1
-              className="order-2 lg:order-1 display uppercase text-[24px] md:text-[48px] flex flex-col items-start gap-3"
+              className="order-1 display uppercase text-[24px] md:text-[48px] flex flex-col items-start gap-3"
               style={{
                 color: '#F9F9F9',
                 fontWeight: 600,
@@ -242,7 +240,7 @@ function Hero() {
               />
               <HeroTitleLine
                 label="IN"
-                word="Shenzhen, China"
+                word="Shenzhen"
                 gradient="linear-gradient(90deg, #118BAC 0%, #FD4C4C 100%)"
               />
             </h1>
@@ -253,9 +251,16 @@ function Hero() {
             <p
               className="text-[16px] text-white leading-[1.7] lg:w-[332px] lg:h-[81px]"
             >
-              5 days of talks, workshops, masterminds, city tours, and the kind of network
-              connections you don&apos;t make on LinkedIn
+              China&apos;s largest international SEO event. 5 days of actionable English-only
+              talks, city tours, masterminds, and connections that other SEO conferences simply
+              cannot replicate.
             </p>
+            {/* Mobile-only date/venue under the paragraph */}
+            <div className="flex lg:hidden items-center gap-3 text-[13px] text-white/90 my-4">
+              <span className="font-bold">September 14–18, 2026</span>
+              <span className="w-1 h-1 rounded-full bg-white/55" aria-hidden />
+              <span className="font-medium">The St. Regis Shenzhen</span>
+            </div>
             <a
               href="#pricing"
               className="lg:hidden display inline-flex items-center justify-center gap-3 w-full px-7 py-3.5 rounded-full text-[13px] font-bold tracking-[0.18em] text-white gradient-cta"
@@ -279,7 +284,7 @@ function Hero() {
       <div className="container">
         <div className="border-t border-white/15" />
       </div>
-      <div className="container py-8 md:py-12">
+      <div className="container pt-12 md:pt-16 pb-8 md:pb-12">
         <div className="grid gap-7 lg:gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
           {/* Quote */}
           <figure className="flex items-center gap-4">
@@ -330,7 +335,7 @@ function Hero() {
                     opacity: 0.6,
                   }}
                 >
-                  Search Relations, Google · Keynote Speaker
+                  Search Relations, Google | 2025 Keynote Speaker
                 </span>
               </figcaption>
             </div>
@@ -382,7 +387,7 @@ function FounderLetter() {
           WHAT IS SZSEO?
         </div>
         <h2 className="display text-[28px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] mb-10 md:mb-12">
-          A Letter From <br className="md:hidden" />The Founder
+          The Story Behind <br className="md:hidden" />The Bridge
         </h2>
 
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center p-6 lg:p-12 gap-10 lg:gap-16 self-stretch rounded-[32px] border border-white/10 bg-[#03060d]">
@@ -402,33 +407,32 @@ function FounderLetter() {
             <div className="relative w-full lg:max-w-[560px] lg:flex-shrink-0">
               <QuoteGlyph className="w-10 h-8 md:w-11 md:h-9 text-[var(--red)] mb-5" />
 
-              <div className="space-y-5 text-[14px] md:text-[16px] italic text-white/85 leading-[1.8] md:leading-[1.65] max-w-[560px]">
+              <div className="space-y-5 text-[14px] md:text-[16px] text-white/85 leading-[1.8] md:leading-[1.65] max-w-[560px]">
                 <p>
-                  In 2019, I hosted a half-day SEO event in Shenzhen. 300 people, mostly
-                  local, with a few international speakers like Aleyda Solis. It worked, but
-                  then the world paused.
+                  In 2019, I hosted a half-day SEO event in Shenzhen for 300 people, featuring
+                  international speakers like <strong className="font-bold text-white">Aleyda Solis</strong>. It worked, but then the world paused.
                 </p>
                 <p>
-                  When we brought it back in 2025, the scale changed: 4 days, 500 people, and
-                  a full English track on the stage. A third of the room flew in from overseas.
+                  When we returned in 2025, the scale shifted: 4 days, 500 attendees, and a{' '}
+                  <strong className="font-bold text-white">full English</strong> track on stage.{' '}
+                  <strong className="font-bold text-white">35%</strong> of the room flew in from overseas.
                 </p>
                 <p>
-                  For the first time in my 16-year SEO career, I saw Western entrepreneurs
-                  and professionals sitting right next to peers from China, Japan, and Korea.
+                  For the first time in my 16-year SEO career, I saw Western SEO entrepreneurs
+                  and professionals sitting directly beside peers from China, Japan, and South
+                  Korea.
                 </p>
                 <p>
-                  More importantly, they actually started working together. Seeing that
-                  bridge finally built between East and West has been the highlight of my
-                  career so far.
+                  More importantly, they actually started{' '}
+                  <strong className="font-bold text-white">working together</strong>. Seeing that bridge
+                  finally built <strong className="font-bold text-white">between East and West</strong> has been the highlight of my career.
                 </p>
                 <p>
-                  That&apos;s why we&apos;re doing it again. We&apos;re moving to a larger
-                  hotel to accommodate 600 people, but the filter remains the same: no fluff,
-                  just SEO practitioners and entrepreneurs who have done the work.
+                  That is why we are back for 2026. We are moving to a larger venue for 600
+                  people, but the filter remains the same:{' '}
+                  <strong className="font-bold text-white">no fluff, just practitioners who have done the work</strong>.
                 </p>
-                <p>
-                  If you&apos;ve been on the fence, come. I&apos;ll see you in Shenzhen.
-                </p>
+                <p>See you in Shenzhen!</p>
               </div>
 
               {/* Author */}
@@ -531,28 +535,6 @@ function Recap() {
                 </span>
               </div>
 
-              <div className="absolute right-5 bottom-5 md:right-8 md:bottom-8 text-right">
-                <div
-                  className="display uppercase text-[12px] lg:text-[32px]"
-                  style={{
-                    color: '#F9F9F9',
-                    fontWeight: 700,
-                    lineHeight: 'normal',
-                  }}
-                >
-                  500+
-                </div>
-                <div
-                  className="display uppercase text-[8px] lg:text-[18px]"
-                  style={{
-                    color: '#F9F9F9',
-                    fontWeight: 700,
-                    lineHeight: '160%',
-                  }}
-                >
-                  Attendees · 2025
-                </div>
-              </div>
             </>
           )}
         </div>
@@ -565,38 +547,38 @@ function Recap() {
 function Audiences() {
   const intl = [
     {
-      h: 'A way into the Chinese market',
-      p: "Without a 6-month consultant hunt. Meet vendors, talents, and agencies you'd never find on the open internet.",
+      h: 'China Entry & Strategy',
+      p: "Skip the 6-month consultant hunt. Meet customers, partners, and talent you won't find online.",
     },
     {
-      h: 'Signal from China',
-      p: "What's working on Baidu, WeChat, Xiaohongshu, Douyin, Zhihu. From people running real campaigns there now.",
+      h: 'China Search & AI Ecosystem',
+      p: 'Adapt your marketing strategy for China with actionable insights on Baidu, WeChat, and Douyin.',
     },
     {
-      h: 'An excuse to come',
-      p: 'Shenzhen is the most undersold city in Asia for Western entrepreneurs. You leave with a vendor list and a city you can build anywhere else.',
+      h: 'Discover Shenzhen',
+      p: 'Explore the "Silicon Valley of Hardware" and see how it grew from a village to a global tech city in 40 years.',
     },
     {
-      h: 'Not for',
-      p: 'SEO beginners. Anyone looking for a course.',
+      h: 'Not For',
+      p: 'Anyone holding outdated stereotypes of China, non-English speakers, or those without a genuine desire to explore.',
     },
   ];
   const cn = [
     {
-      h: 'International frontline SEO experience without leaving the country',
-      p: "Google, YouTube, LLMs, from operators who've run campaigns that worked.",
+      h: 'SEO & Growth Strategy',
+      p: 'Master Google, LLMs, YouTube, and more from world-class speakers and practitioners, right here in China.',
     },
     {
-      h: 'A room full of China-outbound peers',
-      p: 'Partners, suppliers, talent.',
+      h: 'International Partnerships',
+      p: 'Meet talent and partners from overseas to uncover growth while optimizing operational costs.',
     },
     {
-      h: '300+ international SEOs in the same venue',
-      p: 'Your outbound channel starts here.',
+      h: 'Fresh Perspectives',
+      p: 'Connect with global peers to discover high-level ideas and strategies worth compounding over time.',
     },
     {
-      h: 'Not for',
-      p: 'SEO beginners. Anyone who wants theory over hands-on work.',
+      h: 'Not For',
+      p: 'beginner SEO/marketers, short-term thinkers, or anyone practicing unethical marketing.',
     },
   ];
 
@@ -606,7 +588,7 @@ function Audiences() {
       shortTitle: "Int'l Attendes",
       icon: '/figma-assets/icon-globe.svg',
       img: A.audInternational,
-      lead: "You're in Europe, the US, Southeast Asia, Australia, New Zealand, or the Middle East. You run SEO campaigns, agencies, or in-house teams. You want:",
+      lead: 'Agency founders, fractional SEO/growth advisors, in-house marketers from global martech, and content creators.',
       items: intl,
     },
     {
@@ -614,7 +596,7 @@ function Audiences() {
       shortTitle: 'Chinese Attendees',
       icon: '🇨🇳',
       img: A.audChinese,
-      lead: "You're running SEO in China. Agency clients, in-house projects, or global brand mandates. You want:",
+      lead: 'Founders/CMOs and marketing/growth/SEO managers from B2B manufacturing, B2C/DTC brands, and AI/SaaS companies.',
       items: cn,
     },
   ];
@@ -730,7 +712,7 @@ function Audiences() {
               </p>
               <ul className="space-y-5">
                 {col.items.map((it) => {
-                  const isNotFor = it.h === 'Not for';
+                  const isNotFor = it.h.toLowerCase().startsWith('not for');
                   if (isNotFor) {
                     return (
                       <li
@@ -738,27 +720,15 @@ function Audiences() {
                         className="rounded-2xl border border-white/10 px-5 py-4"
                       >
                         <div
-                          className="uppercase mb-1.5"
-                          style={{
-                            color: '#F9F9F9',
-                            fontSize: '16px',
-                            fontWeight: 700,
-                            lineHeight: '170%',
-                            letterSpacing: '0.8px',
-                          }}
-                        >
-                          {it.h}
-                        </div>
-                        <div
                           style={{
                             color: '#F9F9F9',
                             fontSize: '16px',
                             fontWeight: 500,
                             lineHeight: '170%',
-                            opacity: 0.6,
                           }}
                         >
-                          {it.p}
+                          <span style={{ fontWeight: 700 }}>{it.h}:</span>{' '}
+                          <span style={{ opacity: 0.7 }}>{it.p}</span>
                         </div>
                       </li>
                     );
@@ -766,27 +736,15 @@ function Audiences() {
                   return (
                     <li key={it.h} className="pl-5 border-l-2 border-[var(--red)]">
                       <div
-                        className="uppercase mb-1.5"
-                        style={{
-                          color: '#F9F9F9',
-                          fontSize: '16px',
-                          fontWeight: 700,
-                          lineHeight: '170%',
-                          letterSpacing: '0.8px',
-                        }}
-                      >
-                        {it.h}
-                      </div>
-                      <div
                         style={{
                           color: '#F9F9F9',
                           fontSize: '16px',
                           fontWeight: 500,
                           lineHeight: '170%',
-                          opacity: 0.6,
                         }}
                       >
-                        {it.p}
+                        <span style={{ fontWeight: 700 }}>{it.h}:</span>{' '}
+                        <span style={{ opacity: 0.7 }}>{it.p}</span>
                       </div>
                     </li>
                   );
@@ -818,7 +776,7 @@ function WhyShenzhen() {
     },
     {
       img: A.why3,
-      h: 'Ancient walled cities next to glass towers',
+      h: 'Ancient Walls Next To Glass Towers',
       p: '1,700-year-old Ming Dynasty gates at Nantou. Sub-tropical beaches at Dapeng. Mangrove wetlands inside the city limits.',
     },
     {
@@ -881,7 +839,7 @@ function WhyShenzhen() {
             doesn&apos;t.
           </p>
           <p
-            className="self-stretch max-w-[760px] mb-8 md:mb-14"
+            className="self-stretch max-w-[760px] mb-5"
             style={{
               color: '#F9F9F9',
               fontSize: '18px',
@@ -891,8 +849,20 @@ function WhyShenzhen() {
             }}
           >
             Shenzhen is the fastest-moving city on earth that most Westerners have never set
-            foot in. 18 million people. Average age 32. More patents filed here than anywhere
-            else in China. Tencent, DJI, Huawei, BYD — all within a 30-minute drive.
+            foot in. 18 million people. Average age 32.
+          </p>
+          <p
+            className="self-stretch max-w-[760px] mb-8 md:mb-14"
+            style={{
+              color: '#F9F9F9',
+              fontSize: '18px',
+              fontWeight: 500,
+              lineHeight: '160%',
+              opacity: 0.8,
+            }}
+          >
+            More patents filed here than anywhere else in China. Tencent, DJI, Huawei, BYD — all
+            within a 30-minute drive.
           </p>
           <a
             href="#"
@@ -984,8 +954,8 @@ function Speakers() {
     { country: 'AU', name: 'Nick Drewe', sub: 'Founder & CEO, Wethrift', img: '/figma-assets/Nick-Drewe1.jpg' },
     { country: 'CA', name: 'Megan Gougeon', sub: 'Founder, Portable Professional', img: '/figma-assets/Megan-Gougeon1.jpg' },
     { country: 'US', name: 'Doug Pierce', sub: 'Founder, Cogney', img: '/figma-assets/Doug-Pierce1.jpg' },
-    { country: 'US', name: 'Victor Huynh', sub: 'CEO and Head of Digital Strategy, Ready Artwork', img: '/figma-assets/Victor-Huynh1.jpg' },
-    { country: 'UK · DE', name: 'Jonathan Kiekbusch', sub: 'Founder, SwishDM', img: A.spkA },
+    { country: 'US', name: 'Victor Huynh', sub: 'CEO & Head of Digital Strategy, Ready Artwork', img: '/figma-assets/Victor-Huynh1.jpg' },
+    { country: 'UK · DE', name: 'Jonathan Kiekbusch', sub: 'Founder, SwishDM', img: '/assets/jonathan-kiekbusch.jpg' },
     { country: 'UK', name: 'Owain Lloyd-Williams', sub: 'Independent SEO Consultant', img: '/figma-assets/Owain-Lloyd-Williams1.jpg' },
     { country: 'AU · CN', name: 'Loki Yan', sub: 'Co-founder, First Optimise (壹优化)', img: '/figma-assets/Loki-Yan1.jpg' },
   ];
@@ -1118,7 +1088,7 @@ function Agenda() {
       n: 'DAY 3',
       date: 'WEDNESDAY, SEP 16',
       title: 'Main Conference',
-      desc: '4 keynotes. 8 field talks. 6 lightning rounds. Opening party at night.',
+      desc: '2 Keynotes. 6 Field Talks. 9 Lightning Talks. Opening party at night.',
       tier: 'Standard',
       note: '',
     },
@@ -1126,7 +1096,7 @@ function Agenda() {
       n: 'DAY 4',
       date: 'THURSDAY, SEP 17',
       title: 'Main Conference',
-      desc: 'Same format. More speakers. Closing party.',
+      desc: '2 Keynotes. 6 Field Talks. 9 Lightning Talks. Closing party.',
       tier: 'Standard',
       note: '',
     },
@@ -1162,14 +1132,16 @@ function Agenda() {
           </h2>
         </div>
 
-        {/* Pre-events banner */}
+        {/* Side events banner */}
         <div className="mb-2 md:mb-3">
           <div className="display text-[18px] md:text-[16px] font-semibold uppercase tracking-[0.04em] md:tracking-[0.16em] text-white leading-[120%]">
-            Pre-Events · Sat (Sep 12) +<br className="md:hidden" /> Sun (Sep 13) Afternoons
+            Side Events
           </div>
           <p className="mt-2 text-[13px] md:text-[14px] text-white/55 leading-[1.55]">
-            Two free side events open to everyone — no conference ticket required. (Details May
-            2026)
+            Sat (Sep 12) + Sun (Sep 13) Afternoons
+          </p>
+          <p className="mt-2 text-[13px] md:text-[14px] text-white/55 leading-[1.55]">
+            Two free side events open to everyone — no conference ticket required. Details TBD.
           </p>
         </div>
 
@@ -1177,7 +1149,7 @@ function Agenda() {
           {days.map((d) => (
             <li
               key={d.n}
-              className="rounded-2xl border border-white/15 p-6 md:rounded-none md:border md:border-white/10 md:border-x-0 md:border-b-0 md:p-0 grid grid-cols-1 md:grid-cols-[180px_1fr_auto] md:items-center gap-4 md:gap-8 md:py-8"
+              className="rounded-2xl border border-white/15 p-6 md:rounded-none md:border md:border-white/10 md:border-x-0 md:border-b-0 md:p-0 grid grid-cols-1 md:grid-cols-[220px_1fr_auto] md:items-center gap-4 md:gap-8 md:py-8"
             >
               {/* Mobile: top row weekday left + DAY N right; Desktop: stacked left column */}
               <div className="flex items-center justify-between md:block">
@@ -1287,7 +1259,7 @@ function Pricing() {
               letterSpacing: '0.9px',
             }}
           >
-            HOW MUCH IS THE TICKET
+            HOW MUCH IS IT
           </div>
           <h2 className="display text-[28px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9]">
             Get Tickets
@@ -1541,19 +1513,19 @@ function Testimonials() {
     {
       av: A.avMike,
       name: 'Mike Dee',
-      role: 'YouTube agency owner, UK',
-      q: "The best conference he'd ever attended “in terms of clear business ROI” — and said he should have tapped this market years ago.",
+      role: 'YouTube creator with over 1 million subscribers',
+      q: "The best conference I'd ever attended in terms of clear business ROI…and we should have tapped this market years ago.",
     },
     {
       av: A.avMads,
       name: 'Mads Singers',
-      role: 'Founder, Mads Singers Consulting · Runs his own SEO conference in Vietnam',
+      role: 'Management Coach & Business Consultant',
       q: '“Absolutely top-notch.” — on the organisation of the 2025 event.',
     },
     {
       av: A.avZack,
       name: 'Zack Franklin',
-      role: 'SEO agency owner, 9 years in Shenzhen',
+      role: 'SEO agency owner, 9 years living in Shenzhen',
       q: '“There are very few opportunities for Western and Chinese to get together in one room in real life. It’s very unique.”',
     },
   ];
@@ -1577,8 +1549,8 @@ function Testimonials() {
           What 2025 Attendees Told Us.
         </h2>
 
-        {/* Videos: carousel on mobile, 2-col grid on md+ */}
-        <div className="md:hidden mb-8">
+        {/* Videos: hidden for now (both mobile + desktop) */}
+        <div className="hidden mb-8">
           <div
             ref={videosRef}
             className="-mx-6 px-6 overflow-x-auto no-scrollbar snap-x snap-mandatory"
@@ -1625,7 +1597,7 @@ function Testimonials() {
           </div>
           <CarouselDots count={videos.length} active={activeVideo} />
         </div>
-        <div className="hidden md:grid gap-5 md:grid-cols-2 mb-5">
+        <div className="hidden gap-5 md:grid-cols-2 mb-5">
           {videos.map((v, i) => (
             <div
               key={i}
@@ -1681,7 +1653,7 @@ function Testimonials() {
                 {q.q}
               </blockquote>
               <figcaption className="mt-6 flex items-center gap-3">
-                <div className="relative w-10 h-10 rounded-full overflow-hidden bg-white/10 ring-1 ring-white/15">
+                <div className="relative w-10 h-10 shrink-0 rounded-full overflow-hidden bg-white/10 ring-1 ring-white/15">
                   <Image src={q.av} alt={q.name} fill className="object-cover" sizes="40px" />
                 </div>
                 <div>
@@ -1706,29 +1678,42 @@ function Faq() {
   const items = [
     {
       q: 'How many attendees? Who shows up?',
-      a: 'About 600. 300+ from China — in-house SEO and marketing leaders from global-market brands. 200+ international — agencies, Martech, fractional SEO consultants.',
+      a: 'We are expecting 600 people. 300+ from China (in-house SEO and marketing leaders from global-market brands). 200+ international (agencies, Martech, fractional SEO consultants).',
       defaultOpen: true,
     },
     {
       q: 'What language are the sessions in?',
-      a: 'English and Mandarin. Live translation provided in both directions for keynotes and main stage talks.',
+      a: 'Sessions on Days 1–5 are 100% English. Simultaneous English-to-Mandarin translation is provided on Days 3 and 4. Please note that some pre-conference Side Event sessions may be conducted in Chinese.',
     },
     {
       q: 'Is the content Western SEO or China SEO?',
-      a: 'Both. The whole point of the event is the overlap. Half the talks are Google/YouTube/LLM-focused. Half are Baidu/WeChat/Xiaohongshu/Douyin.',
+      a: 'Both. The agenda is strategically weighted: 90% focuses on Western/International SEO, while 10% covers the specific search and internet ecosystems within China.',
     },
     {
       q: 'Is this for SEO beginners?',
-      a: 'No. Every attendee is expected to have shipped real SEO work. We don’t run intro sessions.',
+      a: 'Not really. The content is tailored for intermediate to advanced SEO practitioners. However, we welcome in-house marketing directors and growth managers who focus on high-level marketing strategy rather than SEO execution.',
     },
-    { q: 'Refund policy.', a: 'Full refund up until the conference starts. No questions asked.' },
+    { q: 'Refund policy.', a: 'Full refunds are available until 30 days before the conference. Within 30 days, refunds are generally not issued except in exceptional circumstances.' },
     {
       q: 'Can I transfer my ticket?',
-      a: 'Yes — email support@shenzhenseoconference.com with the new attendee’s details.',
+      a: 'No. Tickets are non-transferable, and IDs will be verified at registration. If you are unable to attend, please contact our support team to discuss refund options.',
     },
     {
       q: 'Do I need a visa?',
-      a: '54+ passports are visa-free for stays up to 30 days. If yours isn’t, you’ll need a tourist or business visa.',
+      a: (
+        <>
+          Citizens of 54+ countries currently enjoy visa-free entry for up to 30 days. Passport
+          holders from some countries (including the USA) are eligible for 10-day free transit. If
+          neither applies, you will need a tourist or business visa.{' '}
+          <a
+            href="https://shenzhenseoconference.com/plan-your-trip"
+            className="underline text-white hover:text-[var(--red)]"
+          >
+            Learn more
+          </a>
+          .
+        </>
+      ),
     },
     {
       q: 'Can you send me a business invitation letter for the visa?',
@@ -1736,11 +1721,25 @@ function Faq() {
     },
     {
       q: 'Conference hotel rates.',
-      a: 'St. Regis Shenzhen offers a 20–25% discount on standard rates for confirmed attendees. Booking link sent with your ticket.',
+      a: (
+        <>
+          St. Regis Shenzhen offers a 20–25% discount on standard rates for confirmed attendees.
+          Visit the special booking link{' '}
+          <a
+            href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1770202951216&key=GRP&app=resvlink&_branch_match_id=1547558325661285432&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXTywo0MtNLCrKzC8p0UvOz9UvSi3OyczLtgdK2ALZZSCOWmaKraG5uYGRgZGlqaGRoZpadmqlrXtQgFpdUWpaKlB3Xnp8UlF%2BeXFqka1zRlF%2B"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline text-white hover:text-[var(--red)]"
+          >
+            here
+          </a>
+          .
+        </>
+      ),
     },
     {
-      q: 'Session recordings?',
-      a: 'Keynotes and main-stage talks are recorded. Workshops and Masterminds are live-only.',
+      q: 'Slides and session recordings?',
+      a: 'Available presentation slides will be shared post-event. We do not provide session recordings, and on-site recording by attendees is strictly prohibited.',
     },
     {
       q: 'Dress code?',
@@ -1792,11 +1791,12 @@ function FinalCta() {
           }}
         >
           <h2 className="display text-[28px] md:text-[40px] font-semibold leading-[1.1] uppercase tracking-[-0.005em] max-w-[920px] md:mx-auto text-white">
-            <span className="block">One Room. Five Days.</span>
+            <span className="block">One Room.</span>
+            <span className="block md:inline"> Five Days.</span>
             <span className="block">September.</span>
           </h2>
           <p
-            className="mt-5 max-w-[720px] md:max-w-none md:mx-auto md:whitespace-nowrap self-stretch"
+            className="mt-5 max-w-[720px] md:max-w-none md:mx-auto self-stretch"
             style={{
               color: '#F9F9F9',
               fontSize: '18px',
@@ -1805,18 +1805,27 @@ function FinalCta() {
             }}
           >
             If the question is whether Shenzhen is worth the trip — the answer is yes.
-            <br className="hidden md:block" /> If the question is whether you should wait for
-            2027 — the answer is no. Seats cap at 600.
+          </p>
+          <p
+            className="mt-3 max-w-[720px] md:max-w-none md:mx-auto self-stretch"
+            style={{
+              color: '#F9F9F9',
+              fontSize: '18px',
+              fontWeight: 500,
+              lineHeight: '160%',
+            }}
+          >
+            If the question is whether you should wait for 2027 — the answer is no. Seats cap
+            at 600.
           </p>
           <a
             href="#pricing"
-            className="mt-8 display flex w-full rounded-full text-[12px] font-bold tracking-[0.18em] gradient-cta text-white"
+            className="mt-8 display flex w-full md:w-auto md:inline-flex rounded-full text-[12px] font-bold tracking-[0.18em] gradient-cta text-white"
             style={{
               padding: '16px 24px',
               justifyContent: 'center',
               alignItems: 'center',
               gap: 12,
-              alignSelf: 'stretch',
             }}
           >
             GET TICKETS TODAY
@@ -1914,20 +1923,30 @@ function Sponsors() {
   return (
     <section id="sponsors" className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
-        <div className="mb-16 md:mb-20">
-          <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
-            2026 PARTNERS
+        <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end mb-16 md:mb-20">
+          <div>
+            <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
+              2026 PARTNERS
+            </div>
+            <h2 className="display text-[28px] md:text-[36px] font-semibold uppercase leading-[120%] tracking-[-2px] md:tracking-normal self-stretch text-[#F9F9F9]">
+              Our Sponsors
+            </h2>
+            <p className="mt-4 text-[15px] md:text-[16px] text-white/65 leading-[1.6] max-w-[640px]">
+              Thank you to the sponsors who made this event possible.
+            </p>
+            {/* Mobile: button right after the subtitle */}
+            <a
+              href="/sponsors"
+              className="md:hidden display btn-outline-white flex items-center justify-center gap-3 px-6 py-4 rounded-full uppercase whitespace-nowrap text-[14px] font-semibold leading-[150%] mt-6 self-stretch"
+            >
+              BECOME A 2026 SPONSOR
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
           </div>
-          <h2 className="display text-[28px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9] text-white">
-            Our Sponsors
-          </h2>
-          <p className="mt-4 text-[15px] md:text-[16px] text-white/65 leading-[1.6] max-w-[640px]">
-            Thank you to the sponsors who made this event possible.
-          </p>
-          {/* Mobile: button right after the subtitle */}
+          {/* Desktop: button to the right of the heading, bottom-aligned */}
           <a
-            href="#"
-            className="md:hidden display btn-outline-white flex items-center justify-center gap-3 px-6 py-4 rounded-full uppercase whitespace-nowrap text-[14px] font-semibold leading-[150%] mt-6 self-stretch"
+            href="/sponsors"
+            className="hidden md:inline-flex display btn-outline-white items-center justify-center gap-3 px-6 py-4 rounded-full uppercase whitespace-nowrap text-[14px] font-semibold leading-[150%] self-end"
           >
             BECOME A 2026 SPONSOR
             <ArrowUpRight className="w-4 h-4" />
@@ -1943,16 +1962,6 @@ function Sponsors() {
           {SPONSORS.silver.length > 0 && (
             <Row title="Silver Sponsors" items={SPONSORS.silver} max={48} tier="silver" />
           )}
-        </div>
-        {/* Desktop: button at the bottom of the section */}
-        <div className="hidden md:flex mt-16 md:mt-20 justify-center">
-          <a
-            href="#"
-            className="display btn-outline-white inline-flex items-center justify-center gap-3 px-6 py-4 rounded-full uppercase whitespace-nowrap text-[14px] font-semibold leading-[150%]"
-          >
-            BECOME A 2026 SPONSOR
-            <ArrowUpRight className="w-4 h-4" />
-          </a>
         </div>
       </div>
     </section>
@@ -2051,25 +2060,35 @@ function Contact() {
                   lineHeight: '160%',
                 }}
               >
-                <li className="flex items-center gap-3">
+                <li className="flex items-start gap-3">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/figma-assets/mail.svg" alt="" className="w-5 h-5 flex-none" />
-                  <a
-                    href="mailto:support@shenzhenseoconference.com"
-                    className="hover:underline"
-                  >
-                    support@shenzhenseoconference.com
-                  </a>
+                  <img src="/figma-assets/mail.svg" alt="" className="w-5 h-5 flex-none mt-1" />
+                  <div className="flex flex-col">
+                    <span className="text-white/55 text-[12px] font-semibold uppercase tracking-[0.12em]">
+                      General Inquiries
+                    </span>
+                    <a
+                      href="mailto:support@shenzhenseoconference.com"
+                      className="hover:underline"
+                    >
+                      support@shenzhenseoconference.com
+                    </a>
+                  </div>
                 </li>
-                <li className="flex items-center gap-3">
+                <li className="flex items-start gap-3">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/figma-assets/mail.svg" alt="" className="w-5 h-5 flex-none" />
-                  <a
-                    href="mailto:sponsor@shenzhenseoconference.com"
-                    className="hover:underline"
-                  >
-                    sponsor@shenzhenseoconference.com
-                  </a>
+                  <img src="/figma-assets/mail.svg" alt="" className="w-5 h-5 flex-none mt-1" />
+                  <div className="flex flex-col">
+                    <span className="text-white/55 text-[12px] font-semibold uppercase tracking-[0.12em]">
+                      Sponsorship Inquiries
+                    </span>
+                    <a
+                      href="mailto:sponsor@shenzhenseoconference.com"
+                      className="hover:underline"
+                    >
+                      sponsor@shenzhenseoconference.com
+                    </a>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -2338,6 +2357,7 @@ function Contact() {
 export default function Home5Page() {
   return (
     <main className="home5-root">
+      <Nav />
       <Hero />
       <FounderLetter />
       <Recap />

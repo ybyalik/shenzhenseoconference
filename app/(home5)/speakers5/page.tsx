@@ -262,8 +262,6 @@ function Hero() {
         />
       </div>
 
-      <Nav linkBase="/home5" />
-
       <div className="container pt-[220px] md:pt-[260px] lg:pt-[340px] pb-12 md:pb-20">
         {/* Date / venue badge */}
         <div className="flex items-center gap-2 mb-6 md:mb-8">
@@ -1290,6 +1288,7 @@ function FinalCta() {
 export default function Speakers5Page() {
   return (
     <main className="home5-root">
+      <Nav linkBase="/home5" />
       <Hero />
       <Lineup />
       <Room2025 />

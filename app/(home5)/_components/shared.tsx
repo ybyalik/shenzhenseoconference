@@ -141,6 +141,7 @@ export function BackToTop() {
 export function Nav({ linkBase = '' }: { linkBase?: string } = {}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeHref, setActiveHref] = useState('#top');
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     if (typeof document === 'undefined') return;
@@ -151,6 +152,13 @@ export function Nav({ linkBase = '' }: { linkBase?: string } = {}) {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   const handleNavClick = (href: string) => {
     setActiveHref(href);
     setMenuOpen(false);
@@ -160,12 +168,18 @@ export function Nav({ linkBase = '' }: { linkBase?: string } = {}) {
 
   return (
     <>
-      <header className="absolute top-0 inset-x-0 z-30">
+      <header
+        className={`fixed top-0 inset-x-0 z-50 transition-colors duration-200 ${
+          scrolled
+            ? 'bg-[#03060d] border-b border-white/10'
+            : 'bg-transparent'
+        }`}
+      >
         <div className="container flex items-center justify-between h-[72px] lg:h-[88px]">
           <Link href="/home5" className="flex items-center" aria-label="Shenzhen SEO Conference">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/figma-assets/logo-szseo.png"
+              src="/assets/color-logo.webp"
               alt="Shenzhen SEO Conference"
               className="h-[26px] lg:h-[30px] w-auto"
             />
@@ -223,7 +237,7 @@ export function Nav({ linkBase = '' }: { linkBase?: string } = {}) {
             <Link href="/home5" className="flex items-center" onClick={() => setMenuOpen(false)}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/figma-assets/logo-szseo.png"
+                src="/assets/color-logo.webp"
                 alt="Shenzhen SEO Conference"
                 className="h-[26px] w-auto"
               />
@@ -328,7 +342,7 @@ export function Footer({ linkBase = '' }: { linkBase?: string } = {}) {
             <div className="flex items-center mb-5">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/figma-assets/logo-szseo.png"
+                src="/assets/color-logo.webp"
                 alt="Shenzhen SEO Conference"
                 className="h-[30px] w-auto"
               />
@@ -365,13 +379,15 @@ export function Footer({ linkBase = '' }: { linkBase?: string } = {}) {
             <div className="display text-[14px] font-semibold tracking-[0.2em] mb-5">FOLLOW</div>
             <ul className="space-y-3">
               {[
-                { label: 'LINKEDIN', href: '#', Icon: LinkedInIcon },
-                { label: 'X', href: '#', Icon: XIcon },
-                { label: 'FACEBOOK', href: '#', Icon: FacebookIcon },
+                { label: 'LINKEDIN', href: 'https://www.linkedin.com/company/shenzhen-seo-conference/', Icon: LinkedInIcon },
+                { label: 'X', href: 'https://x.com/shenzhenseoconf', Icon: XIcon },
+                { label: 'FACEBOOK', href: 'https://www.facebook.com/shenzhenseoconference/', Icon: FacebookIcon },
               ].map((lnk) => (
                 <li key={lnk.label}>
                   <a
                     href={lnk.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-[14px] font-semibold tracking-[0.06em] text-white/75 hover:text-white"
                   >
                     <lnk.Icon className="w-4 h-4" />

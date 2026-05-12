@@ -289,8 +289,6 @@ function Hero() {
         />
       </div>
 
-      <Nav linkBase="/home5" />
-
       <div className="container pt-[140px] md:pt-[260px] lg:pt-[340px] pb-12 md:pb-20">
         {/* Date / venue badge */}
         <div className="flex items-center gap-2 mb-6 md:mb-8">
@@ -716,7 +714,7 @@ const SPONSOR_QUOTES = [
     text:
       "There are very few opportunities for Western and Chinese to get together in one event like this. It's very unique.",
     name: 'Zack Franklin',
-    role: 'SEO agency owner, 9 years in Shenzhen',
+    role: 'SEO agency owner, 9 years living in Shenzhen',
     img: '/figma-assets/Zack-Franklin1.jpg',
   },
   {
@@ -1424,6 +1422,7 @@ function BareLogo({ logo, tier }: { logo: Logo; tier: 'platinum' | 'gold' | 'sil
 export default function Sponsors5Page() {
   return (
     <main className="home5-root">
+      <Nav linkBase="/home5" />
       <Hero />
       <Confirmed2026 />
       <ThreeTiers />
