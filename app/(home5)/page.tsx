@@ -1252,7 +1252,7 @@ function Pricing() {
   const tiers = [
     {
       name: 'Standard',
-      price: '$570',
+      price: '$580',
       old: '$600',
       forWho: 'For SEO Practitioners',
       tag: '',
@@ -1266,7 +1266,7 @@ function Pricing() {
     },
     {
       name: 'Deluxe',
-      price: '$855',
+      price: '$870',
       old: '$900',
       forWho: 'For marketing directors and agency leads',
       tag: 'Most popular',
@@ -1280,7 +1280,7 @@ function Pricing() {
     },
     {
       name: 'VIP',
-      price: '$1,710',
+      price: '$1,740',
       old: '$1,800',
       forWho: 'For executives and founders',
       tag: '',
