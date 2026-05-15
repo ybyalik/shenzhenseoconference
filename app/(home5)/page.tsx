@@ -2071,10 +2071,13 @@ function Contact() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (submitting) return;
+    // Capture the form node before any await — React nullifies e.currentTarget
+    // after the handler returns, so we can't read it later.
+    const form = e.currentTarget;
     setStatus(null);
     setSubmitting(true);
     try {
-      const fd = new FormData(e.currentTarget);
+      const fd = new FormData(form);
       const payload = {
         firstName: String(fd.get('firstName') ?? ''),
         lastName: String(fd.get('lastName') ?? ''),
@@ -2104,7 +2107,7 @@ function Contact() {
           ? "We'll process your business invitation letter request and contact you soon."
           : "Thanks — we got your message and will reply soon.",
       });
-      e.currentTarget.reset();
+      form.reset();
       setCheck(false);
     } catch (err) {
       setStatus({
