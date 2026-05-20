@@ -681,7 +681,7 @@ function PullQuoteCarousel() {
                 width: 48,
                 height: 48,
                 borderRadius: 48,
-                background: `url('${q.img}') #d3d3d3 0px -4.32px / 100% 150% no-repeat`,
+                background: `url('${q.img}') #d3d3d3 50% 30% / cover no-repeat`,
               }}
             />
             <div className="flex flex-col items-start">
