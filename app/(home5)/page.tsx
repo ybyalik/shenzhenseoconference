@@ -2194,7 +2194,7 @@ function Contact() {
                 <input
                   type="text"
                   name="firstName"
-                  placeholder="John"
+                  placeholder="First Name *"
                   required
                   className="text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                   style={{
@@ -2212,7 +2212,7 @@ function Contact() {
                 <input
                   type="text"
                   name="lastName"
-                  placeholder="Last Name"
+                  placeholder="Last Name *"
                   required
                   className="text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                   style={{
@@ -2231,7 +2231,7 @@ function Contact() {
               <input
                 type="email"
                 name="email"
-                placeholder="E-mail Address"
+                placeholder="E-mail Address *"
                 required
                 className="w-full text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                 style={{
@@ -2422,16 +2422,12 @@ function Contact() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="display rounded-full gradient-cta uppercase disabled:opacity-60 disabled:cursor-not-allowed"
+                className="display inline-flex w-full md:w-auto md:self-start rounded-full gradient-cta uppercase disabled:opacity-60 disabled:cursor-not-allowed"
                 style={{
-                  display: 'flex',
-                  padding: '16px 24px',
+                  padding: '16px 32px',
                   justifyContent: 'center',
                   alignItems: 'center',
                   gap: '12px',
-                  alignSelf: 'stretch',
-                  width: '100%',
-                  color: '#F9F9F9',
                   textAlign: 'center',
                   fontSize: '14px',
                   fontWeight: 600,

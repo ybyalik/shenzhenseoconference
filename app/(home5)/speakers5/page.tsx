@@ -15,40 +15,14 @@ type Speaker = {
   img: string;
 };
 
-const KEYNOTES: Speaker[] = [
-  {
-    name: 'Gary Illyes',
-    country: 'United States',
-    title: 'Search Relations, Google',
-    img: '/figma-assets/gary-illyes.jpg',
-  },
-  {
-    name: 'Lily Ray',
-    country: 'United States',
-    title: 'VP SEO Strategy & Research',
-    img: '/figma-assets/Lily-Ray1.jpg',
-  },
-  {
-    name: 'Eli Schwartz',
-    country: 'United States',
-    title: 'Growth Advisor, Author of Product-Led SEO',
-    img: '/figma-assets/Eli-Schwartz1.jpg',
-  },
-  {
-    name: 'Lars Lofgren',
-    country: 'United States',
-    title: 'CEO, Stone Press',
-    img: '/figma-assets/Lars-Lofgren1.jpg',
-  },
-  {
-    name: 'Aleyda Solis',
-    country: 'Spain',
-    title: 'Founder, Orainti',
-    img: '/figma-assets/a98cc2407eac3ef826ce296466a19c22b89a4777.jpg',
-  },
-];
-
-const WORKSHOPS: Speaker[] = [
+// Real headshots we have available, used to populate the section grids below.
+// Replace with the actual lineup as content lands.
+const SPEAKER_POOL: Speaker[] = [
+  { name: 'Gary Illyes', country: 'United States', title: 'Search Relations, Google', img: '/figma-assets/gary-illyes.jpg' },
+  { name: 'Lily Ray', country: 'United States', title: 'VP SEO Strategy & Research', img: '/figma-assets/Lily-Ray1.jpg' },
+  { name: 'Eli Schwartz', country: 'United States', title: 'Growth Advisor, Author of Product-Led SEO', img: '/figma-assets/Eli-Schwartz1.jpg' },
+  { name: 'Lars Lofgren', country: 'United States', title: 'CEO, Stone Press', img: '/figma-assets/Lars-Lofgren1.jpg' },
+  { name: 'Aleyda Solis', country: 'Spain', title: 'Founder, Orainti', img: '/figma-assets/a98cc2407eac3ef826ce296466a19c22b89a4777.jpg' },
   { name: 'Bernard Huang', country: 'United States', title: 'Co-founder, Clearscope', img: '/figma-assets/Bernard-Huang1.jpg' },
   { name: 'Doug Pierce', country: 'United States', title: 'SEO Consultant', img: '/figma-assets/Doug-Pierce1.jpg' },
   { name: 'Loki Yan', country: 'China', title: 'SEO Practitioner', img: '/figma-assets/Loki-Yan1.jpg' },
@@ -63,18 +37,41 @@ const WORKSHOPS: Speaker[] = [
   { name: 'Charles Floate', country: 'United Kingdom', title: 'SEO Practitioner', img: '/figma-assets/a1bad36616537f10b8dfb095a790d57f0a93de74.jpg' },
 ];
 
+function pickSpeakers(start: number, count: number): Speaker[] {
+  return Array.from({ length: count }, (_, i) => SPEAKER_POOL[(start + i) % SPEAKER_POOL.length]);
+}
+
+const KEYNOTES: Speaker[] = pickSpeakers(0, 4);
+const WORKSHOPS: Speaker[] = pickSpeakers(4, 4);
+const FIELD_TALKS: Speaker[] = pickSpeakers(8, 12);
+const LIGHTNING_TALKS: Speaker[] = pickSpeakers(0, 18);
+const VIP_NETWORKING: Speaker[] = pickSpeakers(5, 4);
+const SIDE_EVENTS: Speaker[] = pickSpeakers(2, 10);
+
 const WHO_TOOK_STAGE = [
-  { name: 'Terry Kyle', country: 'IE', title: 'Ex-eBay, WPX.net', img: '/figma-assets/jp-avatar.png' },
-  { name: 'Stewart Vickers', country: 'CN', title: 'SEO Practitioner', img: '/figma-assets/Mike-Dee1.jpg' },
-  { name: 'Nathan Witczyk', country: 'US', title: 'Technical SEO Audits', img: '/figma-assets/Mads-Singers1.jpg' },
-  { name: 'Charles Floate', country: 'UK', title: 'SEO Consultant', img: '/figma-assets/Zack-Franklin1.jpg' },
+  { name: 'Terry Kyle', title: 'Ex-eBay, WPX.net', img: '/figma-assets/jp-avatar.png' },
+  { name: 'Stewart Vickers', title: 'SEO Practitioner', img: '/figma-assets/Mike-Dee1.jpg' },
+  { name: 'Nathan Witczyk', title: 'Technical SEO Audits', img: '/figma-assets/Mads-Singers1.jpg' },
+  { name: 'Charles Floate', title: 'SEO Consultant', img: '/figma-assets/Zack-Franklin1.jpg' },
+  { name: 'Gary Illyes', title: 'Search Relations, Google', img: '/figma-assets/gary-illyes.jpg' },
+  { name: 'Lily Ray', title: 'VP SEO Strategy & Research', img: '/figma-assets/Lily-Ray1.jpg' },
+  { name: 'Eli Schwartz', title: 'Growth Advisor', img: '/figma-assets/Eli-Schwartz1.jpg' },
+  { name: 'Lars Lofgren', title: 'CEO, Stone Press', img: '/figma-assets/Lars-Lofgren1.jpg' },
+  { name: 'Bernard Huang', title: 'Co-founder, Clearscope', img: '/figma-assets/Bernard-Huang1.jpg' },
+  { name: 'Doug Pierce', title: 'SEO Consultant', img: '/figma-assets/Doug-Pierce1.jpg' },
+  { name: 'Loki Yan', title: 'SEO Practitioner', img: '/figma-assets/Loki-Yan1.jpg' },
+  { name: 'Mads Singers', title: 'Management Consultant', img: '/figma-assets/Mads-Singers1.jpg' },
+  { name: 'Megan Gougeon', title: 'SEO Strategist', img: '/figma-assets/Megan-Gougeon1.jpg' },
+  { name: 'Mike Dee', title: 'SEO Consultant', img: '/figma-assets/Mike-Dee1.jpg' },
+  { name: 'Nick Drewe', title: 'Founder, WeThrift', img: '/figma-assets/Nick-Drewe1.jpg' },
+  { name: 'Victor Huynh', title: 'SEO Consultant', img: '/figma-assets/Victor-Huynh1.jpg' },
 ];
 
 const BENEFITS = [
   {
     title: 'Full Logistics, Handled.',
-    body: 'Visa invitation letters. Airport pick-up and drop-off. Hotel. Interpreters if you need one. You land and focus on the talk.',
-    img: '/assets/full-logistics.png',
+    body: 'Invitation letters, airport pick-up and drop-off, hotel bookings. You land and focus on the talk and networking.',
+    img: '/assets/full-logistics-handled.png',
   },
   {
     title: '1 Full Day of Guided Shenzhen.',
@@ -88,7 +85,7 @@ const BENEFITS = [
   },
   {
     title: 'Speakers Talk, Then They Stay.',
-    body: 'Most stay through the week. The actual conversations happen on Day 3 and Day 5 — after the stage.',
+    body: 'Most stay through the week. The actual conversations happen on Day 1, 2 and 5 (after the stage).',
     img: '/assets/speakers-talk.png',
   },
 ];
@@ -96,39 +93,62 @@ const BENEFITS = [
 const LOOK_FOR = [
   {
     n: 1,
-    title: 'A Real Case Study',
+    title: 'Organic Growth Insights',
     body:
-      'Ranked #1 for something that mattered. Scaled a site. Fixed a penalty. Moved revenue. Show the numbers or show the before/after.',
+      'Grounded, forward-looking perspectives on international search and cross-border digital ecosystems.',
   },
   {
     n: 2,
-    title: 'One Tactic the Room Can Run Monday',
-    body: 'We vet for "what did you ship," not "what do you believe."',
+    title: 'Results-Driven Tactics',
+    body:
+      'Practical frameworks rooted in real-world execution, backed by technical workflows and data.',
   },
   {
     n: 3,
-    title: 'Willingness to Take Hard Questions',
-    body: 'No slide-and-leave. You stay for the Q&A and you stay for the week.',
+    title: 'Sharing, Not Selling',
+    body:
+      'An open-playbook approach focused on revealing your best strategic breakthroughs without holding back.',
   },
   {
     n: 4,
-    title: 'A Position on Where SEO Is Going',
-    body: 'Google, LLMs, Baidu, WeChat. We want people who can talk both sides.',
+    title: 'Full-Week Immersion',
+    body:
+      'Immerse yourself in the community building genuine relationships rather than dropping in for a flight.',
   },
 ];
 
 const DONT_WANT = [
-  { n: 1, body: 'Theorists without case studies' },
-  { n: 2, body: 'AI-generated talks' },
-  { n: 3, body: 'Sales pitches dressed as talks' },
-  { n: 4, body: "Anyone who won't share numbers" },
+  {
+    n: 1,
+    title: 'Theorists without Data',
+    body:
+      'High-level commentary, subjective opinions, or basic trend pieces that senior SEOs already know.',
+  },
+  {
+    n: 2,
+    title: 'Recycled or AI Decks',
+    body:
+      'Pre-packaged circuit talks or surface-level, AI-generated presentations lacking original human insight.',
+  },
+  {
+    n: 3,
+    title: 'Disguised Sales Pitches',
+    body:
+      'Commercial calls-to-action, service offers, or product pitches hidden inside educational slots.',
+  },
+  {
+    n: 4,
+    title: 'Closed-Minded Mindsets',
+    body:
+      'Cynicism toward East-West collaboration or a lack of genuine curiosity to explore the region.',
+  },
 ];
 
 const DAYS = [
-  { label: 'Day 1 of 4', a: '/assets/day1a.png', b: '/assets/day1b.png', c: '/assets/day1c.png' },
-  { label: 'Day 2 of 4', a: '/assets/day2a.png', b: '/assets/day2b.png', c: '/assets/day2c.png' },
-  { label: 'Day 3 of 4', a: '/assets/day3a.png', b: '/assets/day3b.png', c: '/assets/day3c.png' },
-  { label: 'Day 4 of 4', a: '/assets/day4a.png', b: '/assets/day4b.png', c: '/assets/day4c.png' },
+  { label: 'Day 1 of 4', heading: 'Curated Shenzhen Tours', a: '/assets/day1a.png', b: '/assets/day1b.webp', c: '/assets/day1c.webp' },
+  { label: 'Day 2 of 4', heading: 'Breakout Session & VIP Networking', a: '/assets/day2a.webp', b: '/assets/day2b.webp', c: '/assets/day2c.webp' },
+  { label: 'Day 3 of 4', heading: 'Main Stage Talks', a: '/assets/day3a.webp', b: '/assets/day3b.webp', c: '/assets/day3c.webp' },
+  { label: 'Day 4 of 4', heading: 'Main Stage Talks', a: '/assets/day4a.webp', b: '/assets/day4b.webp', c: '/assets/day4c.webp' },
 ];
 
 const SPEAKER_QUOTES = [
@@ -237,11 +257,11 @@ function Hero() {
     <section id="top" className="relative isolate overflow-hidden bg-[#03060d]">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/assets/speakers-hero.jpg"
+          src="/assets/speakers-hero2.webp"
           alt=""
           fill
           priority
-          className="object-cover object-top opacity-80 md:opacity-70"
+          className="object-cover object-center opacity-80 md:opacity-70"
           sizes="100vw"
         />
         {/* Mobile overlay */}
@@ -318,9 +338,6 @@ function Hero() {
 /* ─────────────────────────────────── LINEUP ───────────────────────────────── */
 
 function Lineup() {
-  const [showAll, setShowAll] = useState(false);
-  const visible = showAll ? WORKSHOPS : WORKSHOPS.slice(0, 10);
-
   return (
     <section id="speakers" className="bg-[#03060d]">
       <div className="container py-12 md:py-24 lg:py-[96px] flex flex-col" style={{ gap: 16 }}>
@@ -351,61 +368,46 @@ function Lineup() {
           </p>
 
           <div className="flex flex-col items-start self-stretch" style={{ gap: 48 }}>
-            {/* Keynotes */}
-            <div className="flex flex-col gap-6 self-stretch">
-              <h3
-                className="display uppercase text-white"
-                style={{ fontSize: 'clamp(24px, 3vw, 32px)', fontWeight: 700, lineHeight: '100%' }}
-              >
-                Keynotes
-              </h3>
-              <div className="grid gap-4 md:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                {KEYNOTES.map((s) => (
-                  <SpeakerCard key={s.name} s={s} />
-                ))}
-              </div>
-            </div>
-
-            {/* Workshops & Talks */}
-            <div className="flex flex-col gap-6 self-stretch">
-              <h3
-                className="display uppercase text-white"
-                style={{ fontSize: 'clamp(24px, 3vw, 32px)', fontWeight: 700, lineHeight: '100%' }}
-              >
-                Workshops & Talks
-              </h3>
-              <div className="grid gap-4 md:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                {visible.map((s, i) => (
-                  <SpeakerCard key={`${s.name}-${i}`} s={s} />
-                ))}
-              </div>
-
-              {WORKSHOPS.length > 10 && (
-                <div className="flex justify-center mt-4">
-                  <button
-                    type="button"
-                    onClick={() => setShowAll((v) => !v)}
-                    className="display btn-outline-white inline-flex uppercase"
-                    style={{
-                      padding: '16px 48px',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      gap: 12,
-                      borderRadius: 1000,
-                      fontSize: 14,
-                      fontWeight: 600,
-                      lineHeight: '150%',
-                    }}
-                  >
-                    {showAll ? 'Show Less' : 'Load More'}
-                  </button>
-                </div>
-              )}
-            </div>
+            <LineupSection title="Keynotes" speakers={KEYNOTES} cols={4} />
+            <LineupSection title="Workshops" speakers={WORKSHOPS} cols={4} />
+            <LineupSection title="Field Talks" speakers={FIELD_TALKS} cols={4} />
+            <LineupSection title="Lightning Talks" speakers={LIGHTNING_TALKS} cols={5} />
+            <LineupSection title="VIP Networking" speakers={VIP_NETWORKING} cols={4} />
+            <LineupSection title="Side Events" speakers={SIDE_EVENTS} cols={5} />
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function LineupSection({
+  title,
+  speakers,
+  cols,
+}: {
+  title: string;
+  speakers: Speaker[];
+  cols: 4 | 5;
+}) {
+  const gridClass =
+    cols === 5
+      ? 'grid gap-4 md:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-5'
+      : 'grid gap-4 md:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4';
+  return (
+    <div className="flex flex-col gap-6 self-stretch">
+      <h3
+        className="display uppercase text-white"
+        style={{ fontSize: 'clamp(24px, 3vw, 32px)', fontWeight: 700, lineHeight: '100%' }}
+      >
+        {title}
+      </h3>
+      <div className={gridClass}>
+        {speakers.map((s, i) => (
+          <SpeakerCard key={`${title}-${s.name}-${i}`} s={s} />
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -440,8 +442,8 @@ function Room2025() {
               lineHeight: '160%',
             }}
           >
-            38 speakers, 1,200 SEOs, one stage in Shenzhen. Here&apos;s a glimpse of last
-            year&apos;s room and a few of the names that filled it.
+            57 speakers, 500+ global practitioners, and 4 days at The Ritz-Carlton, Shenzhen.
+            Here is a look back at the room, the energy, and the memories of 2025.
           </p>
         </div>
 
@@ -469,7 +471,7 @@ function Room2025() {
                 lineHeight: '120%',
               }}
             >
-              Main Stage Talks
+              {DAYS[day].heading}
             </span>
           </div>
 
@@ -605,18 +607,6 @@ function Room2025() {
                 />
                 <div className="flex flex-col gap-3 justify-center self-stretch">
                   <span
-                    className="uppercase text-white/50"
-                    style={{
-                      fontFamily: 'General Sans, system-ui, sans-serif',
-                      fontSize: 10,
-                      fontWeight: 500,
-                      letterSpacing: 1,
-                      lineHeight: '100%',
-                    }}
-                  >
-                    {p.country}
-                  </span>
-                  <span
                     className="display text-white"
                     style={{ fontSize: 14, fontWeight: 500, lineHeight: '100%' }}
                   >
@@ -645,177 +635,83 @@ function Room2025() {
 /* ───────────────────────────── WHAT SPEAKERS GET ──────────────────────────── */
 
 function PullQuoteCarousel() {
-  const [idx, setIdx] = useState(0);
-  const q = SPEAKER_QUOTES[idx];
-  const total = SPEAKER_QUOTES.length;
-
   return (
-    <div
-      className="relative flex flex-col items-start md:items-center mt-4 self-stretch"
-      style={{
-        padding: 'clamp(40px, 6vw, 64px) clamp(24px, 10vw, 144px)',
-        gap: 32,
-        borderRadius: 32,
-        border: '1px solid rgba(249, 249, 249, 0.20)',
-        background: 'transparent',
-      }}
-    >
-      {/* Prev / Next — inside the card, vertical center, on the side rails */}
-      <button
-        type="button"
-        aria-label="Previous quote"
-        onClick={() => setIdx((i) => (i - 1 + total) % total)}
-        className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 items-center justify-center hover:bg-white/5 transition-colors"
-        style={{
-          padding: 16,
-          gap: 8,
-          borderRadius: 100,
-          border: '1px solid rgba(249, 249, 249, 0.20)',
-          background: 'transparent',
-        }}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/figma-assets/arrow-left.svg" alt="" className="w-6 h-6" />
-      </button>
-      <button
-        type="button"
-        aria-label="Next quote"
-        onClick={() => setIdx((i) => (i + 1) % total)}
-        className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 items-center justify-center hover:bg-white/5 transition-colors"
-        style={{
-          padding: 16,
-          gap: 8,
-          borderRadius: 100,
-          border: '1px solid rgba(249, 249, 249, 0.20)',
-          background: 'transparent',
-        }}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/figma-assets/arrow-right.svg" alt="" className="w-6 h-6" />
-      </button>
-
-      {/* Big red quotation mark */}
-      <svg
-        viewBox="0 0 64 50"
-        aria-hidden="true"
-        style={{
-          width: 53.169,
-          height: 48.741,
-          aspectRatio: '12 / 11',
-          color: '#eb3030',
-        }}
-      >
-        <path
-          fill="currentColor"
-          d="M0 50V28C0 12 9 2 24 0l3 7c-7 2-12 8-12 14h12v29H0Zm37 0V28c0-16 9-26 24-28l3 7c-7 2-12 8-12 14h12v29H37Z"
-        />
-      </svg>
-
-      <p
-        className="display text-white text-left md:text-center max-w-[860px]"
-        style={{
-          fontSize: 'clamp(20px, 2.6vw, 32px)',
-          fontWeight: 700,
-          lineHeight: '140%',
-          textTransform: 'uppercase',
-          letterSpacing: '-0.005em',
-        }}
-      >
-        {q.text}
-      </p>
-
-      <div className="flex items-center gap-3">
+    <div className="grid gap-5 md:grid-cols-3 self-stretch mt-4">
+      {SPEAKER_QUOTES.map((q) => (
         <div
-          aria-label={q.name}
-          role="img"
+          key={q.name}
+          className="flex flex-col items-start"
           style={{
-            width: 48,
-            height: 48,
-            borderRadius: 48,
-            background: `url('${q.img}') #d3d3d3 0px -4.32px / 100% 150% no-repeat`,
+            padding: 'clamp(24px, 3vw, 32px)',
+            gap: 24,
+            borderRadius: 32,
+            border: '1px solid rgba(249, 249, 249, 0.20)',
+            background: 'transparent',
           }}
-        />
-        <div className="flex flex-col items-start">
-          <span
-            className="display"
+        >
+          <svg
+            viewBox="0 0 64 50"
+            aria-hidden="true"
+            style={{ width: 40, height: 36, color: '#eb3030' }}
+          >
+            <path
+              fill="currentColor"
+              d="M0 50V28C0 12 9 2 24 0l3 7c-7 2-12 8-12 14h12v29H0Zm37 0V28c0-16 9-26 24-28l3 7c-7 2-12 8-12 14h12v29H37Z"
+            />
+          </svg>
+
+          <p
+            className="display text-white"
             style={{
-              color: '#F9F9F9',
-              fontFamily: 'Unbounded, system-ui, sans-serif',
               fontSize: 16,
               fontWeight: 500,
               lineHeight: '160%',
+              letterSpacing: '-0.005em',
             }}
           >
-            {q.name}
-          </span>
-          <span
-            style={{
-              color: '#F9F9F9',
-              fontFamily: 'General Sans, system-ui, sans-serif',
-              fontSize: 12,
-              fontWeight: 500,
-              lineHeight: '160%',
-            }}
-          >
-            {q.role}
-          </span>
-        </div>
-      </div>
+            {q.text}
+          </p>
 
-      {/* Bottom row: dashes (left) + mobile arrows (right). On md+ the
-          arrows show on the sides instead so this row centers the dashes. */}
-      <div className="flex items-center justify-between md:justify-center gap-4 self-stretch">
-        <div className="flex items-center gap-1.5">
-          {SPEAKER_QUOTES.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              aria-label={`Show quote ${i + 1}`}
-              onClick={() => setIdx(i)}
-              className="h-[2px] transition-all"
+          <div className="flex items-center gap-3 mt-auto">
+            <div
+              aria-label={q.name}
+              role="img"
+              className="shrink-0"
               style={{
-                width: 28,
-                background: i === idx ? '#eb3030' : 'rgba(249,249,249,0.18)',
+                width: 48,
+                height: 48,
+                borderRadius: 48,
+                background: `url('${q.img}') #d3d3d3 0px -4.32px / 100% 150% no-repeat`,
               }}
             />
-          ))}
+            <div className="flex flex-col items-start">
+              <span
+                className="display"
+                style={{
+                  color: '#F9F9F9',
+                  fontFamily: 'Unbounded, system-ui, sans-serif',
+                  fontSize: 16,
+                  fontWeight: 500,
+                  lineHeight: '160%',
+                }}
+              >
+                {q.name}
+              </span>
+              <span
+                style={{
+                  color: '#F9F9F9',
+                  fontFamily: 'General Sans, system-ui, sans-serif',
+                  fontSize: 12,
+                  fontWeight: 500,
+                  lineHeight: '160%',
+                }}
+              >
+                {q.role}
+              </span>
+            </div>
+          </div>
         </div>
-
-        <div className="flex items-center gap-3 md:hidden">
-          <button
-            type="button"
-            aria-label="Previous quote"
-            onClick={() => setIdx((i) => (i - 1 + total) % total)}
-            className="flex items-center justify-center hover:bg-white/5 transition-colors"
-            style={{
-              padding: 12,
-              gap: 8,
-              borderRadius: 100,
-              border: '1px solid rgba(249, 249, 249, 0.20)',
-              background: 'transparent',
-            }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/figma-assets/arrow-left.svg" alt="" className="w-5 h-5" />
-          </button>
-          <button
-            type="button"
-            aria-label="Next quote"
-            onClick={() => setIdx((i) => (i + 1) % total)}
-            className="flex items-center justify-center hover:bg-white/5 transition-colors"
-            style={{
-              padding: 12,
-              gap: 8,
-              borderRadius: 100,
-              border: '1px solid rgba(249, 249, 249, 0.20)',
-              background: 'transparent',
-            }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/figma-assets/arrow-right.svg" alt="" className="w-5 h-5" />
-          </button>
-        </div>
-      </div>
+      ))}
     </div>
   );
 }
@@ -968,9 +864,9 @@ function Criteria() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2" style={{ gap: 32 }}>
+        <div className="grid lg:grid-cols-[3fr_2fr]" style={{ gap: 32 }}>
           {/* Look for */}
-          <div className="flex flex-col" style={{ gap: 20 }}>
+          <div className="flex flex-col self-stretch" style={{ gap: 20 }}>
             <div
               className="display uppercase"
               style={{
@@ -984,11 +880,11 @@ function Criteria() {
             >
               What We Look For
             </div>
-            <div className="grid sm:grid-cols-2" style={{ gap: 16 }}>
+            <div className="grid sm:grid-cols-2 flex-1 auto-rows-fr" style={{ gap: 16 }}>
               {LOOK_FOR.map((item) => (
                 <div
                   key={item.n}
-                  className="rounded-2xl flex flex-col items-center text-center"
+                  className="rounded-2xl flex flex-col items-center justify-center text-center"
                   style={{
                     border: '1px solid rgba(17, 139, 172, 0.45)',
                     background: 'transparent',
@@ -1037,7 +933,7 @@ function Criteria() {
           </div>
 
           {/* Don't want */}
-          <div className="flex flex-col h-full" style={{ gap: 20 }}>
+          <div className="flex flex-col self-stretch" style={{ gap: 20 }}>
             <div
               className="display uppercase"
               style={{
@@ -1051,13 +947,12 @@ function Criteria() {
             >
               What We Don&apos;t Want
             </div>
-            <ul className="flex flex-col flex-1" style={{ gap: 16 }}>
+            <ul className="grid grid-cols-1 flex-1 self-stretch auto-rows-fr" style={{ gap: 16 }}>
               {DONT_WANT.map((item) => (
                 <li
                   key={item.n}
                   className="flex items-center rounded-2xl self-stretch"
                   style={{
-                    flex: '1 0 0',
                     gap: 16,
                     padding: 24,
                     border: '1px solid rgba(235, 48, 48, 0.45)',
@@ -1065,29 +960,39 @@ function Criteria() {
                   }}
                 >
                   <span
-                    className="grid place-items-center rounded-full text-white shrink-0"
+                    className="shrink-0 rounded-full"
+                    aria-hidden
                     style={{
-                      width: 36,
-                      height: 36,
+                      width: 10,
+                      height: 10,
                       background: '#eb3030',
-                      fontFamily: 'General Sans, system-ui, sans-serif',
-                      fontSize: 14,
-                      fontWeight: 700,
                     }}
-                  >
-                    {item.n}
-                  </span>
-                  <span
-                    className="text-white"
-                    style={{
-                      fontFamily: 'General Sans, system-ui, sans-serif',
-                      fontSize: 16,
-                      fontWeight: 400,
-                      lineHeight: '160%',
-                    }}
-                  >
-                    {item.body}
-                  </span>
+                  />
+                  <span className="sr-only">{item.n}.</span>
+                  <div className="flex flex-col gap-2">
+                    <span
+                      className="display uppercase text-white"
+                      style={{
+                        fontFamily: 'Unbounded, system-ui, sans-serif',
+                        fontSize: 16,
+                        fontWeight: 700,
+                        lineHeight: '130%',
+                      }}
+                    >
+                      {item.title}
+                    </span>
+                    <span
+                      className="text-white"
+                      style={{
+                        fontFamily: 'General Sans, system-ui, sans-serif',
+                        fontSize: 14,
+                        fontWeight: 400,
+                        lineHeight: '160%',
+                      }}
+                    >
+                      {item.body}
+                    </span>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -1112,7 +1017,7 @@ function Criteria() {
             style={{
               borderRadius: 24,
               background:
-                "linear-gradient(0deg, rgba(55, 79, 116, 0.55), rgba(55, 79, 116, 0.55)), url('/assets/jp-talk.png') 50% / cover no-repeat #d3d3d3",
+                "url('/assets/jp-talk.png') 50% / cover no-repeat #d3d3d3",
             }}
           />
           <div className="flex flex-col gap-6 md:max-w-[560px] md:w-full md:flex-1">
@@ -1127,13 +1032,13 @@ function Criteria() {
                   letterSpacing: 2,
                 }}
               >
-                Become a Speaker
+                Call for Speakers
               </span>
               <h3
                 className="display uppercase text-white"
                 style={{ fontSize: 'clamp(28px, 3vw, 36px)', fontWeight: 800, lineHeight: '110%' }}
               >
-                Apply to Speak (2027)
+                Interested in speaking in 2027?
               </h3>
               <p
                 style={{
@@ -1145,8 +1050,8 @@ function Criteria() {
                   lineHeight: '160%',
                 }}
               >
-                Got a case study worth sharing? A tactic that moved the needle? Drop your name
-                below. We read every application.
+                Fill out the form below, and you&rsquo;ll be notified as soon as the speaker
+                pitch form is ready.
               </p>
             </div>
 
@@ -1157,48 +1062,63 @@ function Criteria() {
                 // TODO: wire up to /api/speaker-apply or similar
               }}
             >
-              <div className="flex flex-col md:flex-row gap-4">
-                <input
-                  type="text"
-                  name="firstName"
-                  placeholder="John"
-                  required
-                  className="text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
-                  style={{
-                    flex: '1 1 0',
-                    display: 'flex',
-                    height: '64px',
-                    padding: '22px 24px',
-                    alignItems: 'center',
-                    gap: '8px',
-                    borderRadius: '20px',
-                    border: '1px solid rgba(249, 249, 249, 0.10)',
-                    background: 'transparent',
-                  }}
-                />
-                <input
-                  type="text"
-                  name="lastName"
-                  placeholder="Last Name"
-                  required
-                  className="text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
-                  style={{
-                    flex: '1 1 0',
-                    display: 'flex',
-                    height: '64px',
-                    padding: '22px 24px',
-                    alignItems: 'center',
-                    gap: '8px',
-                    borderRadius: '20px',
-                    border: '1px solid rgba(249, 249, 249, 0.10)',
-                    background: 'transparent',
-                  }}
-                />
-              </div>
+              <input
+                type="text"
+                name="firstName"
+                placeholder="First Name *"
+                required
+                className="w-full text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                style={{
+                  display: 'flex',
+                  height: '64px',
+                  padding: '22px 24px',
+                  alignItems: 'center',
+                  gap: '8px',
+                  alignSelf: 'stretch',
+                  borderRadius: '20px',
+                  border: '1px solid rgba(249, 249, 249, 0.10)',
+                  background: 'transparent',
+                }}
+              />
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name *"
+                required
+                className="w-full text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                style={{
+                  display: 'flex',
+                  height: '64px',
+                  padding: '22px 24px',
+                  alignItems: 'center',
+                  gap: '8px',
+                  alignSelf: 'stretch',
+                  borderRadius: '20px',
+                  border: '1px solid rgba(249, 249, 249, 0.10)',
+                  background: 'transparent',
+                }}
+              />
+              <input
+                type="url"
+                name="linkedin"
+                placeholder="Your LinkedIn Profile"
+                className="w-full text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
+                style={{
+                  display: 'flex',
+                  height: '64px',
+                  padding: '22px 24px',
+                  alignItems: 'center',
+                  gap: '8px',
+                  alignSelf: 'stretch',
+                  borderRadius: '20px',
+                  border: '1px solid rgba(249, 249, 249, 0.10)',
+                  background: 'transparent',
+                }}
+              />
               <input
                 type="email"
                 name="email"
-                placeholder="E-mail Address"
+                placeholder="E-mail Address *"
                 required
                 className="w-full text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
                 style={{
@@ -1215,23 +1135,19 @@ function Criteria() {
               />
               <button
                 type="submit"
-                className="display rounded-full gradient-cta uppercase"
+                className="display inline-flex w-full md:w-auto md:self-start rounded-full gradient-cta uppercase"
                 style={{
-                  display: 'flex',
-                  padding: '16px 24px',
+                  padding: '16px 32px',
                   justifyContent: 'center',
                   alignItems: 'center',
                   gap: '12px',
-                  alignSelf: 'stretch',
-                  width: '100%',
-                  color: '#F9F9F9',
                   textAlign: 'center',
                   fontSize: '14px',
                   fontWeight: 600,
                   lineHeight: '150%',
                 }}
               >
-                SEND MESSAGE
+                Yes, Keep Me Updated
                 <ArrowUpRight className="w-4 h-4" />
               </button>
             </form>
