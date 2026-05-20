@@ -263,7 +263,7 @@ function Hero() {
     <section id="top" className="relative isolate overflow-hidden bg-[#03060d]">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/assets/sponsors-hero.jpg"
+          src="/assets/sponsors-hero.webp"
           alt=""
           fill
           priority

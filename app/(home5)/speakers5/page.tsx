@@ -71,22 +71,22 @@ const BENEFITS = [
   {
     title: 'Full Logistics, Handled.',
     body: 'Invitation letters, airport pick-up and drop-off, hotel bookings. You land and focus on the talk and networking.',
-    img: '/assets/full-logistics-handled.png',
+    img: '/assets/full-logistics-handled.webp',
   },
   {
     title: '1 Full Day of Guided Shenzhen.',
     body: 'Huaqiangbei, Nantou walled city, tech companies, the bay, the factories. Not a tourist loop — the working city.',
-    img: '/assets/guided-shenzhen.png',
+    img: '/assets/guided-shenzhen.webp',
   },
   {
     title: "A Chinese Audience You Won't Find at Brighton or Pubcon.",
     body: "300+ in-house SEO decision makers from brands going global. They don't travel to London or San Diego.",
-    img: '/assets/chinese-audience.png',
+    img: '/assets/chinese-audience.webp',
   },
   {
     title: 'Speakers Talk, Then They Stay.',
     body: 'Most stay through the week. The actual conversations happen on Day 1, 2 and 5 (after the stage).',
-    img: '/assets/speakers-talk.png',
+    img: '/assets/speakers-talk.webp',
   },
 ];
 
@@ -257,7 +257,7 @@ function Hero() {
     <section id="top" className="relative isolate overflow-hidden bg-[#03060d]">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/assets/speakers-hero2.webp"
+          src="/assets/speakers-hero.webp"
           alt=""
           fill
           priority
@@ -1017,7 +1017,7 @@ function Criteria() {
             style={{
               borderRadius: 24,
               background:
-                "url('/assets/jp-talk.png') 50% / cover no-repeat #d3d3d3",
+                "url('/assets/jp-talk.webp') 50% / cover no-repeat #d3d3d3",
             }}
           />
           <div className="flex flex-col gap-6 md:max-w-[560px] md:w-full md:flex-1">

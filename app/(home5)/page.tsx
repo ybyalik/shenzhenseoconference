@@ -1018,7 +1018,7 @@ function Speakers() {
     { country: 'CA', name: 'Megan Gougeon', sub: 'Founder, Portable Professional', img: '/figma-assets/Megan-Gougeon1.jpg' },
     { country: 'US', name: 'Doug Pierce', sub: 'Founder, Cogney', img: '/figma-assets/Doug-Pierce1.jpg' },
     { country: 'US', name: 'Victor Huynh', sub: 'CEO & Head of Digital Strategy, Ready Artwork', img: '/figma-assets/Victor-Huynh1.jpg' },
-    { country: 'UK · DE', name: 'Jonathan Kiekbusch', sub: 'Founder, SwishDM', img: '/assets/jonathan-kiekbusch.jpg' },
+    { country: 'UK · DE', name: 'Jonathan Kiekbusch', sub: 'Founder, SwishDM', img: '/assets/jonathan-kiekbusch.webp' },
     { country: 'UK', name: 'Owain Lloyd-Williams', sub: 'Independent SEO Consultant', img: '/figma-assets/Owain-Lloyd-Williams1.jpg' },
     { country: 'AU · CN', name: 'Loki Yan', sub: 'Co-founder, First Optimise (壹优化)', img: '/figma-assets/Loki-Yan1.jpg' },
   ];
