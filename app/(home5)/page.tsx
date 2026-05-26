@@ -36,10 +36,10 @@ const SPONSORS = {
   gold: [
     { src: '/figma-assets/sponsor-swishdm.png', alt: 'Swish DM', h: 56 },
     { src: '/figma-assets/sponsor-dynadot.png', alt: 'Dynadot', h: 48 },
-    { src: '/figma-assets/73b861094a7ce5e5553ff2eacca50af9313eddc6.png', alt: 'ecomeXperts', h: 56 },
-    { src: '/figma-assets/sponsor-convertbetter.png', alt: 'ConvertBetter', h: 48 },
   ],
   silver: [
+    { src: '/figma-assets/73b861094a7ce5e5553ff2eacca50af9313eddc6.png', alt: 'ecomeXperts', h: 44 },
+    { src: '/figma-assets/sponsor-convertbetter.png', alt: 'ConvertBetter', h: 44 },
     { src: '/figma-assets/8842dd91b89a6d7f26f78f6178e930f87bc16a6b.png', alt: 'CLOOM TECH', h: 44 },
   ],
 };
@@ -1016,9 +1016,9 @@ function Speakers() {
     { country: 'US', name: 'Bernard Huang', sub: 'Co-founder, Clearscope', img: '/figma-assets/Bernard-Huang1.jpg' },
     { country: 'AU', name: 'Nick Drewe', sub: 'Founder & CEO, Wethrift', img: '/figma-assets/Nick-Drewe1.jpg' },
     { country: 'CA', name: 'Megan Gougeon', sub: 'Founder, Portable Professional', img: '/figma-assets/Megan-Gougeon1.jpg' },
+    { country: 'CN · SG', name: 'Zac', sub: 'Author, best-selling Chinese SEO book', img: '/assets/zac-2026.webp' },
     { country: 'US', name: 'Doug Pierce', sub: 'Founder, Cogney', img: '/figma-assets/Doug-Pierce1.jpg' },
     { country: 'US', name: 'Victor Huynh', sub: 'CEO & Head of Digital Strategy, Ready Artwork', img: '/figma-assets/Victor-Huynh1.jpg' },
-    { country: 'UK · DE', name: 'Jonathan Kiekbusch', sub: 'Founder, SwishDM', img: '/assets/jonathan-kiekbusch.webp' },
     { country: 'UK', name: 'Owain Lloyd-Williams', sub: 'Independent SEO Consultant', img: '/figma-assets/Owain-Lloyd-Williams1.jpg' },
     { country: 'AU · CN', name: 'Loki Yan', sub: 'Co-founder, First Optimise (壹优化)', img: '/figma-assets/Loki-Yan1.jpg' },
   ];
@@ -1272,7 +1272,7 @@ function Pricing() {
       tag: 'Most popular',
       bullets: [
         'Everything in Standard',
-        'Workshops + SEO Masterminds, Days 1–2',
+        'Workshops / City Tours + SEO Masterminds, Days 1–2',
         'Front-row seating',
       ],
       cta: 'Buy Deluxe Ticket',
@@ -2063,6 +2063,29 @@ function Sponsors() {
 }
 
 /* ───────────────────────────── CONTACT (28:745) ───────────────────────────── */
+
+const CONTACT_INPUT_CLASS =
+  'w-full text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white';
+
+const CONTACT_INPUT_STYLE: React.CSSProperties = {
+  display: 'flex',
+  height: '64px',
+  padding: '22px 24px',
+  alignItems: 'center',
+  borderRadius: '20px',
+  border: '1px solid rgba(249, 249, 249, 0.10)',
+  background: 'transparent',
+};
+
+function ContactField({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="flex flex-col gap-2">
+      <span className="text-[14px] font-medium text-white/85">{label}</span>
+      {children}
+    </div>
+  );
+}
+
 function Contact() {
   const [check, setCheck] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -2190,62 +2213,38 @@ function Contact() {
               </ul>
             </div>
             <form className="space-y-4" onSubmit={handleSubmit}>
-              <div className="flex flex-col md:flex-row gap-4">
-                <input
-                  type="text"
-                  name="firstName"
-                  placeholder="First Name *"
-                  required
-                  className="text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
-                  style={{
-                    flex: '1 1 0',
-                    display: 'flex',
-                    height: '64px',
-                    padding: '22px 24px',
-                    alignItems: 'center',
-                    gap: '8px',
-                    borderRadius: '20px',
-                    border: '1px solid rgba(249, 249, 249, 0.10)',
-                    background: 'transparent',
-                  }}
-                />
-                <input
-                  type="text"
-                  name="lastName"
-                  placeholder="Last Name *"
-                  required
-                  className="text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
-                  style={{
-                    flex: '1 1 0',
-                    display: 'flex',
-                    height: '64px',
-                    padding: '22px 24px',
-                    alignItems: 'center',
-                    gap: '8px',
-                    borderRadius: '20px',
-                    border: '1px solid rgba(249, 249, 249, 0.10)',
-                    background: 'transparent',
-                  }}
-                />
+              <div className="grid md:grid-cols-2 gap-4">
+                <ContactField label="First Name *">
+                  <input
+                    type="text"
+                    name="firstName"
+                    placeholder="John"
+                    required
+                    className={CONTACT_INPUT_CLASS}
+                    style={CONTACT_INPUT_STYLE}
+                  />
+                </ContactField>
+                <ContactField label="Last Name *">
+                  <input
+                    type="text"
+                    name="lastName"
+                    placeholder="Doe"
+                    required
+                    className={CONTACT_INPUT_CLASS}
+                    style={CONTACT_INPUT_STYLE}
+                  />
+                </ContactField>
               </div>
-              <input
-                type="email"
-                name="email"
-                placeholder="E-mail Address *"
-                required
-                className="w-full text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
-                style={{
-                  display: 'flex',
-                  height: '64px',
-                  padding: '22px 24px',
-                  alignItems: 'flex-end',
-                  gap: '8px',
-                  alignSelf: 'stretch',
-                  borderRadius: '20px',
-                  border: '1px solid rgba(249, 249, 249, 0.10)',
-                  background: 'transparent',
-                }}
-              />
+              <ContactField label="Email Address *">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="john.doe@example.com"
+                  required
+                  className={CONTACT_INPUT_CLASS}
+                  style={CONTACT_INPUT_STYLE}
+                />
+              </ContactField>
               <label
                 className="flex items-start gap-3 cursor-pointer select-none"
                 style={{
@@ -2278,137 +2277,123 @@ function Contact() {
               {/* Conditional invitation-letter fields (mirror of /contact) */}
               {check && (
                 <div className="space-y-4">
-                  <div className="flex flex-col md:flex-row gap-4">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <ContactField label="Nationality *">
+                      <input
+                        type="text"
+                        name="nationality"
+                        required
+                        placeholder="United States"
+                        className={CONTACT_INPUT_CLASS}
+                        style={CONTACT_INPUT_STYLE}
+                      />
+                    </ContactField>
+                    <ContactField label="Passport No. *">
+                      <input
+                        type="text"
+                        name="passportNo"
+                        required
+                        placeholder="123456789"
+                        className={CONTACT_INPUT_CLASS}
+                        style={CONTACT_INPUT_STYLE}
+                      />
+                    </ContactField>
+                  </div>
+                  <ContactField label="Passport Issuing Office *">
                     <input
                       type="text"
-                      name="nationality"
+                      name="passportIssuingOffice"
                       required
-                      placeholder="Nationality (e.g. United States)"
-                      className="text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
-                      style={{
-                        flex: '1 1 0',
-                        display: 'flex',
-                        height: '64px',
-                        padding: '22px 24px',
-                        alignItems: 'center',
-                        borderRadius: '20px',
-                        border: '1px solid rgba(249, 249, 249, 0.10)',
-                        background: 'transparent',
-                      }}
+                      placeholder="U.S. Department of State"
+                      className={CONTACT_INPUT_CLASS}
+                      style={CONTACT_INPUT_STYLE}
                     />
+                  </ContactField>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <ContactField label="Date of Issue *">
+                      <input
+                        type="date"
+                        name="dateOfIssue"
+                        required
+                        className={`${CONTACT_INPUT_CLASS} [color-scheme:dark]`}
+                        style={CONTACT_INPUT_STYLE}
+                      />
+                    </ContactField>
+                    <ContactField label="Passport Expiration Date *">
+                      <input
+                        type="date"
+                        name="passportExpiration"
+                        required
+                        className={`${CONTACT_INPUT_CLASS} [color-scheme:dark]`}
+                        style={CONTACT_INPUT_STYLE}
+                      />
+                    </ContactField>
+                  </div>
+                  <ContactField label="Job Title *">
                     <input
                       type="text"
-                      name="passportNo"
+                      name="jobTitle"
                       required
-                      placeholder="Passport No."
-                      className="text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
-                      style={{
-                        flex: '1 1 0',
-                        display: 'flex',
-                        height: '64px',
-                        padding: '22px 24px',
-                        alignItems: 'center',
-                        borderRadius: '20px',
-                        border: '1px solid rgba(249, 249, 249, 0.10)',
-                        background: 'transparent',
-                      }}
+                      placeholder="e.g., SEO Manager at ABC Company"
+                      className={CONTACT_INPUT_CLASS}
+                      style={CONTACT_INPUT_STYLE}
                     />
-                  </div>
-                  <input
-                    type="text"
-                    name="passportIssuingOffice"
-                    required
-                    placeholder="Passport Issuing Office (e.g. U.S. Department of State)"
-                    className="w-full text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
-                    style={{
-                      display: 'flex',
-                      height: '64px',
-                      padding: '22px 24px',
-                      alignItems: 'center',
-                      borderRadius: '20px',
-                      border: '1px solid rgba(249, 249, 249, 0.10)',
-                      background: 'transparent',
-                    }}
-                  />
-                  <div className="flex flex-col md:flex-row gap-4">
+                  </ContactField>
+                  <ContactField label="Estimated Duration of Stay in China *">
                     <input
-                      type="date"
-                      name="dateOfIssue"
+                      type="text"
+                      name="durationOfStay"
                       required
-                      placeholder="Date of Issue"
-                      aria-label="Date of Issue"
-                      className="text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white [color-scheme:dark]"
-                      style={{
-                        flex: '1 1 0',
-                        display: 'flex',
-                        height: '64px',
-                        padding: '22px 24px',
-                        alignItems: 'center',
-                        borderRadius: '20px',
-                        border: '1px solid rgba(249, 249, 249, 0.10)',
-                        background: 'transparent',
-                      }}
+                      placeholder="e.g., September 17 to September 22, 2025 (5 days in total)"
+                      className={CONTACT_INPUT_CLASS}
+                      style={CONTACT_INPUT_STYLE}
                     />
-                    <input
-                      type="date"
-                      name="passportExpiration"
-                      required
-                      placeholder="Passport Expiration Date"
-                      aria-label="Passport Expiration Date"
-                      className="text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white [color-scheme:dark]"
-                      style={{
-                        flex: '1 1 0',
-                        display: 'flex',
-                        height: '64px',
-                        padding: '22px 24px',
-                        alignItems: 'center',
-                        borderRadius: '20px',
-                        border: '1px solid rgba(249, 249, 249, 0.10)',
-                        background: 'transparent',
-                      }}
-                    />
-                  </div>
-                  <input
-                    type="text"
-                    name="jobTitle"
-                    required
-                    placeholder="Job Title (e.g. SEO Manager at ABC Company)"
-                    className="w-full text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
-                    style={{
-                      display: 'flex',
-                      height: '64px',
-                      padding: '22px 24px',
-                      alignItems: 'center',
-                      borderRadius: '20px',
-                      border: '1px solid rgba(249, 249, 249, 0.10)',
-                      background: 'transparent',
-                    }}
-                  />
-                  <input
-                    type="text"
-                    name="durationOfStay"
-                    required
-                    placeholder="Estimated Duration of Stay in China"
-                    className="w-full text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] text-white"
-                    style={{
-                      display: 'flex',
-                      height: '64px',
-                      padding: '22px 24px',
-                      alignItems: 'center',
-                      borderRadius: '20px',
-                      border: '1px solid rgba(249, 249, 249, 0.10)',
-                      background: 'transparent',
-                    }}
-                  />
+                  </ContactField>
                 </div>
               )}
 
-              <textarea
-                name="additionalMessage"
-                placeholder="Message (Optional)"
-                rows={5}
-                className="w-full px-4 py-3.5 rounded-xl bg-transparent border border-white/15 text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] resize-none"
-              />
+              <ContactField label="Additional Message (Optional)">
+                <textarea
+                  name="additionalMessage"
+                  placeholder="Any additional information or questions..."
+                  rows={5}
+                  className="w-full px-4 py-3.5 rounded-xl bg-transparent border border-white/15 text-[16px] placeholder:text-white/45 focus:outline-none focus:border-[var(--teal)] resize-none text-white"
+                />
+              </ContactField>
+
+              {check && (
+                <div className="space-y-2 text-[13px] leading-[160%] text-white/65">
+                  <p className="text-white">Before submitting, please review all entered information carefully.</p>
+                  <p>
+                    <span className="text-white font-semibold">Processing Time:</span> We aim to
+                    issue your invitation letter within 3 business days. (Please remember to check
+                    your spam folder if you don&apos;t see it in your inbox).
+                  </p>
+                  <p>
+                    <span className="text-white font-semibold">Standard Format:</span> Your
+                    invitation letter will be generated based on our standard template (
+                    <a
+                      href="https://drive.google.com/file/d/1CHEkSDwcXSjzpJzCssbcf6Ft_NFjf1rF/view"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline text-white hover:text-[var(--red)]"
+                    >
+                      example
+                    </a>
+                    ).
+                  </p>
+                  <p>
+                    <span className="text-white font-semibold">Accuracy & Liability:</span> We
+                    cannot verify the correctness of your data. Please note that we are not
+                    responsible for visa rejections resulting from incorrect information inputs.
+                  </p>
+                  <p>
+                    <span className="text-white font-semibold">Special Formats (e.g., India, Pakistan):</span>{' '}
+                    If your country requires a specific invitation letter format or style, please
+                    email your required template to us directly, and we will prepare it for you.
+                  </p>
+                </div>
+              )}
 
               {status && (
                 <div
