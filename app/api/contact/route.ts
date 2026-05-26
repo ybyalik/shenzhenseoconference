@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
     }
 
     const recipient = validatedData.requestInvitationLetter
-      ? 'jp@shenzhenseoconference.com'
+      ? 'mengying@shenzhenseoconference.com'
       : 'amanda@shenzhenseoconference.com';
 
     await sendEmail({

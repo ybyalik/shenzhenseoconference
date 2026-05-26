@@ -18,7 +18,7 @@ const A = {
   why3: '/figma-assets/ea9863f1c46347ee75ce39500df9c0b12b743af6.png',
   why4: '/figma-assets/1a227bbe08c421d3cc2d14d7b8c4b6b82263e2bc.jpg',
   spkA: '/figma-assets/a98cc2407eac3ef826ce296466a19c22b89a4777.jpg',
-  garyIllyes: '/figma-assets/gary-illyes.jpg',
+  garyIllyes: '/assets/gary-illyes.webp',
   spkB: '/figma-assets/4b767e80b2b757091a90554414ca31841996deeb.jpg',
   spkC: '/figma-assets/a1bad36616537f10b8dfb095a790d57f0a93de74.jpg',
   spkD: '/figma-assets/423641b5b8fba6de7b4b21cd2a4d1251130007c3.jpg',
@@ -1009,18 +1009,18 @@ function WhyShenzhen() {
 function Speakers() {
   type Speaker = { country: string; name: string; sub: string; img: string; tag?: string };
   const list: Speaker[] = [
-    { country: 'US', name: 'Lily Ray', sub: 'VP of SEO Strategy & Research, Amsive', img: '/figma-assets/Lily-Ray1.jpg' },
-    { country: 'CH', name: 'Gary Illyes', sub: 'Analyst, Google Search', img: A.garyIllyes },
-    { country: 'US', name: 'Eli Schwartz', sub: 'Author, Product-Led SEO', img: '/figma-assets/Eli-Schwartz1.jpg' },
-    { country: 'US', name: 'Lars Lofgren', sub: 'Fractional VP of Marketing', img: '/figma-assets/Lars-Lofgren1.jpg' },
-    { country: 'US', name: 'Bernard Huang', sub: 'Co-founder, Clearscope', img: '/figma-assets/Bernard-Huang1.jpg' },
-    { country: 'AU', name: 'Nick Drewe', sub: 'Founder & CEO, Wethrift', img: '/figma-assets/Nick-Drewe1.jpg' },
-    { country: 'CA', name: 'Megan Gougeon', sub: 'Founder, Portable Professional', img: '/figma-assets/Megan-Gougeon1.jpg' },
-    { country: 'CN · SG', name: 'Zac', sub: 'Author, best-selling Chinese SEO book', img: '/assets/zac-2026.webp' },
-    { country: 'US', name: 'Doug Pierce', sub: 'Founder, Cogney', img: '/figma-assets/Doug-Pierce1.jpg' },
-    { country: 'US', name: 'Victor Huynh', sub: 'CEO & Head of Digital Strategy, Ready Artwork', img: '/figma-assets/Victor-Huynh1.jpg' },
-    { country: 'UK', name: 'Owain Lloyd-Williams', sub: 'Independent SEO Consultant', img: '/figma-assets/Owain-Lloyd-Williams1.jpg' },
-    { country: 'AU · CN', name: 'Loki Yan', sub: 'Co-founder, First Optimise (壹优化)', img: '/figma-assets/Loki-Yan1.jpg' },
+    { country: 'US', name: 'Lily Ray', sub: 'VP of SEO Strategy & Research, Amsive', img: '/assets/lily-ray.webp' },
+    { country: 'CH', name: 'Gary Illyes', sub: 'Analyst, Google Search', img: '/assets/gary-illyes.webp' },
+    { country: 'US', name: 'Eli Schwartz', sub: 'Author, Product-Led SEO', img: '/assets/eli-schwartz.webp' },
+    { country: 'US', name: 'Lars Lofgren', sub: 'Fractional VP of Marketing', img: '/assets/lars-lofgren.webp' },
+    { country: 'US', name: 'Bernard Huang', sub: 'Co-founder, Clearscope', img: '/assets/bernard-huang.webp' },
+    { country: 'AU', name: 'Nick Drewe', sub: 'Founder & CEO, Wethrift', img: '/assets/nick-drewe.webp' },
+    { country: 'CA', name: 'Megan Gougeon', sub: 'Founder, Portable Professional', img: '/assets/megan-gougeon.webp' },
+    { country: 'CN · SG', name: 'Zac', sub: 'Author, best-selling Chinese SEO book', img: '/assets/zac.webp' },
+    { country: 'US', name: 'Doug Pierce', sub: 'Founder, Cogney', img: '/assets/doug-pierce.webp' },
+    { country: 'US', name: 'Victor Huynh', sub: 'CEO & Head of Digital Strategy, Ready Artwork', img: '/assets/victor-huynh.webp' },
+    { country: 'UK', name: 'Owain Lloyd-Williams', sub: 'Independent SEO Consultant', img: '/assets/owain-lloyd-williams.webp' },
+    { country: 'AU · CN', name: 'Loki Yan', sub: 'Co-founder, First Optimise (壹优化)', img: '/assets/loki-yan.webp' },
   ];
 
   return (
@@ -2344,7 +2344,7 @@ function Contact() {
                       type="text"
                       name="durationOfStay"
                       required
-                      placeholder="e.g., September 17 to September 22, 2025 (5 days in total)"
+                      placeholder="e.g., September 10-20, 2026 (11 days in total)"
                       className={CONTACT_INPUT_CLASS}
                       style={CONTACT_INPUT_STYLE}
                     />
@@ -2383,14 +2383,14 @@ function Contact() {
                     ).
                   </p>
                   <p>
-                    <span className="text-white font-semibold">Accuracy & Liability:</span> We
-                    cannot verify the correctness of your data. Please note that we are not
-                    responsible for visa rejections resulting from incorrect information inputs.
-                  </p>
-                  <p>
                     <span className="text-white font-semibold">Special Formats (e.g., India, Pakistan):</span>{' '}
                     If your country requires a specific invitation letter format or style, please
                     email your required template to us directly, and we will prepare it for you.
+                  </p>
+                  <p>
+                    <span className="text-white font-semibold">Accuracy & Liability:</span> We
+                    cannot verify the correctness of your data. Please note that we are not
+                    responsible for visa rejections resulting from incorrect information inputs.
                   </p>
                 </div>
               )}
