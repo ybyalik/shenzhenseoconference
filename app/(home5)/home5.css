@@ -183,3 +183,11 @@
 .home5-root .mobile-menu-link:focus {
   color: var(--red) !important;
 }
+
+/* Payment app card hover: red border highlight */
+.home5-root .payment-card {
+  border-color: rgba(249, 249, 249, 0.12);
+}
+.home5-root .payment-card:hover {
+  border-color: var(--red);
+}

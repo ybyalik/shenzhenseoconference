@@ -6,11 +6,15 @@ import { useEffect, useState } from 'react';
 export const NAV_ITEMS = [
   { label: 'HOME', anchor: '#top' },
   { label: 'SPEAKERS', anchor: '#speakers' },
-  { label: 'AGENDA', anchor: '#agenda' },
+  { label: 'AGENDA', anchor: '/agenda' },
   { label: 'SPONSORS', anchor: '#sponsors' },
-  { label: 'VISIT SHENZHEN', anchor: '#visit' },
+  { label: 'VISIT SHENZHEN', anchor: '/visit-shenzhen' },
   { label: 'CONTACT', anchor: '#contact' },
 ];
+
+function resolveHref(anchor: string, linkBase: string) {
+  return anchor.startsWith('/') ? anchor : `${linkBase}${anchor}`;
+}
 
 export function ArrowUpRight({ className = '' }: { className?: string }) {
   return (
@@ -138,7 +142,7 @@ export function BackToTop() {
  * Empty string keeps current home5 behavior (raw anchors). When set to
  * '/home5', anchors become '/home5#speakers' so they navigate cross-page.
  */
-export function Nav({ linkBase = '' }: { linkBase?: string } = {}) {
+export function Nav({ linkBase = '', current }: { linkBase?: string; current?: string } = {}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeHref, setActiveHref] = useState('#top');
   const [scrolled, setScrolled] = useState(false);
@@ -187,22 +191,27 @@ export function Nav({ linkBase = '' }: { linkBase?: string } = {}) {
 
           <div className="hidden lg:flex items-center" style={{ gap: '42px' }}>
             <nav className="flex items-center" style={{ gap: '32px' }}>
-              {NAV_ITEMS.map((n) => (
-                <Link
-                  key={n.label}
-                  href={`${linkBase}${n.anchor}`}
-                  className="text-[#F9F9F9] hover:text-[#EB3030] transition-colors"
-                  style={{
-                    fontFamily: 'General Sans, system-ui, sans-serif',
-                    fontSize: 12,
-                    fontWeight: 600,
-                    lineHeight: '20px',
-                    letterSpacing: '1px',
-                  }}
-                >
-                  {n.label}
-                </Link>
-              ))}
+              {NAV_ITEMS.map((n) => {
+                const isActive = current === n.label;
+                return (
+                  <Link
+                    key={n.label}
+                    href={resolveHref(n.anchor, linkBase)}
+                    className={`${
+                      isActive ? 'text-[#EB3030]' : 'text-[#F9F9F9] hover:text-[#EB3030]'
+                    } transition-colors`}
+                    style={{
+                      fontFamily: 'General Sans, system-ui, sans-serif',
+                      fontSize: 12,
+                      fontWeight: 600,
+                      lineHeight: '20px',
+                      letterSpacing: '1px',
+                    }}
+                  >
+                    {n.label}
+                  </Link>
+                );
+              })}
             </nav>
             <Link
               href={ticketsHref}
@@ -255,8 +264,8 @@ export function Nav({ linkBase = '' }: { linkBase?: string } = {}) {
           <nav className="flex-1 overflow-y-auto px-6 py-8">
             <ul className="flex flex-col gap-7">
               {NAV_ITEMS.map((n) => {
-                const href = `${linkBase}${n.anchor}`;
-                const isActive = activeHref === href;
+                const href = resolveHref(n.anchor, linkBase);
+                const isActive = current === n.label || activeHref === href;
                 return (
                   <li key={n.label}>
                     <Link
@@ -328,7 +337,7 @@ export function Footer({ linkBase = '' }: { linkBase?: string } = {}) {
     { label: 'HOME', anchor: '#top' },
     { label: 'SPEAKERS', anchor: '#speakers' },
     { label: 'SPONSORS', anchor: '#sponsors' },
-    { label: 'VISIT SHENZHEN', anchor: '#visit' },
+    { label: 'VISIT SHENZHEN', anchor: '/visit-shenzhen' },
     { label: 'CONTACT', anchor: '#contact' },
   ];
   const ticketsHref = `${linkBase}#pricing`;
@@ -364,7 +373,7 @@ export function Footer({ linkBase = '' }: { linkBase?: string } = {}) {
               {navLinks.map((lnk) => (
                 <li key={lnk.label}>
                   <Link
-                    href={`${linkBase}${lnk.anchor}`}
+                    href={resolveHref(lnk.anchor, linkBase)}
                     className="inline-flex items-center gap-2 text-[14px] font-semibold tracking-[0.06em] text-white/75 hover:text-white"
                   >
                     {lnk.label}
