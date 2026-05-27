@@ -711,6 +711,22 @@ function ConferenceDayCard({ day, activeTier }: { day: ConferenceDay; activeTier
         </div>
       )}
 
+      {isCollapsible && (
+        <div className="mt-6 block">
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase text-white border border-white/40 hover:border-white transition-colors"
+          >
+            {open ? 'Hide Schedule' : 'View Schedule'}
+            <ChevronDown
+              className={`w-4 h-4 transition-transform ${open ? 'rotate-180' : ''}`}
+            />
+          </button>
+        </div>
+      )}
+
       {day.tabs && day.tabs.length > 1 && (
         <div
           className="mt-7 inline-flex"
@@ -744,20 +760,6 @@ function ConferenceDayCard({ day, activeTier }: { day: ConferenceDay; activeTier
             );
           })}
         </div>
-      )}
-
-      {isCollapsible && (
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          className="display mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase text-white border border-white/40 hover:border-white transition-colors"
-        >
-          {open ? 'Hide Schedule' : 'View Schedule'}
-          <ChevronDown
-            className={`w-4 h-4 transition-transform ${open ? 'rotate-180' : ''}`}
-          />
-        </button>
       )}
 
       {showItems && items.length > 0 && (
