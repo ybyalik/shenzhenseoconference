@@ -118,20 +118,25 @@ function Hero() {
 
         {/* Headline */}
         <h1
-          className="display uppercase text-white text-[26px] leading-[120%] md:text-[clamp(48px,7vw,72px)] md:leading-[110%] text-balance"
-          style={{ letterSpacing: '-0.01em', fontWeight: 600 }}
+          className="display uppercase text-[26px] leading-[140%] md:text-[48px] md:leading-[150%]"
+          style={{
+            color: '#F9F9F9',
+            fontWeight: 600,
+          }}
         >
-          <span className="block">Your first time in Shenzhen.</span>
-          <span className="block">Everything you need.</span>
+          <span className="block md:inline">Your first time in Shenzhen.</span>
+          <span className="hidden md:inline"> </span>
+          <span className="block md:inline">Everything you need.</span>
         </h1>
 
         <p
-          className="mt-6 md:mt-8 max-w-[640px] text-[14px] leading-[160%] md:text-[18px] md:leading-[170%]"
+          className="mt-6 md:mt-8 max-w-[640px] text-[14px] md:text-[18px]"
           style={{
             color: '#F9F9F9',
+            opacity: 0.8,
             fontFamily: 'General Sans, system-ui, sans-serif',
             fontWeight: 500,
-            opacity: 0.75,
+            lineHeight: '170%',
           }}
         >
           Visa, flights, payments, connection, and what to see while you&apos;re here.
@@ -147,22 +152,34 @@ function TocColumn({ heading, items }: { heading: string; items: { label: string
   return (
     <div className="pl-6 border-l border-[#EB3030]">
       <div
-        className="display uppercase text-white/85 mb-5"
+        className="display uppercase mb-5"
         style={{
-          fontSize: 13,
+          color: '#F9F9F9',
+          textAlign: 'left',
+          fontSize: 14,
           fontWeight: 600,
-          letterSpacing: '0.18em',
+          lineHeight: '28px',
         }}
       >
         {heading}
       </div>
-      <ul className="flex flex-wrap gap-3">
+      <ul className="flex flex-nowrap gap-2 overflow-x-auto md:overflow-visible md:flex-wrap md:gap-3 no-scrollbar">
         {items.map((it) => (
-          <li key={it.label}>
+          <li key={it.label} className="shrink-0">
             <Link
               href={it.href}
-              className="inline-flex items-center justify-center rounded-full border border-white/25 px-5 py-2.5 text-[12px] font-semibold tracking-[0.18em] text-white/85 hover:text-[#EB3030] hover:border-[#EB3030] transition-colors"
-              style={{ fontFamily: 'General Sans, system-ui, sans-serif' }}
+              className="display uppercase inline-flex flex-col items-start justify-center whitespace-nowrap hover:text-[#EB3030] hover:border-[#EB3030] transition-colors"
+              style={{
+                color: '#F9F9F9',
+                textAlign: 'center',
+                fontSize: 12,
+                fontWeight: 600,
+                lineHeight: 'normal',
+                padding: '12px 16px',
+                gap: 8,
+                borderRadius: 24,
+                border: '1px solid rgba(249, 249, 249, 0.20)',
+              }}
             >
               {it.label}
             </Link>
@@ -178,23 +195,23 @@ function TableOfContents() {
     <section className="bg-[#03060d]">
       <div className="container pb-16 md:pb-24">
         <div
-          className="uppercase text-[#EB3030] mb-4"
+          className="uppercase text-[12px] md:text-[14px] tracking-[0.6px] md:tracking-[0.7px] mb-4"
           style={{
+            color: '#EB3030',
             fontFamily: 'General Sans, system-ui, sans-serif',
-            fontSize: 13,
             fontWeight: 700,
-            letterSpacing: '0.2em',
+            lineHeight: '150%',
           }}
         >
           Table of Contents
         </div>
         <h2
-          className="display uppercase text-white mb-10 md:mb-14"
+          className="display uppercase mb-10 md:mb-14"
           style={{
-            fontSize: 'clamp(28px, 5vw, 48px)',
-            fontWeight: 600,
+            color: '#F9F9F9',
+            fontSize: 24,
+            fontWeight: 700,
             lineHeight: '120%',
-            letterSpacing: '-1.5px',
           }}
         >
           What you need to know
@@ -216,52 +233,56 @@ function Visa() {
     <section id="visa" className="bg-[#03060d]">
       <div className="container pb-16 md:pb-24">
         <h2
-          className="display uppercase text-white"
+          className="display uppercase text-[28px] md:text-[36px] leading-[120%] md:leading-[40px]"
           style={{
-            fontSize: 'clamp(28px, 5vw, 48px)',
-            fontWeight: 600,
-            lineHeight: '120%',
-            letterSpacing: '-1.5px',
+            color: '#F9F9F9',
+            fontWeight: 700,
           }}
         >
           Visa. Most passports: none needed.
         </h2>
         <p
-          className="mt-4 text-white/65 max-w-[680px]"
+          className="mt-4 max-w-[680px] text-[14px] md:text-[16px] leading-[22px] md:leading-[24px]"
           style={{
+            color: '#F9F9F9',
             fontFamily: 'General Sans, system-ui, sans-serif',
-            fontSize: 16,
             fontWeight: 400,
-            lineHeight: '160%',
           }}
         >
           China offers 30-day visa-free entry for passports from 54+ countries.
         </p>
 
         {/* Country card */}
-        <div className="mt-10 md:mt-12 rounded-[24px] border border-white/12 bg-white/[0.02] p-7 md:p-12">
+        <div
+          className="mt-10 md:mt-12 flex flex-col items-start gap-6 md:gap-8 self-stretch p-6 md:p-12"
+          style={{
+            borderRadius: 40,
+            border: '1px solid rgba(249, 249, 249, 0.20)',
+          }}
+        >
           <div
-            className="uppercase mb-7 md:mb-9"
+            className="uppercase"
             style={{
+              color: '#118BAC',
               fontFamily: 'General Sans, system-ui, sans-serif',
-              fontSize: 13,
+              fontSize: 14,
               fontWeight: 700,
-              letterSpacing: '0.2em',
-              color: '#5DAEDB',
+              lineHeight: '150%',
+              letterSpacing: '0.7px',
             }}
           >
             Visa-Free Countries
           </div>
-          <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-5">
+          <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-5 w-full">
             {VISA_FREE_COUNTRIES.map((c) => (
               <li
                 key={c.name}
-                className="flex items-center gap-3 text-white"
+                className="flex items-center gap-3 text-[14px] md:text-[18px]"
                 style={{
+                  color: '#F9F9F9',
                   fontFamily: 'General Sans, system-ui, sans-serif',
-                  fontSize: 16,
                   fontWeight: 500,
-                  lineHeight: '150%',
+                  lineHeight: 'normal',
                 }}
               >
                 <span className="text-[20px] leading-none" aria-hidden>
@@ -277,33 +298,37 @@ function Visa() {
         <div className="mt-10 md:mt-14 grid gap-8 md:gap-12 md:grid-cols-2">
           <div className="pl-6 border-l border-[#EB3030]">
             <div
-              className="display uppercase text-white mb-3"
+              className="display uppercase mb-3"
               style={{
+                color: '#F9F9F9',
                 fontSize: 14,
-                fontWeight: 700,
-                letterSpacing: '0.18em',
+                fontWeight: 500,
+                lineHeight: '160%',
               }}
             >
               Not on the list?
             </div>
             <p
-              className="text-white/80"
               style={{
+                color: '#F9F9F9',
+                opacity: 0.8,
                 fontFamily: 'General Sans, system-ui, sans-serif',
-                fontSize: 16,
-                fontWeight: 400,
+                fontSize: 14,
+                fontWeight: 500,
                 lineHeight: '160%',
               }}
             >
               You likely qualify under China&apos;s{' '}
-              <strong className="text-white font-semibold">
+              <strong style={{ color: '#F9F9F9', fontWeight: 600 }}>
                 240-hour visa-free transit policy
               </strong>{' '}
               - legal as long as you transit through Shenzhen to a third country.
             </p>
             <p
-              className="mt-3 text-white/55 italic"
+              className="mt-3 italic"
               style={{
+                color: '#F9F9F9',
+                opacity: 0.55,
                 fontFamily: 'General Sans, system-ui, sans-serif',
                 fontSize: 14,
                 fontWeight: 400,
@@ -316,21 +341,23 @@ function Visa() {
 
           <div className="pl-6 border-l border-[#EB3030]">
             <div
-              className="display uppercase text-white mb-3"
+              className="display uppercase mb-3"
               style={{
+                color: '#F9F9F9',
                 fontSize: 14,
-                fontWeight: 700,
-                letterSpacing: '0.18em',
+                fontWeight: 500,
+                lineHeight: '160%',
               }}
             >
               Need an invitation letter?
             </div>
             <p
-              className="text-white/80"
               style={{
+                color: '#F9F9F9',
+                opacity: 0.8,
                 fontFamily: 'General Sans, system-ui, sans-serif',
-                fontSize: 16,
-                fontWeight: 400,
+                fontSize: 14,
+                fontWeight: 500,
                 lineHeight: '160%',
               }}
             >
@@ -339,7 +366,7 @@ function Visa() {
             </p>
             <Link
               href="/#contact"
-              className="btn-outline-white display mt-5 inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase text-white border border-white/40"
+              className="btn-outline-white display mt-5 flex w-full md:w-auto md:inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase"
             >
               Request Letter
               <ArrowUpRight className="w-4 h-4" />
@@ -367,7 +394,7 @@ function AirportCard({
   legBody: string;
 }) {
   return (
-    <div className="rounded-[24px] border border-white/12 bg-white/[0.02] p-6 md:p-7">
+    <div className="rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:p-7">
       <div className="relative w-full aspect-[4/3] overflow-hidden rounded-[16px]">
         <Image
           src={img}
@@ -378,23 +405,22 @@ function AirportCard({
         />
       </div>
       <h3
-        className="display uppercase text-white mt-6 md:mt-7"
+        className="display uppercase mt-6 md:mt-7 text-[18px] md:text-[20px] leading-[140%] md:leading-[160%]"
         style={{
-          fontSize: 'clamp(20px, 2.4vw, 26px)',
+          color: '#F9F9F9',
           fontWeight: 700,
-          lineHeight: '120%',
-          letterSpacing: '-0.5px',
         }}
       >
         {heading}
       </h3>
       <p
-        className="mt-4 text-white/75"
+        className="mt-4 text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
         style={{
+          color: '#F9F9F9',
+          opacity: 0.7,
           fontFamily: 'General Sans, system-ui, sans-serif',
-          fontSize: 16,
           fontWeight: 400,
-          lineHeight: '160%',
+          // MOBILE_BODY_16
         }}
       >
         {body}
@@ -402,21 +428,23 @@ function AirportCard({
 
       <div className="mt-6 pl-5 border-l border-[#EB3030]">
         <div
-          className="display uppercase text-white mb-2"
+          className="display uppercase mb-2"
           style={{
-            fontSize: 13,
-            fontWeight: 700,
-            letterSpacing: '0.18em',
+            color: '#F9F9F9',
+            fontSize: 14,
+            fontWeight: 500,
+            lineHeight: '160%',
           }}
         >
           {legLabel}
         </div>
         <p
-          className="text-white/70"
           style={{
+            color: '#F9F9F9',
+            opacity: 0.8,
             fontFamily: 'General Sans, system-ui, sans-serif',
-            fontSize: 15,
-            fontWeight: 400,
+            fontSize: 14,
+            fontWeight: 500,
             lineHeight: '160%',
           }}
         >
@@ -432,37 +460,36 @@ function Flights() {
     <section id="flights" className="bg-[#03060d]">
       <div className="container pb-16 md:pb-24">
         <div
-          className="uppercase text-[#EB3030] mb-4"
+          className="uppercase text-[12px] md:text-[14px] tracking-[0.6px] md:tracking-[0.7px] mb-4"
           style={{
+            color: '#EB3030',
             fontFamily: 'General Sans, system-ui, sans-serif',
-            fontSize: 13,
             fontWeight: 700,
-            letterSpacing: '0.2em',
+            lineHeight: '150%',
           }}
         >
           Flights
         </div>
         <h2
-          className="display uppercase text-white"
+          className="display uppercase text-[28px] md:text-[36px] leading-[120%] md:leading-[40px]"
           style={{
-            fontSize: 'clamp(28px, 5vw, 48px)',
-            fontWeight: 600,
-            lineHeight: '120%',
-            letterSpacing: '-1.5px',
+            color: '#F9F9F9',
+            fontWeight: 700,
           }}
         >
           Two airports. Pick the cheaper.
         </h2>
         <p
-          className="mt-4 max-w-[820px] text-white/75"
+          className="mt-4 max-w-[820px] text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
           style={{
+            color: '#F9F9F9',
+            opacity: 0.8,
             fontFamily: 'General Sans, system-ui, sans-serif',
-            fontSize: 16,
             fontWeight: 400,
-            lineHeight: '160%',
+            // MOBILE_BODY_16
           }}
         >
-          <strong className="text-white font-semibold">
+          <strong style={{ fontWeight: 600 }}>
             Shenzhen Bao&apos;an International (SZX)
           </strong>{' '}
           - primary airport. Direct flights from most Asian hubs (Tokyo, Seoul, Singapore,
@@ -579,13 +606,13 @@ function PaymentAppCard({
   buttonHref: string;
 }) {
   return (
-    <div className="payment-card rounded-[24px] border border-white/12 bg-white/[0.02] p-6 md:p-7 transition-colors duration-200">
+    <div className="payment-card rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:p-7 transition-colors duration-200">
       <div className="relative w-full aspect-[4/3] overflow-hidden rounded-[16px]">
         <Image
           src={img}
           alt=""
           fill
-          className="object-cover"
+          className="object-cover text-[14px] md:text-[16px] leading-[150%] md:leading-[160%]"
           sizes="(min-width: 768px) 50vw, 100vw"
         />
       </div>
@@ -594,9 +621,7 @@ function PaymentAppCard({
         className="mt-4 text-white/75"
         style={{
           fontFamily: 'General Sans, system-ui, sans-serif',
-          fontSize: 16,
           fontWeight: 400,
-          lineHeight: '160%',
         }}
       >
         {body}
@@ -616,24 +641,24 @@ function PaymentAppCard({
 
 function MiniInfoCard({ heading, body }: { heading: string; body: string }) {
   return (
-    <div className="rounded-[24px] border border-white/12 bg-white/[0.02] p-6 md:p-8">
+    <div className="rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:p-8">
       <h3
-        className="display uppercase text-white"
+        className="display uppercase text-[18px] md:text-[20px] leading-[140%] md:leading-[160%]"
         style={{
-          fontSize: 16,
+          color: '#F9F9F9',
           fontWeight: 700,
-          letterSpacing: '0.16em',
         }}
       >
         {heading}
       </h3>
       <p
-        className="mt-4 text-white/75"
+        className="mt-4 text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
         style={{
+          color: '#F9F9F9',
+          opacity: 0.7,
           fontFamily: 'General Sans, system-ui, sans-serif',
-          fontSize: 16,
           fontWeight: 400,
-          lineHeight: '160%',
+          // MOBILE_BODY_16
         }}
       >
         {body}
@@ -647,35 +672,34 @@ function Payments() {
     <section id="payments" className="bg-[#03060d]">
       <div className="container pb-16 md:pb-24">
         <div
-          className="uppercase text-[#EB3030] mb-4"
+          className="uppercase mb-4 text-[14px] md:text-[18px] tracking-[0.7px] md:tracking-[0.9px]"
           style={{
+            color: '#EB3030',
             fontFamily: 'General Sans, system-ui, sans-serif',
-            fontSize: 13,
             fontWeight: 700,
-            letterSpacing: '0.2em',
+            lineHeight: '150%',
           }}
         >
           Payments
         </div>
         <h2
-          className="display uppercase text-white"
+          className="display uppercase text-[28px] md:text-[36px] leading-[120%]"
           style={{
-            fontSize: 'clamp(28px, 5vw, 48px)',
-            fontWeight: 600,
-            lineHeight: '120%',
-            letterSpacing: '-1.5px',
+            color: '#F9F9F9',
+            fontWeight: 700,
           }}
         >
           <span className="block">China is cashless</span>
           <span className="block">Set up before you fly</span>
         </h2>
         <p
-          className="mt-4 max-w-[820px] text-white/75"
+          className="mt-4 max-w-[820px] text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
           style={{
+            color: '#F9F9F9',
+            opacity: 0.8,
             fontFamily: 'General Sans, system-ui, sans-serif',
-            fontSize: 16,
             fontWeight: 400,
-            lineHeight: '160%',
+            // MOBILE_BODY_16
           }}
         >
           The local currency is the Chinese Yuan (CNY / RMB). Cash is rarely used. Two apps
@@ -750,23 +774,22 @@ function StepCard({
         {num}
       </div>
       <h3
-        className="display uppercase text-white mt-6"
+        className="display uppercase mt-6 text-[18px] md:text-[20px] leading-[140%] md:leading-[160%]"
         style={{
-          fontSize: 22,
+          color: '#F9F9F9',
           fontWeight: 700,
-          letterSpacing: '0.04em',
-          lineHeight: '120%',
         }}
       >
         {heading}
       </h3>
       <p
-        className="mt-4 text-white/75"
+        className="mt-4 text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
         style={{
+          color: '#F9F9F9',
+          opacity: 0.7,
           fontFamily: 'General Sans, system-ui, sans-serif',
-          fontSize: 16,
           fontWeight: 400,
-          lineHeight: '160%',
+          // MOBILE_BODY_16
         }}
       >
         {body}
@@ -776,7 +799,7 @@ function StepCard({
           href={buttonHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-outline-white display mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase text-white border border-white/40"
+          className="btn-outline-white display mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase"
         >
           {buttonLabel}
           <ArrowUpRight className="w-4 h-4" />
@@ -794,39 +817,38 @@ function Connection() {
           {/* Left column */}
           <div>
             <div
-              className="uppercase text-[#EB3030] mb-4"
+              className="uppercase text-[12px] md:text-[14px] tracking-[0.6px] md:tracking-[0.7px] mb-4"
               style={{
+                color: '#EB3030',
                 fontFamily: 'General Sans, system-ui, sans-serif',
-                fontSize: 13,
                 fontWeight: 700,
-                letterSpacing: '0.2em',
+                lineHeight: '150%',
               }}
             >
               Connection
             </div>
             <h2
-              className="display uppercase text-white"
-              style={{
-                fontSize: 'clamp(28px, 5vw, 48px)',
-                fontWeight: 600,
-                lineHeight: '120%',
-                letterSpacing: '-1.5px',
-              }}
+              className="display uppercase text-[28px] md:text-[36px] leading-[120%] md:leading-[40px]"
+          style={{
+            color: '#F9F9F9',
+            fontWeight: 700,
+          }}
             >
               <span className="block">Connect before</span>
               <span className="block">you land</span>
             </h2>
             <p
-              className="mt-5 text-white/75 max-w-[520px]"
+              className="mt-5 max-w-[520px] text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
               style={{
+                color: '#F9F9F9',
+                opacity: 0.8,
                 fontFamily: 'General Sans, system-ui, sans-serif',
-                fontSize: 16,
                 fontWeight: 400,
-                lineHeight: '160%',
+                // MOBILE_BODY_16
               }}
             >
               Some Western platforms have limited access inside China. The working fix is a{' '}
-              <strong className="text-white font-semibold">paid connection service</strong> -
+              <strong style={{ fontWeight: 600 }}>paid connection service</strong> -
               10 minutes to set up, runs in the background. Free options are unreliable during
               peak hours.
             </p>
@@ -890,23 +912,22 @@ function TranslateCard({
       }}
     >
       <h3
-        className="display uppercase text-white"
+        className="display uppercase text-[18px] md:text-[20px] leading-[140%] md:leading-[160%]"
         style={{
-          fontSize: 'clamp(20px, 2.4vw, 24px)',
+          color: '#F9F9F9',
           fontWeight: 700,
-          letterSpacing: '0.04em',
-          lineHeight: '120%',
         }}
       >
         {heading}
       </h3>
       <p
-        className="mt-4 text-white/75"
+        className="mt-4 text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
         style={{
+          color: '#F9F9F9',
+          opacity: 0.7,
           fontFamily: 'General Sans, system-ui, sans-serif',
-          fontSize: 16,
           fontWeight: 400,
-          lineHeight: '160%',
+          // MOBILE_BODY_16
         }}
       >
         {body}
@@ -918,7 +939,7 @@ function TranslateCard({
             href={b.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-outline-white display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase text-white border border-white/40"
+            className="btn-outline-white display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase"
           >
             {b.label}
             <ArrowUpRight className="w-4 h-4" />
@@ -936,24 +957,22 @@ function Language() {
         <div className="grid gap-8 md:gap-12 md:grid-cols-[7fr_5fr] items-start">
           <div>
             <div
-              className="uppercase text-[#EB3030] mb-4"
+              className="uppercase text-[12px] md:text-[14px] tracking-[0.6px] md:tracking-[0.7px] mb-4"
               style={{
+                color: '#EB3030',
                 fontFamily: 'General Sans, system-ui, sans-serif',
-                fontSize: 13,
                 fontWeight: 700,
-                letterSpacing: '0.2em',
+                lineHeight: '150%',
               }}
             >
               Language
             </div>
             <h2
-              className="display uppercase text-white"
-              style={{
-                fontSize: 'clamp(28px, 5vw, 48px)',
-                fontWeight: 600,
-                lineHeight: '120%',
-                letterSpacing: '-1.5px',
-              }}
+              className="display uppercase text-[28px] md:text-[36px] leading-[120%] md:leading-[40px]"
+          style={{
+            color: '#F9F9F9',
+            fontWeight: 700,
+          }}
             >
               <span className="block">English inside the venue</span>
               <span className="block">Minimal outside</span>
@@ -961,16 +980,17 @@ function Language() {
           </div>
 
           <p
-            className="text-white/75 md:pt-2"
+            className="md:pt-2 md:text-right text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
             style={{
+              color: '#F9F9F9',
+              opacity: 0.8,
               fontFamily: 'General Sans, system-ui, sans-serif',
-              fontSize: 16,
               fontWeight: 400,
-              lineHeight: '170%',
+              // MOBILE_BODY_16
             }}
           >
             All conference sessions and networking events run in English. Days 3 and 4
-            include live EN ←→ CN interpretation on stage.
+            include live EN &lt;&gt; CN interpretation on stage.
           </p>
         </div>
 
@@ -978,34 +998,37 @@ function Language() {
           <div
             className="uppercase mb-4"
             style={{
-              fontFamily: 'General Sans, system-ui, sans-serif',
-              fontSize: 13,
-              fontWeight: 700,
-              letterSpacing: '0.2em',
               color: '#5DAEDB',
+              fontFamily: 'General Sans, system-ui, sans-serif',
+              fontSize: 14,
+              fontWeight: 700,
+              lineHeight: '150%',
+              letterSpacing: '0.7px',
             }}
           >
             Communication with staff
           </div>
           <p
-            className="text-white/75"
             style={{
+              color: '#F9F9F9',
+              opacity: 0.8,
               fontFamily: 'General Sans, system-ui, sans-serif',
               fontSize: 16,
               fontWeight: 400,
-              lineHeight: '160%',
+              lineHeight: '180%',
+              // MOBILE_BODY_16
             }}
           >
             Service staff at most hotels speak English. Taxi drivers and smaller restaurants
-            usually don&apos;t — screens and translation apps carry the day.
+            usually don&apos;t. Screens and translation apps carry the day.
           </p>
           <p
-            className="mt-4 text-white font-semibold"
+            className="mt-4 text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
             style={{
+              color: '#F9F9F9',
+              opacity: 0.7,
               fontFamily: 'General Sans, system-ui, sans-serif',
-              fontSize: 16,
               fontWeight: 600,
-              lineHeight: '160%',
             }}
           >
             Outside the venue, English is limited. Two fixes that actually work:
@@ -1064,7 +1087,7 @@ const DISTRICTS = [
 
 function DistrictCard({ name, img, body }: { name: string; img: string; body: string }) {
   return (
-    <div className="payment-card rounded-[24px] border border-white/12 bg-white/[0.02] p-6 md:p-7 transition-colors duration-200 h-full flex flex-col">
+    <div className="payment-card rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:p-7 transition-colors duration-200 h-full flex flex-col">
       <div className="relative w-full aspect-[16/10] overflow-hidden rounded-[16px]">
         <Image
           src={img}
@@ -1075,23 +1098,21 @@ function DistrictCard({ name, img, body }: { name: string; img: string; body: st
         />
       </div>
       <h3
-        className="display uppercase text-white mt-6 md:mt-7"
+        className="display uppercase mt-6 md:mt-7 text-[18px] md:text-[20px] leading-[140%] md:leading-[160%]"
         style={{
-          fontSize: 'clamp(20px, 2.4vw, 26px)',
+          color: '#F9F9F9',
           fontWeight: 700,
-          letterSpacing: '0.04em',
-          lineHeight: '120%',
         }}
       >
         {name}
       </h3>
       <p
-        className="mt-4 text-white/75"
+        className="mt-4 text-[14px] md:text-[16px] leading-[22px] md:leading-[24px]"
         style={{
+          color: '#F9F9F9',
+          opacity: 0.7,
           fontFamily: 'General Sans, system-ui, sans-serif',
-          fontSize: 16,
           fontWeight: 400,
-          lineHeight: '160%',
         }}
       >
         {body}
@@ -1105,23 +1126,21 @@ function Neighborhoods() {
     <section id="neighborhoods" className="bg-[#03060d]">
       <div className="container pb-16 md:pb-24">
         <div
-          className="uppercase text-[#EB3030] mb-4"
+          className="uppercase text-[12px] md:text-[14px] tracking-[0.6px] md:tracking-[0.7px] mb-4"
           style={{
+            color: '#EB3030',
             fontFamily: 'General Sans, system-ui, sans-serif',
-            fontSize: 13,
             fontWeight: 700,
-            letterSpacing: '0.2em',
+            lineHeight: '150%',
           }}
         >
           Neighborhoods
         </div>
         <h2
-          className="display uppercase text-white"
+          className="display uppercase text-[28px] md:text-[36px] leading-[120%] md:leading-[40px]"
           style={{
-            fontSize: 'clamp(28px, 5vw, 48px)',
-            fontWeight: 600,
-            lineHeight: '120%',
-            letterSpacing: '-1.5px',
+            color: '#F9F9F9',
+            fontWeight: 700,
           }}
         >
           Four main districts. Each a different city.
@@ -1143,12 +1162,12 @@ const MEALS = [
   {
     name: 'Dim Sum',
     img: '/assets/visit-dimsum.webp',
-    body: 'Guangdong is the home of dim sum. Go early (9 am on a weekend), sit at a big table, order by stamping a paper card. *Lin Heung* and *Jade Garden* if you want the classic rooms.',
+    body: 'Guangdong is the home of dim sum. Go early (9 am on a weekend), sit at a big table, order by stamping a paper card. Lin Heung* and *Jade Garden* if you want the classic rooms.',
   },
   {
     name: 'Hot Pot',
     img: '/assets/visit-hotpot.webp',
-    body: 'Sichuan-style hot pot is everywhere. You sit around a bubbling broth and order raw plates of meat, vegetables, and noodles to cook at your own table. Loud, social, and built for groups.',
+    body: 'Multiple regional styles available. Sichuan (spicy), Cantonese (clear broth), Chaoshan (beef). Most restaurants run till midnight.',
   },
   {
     name: 'Huaqiangbei Street Food',
@@ -1158,7 +1177,7 @@ const MEALS = [
   {
     name: 'Peking Duck',
     img: '/assets/visit-pekingduck.webp',
-    body: 'Northern Chinese duck, lacquered and roasted, sliced tableside, eaten in thin pancakes with scallions and hoisin. Easy to find well-executed versions at the bigger hotel restaurants.',
+    body: 'Not local, but Shenzhen has the best non-Beijing branches of the classics: *Da Dong* and *Quanjude* both have Shenzhen locations in Futian.',
   },
 ];
 
@@ -1170,29 +1189,27 @@ function Food() {
     <section id="food" className="bg-[#03060d]">
       <div className="container pb-16 md:pb-24">
         <div
-          className="uppercase text-[#EB3030] mb-4"
+          className="uppercase text-[12px] md:text-[14px] tracking-[0.6px] md:tracking-[0.7px] mb-4"
           style={{
+            color: '#EB3030',
             fontFamily: 'General Sans, system-ui, sans-serif',
-            fontSize: 13,
             fontWeight: 700,
-            letterSpacing: '0.2em',
+            lineHeight: '150%',
           }}
         >
           Food
         </div>
         <h2
-          className="display uppercase text-white"
+          className="display uppercase text-[28px] md:text-[36px] leading-[120%] md:leading-[40px]"
           style={{
-            fontSize: 'clamp(28px, 5vw, 48px)',
-            fontWeight: 600,
-            lineHeight: '120%',
-            letterSpacing: '-1.5px',
+            color: '#F9F9F9',
+            fontWeight: 700,
           }}
         >
           Four meals that are Shenzhen
         </h2>
 
-        <div className="mt-10 md:mt-14 rounded-[24px] border border-white/12 bg-white/[0.02] p-6 md:p-10">
+        <div className="mt-10 md:mt-14 rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:p-10">
           <div className="grid gap-8 md:gap-12 md:grid-cols-2 items-center">
             <div className="relative w-full aspect-square overflow-hidden rounded-[16px]">
               <Image
@@ -1205,48 +1222,69 @@ function Food() {
               />
             </div>
 
-            <ul className="flex flex-col gap-7 md:gap-8">
-              {MEALS.map((meal, i) => {
-                const isActive = i === active;
-                return (
-                  <li key={meal.name}>
-                    <button
-                      type="button"
-                      onClick={() => setActive(i)}
-                      className={`block w-full text-left transition-colors duration-200 ${
-                        isActive ? 'pl-5 border-l border-[#5DAEDB]' : ''
-                      }`}
-                    >
-                      <span
-                        className="display uppercase"
-                        style={{
-                          fontSize: 'clamp(20px, 2.4vw, 26px)',
-                          fontWeight: 700,
-                          letterSpacing: '0.04em',
-                          lineHeight: '120%',
-                          color: isActive ? '#5DAEDB' : 'rgba(249, 249, 249, 0.35)',
-                        }}
-                      >
-                        {meal.name}
-                      </span>
+            <div className="relative">
+              {/* Continuous left rail — faint white pill running the full height */}
+              <span
+                aria-hidden
+                className="absolute left-0 top-0 bottom-0"
+                style={{
+                  width: 2,
+                  borderRadius: 88,
+                  background: '#F9F9F9',
+                  opacity: 0.2,
+                }}
+              />
+              <ul className="flex flex-col gap-7 md:gap-8 relative">
+                {MEALS.map((meal, i) => {
+                  const isActive = i === active;
+                  return (
+                    <li key={meal.name} className="relative">
+                      {/* Teal overlay segment for the active item only */}
                       {isActive && (
-                        <p
-                          className="mt-4 text-white/75"
+                        <span
+                          aria-hidden
+                          className="absolute left-0 top-0 bottom-0"
                           style={{
-                            fontFamily: 'General Sans, system-ui, sans-serif',
-                            fontSize: 16,
-                            fontWeight: 400,
-                            lineHeight: '160%',
+                            width: 2,
+                            borderRadius: 88,
+                            background: '#118BAC',
+                          }}
+                        />
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => setActive(i)}
+                        className="block w-full text-left pl-5"
+                      >
+                        <span
+                          className="display uppercase block"
+                          style={{
+                            fontSize: 'clamp(20px, 2.4vw, 26px)',
+                            fontWeight: 700,
+                            letterSpacing: '0.04em',
+                            lineHeight: '120%',
+                            color: isActive ? '#5DAEDB' : 'rgba(249, 249, 249, 0.35)',
                           }}
                         >
-                          {meal.body}
-                        </p>
-                      )}
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
+                          {meal.name}
+                        </span>
+                        {isActive && (
+                          <span
+                            className="mt-4 text-white/75 block text-[14px] md:text-[16px] leading-[150%] md:leading-[160%]"
+                            style={{
+                              fontFamily: 'General Sans, system-ui, sans-serif',
+                              fontWeight: 400,
+                            }}
+                          >
+                            {meal.body}
+                          </span>
+                        )}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -1281,7 +1319,7 @@ const SIDE_TRIPS = [
 
 function SideTripCard({ name, img, body }: { name: string; img: string; body: string }) {
   return (
-    <div className="payment-card snap-start shrink-0 w-[300px] md:w-[360px] lg:w-[400px] rounded-[24px] border border-white/12 bg-white/[0.02] p-6 md:p-7 transition-colors duration-200">
+    <div className="payment-card snap-start shrink-0 w-[300px] md:w-[360px] lg:w-[400px] rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:p-7 transition-colors duration-200">
       <div className="relative w-full aspect-square overflow-hidden rounded-[16px]">
         <Image
           src={img}
@@ -1292,23 +1330,22 @@ function SideTripCard({ name, img, body }: { name: string; img: string; body: st
         />
       </div>
       <h3
-        className="display uppercase text-white mt-6"
+        className="display uppercase mt-6 text-[18px] md:text-[20px] leading-[140%] md:leading-[160%]"
         style={{
-          fontSize: 'clamp(20px, 2.2vw, 24px)',
+          color: '#F9F9F9',
           fontWeight: 700,
-          letterSpacing: '0.04em',
-          lineHeight: '120%',
         }}
       >
         {name}
       </h3>
       <p
-        className="mt-4 text-white/75"
+        className="mt-4 text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
         style={{
+          color: '#F9F9F9',
+          opacity: 0.7,
           fontFamily: 'General Sans, system-ui, sans-serif',
-          fontSize: 16,
           fontWeight: 400,
-          lineHeight: '160%',
+          // MOBILE_BODY_16
         }}
       >
         {body}
@@ -1336,24 +1373,22 @@ function NatureSideTrips() {
         <div className="flex items-end justify-between gap-6">
           <div>
             <div
-              className="uppercase text-[#EB3030] mb-4"
+              className="uppercase text-[12px] md:text-[14px] tracking-[0.6px] md:tracking-[0.7px] mb-4"
               style={{
+                color: '#EB3030',
                 fontFamily: 'General Sans, system-ui, sans-serif',
-                fontSize: 13,
                 fontWeight: 700,
-                letterSpacing: '0.2em',
+                lineHeight: '150%',
               }}
             >
               Nature &amp; Side Trips
             </div>
             <h2
-              className="display uppercase text-white"
-              style={{
-                fontSize: 'clamp(28px, 5vw, 48px)',
-                fontWeight: 600,
-                lineHeight: '120%',
-                letterSpacing: '-1.5px',
-              }}
+              className="display uppercase text-[28px] md:text-[36px] leading-[120%] md:leading-[40px]"
+          style={{
+            color: '#F9F9F9',
+            fontWeight: 700,
+          }}
             >
               Beyond the city
             </h2>
@@ -1364,35 +1399,33 @@ function NatureSideTrips() {
               type="button"
               aria-label="Previous"
               onClick={() => scrollByCard(-1)}
-              className="grid place-items-center w-11 h-11 rounded-full border border-white/40 text-white hover:border-white transition-colors"
+              className="flex items-center justify-center hover:bg-white/5 transition-colors"
+              style={{
+                padding: 16,
+                gap: 8,
+                borderRadius: 100,
+                border: '1px solid rgba(249, 249, 249, 0.20)',
+                background: 'transparent',
+              }}
             >
-              <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
-                <path
-                  d="M15 6l-6 6 6 6"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/figma-assets/arrow-left.svg" alt="" className="w-6 h-6" />
             </button>
             <button
               type="button"
               aria-label="Next"
               onClick={() => scrollByCard(1)}
-              className="grid place-items-center w-11 h-11 rounded-full border border-white/40 text-white hover:border-white transition-colors"
+              className="flex items-center justify-center hover:bg-white/5 transition-colors"
+              style={{
+                padding: 16,
+                gap: 8,
+                borderRadius: 100,
+                border: '1px solid rgba(249, 249, 249, 0.20)',
+                background: 'transparent',
+              }}
             >
-              <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
-                <path
-                  d="M9 6l6 6-6 6"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/figma-assets/arrow-right.svg" alt="" className="w-6 h-6" />
             </button>
           </div>
         </div>
@@ -1450,34 +1483,33 @@ function PackingWeather() {
     <section id="packing" className="bg-[#03060d]">
       <div className="container pb-16 md:pb-24">
         <div
-          className="uppercase text-[#EB3030] mb-4"
+          className="uppercase text-[12px] md:text-[14px] tracking-[0.6px] md:tracking-[0.7px] mb-4"
           style={{
+            color: '#EB3030',
             fontFamily: 'General Sans, system-ui, sans-serif',
-            fontSize: 13,
             fontWeight: 700,
-            letterSpacing: '0.2em',
+            lineHeight: '150%',
           }}
         >
           Packing &amp; Weather
         </div>
         <h2
-          className="display uppercase text-white"
+          className="display uppercase text-[28px] md:text-[36px] leading-[120%] md:leading-[40px]"
           style={{
-            fontSize: 'clamp(28px, 5vw, 48px)',
-            fontWeight: 600,
-            lineHeight: '120%',
-            letterSpacing: '-1.5px',
+            color: '#F9F9F9',
+            fontWeight: 700,
           }}
         >
           Mid-September in Shenzhen
         </h2>
         <p
-          className="mt-4 max-w-[920px] text-white/75"
+          className="mt-4 max-w-[920px] text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
           style={{
+            color: '#F9F9F9',
+            opacity: 0.8,
             fontFamily: 'General Sans, system-ui, sans-serif',
-            fontSize: 16,
             fontWeight: 400,
-            lineHeight: '160%',
+            // MOBILE_BODY_16
           }}
         >
           Late summer. <strong className="text-white font-semibold">28-33°C daytime.</strong>{' '}
@@ -1584,30 +1616,28 @@ function FinalCta() {
           }}
         >
           <h2
-            className="display uppercase text-white max-w-[1000px] mx-auto"
+            className="display uppercase max-w-[1000px] mx-auto text-[28px] md:text-[48px]"
             style={{
-              fontSize: 'clamp(32px, 6vw, 64px)',
-              fontWeight: 600,
-              lineHeight: '110%',
-              letterSpacing: '-1.5px',
+              color: '#F9F9F9',
+              textAlign: 'center',
+              fontWeight: 500,
+              lineHeight: '140%',
             }}
           >
             Questions we haven&apos;t answered?
           </h2>
           <p
-            className="mt-5 text-white/75 max-w-[640px] mx-auto"
+            className="mt-5 text-white/75 max-w-[640px] mx-auto text-[14px] md:text-[16px] leading-[150%] md:leading-[160%]"
             style={{
               fontFamily: 'General Sans, system-ui, sans-serif',
-              fontSize: 16,
               fontWeight: 400,
-              lineHeight: '160%',
             }}
           >
             Use the contact form. We read everything and reply within 48 hours.
           </p>
           <Link
             href="/#contact"
-            className="display gradient-cta mt-8 inline-flex items-center gap-3 px-7 py-4 rounded-full text-[13px] font-bold tracking-[0.18em] uppercase text-white"
+            className="display gradient-cta mt-8 flex w-full md:w-auto md:inline-flex items-center justify-center gap-3 px-7 py-4 rounded-full text-[13px] font-bold tracking-[0.18em] uppercase text-white"
           >
             Contact Us
             <ArrowUpRight className="w-4 h-4" />
