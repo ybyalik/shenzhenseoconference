@@ -163,20 +163,17 @@ function TocColumn({ heading, items }: { heading: string; items: { label: string
       >
         {heading}
       </div>
-      <ul className="flex flex-nowrap gap-2 overflow-x-auto md:overflow-visible md:flex-wrap md:gap-3 no-scrollbar">
+      <ul className="flex flex-wrap gap-2 md:gap-3">
         {items.map((it) => (
           <li key={it.label} className="shrink-0">
             <Link
               href={it.href}
-              className="display uppercase inline-flex flex-col items-start justify-center whitespace-nowrap hover:text-[#EB3030] hover:border-[#EB3030] transition-colors"
+              className="display uppercase inline-flex items-center justify-center whitespace-nowrap hover:text-[#EB3030] hover:border-[#EB3030] transition-colors text-[8px] md:text-[12px] px-3 md:px-4 py-2 md:py-3"
               style={{
                 color: '#F9F9F9',
                 textAlign: 'center',
-                fontSize: 12,
                 fontWeight: 600,
                 lineHeight: 'normal',
-                padding: '12px 16px',
-                gap: 8,
                 borderRadius: 24,
                 border: '1px solid rgba(249, 249, 249, 0.20)',
               }}
@@ -206,10 +203,9 @@ function TableOfContents() {
           Table of Contents
         </div>
         <h2
-          className="display uppercase mb-10 md:mb-14"
+          className="display uppercase mb-10 md:mb-14 whitespace-nowrap text-[16px] md:text-[24px]"
           style={{
             color: '#F9F9F9',
-            fontSize: 24,
             fontWeight: 700,
             lineHeight: '120%',
           }}
@@ -233,20 +229,26 @@ function Visa() {
     <section id="visa" className="bg-[#03060d]">
       <div className="container pb-16 md:pb-24">
         <h2
-          className="display uppercase text-[28px] md:text-[36px] leading-[120%] md:leading-[40px]"
+          className="display uppercase text-[28px] md:text-[36px] leading-[120%] md:leading-[40px] font-semibold md:font-bold"
           style={{
             color: '#F9F9F9',
-            fontWeight: 700,
           }}
         >
-          Visa. Most passports: none needed.
+          <span className="block md:inline">Visa.</span>
+          <span className="hidden md:inline"> </span>
+          <span className="block md:inline">Most passports:</span>
+          <span className="hidden md:inline"> </span>
+          <span className="block md:inline">None needed.</span>
         </h2>
         <p
-          className="mt-4 max-w-[680px] text-[14px] md:text-[16px] leading-[22px] md:leading-[24px]"
+          className="mt-4 max-w-[680px]"
           style={{
             color: '#F9F9F9',
+            opacity: 0.6,
             fontFamily: 'General Sans, system-ui, sans-serif',
-            fontWeight: 400,
+            fontSize: 16,
+            fontWeight: 500,
+            lineHeight: '150%',
           }}
         >
           China offers 30-day visa-free entry for passports from 54+ countries.
@@ -296,11 +298,18 @@ function Visa() {
 
         {/* Below the card: two callouts */}
         <div className="mt-10 md:mt-14 grid gap-8 md:gap-12 md:grid-cols-2">
-          <div className="pl-6 border-l border-[#EB3030]">
+          <div
+            className="flex flex-col md:flex-row md:items-center gap-3 md:gap-12 self-stretch"
+            style={{
+              paddingLeft: 24,
+              borderLeft: '2px solid #EB3030',
+            }}
+          >
             <div
-              className="display uppercase mb-3"
+              className="display uppercase shrink-0"
               style={{
                 color: '#F9F9F9',
+                fontFamily: 'Unbounded, var(--font-unbounded), system-ui, sans-serif',
                 fontSize: 14,
                 fontWeight: 500,
                 lineHeight: '160%',
@@ -308,42 +317,51 @@ function Visa() {
             >
               Not on the list?
             </div>
-            <p
-              style={{
-                color: '#F9F9F9',
-                opacity: 0.8,
-                fontFamily: 'General Sans, system-ui, sans-serif',
-                fontSize: 14,
-                fontWeight: 500,
-                lineHeight: '160%',
-              }}
-            >
-              You likely qualify under China&apos;s{' '}
-              <strong style={{ color: '#F9F9F9', fontWeight: 600 }}>
-                240-hour visa-free transit policy
-              </strong>{' '}
-              - legal as long as you transit through Shenzhen to a third country.
-            </p>
-            <p
-              className="mt-3 italic"
-              style={{
-                color: '#F9F9F9',
-                opacity: 0.55,
-                fontFamily: 'General Sans, system-ui, sans-serif',
-                fontSize: 14,
-                fontWeight: 400,
-                lineHeight: '150%',
-              }}
-            >
-              e.g. home → Shenzhen → another country → home
-            </p>
+            <div className="flex flex-col gap-3">
+              <p
+                style={{
+                  color: '#F9F9F9',
+                  opacity: 0.8,
+                  fontFamily: 'General Sans, system-ui, sans-serif',
+                  fontSize: 14,
+                  fontWeight: 500,
+                  lineHeight: '160%',
+                }}
+              >
+                You likely qualify under China&apos;s{' '}
+                <strong style={{ color: '#F9F9F9', fontWeight: 600 }}>
+                  240-hour visa-free transit policy
+                </strong>{' '}
+                - legal as long as you transit through Shenzhen to a third country.
+              </p>
+              <p
+                className="italic"
+                style={{
+                  color: '#F9F9F9',
+                  opacity: 0.55,
+                  fontFamily: 'General Sans, system-ui, sans-serif',
+                  fontSize: 14,
+                  fontWeight: 400,
+                  lineHeight: '150%',
+                }}
+              >
+                e.g. home → Shenzhen → another country → home
+              </p>
+            </div>
           </div>
 
-          <div className="pl-6 border-l border-[#EB3030]">
+          <div
+            className="flex flex-col md:flex-row md:items-center gap-3 md:gap-12 self-stretch"
+            style={{
+              paddingLeft: 24,
+              borderLeft: '2px solid #EB3030',
+            }}
+          >
             <div
-              className="display uppercase mb-3"
+              className="display uppercase shrink-0"
               style={{
                 color: '#F9F9F9',
+                fontFamily: 'Unbounded, var(--font-unbounded), system-ui, sans-serif',
                 fontSize: 14,
                 fontWeight: 500,
                 lineHeight: '160%',
@@ -351,26 +369,28 @@ function Visa() {
             >
               Need an invitation letter?
             </div>
-            <p
-              style={{
-                color: '#F9F9F9',
-                opacity: 0.8,
-                fontFamily: 'General Sans, system-ui, sans-serif',
-                fontSize: 14,
-                fontWeight: 500,
-                lineHeight: '160%',
-              }}
-            >
-              We issue business invitation letters for visa applications that require one.
-              3 business days turnaround.
-            </p>
-            <Link
-              href="/#contact"
-              className="btn-outline-white display mt-5 flex w-full md:w-auto md:inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase"
-            >
-              Request Letter
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
+            <div className="flex flex-col gap-4 items-start">
+              <p
+                style={{
+                  color: '#F9F9F9',
+                  opacity: 0.8,
+                  fontFamily: 'General Sans, system-ui, sans-serif',
+                  fontSize: 14,
+                  fontWeight: 500,
+                  lineHeight: '160%',
+                }}
+              >
+                We issue business invitation letters for visa applications that require one.
+                3 business days turnaround.
+              </p>
+              <Link
+                href="/#contact"
+                className="btn-outline-white display flex w-full md:w-auto md:inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase"
+              >
+                Request Letter
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -426,9 +446,16 @@ function AirportCard({
         {body}
       </p>
 
-      <div className="mt-6 pl-5 border-l border-[#EB3030]">
+      <div
+        className="mt-6 flex flex-col items-start self-stretch"
+        style={{
+          paddingLeft: 16,
+          gap: 4,
+          borderLeft: '2px solid #EB3030',
+        }}
+      >
         <div
-          className="display uppercase mb-2"
+          className="display uppercase"
           style={{
             color: '#F9F9F9',
             fontSize: 14,
@@ -480,13 +507,14 @@ function Flights() {
           Two airports. Pick the cheaper.
         </h2>
         <p
-          className="mt-4 max-w-[820px] text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
+          className="mt-4 max-w-[820px]"
           style={{
             color: '#F9F9F9',
-            opacity: 0.8,
+            opacity: 0.6,
             fontFamily: 'General Sans, system-ui, sans-serif',
-            fontWeight: 400,
-            // MOBILE_BODY_16
+            fontSize: 16,
+            fontWeight: 500,
+            lineHeight: '150%',
           }}
         >
           <strong style={{ fontWeight: 600 }}>
@@ -630,7 +658,18 @@ function PaymentAppCard({
         href={buttonHref}
         target="_blank"
         rel="noopener noreferrer"
-        className="btn-outline-white display mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase text-white border border-white/40"
+        className="btn-outline-white display mt-6 flex justify-center items-center self-stretch uppercase"
+        style={{
+          padding: '12px 32px',
+          gap: 12,
+          borderRadius: 1000,
+          border: '1px solid #F9F9F9',
+          color: '#F9F9F9',
+          textAlign: 'center',
+          fontSize: 12,
+          fontWeight: 600,
+          lineHeight: '28px',
+        }}
       >
         {buttonLabel}
         <ArrowUpRight className="w-4 h-4" />
@@ -761,35 +800,39 @@ function StepCard({
         border: '1px solid rgba(93, 174, 219, 0.4)',
       }}
     >
-      <div
-        className="display"
-        style={{
-          color: '#5DAEDB',
-          fontSize: 'clamp(28px, 4vw, 36px)',
-          fontWeight: 700,
-          letterSpacing: '0.04em',
-          lineHeight: '100%',
-        }}
-      >
-        {num}
+      <div className="flex items-center justify-between gap-4">
+        <h3
+          className="display uppercase"
+          style={{
+            color: '#F9F9F9',
+            fontSize: 20,
+            fontWeight: 700,
+            lineHeight: '120%',
+          }}
+        >
+          {heading}
+        </h3>
+        <div
+          className="display uppercase shrink-0"
+          style={{
+            color: '#118BAC',
+            fontSize: 20,
+            fontWeight: 700,
+            lineHeight: '120%',
+          }}
+        >
+          {num}
+        </div>
       </div>
-      <h3
-        className="display uppercase mt-6 text-[18px] md:text-[20px] leading-[140%] md:leading-[160%]"
-        style={{
-          color: '#F9F9F9',
-          fontWeight: 700,
-        }}
-      >
-        {heading}
-      </h3>
       <p
-        className="mt-4 text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
+        className="mt-4"
         style={{
           color: '#F9F9F9',
           opacity: 0.7,
           fontFamily: 'General Sans, system-ui, sans-serif',
+          fontSize: 14,
           fontWeight: 400,
-          // MOBILE_BODY_16
+          lineHeight: '170%',
         }}
       >
         {body}
@@ -799,7 +842,18 @@ function StepCard({
           href={buttonHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-outline-white display mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase"
+          className="btn-outline-white display mt-6 flex justify-center items-center self-stretch uppercase"
+          style={{
+            padding: '12px 32px',
+            gap: 12,
+            borderRadius: 1000,
+            border: '1px solid #F9F9F9',
+            color: '#F9F9F9',
+            textAlign: 'center',
+            fontSize: 14,
+            fontWeight: 600,
+            lineHeight: '28px',
+          }}
         >
           {buttonLabel}
           <ArrowUpRight className="w-4 h-4" />
@@ -838,13 +892,14 @@ function Connection() {
               <span className="block">you land</span>
             </h2>
             <p
-              className="mt-5 max-w-[520px] text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
+              className="mt-5 max-w-[520px]"
               style={{
                 color: '#F9F9F9',
-                opacity: 0.8,
+                opacity: 0.6,
                 fontFamily: 'General Sans, system-ui, sans-serif',
-                fontWeight: 400,
-                // MOBILE_BODY_16
+                fontSize: 16,
+                fontWeight: 500,
+                lineHeight: '150%',
               }}
             >
               Some Western platforms have limited access inside China. The working fix is a{' '}
@@ -905,10 +960,14 @@ function TranslateCard({
 }) {
   return (
     <div
-      className="rounded-[24px] p-7 md:p-9"
+      className="flex flex-col items-start self-stretch"
       style={{
-        background: 'rgba(255, 255, 255, 0.02)',
-        border: '1px solid rgba(93, 174, 219, 0.4)',
+        padding: '28px 24px',
+        gap: 24,
+        borderRadius: 32,
+        border: '1px solid #118BAC',
+        background: '#0D1017',
+        boxShadow: '0 12px 20px 0 rgba(0, 0, 0, 0.30)',
       }}
     >
       <h3
@@ -921,25 +980,35 @@ function TranslateCard({
         {heading}
       </h3>
       <p
-        className="mt-4 text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
+        className="text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
         style={{
           color: '#F9F9F9',
           opacity: 0.7,
           fontFamily: 'General Sans, system-ui, sans-serif',
           fontWeight: 400,
-          // MOBILE_BODY_16
         }}
       >
         {body}
       </p>
-      <div className="mt-6 flex flex-wrap gap-3">
+      <div className="flex flex-col gap-3 self-stretch">
         {buttons.map((b) => (
           <a
             key={b.label}
             href={b.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-outline-white display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase"
+            className="btn-outline-white display flex justify-center items-center self-stretch uppercase"
+            style={{
+              padding: '12px 32px',
+              gap: 12,
+              borderRadius: 1000,
+              border: '1px solid #F9F9F9',
+              color: '#F9F9F9',
+              textAlign: 'center',
+              fontSize: 14,
+              fontWeight: 600,
+              lineHeight: '28px',
+            }}
           >
             {b.label}
             <ArrowUpRight className="w-4 h-4" />
@@ -994,11 +1063,18 @@ function Language() {
           </p>
         </div>
 
-        <div className="mt-10 md:mt-14 pl-6 border-l border-[#EB3030] max-w-[920px]">
+        <div
+          className="mt-10 md:mt-14 flex flex-col items-start self-stretch max-w-[920px]"
+          style={{
+            padding: '8px 32px',
+            gap: 16,
+            borderLeft: '2px solid #118BAC',
+          }}
+        >
           <div
-            className="uppercase mb-4"
+            className="uppercase"
             style={{
-              color: '#5DAEDB',
+              color: '#118BAC',
               fontFamily: 'General Sans, system-ui, sans-serif',
               fontSize: 14,
               fontWeight: 700,
@@ -1011,24 +1087,24 @@ function Language() {
           <p
             style={{
               color: '#F9F9F9',
-              opacity: 0.8,
+              opacity: 0.7,
               fontFamily: 'General Sans, system-ui, sans-serif',
               fontSize: 16,
               fontWeight: 400,
-              lineHeight: '180%',
-              // MOBILE_BODY_16
+              lineHeight: '150%',
             }}
           >
             Service staff at most hotels speak English. Taxi drivers and smaller restaurants
             usually don&apos;t. Screens and translation apps carry the day.
           </p>
           <p
-            className="mt-4 text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
             style={{
               color: '#F9F9F9',
               opacity: 0.7,
               fontFamily: 'General Sans, system-ui, sans-serif',
+              fontSize: 16,
               fontWeight: 600,
+              lineHeight: '150%',
             }}
           >
             Outside the venue, English is limited. Two fixes that actually work:
@@ -1319,18 +1395,34 @@ const SIDE_TRIPS = [
 
 function SideTripCard({ name, img, body }: { name: string; img: string; body: string }) {
   return (
-    <div className="payment-card snap-start shrink-0 w-[300px] md:w-[360px] lg:w-[400px] rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:p-7 transition-colors duration-200">
-      <div className="relative w-full aspect-square overflow-hidden rounded-[16px]">
+    <div
+      className="payment-card snap-start shrink-0 flex flex-col items-start"
+      style={{
+        width: 320,
+        padding: 24,
+        gap: 32,
+        borderRadius: 24,
+        border: '1px solid rgba(249, 249, 249, 0.15)',
+      }}
+    >
+      <div
+        className="relative self-stretch overflow-hidden"
+        style={{
+          height: 240,
+          borderRadius: 16,
+          background: '#d3d3d3',
+        }}
+      >
         <Image
           src={img}
           alt=""
           fill
-          className="object-cover"
-          sizes="(min-width: 1024px) 400px, (min-width: 768px) 360px, 300px"
+          className="object-cover object-center"
+          sizes="320px"
         />
       </div>
       <h3
-        className="display uppercase mt-6 text-[18px] md:text-[20px] leading-[140%] md:leading-[160%]"
+        className="display uppercase text-[18px] md:text-[20px] leading-[140%] md:leading-[160%]"
         style={{
           color: '#F9F9F9',
           fontWeight: 700,
@@ -1339,13 +1431,12 @@ function SideTripCard({ name, img, body }: { name: string; img: string; body: st
         {name}
       </h3>
       <p
-        className="mt-4 text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
+        className="text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
         style={{
           color: '#F9F9F9',
           opacity: 0.7,
           fontFamily: 'General Sans, system-ui, sans-serif',
           fontWeight: 400,
-          // MOBILE_BODY_16
         }}
       >
         {body}
@@ -1370,64 +1461,27 @@ function NatureSideTrips() {
     <section id="nature" className="bg-[#03060d]">
       <span id="side-trips" className="block -mt-24 pt-24" aria-hidden />
       <div className="container pb-16 md:pb-24">
-        <div className="flex items-end justify-between gap-6">
-          <div>
-            <div
-              className="uppercase text-[12px] md:text-[14px] tracking-[0.6px] md:tracking-[0.7px] mb-4"
-              style={{
-                color: '#EB3030',
-                fontFamily: 'General Sans, system-ui, sans-serif',
-                fontWeight: 700,
-                lineHeight: '150%',
-              }}
-            >
-              Nature &amp; Side Trips
-            </div>
-            <h2
-              className="display uppercase text-[28px] md:text-[36px] leading-[120%] md:leading-[40px]"
-          style={{
-            color: '#F9F9F9',
-            fontWeight: 700,
-          }}
-            >
-              Beyond the city
-            </h2>
+        <div>
+          <div
+            className="uppercase text-[12px] md:text-[14px] tracking-[0.6px] md:tracking-[0.7px] mb-4"
+            style={{
+              color: '#EB3030',
+              fontFamily: 'General Sans, system-ui, sans-serif',
+              fontWeight: 700,
+              lineHeight: '150%',
+            }}
+          >
+            Nature &amp; Side Trips
           </div>
-
-          <div className="hidden md:flex items-center gap-3">
-            <button
-              type="button"
-              aria-label="Previous"
-              onClick={() => scrollByCard(-1)}
-              className="flex items-center justify-center hover:bg-white/5 transition-colors"
-              style={{
-                padding: 16,
-                gap: 8,
-                borderRadius: 100,
-                border: '1px solid rgba(249, 249, 249, 0.20)',
-                background: 'transparent',
-              }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/figma-assets/arrow-left.svg" alt="" className="w-6 h-6" />
-            </button>
-            <button
-              type="button"
-              aria-label="Next"
-              onClick={() => scrollByCard(1)}
-              className="flex items-center justify-center hover:bg-white/5 transition-colors"
-              style={{
-                padding: 16,
-                gap: 8,
-                borderRadius: 100,
-                border: '1px solid rgba(249, 249, 249, 0.20)',
-                background: 'transparent',
-              }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/figma-assets/arrow-right.svg" alt="" className="w-6 h-6" />
-            </button>
-          </div>
+          <h2
+            className="display uppercase text-[28px] md:text-[36px] leading-[120%] md:leading-[40px]"
+            style={{
+              color: '#F9F9F9',
+              fontWeight: 700,
+            }}
+          >
+            Beyond the city
+          </h2>
         </div>
 
         <div
@@ -1441,6 +1495,41 @@ function NatureSideTrips() {
             </div>
           ))}
         </div>
+
+        <div className="mt-8 flex items-center gap-4">
+          <button
+            type="button"
+            aria-label="Previous"
+            onClick={() => scrollByCard(-1)}
+            className="grid place-items-center hover:bg-white/5 transition-colors"
+            style={{
+              width: 64,
+              height: 64,
+              borderRadius: 9999,
+              border: '1px solid rgba(249, 249, 249, 0.20)',
+              background: 'transparent',
+            }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/figma-assets/arrow-left.svg" alt="" className="w-6 h-6" />
+          </button>
+          <button
+            type="button"
+            aria-label="Next"
+            onClick={() => scrollByCard(1)}
+            className="grid place-items-center hover:bg-white/5 transition-colors"
+            style={{
+              width: 64,
+              height: 64,
+              borderRadius: 9999,
+              border: '1px solid rgba(249, 249, 249, 0.20)',
+              background: 'transparent',
+            }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/figma-assets/arrow-right.svg" alt="" className="w-6 h-6" />
+          </button>
+        </div>
       </div>
     </section>
   );
@@ -1450,11 +1539,18 @@ function NatureSideTrips() {
 
 function CheckIcon({ className = '' }: { className?: string }) {
   return (
-    <svg viewBox="0 0 20 20" className={className} aria-hidden="true">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="13"
+      viewBox="0 0 18 13"
+      fill="none"
+      className={className}
+      aria-hidden="true"
+    >
       <path
-        d="M4 10.5l4 4 8-9"
-        fill="none"
-        stroke="currentColor"
+        d="M17 1L6 12L1 7"
+        stroke="#F9F9F9"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -1465,11 +1561,25 @@ function CheckIcon({ className = '' }: { className?: string }) {
 
 function XIconSmall({ className = '' }: { className?: string }) {
   return (
-    <svg viewBox="0 0 20 20" className={className} aria-hidden="true">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      className={className}
+      aria-hidden="true"
+    >
       <path
-        d="M5 5l10 10M15 5L5 15"
-        fill="none"
-        stroke="currentColor"
+        d="M18 6L6 18"
+        stroke="#F9F9F9"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6 6L18 18"
+        stroke="#F9F9F9"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -1545,14 +1655,15 @@ function PackingWeather() {
                 "Comfortable walking shoes (you'll average 15k steps/day)",
                 'Power adapter (Type A/C/I, 220V)',
               ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-white">
-                  <CheckIcon className="w-5 h-5 mt-0.5 shrink-0 text-white/85" />
+                <li key={item} className="flex items-center gap-3">
+                  <CheckIcon className="shrink-0" />
                   <span
                     style={{
+                      color: '#F9F9F9',
                       fontFamily: 'General Sans, system-ui, sans-serif',
                       fontSize: 16,
-                      fontWeight: 400,
-                      lineHeight: '160%',
+                      fontWeight: 500,
+                      lineHeight: '24px',
                     }}
                   >
                     {item}
@@ -1580,14 +1691,15 @@ function PackingWeather() {
                 'Heavy jackets',
                 'Dress shoes beyond one pair (tech casual works everywhere, even at VIP night)',
               ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-white">
-                  <XIconSmall className="w-5 h-5 mt-0.5 shrink-0 text-white/85" />
+                <li key={item} className="flex items-center gap-3">
+                  <XIconSmall className="shrink-0" />
                   <span
                     style={{
+                      color: '#F9F9F9',
                       fontFamily: 'General Sans, system-ui, sans-serif',
                       fontSize: 16,
-                      fontWeight: 400,
-                      lineHeight: '160%',
+                      fontWeight: 500,
+                      lineHeight: '24px',
                     }}
                   >
                     {item}
@@ -1609,17 +1721,18 @@ function FinalCta() {
     <section className="bg-[#03060d]">
       <div className="container pb-16 md:pb-24">
         <div
-          className="rounded-[28px] px-6 py-16 md:py-24 text-center"
+          className="rounded-[28px] px-6 py-16 md:py-24 text-left"
           style={{
             background:
               'linear-gradient(180deg, #0d3a4d 0%, #06222d 60%, #03161e 100%)',
           }}
         >
           <h2
-            className="display uppercase max-w-[1000px] mx-auto text-[28px] md:text-[48px]"
+            className="display uppercase max-w-[1000px]"
             style={{
               color: '#F9F9F9',
-              textAlign: 'center',
+              textAlign: 'left',
+              fontSize: 28,
               fontWeight: 500,
               lineHeight: '140%',
             }}
@@ -1627,10 +1740,13 @@ function FinalCta() {
             Questions we haven&apos;t answered?
           </h2>
           <p
-            className="mt-5 text-white/75 max-w-[640px] mx-auto text-[14px] md:text-[16px] leading-[150%] md:leading-[160%]"
+            className="mt-5 max-w-[640px] text-left"
             style={{
+              color: '#F9F9F9',
               fontFamily: 'General Sans, system-ui, sans-serif',
-              fontWeight: 400,
+              fontSize: 18,
+              fontWeight: 500,
+              lineHeight: '160%',
             }}
           >
             Use the contact form. We read everything and reply within 48 hours.
