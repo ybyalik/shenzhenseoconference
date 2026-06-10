@@ -11,26 +11,23 @@ import { ArrowUpRight, BackToTop, Footer, Nav } from '../_components/shared';
 type Logo = { src: string; alt: string; h: number };
 
 // TODO: replace placeholders with real sponsor artwork as it lands.
-const SPONSORS_2026: { platinum: Logo[]; gold: Logo[]; silver: Logo[] } = {
+const SPONSORS_2026: { platinum: Logo[]; gold: Logo[]; silver: Logo[]; bronze: Logo[] } = {
   platinum: [
-    { src: '/figma-assets/73b861094a7ce5e5553ff2eacca50af9313eddc6.png', alt: 'ecomeXperts', h: 72 },
-    { src: '/figma-assets/sponsor-convertbetter.png', alt: 'QuickCreator (placeholder)', h: 56 },
+    { src: '/assets/presswhiz.webp', alt: 'PressWhiz', h: 56 },
   ],
   gold: [
-    { src: '/figma-assets/sponsor-swishdm.png', alt: 'whitepress (placeholder)', h: 48 },
-    { src: '/figma-assets/sponsor-dynadot.png', alt: '全球搜 (placeholder)', h: 44 },
-    { src: '/figma-assets/sponsor-convertbetter.png', alt: 'interamplify (placeholder)', h: 44 },
-    { src: '/figma-assets/sponsor-swishdm.png', alt: 'eclicktech (placeholder)', h: 44 },
-    { src: '/figma-assets/sponsor-dynadot.png', alt: 'OUTREACHER.IO (placeholder)', h: 44 },
-    { src: '/figma-assets/sponsor-convertbetter.png', alt: 'TalkHeap (placeholder)', h: 44 },
-    { src: '/figma-assets/sponsor-swishdm.png', alt: 'One (placeholder)', h: 44 },
-    { src: '/figma-assets/sponsor-dynadot.png', alt: 'PLAYSTACK (placeholder)', h: 44 },
+    { src: '/assets/topgus.svg', alt: 'TopGus', h: 44 },
+    { src: '/figma-assets/sponsor-swishdm.png', alt: 'Swish', h: 48 },
   ],
   silver: [
-    { src: '/figma-assets/sponsor-convertbetter.png', alt: 'jodemand (placeholder)', h: 36 },
-    { src: '/figma-assets/8842dd91b89a6d7f26f78f6178e930f87bc16a6b.png', alt: 'CLOOM TECH', h: 36 },
-    { src: '/figma-assets/sponsor-swishdm.png', alt: 'enq SEO (placeholder)', h: 36 },
-    { src: '/figma-assets/sponsor-dynadot.png', alt: 'Shenzhen partner (placeholder)', h: 36 },
+    { src: '/figma-assets/sponsor-dynadot.png', alt: 'Dynadot', h: 36 },
+    { src: '/figma-assets/sponsor-convertbetter.png', alt: 'Convert Better', h: 36 },
+    { src: '/assets/ecomexperts.webp', alt: 'EcomExperts', h: 36 },
+    { src: '/assets/prodent.webp', alt: 'ProDENT', h: 36 },
+  ],
+  bronze: [
+    { src: '/assets/advanced-web-ranking.webp', alt: 'Advanced Web Rankings', h: 32 },
+    { src: '/assets/cloom-tech.webp', alt: 'Cloom Tech', h: 32 },
   ],
 };
 
@@ -208,7 +205,7 @@ function SponsorLogoBox({
   tier,
 }: {
   logo: Logo;
-  tier: 'platinum' | 'gold' | 'silver';
+  tier: 'platinum' | 'gold' | 'silver' | 'bronze';
 }) {
   const baseFlatten = 'brightness(0) invert(1)';
   const defaultFilter = baseFlatten;
@@ -228,7 +225,9 @@ function SponsorLogoBox({
       ? 'h-[140px] md:h-[208px]'
       : tier === 'silver'
       ? 'h-[120px] md:h-[176px]'
-      : '';
+      : tier === 'bronze'
+      ? 'h-[100px] md:h-[150px]'
+      : 'h-[140px] md:h-[208px]';
 
   return (
     <div
@@ -486,9 +485,10 @@ function Confirmed2026() {
 
         {/* Logo tiers */}
         <div className="flex flex-col items-center self-stretch" style={{ gap: 80 }}>
-          <Tier title="Platinum Sponsors" tier="platinum" logos={SPONSORS_2026.platinum} cols="grid-cols-1 sm:grid-cols-2" />
-          <Tier title="Gold Sponsors" tier="gold" logos={SPONSORS_2026.gold} cols="grid-cols-2 sm:grid-cols-3" />
+          <Tier title="Platinum Sponsors" tier="platinum" logos={SPONSORS_2026.platinum} cols="grid-cols-1 max-w-[372px] mx-auto" />
+          <Tier title="Gold Sponsors" tier="gold" logos={SPONSORS_2026.gold} cols="grid-cols-1 sm:grid-cols-2 max-w-[760px] mx-auto" />
           <Tier title="Silver Sponsors" tier="silver" logos={SPONSORS_2026.silver} cols="grid-cols-2 sm:grid-cols-4" />
+          <Tier title="Bronze Sponsors" tier="bronze" logos={SPONSORS_2026.bronze} cols="grid-cols-1 sm:grid-cols-2 max-w-[760px] mx-auto" />
         </div>
       </div>
     </section>
@@ -502,7 +502,7 @@ function Tier({
   cols,
 }: {
   title: string;
-  tier: 'platinum' | 'gold' | 'silver';
+  tier: 'platinum' | 'gold' | 'silver' | 'bronze';
   logos: Logo[];
   cols: string;
 }) {
@@ -537,7 +537,7 @@ function ThreeTiers() {
         className="container relative flex flex-col items-start md:items-center"
         style={{
           paddingTop: 'clamp(48px, 8vw, 128px)',
-          paddingBottom: 'clamp(48px, 8vw, 128px)',
+          paddingBottom: 'clamp(32px, 5vw, 80px)',
           gap: 64,
         }}
       >

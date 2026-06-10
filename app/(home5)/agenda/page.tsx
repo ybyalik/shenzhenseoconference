@@ -37,7 +37,7 @@ function Hero() {
           alt=""
           fill
           priority
-          className="object-cover object-center opacity-70"
+          className="object-cover object-[center_78%] opacity-70"
           sizes="100vw"
         />
         <div
@@ -112,7 +112,8 @@ function Hero() {
             lineHeight: '170%',
           }}
         >
-          Workshops, masterminds, main stage, VIP networking. Filter by your ticket tier.
+          2 days of pre-conference events, plus 5 days of city tours, SEO masterminds, main
+          stage talks, and VIP networking. Filter the schedule by your ticket tier.
         </p>
 
         <div className="mt-8 md:mt-10 flex justify-start md:justify-center">
@@ -129,8 +130,8 @@ function Hero() {
       {/* Wide venue image below the CTA */}
       <div className="container pb-16 md:pb-24">
         <div
-          className="relative w-full overflow-hidden"
-          style={{ height: 360, borderRadius: 24 }}
+          className="relative w-full md:w-4/5 mx-auto overflow-hidden"
+          style={{ height: 288, borderRadius: 24 }}
         >
           <Image
             src="/assets/agenda-venue.webp"
@@ -306,13 +307,6 @@ function PreConferenceSection() {
               No conference ticket required.
             </p>
           </div>
-          <a
-            href="/#contact"
-            className="display flex w-full md:w-auto md:inline-flex md:shrink-0 items-center justify-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase text-white border border-white/40 hover:border-white transition-colors self-start md:self-auto"
-          >
-            RSVP for Side Events
-            <ArrowUpRight className="w-4 h-4" />
-          </a>
         </div>
 
         <div

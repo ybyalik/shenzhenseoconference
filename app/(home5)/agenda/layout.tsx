@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Agenda – Shenzhen SEO Conference 2026',
     description:
-      'Workshops, masterminds, main stage, VIP networking. Filter by your ticket tier.',
+      '2 days of pre-conference events, plus 5 days of city tours, SEO masterminds, main stage talks, and VIP networking. Filter the schedule by your ticket tier.',
     type: 'website',
   },
 };
