@@ -59,7 +59,7 @@ const WORKSHOPS: Speaker[] = [
 const FIELD_TALKS: Speaker[] = [
   { name: 'Nick Drewe', country: 'Australia', title: 'Founder & CEO, Wethrift', img: '/assets/nick-drewe.webp' },
   { name: 'Josh Blyskal', country: 'USA', title: 'AI Strategy & Research, Profound', img: '/assets/josh-blyskal.webp' },
-  { name: 'Nik Ranger', country: 'Australia', title: 'Senior Growth Consultant, Dejan', img: '/assets/Nik-Ranger_1763288552080.webp' },
+  { name: 'Nik Ranger', country: 'Australia', title: 'Senior Growth Consultant, Dejan', img: '/assets/nik-ranger.webp' },
   { name: 'Loki Yan', country: 'China & Australia', title: 'Co-founder, First Optimise (壹优化)', img: '/assets/loki-yan.webp' },
   { name: 'Doug Pierce', country: 'USA', title: 'Founder, Cogney', img: '/assets/doug-pierce.webp' },
   { name: 'Mao Kawana', country: 'Japan', title: 'Project Manager, Faber Company', img: '/assets/mao-kawana.webp' },

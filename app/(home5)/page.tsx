@@ -1017,8 +1017,8 @@ function Speakers() {
     { country: 'US', name: 'Bernard Huang', sub: 'Co-founder, Clearscope', img: '/assets/bernard-huang.webp' },
     { country: 'AU', name: 'Nick Drewe', sub: 'Founder & CEO, Wethrift', img: '/assets/nick-drewe.webp' },
     { country: 'CA', name: 'Megan Gougeon', sub: 'Founder, Portable Professional', img: '/assets/megan-gougeon.webp' },
-    { country: 'US', name: 'Josh Blyskal', sub: 'AI Strategy & Research, Profound', img: '/assets/josh-blyskal.webp' },
-    { country: 'AU', name: 'Nik Ranger', sub: 'Senior Growth Consultant, Dejan', img: '/assets/Nik-Ranger_1763288552080.webp' },
+    { country: 'CN', name: 'Kun Tang', sub: 'Founder and CEO, Jademond', img: '/assets/kun-tang.webp' },
+    { country: 'AU', name: 'Nik Ranger', sub: 'Senior Growth Consultant, Dejan', img: '/assets/nik-ranger.webp' },
     { country: 'UK', name: 'Owain Lloyd-Williams', sub: 'Independent SEO Consultant', img: '/assets/owain-lloyd-williams.webp' },
     { country: 'AU · CN', name: 'Loki Yan', sub: 'Co-founder, First Optimise (壹优化)', img: '/assets/loki-yan.webp' },
   ];
