@@ -1012,16 +1012,25 @@ function Speakers() {
     { country: 'US', name: 'Lily Ray', sub: 'VP of SEO Strategy & Research, Amsive', img: '/assets/lily-ray.webp' },
     { country: 'CH', name: 'Gary Illyes', sub: 'Analyst, Google Search', img: '/assets/gary-illyes.webp' },
     { country: 'US', name: 'Eli Schwartz', sub: 'Author, Product-Led SEO', img: '/assets/eli-schwartz.webp' },
+    { country: 'AU', name: 'Sasha Gusain', sub: 'Head of Logged Out Experience, Canva', img: '/assets/sasha-gusain.webp' },
     { country: 'US', name: 'Lars Lofgren', sub: 'Fractional VP of Marketing', img: '/assets/lars-lofgren.webp' },
     { country: 'US', name: 'Bernard Huang', sub: 'Co-founder, Clearscope', img: '/assets/bernard-huang.webp' },
     { country: 'AU', name: 'Nick Drewe', sub: 'Founder & CEO, Wethrift', img: '/assets/nick-drewe.webp' },
     { country: 'CA', name: 'Megan Gougeon', sub: 'Founder, Portable Professional', img: '/assets/megan-gougeon.webp' },
-    { country: 'CN · SG', name: 'Zac', sub: 'Author, best-selling Chinese SEO book', img: '/assets/zac.webp' },
-    { country: 'US', name: 'Doug Pierce', sub: 'Founder, Cogney', img: '/assets/doug-pierce.webp' },
-    { country: 'US', name: 'Victor Huynh', sub: 'CEO & Head of Digital Strategy, Ready Artwork', img: '/assets/victor-huynh.webp' },
+    { country: 'US', name: 'Josh Blyskal', sub: 'AI Strategy & Research, Profound', img: '/assets/josh-blyskal.webp' },
+    { country: 'AU', name: 'Nik Ranger', sub: 'Senior Growth Consultant, Dejan', img: '/assets/Nik-Ranger_1763288552080.webp' },
     { country: 'UK', name: 'Owain Lloyd-Williams', sub: 'Independent SEO Consultant', img: '/assets/owain-lloyd-williams.webp' },
     { country: 'AU · CN', name: 'Loki Yan', sub: 'Co-founder, First Optimise (壹优化)', img: '/assets/loki-yan.webp' },
   ];
+
+  // Turn a 2-letter country code into a flag emoji (UK -> GB). Combos like "AU · CN" -> two flags.
+  const flagEmoji = (code: string) => {
+    const cc = code.trim().toUpperCase() === 'UK' ? 'GB' : code.trim().toUpperCase();
+    if (cc.length !== 2) return code;
+    return String.fromCodePoint(...[...cc].map((c) => 0x1f1e6 + c.charCodeAt(0) - 65));
+  };
+  const countryFlags = (country: string) =>
+    country.split('·').map((c) => flagEmoji(c)).join(' ');
 
   return (
     <section id="speakers" className="bg-[#03060d] py-12 lg:py-24">
@@ -1085,8 +1094,8 @@ function Speakers() {
                 />
               </div>
               <div className="mt-5 flex items-center justify-between gap-3">
-                <div className="text-[11px] font-semibold tracking-[0.2em] text-white/60">
-                  {s.country}
+                <div className="text-[18px] leading-none">
+                  {countryFlags(s.country)}
                 </div>
                 {s.tag && (
                   <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-[0.16em] uppercase bg-[var(--teal)] text-white">
@@ -1252,8 +1261,8 @@ function Pricing() {
   const tiers = [
     {
       name: 'Standard',
-      price: '$590',
-      old: '$600',
+      price: '$600',
+      old: '',
       forWho: 'For SEO Practitioners',
       tag: '',
       bullets: [
@@ -1266,8 +1275,8 @@ function Pricing() {
     },
     {
       name: 'Deluxe',
-      price: '$885',
-      old: '$900',
+      price: '$900',
+      old: '',
       forWho: 'For marketing directors and agency leads',
       tag: 'Most popular',
       bullets: [
@@ -1280,8 +1289,8 @@ function Pricing() {
     },
     {
       name: 'VIP',
-      price: '$1,770',
-      old: '$1,800',
+      price: '$1,800',
+      old: '',
       forWho: 'For executives and founders',
       tag: '',
       bullets: [

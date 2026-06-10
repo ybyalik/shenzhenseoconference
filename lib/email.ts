@@ -1,6 +1,5 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const fromEmail = process.env.RESEND_FROM_EMAIL || 'noreply@shenzhenseoconference.com';
 
 export async function sendEmail({
@@ -9,15 +8,20 @@ export async function sendEmail({
   html,
   text,
 }: {
-  to: string;
+  to: string | string[];
   subject: string;
   html: string;
   text?: string;
 }) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    throw new Error('RESEND_API_KEY is not set');
+  }
+  const resend = new Resend(apiKey);
   try {
     const { data, error } = await resend.emails.send({
       from: `Shenzhen SEO Conference <${fromEmail}>`,
-      to: [to],
+      to: Array.isArray(to) ? to : [to],
       subject,
       html,
       text: text || html.replace(/<[^>]*>/g, ''),

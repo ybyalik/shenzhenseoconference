@@ -13,6 +13,7 @@ type Speaker = {
   country: string;
   title: string;
   img: string;
+  tag?: string;
 };
 
 // Real headshots we have available, used to populate the section grids below.
@@ -41,12 +42,73 @@ function pickSpeakers(start: number, count: number): Speaker[] {
   return Array.from({ length: count }, (_, i) => SPEAKER_POOL[(start + i) % SPEAKER_POOL.length]);
 }
 
-const KEYNOTES: Speaker[] = pickSpeakers(0, 4);
-const WORKSHOPS: Speaker[] = pickSpeakers(4, 4);
-const FIELD_TALKS: Speaker[] = pickSpeakers(8, 12);
-const LIGHTNING_TALKS: Speaker[] = pickSpeakers(0, 18);
-const VIP_NETWORKING: Speaker[] = pickSpeakers(5, 4);
-const SIDE_EVENTS: Speaker[] = pickSpeakers(2, 10);
+const KEYNOTES: Speaker[] = [
+  { name: 'Lily Ray', country: 'USA', title: 'VP of SEO Strategy & Research, Amsive', img: '/assets/lily-ray.webp' },
+  { name: 'Gary Illyes', country: 'Switzerland', title: 'Analyst, Google Search', img: '/assets/gary-illyes.webp' },
+  { name: 'Eli Schwartz', country: 'USA', title: 'Author, Product-Led SEO', img: '/assets/eli-schwartz.webp' },
+  { name: 'Sasha Gusain', country: 'Australia', title: 'Head of Logged Out Experience, Canva', img: '/assets/sasha-gusain.webp' },
+  { name: 'Lars Lofgren', country: 'USA', title: 'Fractional VP of Marketing', img: '/assets/lars-lofgren.webp' },
+  { name: 'Bernard Huang', country: 'USA', title: 'Co-founder, Clearscope', img: '/assets/bernard-huang.webp' },
+];
+const WORKSHOPS: Speaker[] = [
+  { name: 'Marc Moeller', country: 'Germany & Australia', title: 'Founder, Ecomexperts', img: '/assets/marc-moeller.webp' },
+  { name: 'Megan Gougeon', country: 'Canada', title: 'Founder, Portable Professional', img: '/assets/megan-gougeon.webp' },
+  { name: 'Jessica Malnik', country: 'USA', title: 'Founder, Remote Work Tribe & Clarity Briefs', img: '/assets/jessica-malnik.webp' },
+  { name: 'Zack Franklin', country: 'USA', title: 'Founder, SmartEcomSEO', img: '/assets/zack-franklin.webp' },
+];
+const FIELD_TALKS: Speaker[] = [
+  { name: 'Nick Drewe', country: 'Australia', title: 'Founder & CEO, Wethrift', img: '/assets/nick-drewe.webp' },
+  { name: 'Josh Blyskal', country: 'USA', title: 'AI Strategy & Research, Profound', img: '/assets/josh-blyskal.webp' },
+  { name: 'Nik Ranger', country: 'Australia', title: 'Senior Growth Consultant, Dejan', img: '/assets/Nik-Ranger_1763288552080.webp' },
+  { name: 'Loki Yan', country: 'China & Australia', title: 'Co-founder, First Optimise (壹优化)', img: '/assets/loki-yan.webp' },
+  { name: 'Doug Pierce', country: 'USA', title: 'Founder, Cogney', img: '/assets/doug-pierce.webp' },
+  { name: 'Mao Kawana', country: 'Japan', title: 'Project Manager, Faber Company', img: '/assets/mao-kawana.webp' },
+  { name: 'Polina Kogan', country: 'Luxembourg & Russia', title: 'SEO Consultant, Ayudante', img: '/assets/polina-kogan.webp' },
+  { name: 'Victor Huynh', country: 'USA', title: 'CEO & Head of Digital Strategy, Ready Artwork', img: '/assets/victor-huynh.webp' },
+  { name: 'Owain Lloyd-Williams', country: 'UK', title: 'Independent SEO Consultant', img: '/assets/owain-lloyd-williams.webp' },
+  { name: 'Sebastien Edgar', country: 'USA', title: 'Global VP of Digital Marketing, Liferay', img: '/assets/sebastien-edgar.webp' },
+  { name: 'Kun Tang', country: 'China', title: 'Founder and CEO, Jademond', img: '/assets/kun-tang.webp' },
+];
+const LIGHTNING_TALKS: Speaker[] = [
+  { name: 'Apurva Bose', country: 'USA', title: 'VP of Operations & Strategy, Vice President', img: '/assets/apurva-bose.webp' },
+  { name: 'Johann Sathianathen', country: 'USA', title: 'Co-founder, Cyndra AI', img: '/assets/johann-sathianathen.webp' },
+  { name: 'Roger Yin', country: 'Canada', title: 'SEO Partner, HashMatrix', img: '/assets/roger-yin.webp' },
+  { name: 'Tom Qiao', country: 'Canada', title: 'Founder, Convert Better', img: '/assets/tom-qiao.webp' },
+  { name: 'Michael Wu', country: 'Canada', title: 'CEO, Page One Formula', img: '/assets/michael-wu.webp' },
+  { name: 'Begum Kaya', country: 'Turkey', title: 'Organic Growth Strategist, Omniscient Digital', img: '/assets/begum-kaya.webp' },
+  { name: 'David Carrasco', country: 'Spain', title: 'Freelance SEO Consultant', img: '/assets/david-carrasco.webp' },
+  { name: 'Andrea Abbondanza', country: 'Italy', title: 'Founder, Abbondanza Marketing', img: '/assets/andrea-abbondanza.webp' },
+  { name: 'Jonathan Kiekbusch', country: 'UK & Germany', title: 'Founder, SwishDM', img: '/assets/jonathan-kiekbusch.webp' },
+  { name: 'Max Hobbs', country: 'UK', title: 'Global Head of Marketing, LTL School', img: '/assets/max-hobbs.webp' },
+  { name: 'Konstantin Sadekov', country: 'Estonia', title: 'Founder & CEO, Ethical SEO', img: '/assets/konstantin-sadekov.webp' },
+  { name: 'Gabriele Kahlout', country: 'Qatar', title: 'Head of Audience Development, Al Jazeera', img: '/assets/gabriele-kahlout.webp' },
+  { name: 'Sam Penny', country: 'Australia', title: 'SEO Manager, Rest', img: '/assets/sam-penny.webp' },
+  { name: 'Helen Han', country: 'China & Australia', title: 'Technical SEO Executive, Easygo', img: '/assets/helen-han.webp' },
+  { name: 'Jine Wu', country: 'China & Australia', title: 'SEO Operations Manager, REA Group', img: '/assets/jine-wu.webp' },
+  { name: 'Henry Dalziel', country: 'UK & Hong Kong', title: 'SEO Lead, Publicis Media', img: '/assets/henry-dalziel.webp' },
+  { name: 'Killian Kostiha', country: 'France & Hong Kong', title: 'Founder, Get Clicks', img: '/assets/killian-kostiha.webp' },
+  { name: 'Jodie Chan', country: 'Hong Kong', title: 'SVP of Product & Strategic Partnerships, Chinafy', img: '/assets/jodie-chan.webp' },
+  { name: 'Divya Jain', country: 'India', title: 'Global Head of Organic Growth & Brand, Edvoy', img: '/assets/divya-jain.webp' },
+  { name: 'Wasin Mekkit', country: 'Thailand', title: 'Data & Growth Analyst, Statrys', img: '/assets/wasin-mekkit.webp' },
+  { name: 'Mayi', country: 'China', title: 'Founder & CEO, InnoHunts', img: '/assets/mayi.webp' },
+  { name: 'Ben Fang', country: 'China', title: 'CEO & Co-founder, Kingsway Video', img: '/assets/ben-fang.webp' },
+  { name: 'Tupa Lee', country: 'China', title: 'SEO & SEM Consultant', img: '/assets/tupa-lee.webp' },
+];
+const VIP_NETWORKING: Speaker[] = [
+  { name: 'Michael Covel', country: 'USA', title: 'Author, Entrepreneur, Filmmaker', img: '/assets/michael-covel.webp' },
+  { name: 'Marcus Pentzek', country: 'Germany & China', title: 'Partner & Director SEO, Jademond Digital', img: '/assets/Marcus-Pentzek_1763288535689.webp' },
+  { name: 'Tom So', country: 'China', title: 'Founder & CEO, MML Digital (慢慢来)', img: '/assets/tom-so_1763288561181.jpg' },
+];
+const SIDE_EVENTS: Speaker[] = [
+  { name: 'Mudi Elsaid', country: 'Egypt & Italy', title: 'Founder, Tasken.ai', img: '/assets/Mudi-Elsaid_1763288552076.webp' },
+  { name: 'Sacha Fournier', country: 'France & UK', title: 'Founder, JournoFinder.com', img: '/assets/Sacha-Fournier_1763288552081.jpg' },
+  { name: 'Tony Yan', country: 'China', title: 'Co-founder, QuickCreator', img: '/assets/Tony-Yan_1763288561181.jpg' },
+  { name: 'Vinayak Gupta', country: 'India', title: 'Founder, Wordscloud', img: '/assets/vinayak-gupta.webp' },
+  { name: 'Milan Smets', country: 'Sweden', title: 'Co-founder & COO, Playstack', img: '/assets/milan-smets.webp' },
+  { name: 'Jabez Reuben', country: 'India', title: 'Founder, The Blueprints', img: '/assets/Jabez-Reuben_1763288535685.webp' },
+  { name: 'Ilman Akbar', country: 'Indonesia', title: 'Founder & CEO, DailySEO ID & DLYS Consulting', img: '/assets/ilman-akbar.webp' },
+  { name: 'Jacky Lin', country: 'China', title: 'Founder, Wingfuture', img: '/assets/jacky-lin.webp' },
+];
 
 const WHO_TOOK_STAGE = [
   { name: 'Terry Kyle', title: 'Ex-eBay, WPX.net', img: '/figma-assets/jp-avatar.png' },
@@ -234,11 +296,18 @@ function SpeakerCard({ s }: { s: Speaker }) {
           alt={s.name}
           fill
           className="object-cover grayscale-[12%]"
-          sizes="(max-width: 768px) 50vw, 320px"
+          sizes="(max-width: 768px) 50vw, 246px"
         />
       </div>
-      <div className="mt-5 text-[11px] font-semibold tracking-[0.2em] text-white/60 uppercase">
-        {s.country}
+      <div className="mt-5 flex items-center justify-between gap-3">
+        <div className="text-[11px] font-semibold tracking-[0.2em] text-white/60">
+          {s.country}
+        </div>
+        {s.tag && (
+          <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-[0.16em] uppercase bg-[var(--teal)] text-white">
+            {s.tag}
+          </span>
+        )}
       </div>
       <div className="mt-3 text-[16px] md:text-[20px] font-bold text-white leading-tight">
         {s.name}
@@ -261,7 +330,7 @@ function Hero() {
           alt=""
           fill
           priority
-          className="object-cover object-center opacity-80 md:opacity-70"
+          className="object-cover object-center opacity-90 md:opacity-85"
           sizes="100vw"
         />
         {/* Mobile overlay */}
@@ -269,7 +338,7 @@ function Hero() {
           className="absolute inset-0 md:hidden"
           style={{
             background:
-              'linear-gradient(180deg, rgba(3, 6, 13, 0.55) 0%, rgba(3, 6, 13, 0.92) 55%, #03060D 100%)',
+              'linear-gradient(180deg, rgba(3, 6, 13, 0.40) 0%, rgba(3, 6, 13, 0.78) 55%, #03060D 100%)',
           }}
         />
         {/* Desktop overlay */}
@@ -277,7 +346,7 @@ function Hero() {
           className="absolute inset-0 hidden md:block"
           style={{
             background:
-              'linear-gradient(180deg, rgba(3, 6, 13, 0.45) 0%, rgba(3, 6, 13, 0.85) 55%, #03060D 100%)',
+              'linear-gradient(180deg, rgba(3, 6, 13, 0.30) 0%, rgba(3, 6, 13, 0.68) 55%, #03060D 100%)',
           }}
         />
       </div>
@@ -286,24 +355,28 @@ function Hero() {
         {/* Date / venue badge */}
         <div className="flex items-center gap-2 mb-6 md:mb-8">
           <span
-            className="text-white/80"
             style={{
+              color: '#F9F9F9',
               fontFamily: 'General Sans, system-ui, sans-serif',
               fontSize: 14,
+              fontStyle: 'normal',
               fontWeight: 600,
               lineHeight: '160%',
+              opacity: 0.8,
             }}
           >
             September 14–18, 2026
           </span>
           <span className="w-1 h-1 rounded-full bg-white" aria-hidden />
           <span
-            className="text-white/65"
             style={{
+              color: '#F9F9F9',
               fontFamily: 'General Sans, system-ui, sans-serif',
               fontSize: 14,
+              fontStyle: 'normal',
               fontWeight: 500,
               lineHeight: '150%',
+              opacity: 0.67,
             }}
           >
             The St. Regis Shenzhen
@@ -316,16 +389,30 @@ function Hero() {
           style={{ letterSpacing: '-0.01em', fontWeight: 600 }}
         >
           <span className="block">40+ Practitioners.</span>
-          <span className="block gradient-text-brand">One Stage.</span>
+          <span
+            className="gradient-text-brand"
+            style={{
+              display: 'table',
+              textTransform: 'uppercase',
+              background: 'linear-gradient(90deg, #118BAC 0%, #FD4C4C 100%)',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            One Stage.
+          </span>
         </h1>
 
         <p
-          className="mt-6 md:mt-8 max-w-[640px] text-[14px] leading-[160%] md:text-[18px] md:leading-[170%]"
+          className="mt-6 md:mt-8 max-w-[640px]"
           style={{
             color: '#F9F9F9',
             fontFamily: 'General Sans, system-ui, sans-serif',
+            fontSize: 18,
+            fontStyle: 'normal',
             fontWeight: 500,
-            opacity: 0.7,
+            lineHeight: '170%',
           }}
         >
           Every speaker has shipped real work. No theorists. No professional keynoters.
@@ -355,12 +442,16 @@ function Lineup() {
 
         <div className="flex flex-col items-start" style={{ gap: 48 }}>
           <p
-            className="text-white/80 max-w-[640px]"
             style={{
+              width: 768,
+              flexShrink: 0,
+              color: 'var(--White, #F9F9F9)',
               fontFamily: 'General Sans, system-ui, sans-serif',
               fontSize: 16,
+              fontStyle: 'normal',
               fontWeight: 400,
-              lineHeight: '150%',
+              lineHeight: '24px',
+              opacity: 0.8,
             }}
           >
             Each speaker is vetted for three things: a real case study, one concrete tactic
@@ -368,7 +459,7 @@ function Lineup() {
           </p>
 
           <div className="flex flex-col items-start self-stretch" style={{ gap: 48 }}>
-            <LineupSection title="Keynotes" speakers={KEYNOTES} cols={4} />
+            <LineupSection title="Keynotes" speakers={KEYNOTES} cols={3} />
             <LineupSection title="Workshops" speakers={WORKSHOPS} cols={4} />
             <LineupSection title="Field Talks" speakers={FIELD_TALKS} cols={4} />
             <LineupSection title="Lightning Talks" speakers={LIGHTNING_TALKS} cols={5} />
@@ -388,12 +479,14 @@ function LineupSection({
 }: {
   title: string;
   speakers: Speaker[];
-  cols: 4 | 5;
+  cols: 3 | 4 | 5;
 }) {
   const gridClass =
     cols === 5
       ? 'grid gap-4 md:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-5'
-      : 'grid gap-4 md:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4';
+      : cols === 3
+        ? 'grid gap-4 md:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-3'
+        : 'grid gap-4 md:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4';
   return (
     <div className="flex flex-col gap-6 self-stretch">
       <h3
@@ -539,7 +632,8 @@ function Room2025() {
           </div>
         </div>
 
-        {/* Who took that stage */}
+        {/* Who took that stage — temporarily hidden */}
+        {false && (
         <div
           className="flex flex-col items-start self-stretch mt-4"
           style={{
@@ -627,6 +721,7 @@ function Room2025() {
             ))}
           </div>
         </div>
+        )}
       </div>
     </section>
   );

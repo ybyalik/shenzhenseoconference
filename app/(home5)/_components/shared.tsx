@@ -427,7 +427,7 @@ export function Footer({ linkBase = '' }: { linkBase?: string } = {}) {
         </div>
         <hr className="my-12 border-white/10" />
         <div className="flex flex-col md:flex-row md:items-center md:justify-end gap-3 text-[14px] text-white/60">
-          <div>© 2026 ShenzhenSEOConference.com | All rights reserved</div>
+          <div>© 2026 Shenzhen SEO Conference. Owned by Action Digital Publishing LLC (USA). Local Partner in China: 梦泰吉（武汉市）商务咨询有限责任公司</div>
         </div>
       </div>
     </footer>

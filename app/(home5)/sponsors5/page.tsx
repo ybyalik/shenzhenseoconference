@@ -42,8 +42,9 @@ const TIERS = [
     price: '$25,000',
     bullets: [
       'Everything in Gold',
+      '~2 slots only — top brand visibility',
       '1× Large booth in premium high-traffic location, Day 3 & Day 4',
-      '3 VIP tickets, 3 Deluxe, 3 Standard ($5,790 ticket value)',
+      '3 VIP, 2 Deluxe, 2 Standard tickets ($8,400 value)',
     ],
     bestFor:
       'Global SaaS / AI / SEO platforms seeking top-level brand authority.',
@@ -54,24 +55,39 @@ const TIERS = [
     price: '$12,000',
     bullets: [
       'Everything in Silver',
-      '1× Medium booth in standard sponsor area, Day 3 & Day 4',
-      'Booth production & setup included',
-      '2 VIP tickets, 2 Deluxe, 2 Standard ($4,000 ticket value)',
+      '~5 slots — strong presence',
+      '1× Medium booth in centrally located area, Day 3 & Day 4',
+      '2 VIP, 2 Deluxe, 1 Standard tickets ($6,000 value)',
     ],
     bestFor:
-      'SEO tools, SaaS, agencies focused on visibility and conversations.',
+      'SEO agencies, tools, and SaaS focused on visibility and conversations.',
     active: true,
   },
   {
     name: 'Silver',
-    price: '$6,000',
+    price: '$7,500',
     bullets: [
-      'Stage screen logo, all conference days',
+      'Everything in Bronze',
+      '~10 slots — brand & booth presence',
+      '1× Small booth in general sponsor area, Day 3 & Day 4',
+      'Booth production & setup included',
       'Website logo (Homepage + Sponsor page)',
-      'Onsite sponsor wall',
-      '1 VIP ticket ($1,800), 1 Deluxe ($900), 1 Standard ($600)',
+      '1 VIP, 1 Deluxe, 1 Standard tickets ($3,300 value)',
     ],
-    bestFor: 'Smaller tools or agencies testing brand exposure.',
+    bestFor: 'Growing brands wanting a physical presence at a mid-tier cost.',
+    active: false,
+  },
+  {
+    name: 'Bronze',
+    price: '$4,500',
+    bullets: [
+      'Unlimited slots — brand exposure',
+      'Stage screen logo, all conference days',
+      'Website logo (Sponsor page)',
+      'Onsite sponsor wall + event app exposure',
+      '1 VIP ticket ($1,800 value)',
+    ],
+    bestFor: 'Smaller brands or startups seeking brand exposure without a booth.',
     active: false,
   },
 ];
@@ -91,9 +107,9 @@ const REASONS = [
   },
   {
     n: '03',
-    title: 'Decision-Makers, Not Analysts.',
+    title: 'Decision Makers, Not Interns.',
     body:
-      'JP personally curates the attendee list. ~50% in-house SEO / marketing leads, ~50% agency founders and senior practitioners. No interns.',
+      'From in-house marketing leads and agency founders to independent SEO consultants, our attendees represent the top tier of both Eastern and Western markets.',
   },
   {
     n: '04',
@@ -104,20 +120,40 @@ const REASONS = [
 ];
 
 const WHAT_WORKS = [
-  'SEO tools, LLM visibility tools, Martech, content and link building platforms',
-  'Agencies serving either Chinese or international markets',
-  'Domain registrar, web hosting, CDN, technical SEO infrastructure',
-  'Legal / compliance partners for cross-border market entry',
+  {
+    title: 'Software & Platforms',
+    desc: 'SEO, LLM visibility tools, Martech, and link-building platforms.',
+  },
+  {
+    title: 'SEO Agencies',
+    desc: 'Marketing agencies serving Chinese or international markets.',
+  },
+  {
+    title: 'Technical Infrastructure',
+    desc: 'Domain registrars, web hosting, technical SEO infrastructure.',
+  },
+  {
+    title: 'Cross-Border Services',
+    desc: 'Legal, compliance, and market-entry partners.',
+  },
 ];
 
 const WHAT_DOESNT = [
-  'PPC-only platforms',
-  'Generic affiliate networks',
-  'Undisclosed AI content mills',
-  "Anyone whose product would make attendees' jobs harder",
+  {
+    title: 'Unrelated to SEO',
+    desc: 'Strictly PPC platforms or generic affiliate networks.',
+  },
+  {
+    title: 'Reputation Risks',
+    desc: 'Super black-hat, spam, or unethical marketing brands.',
+  },
+  {
+    title: 'Attendee Conflicts',
+    desc: "Any tool that makes an SEO professional's job harder.",
+  },
 ];
 
-const TIER_OPTIONS = ['Silver', 'Gold', 'Platinum', 'Not Sure Yet'];
+const TIER_OPTIONS = ['Platinum', 'Gold', 'Silver', 'Bronze', 'Not Sure Yet'];
 
 /* ───────────────────────────────── ICONS ──────────────────────────────────── */
 
@@ -267,16 +303,15 @@ function Hero() {
           alt=""
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-center opacity-90 md:opacity-85"
           sizes="100vw"
-          style={{ opacity: 0.7 }}
         />
         {/* Mobile overlay */}
         <div
           className="absolute inset-0 md:hidden"
           style={{
             background:
-              'linear-gradient(180deg, rgba(3, 6, 13, 0.55) 0%, rgba(3, 6, 13, 0.92) 55%, #03060D 100%)',
+              'linear-gradient(180deg, rgba(3, 6, 13, 0.40) 0%, rgba(3, 6, 13, 0.78) 55%, #03060D 100%)',
           }}
         />
         {/* Desktop overlay */}
@@ -284,7 +319,7 @@ function Hero() {
           className="absolute inset-0 hidden md:block"
           style={{
             background:
-              'linear-gradient(180deg, rgba(3, 6, 13, 0.45) 0%, rgba(3, 6, 13, 0.85) 55%, #03060D 100%)',
+              'linear-gradient(180deg, rgba(3, 6, 13, 0.30) 0%, rgba(3, 6, 13, 0.68) 55%, #03060D 100%)',
           }}
         />
       </div>
@@ -320,11 +355,16 @@ function Hero() {
         {/* Headline */}
         <h1 className="display uppercase text-white" style={{ letterSpacing: '-0.01em' }}>
           <span
-            className="block gradient-text-brand"
+            className="gradient-text-brand"
             style={{
-              fontSize: 'clamp(28px, 6vw, 64px)',
+              display: 'table',
+              fontSize: 48,
               fontWeight: 600,
-              lineHeight: '120%',
+              lineHeight: '150%',
+              background: 'linear-gradient(90deg, #118BAC 0%, #FD4C4C 100%)',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
             }}
           >
             Your Brand.
@@ -332,9 +372,9 @@ function Hero() {
           <span
             className="block"
             style={{
-              fontSize: 'clamp(28px, 6vw, 64px)',
+              fontSize: 48,
               fontWeight: 600,
-              lineHeight: '120%',
+              lineHeight: '150%',
             }}
           >
             In the Room Where
@@ -342,9 +382,9 @@ function Hero() {
           <span
             className="block"
             style={{
-              fontSize: 'clamp(28px, 6vw, 64px)',
+              fontSize: 48,
               fontWeight: 600,
-              lineHeight: '120%',
+              lineHeight: '150%',
             }}
           >
             East Meets West.
@@ -513,7 +553,7 @@ function ThreeTiers() {
               letterSpacing: '-2px',
             }}
           >
-            Three Tiers. Clear What You Get.
+            Four Tiers. Clear What You Get.
           </h2>
           <p
             className="text-left md:text-center"
@@ -530,7 +570,7 @@ function ThreeTiers() {
           </p>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-3 self-stretch">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4 self-stretch">
           {TIERS.map((t) => (
             <div
               key={t.name}
@@ -640,8 +680,7 @@ function WhyThisEvent() {
               letterSpacing: '-2px',
             }}
           >
-            <span className="block">Why This Event.</span>
-            <span className="block">Not Another One.</span>
+            Why This Event. Not Another One.
           </h2>
           <p
             style={{
@@ -690,6 +729,7 @@ function WhyThisEvent() {
                 </h3>
               </div>
               <p
+                className="md:pl-[74px]"
                 style={{
                   color: 'rgba(249, 249, 249, 0.50)',
                   fontFamily: 'General Sans, system-ui, sans-serif',
@@ -712,157 +752,91 @@ function WhyThisEvent() {
 const SPONSOR_QUOTES = [
   {
     text:
-      "There are very few opportunities for Western and Chinese to get together in one event like this. It's very unique.",
-    name: 'Zack Franklin',
-    role: 'SEO agency owner, 9 years living in Shenzhen',
-    img: '/figma-assets/Zack-Franklin1.jpg',
+      "Sponsoring the Shenzhen SEO Conference delivered real business results. Our SEO agency gained new SEO clients I'm still working with today. The direct access to a highly engaged, decision-ready audience made it one of the best sponsorship opportunities I came across.",
+    name: 'Marc Möller',
+    role: 'Founder of Ecomexperts',
+    img: '/assets/marc-moeller.webp',
   },
   {
     text:
-      'I got to tour around a little bit and it kind of reminded me, this is like the US. Super developed. Very quiet, very organized.',
-    name: 'Stewart Vickers',
-    role: '2025 Speaker',
-    img: '/figma-assets/Mike-Dee1.jpg',
-  },
-  {
-    text:
-      'The clearest business ROI of any conference I have attended. I should have tapped this market years ago.',
-    name: 'Mike Dee',
-    role: '2025 Speaker',
-    img: '/figma-assets/Mike-Dee1.jpg',
+      '深圳SEO大会是一个非常有价值的平台，让我有机会接触优秀的人、优秀的公司，以及关于 SEO 和 GEO 的新想法 … 我也是 John 的粉丝，也真心希望这个大会能够持续成长、越办越好。',
+    name: 'Hommer Zhao',
+    role: 'CEO at Cloom Tech',
+    img: '/assets/hommer-zhao.webp',
   },
 ];
 
 function QuoteBlock() {
-  const [idx, setIdx] = useState(0);
-  const total = SPONSOR_QUOTES.length;
-  const q = SPONSOR_QUOTES[idx];
-
   return (
-    <section className="bg-[#03060d]">
-      <div
-        className="container flex flex-col self-stretch"
-        style={{ padding: 'clamp(48px, 6vw, 96px) 24px', gap: 24 }}
-      >
-        <div
-          className="flex flex-col items-center self-stretch text-center"
+    <section className="bg-[#03060d] py-12 lg:py-24">
+      <div className="container">
+        <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
+          What did the previous attendees say
+        </div>
+        <h2
+          className="display uppercase self-stretch mb-12 max-w-[900px]"
           style={{
-            padding: 'clamp(40px, 6vw, 64px) clamp(24px, 8vw, 96px)',
-            gap: 24,
-            borderRadius: 32,
-            border: '1px solid rgba(249, 249, 249, 0.20)',
-            background:
-              'linear-gradient(160deg, #114555 0%, #0a3142 35%, #06222d 70%, #051820 100%)',
+            color: '#F9F9F9',
+            fontFamily: 'Unbounded, system-ui, sans-serif',
+            fontSize: 28,
+            fontWeight: 600,
+            lineHeight: '120%',
+            letterSpacing: '-2px',
           }}
         >
-          <svg
-            viewBox="0 0 64 50"
-            aria-hidden="true"
-            style={{ width: 53.169, height: 48.741, color: '#eb3030' }}
-          >
-            <path
-              fill="currentColor"
-              d="M0 50V28C0 12 9 2 24 0l3 7c-7 2-12 8-12 14h12v29H0Zm37 0V28c0-16 9-26 24-28l3 7c-7 2-12 8-12 14h12v29H37Z"
-            />
-          </svg>
-          <p
-            className="display text-white max-w-[900px]"
-            style={{
-              fontFamily: 'Unbounded, system-ui, sans-serif',
-              fontSize: 'clamp(20px, 2.5vw, 28px)',
-              fontWeight: 700,
-              lineHeight: '140%',
-              textTransform: 'uppercase',
-            }}
-          >
-            {q.text}
-          </p>
-          <div className="flex items-center gap-3 self-start md:self-auto">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={q.img}
-              alt={q.name}
-              className="w-12 h-12 rounded-full object-cover"
-            />
-            <div className="flex flex-col items-start text-left">
-              <span
-                className="display"
-                style={{
-                  color: '#F9F9F9',
-                  fontFamily: 'Unbounded, system-ui, sans-serif',
-                  fontSize: 16,
-                  fontWeight: 500,
-                  lineHeight: '160%',
-                }}
+          What 2025 Attendees Told Us.
+        </h2>
+
+        {/* Mobile: snap-x carousel */}
+        <div className="md:hidden -mx-6 overflow-x-auto no-scrollbar snap-x snap-mandatory">
+          <div className="flex gap-4 pb-2 px-8">
+            {SPONSOR_QUOTES.map((q) => (
+              <figure
+                key={q.name}
+                className="flex-none w-[85%] snap-start rounded-2xl border border-white/10 p-6 bg-[#06101a]/40 flex flex-col"
               >
-                {q.name}
-              </span>
-              <span
-                style={{
-                  color: '#F9F9F9',
-                  fontFamily: 'General Sans, system-ui, sans-serif',
-                  fontSize: 12,
-                  fontWeight: 500,
-                  lineHeight: '160%',
-                }}
-              >
-                {q.role}
-              </span>
-            </div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/figma-assets/quote-red.png" alt="" className="w-9 h-auto mb-4" />
+                <blockquote className="text-[15px] text-white/85 leading-[1.55] flex-1">
+                  {q.text}
+                </blockquote>
+                <figcaption className="mt-6 flex items-center gap-3">
+                  <div className="relative w-10 h-10 shrink-0 rounded-full overflow-hidden bg-white/10 ring-1 ring-white/15">
+                    <Image src={q.img} alt={q.name} fill className="object-cover" sizes="40px" />
+                  </div>
+                  <div>
+                    <div className="text-[14px] font-bold text-white leading-tight">{q.name}</div>
+                    <div className="text-[12px] text-white/55 leading-tight mt-0.5">{q.role}</div>
+                  </div>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
 
-        {/* Carousel controls — dashes left, arrows right (below the box) */}
-        <div className="flex items-center justify-between self-stretch gap-4">
-          <div className="flex items-center gap-1.5">
-            {SPONSOR_QUOTES.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                aria-label={`Show quote ${i + 1}`}
-                onClick={() => setIdx(i)}
-                className="h-[2px] transition-all"
-                style={{
-                  width: 28,
-                  background: i === idx ? '#eb3030' : 'rgba(249,249,249,0.18)',
-                }}
-              />
-            ))}
-          </div>
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              aria-label="Previous quote"
-              onClick={() => setIdx((i) => (i - 1 + total) % total)}
-              className="flex items-center justify-center hover:bg-white/5 transition-colors"
-              style={{
-                padding: 16,
-                gap: 8,
-                borderRadius: 100,
-                border: '1px solid rgba(249, 249, 249, 0.20)',
-                background: 'transparent',
-              }}
+        {/* Desktop: 2-col grid */}
+        <div className="hidden md:grid gap-5 md:grid-cols-2">
+          {SPONSOR_QUOTES.map((q) => (
+            <figure
+              key={q.name}
+              className="rounded-2xl border border-white/10 p-6 md:p-7 bg-[#06101a]/40 flex flex-col"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/figma-assets/arrow-left.svg" alt="" className="w-6 h-6" />
-            </button>
-            <button
-              type="button"
-              aria-label="Next quote"
-              onClick={() => setIdx((i) => (i + 1) % total)}
-              className="flex items-center justify-center hover:bg-white/5 transition-colors"
-              style={{
-                padding: 16,
-                gap: 8,
-                borderRadius: 100,
-                border: '1px solid rgba(249, 249, 249, 0.20)',
-                background: 'transparent',
-              }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/figma-assets/arrow-right.svg" alt="" className="w-6 h-6" />
-            </button>
-          </div>
+              <img src="/figma-assets/quote-red.png" alt="" className="w-9 h-auto mb-4" />
+              <blockquote className="text-[15px] md:text-[16px] text-white/85 leading-[1.55] flex-1">
+                {q.text}
+              </blockquote>
+              <figcaption className="mt-6 flex items-center gap-3">
+                <div className="relative w-10 h-10 shrink-0 rounded-full overflow-hidden bg-white/10 ring-1 ring-white/15">
+                  <Image src={q.img} alt={q.name} fill className="object-cover" sizes="40px" />
+                </div>
+                <div>
+                  <div className="text-[14px] font-bold text-white leading-tight">{q.name}</div>
+                  <div className="text-[12px] text-white/55 leading-tight mt-0.5">{q.role}</div>
+                </div>
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </div>
     </section>
@@ -915,16 +889,16 @@ function WhoWeLetIn() {
               lineHeight: '24px',
             }}
           >
-            Sponsorship here is not a credit card transaction. We review every application.
+            Sponsorship at this conference is not a credit card transaction. We manually review every application to protect the room.
           </p>
         </div>
 
         <div className="flex flex-col md:flex-row self-stretch" style={{ gap: 24 }}>
-          {/* What works — grows to fill remaining width */}
+          {/* What works — ~60% width */}
           <div
             className="flex flex-col items-start"
             style={{
-              flex: '1 0 0',
+              flex: '3 1 0%',
               padding: 'clamp(24px, 4vw, 48px)',
               gap: 32,
               borderRadius: 32,
@@ -947,7 +921,7 @@ function WhoWeLetIn() {
             <ul className="flex flex-col self-stretch" style={{ gap: 16 }}>
               {WHAT_WORKS.map((item) => (
                 <li
-                  key={item}
+                  key={item.title}
                   className="flex items-start"
                   style={{
                     gap: 12,
@@ -959,18 +933,19 @@ function WhoWeLetIn() {
                   }}
                 >
                   <CheckIcon className="w-5 h-5 shrink-0 mt-0.5 text-[#118bac]" />
-                  <span>{item}</span>
+                  <span>
+                    <span style={{ fontWeight: 600 }}>{item.title}:</span> {item.desc}
+                  </span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* What doesn't — fixed 480px */}
+          {/* What doesn't — ~40% width */}
           <div
             className="flex flex-col items-start"
             style={{
-              width: 480,
-              maxWidth: '100%',
+              flex: '2 1 0%',
               padding: 'clamp(24px, 4vw, 48px)',
               gap: 32,
               borderRadius: 32,
@@ -992,7 +967,7 @@ function WhoWeLetIn() {
             <ul className="flex flex-col self-stretch" style={{ gap: 16 }}>
               {WHAT_DOESNT.map((item) => (
                 <li
-                  key={item}
+                  key={item.title}
                   className="flex items-start"
                   style={{
                     gap: 12,
@@ -1004,7 +979,9 @@ function WhoWeLetIn() {
                   }}
                 >
                   <XIcon className="w-5 h-5 shrink-0 mt-0.5 text-[#eb3030]" />
-                  <span>{item}</span>
+                  <span>
+                    <span style={{ fontWeight: 600 }}>{item.title}:</span> {item.desc}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -1035,9 +1012,9 @@ function WhoWeLetIn() {
               lineHeight: '20px',
             }}
           >
-            The attendee list is the product. If a sponsor conflicts with attendee interests,
-            say a scraping tool when 40% of the room owns websites getting scraped, we pass.
-            Your ROI and their trust stay intact.
+            The quality of our attendee list is the foundation of this conference. If a
+            prospective sponsor&apos;s product misaligns with our audience, we politely decline.
+            We filter out the noise to ensure attendee trust and your ROI stay completely intact.
           </p>
         </div>
       </div>
@@ -1048,7 +1025,30 @@ function WhoWeLetIn() {
 /* ──────────────────────────── 6. APPLY TO SPONSOR ─────────────────────────── */
 
 function ApplyToSponsor() {
-  const [tier, setTier] = useState('Silver');
+  const [tier, setTier] = useState('Not Sure Yet');
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    setStatus('submitting');
+    try {
+      const res = await fetch('/api/sponsorship-inquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contactName: fd.get('contact'),
+          email: fd.get('email'),
+          tier,
+          message: (fd.get('message') as string) || undefined,
+        }),
+      });
+      if (!res.ok) throw new Error('Request failed');
+      setStatus('success');
+    } catch {
+      setStatus('error');
+    }
+  }
 
   return (
     <section id="apply" className="bg-[#03060d]">
@@ -1105,8 +1105,11 @@ function ApplyToSponsor() {
                 lineHeight: '160%',
               }}
             >
-              Fill the form. We send the full 2026 sponsorship deck (tiers, audience data,
-              past-year stats). If there&apos;s a fit, JP follows up personally within 48 hours.
+              Contact us via email or fill out the inquiry form.
+              <br />
+              <br />
+              We will reply within 48 hours with our full 2026 sponsorship deck (with detailed
+              tiers and attendee data) and discuss potential partnership opportunities.
             </p>
             <a
               href="mailto:sponsor@shenzhenseoconference.com"
@@ -1124,20 +1127,48 @@ function ApplyToSponsor() {
           </div>
 
           {/* Right form */}
+          {status === 'success' ? (
+            <div
+              className="flex flex-col gap-4 md:flex-1 md:max-w-[560px] justify-center self-stretch"
+              style={{
+                padding: 'clamp(24px, 4vw, 40px)',
+                borderRadius: 20,
+                border: '1px solid #118BAC',
+                background: '#0D1017',
+              }}
+              role="status"
+            >
+              <div
+                className="display uppercase"
+                style={{
+                  color: '#118BAC',
+                  fontFamily: 'Unbounded, system-ui, sans-serif',
+                  fontSize: 'clamp(18px, 2.5vw, 24px)',
+                  fontWeight: 600,
+                  lineHeight: '120%',
+                }}
+              >
+                Success.
+              </div>
+              <p
+                style={{
+                  color: '#F9F9F9',
+                  fontFamily: 'General Sans, system-ui, sans-serif',
+                  fontSize: 16,
+                  fontWeight: 400,
+                  lineHeight: '24px',
+                }}
+              >
+                Expect the 2026 sponsorship deck and next steps in your inbox within 48 hours.
+              </p>
+            </div>
+          ) : (
           <form
             className="flex flex-col gap-4 md:flex-1 md:max-w-[560px]"
-            onSubmit={(e) => {
-              e.preventDefault();
-              // TODO: wire up to /api/sponsor-apply
-            }}
+            onSubmit={handleSubmit}
           >
-            <Input name="company" placeholder="Company Name" />
-            <div className="flex flex-col md:flex-row gap-4">
-              <Input name="contact" placeholder="Contact Name" />
-              <Input name="role" placeholder="Role" />
-            </div>
-            <Input name="email" type="email" placeholder="E-mail Address" />
-            <Input name="phone" placeholder="Phone (Optional)" />
+            <Input name="contact" placeholder="Contact Name" required />
+            <Input name="email" type="email" placeholder="E-mail Address" required />
 
             {/* Target tier chips */}
             <div
@@ -1204,14 +1235,16 @@ function ApplyToSponsor() {
 
             <button
               type="submit"
-              className="display gradient-cta rounded-full uppercase mt-2"
+              disabled={status === 'submitting'}
+              className="display gradient-cta rounded-full uppercase mt-2 disabled:opacity-60"
               style={{
-                display: 'flex',
-                padding: '16px 24px',
+                display: 'inline-flex',
+                padding: '14px 32px',
                 justifyContent: 'center',
                 alignItems: 'center',
                 gap: 12,
-                width: '100%',
+                width: 'auto',
+                alignSelf: 'flex-start',
                 color: '#F9F9F9',
                 fontFamily: 'General Sans, system-ui, sans-serif',
                 fontSize: 16,
@@ -1219,10 +1252,25 @@ function ApplyToSponsor() {
                 lineHeight: '24px',
               }}
             >
-              Send Message
+              {status === 'submitting' ? 'Sending…' : 'Send Message'}
               <ArrowUpRight className="w-4 h-4" />
             </button>
+
+            {status === 'error' && (
+              <p
+                role="alert"
+                style={{
+                  color: '#EB3030',
+                  fontFamily: 'General Sans, system-ui, sans-serif',
+                  fontSize: 14,
+                  lineHeight: '20px',
+                }}
+              >
+                Something went wrong. Please try again or email us directly.
+              </p>
+            )}
           </form>
+          )}
         </div>
       </div>
     </section>
@@ -1430,7 +1478,8 @@ export default function Sponsors5Page() {
       <QuoteBlock />
       <WhoWeLetIn />
       <ApplyToSponsor />
-      <YearOne2025 />
+      {/* 2025 Partners section temporarily hidden */}
+      {/* <YearOne2025 /> */}
       <Footer linkBase="/" />
       <BackToTop />
     </main>
