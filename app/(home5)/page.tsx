@@ -34,7 +34,7 @@ const A = {
 const SPONSORS = {
   platinum: [] as { src: string; alt: string; h: number }[],
   gold: [
-    { src: '/figma-assets/sponsor-swishdm.png', alt: 'Swish DM', h: 56 },
+    { src: '/assets/swishdm.webp', alt: 'Swish DM', h: 56 },
     { src: '/figma-assets/sponsor-dynadot.png', alt: 'Dynadot', h: 48 },
   ],
   silver: [

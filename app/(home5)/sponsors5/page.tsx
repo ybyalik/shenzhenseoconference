@@ -17,7 +17,7 @@ const SPONSORS_2026: { platinum: Logo[]; gold: Logo[]; silver: Logo[]; bronze: L
   ],
   gold: [
     { src: '/assets/topgus.svg', alt: 'TopGus', h: 44 },
-    { src: '/figma-assets/sponsor-swishdm.png', alt: 'Swish', h: 48 },
+    { src: '/assets/swishdm.webp', alt: 'Swish', h: 48 },
   ],
   silver: [
     { src: '/figma-assets/sponsor-dynadot.png', alt: 'Dynadot', h: 36 },
