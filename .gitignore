@@ -22,3 +22,5 @@ public/*.mov
 # TypeScript incremental build cache
 tsconfig.tsbuildinfo
 *.tsbuildinfo
+.vercel
+.env*.local

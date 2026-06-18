@@ -199,25 +199,40 @@ function TierFilter({
 
 type SideEvent = {
   dayLabel: string;
-  title: string;
-  body: string;
-  badge: string;
+  badge?: string;
+  title?: string;
+  details: { label: string; value: string }[];
 };
+
+const SIDE_EVENT_DETAILS = [
+  { label: 'Time', value: '1:00 PM – 5:00 PM' },
+  { label: 'Venue', value: 'To be announced (Nanshan or Futian area)' },
+  {
+    label: 'Note',
+    value:
+      'These events will be held off-site and will not take place at the main conference hotel.',
+  },
+  { label: 'Schedule', value: 'Detailed agenda coming soon.' },
+];
 
 const SIDE_EVENTS: SideEvent[] = [
   {
-    dayLabel: 'Day 1 · Sat Sep 12',
-    title: 'TBD',
-    body:
-      'Two afternoon side events before the conference starts. Free and open to anyone. No conference ticket required.',
+    dayLabel: 'Sat Sep 12',
     badge: 'Free · Open',
+    details: SIDE_EVENT_DETAILS,
   },
   {
-    dayLabel: 'Day 1 · Sun Sep 13',
-    title: 'TBD',
-    body:
-      'Two afternoon side events before the conference starts. Free and open to anyone. No conference ticket required.',
+    dayLabel: 'Sun Sep 13',
     badge: 'Free · Open',
+    details: SIDE_EVENT_DETAILS,
+  },
+  {
+    dayLabel: 'Sun Sep 13',
+    title: 'Pre-event Speaker Dinner',
+    details: [
+      { label: 'Time', value: '19:00 – 21:00' },
+      { label: 'Venue', value: 'To be announced' },
+    ],
   },
 ];
 
@@ -239,9 +254,11 @@ function SideEventCard({ event }: { event: SideEvent }) {
   return (
     <div className="rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:p-9">
       <div className="flex flex-col items-start gap-3 md:flex-row md:items-start md:justify-between md:flex-wrap">
-        <span className="order-1 md:order-2">
-          <TierBadge label={event.badge} />
-        </span>
+        {event.badge && (
+          <span className="order-1 md:order-2">
+            <TierBadge label={event.badge} />
+          </span>
+        )}
         <div
           className="order-2 md:order-1 uppercase text-[14px] md:text-[16px] tracking-[0.7px] md:tracking-[0.8px]"
           style={{
@@ -254,26 +271,33 @@ function SideEventCard({ event }: { event: SideEvent }) {
           {event.dayLabel}
         </div>
       </div>
-      <h3
-        className="display uppercase mt-3 text-[20px] md:text-[28px] leading-normal md:leading-[40px]"
-        style={{
-          color: '#F9F9F9',
-          fontWeight: 700,
-        }}
-      >
-        {event.title}
-      </h3>
-      <p
-        className="mt-4 text-white/75 max-w-[820px]"
-        style={{
-          fontFamily: 'General Sans, system-ui, sans-serif',
-          fontSize: 16,
-          fontWeight: 400,
-          lineHeight: '160%',
-        }}
-      >
-        {event.body}
-      </p>
+      {event.title && (
+        <h3
+          className="display uppercase mt-3 text-[20px] md:text-[28px] leading-normal md:leading-[40px]"
+          style={{
+            color: '#F9F9F9',
+            fontWeight: 700,
+          }}
+        >
+          {event.title}
+        </h3>
+      )}
+      <dl className="mt-4 flex flex-col gap-2 max-w-[820px]">
+        {event.details.map((d) => (
+          <div
+            key={d.label}
+            className="text-white/75"
+            style={{
+              fontFamily: 'General Sans, system-ui, sans-serif',
+              fontSize: 16,
+              fontWeight: 400,
+              lineHeight: '160%',
+            }}
+          >
+            <span className="font-semibold text-white">{d.label}:</span> {d.value}
+          </div>
+        ))}
+      </dl>
     </div>
   );
 }
@@ -312,8 +336,8 @@ function PreConferenceSection() {
         <div
           className="flex flex-col items-start self-stretch gap-10 md:gap-16"
         >
-          {SIDE_EVENTS.map((e) => (
-            <div key={e.dayLabel} className="w-full">
+          {SIDE_EVENTS.map((e, i) => (
+            <div key={i} className="w-full">
               <SideEventCard event={e} />
             </div>
           ))}
@@ -326,7 +350,7 @@ function PreConferenceSection() {
 /* ───────────────────────────── CONFERENCE EVENTS ─────────────────────────── */
 
 type AgendaItem = { time: string; title: string; body: React.ReactNode };
-type TabSet = { label: string; items: AgendaItem[] };
+type TabSet = { label: string; items: AgendaItem[]; note?: React.ReactNode };
 
 type ConferenceDay = {
   dayLabel: string;
@@ -338,6 +362,7 @@ type ConferenceDay = {
   interpretation?: boolean;
   tabs?: TabSet[];
   items?: AgendaItem[];
+  note?: React.ReactNode;
   collapsible?: boolean;
   defaultOpen?: boolean;
 };
@@ -351,7 +376,7 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
       </>
     ),
     body:
-      "Start the week hands-on. Morning workshops led by speakers. Afternoon tours into the city's working districts: Huaqiangbei electronics, Nanshan tech, the bay.",
+      'Kick off the week at your own pace with workshops (tailored for Chinese attendees) or city tours (curated for international attendees). You can mix, match, and choose whichever exclusive experiences that best fit your schedule.',
     badge: 'Deluxe + VIP',
     tiers: ['DELUXE', 'VIP'],
     collapsible: true,
@@ -361,88 +386,113 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
         label: 'City Tours',
         items: [
           {
-            time: '10:00–13:00',
+            time: '09:00 – 12:00',
             title: 'Morning Tours',
-            body:
-              'Huaqiangbei (electronics), Nanshan (tech), or Shekou Bay. Small groups, local guides.',
+            body: 'Detailed itineraries coming soon',
           },
           {
-            time: '14:30–17:30',
+            time: '12:30 – 14:00',
+            title: 'Lunch',
+            body: 'Served at the conference hotel',
+          },
+          {
+            time: '14:30 – 17:30',
             title: 'Afternoon Tours',
-            body:
-              '3-hour deep-dive workshops. Technical SEO audits, content strategy, cross-border market entry.',
+            body: 'Detailed itineraries coming soon',
           },
           {
-            time: '19:00',
-            title: 'Welcome Dinner',
-            body: 'Open to all Day 1 attendees.',
+            time: '18:00 – 19:30',
+            title: 'Networking Dinner',
+            body: 'Served at the conference hotel',
+          },
+          {
+            time: '19:30 – 22:00',
+            title: 'Night Tours',
+            body: 'Detailed itineraries coming soon',
           },
         ],
+        note: (
+          <p>
+            <span className="font-semibold">Note:</span> We are also designing curated full-day
+            tour options. Complete details and itinerary choices for all tracks will be announced
+            soon.
+          </p>
+        ),
       },
       {
         label: 'Workshops',
         items: [
           {
-            time: '10:00–13:00',
+            time: '09:00 – 12:00',
             title: 'Morning Workshops',
-            body:
-              'Speaker-led hands-on workshops. Technical SEO audits, content strategy, cross-border market entry.',
+            body: 'Two concurrent sessions; choose one',
           },
           {
-            time: '14:30–17:30',
+            time: '12:30 – 14:00',
+            title: 'Lunch',
+            body: 'Served at the conference hotel',
+          },
+          {
+            time: '14:30 – 17:30',
             title: 'Afternoon Workshops',
-            body: 'Continued deep work with speakers in small groups.',
+            body: 'Two concurrent sessions; choose one',
           },
           {
-            time: '19:00',
-            title: 'Welcome Dinner',
-            body: 'Open to all Day 1 attendees.',
+            time: '18:00 – 19:30',
+            title: 'Networking Dinner',
+            body: 'Served at the conference hotel',
           },
         ],
+        note: (
+          <p>
+            <span className="font-semibold">Note:</span> Workshop attendees are warmly welcome to
+            join the evening Night Tours to network and mingle with our international attendees.
+          </p>
+        ),
       },
     ],
   },
   {
     dayLabel: 'Day 2 · Tue Sep 15',
-    title: 'SEO Masterminds',
-    body: (
-      <>
-        Small-group problem-solving.{' '}
-        <strong className="font-semibold" style={{ color: '#5DAEDB' }}>
-          6-7 people per table
-        </strong>
-        , one expert leading each. Bring your actual work: site audits, ranking drops,
-        market-entry questions.
-      </>
-    ),
+    title: 'SEO Mastermind',
+    body:
+      'Connect with SEO professionals for a full day of peer-to-peer networking. Solve your biggest growth challenges and elevate your strategy. Mastermind groups are available in both English and Mandarin.',
     badge: 'Deluxe + VIP',
     tiers: ['DELUXE', 'VIP'],
-    live: true,
     collapsible: true,
-    defaultOpen: false,
+    defaultOpen: true,
     items: [
-      {
-        time: '09:30–12:30',
-        title: 'Morning Mastermind',
-        body: 'Three rounds, rotating tables. Each table led by a different expert.',
-      },
-      {
-        time: '14:00–17:00',
-        title: 'Afternoon Mastermind',
-        body: 'Repeat with new tables. Bring your hardest open question.',
-      },
-      {
-        time: '19:00',
-        title: 'Speaker Dinner',
-        body: 'Closed dinner with the mastermind leads.',
-      },
+      { time: '10:00 – 10:30', title: 'Mastermind Rules & On-site Grouping', body: '' },
+      { time: '10:30 – 12:30', title: 'Morning Mastermind Sessions', body: '' },
+      { time: '12:30 – 14:00', title: 'Lunch Break', body: '' },
+      { time: '14:00 – 17:00', title: 'Afternoon Mastermind Sessions', body: '' },
+      { time: '19:00 – 21:00', title: 'Networking Dinner', body: '' },
     ],
+    note: (
+      <div className="flex flex-col gap-3">
+        <div
+          className="display uppercase text-[14px] md:text-[16px]"
+          style={{ color: '#F9F9F9', fontWeight: 700 }}
+        >
+          Group Placement Note
+        </div>
+        <p>
+          <span className="font-semibold">How Groups Are Formed:</span> Groups are limited to 6–7
+          attendees and paired using a custom AI matching system based on your on-site survey.
+        </p>
+        <p>
+          <span className="font-semibold">Important:</span> Because dynamic AI grouping takes place
+          during the first 30 minutes, punctuality is highly recommended to ensure your optimal
+          placement.
+        </p>
+      </div>
+    ),
   },
   {
     dayLabel: 'Day 3 · Wed Sep 16',
     title: (
       <>
-        Main<br className="md:hidden" /> Conference ·<br className="md:hidden" /> Day 1
+        Main<br className="md:hidden" /> Conference
       </>
     ),
     body: 'The main stage opens.',
@@ -452,33 +502,18 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
     collapsible: true,
     defaultOpen: true,
     items: [
-      {
-        time: 'Morning',
-        title: '2 Keynotes + 4 Field Talks',
-        body: '45 min keynotes, 30 min talks.',
-      },
-      {
-        time: '12:30–13:45',
-        title: 'Lunch',
-        body: 'Full buffet. Interpreters on floor.',
-      },
-      {
-        time: 'Afternoon',
-        title: '2 Keynotes + 4 Talks + 6 Lightning',
-        body: '10 min lightning rounds, rapid-fire.',
-      },
-      {
-        time: '19:30',
-        title: 'Opening Party',
-        body: 'Rooftop bar, 80th floor.',
-      },
+      { time: 'Morning', title: 'Keynotes, Field Talks & Lightning Talks', body: '' },
+      { time: 'Lunch', title: 'Buffet Lunch', body: '' },
+      { time: 'Afternoon', title: 'Keynotes, Field Talks & Lightning Talks', body: '' },
+      { time: 'Evening', title: 'Opening Party', body: 'Light dinner included' },
     ],
+    note: <p>Detailed schedule coming soon.</p>,
   },
   {
     dayLabel: 'Day 4 · Thu Sep 17',
     title: (
       <>
-        Main<br className="md:hidden" /> Conference ·<br className="md:hidden" /> Day 2
+        Main<br className="md:hidden" /> Conference
       </>
     ),
     body: 'Day two of the main stage. Same format as Day 3. More speakers. Closing party.',
@@ -488,27 +523,12 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
     collapsible: true,
     defaultOpen: true,
     items: [
-      {
-        time: 'Morning',
-        title: '2 Keynotes + 4 Field Talks',
-        body: 'Same format as Day 3.',
-      },
-      {
-        time: '12:30–13:45',
-        title: 'Lunch',
-        body: 'Full buffet. Interpreters on floor.',
-      },
-      {
-        time: 'Afternoon',
-        title: '2 Keynotes + 4 Talks + 6 Lightning',
-        body: '10 min lightning rounds, rapid-fire.',
-      },
-      {
-        time: '19:30',
-        title: 'Closing Party',
-        body: 'All attendees.',
-      },
+      { time: 'Morning', title: 'Keynotes, Field Talks & Lightning Talks', body: '' },
+      { time: 'Lunch', title: 'Buffet Lunch', body: '' },
+      { time: 'Afternoon', title: 'Keynotes, Field Talks & Lightning Talks', body: '' },
+      { time: 'Evening', title: 'Closing Party', body: 'Light dinner included' },
     ],
+    note: <p>Detailed schedule coming soon.</p>,
   },
   {
     dayLabel: 'Day 5 · Fri Sep 18',
@@ -545,19 +565,22 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
         ),
       },
       {
-        time: 'Morning',
-        title: 'Structured 1:1 Speed-Meetings',
-        body: '15 min each, pre-matched by JP.',
+        time: '12:00 PM – 3:00 PM',
+        title: 'The Transition, Lunch & Check-In',
+        body:
+          'Luxury coach transfer from The St. Regis to MGM Shenzhen (lunch provided), followed by check-in and local welcome tea.',
       },
       {
-        time: 'Afternoon',
-        title: 'Small-Group Sessions',
-        body: 'By topic or region.',
+        time: '3:00 PM – 6:00 PM',
+        title: 'The Strategic Exchange (Indoor)',
+        body:
+          'A high-energy, structured afternoon featuring expert talks and panels, with three rounds of speed roundtable networking.',
       },
       {
-        time: 'Evening',
-        title: 'Private Dinner',
-        body: '',
+        time: '6:00 PM – 9:30 PM',
+        title: 'The Beachfront Gala (MGM Lawn)',
+        body:
+          'Sunset cocktail hour with professional beachside portrait photography, followed by a curated, premium VIP dinner by the ocean.',
       },
     ],
   },
@@ -645,6 +668,7 @@ function ConferenceDayCard({ day, activeTier }: { day: ConferenceDay; activeTier
   if (activeTier !== 'ALL' && !day.tiers.includes(activeTier)) return null;
 
   const items: AgendaItem[] = day.tabs ? day.tabs[activeTab].items : day.items ?? [];
+  const note: React.ReactNode = day.tabs ? day.tabs[activeTab].note : day.note;
   const showItems = !isCollapsible || open;
 
   return (
@@ -762,6 +786,21 @@ function ConferenceDayCard({ day, activeTier }: { day: ConferenceDay; activeTier
             <AgendaItemRow key={`${item.time}-${item.title}`} item={item} />
           ))}
         </ul>
+      )}
+
+      {showItems && note && (
+        <div
+          className="text-[12px] md:text-[14px] leading-[170%]"
+          style={{
+            marginTop: 28,
+            color: '#F9F9F9',
+            opacity: 0.8,
+            fontFamily: 'General Sans, system-ui, sans-serif',
+            fontWeight: 400,
+          }}
+        >
+          {note}
+        </div>
       )}
     </div>
   );

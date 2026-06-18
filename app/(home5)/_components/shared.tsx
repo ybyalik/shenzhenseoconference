@@ -1,13 +1,53 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type RefObject } from 'react';
+
+/** Tracks which carousel card is currently in view inside a scroll-snap container. */
+export function useCarouselActive(trackRef: RefObject<HTMLDivElement | null>) {
+  const [activeIdx, setActiveIdx] = useState(0);
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const items = Array.from(track.querySelectorAll<HTMLElement>('[data-card-idx]'));
+    if (!items.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            const idx = Number(e.target.getAttribute('data-card-idx'));
+            setActiveIdx(idx);
+          }
+        }
+      },
+      { root: track, threshold: 0.6 },
+    );
+    items.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [trackRef]);
+  return activeIdx;
+}
+
+export function CarouselDots({ count, active }: { count: number; active: number }) {
+  return (
+    <div className="mt-4 flex items-center justify-center gap-2">
+      {Array.from({ length: count }, (_, i) => (
+        <span
+          key={i}
+          className={`h-1.5 rounded-full transition-all duration-200 ${
+            i === active ? 'w-6 bg-white' : 'w-1.5 bg-white/30'
+          }`}
+        />
+      ))}
+    </div>
+  );
+}
 
 export const NAV_ITEMS = [
   { label: 'HOME', anchor: '#top' },
-  { label: 'SPEAKERS', anchor: '#speakers' },
+  { label: 'SPEAKERS', anchor: '/speakers' },
   { label: 'AGENDA', anchor: '/agenda' },
-  { label: 'SPONSORS', anchor: '#sponsors' },
+  { label: 'SPONSORS', anchor: '/sponsors' },
   { label: 'VISIT SHENZHEN', anchor: '/visit-shenzhen' },
   { label: 'CONTACT', anchor: '#contact' },
 ];
@@ -335,8 +375,8 @@ export function Nav({ linkBase = '', current }: { linkBase?: string; current?: s
 export function Footer({ linkBase = '' }: { linkBase?: string } = {}) {
   const navLinks = [
     { label: 'HOME', anchor: '#top' },
-    { label: 'SPEAKERS', anchor: '#speakers' },
-    { label: 'SPONSORS', anchor: '#sponsors' },
+    { label: 'SPEAKERS', anchor: '/speakers' },
+    { label: 'SPONSORS', anchor: '/sponsors' },
     { label: 'VISIT SHENZHEN', anchor: '/visit-shenzhen' },
     { label: 'CONTACT', anchor: '#contact' },
   ];

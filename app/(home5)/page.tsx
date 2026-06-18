@@ -3,7 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, BackToTop, Footer, Nav } from './_components/shared';
+import { ArrowUpRight, BackToTop, CarouselDots, Footer, Nav, useCarouselActive } from './_components/shared';
+import { SPONSORS_2026 as SPONSORS } from './_components/sponsors-data';
 
 const A = {
   heroBg: '/figma-assets/herohome.jpg',
@@ -29,19 +30,6 @@ const A = {
   avMike: '/figma-assets/Mike-Dee1.jpg',
   avMads: '/figma-assets/Mads-Singers1.jpg',
   avZack: '/figma-assets/Zack-Franklin1.jpg',
-};
-
-const SPONSORS = {
-  platinum: [] as { src: string; alt: string; h: number }[],
-  gold: [
-    { src: '/assets/swishdm.webp', alt: 'Swish DM', h: 56 },
-    { src: '/figma-assets/sponsor-dynadot.png', alt: 'Dynadot', h: 48 },
-  ],
-  silver: [
-    { src: '/figma-assets/73b861094a7ce5e5553ff2eacca50af9313eddc6.png', alt: 'ecomeXperts', h: 44 },
-    { src: '/figma-assets/sponsor-convertbetter.png', alt: 'ConvertBetter', h: 44 },
-    { src: '/figma-assets/8842dd91b89a6d7f26f78f6178e930f87bc16a6b.png', alt: 'CLOOM TECH', h: 44 },
-  ],
 };
 
 function PlayIcon({ className = '' }: { className?: string }) {
@@ -99,46 +87,6 @@ function MapPinIcon({ className = '' }: { className?: string }) {
         d="M8 0a5.5 5.5 0 0 0-5.5 5.5c0 4 5.5 10.5 5.5 10.5s5.5-6.5 5.5-10.5A5.5 5.5 0 0 0 8 0Zm0 7.5a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"
       />
     </svg>
-  );
-}
-
-/** Tracks which carousel card is currently in view inside a scroll-snap container. */
-function useCarouselActive(trackRef: React.RefObject<HTMLDivElement | null>) {
-  const [activeIdx, setActiveIdx] = useState(0);
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    const items = Array.from(track.querySelectorAll<HTMLElement>('[data-card-idx]'));
-    if (!items.length) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) {
-            const idx = Number(e.target.getAttribute('data-card-idx'));
-            setActiveIdx(idx);
-          }
-        }
-      },
-      { root: track, threshold: 0.6 },
-    );
-    items.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, [trackRef]);
-  return activeIdx;
-}
-
-function CarouselDots({ count, active }: { count: number; active: number }) {
-  return (
-    <div className="mt-4 flex items-center justify-center gap-2">
-      {Array.from({ length: count }, (_, i) => (
-        <span
-          key={i}
-          className={`h-1.5 rounded-full transition-all duration-200 ${
-            i === active ? 'w-6 bg-white' : 'w-1.5 bg-white/30'
-          }`}
-        />
-      ))}
-    </div>
   );
 }
 
@@ -871,7 +819,7 @@ function WhyShenzhen() {
               </h2>
             </div>
             <a
-              href="#"
+              href="/visit-shenzhen"
               className="hidden md:flex btn-outline-white display rounded-full backdrop-blur-sm self-start md:self-auto uppercase"
               style={{
                 padding: '16px 24px',
@@ -928,7 +876,7 @@ function WhyShenzhen() {
             within a 30-minute drive.
           </p>
           <a
-            href="#"
+            href="/visit-shenzhen"
             className="md:hidden btn-outline-white display rounded-full backdrop-blur-sm uppercase mb-12 self-start inline-flex"
             style={{
               padding: '16px 24px',
@@ -1009,18 +957,18 @@ function WhyShenzhen() {
 function Speakers() {
   type Speaker = { country: string; name: string; sub: string; img: string; tag?: string };
   const list: Speaker[] = [
-    { country: 'US', name: 'Lily Ray', sub: 'VP of SEO Strategy & Research, Amsive', img: '/assets/lily-ray.webp' },
-    { country: 'CH', name: 'Gary Illyes', sub: 'Analyst, Google Search', img: '/assets/gary-illyes.webp' },
-    { country: 'US', name: 'Eli Schwartz', sub: 'Author, Product-Led SEO', img: '/assets/eli-schwartz.webp' },
-    { country: 'AU', name: 'Sasha Gusain', sub: 'Head of Logged Out Experience, Canva', img: '/assets/sasha-gusain.webp' },
-    { country: 'US', name: 'Lars Lofgren', sub: 'Fractional VP of Marketing', img: '/assets/lars-lofgren.webp' },
-    { country: 'US', name: 'Bernard Huang', sub: 'Co-founder, Clearscope', img: '/assets/bernard-huang.webp' },
-    { country: 'AU', name: 'Nick Drewe', sub: 'Founder & CEO, Wethrift', img: '/assets/nick-drewe.webp' },
-    { country: 'CA', name: 'Megan Gougeon', sub: 'Founder, Portable Professional', img: '/assets/megan-gougeon.webp' },
+    { country: 'US', name: 'Lily Ray', sub: 'VP of SEO Strategy & Research, Amsive', img: '/assets/lily-ray.jpg' },
+    { country: 'CH', name: 'Gary Illyes', sub: 'Analyst, Google Search', img: '/assets/gary-illyes.jpg' },
+    { country: 'US', name: 'Eli Schwartz', sub: 'Author, Product-Led SEO', img: '/assets/eli-schwartz.jpg' },
+    { country: 'AU', name: 'Sasha Gusain', sub: 'Head of Logged Out Experience, Canva', img: '/assets/sasha-gusain.jpg' },
+    { country: 'US', name: 'Lars Lofgren', sub: 'Fractional VP of Marketing', img: '/assets/lars-lofgren.jpg' },
+    { country: 'US', name: 'Bernard Huang', sub: 'Co-founder, Clearscope', img: '/assets/bernard-huang.jpg' },
+    { country: 'AU', name: 'Nick Drewe', sub: 'Founder & CEO, Wethrift', img: '/assets/nick-drewe.jpg' },
+    { country: 'CA', name: 'Megan Gougeon', sub: 'Founder, Portable Professional', img: '/assets/megan-gougeon.jpg' },
     { country: 'CN', name: 'Kun Tang', sub: 'Founder and CEO, Jademond', img: '/assets/kun-tang.webp' },
-    { country: 'AU', name: 'Nik Ranger', sub: 'Senior Growth Consultant, Dejan', img: '/assets/nik-ranger.webp' },
-    { country: 'UK', name: 'Owain Lloyd-Williams', sub: 'Independent SEO Consultant', img: '/assets/owain-lloyd-williams.webp' },
-    { country: 'AU · CN', name: 'Loki Yan', sub: 'Co-founder, First Optimise (壹优化)', img: '/assets/loki-yan.webp' },
+    { country: 'AU', name: 'Nik Ranger', sub: 'Senior Growth Consultant, Dejan', img: '/assets/nik-ranger.jpg' },
+    { country: 'UK', name: 'Owain Lloyd-Williams', sub: 'Independent SEO Consultant', img: '/assets/owain-lloyd-williams.jpg' },
+    { country: 'AU · CN', name: 'Loki Yan', sub: 'Co-founder, First Optimise (壹优化)', img: '/assets/loki-yan.jpg' },
   ];
 
   // Turn a 2-letter country code into a flag emoji (UK -> GB). Combos like "AU · CN" -> two flags.
@@ -1060,7 +1008,7 @@ function Speakers() {
             </p>
           </div>
           <a
-            href="#"
+            href="/speakers"
             className="hidden md:inline-flex btn-outline-white display rounded-full backdrop-blur-sm self-start md:self-end uppercase w-fit"
             style={{
               padding: '16px 24px',
@@ -1115,7 +1063,7 @@ function Speakers() {
 
         <div className="mt-8 flex justify-center md:hidden">
           <a
-            href="#"
+            href="/speakers"
             className="display btn-outline-white inline-flex rounded-full uppercase"
             style={{
               padding: '16px 24px',
@@ -1185,23 +1133,32 @@ function Agenda() {
   return (
     <section id="agenda" className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
-        <div className="mb-10 md:mb-12">
-          <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
-            WHAT&apos;S THE AGENDA
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-12">
+          <div>
+            <div className="text-[14px] font-bold leading-[150%] tracking-[0.05em] text-[#EB3030] uppercase mb-3">
+              WHAT&apos;S THE AGENDA
+            </div>
+            <h2
+              className="display uppercase self-stretch max-w-[820px] text-[28px] md:text-[48px]"
+              style={{
+                color: '#F9F9F9',
+                fontFamily: 'Unbounded, system-ui, sans-serif',
+                fontWeight: 600,
+                lineHeight: '120%',
+                letterSpacing: '-2px',
+              }}
+            >
+              <span className="block md:inline">Five Days,</span>{' '}
+              <span className="block md:inline" style={{ opacity: 0.3 }}>Pick Your Depth</span>
+            </h2>
           </div>
-          <h2
-            className="display uppercase self-stretch max-w-[820px] text-[28px] md:text-[48px]"
-            style={{
-              color: '#F9F9F9',
-              fontFamily: 'Unbounded, system-ui, sans-serif',
-              fontWeight: 600,
-              lineHeight: '120%',
-              letterSpacing: '-2px',
-            }}
+          <a
+            href="/agenda"
+            className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-semibold tracking-[0.16em] text-white border border-white/40 hover:bg-white/5 self-start md:self-end uppercase w-fit"
           >
-            <span className="block md:inline">Five Days,</span>{' '}
-            <span className="block md:inline" style={{ opacity: 0.3 }}>Pick Your Depth</span>
-          </h2>
+            VIEW FULL AGENDA
+            <ArrowUpRight className="w-3 h-3" />
+          </a>
         </div>
 
         {/* Side events banner */}
@@ -1947,82 +1904,91 @@ function Sponsors() {
   //   platinum → full natural color (logos read as silver/chrome)
   //   gold     → warm gold sepia tint
   //   silver   → cool muted silver tint
+  // Year One layout: tier label on the left, logo grid on the right, with
+  // horizontal dividers between tiers. Default logos are flattened to a dim
+  // white silhouette; hover reveals a tier-tinted full-opacity version.
   const Row = ({
-    title,
+    label,
     items,
-    max,
     tier,
   }: {
-    title: string;
+    label: [string, string];
     items: { src: string; alt: string; h: number }[];
-    max: number;
     tier: 'platinum' | 'gold' | 'silver';
   }) => {
-    // OPTION 2 — flatten every logo to a uniform silhouette before tinting,
-    // so the hover color reads identically across all logos in a tier
-    // regardless of source colors. Trade-off: internal color details (e.g.
-    // ConvertBetter's green arrow) are lost.
-    //   Step 1: brightness(0) → black silhouette
-    //   Step 2: invert(1)     → white silhouette
-    //   Step 3: tier tint     → applied on top of the white
     const baseFlatten = 'brightness(0) invert(1)';
-    const defaultFilter = `${baseFlatten}`;
-    const defaultOpacity = '0.5';
     const hoverFilter =
       tier === 'gold'
-        ? // gold ~#D4AF37
-          `${baseFlatten} sepia(1) saturate(4) hue-rotate(-5deg) brightness(0.95)`
+        ? `${baseFlatten} sepia(1) saturate(4) hue-rotate(-5deg) brightness(0.95)`
         : tier === 'silver'
-        ? // silver ~#C0C0C0
-          `${baseFlatten} brightness(0.82)`
-        : // platinum ~ near-white
-          `${baseFlatten}`;
-    const hoverOpacity = '1';
-
+        ? `${baseFlatten} brightness(0.82)`
+        : baseFlatten;
+    // 4 columns per row; >4 logos means a second row, so top-align the label.
+    const hasTwoRows = items.length > 4;
     return (
-      <div className={`text-center sponsor-row sponsor-${tier}`}>
-        <h3
-          className="display uppercase mb-8"
+      <div
+        className={`flex flex-col md:flex-row items-start self-stretch gap-6 md:gap-12 ${
+          hasTwoRows ? 'md:items-start' : 'md:items-center'
+        }`}
+      >
+        <div
+          className="display uppercase shrink-0 w-full md:w-[417px] text-center md:text-left text-[16px] md:text-[18px] opacity-80 md:opacity-100"
           style={{
             color: '#F9F9F9',
-            textAlign: 'center',
-            fontSize: '18px',
+            fontFamily: 'Unbounded, system-ui, sans-serif',
             fontWeight: 500,
             lineHeight: '140%',
           }}
         >
-          {title}
-        </h3>
-        <div className={`${items.length === 1 ? 'flex justify-center' : 'grid grid-cols-2'} sm:flex sm:flex-wrap items-center justify-items-center sm:justify-center gap-x-8 sm:gap-x-14 md:gap-x-20 gap-y-10`}>
-          {items.map((s) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              key={s.src}
-              src={s.src}
-              alt={s.alt}
-              style={{
-                height: `${Math.min(s.h, max)}px`,
-                width: 'auto',
-                maxWidth: '160px',
-                objectFit: 'contain',
-                filter: defaultFilter,
-                opacity: defaultOpacity,
-                transition: 'filter 0.25s ease, opacity 0.25s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.filter = hoverFilter;
-                e.currentTarget.style.opacity = hoverOpacity;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.filter = defaultFilter;
-                e.currentTarget.style.opacity = defaultOpacity;
-              }}
-            />
+          {label[0]}{' '}
+          <br className="hidden md:block" />
+          {label[1]}
+        </div>
+        <div
+          className="grid grid-cols-2 md:grid-cols-4 self-stretch md:flex-1"
+          style={{ rowGap: 32, columnGap: 24, opacity: 0.65, alignItems: 'center' }}
+        >
+          {items.map((s, i) => (
+            <div key={`sponsor-${tier}-${i}`} className="flex items-center justify-center min-w-0">
+              <div className="flex items-center justify-center w-[120px] md:w-auto">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={s.src}
+                  alt={s.alt}
+                  className="block max-w-full"
+                  style={{
+                    height: 'auto',
+                    maxHeight: s.h,
+                    width: 'auto',
+                    objectFit: 'contain',
+                    filter: baseFlatten,
+                    opacity: 0.5,
+                    transition: 'filter 0.25s ease, opacity 0.25s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.filter = hoverFilter;
+                    e.currentTarget.style.opacity = '1';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.filter = baseFlatten;
+                    e.currentTarget.style.opacity = '0.5';
+                  }}
+                />
+              </div>
+            </div>
           ))}
         </div>
       </div>
     );
   };
+
+  const Divider = () => (
+    <div
+      className="hidden md:block self-stretch"
+      style={{ height: 1, background: 'rgba(249, 249, 249, 0.10)' }}
+      aria-hidden
+    />
+  );
   return (
     <section id="sponsors" className="bg-[#03060d] py-12 lg:py-24">
       <div className="container">
@@ -2039,7 +2005,7 @@ function Sponsors() {
             </p>
             {/* Mobile: button right after the subtitle */}
             <a
-              href="#"
+              href="/sponsors"
               className="md:hidden display btn-outline-white flex items-center justify-center gap-3 px-6 py-4 rounded-full uppercase whitespace-nowrap text-[14px] font-semibold leading-[150%] mt-6 self-stretch"
             >
               BECOME A 2026 SPONSOR
@@ -2048,22 +2014,24 @@ function Sponsors() {
           </div>
           {/* Desktop: button to the right of the heading, bottom-aligned */}
           <a
-            href="#"
+            href="/sponsors"
             className="hidden md:inline-flex display btn-outline-white items-center justify-center gap-3 px-6 py-4 rounded-full uppercase whitespace-nowrap text-[14px] font-semibold leading-[150%] self-end"
           >
             BECOME A 2026 SPONSOR
             <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>
-        <div className="space-y-16 md:space-y-20">
+        <div className="flex flex-col self-stretch" style={{ gap: 48 }}>
           {SPONSORS.platinum.length > 0 && (
-            <Row title="Platinum Sponsors" items={SPONSORS.platinum} max={96} tier="platinum" />
+            <Row label={['Platinum', 'Sponsors']} items={SPONSORS.platinum} tier="platinum" />
           )}
+          {SPONSORS.platinum.length > 0 && SPONSORS.gold.length > 0 && <Divider />}
           {SPONSORS.gold.length > 0 && (
-            <Row title="Gold Sponsors" items={SPONSORS.gold} max={56} tier="gold" />
+            <Row label={['Gold', 'Sponsors']} items={SPONSORS.gold} tier="gold" />
           )}
+          {SPONSORS.gold.length > 0 && SPONSORS.silver.length > 0 && <Divider />}
           {SPONSORS.silver.length > 0 && (
-            <Row title="Silver Sponsors" items={SPONSORS.silver} max={48} tier="silver" />
+            <Row label={['Silver', 'Sponsors']} items={SPONSORS.silver} tier="silver" />
           )}
         </div>
       </div>
