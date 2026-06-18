@@ -1163,7 +1163,7 @@ function ApplyToSponsor() {
               tiers and attendee data) and discuss potential partnership opportunities.
             </p>
             <a
-              href="mailto:jp@shenzhenseoconference.com,rahile@shenzhenseoconference.com"
+              href="mailto:sponsor@shenzhenseoconference.com"
               className="inline-flex items-center gap-2 hover:underline text-[14px] md:text-[18px]"
               style={{
                 color: '#F9F9F9',
@@ -1173,7 +1173,7 @@ function ApplyToSponsor() {
               }}
             >
               <MailIcon className="w-5 h-5" />
-              jp@shenzhenseoconference.com, rahile@shenzhenseoconference.com
+              sponsor@shenzhenseoconference.com
             </a>
           </div>
 
