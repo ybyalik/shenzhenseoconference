@@ -813,7 +813,7 @@ const SPONSOR_QUOTES = [
       '深圳SEO大会是一个非常有价值的平台，让我有机会接触优秀的人、优秀的公司，以及关于 SEO 和 GEO 的新想法 … 我也是 John 的粉丝，也真心希望这个大会能够持续成长、越办越好。',
     name: 'Hommer Zhao',
     role: 'CEO at Cloom Tech',
-    img: '/assets/hommer-zhao.webp',
+    img: '/assets/hommer-zhao.jpg',
   },
 ];
 
