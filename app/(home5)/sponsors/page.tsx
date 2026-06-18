@@ -806,7 +806,7 @@ const SPONSOR_QUOTES = [
       "Sponsoring the Shenzhen SEO Conference delivered real business results. Our SEO agency gained new SEO clients I'm still working with today. The direct access to a highly engaged, decision-ready audience made it one of the best sponsorship opportunities I came across.",
     name: 'Marc Möller',
     role: 'Founder of Ecomexperts',
-    img: '/assets/marc-moeller.webp',
+    img: '/assets/marc-moeller.jpg',
   },
   {
     text:
