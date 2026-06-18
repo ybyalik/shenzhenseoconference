@@ -229,6 +229,7 @@ const SIDE_EVENTS: SideEvent[] = [
   {
     dayLabel: 'Sun Sep 13',
     title: 'Pre-event Speaker Dinner',
+    badge: 'Speakers Only',
     details: [
       { label: 'Time', value: '19:00 – 21:00' },
       { label: 'Venue', value: 'To be announced' },
@@ -543,7 +544,7 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
         </span>
       </>
     ),
-    badge: 'VIP Only',
+    badge: 'Speakers + VIP',
     tiers: ['VIP'],
     collapsible: true,
     defaultOpen: true,
