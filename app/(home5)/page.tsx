@@ -1921,8 +1921,13 @@ function Sponsors() {
         : tier === 'silver'
         ? `${baseFlatten} brightness(0.82)`
         : baseFlatten;
-    // Per-tier logo height so platinum reads largest, then gold, then silver.
-    const logoMaxH = tier === 'platinum' ? 64 : tier === 'gold' ? 46 : 38;
+    // Per-tier logo height (smaller on mobile) so platinum reads largest, then gold, then silver.
+    const logoSize =
+      tier === 'platinum'
+        ? 'max-h-[56px] md:max-h-[64px]'
+        : tier === 'gold'
+        ? 'max-h-[38px] md:max-h-[42px]'
+        : 'max-h-[30px] md:max-h-[34px]';
     // 4 columns per row; >4 logos means a second row, so top-align the label.
     const hasTwoRows = items.length > 4;
     return (
@@ -1945,37 +1950,34 @@ function Sponsors() {
           {label[1]}
         </div>
         <div
-          className="grid grid-cols-2 md:grid-cols-4 self-stretch md:flex-1"
-          style={{ rowGap: 32, columnGap: 24, opacity: 0.65, alignItems: 'center' }}
+          className="flex flex-wrap items-center justify-center md:justify-start gap-x-6 md:gap-x-16 gap-y-8 w-full md:w-auto md:flex-1"
+          style={{ opacity: 0.65 }}
         >
           {items.map((s, i) => (
-            <div key={`sponsor-${tier}-${i}`} className="flex items-center justify-center min-w-0">
-              <div className="flex items-center justify-center w-[120px] md:w-auto">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={s.src}
-                  alt={s.alt}
-                  className="block max-w-full"
-                  style={{
-                    height: 'auto',
-                    maxHeight: logoMaxH,
-                    width: 'auto',
-                    objectFit: 'contain',
-                    filter: baseFlatten,
-                    opacity: 0.5,
-                    transition: 'filter 0.25s ease, opacity 0.25s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.filter = hoverFilter;
-                    e.currentTarget.style.opacity = '1';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.filter = baseFlatten;
-                    e.currentTarget.style.opacity = '0.5';
-                  }}
-                />
-              </div>
-            </div>
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={`sponsor-${tier}-${i}`}
+              src={s.src}
+              alt={s.alt}
+              className={`block ${logoSize}`}
+              style={{
+                height: 'auto',
+                width: 'auto',
+                maxWidth: '100%',
+                objectFit: 'contain',
+                filter: baseFlatten,
+                opacity: 0.5,
+                transition: 'filter 0.25s ease, opacity 0.25s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.filter = hoverFilter;
+                e.currentTarget.style.opacity = '1';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.filter = baseFlatten;
+                e.currentTarget.style.opacity = '0.5';
+              }}
+            />
           ))}
         </div>
       </div>
