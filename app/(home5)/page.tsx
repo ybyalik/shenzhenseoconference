@@ -819,7 +819,6 @@ function WhyShenzhen() {
               </h2>
             </div>
             <a
-              href="/visit-shenzhen"
               className="hidden md:flex btn-outline-white display rounded-full backdrop-blur-sm self-start md:self-auto uppercase"
               style={{
                 padding: '16px 24px',
@@ -876,7 +875,6 @@ function WhyShenzhen() {
             within a 30-minute drive.
           </p>
           <a
-            href="/visit-shenzhen"
             className="md:hidden btn-outline-white display rounded-full backdrop-blur-sm uppercase mb-12 self-start inline-flex"
             style={{
               padding: '16px 24px',
@@ -1923,6 +1921,8 @@ function Sponsors() {
         : tier === 'silver'
         ? `${baseFlatten} brightness(0.82)`
         : baseFlatten;
+    // Per-tier logo height so platinum reads largest, then gold, then silver.
+    const logoMaxH = tier === 'platinum' ? 64 : tier === 'gold' ? 46 : 38;
     // 4 columns per row; >4 logos means a second row, so top-align the label.
     const hasTwoRows = items.length > 4;
     return (
@@ -1958,7 +1958,7 @@ function Sponsors() {
                   className="block max-w-full"
                   style={{
                     height: 'auto',
-                    maxHeight: s.h,
+                    maxHeight: logoMaxH,
                     width: 'auto',
                     objectFit: 'contain',
                     filter: baseFlatten,
