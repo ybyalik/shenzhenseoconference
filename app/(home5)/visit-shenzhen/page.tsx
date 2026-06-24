@@ -423,11 +423,11 @@ function Visa() {
             {[
               {
                 label: 'General Transit Requirements',
-                body: 'You must enter and exit China from the same province and hold a confirmed onward flight ticket to a third country within 240 hours (10 days). Your onward destination cannot be the same as your original country of departure.',
+                body: 'Enter and exit China from the same province. You must hold a confirmed onward flight to a third country (different from your original departure country) within 240 hours (10 days).',
               },
               {
                 label: 'The Hong Kong Routing Rule',
-                body: 'If you choose to route through Hong Kong, you cannot enter mainland China (e.g., Shenzhen) by land or ferry to utilize this specific visa-free transit. Instead, you must fly into an eligible mainland airport (such as Guangzhou). From there, you can travel locally by train or car (e.g., to Shenzhen) as long as your final departure flight leaves from within that same province (Guangdong).',
+                body: 'You cannot use this visa-free transit if arriving from Hong Kong by land or ferry. You must fly into an eligible mainland airport (e.g., Guangzhou) and travel to Shenzhen. Your exit flight must depart from Guangdong province.',
               },
             ].map((r) => (
               <div
@@ -511,7 +511,7 @@ function Visa() {
                 },
                 {
                   ok: true,
-                  route: 'London ➔ Hong Kong ➔ Guangzhou (by flight) ➔ drive to Shenzhen ➔ fly to Singapore',
+                  route: 'London ➔ Hong Kong ➔ Guangzhou (by flight) ➔ Shenzhen ➔ Singapore',
                   note: 'Enters mainland China by flight, stays within Guangdong province, and flies out to a third country.',
                 },
               ].map((it) => {
@@ -710,7 +710,7 @@ function AirportCard({
           <span
             className="absolute top-3 left-3 display uppercase rounded-full"
             style={{
-              background: '#EB3030',
+              background: '#118BAC',
               color: '#F9F9F9',
               fontFamily: 'General Sans, system-ui, sans-serif',
               fontSize: 12,
@@ -823,28 +823,28 @@ function Flights() {
 
         <div className="mt-10 md:mt-14 grid gap-6 md:gap-8 md:grid-cols-3">
           <AirportCard
-            img="/assets/visit-szx.webp"
+            img="/assets/airport-szx.jpg"
             heading="Shenzhen Bao'an International Airport (SZX)"
-            badge="The most convenient option"
-            body="As Shenzhen's primary airport, SZX offers direct flights from major Asian hubs (Tokyo, Seoul, Singapore, Bangkok, Dubai) and several international cities. If you want to land and immediately head to your room, this is your best bet."
+            badge="Most convenient option"
+            body="Shenzhen's main airport features direct flights from major global hubs. Ideal for the quickest commute directly to the venue."
             legLabel="To St. Regis Shenzhen:"
-            legBody="40 minutes by taxi, or 50 minutes direct via Metro Line 11."
+            legBody="40 minutes by taxi, or 50 minutes via Metro Line 11."
           />
           <AirportCard
-            img="/assets/visit-hkg.webp"
+            img="/assets/airport-hkg.jpg"
             heading="Hong Kong International Airport (HKG)"
-            badge="Often the cheapest for Europe & North America"
-            body="Located just 30 km away, flying into Hong Kong is a massively popular route for international attendees. The connection is seamless: the Hong Kong to Shenzhen high-speed rail takes under 30 minutes, runs every 10 minutes, and crosses the border without you having to switch trains."
+            badge="Cheapest for Europe & America"
+            body="A popular international route just 30 km away. Connects seamlessly to Shenzhen via a direct, 15-minute high-speed rail."
             legLabel="To St. Regis Shenzhen:"
-            legBody="1.5 hours total (via high-speed train, ferry, or cross-border business van)."
+            legBody="1.5 hours total (via high-speed train, ferry, or business van)."
           />
           <AirportCard
-            img="/assets/visit-hero.webp"
+            img="/assets/airport-can.jpg"
             heading="Guangzhou Baiyun International Airport (CAN)"
-            badge="A massive global hub and a great backup for flight deals"
-            body="As one of China's &quot;Big Three&quot; aviation hubs, Guangzhou handles a massive volume of global traffic and frequently offers competitive fares that might beat HKG or SZX. It is slightly further out, but the transit infrastructure connecting Guangzhou to Shenzhen is world-class and easy to navigate."
+            badge="Great backup for flight deals"
+            body="A massive aviation hub often featuring the most competitive fares. Slightly further out, but easily accessible via transit."
             legLabel="To St. Regis Shenzhen:"
-            legBody="2 hours total (via the Guangzhou-Shenzhen high-speed rail, followed by a taxi or DiDi)."
+            legBody="2 hours total (via high-speed rail, plus a taxi or DiDi)."
           />
         </div>
       </div>
@@ -977,18 +977,36 @@ function PaymentAppCard({
   );
 }
 
-function MiniInfoCard({ heading, body }: { heading: string; body: string }) {
+function MiniInfoCard({ heading, body, icon }: { heading: string; body: string; icon?: string }) {
   return (
     <div className="rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:p-8">
-      <h3
-        className="display uppercase text-[18px] md:text-[20px] leading-[140%] md:leading-[160%]"
-        style={{
-          color: '#F9F9F9',
-          fontWeight: 700,
-        }}
-      >
-        {heading}
-      </h3>
+      <div className="flex items-center gap-3">
+        {icon ? (
+          <span
+            aria-hidden
+            className="grid place-items-center shrink-0"
+            style={{
+              width: 40,
+              height: 40,
+              borderRadius: 12,
+              background: 'rgba(17, 139, 172, 0.15)',
+              fontSize: 20,
+              lineHeight: 1,
+            }}
+          >
+            {icon}
+          </span>
+        ) : null}
+        <h3
+          className="display uppercase text-[18px] md:text-[20px] leading-[140%] md:leading-[160%]"
+          style={{
+            color: '#F9F9F9',
+            fontWeight: 700,
+          }}
+        >
+          {heading}
+        </h3>
+      </div>
       <p
         className="mt-4 text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
         style={{
@@ -1040,8 +1058,8 @@ function Payments() {
             // MOBILE_BODY_16
           }}
         >
-          The local currency is the Chinese Yuan (CNY / RMB). Cash is rarely used. Two apps
-          handle almost every transaction:
+          The local currency is the Chinese Yuan (CNY/RMB). Cash is rare. Two apps handle almost
+          everything:
         </p>
 
         <div className="mt-10 md:mt-14 grid gap-6 md:gap-8 md:grid-cols-2">
@@ -1049,8 +1067,8 @@ function Payments() {
             mark={<AlipayMark />}
             body={
               <>
-                The more foreigner-friendly of the two. Links to most international cards (Visa,
-                Mastercard, Amex). Set up before you arrive. Download it on{' '}
+                The most foreigner-friendly option. Links to major international cards. Set it up
+                before arriving via{' '}
                 <a
                   href="https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=en_US"
                   target="_blank"
@@ -1059,7 +1077,7 @@ function Payments() {
                 >
                   Google Play
                 </a>{' '}
-                or the{' '}
+                or{' '}
                 <a
                   href="https://apps.apple.com/us/app/alipay-simplify-your-life/id333206289"
                   target="_blank"
@@ -1067,17 +1085,17 @@ function Payments() {
                   className="underline text-white hover:text-[var(--red)]"
                 >
                   App Store
-                </a>
-                , and follow{' '}
+                </a>{' '}
+                (tutorial{' '}
                 <a
                   href="https://youtu.be/dleZ1EaHgog?si=WqUn7O0SvYJ3jQli&t=70"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline text-white hover:text-[var(--red)]"
                 >
-                  this YouTube tutorial
-                </a>{' '}
-                to set it up.
+                  here
+                </a>
+                ).
               </>
             }
           />
@@ -1085,8 +1103,7 @@ function Payments() {
             mark={<WeChatPayMark />}
             body={
               <>
-                Pairs with WeChat, which you&apos;ll use for messaging anyway. Also accepts
-                international cards now. You can&apos;t download WeChat Pay on its own, so download
+                Built into China&apos;s main messaging app and accepts international cards. Download
                 WeChat{' '}
                 <a
                   href="https://www.wechat.com/en"
@@ -1096,16 +1113,16 @@ function Payments() {
                 >
                   here
                 </a>{' '}
-                and set up WeChat Pay via{' '}
+                and follow{' '}
                 <a
                   href="https://youtu.be/9zK4ZElfstc?si=4OjO8up9o63QHjjT&t=47"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline text-white hover:text-[var(--red)]"
                 >
-                  this YouTube tutorial
-                </a>
-                .
+                  this tutorial
+                </a>{' '}
+                for setup.
               </>
             }
           />
@@ -1114,11 +1131,13 @@ function Payments() {
         <div className="mt-6 md:mt-8 grid gap-6 md:gap-8 md:grid-cols-2">
           <MiniInfoCard
             heading="Credit Cards"
-            body="International cards work at major hotels, The St. Regis, and upscale malls. Not at most restaurants, taxis, or convenience stores. Assume cashless-app is the default."
+            icon="💳"
+            body="Works at major hotels (like The St. Regis) and upscale malls. Unlikely to work for taxis or daily dining."
           />
           <MiniInfoCard
             heading="ATMs"
-            body="At the airport and major bank branches. Your home bank card usually works. Carry ~¥500 in cash as backup."
+            icon="🏧"
+            body="Available at airports and major banks. Your home card should work. Keep ~¥500 in cash for emergencies."
           />
         </div>
       </div>
@@ -1251,10 +1270,9 @@ function Connection() {
                 lineHeight: '150%',
               }}
             >
-              Some Western platforms have limited access inside China. The working fix is a{' '}
-              <strong style={{ fontWeight: 600 }}>paid connection service</strong> -
-              10 minutes to set up, runs in the background. Free options are unreliable during
-              peak hours.
+              Western platforms have limited access in China. A{' '}
+              <strong style={{ fontWeight: 600 }}>paid connection service (VPN)</strong> is required
+              for reliable access.
             </p>
 
             <div className="relative w-full aspect-[16/10] overflow-hidden rounded-[16px] mt-8 max-w-[560px]">
@@ -1273,17 +1291,17 @@ function Connection() {
             <StepCard
               num="01"
               heading="Before you fly"
-              body="Set up WeChat before you arrive — it's how you'll communicate with everyone you meet here. International numbers work for registration."
+              body="Register for WeChat using your international number for seamless local communication."
             />
             <StepCard
               num="02"
               heading="On arrival"
-              body="International roaming works but is expensive. A local eSIM (Airalo or similar) for ~$20 covers 5 days with enough data."
+              body="International roaming is expensive. Get a ~$20 local eSIM (e.g., Airalo) for 7 days of data."
             />
             <StepCard
               num="03"
               heading="At the venue"
-              body="The St. Regis provides Wi-Fi for all attendees. Conference Wi-Fi is configured with consistent international access on the conference SSID — you don't need to bring your own setup for on-site sessions."
+              body="St. Regis provides conference Wi-Fi with consistent international access. No VPN is needed during sessions."
             />
           </div>
         </div>
@@ -1405,8 +1423,8 @@ function Language() {
               // MOBILE_BODY_16
             }}
           >
-            All conference sessions and networking events run in English. Days 3 and 4
-            include live EN &lt;&gt; CN interpretation on stage.
+            All conference sessions are in English (live EN &lt;&gt; CN interpretation provided on
+            Days 3 and 4).
           </p>
         </div>
 
@@ -1441,31 +1459,19 @@ function Language() {
               lineHeight: '150%',
             }}
           >
-            Service staff at most hotels speak English. Taxi drivers and smaller restaurants
-            usually don&apos;t. Screens and translation apps carry the day.
-          </p>
-          <p
-            style={{
-              color: '#F9F9F9',
-              opacity: 0.7,
-              fontFamily: 'General Sans, system-ui, sans-serif',
-              fontSize: 16,
-              fontWeight: 600,
-              lineHeight: '150%',
-            }}
-          >
-            Outside the venue, English is limited. Two fixes that actually work:
+            Hotels speak English, taxis and smaller restaurants don&apos;t. Rely on these
+            translation apps:
           </p>
         </div>
 
         <div className="mt-10 md:mt-12 grid gap-6 md:gap-8 md:grid-cols-2">
           <TranslateCard
             heading="Apple Translate"
-            body="With Chinese downloaded offline. No connection needed"
+            body="Download Chinese for offline, connection-free use."
           />
           <TranslateCard
             heading="Baidu Translate or DeepL"
-            body="On your phone. Both work without issues"
+            body="Both work seamlessly on your phone."
           />
         </div>
       </div>
@@ -1479,22 +1485,22 @@ const DISTRICTS = [
   {
     name: 'Nanshan',
     img: '/assets/district-nanshan.png',
-    body: "Shenzhen's tech centre. Think of it as the city's Silicon Valley. It's home to Tencent HQ, the stunning DJI flagship store, and a booming start-up scene. Expect sleek sky bars, high-end co-working cafés, and beautiful promenades along Shenzhen Bay. If you want to grab dinner and drinks with a tech-forward crowd after conference hours, go here.",
+    body: "Shenzhen's tech hub and Silicon Valley. Features Tencent HQ, DJI flagship store, sleek sky bars, and the Shenzhen Bay promenade. Ideal for networking with a tech-centric crowd.",
   },
   {
     name: 'Futian',
     img: '/assets/district-futian.jpg',
-    body: "The sleek, modern financial district. Central, highly walkable, and hyper-connected by the metro. While it's not our venue district, it's a powerhouse for business meetings and upscale networking. You'll find fantastic international dining options and massive shopping centres every 50 metres.",
+    body: "The city's modern financial center. Central, highly walkable, and hyper-connected by the metro. Perfect for business meetings, international dining, and premium shopping.",
   },
   {
     name: 'Luohu',
     img: '/assets/district-luohu.jpg',
-    body: "The original Shenzhen – and home to our conference venue, the St. Regis. This is where the city's economic miracle started. It's older, denser, and infinitely more textured. Step outside the towering St. Regis to explore the neon-lit Dongmen shopping street, hunt for bargains in the massive 1990s-built Luohu Commercial City, or easily cross the main border directly into Hong Kong.",
+    body: 'The historical core and home to our main conference venue, The St. Regis Shenzhen. Explore the bustling Dongmen shopping street, hunt for bargains, or cross into Hong Kong.',
   },
   {
     name: 'Yantian',
     img: '/assets/district-yantian.png',
-    body: "The coastal escape. Breathe in the cleaner air and take in the sea views. Yantian is famous for lush hiking trails and the beautiful shoreline at Dameisha and Xiaomeisha. This is where you'll find our VIP Networking hotel, the MGM Shenzhen – located right on the beach. It's a scenic 40-minute drive from the city centre.",
+    body: "A scenic 40-minute drive from the city center. Famous for lush trails and beaches. This coastal escape is where you'll find our VIP Networking venue, the MGM Shenzhen.",
   },
 ];
 
@@ -1611,7 +1617,20 @@ const MEALS = [
 
 function Food() {
   const [active, setActive] = useState(0);
-  const activeMeal = MEALS[active];
+  const meal = MEALS[active];
+  const touchX = useRef<number | null>(null);
+
+  const go = (dir: 1 | -1) => setActive((a) => (a + dir + MEALS.length) % MEALS.length);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchX.current == null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+    touchX.current = null;
+  };
 
   return (
     <section id="food" className="bg-[#03060d]">
@@ -1645,101 +1664,126 @@ function Food() {
             fontWeight: 400,
           }}
         >
-          Shenzhen is a massive city of migrants, it doesn&apos;t just have one local cuisine.
-          Instead, it gathers the absolute best flavors from across China (from traditional
-          Cantonese morning tea to fiery Sichuan dishes) and turns them into local staples. Here is
-          what you need to eat and where to find it.
+          As a melting pot, Shenzhen gathers the absolute best flavors from across China. From
+          Cantonese morning tea to fiery Sichuan dishes, here is what to eat and where to find it.
         </p>
 
-        <div className="mt-10 md:mt-14 rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:p-10">
-          <div className="grid gap-8 md:gap-12 md:grid-cols-2 items-center">
-            <div className="relative w-full aspect-square overflow-hidden rounded-[16px]">
+        <div
+          className="mt-10 md:mt-14 rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:p-10"
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
+          <div className="grid gap-6 md:gap-12 md:grid-cols-2 items-center">
+            {/* Image */}
+            <div className="relative w-full aspect-[4/3] md:aspect-square overflow-hidden rounded-[16px] bg-white/5">
               <Image
-                key={activeMeal.img}
-                src={activeMeal.img}
-                alt=""
+                key={meal.img}
+                src={meal.img}
+                alt={meal.name}
                 fill
-                className="object-cover"
+                className="object-cover animate-[fadeIn_0.4s_ease]"
                 sizes="(min-width: 768px) 50vw, 100vw"
               />
             </div>
 
-            <div className="relative">
-              {/* Continuous left rail — faint white pill running the full height */}
+            {/* Content */}
+            <div className="flex flex-col">
               <span
-                aria-hidden
-                className="absolute left-0 top-0 bottom-0"
+                className="display"
                 style={{
-                  width: 2,
-                  borderRadius: 88,
-                  background: '#F9F9F9',
-                  opacity: 0.2,
+                  color: '#5DAEDB',
+                  fontFamily: 'General Sans, system-ui, sans-serif',
+                  fontSize: 14,
+                  fontWeight: 700,
+                  letterSpacing: '0.08em',
                 }}
-              />
-              <ul className="flex flex-col gap-7 md:gap-8 relative">
-                {MEALS.map((meal, i) => {
-                  const isActive = i === active;
-                  return (
-                    <li key={meal.name} className="relative">
-                      {/* Teal overlay segment for the active item only */}
-                      {isActive && (
-                        <span
-                          aria-hidden
-                          className="absolute left-0 top-0 bottom-0"
-                          style={{
-                            width: 2,
-                            borderRadius: 88,
-                            background: '#118BAC',
-                          }}
-                        />
-                      )}
-                      <button
-                        type="button"
-                        onClick={() => setActive(i)}
-                        className="block w-full text-left pl-5"
-                      >
-                        <span
-                          className="display uppercase block"
-                          style={{
-                            fontSize: 'clamp(20px, 2.4vw, 26px)',
-                            fontWeight: 700,
-                            letterSpacing: '0.04em',
-                            lineHeight: '120%',
-                            color: isActive ? '#5DAEDB' : 'rgba(249, 249, 249, 0.35)',
-                          }}
-                        >
-                          {meal.name}
-                        </span>
-                        {isActive && (
-                          <>
-                            <span
-                              className="mt-4 text-white/75 block text-[14px] md:text-[16px] leading-[150%] md:leading-[160%]"
-                              style={{
-                                fontFamily: 'General Sans, system-ui, sans-serif',
-                                fontWeight: 400,
-                              }}
-                            >
-                              {meal.body}
-                            </span>
-                            <span
-                              className="mt-3 text-white/75 block text-[14px] md:text-[16px] leading-[150%] md:leading-[160%]"
-                              style={{
-                                fontFamily: 'General Sans, system-ui, sans-serif',
-                                fontWeight: 400,
-                              }}
-                            >
-                              <strong style={{ color: '#5DAEDB', fontWeight: 600 }}>
-                                {meal.whereLabel}
-                              </strong>{' '}
-                              {meal.where}
-                            </span>
-                          </>
-                        )}
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
+              >
+                {String(active + 1).padStart(2, '0')} / {String(MEALS.length).padStart(2, '0')}
+              </span>
+              <h3
+                className="display uppercase mt-3 text-[22px] md:text-[28px] leading-[120%]"
+                style={{ color: '#F9F9F9', fontWeight: 700, letterSpacing: '0.02em' }}
+              >
+                {meal.name}
+              </h3>
+              <p
+                className="mt-5 text-[15px] md:text-[16px] leading-[175%]"
+                style={{
+                  color: '#F9F9F9',
+                  opacity: 0.75,
+                  fontFamily: 'General Sans, system-ui, sans-serif',
+                  fontWeight: 400,
+                }}
+              >
+                {meal.body}
+              </p>
+              <p
+                className="mt-4 text-[15px] md:text-[16px] leading-[160%]"
+                style={{
+                  color: '#F9F9F9',
+                  opacity: 0.75,
+                  fontFamily: 'General Sans, system-ui, sans-serif',
+                  fontWeight: 400,
+                }}
+              >
+                <strong style={{ color: '#5DAEDB', fontWeight: 600 }}>{meal.whereLabel}</strong>{' '}
+                {meal.where}
+              </p>
+
+              {/* Controls */}
+              <div className="mt-8 flex items-center gap-5">
+                <button
+                  type="button"
+                  aria-label="Previous dish"
+                  onClick={() => go(-1)}
+                  className="grid place-items-center shrink-0 hover:bg-white/5 transition-colors"
+                  style={{
+                    width: 52,
+                    height: 52,
+                    borderRadius: 9999,
+                    border: '1px solid rgba(249, 249, 249, 0.20)',
+                    background: 'transparent',
+                  }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/figma-assets/arrow-left.svg" alt="" className="w-5 h-5" />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Next dish"
+                  onClick={() => go(1)}
+                  className="grid place-items-center shrink-0 hover:bg-white/5 transition-colors"
+                  style={{
+                    width: 52,
+                    height: 52,
+                    borderRadius: 9999,
+                    border: '1px solid rgba(249, 249, 249, 0.20)',
+                    background: 'transparent',
+                  }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/figma-assets/arrow-right.svg" alt="" className="w-5 h-5" />
+                </button>
+
+                {/* Dots */}
+                <div className="flex items-center gap-2 ml-1">
+                  {MEALS.map((m, i) => (
+                    <button
+                      key={m.name}
+                      type="button"
+                      aria-label={`Go to ${m.name}`}
+                      onClick={() => setActive(i)}
+                      className="transition-all"
+                      style={{
+                        height: 8,
+                        width: i === active ? 24 : 8,
+                        borderRadius: 9999,
+                        background: i === active ? '#118BAC' : 'rgba(249, 249, 249, 0.25)',
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1754,32 +1798,32 @@ const SIDE_TRIPS = [
   {
     name: 'Dapeng Peninsula (大鹏半岛)',
     img: '/assets/trip-dapeng.jpg',
-    body: `Shenzhen isn't just skyscrapers. Head east for white-sand beaches, crystal-clear water, and dramatic sea cliffs. It is beautifully rugged and hailed as the "Cape of Good Hope" of Shenzhen.`,
-    getting: 'A 50-minute drive from the St. Regis.',
+    body: `Beautifully rugged sea cliffs and white-sand beaches, known as Shenzhen's "Cape of Good Hope".`,
+    getting: '50-minute drive.',
   },
   {
     name: 'Wutong Mountain (梧桐山)',
     img: '/assets/trip-wutong.jpg',
-    body: 'The tallest peak in the city. A challenging half-day hike through lush greenery that rewards you with sweeping, panoramic views of Shenzhen Bay and Hong Kong at the summit.',
-    getting: 'A 25-minute drive from the St. Regis.',
+    body: "The city's tallest peak offers a challenging half-day hike with panoramic views of Shenzhen Bay and Hong Kong.",
+    getting: '25-minute drive.',
   },
   {
     name: 'Nantou Ancient City (南头古城)',
     img: '/assets/trip-nantou.jpg',
-    body: '1,700 years of history beautifully revitalized. Walk through authentic Ming Dynasty gates into a maze of traditional alleys packed with trendy cafés, boutiques, and galleries.',
-    getting: 'A 40-minute drive from the St. Regis, or accessible via Metro Line 12.',
+    body: 'Walk through Ming Dynasty gates into a maze of 1,700-year-old traditional alleys filled with trendy cafés and boutiques.',
+    getting: '40-minute drive or Metro Line 12.',
   },
   {
     name: 'Fairy Lake Botanical Garden (仙湖植物园)',
     img: '/assets/trip-fairy-lake.jpg',
-    body: 'A massive, misty sanctuary built around a serene lake. It features a stunning petrified forest, beautiful bonsai gardens, and the magnificent Hongfa Temple, one of the most active and culturally significant Buddhist temples in southern China.',
-    getting: 'Extremely close to the venue. Just a 15-minute taxi ride or a direct trip via Metro Line 2 from the St. Regis.',
+    body: 'A misty lake sanctuary featuring bonsai gardens, a petrified forest, and the magnificent Hongfa Temple.',
+    getting: '15-minute taxi or Metro Line 2.',
   },
   {
     name: 'Dafen Oil Painting Village (大芬油画村)',
     img: '/assets/trip-dafen.jpg',
-    body: `Once the global factory for replicated art, Dafen produced a massive percentage of the world's oil paintings. Today, it has evolved into a quirky, walkable labyrinth of original art studios, cozy coffee shops, and independent galleries.`,
-    getting: 'A quick 20-minute drive or short metro ride north from the St. Regis.',
+    body: 'Formerly a replica art factory, now a quirky labyrinth of original studios, galleries, and coffee shops.',
+    getting: '20-minute drive or short metro ride.',
   },
 ];
 
@@ -1895,6 +1939,17 @@ function NatureSideTrips() {
           >
             Beyond the city
           </h2>
+          <p
+            className="mt-4 max-w-[680px] text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
+            style={{
+              color: '#F9F9F9',
+              opacity: 0.8,
+              fontFamily: 'General Sans, system-ui, sans-serif',
+              fontWeight: 400,
+            }}
+          >
+            Discover natural escapes and historic cultural hubs just outside the urban center.
+          </p>
         </div>
 
         <div

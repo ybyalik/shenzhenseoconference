@@ -14,7 +14,7 @@ const A = {
   recap: '/assets/video-cover.webp',
   audInternational: '/figma-assets/audience-international.png',
   audChinese: '/figma-assets/audience-chinese.png',
-  why1: '/assets/why-silicon-valley.png',
+  why1: '/assets/why-silicon-valley.jpg',
   why2: '/assets/1-hour-from-hong-kong.jpg',
   why3: '/figma-assets/ea9863f1c46347ee75ce39500df9c0b12b743af6.png',
   why4: '/assets/budget-twice-as-far.png',
@@ -783,12 +783,12 @@ function WhyShenzhen() {
     {
       img: A.why2,
       h: '1 hour from Hong Kong',
-      p: 'Seamless connections straight from HK. Cross the border on a 15-minute bullet train and enjoy 30-day visa-free entry for 80 countries.',
+      p: 'Seamless connections straight from HK. Cross the border on a 15-minute bullet train and enjoy visa-free entry for 80 countries.',
     },
     {
       img: A.why3,
       h: 'Ancient Walls Next To Glass Towers',
-      p: 'Walk through authentic Ming Dynasty gates at Nantou, explore Dapeng’s sub-tropical beaches, or discover urban mangrove wetlands.',
+      p: 'Walk through Ming Dynasty gates at Nantou, explore Dapeng’s beaches, or discover urban mangrove wetlands.',
     },
     {
       img: A.why4,
@@ -1943,8 +1943,8 @@ function Sponsors() {
         : tier === 'gold'
         ? 'max-h-[38px] md:max-h-[42px]'
         : 'max-h-[30px] md:max-h-[34px]';
-    // 4 columns per row; >4 logos means a second row, so top-align the label.
-    const hasTwoRows = items.length > 4;
+    // Up to 5 logos fit on one row; >5 means a second row, so top-align the label.
+    const hasTwoRows = items.length > 5;
     return (
       <div
         className={`flex flex-col md:flex-row items-start self-stretch gap-6 md:gap-12 ${
@@ -1965,7 +1965,7 @@ function Sponsors() {
           {label[1]}
         </div>
         <div
-          className="flex flex-wrap items-center justify-center md:justify-start gap-x-6 md:gap-x-16 gap-y-8 w-full md:w-auto md:flex-1"
+          className="flex flex-wrap items-center justify-center md:justify-start gap-x-6 md:gap-x-10 gap-y-8 w-full md:w-auto md:flex-1"
           style={{ opacity: 0.65 }}
         >
           {items.map((s, i) => (

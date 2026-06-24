@@ -19,6 +19,7 @@ export const SPONSORS_2026: {
   ],
   silver: [
     { src: '/figma-assets/sponsor-dynadot.png', alt: 'Dynadot', h: 36 },
+    { src: '/assets/odys.png', alt: 'Odys', h: 36 },
     { src: '/assets/prodent.webp', alt: 'ProDENT', h: 36 },
     { src: '/assets/ecomexperts.webp', alt: 'EcomExperts', h: 36 },
     { src: '/figma-assets/sponsor-convertbetter.png', alt: 'Convert Better', h: 36 },

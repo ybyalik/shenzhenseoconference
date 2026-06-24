@@ -391,7 +391,7 @@ function Confirmed2026() {
         <div className="flex flex-col items-center self-stretch" style={{ gap: 80 }}>
           <Tier title="Platinum Sponsors" tier="platinum" logos={SPONSORS_2026.platinum} cols="grid-cols-1 max-w-[372px] mx-auto" />
           <Tier title="Gold Sponsors" tier="gold" logos={SPONSORS_2026.gold} cols="grid-cols-1 sm:grid-cols-2 max-w-[760px] mx-auto" />
-          <Tier title="Silver Sponsors" tier="silver" logos={SPONSORS_2026.silver} cols="grid-cols-2 sm:grid-cols-4" />
+          <Tier title="Silver Sponsors" tier="silver" logos={SPONSORS_2026.silver} cols="grid-cols-2 sm:grid-cols-3 md:grid-cols-5" />
           <Tier title="Bronze Sponsors" tier="bronze" logos={SPONSORS_2026.bronze} cols="grid-cols-1 sm:grid-cols-2 max-w-[760px] mx-auto" />
         </div>
       </div>

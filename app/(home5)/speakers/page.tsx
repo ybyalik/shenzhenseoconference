@@ -145,8 +145,10 @@ const VIP_NETWORKING: Speaker[] = [
   { name: 'Tom So', country: 'China', title: 'Founder & CEO, MML Digital (慢慢来)', img: '/assets/tom-so.jpg' },
 ];
 const SIDE_EVENTS: Speaker[] = [
+  { name: 'Tanya Van Gastel', country: 'Belgium', title: 'Founder, Rankingonai.com', img: '/assets/tanya-van-gastel.jpg' },
   { name: 'Mudi Elsaid', country: 'Egypt & Italy', title: 'Founder, Tasken.ai', img: '/assets/mudi-elsaid.jpg' },
   { name: 'Sacha Fournier', country: 'UK', title: 'Founder, JournoFinder.com', img: '/assets/sacha-fournier.jpg' },
+  { name: 'Jamie I.F.', country: 'UK', title: 'Founder, AffiliateFinder.ai', img: '/assets/jamie-if.jpg' },
   { name: 'Vinayak Gupta', country: 'India', title: 'Founder, Wordscloud', img: '/assets/vinayak-gupta.webp' },
   { name: 'Jabez Reuben', country: 'India', title: 'Founder, The Blueprints', img: '/assets/jabez-reuben.jpg' },
   { name: 'Ilman Akbar', country: 'Indonesia', title: 'Founder & CEO, DailySEO ID & DLYS Consulting', img: '/assets/ilman-akbar.webp' },
