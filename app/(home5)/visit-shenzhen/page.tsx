@@ -14,36 +14,105 @@ const PLAN_THE_TRIP = [
   { label: 'PAYMENTS', href: '#payments' },
   { label: 'CONNECTION', href: '#connection' },
   { label: 'LANGUAGE', href: '#language' },
+  { label: 'PACKING & WEATHER', href: '#packing' },
 ];
 
 const EXPLORE = [
   { label: 'NEIGHBORHOODS', href: '#neighborhoods' },
   { label: 'FOOD', href: '#food' },
-  { label: 'NATURE', href: '#nature' },
-  { label: 'SIDE TRIPS', href: '#side-trips' },
+  { label: 'NATURE & SIDE TRIPS', href: '#nature' },
 ];
 
 const VISA_FREE_COUNTRIES = [
+  { flag: '🇦🇩', name: 'Andorra' },
+  { flag: '🇦🇬', name: 'Antigua and Barbuda' },
+  { flag: '🇦🇱', name: 'Albania' },
+  { flag: '🇦🇲', name: 'Armenia' },
+  { flag: '🇦🇷', name: 'Argentina' },
   { flag: '🇦🇺', name: 'Australia' },
   { flag: '🇦🇹', name: 'Austria' },
+  { flag: '🇦🇿', name: 'Azerbaijan' },
+  { flag: '🇧🇸', name: 'Bahamas' },
+  { flag: '🇧🇭', name: 'Bahrain' },
+  { flag: '🇧🇧', name: 'Barbados' },
+  { flag: '🇧🇾', name: 'Belarus' },
+  { flag: '🇧🇦', name: 'Bosnia and Herzegovina' },
   { flag: '🇧🇪', name: 'Belgium' },
+  { flag: '🇧🇷', name: 'Brazil' },
+  { flag: '🇧🇳', name: 'Brunei' },
+  { flag: '🇧🇬', name: 'Bulgaria' },
   { flag: '🇨🇦', name: 'Canada' },
+  { flag: '🇨🇱', name: 'Chile' },
+  { flag: '🇭🇷', name: 'Croatia' },
+  { flag: '🇨🇾', name: 'Cyprus' },
   { flag: '🇩🇰', name: 'Denmark' },
+  { flag: '🇩🇲', name: 'Dominica' },
+  { flag: '🇪🇨', name: 'Ecuador' },
+  { flag: '🇪🇪', name: 'Estonia' },
   { flag: '🇫🇮', name: 'Finland' },
+  { flag: '🇫🇯', name: 'Fiji' },
   { flag: '🇫🇷', name: 'France' },
+  { flag: '🇬🇪', name: 'Georgia' },
   { flag: '🇩🇪', name: 'Germany' },
+  { flag: '🇬🇷', name: 'Greece' },
+  { flag: '🇬🇩', name: 'Grenada' },
+  { flag: '🇭🇺', name: 'Hungary' },
+  { flag: '🇮🇸', name: 'Iceland' },
   { flag: '🇮🇪', name: 'Ireland' },
   { flag: '🇮🇹', name: 'Italy' },
   { flag: '🇯🇵', name: 'Japan' },
-  { flag: '🇳🇱', name: 'Netherlands' },
+  { flag: '🇰🇿', name: 'Kazakhstan' },
+  { flag: '🇰🇼', name: 'Kuwait' },
+  { flag: '🇱🇻', name: 'Latvia' },
+  { flag: '🇱🇮', name: 'Liechtenstein' },
+  { flag: '🇱🇺', name: 'Luxembourg' },
+  { flag: '🇲🇹', name: 'Malta' },
+  { flag: '🇲🇾', name: 'Malaysia' },
+  { flag: '🇲🇻', name: 'Maldives' },
+  { flag: '🇲🇺', name: 'Mauritius' },
+  { flag: '🇲🇳', name: 'Mongolia' },
+  { flag: '🇲🇨', name: 'Monaco' },
+  { flag: '🇲🇪', name: 'Montenegro' },
+  { flag: '🇳🇱', name: 'The Netherlands' },
   { flag: '🇳🇿', name: 'New Zealand' },
+  { flag: '🇲🇰', name: 'North Macedonia' },
   { flag: '🇳🇴', name: 'Norway' },
+  { flag: '🇴🇲', name: 'Oman' },
+  { flag: '🇵🇪', name: 'Peru' },
   { flag: '🇵🇱', name: 'Poland' },
   { flag: '🇵🇹', name: 'Portugal' },
+  { flag: '🇶🇦', name: 'Qatar' },
+  { flag: '🇷🇴', name: 'Romania' },
+  { flag: '🇷🇺', name: 'Russia' },
+  { flag: '🇼🇸', name: 'Samoa' },
+  { flag: '🇸🇲', name: 'San Marino' },
+  { flag: '🇸🇦', name: 'Saudi Arabia' },
+  { flag: '🇷🇸', name: 'Serbia' },
+  { flag: '🇸🇨', name: 'Seychelles' },
+  { flag: '🇸🇬', name: 'Singapore' },
+  { flag: '🇸🇧', name: 'Solomon Islands' },
+  { flag: '🇸🇰', name: 'Slovakia' },
+  { flag: '🇸🇮', name: 'Slovenia' },
+  { flag: '🇰🇷', name: 'South Korea' },
   { flag: '🇪🇸', name: 'Spain' },
+  { flag: '🇸🇷', name: 'Suriname' },
   { flag: '🇸🇪', name: 'Sweden' },
   { flag: '🇨🇭', name: 'Switzerland' },
+  { flag: '🇹🇴', name: 'Tonga' },
+  { flag: '🇹🇭', name: 'Thailand' },
+  { flag: '🇦🇪', name: 'United Arab Emirates' },
   { flag: '🇬🇧', name: 'United Kingdom' },
+  { flag: '🇺🇾', name: 'Uruguay' },
+  { flag: '🇺🇿', name: 'Uzbekistan' },
+];
+
+const TRANSIT_COUNTRIES = [
+  { flag: '🇨🇿', name: 'Czech Republic' },
+  { flag: '🇮🇩', name: 'Indonesia' },
+  { flag: '🇱🇹', name: 'Lithuania' },
+  { flag: '🇲🇽', name: 'Mexico' },
+  { flag: '🇺🇦', name: 'Ukraine' },
+  { flag: '🇺🇸', name: 'United States' },
 ];
 
 /* ────────────────────────────────── HERO ─────────────────────────────────── */
@@ -53,7 +122,7 @@ function Hero() {
     <section id="top" className="relative isolate overflow-hidden bg-[#03060d]">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/assets/visit-hero.webp"
+          src="/assets/visit-shenzhen-hero-bg.jpg"
           alt=""
           fill
           priority
@@ -112,7 +181,7 @@ function Hero() {
               lineHeight: '150%',
             }}
           >
-            SZX (primary) or HKG (30 min)
+            SZX (primary) or HKG (1 hour) or CAN (2 hours)
           </span>
         </div>
 
@@ -251,7 +320,9 @@ function Visa() {
             lineHeight: '150%',
           }}
         >
-          China offers 30-day visa-free entry for passports from 54+ countries.
+          China allows visa-free entry for 80 passports, typically for 30 days. Exceptions include
+          Mauritius which is granted a 60-day stay, and Albania, Armenia, Bosnia and Herzegovina,
+          and San Marino that qualify for 90 days.
         </p>
 
         {/* Country card */}
@@ -273,7 +344,7 @@ function Visa() {
               letterSpacing: '0.7px',
             }}
           >
-            Visa-Free Countries
+            Visa-Free Countries (80)
           </div>
           <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-5 w-full">
             {VISA_FREE_COUNTRIES.map((c) => (
@@ -294,6 +365,229 @@ function Visa() {
               </li>
             ))}
           </ul>
+        </div>
+
+        {/* Transit card: 240-hour visa-free transit countries */}
+        <div
+          className="mt-8 md:mt-10 flex flex-col items-start gap-6 md:gap-8 self-stretch p-6 md:p-12"
+          style={{
+            borderRadius: 40,
+            border: '1px solid rgba(249, 249, 249, 0.20)',
+          }}
+        >
+          <div
+            className="uppercase"
+            style={{
+              color: '#118BAC',
+              fontFamily: 'General Sans, system-ui, sans-serif',
+              fontSize: 14,
+              fontWeight: 700,
+              lineHeight: '150%',
+              letterSpacing: '0.7px',
+            }}
+          >
+            240-Hour Visa-Free Transit (6 Countries)
+          </div>
+          <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-5 w-full">
+            {TRANSIT_COUNTRIES.map((c) => (
+              <li
+                key={c.name}
+                className="flex items-center gap-3 text-[14px] md:text-[18px]"
+                style={{
+                  color: '#F9F9F9',
+                  fontFamily: 'General Sans, system-ui, sans-serif',
+                  fontWeight: 500,
+                  lineHeight: 'normal',
+                }}
+              >
+                <span className="text-[20px] leading-none" aria-hidden>
+                  {c.flag}
+                </span>
+                {c.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Transit rules & routing */}
+        <div className="mt-12 md:mt-16 flex flex-col gap-8 md:gap-10">
+          <h3
+            className="display uppercase text-[20px] md:text-[26px] leading-[130%]"
+            style={{ color: '#F9F9F9', fontWeight: 700 }}
+          >
+            10-Day Visa-Free Transit Rules &amp; Routing
+          </h3>
+
+          {/* Two rule cards */}
+          <div className="grid gap-5 md:gap-6 md:grid-cols-2">
+            {[
+              {
+                label: 'General Transit Requirements',
+                body: 'You must enter and exit China from the same province and hold a confirmed onward flight ticket to a third country within 240 hours (10 days). Your onward destination cannot be the same as your original country of departure.',
+              },
+              {
+                label: 'The Hong Kong Routing Rule',
+                body: 'If you choose to route through Hong Kong, you cannot enter mainland China (e.g., Shenzhen) by land or ferry to utilize this specific visa-free transit. Instead, you must fly into an eligible mainland airport (such as Guangzhou). From there, you can travel locally by train or car (e.g., to Shenzhen) as long as your final departure flight leaves from within that same province (Guangdong).',
+              },
+            ].map((r) => (
+              <div
+                key={r.label}
+                className="flex flex-col gap-4 p-6 md:p-7"
+                style={{
+                  borderRadius: 24,
+                  border: '1px solid rgba(249, 249, 249, 0.12)',
+                  background: '#0D1017',
+                }}
+              >
+                <div className="flex items-center gap-3">
+                  <span
+                    aria-hidden
+                    className="grid place-items-center shrink-0"
+                    style={{
+                      width: 36,
+                      height: 36,
+                      borderRadius: 12,
+                      background: 'rgba(17, 139, 172, 0.15)',
+                      color: '#5DAEDB',
+                      fontSize: 18,
+                    }}
+                  >
+                    ⓘ
+                  </span>
+                  <span
+                    className="display uppercase"
+                    style={{
+                      color: '#F9F9F9',
+                      fontFamily: 'Unbounded, var(--font-unbounded), system-ui, sans-serif',
+                      fontSize: 14,
+                      fontWeight: 600,
+                      lineHeight: '130%',
+                      letterSpacing: '0.02em',
+                    }}
+                  >
+                    {r.label}
+                  </span>
+                </div>
+                <p
+                  style={{
+                    color: '#F9F9F9',
+                    opacity: 0.7,
+                    fontFamily: 'General Sans, system-ui, sans-serif',
+                    fontSize: 15,
+                    fontWeight: 500,
+                    lineHeight: '175%',
+                  }}
+                >
+                  {r.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Example itineraries */}
+          <div className="flex flex-col gap-5">
+            <h4
+              className="display uppercase text-[16px] md:text-[18px]"
+              style={{ color: '#F9F9F9', fontWeight: 700, letterSpacing: '0.02em' }}
+            >
+              Example Itineraries
+            </h4>
+            <div className="grid gap-4 md:gap-5 md:grid-cols-2">
+              {[
+                {
+                  ok: true,
+                  route: 'London ➔ Shenzhen ➔ Singapore',
+                  note: 'Arrives and departs from the same province, continuing to a valid third country.',
+                },
+                {
+                  ok: false,
+                  route: 'London ➔ Shenzhen ➔ London',
+                  note: 'Does not continue to a third country; returns to the country of origin.',
+                },
+                {
+                  ok: false,
+                  route: 'London ➔ Hong Kong ➔ Shenzhen (by land or ferry) ➔ Singapore',
+                  note: 'You cannot enter mainland China via a land or ferry border crossing under this specific air transit scheme.',
+                },
+                {
+                  ok: true,
+                  route: 'London ➔ Hong Kong ➔ Guangzhou (by flight) ➔ drive to Shenzhen ➔ fly to Singapore',
+                  note: 'Enters mainland China by flight, stays within Guangdong province, and flies out to a third country.',
+                },
+              ].map((it) => {
+                const accent = it.ok ? '#2BB673' : '#EB3030';
+                const segments = it.route.split('➔').map((s) => s.trim());
+                return (
+                  <div
+                    key={it.route}
+                    className="flex flex-col gap-4 p-6 md:p-7"
+                    style={{
+                      borderRadius: 24,
+                      border: `1px solid ${it.ok ? 'rgba(43, 182, 115, 0.35)' : 'rgba(235, 48, 48, 0.35)'}`,
+                      background: it.ok ? 'rgba(43, 182, 115, 0.06)' : 'rgba(235, 48, 48, 0.05)',
+                    }}
+                  >
+                    <span
+                      className="inline-flex items-center gap-2 self-start uppercase"
+                      style={{
+                        padding: '5px 12px',
+                        borderRadius: 1000,
+                        background: accent,
+                        color: '#03060d',
+                        fontFamily: 'General Sans, system-ui, sans-serif',
+                        fontSize: 12,
+                        fontWeight: 700,
+                        letterSpacing: '0.05em',
+                      }}
+                    >
+                      <span aria-hidden>{it.ok ? '✓' : '✕'}</span>
+                      {it.ok ? 'Valid' : 'Invalid'}
+                    </span>
+
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-2">
+                      {segments.map((seg, i) => (
+                        <span key={`${seg}-${i}`} className="inline-flex items-center gap-2">
+                          <span
+                            style={{
+                              padding: '4px 12px',
+                              borderRadius: 1000,
+                              background: 'rgba(255, 255, 255, 0.06)',
+                              border: '1px solid rgba(255, 255, 255, 0.10)',
+                              color: '#F9F9F9',
+                              fontFamily: 'General Sans, system-ui, sans-serif',
+                              fontSize: 13,
+                              fontWeight: 600,
+                              lineHeight: '150%',
+                            }}
+                          >
+                            {seg}
+                          </span>
+                          {i < segments.length - 1 && (
+                            <span aria-hidden style={{ color: accent, fontSize: 14, fontWeight: 700 }}>
+                              →
+                            </span>
+                          )}
+                        </span>
+                      ))}
+                    </div>
+
+                    <p
+                      style={{
+                        color: '#F9F9F9',
+                        opacity: 0.7,
+                        fontFamily: 'General Sans, system-ui, sans-serif',
+                        fontSize: 14,
+                        fontWeight: 500,
+                        lineHeight: '165%',
+                      }}
+                    >
+                      {it.note}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         {/* Below the card: two callouts */}
@@ -328,24 +622,11 @@ function Visa() {
                   lineHeight: '160%',
                 }}
               >
-                You likely qualify under China&apos;s{' '}
-                <strong style={{ color: '#F9F9F9', fontWeight: 600 }}>
-                  240-hour visa-free transit policy
-                </strong>{' '}
-                - legal as long as you transit through Shenzhen to a third country.
-              </p>
-              <p
-                className="italic"
-                style={{
-                  color: '#F9F9F9',
-                  opacity: 0.55,
-                  fontFamily: 'General Sans, system-ui, sans-serif',
-                  fontSize: 14,
-                  fontWeight: 400,
-                  lineHeight: '150%',
-                }}
-              >
-                e.g. home → Shenzhen → another country → home
+                You will need to apply for a visa. We recommend a{' '}
+                <strong style={{ color: '#F9F9F9', fontWeight: 600 }}>Business Visa (M)</strong>, or
+                a <strong style={{ color: '#F9F9F9', fontWeight: 600 }}>Tourist Visa (L)</strong> if
+                you plan to travel before or after the conference. Apply 1 to 2 months before your
+                trip. Consult your local travel agency or government websites for details.
               </p>
             </div>
           </div>
@@ -406,12 +687,14 @@ function AirportCard({
   body,
   legLabel,
   legBody,
+  badge,
 }: {
   img: string;
   heading: string;
   body: string;
   legLabel: string;
   legBody: string;
+  badge?: string;
 }) {
   return (
     <div className="rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:p-7">
@@ -423,6 +706,23 @@ function AirportCard({
           className="object-cover"
           sizes="(min-width: 768px) 50vw, 100vw"
         />
+        {badge ? (
+          <span
+            className="absolute top-3 left-3 display uppercase rounded-full"
+            style={{
+              background: '#EB3030',
+              color: '#F9F9F9',
+              fontFamily: 'General Sans, system-ui, sans-serif',
+              fontSize: 12,
+              fontWeight: 700,
+              letterSpacing: '0.06em',
+              lineHeight: '150%',
+              padding: '6px 14px',
+            }}
+          >
+            {badge}
+          </span>
+        ) : null}
       </div>
       <h3
         className="display uppercase mt-6 md:mt-7 text-[18px] md:text-[20px] leading-[140%] md:leading-[160%]"
@@ -504,7 +804,7 @@ function Flights() {
             fontWeight: 700,
           }}
         >
-          Two airports. Pick the cheaper.
+          Three Airports, Pick the Best Rate
         </h2>
         <p
           className="mt-4 max-w-[820px]"
@@ -517,27 +817,34 @@ function Flights() {
             lineHeight: '150%',
           }}
         >
-          <strong style={{ fontWeight: 600 }}>
-            Shenzhen Bao&apos;an International (SZX)
-          </strong>{' '}
-          - primary airport. Direct flights from most Asian hubs (Tokyo, Seoul, Singapore,
-          Bangkok, Dubai) and several international cities. 40 minutes by metro from downtown.
+          Shenzhen is incredibly well-connected. You have three major airport options to reach the
+          conference venue, we recommend comparing all three to find the cheapest fare.
         </p>
 
-        <div className="mt-10 md:mt-14 grid gap-6 md:gap-8 md:grid-cols-2">
+        <div className="mt-10 md:mt-14 grid gap-6 md:gap-8 md:grid-cols-3">
           <AirportCard
             img="/assets/visit-szx.webp"
-            heading="Shenzhen Bao'an International (SZX)"
-            body="Primary airport. Direct flights from most Asian hubs (Tokyo, Seoul, Singapore, Bangkok, Dubai) and several international cities. 40 minutes by metro from downtown."
-            legLabel="From SZX to St. Regis:"
-            legBody="40 min by taxi · 50 min by Metro Line 11 (direct)."
+            heading="Shenzhen Bao'an International Airport (SZX)"
+            badge="The most convenient option"
+            body="As Shenzhen's primary airport, SZX offers direct flights from major Asian hubs (Tokyo, Seoul, Singapore, Bangkok, Dubai) and several international cities. If you want to land and immediately head to your room, this is your best bet."
+            legLabel="To St. Regis Shenzhen:"
+            legBody="40 minutes by taxi, or 50 minutes direct via Metro Line 11."
           />
           <AirportCard
             img="/assets/visit-hkg.webp"
-            heading="Hong Kong International (HKG)"
-            body="Often cheaper from Europe and North America. 30 km away. The HK → SZ high-speed rail takes under 30 minutes, runs every 10 minutes, and crosses the border without switching trains."
-            legLabel="From HKG to St. Regis:"
-            legBody="1.5 hours total (rail + taxi)."
+            heading="Hong Kong International Airport (HKG)"
+            badge="Often the cheapest for Europe & North America"
+            body="Located just 30 km away, flying into Hong Kong is a massively popular route for international attendees. The connection is seamless: the Hong Kong to Shenzhen high-speed rail takes under 30 minutes, runs every 10 minutes, and crosses the border without you having to switch trains."
+            legLabel="To St. Regis Shenzhen:"
+            legBody="1.5 hours total (via high-speed train, ferry, or cross-border business van)."
+          />
+          <AirportCard
+            img="/assets/visit-hero.webp"
+            heading="Guangzhou Baiyun International Airport (CAN)"
+            badge="A massive global hub and a great backup for flight deals"
+            body="As one of China's &quot;Big Three&quot; aviation hubs, Guangzhou handles a massive volume of global traffic and frequently offers competitive fares that might beat HKG or SZX. It is slightly further out, but the transit infrastructure connecting Guangzhou to Shenzhen is world-class and easy to navigate."
+            legLabel="To St. Regis Shenzhen:"
+            legBody="2 hours total (via the Guangzhou-Shenzhen high-speed rail, followed by a taxi or DiDi)."
           />
         </div>
       </div>
@@ -621,30 +928,30 @@ function WeChatPayMark() {
 }
 
 function PaymentAppCard({
-  img,
   mark,
   body,
   buttonLabel,
   buttonHref,
 }: {
-  img: string;
   mark: React.ReactNode;
-  body: string;
-  buttonLabel: string;
-  buttonHref: string;
+  body: React.ReactNode;
+  buttonLabel?: string;
+  buttonHref?: string;
 }) {
+  const buttonStyle = {
+    padding: '12px 32px',
+    gap: 12,
+    borderRadius: 1000,
+    border: '1px solid #F9F9F9',
+    color: '#F9F9F9',
+    textAlign: 'center' as const,
+    fontSize: 12,
+    fontWeight: 600,
+    lineHeight: '28px',
+  };
   return (
     <div className="payment-card rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:p-7 transition-colors duration-200">
-      <div className="relative w-full aspect-[4/3] overflow-hidden rounded-[16px]">
-        <Image
-          src={img}
-          alt=""
-          fill
-          className="object-cover text-[14px] md:text-[16px] leading-[150%] md:leading-[160%]"
-          sizes="(min-width: 768px) 50vw, 100vw"
-        />
-      </div>
-      <div className="mt-6 md:mt-7">{mark}</div>
+      <div>{mark}</div>
       <p
         className="mt-4 text-white/75"
         style={{
@@ -654,26 +961,18 @@ function PaymentAppCard({
       >
         {body}
       </p>
-      <a
-        href={buttonHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="btn-outline-white display mt-6 flex justify-center items-center self-stretch uppercase"
-        style={{
-          padding: '12px 32px',
-          gap: 12,
-          borderRadius: 1000,
-          border: '1px solid #F9F9F9',
-          color: '#F9F9F9',
-          textAlign: 'center',
-          fontSize: 12,
-          fontWeight: 600,
-          lineHeight: '28px',
-        }}
-      >
-        {buttonLabel}
-        <ArrowUpRight className="w-4 h-4" />
-      </a>
+      {buttonLabel && buttonHref ? (
+        <a
+          href={buttonHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-outline-white display mt-6 flex justify-center items-center self-stretch uppercase"
+          style={buttonStyle}
+        >
+          {buttonLabel}
+          <ArrowUpRight className="w-4 h-4" />
+        </a>
+      ) : null}
     </div>
   );
 }
@@ -747,18 +1046,68 @@ function Payments() {
 
         <div className="mt-10 md:mt-14 grid gap-6 md:gap-8 md:grid-cols-2">
           <PaymentAppCard
-            img="/assets/visit-alipay.webp"
             mark={<AlipayMark />}
-            body="The more foreigner-friendly of the two. Links to most international cards (Visa, Mastercard, Amex). Set up before you arrive."
-            buttonLabel="Download Alipay"
-            buttonHref="https://www.alipay.com/"
+            body={
+              <>
+                The more foreigner-friendly of the two. Links to most international cards (Visa,
+                Mastercard, Amex). Set up before you arrive. Download it on{' '}
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=en_US"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline text-white hover:text-[var(--red)]"
+                >
+                  Google Play
+                </a>{' '}
+                or the{' '}
+                <a
+                  href="https://apps.apple.com/us/app/alipay-simplify-your-life/id333206289"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline text-white hover:text-[var(--red)]"
+                >
+                  App Store
+                </a>
+                , and follow{' '}
+                <a
+                  href="https://youtu.be/dleZ1EaHgog?si=WqUn7O0SvYJ3jQli&t=70"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline text-white hover:text-[var(--red)]"
+                >
+                  this YouTube tutorial
+                </a>{' '}
+                to set it up.
+              </>
+            }
           />
           <PaymentAppCard
-            img="/assets/visit-wechat.webp"
             mark={<WeChatPayMark />}
-            body="Pairs with WeChat, which you'll use for messaging anyway. Also accepts international cards now."
-            buttonLabel="Download WeChat Pay"
-            buttonHref="https://pay.weixin.qq.com/"
+            body={
+              <>
+                Pairs with WeChat, which you&apos;ll use for messaging anyway. Also accepts
+                international cards now. You can&apos;t download WeChat Pay on its own, so download
+                WeChat{' '}
+                <a
+                  href="https://www.wechat.com/en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline text-white hover:text-[var(--red)]"
+                >
+                  here
+                </a>{' '}
+                and set up WeChat Pay via{' '}
+                <a
+                  href="https://youtu.be/9zK4ZElfstc?si=4OjO8up9o63QHjjT&t=47"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline text-white hover:text-[var(--red)]"
+                >
+                  this YouTube tutorial
+                </a>
+                .
+              </>
+            }
           />
         </div>
 
@@ -910,7 +1259,7 @@ function Connection() {
 
             <div className="relative w-full aspect-[16/10] overflow-hidden rounded-[16px] mt-8 max-w-[560px]">
               <Image
-                src="/assets/visit-connection.webp"
+                src="/assets/connect-before-land.jpg"
                 alt=""
                 fill
                 className="object-cover"
@@ -925,15 +1274,11 @@ function Connection() {
               num="01"
               heading="Before you fly"
               body="Set up WeChat before you arrive — it's how you'll communicate with everyone you meet here. International numbers work for registration."
-              buttonLabel="Download WeChat"
-              buttonHref="https://www.wechat.com/"
             />
             <StepCard
               num="02"
               heading="On arrival"
               body="International roaming works but is expensive. A local eSIM (Airalo or similar) for ~$20 covers 5 days with enough data."
-              buttonLabel="Download Airalo"
-              buttonHref="https://www.airalo.com/"
             />
             <StepCard
               num="03"
@@ -956,7 +1301,7 @@ function TranslateCard({
 }: {
   heading: string;
   body: string;
-  buttons: { label: string; href: string }[];
+  buttons?: { label: string; href: string }[];
 }) {
   return (
     <div
@@ -990,31 +1335,33 @@ function TranslateCard({
       >
         {body}
       </p>
-      <div className="flex flex-col gap-3 self-stretch">
-        {buttons.map((b) => (
-          <a
-            key={b.label}
-            href={b.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-outline-white display flex justify-center items-center self-stretch uppercase"
-            style={{
-              padding: '12px 32px',
-              gap: 12,
-              borderRadius: 1000,
-              border: '1px solid #F9F9F9',
-              color: '#F9F9F9',
-              textAlign: 'center',
-              fontSize: 14,
-              fontWeight: 600,
-              lineHeight: '28px',
-            }}
-          >
-            {b.label}
-            <ArrowUpRight className="w-4 h-4" />
-          </a>
-        ))}
-      </div>
+      {buttons && buttons.length > 0 ? (
+        <div className="flex flex-col gap-3 self-stretch">
+          {buttons.map((b) => (
+            <a
+              key={b.label}
+              href={b.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline-white display flex justify-center items-center self-stretch uppercase"
+              style={{
+                padding: '12px 32px',
+                gap: 12,
+                borderRadius: 1000,
+                border: '1px solid #F9F9F9',
+                color: '#F9F9F9',
+                textAlign: 'center',
+                fontSize: 14,
+                fontWeight: 600,
+                lineHeight: '28px',
+              }}
+            >
+              {b.label}
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -1115,20 +1462,10 @@ function Language() {
           <TranslateCard
             heading="Apple Translate"
             body="With Chinese downloaded offline. No connection needed"
-            buttons={[
-              {
-                label: 'Apple Translate',
-                href: 'https://apps.apple.com/app/translate/id1514844618',
-              },
-            ]}
           />
           <TranslateCard
             heading="Baidu Translate or DeepL"
             body="On your phone. Both work without issues"
-            buttons={[
-              { label: 'Baidu Translate', href: 'https://fanyi.baidu.com/' },
-              { label: 'DeepL', href: 'https://www.deepl.com/translator' },
-            ]}
           />
         </div>
       </div>
@@ -1141,23 +1478,23 @@ function Language() {
 const DISTRICTS = [
   {
     name: 'Nanshan',
-    img: '/assets/visit-nanshan.webp',
-    body: "Shenzhen's tech centre. Tencent HQ, Huawei's Bantian campus 30 min east, DJI's flagship store. Sky bars, co-working cafés, the bay. If you leave the conference after work, go here.",
+    img: '/assets/district-nanshan.png',
+    body: "Shenzhen's tech centre. Think of it as the city's Silicon Valley. It's home to Tencent HQ, the stunning DJI flagship store, and a booming start-up scene. Expect sleek sky bars, high-end co-working cafés, and beautiful promenades along Shenzhen Bay. If you want to grab dinner and drinks with a tech-forward crowd after conference hours, go here.",
   },
   {
     name: 'Futian',
-    img: '/assets/visit-futian.webp',
-    body: 'The financial district. Where the St. Regis is. Central, well-connected, walkable. Dinner options every 50 metres.',
+    img: '/assets/district-futian.jpg',
+    body: "The sleek, modern financial district. Central, highly walkable, and hyper-connected by the metro. While it's not our venue district, it's a powerhouse for business meetings and upscale networking. You'll find fantastic international dining options and massive shopping centres every 50 metres.",
   },
   {
     name: 'Luohu',
-    img: '/assets/visit-luohu.webp',
-    body: 'The original Shenzhen. Older, denser, more textured. Dongmen shopping street, the 1970s-built Luohu market, and the border crossing to Hong Kong.',
+    img: '/assets/district-luohu.jpg',
+    body: "The original Shenzhen – and home to our conference venue, the St. Regis. This is where the city's economic miracle started. It's older, denser, and infinitely more textured. Step outside the towering St. Regis to explore the neon-lit Dongmen shopping street, hunt for bargains in the massive 1990s-built Luohu Commercial City, or easily cross the main border directly into Hong Kong.",
   },
   {
     name: 'Yantian',
-    img: '/assets/visit-yantian.webp',
-    body: 'The coastal district. White-sand beaches at Dapeng, hiking trails, cleaner air. Where the MGM (VIP networking hotel) is. 40 min from Futian.',
+    img: '/assets/district-yantian.png',
+    body: "The coastal escape. Breathe in the cleaner air and take in the sea views. Yantian is famous for lush hiking trails and the beautiful shoreline at Dameisha and Xiaomeisha. This is where you'll find our VIP Networking hotel, the MGM Shenzhen – located right on the beach. It's a scenic 40-minute drive from the city centre.",
   },
 ];
 
@@ -1236,24 +1573,39 @@ function Neighborhoods() {
 
 const MEALS = [
   {
-    name: 'Dim Sum',
-    img: '/assets/visit-dimsum.webp',
-    body: 'Guangdong is the home of dim sum. Go early (9 am on a weekend), sit at a big table, order by stamping a paper card. Lin Heung* and *Jade Garden* if you want the classic rooms.',
+    name: 'Cantonese Dim Sum (广式早茶)',
+    img: '/assets/food-dimsum.jpg',
+    body: `The Guangdong classic. Shenzhen is in Guangdong province, making it a holy ground for traditional "morning tea." Sit at a big round table and order mountains of shrimp dumplings (har gow) and BBQ pork buns. You'll order exactly how the locals do: by scanning a QR code on your table via WeChat.`,
+    whereLabel: 'Where to eat it:',
+    where: 'Fanlou (蘩楼) or Diandude (点都德) for a bustling, ornate teahouse atmosphere and incredible food.',
   },
   {
-    name: 'Hot Pot',
-    img: '/assets/visit-hotpot.webp',
-    body: 'Multiple regional styles available. Sichuan (spicy), Cantonese (clear broth), Chaoshan (beef). Most restaurants run till midnight.',
+    name: 'Coconut Chicken Hot Pot (椰子鸡)',
+    img: '/assets/food-coconut-chicken.jpg',
+    body: `The dish that defines modern Shenzhen. Invented right here in the city, the broth is made entirely from fresh, sweet coconut water. You boil tender chicken and bamboo fungus in the clear broth, then dip the meat in a mix of soy sauce, crushed sand ginger, fresh chili, and calamansi lime. It is light, sweet, and incredibly popular.`,
+    whereLabel: 'Where to eat it:',
+    where: 'Runyuan Siji (润园四季) or Siji Yelin (四季椰林) are the legendary local chains.',
   },
   {
-    name: 'Huaqiangbei Street Food',
-    img: '/assets/visit-streetfood.webp',
-    body: 'The side alleys around Huaqiangbei electronics market run all night. Skewers, noodle bowls, baozi steamers, and the city\'s most honest street food. Bring an empty stomach.',
+    name: 'Chaoshan Beef Hot Pot (潮汕牛肉火锅)',
+    img: '/assets/food-chaoshan-beef.jpg',
+    body: `The ultimate meat-lover's dinner. Shenzhen has a massive population from the nearby Chaoshan region, and they brought their legendary beef hot pot with them. The focus here is entirely on the meat: freshly butchered, never frozen, and sliced incredibly thin. You dip the cuts into a clear, savory broth for exactly 8 to 12 seconds, then coat them in rich shacha (barbecue/satay) sauce.`,
+    whereLabel: 'Where to eat it:',
+    where: 'Baheli Haiji (八合里海记) is the undisputed king of Chaoshan hot pot in Shenzhen.',
   },
   {
-    name: 'Peking Duck',
-    img: '/assets/visit-pekingduck.webp',
-    body: 'Not local, but Shenzhen has the best non-Beijing branches of the classics: *Da Dong* and *Quanjude* both have Shenzhen locations in Futian.',
+    name: 'Sichuan Spicy & Sour Fish (酸菜鱼)',
+    img: '/assets/food-sichuan-fish.png',
+    body: `The spicy, addictive crowd favorite. This Sichuan dish has taken Shenzhen by storm. It features a massive bowl of incredibly tender, bone-free fish slices swimming in a rich broth made from pickled mustard greens (suancai), dried chilies, and numbing Sichuan peppercorns. It is sour, spicy, and fiercely appetizing.`,
+    whereLabel: 'Where to eat it:',
+    where: 'Tai Er (太二) is famous city-wide for this exact dish (and for their strict "no tables larger than four people" rule to keep the dining experience fast and focused).',
+  },
+  {
+    name: 'Modern Tea & Bakeries (新式茶饮与烘焙)',
+    img: '/assets/food-tea-bakeries.png',
+    body: `The fuel of China's tech capital. Shenzhen is the epicenter of China's modern dessert and tea boom. You will see young professionals constantly holding elaborate aesthetic drinks or queuing up for freshly baked pastries.`,
+    whereLabel: 'What to try:',
+    where: `Grab a "Meat Floss Small Cake" (肉松小贝) from Bao Shi Fu (鲍师傅), a savory-sweet sponge cake coated in mayo and pork floss. For drinks, skip the basic bubble tea and try A Ma Handmake (阿嬷手作) for rich mochi drinks, or tea'stone for stunning, high-end traditional Chinese teas served with modern flair.`,
   },
 ];
 
@@ -1282,8 +1634,22 @@ function Food() {
             fontWeight: 700,
           }}
         >
-          Four meals that are Shenzhen
+          What Everyone is Actually Eating in Shenzhen
         </h2>
+        <p
+          className="mt-4 max-w-[820px] text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
+          style={{
+            color: '#F9F9F9',
+            opacity: 0.8,
+            fontFamily: 'General Sans, system-ui, sans-serif',
+            fontWeight: 400,
+          }}
+        >
+          Shenzhen is a massive city of migrants, it doesn&apos;t just have one local cuisine.
+          Instead, it gathers the absolute best flavors from across China (from traditional
+          Cantonese morning tea to fiery Sichuan dishes) and turns them into local staples. Here is
+          what you need to eat and where to find it.
+        </p>
 
         <div className="mt-10 md:mt-14 rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:p-10">
           <div className="grid gap-8 md:gap-12 md:grid-cols-2 items-center">
@@ -1345,15 +1711,29 @@ function Food() {
                           {meal.name}
                         </span>
                         {isActive && (
-                          <span
-                            className="mt-4 text-white/75 block text-[14px] md:text-[16px] leading-[150%] md:leading-[160%]"
-                            style={{
-                              fontFamily: 'General Sans, system-ui, sans-serif',
-                              fontWeight: 400,
-                            }}
-                          >
-                            {meal.body}
-                          </span>
+                          <>
+                            <span
+                              className="mt-4 text-white/75 block text-[14px] md:text-[16px] leading-[150%] md:leading-[160%]"
+                              style={{
+                                fontFamily: 'General Sans, system-ui, sans-serif',
+                                fontWeight: 400,
+                              }}
+                            >
+                              {meal.body}
+                            </span>
+                            <span
+                              className="mt-3 text-white/75 block text-[14px] md:text-[16px] leading-[150%] md:leading-[160%]"
+                              style={{
+                                fontFamily: 'General Sans, system-ui, sans-serif',
+                                fontWeight: 400,
+                              }}
+                            >
+                              <strong style={{ color: '#5DAEDB', fontWeight: 600 }}>
+                                {meal.whereLabel}
+                              </strong>{' '}
+                              {meal.where}
+                            </span>
+                          </>
                         )}
                       </button>
                     </li>
@@ -1372,28 +1752,48 @@ function Food() {
 
 const SIDE_TRIPS = [
   {
-    name: 'Dapeng Peninsula',
-    img: '/assets/visit-dapeng.webp',
-    body: 'White-sand beaches, crystal-clear water, rugged cliffs at the Cape of Good Hope. 45 min from Futian.',
+    name: 'Dapeng Peninsula (大鹏半岛)',
+    img: '/assets/trip-dapeng.jpg',
+    body: `Shenzhen isn't just skyscrapers. Head east for white-sand beaches, crystal-clear water, and dramatic sea cliffs. It is beautifully rugged and hailed as the "Cape of Good Hope" of Shenzhen.`,
+    getting: 'A 50-minute drive from the St. Regis.',
   },
   {
-    name: 'Wutong Mountain',
-    img: '/assets/visit-wutong.webp',
-    body: 'The tallest mountain in Shenzhen. Two-hour hike, panoramic bay views at the summit.',
+    name: 'Wutong Mountain (梧桐山)',
+    img: '/assets/trip-wutong.jpg',
+    body: 'The tallest peak in the city. A challenging half-day hike through lush greenery that rewards you with sweeping, panoramic views of Shenzhen Bay and Hong Kong at the summit.',
+    getting: 'A 25-minute drive from the St. Regis.',
   },
   {
-    name: 'Nantou Ancient City',
-    img: '/assets/visit-nantou.webp',
-    body: '1,700-year-old Ming gates, traditional alleys. 20 min from Futian.',
+    name: 'Nantou Ancient City (南头古城)',
+    img: '/assets/trip-nantou.jpg',
+    body: '1,700 years of history beautifully revitalized. Walk through authentic Ming Dynasty gates into a maze of traditional alleys packed with trendy cafés, boutiques, and galleries.',
+    getting: 'A 40-minute drive from the St. Regis, or accessible via Metro Line 12.',
   },
   {
-    name: 'Hong Kong',
-    img: '/assets/visit-hongkong.webp',
-    body: 'Cross the border on the high-speed rail in under 30 minutes. Different currency, different SIM, same day trip.',
+    name: 'Fairy Lake Botanical Garden (仙湖植物园)',
+    img: '/assets/trip-fairy-lake.jpg',
+    body: 'A massive, misty sanctuary built around a serene lake. It features a stunning petrified forest, beautiful bonsai gardens, and the magnificent Hongfa Temple, one of the most active and culturally significant Buddhist temples in southern China.',
+    getting: 'Extremely close to the venue. Just a 15-minute taxi ride or a direct trip via Metro Line 2 from the St. Regis.',
+  },
+  {
+    name: 'Dafen Oil Painting Village (大芬油画村)',
+    img: '/assets/trip-dafen.jpg',
+    body: `Once the global factory for replicated art, Dafen produced a massive percentage of the world's oil paintings. Today, it has evolved into a quirky, walkable labyrinth of original art studios, cozy coffee shops, and independent galleries.`,
+    getting: 'A quick 20-minute drive or short metro ride north from the St. Regis.',
   },
 ];
 
-function SideTripCard({ name, img, body }: { name: string; img: string; body: string }) {
+function SideTripCard({
+  name,
+  img,
+  body,
+  getting,
+}: {
+  name: string;
+  img: string;
+  body: string;
+  getting: string;
+}) {
   return (
     <div
       className="payment-card snap-start shrink-0 flex flex-col items-start"
@@ -1430,17 +1830,30 @@ function SideTripCard({ name, img, body }: { name: string; img: string; body: st
       >
         {name}
       </h3>
-      <p
-        className="text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
-        style={{
-          color: '#F9F9F9',
-          opacity: 0.7,
-          fontFamily: 'General Sans, system-ui, sans-serif',
-          fontWeight: 400,
-        }}
-      >
-        {body}
-      </p>
+      <div className="flex flex-col gap-3">
+        <p
+          className="text-[14px] md:text-[16px] leading-[170%] md:leading-[180%]"
+          style={{
+            color: '#F9F9F9',
+            opacity: 0.7,
+            fontFamily: 'General Sans, system-ui, sans-serif',
+            fontWeight: 400,
+          }}
+        >
+          {body}
+        </p>
+        <p
+          className="text-[14px] md:text-[16px] leading-[150%] md:leading-[160%]"
+          style={{
+            color: '#F9F9F9',
+            opacity: 0.7,
+            fontFamily: 'General Sans, system-ui, sans-serif',
+            fontWeight: 400,
+          }}
+        >
+          <strong style={{ color: '#5DAEDB', fontWeight: 600 }}>Getting there:</strong> {getting}
+        </p>
+      </div>
     </div>
   );
 }

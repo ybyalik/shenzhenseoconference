@@ -14,10 +14,10 @@ const A = {
   recap: '/assets/video-cover.webp',
   audInternational: '/figma-assets/audience-international.png',
   audChinese: '/figma-assets/audience-chinese.png',
-  why1: '/figma-assets/6e1365b901e58c47813d8a9a6c17f43ff4c0f557.png',
-  why2: '/figma-assets/c180b122845d182aed2c6a1c3b0f9c898e707c2f.jpg',
+  why1: '/assets/why-silicon-valley.png',
+  why2: '/assets/1-hour-from-hong-kong.jpg',
   why3: '/figma-assets/ea9863f1c46347ee75ce39500df9c0b12b743af6.png',
-  why4: '/figma-assets/1a227bbe08c421d3cc2d14d7b8c4b6b82263e2bc.jpg',
+  why4: '/assets/budget-twice-as-far.png',
   spkA: '/figma-assets/a98cc2407eac3ef826ce296466a19c22b89a4777.jpg',
   garyIllyes: '/assets/gary-illyes.webp',
   spkB: '/figma-assets/4b767e80b2b757091a90554414ca31841996deeb.jpg',
@@ -778,22 +778,22 @@ function WhyShenzhen() {
     {
       img: A.why1,
       h: 'Silicon Valley of hardware',
-      p: 'Huaqiangbei — the electronics district where a hardware startup prototypes a product in a week, not a year.',
+      p: 'The only city on earth where you can design, source, build, and scale a new technology product in weeks, not months or years.',
     },
     {
       img: A.why2,
       h: '1 hour from Hong Kong',
-      p: 'High-speed rail from HK. Visa-free for 54+ passports.',
+      p: 'Seamless connections straight from HK. Cross the border on a 15-minute bullet train and enjoy 30-day visa-free entry for 80 countries.',
     },
     {
       img: A.why3,
       h: 'Ancient Walls Next To Glass Towers',
-      p: '1,700-year-old Ming Dynasty gates at Nantou. Sub-tropical beaches at Dapeng. Mangrove wetlands inside the city limits.',
+      p: 'Walk through authentic Ming Dynasty gates at Nantou, explore Dapeng’s sub-tropical beaches, or discover urban mangrove wetlands.',
     },
     {
       img: A.why4,
       h: 'Your budget goes twice as far',
-      p: '5-star hotels for less than a 3-star in London or New York.',
+      p: 'Maximize your travel ROI before the conference even starts. A 5-star hotel here costs less than a 3-star in London or New York.',
     },
   ];
   return (
@@ -819,6 +819,7 @@ function WhyShenzhen() {
               </h2>
             </div>
             <a
+              href="/visit-shenzhen"
               className="hidden md:flex btn-outline-white display rounded-full backdrop-blur-sm self-start md:self-auto uppercase"
               style={{
                 padding: '16px 24px',
@@ -871,10 +872,11 @@ function WhyShenzhen() {
               opacity: 0.8,
             }}
           >
-            More patents filed here than anywhere else in China. Tencent, DJI, Huawei, BYD — all
-            within a 30-minute drive.
+            More patents are filed here than anywhere else in China. Tencent, DJI, Huawei, and BYD
+            are all headquartered right here.
           </p>
           <a
+            href="/visit-shenzhen"
             className="md:hidden btn-outline-white display rounded-full backdrop-blur-sm uppercase mb-12 self-start inline-flex"
             style={{
               padding: '16px 24px',
@@ -1771,7 +1773,20 @@ function Faq() {
     },
     {
       q: 'Do I need a visa?',
-      a: 'Citizens of 54+ countries currently enjoy visa-free entry for up to 30 days. Passport holders from some countries (including the USA) are eligible for 10-day free transit. If neither applies, you will need a tourist or business visa.',
+      a: (
+        <>
+          Citizens of 80 countries currently enjoy visa-free entry for up to 90 days. Passport
+          holders from some countries (including the USA) are eligible for 10-day free transit. If
+          neither applies, you will need a tourist or business visa.{' '}
+          <a
+            href="https://shenzhenseoconference.com/visit-shenzhen"
+            className="underline text-white hover:text-[var(--red)]"
+          >
+            Learn more
+          </a>
+          .
+        </>
+      ),
     },
     {
       q: 'Can you send me a business invitation letter for the visa?',

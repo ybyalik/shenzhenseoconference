@@ -448,7 +448,7 @@ function TierComparisonTable() {
       values: ['Home + Sponsor page', 'Home + Sponsor page', 'Home + Sponsor page', 'Sponsor page only'],
     },
     { label: '# of VIP tickets ($1,800 value)', values: ['3', '2', '1', '1'] },
-    { label: '# of Deluxe tickets ($900 value)', values: ['2', '2', '0', '0'] },
+    { label: '# of Deluxe tickets ($900 value)', values: ['2', '2', '1', '0'] },
     { label: '# of Standard tickets ($600 value)', values: ['2', '1', '1', '0'] },
     {
       label: 'Best for',
@@ -622,7 +622,7 @@ function TierComparisonTable() {
                   <tr key={row.label}>
                     <th
                       scope="row"
-                      className="sticky left-0 z-10 p-4 text-left align-top text-[12px] md:text-[13px] font-semibold uppercase tracking-[0.08em] text-white/55"
+                      className="sticky left-0 z-10 p-4 text-left align-middle text-[12px] md:text-[13px] font-semibold uppercase tracking-[0.08em] text-white/55"
                     >
                       {row.label}
                     </th>
@@ -631,7 +631,7 @@ function TierComparisonTable() {
                       return (
                         <td
                           key={i}
-                          className={`p-4 align-top text-center text-[14px] leading-[160%] ${
+                          className={`p-4 align-middle text-center text-[14px] leading-[160%] ${
                             muted(v) ? 'text-white/35' : 'text-white/85'
                           }`}
                           style={{

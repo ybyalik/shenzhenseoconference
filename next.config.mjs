@@ -8,6 +8,20 @@ const nextConfig = {
     root: process.cwd(),
   },
   allowedDevOrigins: ['localhost', '127.0.0.1'],
+  async redirects() {
+    return [
+      {
+        source: '/plan-your-trip',
+        destination: '/visit-shenzhen',
+        statusCode: 301,
+      },
+      {
+        source: '/contact',
+        destination: '/#contact',
+        statusCode: 301,
+      },
+    ];
+  },
   async headers() {
     return [
       {

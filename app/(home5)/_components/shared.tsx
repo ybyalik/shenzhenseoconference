@@ -48,6 +48,7 @@ export const NAV_ITEMS = [
   { label: 'SPEAKERS', anchor: '/speakers' },
   { label: 'AGENDA', anchor: '/agenda' },
   { label: 'SPONSORS', anchor: '/sponsors' },
+  { label: 'VISIT SHENZHEN', anchor: '/visit-shenzhen' },
   { label: 'CONTACT', anchor: '#contact' },
 ];
 
@@ -375,7 +376,9 @@ export function Footer({ linkBase = '' }: { linkBase?: string } = {}) {
   const navLinks = [
     { label: 'HOME', anchor: '#top' },
     { label: 'SPEAKERS', anchor: '/speakers' },
+    { label: 'AGENDA', anchor: '/agenda' },
     { label: 'SPONSORS', anchor: '/sponsors' },
+    { label: 'VISIT SHENZHEN', anchor: '/visit-shenzhen' },
     { label: 'CONTACT', anchor: '#contact' },
   ];
   const ticketsHref = `${linkBase}#pricing`;

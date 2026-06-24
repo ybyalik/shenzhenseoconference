@@ -44,6 +44,7 @@ const COUNTRY_CODES: Record<string, string> = {
   sweden: 'SE',
   thailand: 'TH',
   turkey: 'TR',
+  belgium: 'BE',
 };
 
 const flagEmoji = (name: string) => {
@@ -139,17 +140,17 @@ const LIGHTNING_TALKS: Speaker[] = [
 ];
 const VIP_NETWORKING: Speaker[] = [
   { name: 'Michael Covel', country: 'USA', title: 'Author, Entrepreneur, Filmmaker', img: '/assets/michael-covel.jpg' },
+  { name: 'Tanya Van Gastel', country: 'Belgium', title: 'Founder, Rankingonai.com', img: '/assets/tanya-van-gastel.jpg' },
   { name: 'Marcus Pentzek', country: 'Germany & China', title: 'Partner & Director SEO, Jademond Digital', img: '/assets/marcus-pentzek.jpg' },
   { name: 'Tom So', country: 'China', title: 'Founder & CEO, MML Digital (慢慢来)', img: '/assets/tom-so.jpg' },
 ];
 const SIDE_EVENTS: Speaker[] = [
   { name: 'Mudi Elsaid', country: 'Egypt & Italy', title: 'Founder, Tasken.ai', img: '/assets/mudi-elsaid.jpg' },
-  { name: 'Sacha Fournier', country: 'France & UK', title: 'Founder, JournoFinder.com', img: '/assets/sacha-fournier.jpg' },
-  { name: 'Tony Yan', country: 'China', title: 'Co-founder, QuickCreator', img: '/assets/tony-yan.jpg' },
+  { name: 'Sacha Fournier', country: 'UK', title: 'Founder, JournoFinder.com', img: '/assets/sacha-fournier.jpg' },
   { name: 'Vinayak Gupta', country: 'India', title: 'Founder, Wordscloud', img: '/assets/vinayak-gupta.webp' },
-  { name: 'Milan Smets', country: 'Sweden', title: 'Co-founder & COO, Playstack', img: '/assets/milan-smets.webp' },
   { name: 'Jabez Reuben', country: 'India', title: 'Founder, The Blueprints', img: '/assets/jabez-reuben.jpg' },
   { name: 'Ilman Akbar', country: 'Indonesia', title: 'Founder & CEO, DailySEO ID & DLYS Consulting', img: '/assets/ilman-akbar.webp' },
+  { name: 'Tori Long', country: 'China', title: 'Marketing Director, GWTime', img: '/assets/tori-long.jpg' },
   { name: 'Jacky Lin', country: 'China', title: 'Founder, Wingfuture', img: '/assets/jacky-lin.webp' },
 ];
 
