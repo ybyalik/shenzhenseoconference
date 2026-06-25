@@ -122,7 +122,7 @@ function Hero() {
     <section id="top" className="relative isolate overflow-hidden bg-[#03060d]">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/assets/visit-shenzhen-hero-bg.jpg"
+          src="/assets/visit-shenzhen-hero-bg.webp"
           alt=""
           fill
           priority
@@ -823,7 +823,7 @@ function Flights() {
 
         <div className="mt-10 md:mt-14 grid gap-6 md:gap-8 md:grid-cols-3">
           <AirportCard
-            img="/assets/airport-szx.jpg"
+            img="/assets/airport-szx.webp"
             heading="Shenzhen Bao'an International Airport (SZX)"
             badge="Most convenient option"
             body="Shenzhen's main airport features direct flights from major global hubs. Ideal for the quickest commute directly to the venue."
@@ -831,7 +831,7 @@ function Flights() {
             legBody="40 minutes by taxi, or 50 minutes via Metro Line 11."
           />
           <AirportCard
-            img="/assets/airport-hkg.jpg"
+            img="/assets/airport-hkg.webp"
             heading="Hong Kong International Airport (HKG)"
             badge="Cheapest for Europe & America"
             body="A popular international route just 30 km away. Connects seamlessly to Shenzhen via a direct, 15-minute high-speed rail."
@@ -839,7 +839,7 @@ function Flights() {
             legBody="1.5 hours total (via high-speed train, ferry, or business van)."
           />
           <AirportCard
-            img="/assets/airport-can.jpg"
+            img="/assets/airport-can.webp"
             heading="Guangzhou Baiyun International Airport (CAN)"
             badge="Great backup for flight deals"
             body="A massive aviation hub often featuring the most competitive fares. Slightly further out, but easily accessible via transit."
@@ -1277,7 +1277,7 @@ function Connection() {
 
             <div className="relative w-full aspect-[16/10] overflow-hidden rounded-[16px] mt-8 max-w-[560px]">
               <Image
-                src="/assets/connect-before-land.jpg"
+                src="/assets/connect-before-land.webp"
                 alt=""
                 fill
                 className="object-cover"
@@ -1484,22 +1484,22 @@ function Language() {
 const DISTRICTS = [
   {
     name: 'Nanshan',
-    img: '/assets/district-nanshan.png',
+    img: '/assets/district-nanshan.webp',
     body: "Shenzhen's tech hub and Silicon Valley. Features Tencent HQ, DJI flagship store, sleek sky bars, and the Shenzhen Bay promenade. Ideal for networking with a tech-centric crowd.",
   },
   {
     name: 'Futian',
-    img: '/assets/district-futian.jpg',
+    img: '/assets/district-futian.webp',
     body: "The city's modern financial center. Central, highly walkable, and hyper-connected by the metro. Perfect for business meetings, international dining, and premium shopping.",
   },
   {
     name: 'Luohu',
-    img: '/assets/district-luohu.jpg',
+    img: '/assets/district-luohu.webp',
     body: 'The historical core and home to our main conference venue, The St. Regis Shenzhen. Explore the bustling Dongmen shopping street, hunt for bargains, or cross into Hong Kong.',
   },
   {
     name: 'Yantian',
-    img: '/assets/district-yantian.png',
+    img: '/assets/district-yantian.webp',
     body: "A scenic 40-minute drive from the city center. Famous for lush trails and beaches. This coastal escape is where you'll find our VIP Networking venue, the MGM Shenzhen.",
   },
 ];
@@ -1580,35 +1580,35 @@ function Neighborhoods() {
 const MEALS = [
   {
     name: 'Cantonese Dim Sum (广式早茶)',
-    img: '/assets/food-dimsum.jpg',
+    img: '/assets/food-dimsum.webp',
     body: `The Guangdong classic. Shenzhen is in Guangdong province, making it a holy ground for traditional "morning tea." Sit at a big round table and order mountains of shrimp dumplings (har gow) and BBQ pork buns. You'll order exactly how the locals do: by scanning a QR code on your table via WeChat.`,
     whereLabel: 'Where to eat it:',
     where: 'Fanlou (蘩楼) or Diandude (点都德) for a bustling, ornate teahouse atmosphere and incredible food.',
   },
   {
     name: 'Coconut Chicken Hot Pot (椰子鸡)',
-    img: '/assets/food-coconut-chicken.jpg',
+    img: '/assets/food-coconut-chicken.webp',
     body: `The dish that defines modern Shenzhen. Invented right here in the city, the broth is made entirely from fresh, sweet coconut water. You boil tender chicken and bamboo fungus in the clear broth, then dip the meat in a mix of soy sauce, crushed sand ginger, fresh chili, and calamansi lime. It is light, sweet, and incredibly popular.`,
     whereLabel: 'Where to eat it:',
     where: 'Runyuan Siji (润园四季) or Siji Yelin (四季椰林) are the legendary local chains.',
   },
   {
     name: 'Chaoshan Beef Hot Pot (潮汕牛肉火锅)',
-    img: '/assets/food-chaoshan-beef.jpg',
+    img: '/assets/food-chaoshan-beef.webp',
     body: `The ultimate meat-lover's dinner. Shenzhen has a massive population from the nearby Chaoshan region, and they brought their legendary beef hot pot with them. The focus here is entirely on the meat: freshly butchered, never frozen, and sliced incredibly thin. You dip the cuts into a clear, savory broth for exactly 8 to 12 seconds, then coat them in rich shacha (barbecue/satay) sauce.`,
     whereLabel: 'Where to eat it:',
     where: 'Baheli Haiji (八合里海记) is the undisputed king of Chaoshan hot pot in Shenzhen.',
   },
   {
     name: 'Sichuan Spicy & Sour Fish (酸菜鱼)',
-    img: '/assets/food-sichuan-fish.png',
+    img: '/assets/food-sichuan-fish.webp',
     body: `The spicy, addictive crowd favorite. This Sichuan dish has taken Shenzhen by storm. It features a massive bowl of incredibly tender, bone-free fish slices swimming in a rich broth made from pickled mustard greens (suancai), dried chilies, and numbing Sichuan peppercorns. It is sour, spicy, and fiercely appetizing.`,
     whereLabel: 'Where to eat it:',
     where: 'Tai Er (太二) is famous city-wide for this exact dish (and for their strict "no tables larger than four people" rule to keep the dining experience fast and focused).',
   },
   {
     name: 'Modern Tea & Bakeries (新式茶饮与烘焙)',
-    img: '/assets/food-tea-bakeries.png',
+    img: '/assets/food-tea-bakeries.webp',
     body: `The fuel of China's tech capital. Shenzhen is the epicenter of China's modern dessert and tea boom. You will see young professionals constantly holding elaborate aesthetic drinks or queuing up for freshly baked pastries.`,
     whereLabel: 'What to try:',
     where: `Grab a "Meat Floss Small Cake" (肉松小贝) from Bao Shi Fu (鲍师傅), a savory-sweet sponge cake coated in mayo and pork floss. For drinks, skip the basic bubble tea and try A Ma Handmake (阿嬷手作) for rich mochi drinks, or tea'stone for stunning, high-end traditional Chinese teas served with modern flair.`,
@@ -1797,31 +1797,31 @@ function Food() {
 const SIDE_TRIPS = [
   {
     name: 'Dapeng Peninsula (大鹏半岛)',
-    img: '/assets/trip-dapeng.jpg',
+    img: '/assets/trip-dapeng.webp',
     body: `Beautifully rugged sea cliffs and white-sand beaches, known as Shenzhen's "Cape of Good Hope".`,
     getting: '50-minute drive.',
   },
   {
     name: 'Wutong Mountain (梧桐山)',
-    img: '/assets/trip-wutong.jpg',
+    img: '/assets/trip-wutong.webp',
     body: "The city's tallest peak offers a challenging half-day hike with panoramic views of Shenzhen Bay and Hong Kong.",
     getting: '25-minute drive.',
   },
   {
     name: 'Nantou Ancient City (南头古城)',
-    img: '/assets/trip-nantou.jpg',
+    img: '/assets/trip-nantou.webp',
     body: 'Walk through Ming Dynasty gates into a maze of 1,700-year-old traditional alleys filled with trendy cafés and boutiques.',
     getting: '40-minute drive or Metro Line 12.',
   },
   {
     name: 'Fairy Lake Botanical Garden (仙湖植物园)',
-    img: '/assets/trip-fairy-lake.jpg',
+    img: '/assets/trip-fairy-lake.webp',
     body: 'A misty lake sanctuary featuring bonsai gardens, a petrified forest, and the magnificent Hongfa Temple.',
     getting: '15-minute taxi or Metro Line 2.',
   },
   {
     name: 'Dafen Oil Painting Village (大芬油画村)',
-    img: '/assets/trip-dafen.jpg',
+    img: '/assets/trip-dafen.webp',
     body: 'Formerly a replica art factory, now a quirky labyrinth of original studios, galleries, and coffee shops.',
     getting: '20-minute drive or short metro ride.',
   },
