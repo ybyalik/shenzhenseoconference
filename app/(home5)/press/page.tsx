@@ -10,21 +10,22 @@ import { ArrowUpRight, BackToTop, Footer, LinkedInIcon, Nav } from '../_componen
 function Hero() {
   return (
     <section id="top" className="bg-[#03060d]">
-      <div className="grid md:grid-cols-2 pt-[72px] lg:pt-[88px] min-h-[600px] md:min-h-[640px] lg:min-h-[720px]">
-        {/* Left: full-bleed image */}
-        <div className="relative h-[280px] sm:h-[360px] md:h-auto">
-          <Image
-            src="/assets/press-hero.webp"
-            alt=""
-            fill
-            priority
-            className="object-cover object-center"
-            sizes="(min-width: 768px) 50vw, 100vw"
-          />
-        </div>
+      <div className="container pt-[120px] md:pt-[140px] lg:pt-[160px] pb-12 md:pb-20">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* Left: image (contained, rounded) */}
+          <div className="relative h-[300px] sm:h-[380px] md:h-[460px] lg:h-[520px] rounded-[24px] overflow-hidden">
+            <Image
+              src="/assets/press-hero-2026.webp"
+              alt=""
+              fill
+              priority
+              className="object-cover object-center"
+              sizes="(min-width: 768px) 50vw, 100vw"
+            />
+          </div>
 
-        {/* Right: content */}
-        <div className="flex flex-col justify-center px-6 md:px-10 lg:px-16 xl:px-24 py-12 md:py-16">
+          {/* Right: content */}
+          <div className="flex flex-col justify-center md:pl-4 lg:pl-8">
           <h1
             className="display uppercase text-white"
             style={{
@@ -51,8 +52,8 @@ function Hero() {
               lineHeight: '170%',
             }}
           >
-            Media resources, brand assets, and information about the world&apos;s most
-            practitioner-focused SEO conference.
+            Press assets, media resources, and foundational information for the Shenzhen SEO
+            Conference.
           </p>
 
           <div className="mt-8">
@@ -60,10 +61,11 @@ function Hero() {
               href="#press-contact"
               className="display gradient-cta inline-flex items-center gap-3 px-7 py-4 rounded-full text-[13px] font-bold tracking-[0.18em] uppercase text-white"
             >
-              Reach Our Press Team
+              Media Inquiries
               <ArrowUpRight className="w-4 h-4" />
             </Link>
           </div>
+        </div>
         </div>
       </div>
     </section>
@@ -100,10 +102,7 @@ function AboutEvent() {
                   letterSpacing: 'normal',
                 }}
               >
-                <span className="block">East meets West.</span>
-                <span className="block">In SEO.</span>
-                <span className="block">In one room.</span>
-                <span className="block">Over multiple days.</span>
+                The Only SEO Conference Where East Truly Meets West.
               </h2>
 
               <div
@@ -116,23 +115,23 @@ function AboutEvent() {
                 }}
               >
                 <p>
-                  Built in Shenzhen, China&apos;s fastest-growing tech city, we bring
-                  together SEO professionals, global brands, and international agencies to
-                  learn from each other, forge real partnerships, and grow beyond borders.
+                  Built in Shenzhen, China&apos;s fastest-growing tech city, the Shenzhen SEO
+                  Conference brings together SEO professionals and entrepreneurs from East Asia
+                  with global peers from the West. We provide the bridge for both sides to learn
+                  from each other, forge real partnerships, and grow beyond borders.
                 </p>
                 <p>
-                  The Shenzhen SEO Conference is Asia&apos;s premier gathering of search
-                  engine optimization practitioners, bringing together 40+ speakers and
-                  500+ attendees from across the globe. Unlike traditional conferences
-                  filled with theory and speculation, every speaker has shipped real work
-                  and generated measurable results.
+                  Unlike SEO events that stay local or hyper-focus on single search aspects, we are
+                  built on cross-border partnership and SEO entrepreneurship. We prioritize the
+                  actionable over the theoretical. Every speaker on our stage has a global vision
+                  and is vetted for having shipped real SEO work.
                 </p>
                 <p>
-                  Set in the heart of Shenzhen, China&apos;s innovation capital, the
-                  conference features five days of intensive learning, networking, and
-                  knowledge sharing. From technical SEO to content strategy, from local
-                  search to international expansion, we cover the full spectrum of modern
-                  SEO practice.
+                  The 2026 edition features five days of intensive knowledge sharing and networking
+                  – starting with city tours and SEO masterminds, moving into two full days of
+                  conference talks, and concluding with a full day of VIP networking. More than a
+                  standard business conference, it is a blended experience designed for global
+                  brands and entrepreneurs serious about organic growth.
                 </p>
               </div>
             </div>
@@ -193,10 +192,10 @@ function QuickFacts() {
     { kind: 'fact', label: 'Event Name', value: 'Shenzhen SEO Conference 2026' },
     { kind: 'fact', label: 'Dates', value: 'September 14–18, 2026' },
     { kind: 'fact', label: 'Location', value: 'The St. Regis Shenzhen, China' },
-    { kind: 'fact', label: 'Expected Attendance', value: '500+ SEO practitioners' },
-    { kind: 'fact', label: 'Speakers', value: '40+ industry leaders' },
-    { kind: 'fact', label: 'Countries Represented', value: '25+' },
-    { kind: 'fact', label: 'Founded', value: '2021' },
+    { kind: 'fact', label: 'Expected Attendance', value: '500+ global attendees' },
+    { kind: 'fact', label: 'Speakers', value: '50+ industry leaders' },
+    { kind: 'fact', label: 'Countries Represented', value: '30+' },
+    { kind: 'fact', label: 'Founded', value: '2025' },
   ];
 
   return (
@@ -237,9 +236,11 @@ function QuickFacts() {
 function PrincipleCard({
   heading,
   paragraphs,
+  items,
 }: {
   heading: string;
-  paragraphs: string[];
+  paragraphs?: string[];
+  items?: string[];
 }) {
   return (
     <div className="rounded-[32px] border border-white/10 bg-[#03060d] p-7 md:p-10 flex flex-col">
@@ -271,23 +272,54 @@ function PrincipleCard({
             flexShrink: 0,
           }}
         />
-        <div className="flex flex-col gap-5 flex-1">
-          {paragraphs.map((p, i) => (
-            <p
-              key={i}
-              style={{
-                color: '#F9F9F9',
-                opacity: 0.8,
-                fontFamily: 'General Sans, system-ui, sans-serif',
-                fontSize: 18,
-                fontWeight: 500,
-                lineHeight: '180%',
-              }}
-            >
-              {p}
-            </p>
-          ))}
-        </div>
+        {items ? (
+          <ul className="flex flex-col gap-4 flex-1">
+            {items.map((it, i) => (
+              <li
+                key={i}
+                className="flex items-center gap-3"
+                style={{
+                  color: '#F9F9F9',
+                  opacity: 0.9,
+                  fontFamily: 'General Sans, system-ui, sans-serif',
+                  fontSize: 18,
+                  fontWeight: 600,
+                  lineHeight: '140%',
+                }}
+              >
+                <span
+                  aria-hidden
+                  style={{
+                    width: 7,
+                    height: 7,
+                    borderRadius: 9999,
+                    background: '#5DAEDB',
+                    flexShrink: 0,
+                  }}
+                />
+                {it}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="flex flex-col gap-5 flex-1">
+            {paragraphs?.map((p, i) => (
+              <p
+                key={i}
+                style={{
+                  color: '#F9F9F9',
+                  opacity: 0.8,
+                  fontFamily: 'General Sans, system-ui, sans-serif',
+                  fontSize: 18,
+                  fontWeight: 500,
+                  lineHeight: '180%',
+                }}
+              >
+                {p}
+              </p>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -297,20 +329,22 @@ function VisionMission() {
   return (
     <section className="bg-[#03060d]">
       <div className="container pb-16 md:pb-24">
-        <div className="grid gap-6 md:gap-8 md:grid-cols-2 auto-rows-fr">
+        <div className="grid gap-6 md:gap-8 md:grid-cols-3 auto-rows-fr">
           <PrincipleCard
             heading="Our Vision"
             paragraphs={[
-              'A world where SEO professionals from every corner of the globe learn from each other, work together, and build businesses without borders.',
-              'We are building toward a conference that sells itself.',
-              'Where the community is so strong, the knowledge so actionable, and the experience so memorable that showing up in Shenzhen becomes the obvious move for anyone serious about global organic growth.',
+              'A world where SEO professionals, organic growth marketers, and global entrepreneurs learn from each other, work together, and build businesses without borders.',
             ]}
           />
           <PrincipleCard
             heading="Our Mission"
             paragraphs={[
-              'To bridge Eastern and Western SEO professionals through an intentional, in-person conference in Shenzhen, where real knowledge is exchanged, real partnerships are formed, and a truly global SEO community is built.',
+              'We bridge Eastern and Western SEO professionals, marketers, and entrepreneurs in Shenzhen. Through this in-person event, we exchange actionable knowledge and build real cross-border partnerships.',
             ]}
+          />
+          <PrincipleCard
+            heading="Keywords / Core Themes"
+            items={['Global Organic Growth', 'SEO Entrepreneurship', 'Cross-Border Partnership']}
           />
         </div>
       </div>
@@ -419,7 +453,7 @@ function Founder() {
                   letterSpacing: '1.4px',
                 }}
               >
-                JP/John Zhang
+                JP Zhang
               </h3>
               <div
                 className="mt-2"
@@ -432,7 +466,7 @@ function Founder() {
                   lineHeight: '150%',
                 }}
               >
-                Founder &amp; Conference Director
+                Founder &amp; Host, Shenzhen SEO Conference
               </div>
 
               <div
@@ -447,16 +481,47 @@ function Founder() {
                 }}
               >
                 <p>
-                  JP Zhang spent a decade building SEO teams at fast-growing startups across
-                  Asia before founding the Shenzhen SEO Conference in 2024. Frustrated by
-                  conferences that prioritized entertainment over education, JP created an
-                  event focused entirely on practitioner-to-practitioner knowledge transfer.
+                  JP Zhang (also known as John in China) brings 16 years of hands-on SEO experience
+                  to the industry. After leading SEO and content marketing for tech companies in the
+                  US and China, he spent a decade scaling a successful affiliate website portfolio
+                  and educating the Chinese market on actionable Google SEO strategies through his
+                  brand,{' '}
+                  <a
+                    href="https://www.seoactionblog.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline"
+                    style={{ color: '#5DAEDB' }}
+                  >
+                    英文SEO实战派
+                  </a>
+                  .
                 </p>
                 <p>
-                  Prior to launching the conference, JP led SEO strategy for three
-                  successful exits in the e-commerce and SaaS sectors, managing teams across
-                  China, Singapore, and the United States. JP holds a degree in Computer
-                  Science from Tsinghua University.
+                  In 2019, JP tested the &quot;East Meets West&quot; concept by hosting a 300-person
+                  SEO event in Shenzhen featuring international experts like Aleyda Solis. Following a
+                  global pause, the conference officially returned in 2025 with a major shift in
+                  scale: four days, 500 attendees, and a full English track. With 35% of the
+                  attendees flying in from the West, JP saw his concept validated as Western SEO
+                  entrepreneurs sat directly beside their East Asian peers to connect, collaborate,
+                  and build real partnerships.
+                </p>
+                <p>
+                  A serial SEO entrepreneur, JP&apos;s work extends beyond the Shenzhen SEO
+                  Conference. He also runs SEO Connector, a service matching Chinese companies with
+                  vetted overseas marketing partners, and{' '}
+                  <a
+                    href="https://seoactionschool.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline"
+                    style={{ color: '#5DAEDB' }}
+                  >
+                    SEO Action School
+                  </a>
+                  , a dedicated community for Chinese SEO professionals and growth marketers. JP
+                  holds dual bachelor&apos;s degrees from China and dual master&apos;s degrees from
+                  the United States.
                 </p>
               </div>
 
@@ -472,14 +537,14 @@ function Founder() {
                 }}
               >
                 <strong style={{ fontWeight: 600 }}>Available for:</strong> Interviews,
-                podcasts, speaking engagements
+                podcasts, guest posts, and speaking engagements.
               </p>
 
               <div className="mt-6 flex flex-wrap items-center gap-7">
                 <ContactChip
                   icon={<MailIcon className="w-4 h-4" />}
-                  label="jp@shenzhenseo.com"
-                  href="mailto:jp@shenzhenseo.com"
+                  label="jp@shenzhenseoconference.com"
+                  href="mailto:jp@shenzhenseoconference.com"
                 />
                 <ContactChip
                   icon={<LinkedInIcon className="w-4 h-4" />}
@@ -597,116 +662,57 @@ function BrandColors() {
 
 /* ─────────────────────────────── LOGO ASSETS ─────────────────────────────── */
 
-function FileDownloadIcon({ className = '' }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
-      <path
-        d="M14 3h-4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V9l-2-2-4-4z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M12 12v6m0 0l-2-2m2 2l2-2"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 type LogoVariant = {
   name: string;
-  description: string;
+  src: string;
   background: 'dark' | 'light';
-  invert?: boolean;
-  buttonLabel: string;
-  href: string;
 };
 
 const LOGO_VARIANTS: LogoVariant[] = [
-  {
-    name: 'Colour Logo',
-    description: 'Scalable SVG file',
-    background: 'dark',
-    buttonLabel: 'Download SVG',
-    href: '/logo-white.webp',
-  },
-  {
-    name: 'Inverse Logo',
-    description: 'White on black background',
-    background: 'light',
-    invert: true,
-    buttonLabel: 'Download PNG',
-    href: '/logo-white.webp',
-  },
-  {
-    name: 'Black Logo',
-    description: 'Black on white background',
-    background: 'dark',
-    buttonLabel: 'Download PNG',
-    href: '/logo-white.webp',
-  },
-  {
-    name: 'White Logo',
-    description: 'Black on white background',
-    background: 'light',
-    invert: true,
-    buttonLabel: 'Download PNG',
-    href: '/logo-white.webp',
-  },
+  { name: 'Logo · Gradient', src: '/assets/brand/logo-dark-gradient.png', background: 'dark' },
+  { name: 'Logo · Multicolour', src: '/assets/brand/logo-dark-multicolour.png', background: 'dark' },
+  { name: 'Logo · Blue', src: '/assets/brand/logo-dark-blue.png', background: 'dark' },
+  { name: 'Logo · Coral', src: '/assets/brand/logo-dark-coral.png', background: 'dark' },
+  { name: 'Logo · White', src: '/assets/brand/logo-dark-white.png', background: 'dark' },
+  { name: 'Logo · Gradient', src: '/assets/brand/logo-light-gradient.png', background: 'light' },
+  { name: 'Logo · Multicolour', src: '/assets/brand/logo-light-multicolour.png', background: 'light' },
+  { name: 'Logo · Blue', src: '/assets/brand/logo-light-blue.png', background: 'light' },
+  { name: 'Logo · Coral', src: '/assets/brand/logo-light-coral.png', background: 'light' },
+  { name: 'Logo · Black', src: '/assets/brand/logo-light-black.png', background: 'light' },
+  { name: 'Icon · Gradient', src: '/assets/brand/icon-gradient.png', background: 'dark' },
+  { name: 'Icon · Multicolour', src: '/assets/brand/icon-dark-multicolour.png', background: 'dark' },
+  { name: 'Icon · Blue', src: '/assets/brand/icon-blue.png', background: 'dark' },
+  { name: 'Icon · Coral', src: '/assets/brand/icon-coral.png', background: 'dark' },
+  { name: 'Icon · White', src: '/assets/brand/icon-white.png', background: 'dark' },
+  { name: 'Icon · Multicolour', src: '/assets/brand/icon-light-multicolour.png', background: 'light' },
+  { name: 'Icon · Black', src: '/assets/brand/icon-black.png', background: 'light' },
 ];
 
 function LogoCard({ variant }: { variant: LogoVariant }) {
   const tileBg = variant.background === 'light' ? '#F9F9F9' : '#0a0d14';
   return (
-    <div className="rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:p-7">
+    <div className="rounded-[24px] border border-white/10 bg-[#03060d] p-4 md:p-5">
       <div
-        className="grid place-items-center w-full aspect-square rounded-[18px]"
+        className="grid place-items-center w-full rounded-[14px] h-[104px] md:h-[120px] p-5"
         style={{ background: tileBg }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/logo-white.webp"
+          src={variant.src}
           alt={`${variant.name} preview`}
-          className="w-[60%] max-w-[160px] h-auto"
-          style={variant.invert ? { filter: 'invert(1)' } : undefined}
+          className="max-w-full max-h-full object-contain"
         />
       </div>
       <div
-        className="display uppercase text-white mt-6"
+        className="display uppercase text-white mt-4 text-center"
         style={{
-          fontSize: 16,
+          fontSize: 12,
           fontWeight: 700,
-          letterSpacing: '0.16em',
+          letterSpacing: '0.12em',
         }}
       >
         {variant.name}
       </div>
-      <div
-        className="mt-2 text-white/65"
-        style={{
-          fontFamily: 'General Sans, system-ui, sans-serif',
-          fontSize: 14,
-          fontWeight: 400,
-          lineHeight: '150%',
-        }}
-      >
-        {variant.description}
-      </div>
-
-      <a
-        href={variant.href}
-        download
-        className="btn-outline-white display mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase text-white border border-white/40"
-      >
-        <FileDownloadIcon className="w-4 h-4" />
-        {variant.buttonLabel}
-      </a>
     </div>
   );
 }
@@ -724,7 +730,7 @@ function LogoAssets() {
             lineHeight: '40px',
           }}
         >
-          Logo Assets
+          Brand Assets
         </h2>
         <p
           className="mt-4 max-w-[820px]"
@@ -737,14 +743,35 @@ function LogoAssets() {
             lineHeight: '180%',
           }}
         >
-          Download official logos in various formats. Please maintain proper spacing and do
-          not modify the logo colors or proportions.
+          Download our primary logos and official icons in scalable and transparent formats.
+          Please maintain original colors, proportions, and clear space.
         </p>
 
-        <div className="mt-10 md:mt-14 grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 md:mt-14 grid gap-4 md:gap-5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
           {LOGO_VARIANTS.map((v) => (
-            <LogoCard key={v.name} variant={v} />
+            <LogoCard key={`${v.name}-${v.src}`} variant={v} />
           ))}
+        </div>
+
+        <div className="mt-10 md:mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="https://drive.google.com/file/d/1SGC_iNoNZrliXor6QbSbWPX2CBdKgxwe/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="gradient-cta display inline-flex w-full sm:w-auto items-center justify-center gap-2 px-7 py-4 rounded-full text-[13px] font-bold tracking-[0.18em] uppercase text-white"
+          >
+            Download All Assets (.zip)
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
+          <a
+            href="https://drive.google.com/drive/folders/1NtIu7kvIB6pzenAiIbyweSWQ8H3b59f7?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline-white display inline-flex w-full sm:w-auto items-center justify-center gap-2 px-7 py-4 rounded-full text-[13px] font-bold tracking-[0.18em] uppercase text-white border border-white/40"
+          >
+            View on Google Drive
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
         </div>
       </div>
     </section>
@@ -755,21 +782,22 @@ function LogoAssets() {
 
 type Photo = {
   title: string;
-  credit: string;
   img: string;
-  href: string;
 };
 
 const KEY_PHOTOS: Photo[] = [
-  { title: 'Founder', credit: 'Photo by Name', img: '/assets/press-founder.webp', href: '/assets/press-founder.webp' },
-  { title: 'Morning Workshop', credit: 'Photo by Name', img: '/assets/visit-szx.webp', href: '/assets/visit-szx.webp' },
-  { title: 'Breakout Sessions', credit: 'Photo by Name', img: '/assets/visit-hkg.webp', href: '/assets/visit-hkg.webp' },
-  { title: 'Main Stage Talks', credit: 'Photo by Name', img: '/assets/press-venue.webp', href: '/assets/press-venue.webp' },
-  { title: 'VIP Evening', credit: 'Photo by Name', img: '/assets/visit-dimsum.webp', href: '/assets/visit-dimsum.webp' },
-  { title: 'Main Stage Talks', credit: 'Photo by Name', img: '/assets/agenda-venue.webp', href: '/assets/agenda-venue.webp' },
-  { title: 'Speaker Session', credit: 'Photo by Name', img: '/assets/press-hero.webp', href: '/assets/press-hero.webp' },
-  { title: 'Opening Party', credit: 'Photo by Name', img: '/assets/visit-streetfood.webp', href: '/assets/visit-streetfood.webp' },
-  { title: 'Closing Party', credit: 'Photo by Name', img: '/assets/visit-hongkong.webp', href: '/assets/visit-hongkong.webp' },
+  { title: 'Founder Headshot', img: '/assets/press-founder-headshot.webp' },
+  { title: 'City Tour (Visit DJI)', img: '/assets/press-city-dji.webp' },
+  { title: 'City Tour (Splendid China)', img: '/assets/press-city-splendid-china.webp' },
+  { title: 'City Tour (Lianhuashan Park)', img: '/assets/press-city-lianhuashan.webp' },
+  { title: 'Main Stage Talk (Gary Illyes)', img: '/assets/press-gary-illyes.webp' },
+  { title: 'Main Stage Talk (Aleyda Solis)', img: '/assets/press-aleyda-solis.webp' },
+  { title: 'Main Stage Panel', img: '/assets/press-main-panel.webp' },
+  { title: 'VIP Networking (Roundtable)', img: '/assets/press-vip-roundtable.webp' },
+  { title: 'Attendee Photo', img: '/assets/press-attendee-photo.webp' },
+  { title: 'Attendee Networking', img: '/assets/press-attendee-networking.webp' },
+  { title: 'Attendee Group Photo', img: '/assets/press-attendee-group.webp' },
+  { title: 'Opening Party', img: '/assets/press-opening-party.webp' },
 ];
 
 function PhotoCard({ photo }: { photo: Photo }) {
@@ -794,25 +822,6 @@ function PhotoCard({ photo }: { photo: Photo }) {
       >
         {photo.title}
       </div>
-      <div
-        className="mt-1.5 text-white/55"
-        style={{
-          fontFamily: 'General Sans, system-ui, sans-serif',
-          fontSize: 13,
-          fontWeight: 500,
-        }}
-      >
-        {photo.credit}
-      </div>
-
-      <a
-        href={photo.href}
-        download
-        className="btn-outline-white display mt-5 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase text-white border border-white/40"
-      >
-        <FileDownloadIcon className="w-4 h-4" />
-        Download
-      </a>
     </div>
   );
 }
@@ -843,14 +852,30 @@ function KeyPhotos() {
             lineHeight: '180%',
           }}
         >
-          High-resolution images for media use. All photos are approved for editorial use
-          with proper attribution.
+          High-resolution images for media use. All photos are approved for editorial use.
+          Please credit all images to:{' '}
+          <Link href="/" className="underline" style={{ color: '#5DAEDB' }}>
+            Shenzhen SEO Conference
+          </Link>
+          .
         </p>
 
         <div className="mt-10 md:mt-14 grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {KEY_PHOTOS.map((p, i) => (
             <PhotoCard key={`${p.title}-${i}`} photo={p} />
           ))}
+        </div>
+
+        <div className="mt-10 md:mt-14 flex justify-center">
+          <a
+            href="https://drive.google.com/drive/folders/1MJpmmzNEPrXPqO_Gouw7H2FM1Bk21fB2"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="gradient-cta display inline-flex w-full sm:w-auto items-center justify-center gap-2 px-7 py-4 rounded-full text-[13px] font-bold tracking-[0.18em] uppercase text-white"
+          >
+            Browse High-Res Images
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
         </div>
       </div>
     </section>
@@ -874,8 +899,8 @@ function PressContact() {
               letterSpacing: '-2px',
             }}
           >
-            <span className="block">Additional</span>
-            <span className="block">Resources</span>
+            <span className="block">Media</span>
+            <span className="block">Contact</span>
           </h2>
 
           <div
@@ -909,24 +934,15 @@ function PressContact() {
               >
                 <li>
                   <strong className="text-white font-semibold">Media Relations:</strong>{' '}
-                  Sarah Chen
+                  Rahile Adil
                 </li>
                 <li>
                   <strong className="text-white font-semibold">Email:</strong>{' '}
                   <a
-                    href="mailto:press@shenzhenseoconference.com"
+                    href="mailto:rahile@shenzhenseoconference.com"
                     className="hover:text-[#EB3030] transition-colors"
                   >
-                    press@shenzhenseoconference.com
-                  </a>
-                </li>
-                <li>
-                  <strong className="text-white font-semibold">Phone:</strong>{' '}
-                  <a
-                    href="tel:+8675512345678"
-                    className="hover:text-[#EB3030] transition-colors"
-                  >
-                    +86 755 1234 5678
+                    rahile@shenzhenseoconference.com
                   </a>
                 </li>
               </ul>
@@ -952,8 +968,8 @@ function PressContact() {
                   lineHeight: '170%',
                 }}
               >
-                For urgent media inquiries during the event, please contact our on-site
-                press liaison.
+                Please direct all interview requests, media pass applications, and general
+                coverage inquiries to our press team via email.
               </p>
               <p
                 className="text-white/80"
@@ -965,7 +981,7 @@ function PressContact() {
                 }}
               >
                 <strong className="text-white italic font-semibold">Response time:</strong>{' '}
-                <em>within 24 hours during business hours.</em>
+                <em>Within 24 business hours.</em>
               </p>
             </div>
           </div>

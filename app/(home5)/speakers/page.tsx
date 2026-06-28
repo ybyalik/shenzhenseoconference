@@ -72,7 +72,7 @@ const SPEAKER_POOL: Speaker[] = [
   { name: 'Doug Pierce', country: 'United States', title: 'SEO Consultant', img: '/assets/doug-pierce.jpg' },
   { name: 'Loki Yan', country: 'China', title: 'SEO Practitioner', img: '/assets/loki-yan.jpg' },
   { name: 'Mads Singers', country: 'Denmark', title: 'Management Consultant', img: '/assets/mads-singers.jpg' },
-  { name: 'Megan Gougeon', country: 'United States', title: 'SEO Strategist', img: '/assets/megan-gougeon.jpg' },
+  { name: 'Megan Gougeon', country: 'United States', title: 'SEO Strategist', img: '/assets/megan-gougeon-2026.jpg' },
   { name: 'Mike Dee', country: 'United States', title: 'SEO Consultant', img: '/assets/mike-dee.jpg' },
   { name: 'Nick Drewe', country: 'United Kingdom', title: 'Founder, WeThrift', img: '/assets/nick-drewe.jpg' },
   { name: 'Owain Lloyd-Williams', country: 'United Kingdom', title: 'SEO Practitioner', img: '/assets/owain-lloyd-williams.jpg' },
@@ -96,14 +96,14 @@ const KEYNOTES: Speaker[] = [
 ];
 const WORKSHOPS: Speaker[] = [
   { name: 'Marc Moeller', country: 'Germany & Australia', title: 'Founder, Ecomexperts', img: '/assets/marc-moeller.jpg' },
-  { name: 'Megan Gougeon', country: 'Canada', title: 'Founder, Portable Professional', img: '/assets/megan-gougeon.jpg' },
+  { name: 'Megan Gougeon', country: 'Canada', title: 'Founder, Portable Professional', img: '/assets/megan-gougeon-2026.jpg' },
   { name: 'Jessica Malnik', country: 'USA', title: 'Founder, Remote Work Tribe & Clarity Briefs', img: '/assets/jessica-malnik.jpeg' },
   { name: 'Zack Franklin', country: 'USA', title: 'Founder, SmartEcomSEO', img: '/assets/zack-franklin.jpg' },
 ];
 const FIELD_TALKS: Speaker[] = [
   { name: 'Nick Drewe', country: 'Australia', title: 'Founder & CEO, Wethrift', img: '/assets/nick-drewe.jpg' },
   { name: 'Josh Blyskal', country: 'USA', title: 'AI Strategy & Research, Profound', img: '/assets/josh-blyskal.png' },
-  { name: 'Nik Ranger', country: 'Australia', title: 'Senior Growth Consultant, Dejan', img: '/assets/nik-ranger.jpg' },
+  { name: 'Nik Ranger', country: 'Australia', title: 'Senior Growth Consultant, Dejan', img: '/assets/nik-ranger-2026.jpg' },
   { name: 'Loki Yan', country: 'China & Australia', title: 'Co-founder, First Optimise (壹优化)', img: '/assets/loki-yan.jpg' },
   { name: 'Doug Pierce', country: 'USA', title: 'Founder, Cogney', img: '/assets/doug-pierce.jpg' },
   { name: 'Mao Kawana', country: 'Japan', title: 'Project Manager, Faber Company', img: '/assets/mao-kawana.jpg' },
@@ -114,7 +114,7 @@ const FIELD_TALKS: Speaker[] = [
   { name: 'Kun Tang', country: 'China', title: 'Founder and CEO, Jademond', img: '/assets/kun-tang.webp' },
 ];
 const LIGHTNING_TALKS: Speaker[] = [
-  { name: 'Apurva Bose', country: 'USA', title: 'VP of Operations & Strategy, Vice President', img: '/assets/apurva-bose.jpg' },
+  { name: 'Apurva Bose', country: 'USA', title: 'VP of Operations & Strategy, Overtake Digital', img: '/assets/apurva-bose.jpg' },
   { name: 'Johann Sathianathen', country: 'USA', title: 'Co-founder, Cyndra AI', img: '/assets/johann-sathianathen.webp' },
   { name: 'Roger Yin', country: 'Canada', title: 'SEO Partner, HashMatrix', img: '/assets/roger-yin.jpg' },
   { name: 'Tom Qiao', country: 'Canada', title: 'Founder, Convert Better', img: '/assets/tom-qiao.jpg' },
@@ -139,7 +139,6 @@ const LIGHTNING_TALKS: Speaker[] = [
   { name: 'Tupa Lee', country: 'China', title: 'SEO & SEM Consultant', img: '/assets/tupa-lee.jpg' },
 ];
 const VIP_NETWORKING: Speaker[] = [
-  { name: 'Michael Covel', country: 'USA', title: 'Author, Entrepreneur, Filmmaker', img: '/assets/michael-covel.jpg' },
   { name: 'Tanya Van Gastel', country: 'Belgium', title: 'Founder, Rankingonai.com', img: '/assets/tanya-van-gastel.webp' },
   { name: 'Marcus Pentzek', country: 'Germany & China', title: 'Partner & Director SEO, Jademond Digital', img: '/assets/marcus-pentzek.jpg' },
   { name: 'Tom So', country: 'China', title: 'Founder & CEO, MML Digital (慢慢来)', img: '/assets/tom-so.jpg' },
@@ -149,7 +148,8 @@ const SIDE_EVENTS: Speaker[] = [
   { name: 'Mudi Elsaid', country: 'Egypt & Italy', title: 'Founder, Tasken.ai', img: '/assets/mudi-elsaid.jpg' },
   { name: 'Sacha Fournier', country: 'UK', title: 'Founder, JournoFinder.com', img: '/assets/sacha-fournier.jpg' },
   { name: 'Jamie I.F.', country: 'UK', title: 'Founder, AffiliateFinder.ai', img: '/assets/jamie-if.webp' },
-  { name: 'Vinayak Gupta', country: 'India', title: 'Founder, Wordscloud', img: '/assets/vinayak-gupta.webp' },
+  { name: 'Vinayak Gupta', country: 'India', title: 'Founder, Serpbays', img: '/assets/vinayak-gupta.webp' },
+  { name: 'Sharoz Dawa', country: 'India', title: 'SEO Lead, Fynd', img: '/assets/sharoz-dawa.jpg' },
   { name: 'Jabez Reuben', country: 'India', title: 'Founder, The Blueprints', img: '/assets/jabez-reuben.jpg' },
   { name: 'Ilman Akbar', country: 'Indonesia', title: 'Founder & CEO, DailySEO ID & DLYS Consulting', img: '/assets/ilman-akbar.webp' },
   { name: 'Tori Long', country: 'China', title: 'Marketing Director, GWTime', img: '/assets/tori-long.webp' },
@@ -169,7 +169,7 @@ const WHO_TOOK_STAGE = [
   { name: 'Doug Pierce', title: 'SEO Consultant', img: '/assets/doug-pierce.jpg' },
   { name: 'Loki Yan', title: 'SEO Practitioner', img: '/assets/loki-yan.jpg' },
   { name: 'Mads Singers', title: 'Management Consultant', img: '/assets/mads-singers.jpg' },
-  { name: 'Megan Gougeon', title: 'SEO Strategist', img: '/assets/megan-gougeon.jpg' },
+  { name: 'Megan Gougeon', title: 'SEO Strategist', img: '/assets/megan-gougeon-2026.jpg' },
   { name: 'Mike Dee', title: 'SEO Consultant', img: '/assets/mike-dee.jpg' },
   { name: 'Nick Drewe', title: 'Founder, WeThrift', img: '/assets/nick-drewe.jpg' },
   { name: 'Victor Huynh', title: 'SEO Consultant', img: '/assets/victor-huynh.jpg' },
@@ -425,7 +425,7 @@ function Hero() {
               opacity: 0.67,
             }}
           >
-            The St. Regis Shenzhen
+            The St. Regis Shenzhen + MGM Shenzhen
           </span>
         </div>
 
@@ -434,7 +434,7 @@ function Hero() {
           className="display uppercase text-white text-[24px] leading-[140%] md:text-[clamp(40px,7vw,64px)] md:leading-[120%]"
           style={{ letterSpacing: '-0.01em', fontWeight: 600 }}
         >
-          <span className="block">40+ Practitioners.</span>
+          <span className="block">50+ Practitioners.</span>
           <span
             className="gradient-text-brand"
             style={{

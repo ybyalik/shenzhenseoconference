@@ -173,7 +173,7 @@ function Hero() {
             <div className="hidden lg:flex order-2 lg:mt-7 items-center gap-3 text-[14px] text-white/90 lg:mb-0">
               <span className="font-bold">September 14–18, 2026</span>
               <span className="w-1 h-1 rounded-full bg-white/55" aria-hidden />
-              <span className="font-medium">The St. Regis Shenzhen</span>
+              <span className="font-medium">The St. Regis Shenzhen + MGM Shenzhen</span>
             </div>
             <h1
               className="order-1 display uppercase text-[24px] md:text-[48px] flex flex-col items-start gap-3"
@@ -209,7 +209,7 @@ function Hero() {
             <div className="flex lg:hidden items-center gap-3 text-[13px] text-white/90 my-4">
               <span className="font-bold">September 14–18, 2026</span>
               <span className="w-1 h-1 rounded-full bg-white/55" aria-hidden />
-              <span className="font-medium">The St. Regis Shenzhen</span>
+              <span className="font-medium">The St. Regis Shenzhen + MGM Shenzhen</span>
             </div>
             <a
               href="#pricing"
@@ -964,9 +964,9 @@ function Speakers() {
     { country: 'US', name: 'Lars Lofgren', sub: 'Fractional VP of Marketing', img: '/assets/lars-lofgren.jpg' },
     { country: 'US', name: 'Bernard Huang', sub: 'Co-founder, Clearscope', img: '/assets/bernard-huang.jpg' },
     { country: 'AU', name: 'Nick Drewe', sub: 'Founder & CEO, Wethrift', img: '/assets/nick-drewe.jpg' },
-    { country: 'CA', name: 'Megan Gougeon', sub: 'Founder, Portable Professional', img: '/assets/megan-gougeon.jpg' },
+    { country: 'CA', name: 'Megan Gougeon', sub: 'Founder, Portable Professional', img: '/assets/megan-gougeon-2026.jpg' },
     { country: 'CN', name: 'Kun Tang', sub: 'Founder and CEO, Jademond', img: '/assets/kun-tang.webp' },
-    { country: 'AU', name: 'Nik Ranger', sub: 'Senior Growth Consultant, Dejan', img: '/assets/nik-ranger.jpg' },
+    { country: 'AU', name: 'Nik Ranger', sub: 'Senior Growth Consultant, Dejan', img: '/assets/nik-ranger-2026.jpg' },
     { country: 'UK', name: 'Owain Lloyd-Williams', sub: 'Independent SEO Consultant', img: '/assets/owain-lloyd-williams.jpg' },
     { country: 'AU · CN', name: 'Loki Yan', sub: 'Co-founder, First Optimise (壹优化)', img: '/assets/loki-yan.jpg' },
   ];
@@ -1416,7 +1416,7 @@ function Venues() {
     {
       tag: 'VIP Networking Venue',
       name: 'MGM Shenzhen',
-      days: 'Day 5 VIP Networking',
+      days: 'Day 5',
       img: A.venueMgm,
       desc: 'An intimate setting away from the main conference. Smaller room. Deeper conversations. One night included with your VIP ticket.',
       whyTitle: 'Why this one',
@@ -1926,7 +1926,7 @@ function Sponsors() {
     tier,
   }: {
     label: [string, string];
-    items: { src: string; alt: string; h: number }[];
+    items: { src: string; alt: string; h: number; href?: string }[];
     tier: 'platinum' | 'gold' | 'silver';
   }) => {
     const baseFlatten = 'brightness(0) invert(1)';
@@ -1968,32 +1968,49 @@ function Sponsors() {
           className="flex flex-wrap items-center justify-center md:justify-start gap-x-6 md:gap-x-10 gap-y-8 w-full md:w-auto md:flex-1"
           style={{ opacity: 0.65 }}
         >
-          {items.map((s, i) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              key={`sponsor-${tier}-${i}`}
-              src={s.src}
-              alt={s.alt}
-              className={`block ${logoSize}`}
-              style={{
-                height: 'auto',
-                width: 'auto',
-                maxWidth: '100%',
-                objectFit: 'contain',
-                filter: baseFlatten,
-                opacity: 0.5,
-                transition: 'filter 0.25s ease, opacity 0.25s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.filter = hoverFilter;
-                e.currentTarget.style.opacity = '1';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.filter = baseFlatten;
-                e.currentTarget.style.opacity = '0.5';
-              }}
-            />
-          ))}
+          {items.map((s, i) => {
+            const logoImg = (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={s.src}
+                alt={s.alt}
+                className={`block ${logoSize}`}
+                style={{
+                  height: 'auto',
+                  width: 'auto',
+                  maxWidth: '100%',
+                  objectFit: 'contain',
+                  filter: baseFlatten,
+                  opacity: 0.5,
+                  transition: 'filter 0.25s ease, opacity 0.25s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.filter = hoverFilter;
+                  e.currentTarget.style.opacity = '1';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.filter = baseFlatten;
+                  e.currentTarget.style.opacity = '0.5';
+                }}
+              />
+            );
+            return s.href ? (
+              <a
+                key={`sponsor-${tier}-${i}`}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.alt}
+                className="inline-flex items-center"
+              >
+                {logoImg}
+              </a>
+            ) : (
+              <span key={`sponsor-${tier}-${i}`} className="inline-flex items-center">
+                {logoImg}
+              </span>
+            );
+          })}
         </div>
       </div>
     );

@@ -151,8 +151,13 @@ function SponsorLogoBox({
       ? 'h-[100px] md:h-[150px]'
       : 'h-[140px] md:h-[208px]';
 
+  const As = (logo.href ? 'a' : 'div') as 'a';
   return (
-    <div
+    <As
+      href={logo.href}
+      target={logo.href ? '_blank' : undefined}
+      rel={logo.href ? 'noopener noreferrer' : undefined}
+      aria-label={logo.href ? logo.alt : undefined}
       className={`flex flex-col justify-center items-center group transition-colors self-stretch min-w-0 p-6 md:p-16 ${heightClass}`}
       style={{
         flex: '1 0 0',
@@ -192,7 +197,7 @@ function SponsorLogoBox({
           e.currentTarget.style.opacity = String(defaultOpacity);
         }}
       />
-    </div>
+    </As>
   );
 }
 
@@ -269,7 +274,7 @@ function Hero() {
               lineHeight: '150%',
             }}
           >
-            The St. Regis Shenzhen
+            The St. Regis Shenzhen + MGM Shenzhen
           </span>
         </div>
 
@@ -391,7 +396,7 @@ function Confirmed2026() {
         <div className="flex flex-col items-center self-stretch" style={{ gap: 80 }}>
           <Tier title="Platinum Sponsors" tier="platinum" logos={SPONSORS_2026.platinum} cols="grid-cols-1 max-w-[372px] mx-auto" />
           <Tier title="Gold Sponsors" tier="gold" logos={SPONSORS_2026.gold} cols="grid-cols-1 sm:grid-cols-2 max-w-[760px] mx-auto" />
-          <Tier title="Silver Sponsors" tier="silver" logos={SPONSORS_2026.silver} cols="grid-cols-2 sm:grid-cols-3 md:grid-cols-5" />
+          <Tier title="Silver Sponsors" tier="silver" logos={SPONSORS_2026.silver} cols="grid-cols-2 sm:grid-cols-4" />
           <Tier title="Bronze Sponsors" tier="bronze" logos={SPONSORS_2026.bronze} cols="grid-cols-1 sm:grid-cols-2 max-w-[760px] mx-auto" />
         </div>
       </div>

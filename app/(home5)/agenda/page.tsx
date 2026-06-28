@@ -73,7 +73,7 @@ function Hero() {
               lineHeight: '150%',
             }}
           >
-            The St. Regis Shenzhen
+            The St. Regis Shenzhen + MGM Shenzhen
           </span>
         </div>
 

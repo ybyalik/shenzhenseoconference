@@ -37,7 +37,7 @@ export const speakers = [
   { name: "Natalia Witczyk", image: "/assets/Natalia-Witczyk_1763288552079.webp" },
   { name: "Nick Hu", image: "/assets/Nick-Hu_1763288552079.jpg" },
   { name: "Niels Zee", image: "/assets/niels-zee_1763288552080.webp" },
-  { name: "Nik Ranger", image: "/assets/Nik-Ranger_1763288552080.webp" },
+  { name: "Nik Ranger", image: "/assets/nik-ranger-2026.jpg" },
   { name: "Ning Gao", image: "/assets/Ning-Gao_1763288552080.jpg" },
   { name: "Nitin Manchanda", image: "/assets/Nitin-Manchanda_1763288552080.webp" },
   { name: "Riven Gao", image: "/assets/Riven-Gao_1763288552080.jpg" },

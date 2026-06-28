@@ -451,8 +451,9 @@ export function Footer({ linkBase = '' }: { linkBase?: string } = {}) {
             <div className="display text-[14px] font-semibold tracking-[0.2em] mb-5">MISC</div>
             <ul className="space-y-3">
               {[
-                { label: 'Privacy Policy', href: '#' },
-                { label: 'Terms & Conditions', href: '#' },
+                { label: 'Press Kit', href: '/press' },
+                { label: 'Privacy Policy', href: '/privacy-policy' },
+                { label: 'Terms & Conditions', href: '/terms-conditions' },
               ].map((lnk) => (
                 <li key={lnk.label}>
                   <a
