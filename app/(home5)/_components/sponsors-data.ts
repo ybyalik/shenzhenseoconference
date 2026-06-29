@@ -21,7 +21,7 @@ export const SPONSORS_2026: {
     { src: '/figma-assets/sponsor-dynadot.png', alt: 'Dynadot', h: 36, href: 'https://www.dynadot.com/' },
     { src: '/assets/odys.png', alt: 'Odys', h: 36, href: 'https://odys.global/' },
     { src: '/assets/prodent.webp', alt: 'ProDENT', h: 36, href: 'https://www.prodentshop.com/' },
-    { src: '/assets/meup.png', alt: 'MeUP', h: 36, href: 'https://meup.com/' },
+    { src: '/assets/meup.png', alt: 'MeUP', h: 22, href: 'https://meup.com/' },
     { src: '/assets/ecomexperts.webp', alt: 'EcomExperts', h: 36, href: 'https://ecomexperts.au/' },
     { src: '/figma-assets/sponsor-convertbetter.png', alt: 'Convert Better', h: 36, href: 'https://convertbetter.co/' },
     { src: '/assets/cloom-tech.webp', alt: 'Cloom Tech', h: 36, href: 'https://cloomtech.com/' },

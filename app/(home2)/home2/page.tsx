@@ -454,7 +454,7 @@ export default function Home2() {
               href="/speakers"
               className="group inline-flex items-center gap-3 font-body text-sm text-white/50 hover:text-[#a0cc3b] transition-colors uppercase tracking-wider"
             >
-              View all 40+ speakers
+              View all 50+ speakers
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>

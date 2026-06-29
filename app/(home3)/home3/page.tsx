@@ -68,7 +68,7 @@ function HeroSection() {
 function StatsSection() {
   const stats = [
     { value: '500+', label: 'Attendees\nExpected', sub: 'From around the world' },
-    { value: '40+', label: 'World-Class\nSpeakers', sub: 'Industry leaders & experts' },
+    { value: '50+', label: 'World-Class\nSpeakers', sub: 'Industry leaders & experts' },
     { value: '5', label: 'Days\nof Innovation', sub: 'Sept 14-18, 2026' },
     { value: '30+', label: 'Countries\nRepresented', sub: 'Global perspectives' },
   ];

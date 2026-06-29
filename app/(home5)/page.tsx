@@ -206,9 +206,8 @@ function Hero() {
               tours, masterminds, and connections you don&apos;t make on LinkedIn.
             </p>
             {/* Mobile-only date/venue under the paragraph */}
-            <div className="flex lg:hidden items-center gap-3 text-[13px] text-white/90 my-4">
+            <div className="flex flex-col lg:hidden items-start gap-1 text-[13px] text-white/90 my-4">
               <span className="font-bold">September 14–18, 2026</span>
-              <span className="w-1 h-1 rounded-full bg-white/55" aria-hidden />
               <span className="font-medium">The St. Regis Shenzhen + MGM Shenzhen</span>
             </div>
             <a
@@ -358,7 +357,7 @@ function Hero() {
           >
             {[
               ['600', 'SEATS'],
-              ['40+', 'SPEAKERS'],
+              ['50+', 'SPEAKERS'],
               ['30+', 'COUNTRIES'],
               ['5', 'DAYS'],
             ].map(([n, l]) => (
@@ -965,10 +964,10 @@ function Speakers() {
     { country: 'US', name: 'Bernard Huang', sub: 'Co-founder, Clearscope', img: '/assets/bernard-huang.jpg' },
     { country: 'AU', name: 'Nick Drewe', sub: 'Founder & CEO, Wethrift', img: '/assets/nick-drewe.jpg' },
     { country: 'CA', name: 'Megan Gougeon', sub: 'Founder, Portable Professional', img: '/assets/megan-gougeon-2026.jpg' },
-    { country: 'CN', name: 'Kun Tang', sub: 'Founder and CEO, Jademond', img: '/assets/kun-tang.webp' },
     { country: 'AU', name: 'Nik Ranger', sub: 'Senior Growth Consultant, Dejan', img: '/assets/nik-ranger-2026.jpg' },
     { country: 'UK', name: 'Owain Lloyd-Williams', sub: 'Independent SEO Consultant', img: '/assets/owain-lloyd-williams.jpg' },
-    { country: 'AU · CN', name: 'Loki Yan', sub: 'Co-founder, First Optimise (壹优化)', img: '/assets/loki-yan.jpg' },
+    { country: 'JP', name: 'Mao Kawana', sub: 'Project Manager, Faber Company', img: '/assets/mao-kawana.jpg' },
+    { country: 'CN · AU', name: 'Loki Yan', sub: 'Co-founder, First Optimise (壹优化)', img: '/assets/loki-yan.jpg' },
   ];
 
   // Turn a 2-letter country code into a flag emoji (UK -> GB). Combos like "AU · CN" -> two flags.
@@ -1979,6 +1978,7 @@ function Sponsors() {
                   height: 'auto',
                   width: 'auto',
                   maxWidth: '100%',
+                  maxHeight: s.alt === 'MeUP' ? 27 : undefined,
                   objectFit: 'contain',
                   filter: baseFlatten,
                   opacity: 0.5,

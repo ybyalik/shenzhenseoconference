@@ -111,7 +111,6 @@ const FIELD_TALKS: Speaker[] = [
   { name: 'Victor Huynh', country: 'USA', title: 'CEO & Head of Digital Strategy, Ready Artwork', img: '/assets/victor-huynh.jpg' },
   { name: 'Owain Lloyd-Williams', country: 'UK', title: 'Independent SEO Consultant', img: '/assets/owain-lloyd-williams.jpg' },
   { name: 'Sebastien Edgar', country: 'USA', title: 'Global VP of Digital Marketing, Liferay', img: '/assets/sebastien-edgar.jpg' },
-  { name: 'Kun Tang', country: 'China', title: 'Founder and CEO, Jademond', img: '/assets/kun-tang.webp' },
 ];
 const LIGHTNING_TALKS: Speaker[] = [
   { name: 'Apurva Bose', country: 'USA', title: 'VP of Operations & Strategy, Overtake Digital', img: '/assets/apurva-bose.jpg' },
@@ -399,7 +398,7 @@ function Hero() {
 
       <div className="container pt-[220px] md:pt-[260px] lg:pt-[340px] pb-12 md:pb-20">
         {/* Date / venue badge */}
-        <div className="flex items-center gap-2 mb-6 md:mb-8">
+        <div className="flex flex-col items-start gap-1 sm:flex-row sm:items-center sm:gap-2 mb-6 md:mb-8">
           <span
             style={{
               color: '#F9F9F9',
@@ -413,7 +412,7 @@ function Hero() {
           >
             September 14–18, 2026
           </span>
-          <span className="w-1 h-1 rounded-full bg-white" aria-hidden />
+          <span className="hidden sm:block w-1 h-1 rounded-full bg-white" aria-hidden />
           <span
             style={{
               color: '#F9F9F9',
@@ -1360,7 +1359,7 @@ function FinalCta() {
               lineHeight: '160%',
             }}
           >
-            600 seats. 40+ speakers. 30+ countries. Five days.
+            600 seats. 50+ speakers. 30+ countries. Five days.
           </p>
           <Link
             href="/#pricing"

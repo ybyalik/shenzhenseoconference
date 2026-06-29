@@ -93,7 +93,7 @@ export default function Home() {
                 <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: '#1A4AFF' }}>
                   <Mic className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-3xl md:text-4xl font-bold mb-2 transition-colors" style={{ color: '#1A4AFF' }}>40+</div>
+                <div className="text-3xl md:text-4xl font-bold mb-2 transition-colors" style={{ color: '#1A4AFF' }}>50+</div>
                 <div className="text-sm font-medium" style={{ color: '#1A4AFF' }}>World-Class Speakers</div>
                 <div className="text-xs opacity-70 mt-1" style={{ color: '#1A4AFF' }}>Industry leaders & experts</div>
               </div>

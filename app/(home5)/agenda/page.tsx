@@ -49,9 +49,9 @@ function Hero() {
         />
       </div>
 
-      <div className="container pt-[200px] md:pt-[240px] lg:pt-[280px] pb-12 md:pb-20 text-left md:text-center">
+      <div className="container pt-[120px] md:pt-[150px] lg:pt-[170px] pb-8 md:pb-12 text-left md:text-center">
         {/* Date / venue */}
-        <div className="flex flex-wrap items-center justify-start md:justify-center gap-2 mb-6 md:mb-8">
+        <div className="flex flex-col items-start gap-1 sm:flex-row sm:flex-wrap sm:items-center sm:justify-start md:justify-center sm:gap-2 mb-8 md:mb-10">
           <span
             className="text-white/80"
             style={{
@@ -63,7 +63,7 @@ function Hero() {
           >
             September 14–18, 2026
           </span>
-          <span className="w-1 h-1 rounded-full bg-white/70" aria-hidden />
+          <span className="hidden sm:block w-1 h-1 rounded-full bg-white/70" aria-hidden />
           <span
             className="text-white/65"
             style={{
@@ -116,7 +116,7 @@ function Hero() {
           stage talks, and VIP networking. Filter the schedule by your ticket tier.
         </p>
 
-        <div className="mt-8 md:mt-10 flex justify-start md:justify-center">
+        <div className="mt-9 md:mt-12 flex justify-start md:justify-center">
           <Link
             href="/#pricing"
             className="display gradient-cta flex w-full md:w-auto md:inline-flex items-center justify-center gap-3 px-7 py-4 rounded-full text-[13px] font-bold tracking-[0.18em] uppercase text-white"
@@ -128,7 +128,7 @@ function Hero() {
       </div>
 
       {/* Wide venue image below the CTA */}
-      <div className="container pb-16 md:pb-24">
+      <div className="container pb-12 md:pb-20">
         <div
           className="relative w-full md:w-4/5 mx-auto overflow-hidden"
           style={{ height: 288, borderRadius: 24 }}

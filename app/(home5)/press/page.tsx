@@ -12,10 +12,10 @@ function Hero() {
     <section id="top" className="bg-[#03060d]">
       <div className="container pt-[120px] md:pt-[140px] lg:pt-[160px] pb-12 md:pb-20">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* Left: image (contained, rounded) */}
-          <div className="relative h-[300px] sm:h-[380px] md:h-[460px] lg:h-[520px] rounded-[24px] overflow-hidden">
+          {/* Left: image (contained, rounded, 3:2) */}
+          <div className="relative w-full aspect-[3/2] rounded-[24px] overflow-hidden">
             <Image
-              src="/assets/press-hero-2026.webp"
+              src="/assets/presskit-hero.webp"
               alt=""
               fill
               priority
@@ -138,8 +138,8 @@ function AboutEvent() {
 
             <div className="order-1 md:order-2 relative w-full aspect-[4/3] md:aspect-[4/5] overflow-hidden rounded-[18px]">
               <Image
-                src="/assets/press-venue.webp"
-                alt="The St. Regis Shenzhen main hall"
+                src="/assets/press-about-event.webp"
+                alt="Shenzhen skyline at dusk"
                 fill
                 className="object-cover"
                 sizes="(min-width: 768px) 45vw, 100vw"
@@ -191,7 +191,19 @@ function QuickFacts() {
     { kind: 'logo' },
     { kind: 'fact', label: 'Event Name', value: 'Shenzhen SEO Conference 2026' },
     { kind: 'fact', label: 'Dates', value: 'September 14–18, 2026' },
-    { kind: 'fact', label: 'Location', value: 'The St. Regis Shenzhen, China' },
+    {
+      kind: 'fact',
+      label: 'Location',
+      value: (
+        <span style={{ fontSize: 13 }}>
+          The St. Regis Shenzhen{' '}
+          <span style={{ fontSize: 11, fontWeight: 500, opacity: 0.6 }}>(Day 1-4)</span>
+          <br />
+          MGM Shenzhen{' '}
+          <span style={{ fontSize: 11, fontWeight: 500, opacity: 0.6 }}>(Day 5)</span>
+        </span>
+      ),
+    },
     { kind: 'fact', label: 'Expected Attendance', value: '500+ global attendees' },
     { kind: 'fact', label: 'Speakers', value: '50+ industry leaders' },
     { kind: 'fact', label: 'Countries Represented', value: '30+' },
@@ -236,11 +248,9 @@ function QuickFacts() {
 function PrincipleCard({
   heading,
   paragraphs,
-  items,
 }: {
   heading: string;
   paragraphs?: string[];
-  items?: string[];
 }) {
   return (
     <div className="rounded-[32px] border border-white/10 bg-[#03060d] p-7 md:p-10 flex flex-col">
@@ -272,64 +282,34 @@ function PrincipleCard({
             flexShrink: 0,
           }}
         />
-        {items ? (
-          <ul className="flex flex-col gap-4 flex-1">
-            {items.map((it, i) => (
-              <li
-                key={i}
-                className="flex items-center gap-3"
-                style={{
-                  color: '#F9F9F9',
-                  opacity: 0.9,
-                  fontFamily: 'General Sans, system-ui, sans-serif',
-                  fontSize: 18,
-                  fontWeight: 600,
-                  lineHeight: '140%',
-                }}
-              >
-                <span
-                  aria-hidden
-                  style={{
-                    width: 7,
-                    height: 7,
-                    borderRadius: 9999,
-                    background: '#5DAEDB',
-                    flexShrink: 0,
-                  }}
-                />
-                {it}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <div className="flex flex-col gap-5 flex-1">
-            {paragraphs?.map((p, i) => (
-              <p
-                key={i}
-                style={{
-                  color: '#F9F9F9',
-                  opacity: 0.8,
-                  fontFamily: 'General Sans, system-ui, sans-serif',
-                  fontSize: 18,
-                  fontWeight: 500,
-                  lineHeight: '180%',
-                }}
-              >
-                {p}
-              </p>
-            ))}
-          </div>
-        )}
+        <div className="flex flex-col gap-5 flex-1">
+          {paragraphs?.map((p, i) => (
+            <p
+              key={i}
+              style={{
+                color: '#F9F9F9',
+                opacity: 0.8,
+                fontFamily: 'General Sans, system-ui, sans-serif',
+                fontSize: 18,
+                fontWeight: 500,
+                lineHeight: '180%',
+              }}
+            >
+              {p}
+            </p>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
 function VisionMission() {
+  const themes = ['Global Organic Growth', 'SEO Entrepreneurship', 'Cross-Border Partnership'];
   return (
     <section className="bg-[#03060d]">
       <div className="container pb-16 md:pb-24">
-        <div className="grid gap-6 md:gap-8 md:grid-cols-3 auto-rows-fr">
+        <div className="grid gap-6 md:gap-8 md:grid-cols-2 auto-rows-fr">
           <PrincipleCard
             heading="Our Vision"
             paragraphs={[
@@ -342,10 +322,43 @@ function VisionMission() {
               'We bridge Eastern and Western SEO professionals, marketers, and entrepreneurs in Shenzhen. Through this in-person event, we exchange actionable knowledge and build real cross-border partnerships.',
             ]}
           />
-          <PrincipleCard
-            heading="Keywords / Core Themes"
-            items={['Global Organic Growth', 'SEO Entrepreneurship', 'Cross-Border Partnership']}
-          />
+        </div>
+
+        {/* Core themes band */}
+        <div
+          className="mt-6 md:mt-8 rounded-[32px] border border-white/10 bg-[#03060d] p-7 md:p-10 flex flex-col gap-6"
+        >
+          <h3
+            className="display uppercase"
+            style={{ color: '#F9F9F9', fontSize: 18, fontWeight: 600, lineHeight: '130%', letterSpacing: '0.02em' }}
+          >
+            Keywords / Core Themes
+          </h3>
+          <div className="flex flex-wrap gap-3">
+            {themes.map((t) => (
+              <span
+                key={t}
+                className="display uppercase inline-flex items-center gap-2.5"
+                style={{
+                  padding: '12px 20px',
+                  borderRadius: 9999,
+                  border: '1px solid rgba(17, 139, 172, 0.45)',
+                  background: 'rgba(17, 139, 172, 0.10)',
+                  color: '#F9F9F9',
+                  fontSize: 13,
+                  fontWeight: 600,
+                  letterSpacing: '0.06em',
+                  lineHeight: '130%',
+                }}
+              >
+                <span
+                  aria-hidden
+                  style={{ width: 7, height: 7, borderRadius: 9999, background: '#5DAEDB', flexShrink: 0 }}
+                />
+                {t}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -390,16 +403,16 @@ function ContactChip({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-3 group"
+      className="inline-flex items-center gap-3 group max-w-full min-w-0"
     >
       <span
-        className="grid place-items-center w-9 h-9 rounded-md text-white"
+        className="grid place-items-center w-9 h-9 rounded-md text-white shrink-0"
         style={{ background: '#118bac' }}
       >
         {icon}
       </span>
       <span
-        className="display uppercase text-center group-hover:text-[#EB3030] transition-colors"
+        className="display uppercase break-all group-hover:text-[#EB3030] transition-colors"
         style={{
           color: '#F9F9F9',
           fontSize: 12,
@@ -431,7 +444,7 @@ function Founder() {
 
         <div className="rounded-[32px] border border-white/10 bg-[#03060d] p-7 md:p-12">
           <div className="grid gap-10 md:gap-14 md:grid-cols-[5fr_7fr] items-start">
-            <div className="relative w-full aspect-[4/5] overflow-hidden rounded-[18px]">
+            <div className="relative w-full aspect-square overflow-hidden rounded-[18px] md:self-center">
               <Image
                 src="/assets/press-founder.webp"
                 alt="JP Zhang"
@@ -481,10 +494,9 @@ function Founder() {
                 }}
               >
                 <p>
-                  JP Zhang (also known as John in China) brings 16 years of hands-on SEO experience
-                  to the industry. After leading SEO and content marketing for tech companies in the
-                  US and China, he spent a decade scaling a successful affiliate website portfolio
-                  and educating the Chinese market on actionable Google SEO strategies through his
+                  With 16 years of hands-on experience, JP Zhang (also known as John in China) has
+                  led SEO for global tech companies, scaled a successful affiliate portfolio, and
+                  educated the Chinese market on actionable Google search strategies through his
                   brand,{' '}
                   <a
                     href="https://www.seoactionblog.com/"
@@ -498,18 +510,15 @@ function Founder() {
                   .
                 </p>
                 <p>
-                  In 2019, JP tested the &quot;East Meets West&quot; concept by hosting a 300-person
-                  SEO event in Shenzhen featuring international experts like Aleyda Solis. Following a
-                  global pause, the conference officially returned in 2025 with a major shift in
-                  scale: four days, 500 attendees, and a full English track. With 35% of the
-                  attendees flying in from the West, JP saw his concept validated as Western SEO
-                  entrepreneurs sat directly beside their East Asian peers to connect, collaborate,
-                  and build real partnerships.
+                  In 2019, JP tested his &quot;East Meets West&quot; concept with a 300-person event
+                  in Shenzhen. Following a global pause, the conference returned in 2025 with a major
+                  shift in scale: four days, 500 attendees, and a full English track. With 35% flying
+                  in internationally, his vision was validated as Western and East Asian SEO
+                  entrepreneurs sat side-by-side to build real, cross-border partnerships.
                 </p>
                 <p>
-                  A serial SEO entrepreneur, JP&apos;s work extends beyond the Shenzhen SEO
-                  Conference. He also runs SEO Connector, a service matching Chinese companies with
-                  vetted overseas marketing partners, and{' '}
+                  Beyond the conference, JP runs SEO Connector, a service matching Chinese companies
+                  with overseas marketing partners, and{' '}
                   <a
                     href="https://seoactionschool.com/"
                     target="_blank"
@@ -519,9 +528,8 @@ function Founder() {
                   >
                     SEO Action School
                   </a>
-                  , a dedicated community for Chinese SEO professionals and growth marketers. JP
-                  holds dual bachelor&apos;s degrees from China and dual master&apos;s degrees from
-                  the United States.
+                  , a community for Chinese SEOs and marketers. He holds dual bachelor&apos;s degrees
+                  from China and dual master&apos;s degrees from the US.
                 </p>
               </div>
 
@@ -540,7 +548,7 @@ function Founder() {
                 podcasts, guest posts, and speaking engagements.
               </p>
 
-              <div className="mt-6 flex flex-wrap items-center gap-7">
+              <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-4">
                 <ContactChip
                   icon={<MailIcon className="w-4 h-4" />}
                   label="jp@shenzhenseoconference.com"
@@ -747,15 +755,47 @@ function LogoAssets() {
           Please maintain original colors, proportions, and clear space.
         </p>
 
-        <div className="mt-10 md:mt-14 grid gap-4 md:gap-5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
-          {LOGO_VARIANTS.map((v) => (
+        {/* Logos */}
+        <div
+          className="display uppercase mt-10 md:mt-14 mb-5 md:mb-6"
+          style={{
+            color: '#118BAC',
+            fontFamily: 'General Sans, system-ui, sans-serif',
+            fontSize: 13,
+            fontWeight: 700,
+            letterSpacing: '0.16em',
+          }}
+        >
+          Logos
+        </div>
+        <div className="grid gap-4 md:gap-5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
+          {LOGO_VARIANTS.filter((v) => v.name.startsWith('Logo')).map((v) => (
+            <LogoCard key={`${v.name}-${v.src}`} variant={v} />
+          ))}
+        </div>
+
+        {/* Icons */}
+        <div
+          className="display uppercase mt-10 md:mt-12 mb-5 md:mb-6"
+          style={{
+            color: '#118BAC',
+            fontFamily: 'General Sans, system-ui, sans-serif',
+            fontSize: 13,
+            fontWeight: 700,
+            letterSpacing: '0.16em',
+          }}
+        >
+          Icons
+        </div>
+        <div className="grid gap-4 md:gap-5 grid-cols-2 sm:grid-cols-4 lg:grid-cols-7">
+          {LOGO_VARIANTS.filter((v) => v.name.startsWith('Icon')).map((v) => (
             <LogoCard key={`${v.name}-${v.src}`} variant={v} />
           ))}
         </div>
 
         <div className="mt-10 md:mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="https://drive.google.com/file/d/1SGC_iNoNZrliXor6QbSbWPX2CBdKgxwe/view?usp=sharing"
+            href="https://drive.google.com/uc?export=download&id=1SGC_iNoNZrliXor6QbSbWPX2CBdKgxwe"
             target="_blank"
             rel="noopener noreferrer"
             className="gradient-cta display inline-flex w-full sm:w-auto items-center justify-center gap-2 px-7 py-4 rounded-full text-[13px] font-bold tracking-[0.18em] uppercase text-white"
