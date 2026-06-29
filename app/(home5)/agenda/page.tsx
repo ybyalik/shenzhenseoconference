@@ -49,7 +49,7 @@ function Hero() {
         />
       </div>
 
-      <div className="container pt-[120px] md:pt-[150px] lg:pt-[170px] pb-8 md:pb-12 text-left md:text-center">
+      <div className="container pt-[240px] md:pt-[150px] lg:pt-[170px] pb-8 md:pb-12 text-left md:text-center">
         {/* Date / venue */}
         <div className="flex flex-col items-start gap-1 sm:flex-row sm:flex-wrap sm:items-center sm:justify-start md:justify-center sm:gap-2 mb-8 md:mb-10">
           <span

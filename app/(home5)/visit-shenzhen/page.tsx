@@ -147,7 +147,7 @@ function Hero() {
 
       <div className="container pt-[200px] md:pt-[260px] lg:pt-[320px] pb-12 md:pb-20">
         {/* Date / venue / airport badge */}
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mb-6 md:mb-8">
+        <div className="flex flex-col items-start gap-1 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-2 sm:gap-y-1 mb-6 md:mb-8">
           <span
             className="text-white/85"
             style={{
@@ -159,7 +159,7 @@ function Hero() {
           >
             September 14–18, 2026
           </span>
-          <span className="w-1 h-1 rounded-full bg-white/70" aria-hidden />
+          <span className="hidden sm:block w-1 h-1 rounded-full bg-white/70" aria-hidden />
           <span
             className="text-white/65"
             style={{
@@ -169,9 +169,9 @@ function Hero() {
               lineHeight: '150%',
             }}
           >
-            The St. Regis Shenzhen
+            The St. Regis Shenzhen + MGM Shenzhen
           </span>
-          <span className="w-1 h-1 rounded-full bg-white/70" aria-hidden />
+          <span className="hidden sm:block w-1 h-1 rounded-full bg-white/70" aria-hidden />
           <span
             className="text-white/65"
             style={{

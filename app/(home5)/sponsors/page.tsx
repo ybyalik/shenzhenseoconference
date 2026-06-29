@@ -252,7 +252,7 @@ function Hero() {
 
       <div className="container pt-[140px] md:pt-[260px] lg:pt-[340px] pb-12 md:pb-20">
         {/* Date / venue badge */}
-        <div className="flex items-center gap-2 mb-6 md:mb-8">
+        <div className="flex flex-col items-start gap-1 sm:flex-row sm:items-center sm:gap-2 mb-6 md:mb-8">
           <span
             className="text-white/80"
             style={{
@@ -264,7 +264,7 @@ function Hero() {
           >
             September 14–18, 2026
           </span>
-          <span className="w-1 h-1 rounded-full bg-white" aria-hidden />
+          <span className="hidden sm:block w-1 h-1 rounded-full bg-white" aria-hidden />
           <span
             className="text-white/65"
             style={{
