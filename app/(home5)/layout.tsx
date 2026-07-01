@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   description:
     'Join 500+ SEO professionals at the premier international conference in Shenzhen. Early bird tickets now available for September 14-18, 2026. Bridge Eastern and Western digital marketing strategies.',
   metadataBase: new URL('https://shenzhenseoconference.com'),
+  verification: {
+    google: 'LQGvbFeDPB_5mCKbSm4fzfBiGdY6jZqufjoIneT2WOk',
+  },
   openGraph: {
     title: 'Shenzhen SEO Conference 2026 (September 14–18)',
     description:
