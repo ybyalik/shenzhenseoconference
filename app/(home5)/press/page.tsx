@@ -795,9 +795,8 @@ function LogoAssets() {
 
         <div className="mt-10 md:mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="https://drive.google.com/uc?export=download&id=1SGC_iNoNZrliXor6QbSbWPX2CBdKgxwe"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/Shenzhen_SEO_Conference_Brand_Assets.zip"
+            download
             className="gradient-cta display inline-flex w-full sm:w-auto items-center justify-center gap-2 px-7 py-4 rounded-full text-[13px] font-bold tracking-[0.18em] uppercase text-white"
           >
             Download All Assets (.zip)
