@@ -500,7 +500,7 @@ function Recap() {
             aria-label="Shenzhen SEO Conference 2025 recap video"
           >
             <source
-              src="https://yuryfiles.s3.ap-southeast-2.amazonaws.com/shenzhen2.mp4"
+              src="https://yuryfiles.s3.ap-southeast-2.amazonaws.com/2025-seo-conference-recap.mp4"
               type="video/mp4"
             />
             Your browser does not support the video tag.

@@ -201,10 +201,18 @@ type SideEvent = {
   dayLabel: string;
   badge?: string;
   title?: string;
-  details: { label: string; value: string }[];
+  details: { label: string; value: React.ReactNode }[];
 };
 
-const SIDE_EVENT_DETAILS = [
+const SAT_SEP_12_TALKS: [string, string][] = [
+  ['Tanya Van Gastel', 'Winning AI Search: A 4-Step Guide for Chinese Companies'],
+  ['Mudi Elsaid', 'AI Partner Discovery: Finding Qualified Affiliates & Influencers at Scale'],
+  ['Jacky Lin', 'From AI Tools to B2B Growth Systems: Building Workflows That Actually Run'],
+  ['Sacha Fournier', 'Winning in the West: Agentic Digital PR for Chinese Brands'],
+  ['Vinayak Gupta & Sharoz Dawa', 'Build Your AI Workforce: a 24/7 Multi-agent Chief of Staff'],
+];
+
+const SAT_SEP_12_DETAILS = [
   { label: 'Time', value: '1:00 PM – 5:00 PM' },
   { label: 'Venue', value: 'To be announced (Nanshan or Futian area)' },
   {
@@ -212,19 +220,68 @@ const SIDE_EVENT_DETAILS = [
     value:
       'These events will be held off-site and will not take place at the main conference hotel.',
   },
-  { label: 'Schedule', value: 'Detailed agenda coming soon.' },
+  {
+    label: 'Schedule',
+    value: (
+      <ul className="mt-2 flex flex-col gap-2 list-disc pl-5">
+        {SAT_SEP_12_TALKS.map(([speaker, talk]) => (
+          <li key={speaker}>
+            <span className="font-semibold text-white">{speaker}:</span> {talk}
+          </li>
+        ))}
+      </ul>
+    ),
+  },
+];
+
+const SUN_SEP_13_TALKS: [string, string][] = [
+  [
+    'Jamie I.F.',
+    'How Chinese Brands Can Use Affiliates & Influencers To Grow AI Visibility & Revenue in USA',
+  ],
+  [
+    'Tori Long',
+    "S.P.A.C.E.: A Five-Dimension Framework for Exporters Who've Hit a Growth Ceiling",
+  ],
+  [
+    'Ilman Akbar',
+    'How to Talk So the C-Suites Will Listen: Lessons Learned from Teaching & Implementing SEO for 12+ Years',
+  ],
+  ['Jabez Reuben', 'Dominating LLMs, AiO & Google Rankings with Consensus'],
+];
+
+const SUN_SEP_13_DETAILS = [
+  { label: 'Time', value: '1:00 PM – 5:00 PM' },
+  { label: 'Venue', value: 'To be announced (Nanshan or Futian area)' },
+  {
+    label: 'Note',
+    value:
+      'These events will be held off-site and will not take place at the main conference hotel.',
+  },
+  {
+    label: 'Schedule',
+    value: (
+      <ul className="mt-2 flex flex-col gap-2 list-disc pl-5">
+        {SUN_SEP_13_TALKS.map(([speaker, talk]) => (
+          <li key={speaker}>
+            <span className="font-semibold text-white">{speaker}:</span> {talk}
+          </li>
+        ))}
+      </ul>
+    ),
+  },
 ];
 
 const SIDE_EVENTS: SideEvent[] = [
   {
     dayLabel: 'Sat Sep 12',
     badge: 'Free · Open',
-    details: SIDE_EVENT_DETAILS,
+    details: SAT_SEP_12_DETAILS,
   },
   {
     dayLabel: 'Sun Sep 13',
     badge: 'Free · Open',
-    details: SIDE_EVENT_DETAILS,
+    details: SUN_SEP_13_DETAILS,
   },
   {
     dayLabel: 'Sun Sep 13',
@@ -353,6 +410,29 @@ function PreConferenceSection() {
 type AgendaItem = { time: string; title: string; body: React.ReactNode };
 type TabSet = { label: string; items: AgendaItem[]; note?: React.ReactNode };
 
+// Renders a labelled group of talks (e.g. "Keynotes (40 mins each)") as a bulleted list.
+function SessionGroup({ heading, talks }: { heading?: string; talks: [string, string][] }) {
+  return (
+    <div>
+      {heading && (
+        <div
+          className="uppercase text-white/50 text-[11px] md:text-[12px]"
+          style={{ fontFamily: 'General Sans, system-ui, sans-serif', fontWeight: 600, letterSpacing: '0.12em' }}
+        >
+          {heading}
+        </div>
+      )}
+      <ul className="mt-1.5 flex flex-col gap-1.5 list-disc pl-5">
+        {talks.map(([speaker, talk]) => (
+          <li key={speaker}>
+            <span className="font-semibold text-white">{speaker}:</span> {talk}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 type ConferenceDay = {
   dayLabel: string;
   title: React.ReactNode;
@@ -426,7 +506,21 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
           {
             time: '09:00 – 12:00',
             title: 'Morning Workshops',
-            body: 'Two concurrent sessions; choose one',
+            body: (
+              <>
+                Two concurrent sessions; choose one.
+                <ul className="mt-2 flex flex-col gap-2 list-disc pl-5">
+                  <li>
+                    <span className="font-semibold text-white">Jessica Malnik:</span> From Traffic
+                    to Pipeline: Fixing the Messaging Gaps That Hurt Conversions
+                  </li>
+                  <li>
+                    <span className="font-semibold text-white">Marc Moeller:</span> GEO: Why 90% of
+                    Chinese B2B &amp; SaaS Brands Are Invisible &amp; Step-by-Step Solution
+                  </li>
+                </ul>
+              </>
+            ),
           },
           {
             time: '12:30 – 14:00',
@@ -436,7 +530,21 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
           {
             time: '14:30 – 17:30',
             title: 'Afternoon Workshops',
-            body: 'Two concurrent sessions; choose one',
+            body: (
+              <>
+                Two concurrent sessions; choose one.
+                <ul className="mt-2 flex flex-col gap-2 list-disc pl-5">
+                  <li>
+                    <span className="font-semibold text-white">Megan Gougeon:</span> Trust at Scale:
+                    The YouTube Framework for Winning American Buyers
+                  </li>
+                  <li>
+                    <span className="font-semibold text-white">Zack Franklin:</span> AI Automation at
+                    Shenzhen Speed for SEO, Websites, and Ecom
+                  </li>
+                </ul>
+              </>
+            ),
           },
           {
             time: '18:00 – 19:30',
@@ -503,12 +611,75 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
     collapsible: true,
     defaultOpen: true,
     items: [
-      { time: 'Morning', title: 'Keynotes, Field Talks & Lightning Talks', body: '' },
+      {
+        time: 'Morning',
+        title: 'Keynotes, Field Talks & Lightning Talks',
+        body: (
+          <div className="flex flex-col gap-3.5">
+            <div>
+              <span className="font-semibold text-white">JP Zhang:</span> Opening Remarks
+            </div>
+            <SessionGroup
+              heading="Keynotes (40 mins each)"
+              talks={[
+                ['Gary Illyes', "Don't Panic. Search is Always Changing"],
+                ['Lily Ray', 'How to Do GEO Without Destroying Your SEO: How Google is Cracking Down on GEO Spam'],
+              ]}
+            />
+            <SessionGroup
+              heading="Field Talks (20 mins each)"
+              talks={[
+                ['Doug Pierce', "Ranked Nowhere: The International SEO Mistakes of China's Biggest Global Brands"],
+              ]}
+            />
+            <SessionGroup
+              heading="Lightning Talks (8 mins each)"
+              talks={[
+                ['Begum Kaya', 'Pace Yourself: Staying Sharp When Everything Is Changing'],
+                ['Sam Penny', 'SEO is Marketing: A Proven Framework to See the Big Picture & Unlock Growth'],
+                ['Jonathan Kiekbusch', 'TBD'],
+              ]}
+            />
+          </div>
+        ),
+      },
       { time: 'Lunch', title: 'Buffet Lunch', body: '' },
-      { time: 'Afternoon', title: 'Keynotes, Field Talks & Lightning Talks', body: '' },
+      {
+        time: 'Afternoon',
+        title: 'Keynotes, Field Talks & Lightning Talks',
+        body: (
+          <div className="flex flex-col gap-3.5">
+            <SessionGroup
+              heading="Keynote (40 minutes)"
+              talks={[['Bernard Huang', 'AI Visibility Is Not SEO (And Pretending It Is Will Cost You)']]}
+            />
+            <SessionGroup
+              heading="Field Talks (20 mins each)"
+              talks={[
+                ['Sebastien Edgar', 'Revenue-First SEO: Connecting Organic, Paid, Campaigns & CRO Into One Growth Engine'],
+                ['Victor Huynh', "You Don't Have a B2B SEO Problem. You Have a Website Problem"],
+                ['Nik Ranger', 'The Invisible Penalty: Detecting and Recovering from Algorithmic Suppression'],
+                ['Loki Yan', 'An Actionable Deep Dive into E-E-A-T'],
+                ['Max Kuch', 'From 6-Figure/Month Affiliate SEO to AI Solopreneur: Why I Switched Tracks and What I Learned'],
+              ]}
+            />
+            <SessionGroup
+              heading="Lightning Talks (8 mins each)"
+              talks={[
+                ['Divya Jain', 'Build an Audience, Not Just Traffic: Rethinking Organic ROI'],
+                ['Max Hobbs', 'How a Cartoon Lion Changed Our Brand Forever'],
+                ['Tom Qiao', 'The Power of Compounding - Why Every Business Needs A/B Testing'],
+                ['Gabriele Kahlout', 'Detecting Google Updates Without Third-Party Tools: An Analytical Approach'],
+                ['Mayi', "We Posted 3,000 Times on Reddit: Here's Exactly Why Only Some of Them Rank"],
+                ['Apurva Bose', 'TBD'],
+                ['Killian Kostiha', 'TBD'],
+              ]}
+            />
+          </div>
+        ),
+      },
       { time: 'Evening', title: 'Opening Party', body: 'Light dinner included' },
     ],
-    note: <p>Detailed schedule coming soon.</p>,
   },
   {
     dayLabel: 'Day 4 · Thu Sep 17',
@@ -524,12 +695,79 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
     collapsible: true,
     defaultOpen: true,
     items: [
-      { time: 'Morning', title: 'Keynotes, Field Talks & Lightning Talks', body: '' },
+      {
+        time: 'Morning',
+        title: 'Keynotes, Field Talks & Lightning Talks',
+        body: (
+          <div className="flex flex-col gap-3.5">
+            <SessionGroup
+              heading="Keynotes (40 mins each)"
+              talks={[
+                ['Eli Schwartz', 'The 3 Pillars of AEO'],
+                ['Sasha Gusain', 'Radical Localisation: How Canva Blends Product, Brand, and Local Growth for Global Scale'],
+              ]}
+            />
+            <SessionGroup
+              heading="Field Talks (20 mins each)"
+              talks={[
+                ['Joshua Blyskal', 'The New Citation Economy: How ChatGPT, Google AI Mode, and Claude Pick Sources'],
+              ]}
+            />
+            <SessionGroup
+              heading="Lightning Talks (8 mins each)"
+              talks={[
+                ['Jine Wu', 'SEO is a Product Outcome, Not an SEO Outcome'],
+                ['David Carrasco', "The Validation Gap: Why SEO Doesn't End When the User Clicks"],
+                ['Tupa Lee', 'Ecommerce SEO Growth Roadmap: 10x Organic Traffic with Product-led Content & Community Backlinks'],
+                ['Roger Yin', 'TBD'],
+              ]}
+            />
+          </div>
+        ),
+      },
       { time: 'Lunch', title: 'Buffet Lunch', body: '' },
-      { time: 'Afternoon', title: 'Keynotes, Field Talks & Lightning Talks', body: '' },
+      {
+        time: 'Afternoon',
+        title: 'Keynotes, Field Talks & Lightning Talks',
+        body: (
+          <div className="flex flex-col gap-3.5">
+            <SessionGroup
+              heading="Keynotes (40 mins each)"
+              talks={[
+                ['Lars Lofgren', 'Narrative Manipulation: When Google, Reddit, and LLMs Become Weapons and How to Fight Back'],
+              ]}
+            />
+            <SessionGroup
+              heading="Field Talks (20 mins each)"
+              talks={[
+                ['Kun Tang', 'Cracking the China GEO Code: What DeepSeek, Doubao, and Yuanbao Really Cite'],
+                ['Christina Song / Jiyoung Lee', 'Expand into Korea with Search: From Naver to AI'],
+                ['Mao Kawana & Polina Kogan', 'The Unwritten Rules of Japanese SEO: From Search Behavior to Business Culture'],
+                ['Owain Lloyd-Williams', 'How to Get SEO Moving Inside Large Organisations'],
+                ['Nick Drew', 'What Happens When SEO Stops Working: Lessons from Gaining and Losing 80 Million Visitors'],
+              ]}
+            />
+            <SessionGroup
+              heading="Lightning Talks (8 mins each)"
+              talks={[
+                ['Andrea Abbondanza', 'Winning Italy: An AI Search Case Study for Chinese Brands'],
+                ['Konstantin Sadekov', 'B2B SaaS Case Study: How Strategic Link Building Drives LLM Visibility'],
+                ['Jodie Chan', 'Decoding China Web Performance for Marketers'],
+                ['Helen Han', 'Automating Technical SEO: GROQ, Sanity CMS & Hreflang Management at Scale'],
+                ['Wasin Mekkit', "AI Search Can't Render Your JavaScript-Heavy Website? SEO Can Fix That"],
+                ['Ben Fang', 'AI Is Making B2B Trust Harder: How Embedded Video Turns SEO Pages into Proof Pages'],
+                ['Johann Sathianathen', 'AI Agents for SEO: Automating Backlinks, Content, and 24/7 Optimization with Real Data'],
+                ['Henry Dalziel', 'TBD'],
+              ]}
+            />
+            <div>
+              <span className="font-semibold text-white">JP Zhang:</span> Closing Remarks
+            </div>
+          </div>
+        ),
+      },
       { time: 'Evening', title: 'Closing Party', body: 'Light dinner included' },
     ],
-    note: <p>Detailed schedule coming soon.</p>,
   },
   {
     dayLabel: 'Day 5 · Fri Sep 18',

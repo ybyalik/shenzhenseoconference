@@ -79,7 +79,7 @@ function AboutEvent() {
     <section className="bg-[#03060d]">
       <div className="container py-16 md:py-24">
         <div className="rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:p-12">
-          <div className="grid gap-10 md:gap-14 md:grid-cols-2 items-center">
+          <div className="grid gap-10 md:gap-14 md:grid-cols-2 items-start md:items-stretch">
             <div className="order-2 md:order-1">
               <div
                 className="uppercase text-[#EB3030] mb-4"
@@ -136,7 +136,7 @@ function AboutEvent() {
               </div>
             </div>
 
-            <div className="order-1 md:order-2 relative w-full aspect-[4/3] md:aspect-[4/5] overflow-hidden rounded-[18px]">
+            <div className="order-1 md:order-2 relative w-full aspect-[4/3] md:aspect-auto md:h-full min-h-[280px] overflow-hidden rounded-[18px]">
               <Image
                 src="/assets/press-about-event.webp"
                 alt="Shenzhen skyline at dusk"
