@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { ArrowUpRight, BackToTop, Footer, LinkedInIcon, Nav } from '../../_components/shared';
+import { ArrowUpRight, BackToTop, Footer, LinkedInIcon, Nav, XIcon, YouTubeIcon } from '../../_components/shared';
 import { sameCategorySpeakers, speakerSlug } from '@/lib/lineup';
 
 /* ─────────────────────────────── DATA (template) ─────────────────────────── */
@@ -13,11 +13,11 @@ const SPEAKER = {
   title: 'Analyst, Google Search',
   tag: 'Keynote',
   year: '2026',
-  origin: 'Switzerland',
-  sessionShort: 'Inside Google Search',
-  stage: 'Tue Sep 15',
   img: '/assets/gary-illyes.jpg',
+  // Social links are all optional — leave any as '' and its button won't show.
   linkedin: 'https://www.linkedin.com/in/garyillyes/',
+  x: 'https://x.com/methode',
+  youtube: 'https://www.youtube.com/@GoogleSearchCentral', // placeholder for design preview
   bio: 'Gary Illyes is a search relations at Google based in Hungary / USA. A recognized voice in the global search community, Gary has shaped how teams approach modern SEO, from technical foundations to the new realities of LLM-driven discovery. On the Shenzhen stage, expect direct, opinionated takes informed by real client work and a deep respect for what cross-border SEO actually demands in 2026.',
   session: {
     title: 'Inside Google Search Relations',
@@ -174,24 +174,6 @@ export default function GaryIllyesProfile() {
                 {s.title}
               </p>
 
-              {/* Meta row */}
-              <div className="mt-8 md:mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
-                {[
-                  ['Origin', s.origin],
-                  ['Session', s.sessionShort],
-                  ['Stage', s.stage],
-                ].map(([label, value]) => (
-                  <div key={label}>
-                    <div className="uppercase text-white/40" style={{ fontFamily: 'General Sans, system-ui, sans-serif', fontSize: 11, fontWeight: 600, letterSpacing: '0.14em' }}>
-                      {label}
-                    </div>
-                    <div className="display uppercase text-white mt-2" style={{ fontSize: 17, fontWeight: 700, letterSpacing: '0.01em' }}>
-                      {value}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
               <div className="mt-8 md:mt-10 border-t border-white/10" />
 
               <p
@@ -201,12 +183,26 @@ export default function GaryIllyesProfile() {
                 {s.bio}
               </p>
 
-              {/* Actions */}
+              {/* Actions — each social link shows only if the speaker has one */}
               <div className="mt-8 md:mt-10 flex flex-col sm:flex-row gap-4">
-                <a href={s.linkedin} target="_blank" rel="noopener noreferrer" className={btnBase} style={{ background: '#2563EB' }}>
-                  <LinkedInIcon className="w-4 h-4" />
-                  LinkedIn
-                </a>
+                {s.linkedin && (
+                  <a href={s.linkedin} target="_blank" rel="noopener noreferrer" className={btnBase} style={{ background: '#2563EB' }}>
+                    <LinkedInIcon className="w-4 h-4" />
+                    LinkedIn
+                  </a>
+                )}
+                {s.x && (
+                  <a href={s.x} target="_blank" rel="noopener noreferrer" className={`${btnBase} border border-white/25`} style={{ background: '#000000' }}>
+                    <XIcon className="w-4 h-4" />
+                    X
+                  </a>
+                )}
+                {s.youtube && (
+                  <a href={s.youtube} target="_blank" rel="noopener noreferrer" className={btnBase} style={{ background: '#FF0000' }}>
+                    <YouTubeIcon className="w-4 h-4" />
+                    YouTube
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -265,7 +261,7 @@ export default function GaryIllyesProfile() {
                   <p>{s.session.description}</p>
                 </div>
                 <div className="mt-8 flex flex-col sm:flex-row gap-4 md:justify-end">
-                  <a href={s.session.calendarUrl} target="_blank" rel="noopener noreferrer" className={`${btnBase} gradient-cta`}>
+                  <a href={s.session.calendarUrl} target="_blank" rel="noopener noreferrer" className={`${btnBase} gradient-cta keep-icon`}>
                     <CalendarIcon className="w-4 h-4" />
                     Add to Calendar
                   </a>
@@ -302,7 +298,7 @@ export default function GaryIllyesProfile() {
             </Link>
           </div>
 
-          <div className="grid gap-4 md:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 md:gap-5 grid-cols-2 lg:grid-cols-4">
             {recommended.map((m) => (
               <Link
                 key={m.name}

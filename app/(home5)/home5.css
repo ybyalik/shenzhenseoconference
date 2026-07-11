@@ -88,6 +88,13 @@
   display: inline-block;
   background-image: url('/assets/arrow-bottom-black.svg');
 }
+/* Opt-out: keep this button's own icon on hover instead of the arrow swap. */
+.home5-root .gradient-cta.keep-icon:hover > svg {
+  display: inline-block;
+}
+.home5-root .gradient-cta.keep-icon:hover::after {
+  display: none;
+}
 
 /* Solid white button: bg stays, white border appears on hover */
 .home5-root .btn-white {
