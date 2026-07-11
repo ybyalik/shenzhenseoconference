@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
 
 import { ArrowUpRight, BackToTop, Footer, LinkedInIcon, Nav } from '../../_components/shared';
+import { sameCategorySpeakers, speakerSlug } from '@/lib/lineup';
 
 /* ─────────────────────────────── DATA (template) ─────────────────────────── */
 
@@ -21,8 +21,8 @@ const SPEAKER = {
   bio: 'Gary Illyes is a search relations at Google based in Hungary / USA. A recognized voice in the global search community, Gary has shaped how teams approach modern SEO, from technical foundations to the new realities of LLM-driven discovery. On the Shenzhen stage, expect direct, opinionated takes informed by real client work and a deep respect for what cross-border SEO actually demands in 2026.',
   session: {
     title: 'Inside Google Search Relations',
-    day: 'Day 2 · Tue Sep 15',
-    where: 'The St. Regis Shenzhen',
+    day: 'Day 2 · Tue Sep 15 · 10:00am',
+    where: 'The St. Regis Shenzhen (Main ballroom)',
     description:
       'Gary Illyes unpacks inside google search relations with concrete examples from real campaigns. Expect tactical frameworks you can apply Monday morning, not theory, not slides full of acronyms. Bring questions: every session ends with live Q&A and a hallway follow-up window.',
     // Google Calendar: Sep 15 2026, 10:00–11:00 Shenzhen time (UTC+8)
@@ -35,13 +35,6 @@ const SPEAKER = {
       encodeURIComponent('Session with Gary Illyes at the Shenzhen SEO Conference 2026.'),
   },
 };
-
-const MORE_SPEAKERS = [
-  { name: 'Aleyda Solis', country: 'Spain', title: 'Founder, Orainti', img: '/figma-assets/a98cc2407eac3ef826ce296466a19c22b89a4777.jpg' },
-  { name: 'Lily Ray', country: 'United States', title: 'VP SEO Strategy & Research', img: '/assets/lily-ray.jpg' },
-  { name: 'Helen Han', country: 'China & Australia', title: 'Technical SEO Executive, Easygo', img: '/assets/helen-han.jpg' },
-  { name: 'Jine Wu', country: 'China & Australia', title: 'SEO Operations Manager, REA Group', img: '/assets/jine-wu.jpg' },
-];
 
 /* ─────────────────────────────────── ICONS ──────────────────────────────── */
 
@@ -68,16 +61,6 @@ function PinIcon({ className = '' }: { className?: string }) {
     </svg>
   );
 }
-function ShareIcon({ className = '' }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} aria-hidden="true" fill="none">
-      <circle cx="6" cy="12" r="2.4" stroke="currentColor" strokeWidth="1.7" />
-      <circle cx="17" cy="6" r="2.4" stroke="currentColor" strokeWidth="1.7" />
-      <circle cx="17" cy="18" r="2.4" stroke="currentColor" strokeWidth="1.7" />
-      <path d="M8.1 10.9l6.8-3.8M8.1 13.1l6.8 3.8" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
-    </svg>
-  );
-}
 
 /* ─────────────────────────────── SHARED BITS ────────────────────────────── */
 
@@ -89,56 +72,43 @@ const RED_LABEL = {
   letterSpacing: '0.16em',
 } as const;
 
-function DottedRule() {
-  return <div aria-hidden style={{ borderTop: '2px dotted rgba(47, 107, 235, 0.45)' }} />;
-}
+// Map full country names to ISO 3166-1 alpha-2 codes, then to flag emoji —
+// matching how the Speakers page renders speaker country flags.
+const COUNTRY_CODES: Record<string, string> = {
+  'united states': 'US',
+  usa: 'US',
+  'united kingdom': 'GB',
+  uk: 'GB',
+  spain: 'ES',
+  china: 'CN',
+  denmark: 'DK',
+  australia: 'AU',
+  canada: 'CA',
+  france: 'FR',
+  switzerland: 'CH',
+  japan: 'JP',
+  germany: 'DE',
+};
 
-function ShareButton({
-  className,
-  children,
-  shareTitle,
-}: {
-  className: string;
-  children: React.ReactNode;
-  shareTitle: string;
-}) {
-  const [copied, setCopied] = useState(false);
-  const onClick = async () => {
-    const url = typeof window !== 'undefined' ? window.location.href : '';
-    if (typeof navigator !== 'undefined' && navigator.share) {
-      try {
-        await navigator.share({ title: shareTitle, url });
-        return;
-      } catch {
-        /* user cancelled */
-      }
-    }
-    try {
-      await navigator.clipboard.writeText(url);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1800);
-    } catch {
-      /* clipboard unavailable */
-    }
-  };
-  return (
-    <button type="button" onClick={onClick} className={className}>
-      {copied ? (
-        'Link Copied'
-      ) : (
-        <>
-          <ShareIcon className="w-4 h-4" />
-          {children}
-        </>
-      )}
-    </button>
-  );
-}
+const flagEmoji = (name: string) => {
+  const cc = COUNTRY_CODES[name.trim().toLowerCase()];
+  if (!cc) return name.trim(); // fall back to text for anything unmapped
+  return String.fromCodePoint(...[...cc].map((c) => 0x1f1e6 + c.charCodeAt(0) - 65));
+};
+
+// Handles single countries and combos like "China & Australia".
+const countryFlags = (country: string) =>
+  country
+    .split(/[&·]/)
+    .map((c) => flagEmoji(c))
+    .join(' ');
 
 /* ─────────────────────────────────── PAGE ───────────────────────────────── */
 
 export default function GaryIllyesProfile() {
   const s = SPEAKER;
+  // Other speakers in the same category (auto — pulled from the shared lineup).
+  const recommended = sameCategorySpeakers(s.name, 8);
   const btnBase =
     'display inline-flex w-full sm:w-auto items-center justify-center gap-2.5 px-7 py-4 rounded-full text-[13px] font-bold tracking-[0.18em] uppercase text-white';
 
@@ -146,8 +116,6 @@ export default function GaryIllyesProfile() {
     <main className="bg-[#03060d] min-h-screen">
       <Nav linkBase="/" />
       <div className="pt-[80px] lg:pt-[96px]" aria-hidden />
-      <DottedRule />
-
       {/* ── Speaker hero ── */}
       <section className="bg-[#03060d]">
         <div className="container pt-8 md:pt-12 pb-12 md:pb-16">
@@ -195,7 +163,7 @@ export default function GaryIllyesProfile() {
               </span>
               <h1
                 className="display uppercase text-white mt-3"
-                style={{ fontSize: 'clamp(40px, 6.5vw, 84px)', fontWeight: 700, lineHeight: '100%', letterSpacing: '-0.02em' }}
+                style={{ fontSize: 'clamp(34px, 5.5vw, 72px)', fontWeight: 700, lineHeight: '100%', letterSpacing: '-0.02em' }}
               >
                 {s.name}
               </h1>
@@ -239,16 +207,11 @@ export default function GaryIllyesProfile() {
                   <LinkedInIcon className="w-4 h-4" />
                   LinkedIn
                 </a>
-                <ShareButton className={`${btnBase} border border-white/40 hover:bg-white hover:text-[#03060d] transition-colors`} shareTitle={`${s.name} — Shenzhen SEO Conference 2026`}>
-                  Share Profile
-                </ShareButton>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      <DottedRule />
 
       {/* ── Session ── */}
       <section className="bg-[#03060d]">
@@ -267,8 +230,8 @@ export default function GaryIllyesProfile() {
                   Session
                 </span>
                 <h2
-                  className="display uppercase text-white mt-4"
-                  style={{ fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, lineHeight: '112%', letterSpacing: '-0.01em' }}
+                  className="display text-white mt-4"
+                  style={{ fontSize: 'clamp(22px, 2.6vw, 34px)', fontWeight: 700, lineHeight: '112%', letterSpacing: '-0.01em' }}
                 >
                   {s.session.title}
                 </h2>
@@ -279,7 +242,7 @@ export default function GaryIllyesProfile() {
                       <CalendarIcon className="w-4 h-4" />
                       When
                     </div>
-                    <div className="display uppercase text-white mt-2.5 whitespace-nowrap" style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.005em' }}>
+                    <div className="display text-white mt-2.5" style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.005em' }}>
                       {s.session.day}
                     </div>
                   </div>
@@ -288,7 +251,7 @@ export default function GaryIllyesProfile() {
                       <PinIcon className="w-4 h-4" />
                       Where
                     </div>
-                    <div className="display uppercase text-white mt-2.5 whitespace-nowrap" style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.005em' }}>
+                    <div className="display text-white mt-2.5" style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.005em' }}>
                       {s.session.where}
                     </div>
                   </div>
@@ -306,9 +269,10 @@ export default function GaryIllyesProfile() {
                     <CalendarIcon className="w-4 h-4" />
                     Add to Calendar
                   </a>
-                  <ShareButton className={`${btnBase} border border-white/40 hover:bg-white hover:text-[#03060d] transition-colors`} shareTitle={`${s.session.title} — Shenzhen SEO Conference 2026`}>
-                    Share Event
-                  </ShareButton>
+                  <Link href="/agenda" className={`${btnBase} border border-white/40 hover:bg-white hover:text-[#03060d] transition-colors`}>
+                    View Full Agenda
+                    <ArrowUpRight className="w-4 h-4" />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -316,9 +280,8 @@ export default function GaryIllyesProfile() {
         </div>
       </section>
 
-      <DottedRule />
-
-      {/* ── More speakers ── */}
+      {/* ── More speakers (same category, auto from shared lineup) ── */}
+      {recommended.length > 0 && (
       <section className="bg-[#03060d]">
         <div className="container py-12 md:py-16">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-8 md:mb-12">
@@ -340,17 +303,17 @@ export default function GaryIllyesProfile() {
           </div>
 
           <div className="grid gap-4 md:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            {MORE_SPEAKERS.map((m) => (
+            {recommended.map((m) => (
               <Link
                 key={m.name}
-                href="/speakers"
+                href={`/speakers/${speakerSlug(m.name)}`}
                 className="rounded-2xl bg-[#06101a]/60 p-4 md:p-6 border border-white/[0.06] hover:border-[var(--red)] transition-colors"
               >
                 <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-white/5">
                   <Image src={m.img} alt={m.name} fill className="object-cover" sizes="(min-width: 1024px) 24vw, (min-width: 640px) 50vw, 100vw" />
                 </div>
-                <div className="mt-5 uppercase text-white/45" style={{ fontFamily: 'General Sans, system-ui, sans-serif', fontSize: 11, fontWeight: 600, letterSpacing: '0.14em' }}>
-                  {m.country}
+                <div className="mt-5 text-[18px] leading-none" title={m.country}>
+                  {countryFlags(m.country)}
                 </div>
                 <div className="mt-2 text-[18px] font-bold text-white leading-tight">{m.name}</div>
                 <div className="mt-1.5 text-[14px] text-white/55 leading-snug line-clamp-2" style={{ fontFamily: 'General Sans, system-ui, sans-serif' }}>
@@ -361,8 +324,7 @@ export default function GaryIllyesProfile() {
           </div>
         </div>
       </section>
-
-      <DottedRule />
+      )}
 
       {/* ── Final CTA ── */}
       <section className="bg-[#03060d] py-12 md:py-16">

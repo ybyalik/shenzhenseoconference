@@ -1,0 +1,90 @@
+// Single source of truth for the categorized speaker lineup.
+// Both the Speakers page and the individual speaker profile pages read from
+// here, so adding or moving a speaker in one place updates everywhere —
+// including the "same category" recommendations shown on each profile.
+
+export type Speaker = {
+  name: string;
+  country: string;
+  title: string;
+  img: string;
+  tag?: string;
+};
+
+export type Category = 'Keynote' | 'Workshop' | 'Field Talk' | 'Lightning Talk';
+
+export const KEYNOTES: Speaker[] = [
+  { name: 'Lily Ray', country: 'USA', title: 'VP of SEO Strategy & Research, Amsive', img: '/assets/lily-ray.jpg' },
+  { name: 'Gary Illyes', country: 'Switzerland', title: 'Analyst, Google Search', img: '/assets/gary-illyes.jpg' },
+  { name: 'Eli Schwartz', country: 'USA', title: 'Author, Product-Led SEO', img: '/assets/eli-schwartz.jpg' },
+  { name: 'Sasha Gusain', country: 'Australia', title: 'Head of Logged Out Experience, Canva', img: '/assets/sasha-gusain.jpg' },
+  { name: 'Lars Lofgren', country: 'USA', title: 'Fractional VP of Marketing', img: '/assets/lars-lofgren.jpg' },
+  { name: 'Bernard Huang', country: 'USA', title: 'Co-founder, Clearscope', img: '/assets/bernard-huang.jpg' },
+];
+export const WORKSHOPS: Speaker[] = [
+  { name: 'Marc Moeller', country: 'Germany & Australia', title: 'Founder, Ecomexperts', img: '/assets/marc-moeller.jpg' },
+  { name: 'Megan Gougeon', country: 'Canada', title: 'Founder, Portable Professional', img: '/assets/megan-gougeon-2026.jpg' },
+  { name: 'Jessica Malnik', country: 'USA', title: 'Founder, Remote Work Tribe & Clarity Briefs', img: '/assets/jessica-malnik.jpeg' },
+  { name: 'Zack Franklin', country: 'USA', title: 'Founder, SmartEcomSEO', img: '/assets/zack-franklin.jpg' },
+];
+export const FIELD_TALKS: Speaker[] = [
+  { name: 'Nick Drewe', country: 'Australia', title: 'Founder & CEO, Wethrift', img: '/assets/nick-drewe.jpg' },
+  { name: 'Josh Blyskal', country: 'USA', title: 'AI Strategy & Research, Profound', img: '/assets/josh-blyskal.png' },
+  { name: 'Nik Ranger', country: 'Australia', title: 'Senior Growth Consultant, Dejan', img: '/assets/nik-ranger-2026.jpg' },
+  { name: 'Loki Yan', country: 'China & Australia', title: 'Co-founder, First Optimise (壹优化)', img: '/assets/loki-yan.jpg' },
+  { name: 'Doug Pierce', country: 'USA', title: 'Founder, Cogney', img: '/assets/doug-pierce.jpg' },
+  { name: 'Mao Kawana', country: 'Japan', title: 'Project Manager, Faber Company', img: '/assets/mao-kawana.jpg' },
+  { name: 'Polina Kogan', country: 'Luxembourg & Russia', title: 'SEO Consultant, Ayudante', img: '/assets/polina-kogan.webp' },
+  { name: 'Victor Huynh', country: 'USA', title: 'CEO & Head of Digital Strategy, Ready Artwork', img: '/assets/victor-huynh.jpg' },
+  { name: 'Owain Lloyd-Williams', country: 'UK', title: 'Independent SEO Consultant', img: '/assets/owain-lloyd-williams.jpg' },
+  { name: 'Sebastien Edgar', country: 'USA', title: 'Global VP of Digital Marketing, Liferay', img: '/assets/sebastien-edgar.jpg' },
+  { name: 'Max Kuch', country: 'Germany', title: 'Digital Entrepreneur', img: '/assets/max-kuch.webp' },
+];
+export const LIGHTNING_TALKS: Speaker[] = [
+  { name: 'Apurva Bose', country: 'USA', title: 'VP of Operations & Strategy, Overtake Digital', img: '/assets/apurva-bose.jpg' },
+  { name: 'Johann Sathianathen', country: 'USA', title: 'Co-founder, Cyndra AI', img: '/assets/johann-sathianathen.webp' },
+  { name: 'Roger Yin', country: 'Canada', title: 'SEO Partner, HashMatrix', img: '/assets/roger-yin.jpg' },
+  { name: 'Tom Qiao', country: 'Canada', title: 'Founder, Convert Better', img: '/assets/tom-qiao.jpg' },
+  { name: 'Begum Kaya', country: 'Turkey', title: 'Organic Growth Strategist, Omniscient Digital', img: '/assets/begum-kaya.webp' },
+  { name: 'David Carrasco', country: 'Spain', title: 'Freelance SEO Consultant', img: '/assets/david-carrasco.jpg' },
+  { name: 'Andrea Abbondanza', country: 'Italy', title: 'Founder, Abbondanza Marketing', img: '/assets/andrea-abbondanza.webp' },
+  { name: 'Jonathan Kiekbusch', country: 'UK & Germany', title: 'Founder, SwishDM', img: '/assets/jonathan-kiekbusch.jpg' },
+  { name: 'Max Hobbs', country: 'UK', title: 'Global Head of Marketing, LTL School', img: '/assets/max-hobbs.jpg' },
+  { name: 'Konstantin Sadekov', country: 'Estonia', title: 'Founder & CEO, Ethical SEO', img: '/assets/konstantin-sadekov.jpg' },
+  { name: 'Gabriele Kahlout', country: 'Qatar', title: 'Head of Audience Development, Al Jazeera', img: '/assets/gabriele-kahlout.jpg' },
+  { name: 'Sam Penny', country: 'Australia', title: 'SEO Manager, Rest', img: '/assets/sam-penny.webp' },
+  { name: 'Helen Han', country: 'China & Australia', title: 'Technical SEO Executive, Easygo', img: '/assets/helen-han.jpg' },
+  { name: 'Jine Wu', country: 'China & Australia', title: 'SEO Operations Manager, REA Group', img: '/assets/jine-wu.jpg' },
+  { name: 'Henry Dalziel', country: 'UK & Hong Kong', title: 'SEO Lead, Publicis Media', img: '/assets/henry-dalziel.webp' },
+  { name: 'Killian Kostiha', country: 'France & Hong Kong', title: 'Founder, Get Clicks', img: '/assets/killian-kostiha.jpg' },
+  { name: 'Jodie Chan', country: 'Hong Kong', title: 'SVP of Product & Strategic Partnerships, Chinafy', img: '/assets/jodie-chan.webp' },
+  { name: 'Divya Jain', country: 'India', title: 'Global Head of Organic Growth & Brand, Edvoy', img: '/assets/divya-jain.jpg' },
+  { name: 'Wasin Mekkit', country: 'Thailand', title: 'Data & Growth Analyst, Statrys', img: '/assets/wasin-mekkit.webp' },
+  { name: 'Mayi', country: 'China', title: 'Founder & CEO, InnoHunts', img: '/assets/mayi.jpg' },
+  { name: 'Ben Fang', country: 'China', title: 'CEO & Co-founder, Kingsway Video', img: '/assets/ben-fang.jpg' },
+  { name: 'Tupa Lee', country: 'China', title: 'SEO & SEM Consultant', img: '/assets/tupa-lee.jpg' },
+];
+
+// Category label -> its speakers, in display order.
+export const LINEUP: { label: Category; speakers: Speaker[] }[] = [
+  { label: 'Keynote', speakers: KEYNOTES },
+  { label: 'Workshop', speakers: WORKSHOPS },
+  { label: 'Field Talk', speakers: FIELD_TALKS },
+  { label: 'Lightning Talk', speakers: LIGHTNING_TALKS },
+];
+
+// "Gary Illyes" -> "gary-illyes". Used to build /speakers/<slug> profile links.
+export const speakerSlug = (name: string) =>
+  name
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+
+// Everyone in the same category as `name`, excluding that person, capped at `limit`.
+// Returns [] if the name isn't found in any category.
+export function sameCategorySpeakers(name: string, limit = 8): Speaker[] {
+  const group = LINEUP.find((g) => g.speakers.some((s) => s.name === name));
+  if (!group) return [];
+  return group.speakers.filter((s) => s.name !== name).slice(0, limit);
+}
