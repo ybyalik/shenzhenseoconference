@@ -111,6 +111,8 @@ export default function GaryIllyesProfile() {
   const recommended = sameCategorySpeakers(s.name, 8);
   const btnBase =
     'display inline-flex w-full sm:w-auto items-center justify-center gap-2.5 px-7 py-4 rounded-full text-[13px] font-bold tracking-[0.18em] uppercase text-white';
+  const iconBtn =
+    'inline-flex items-center justify-center w-12 h-12 rounded-full text-white transition-opacity hover:opacity-85';
 
   return (
     <main className="bg-[#03060d] min-h-screen">
@@ -140,20 +142,6 @@ export default function GaryIllyesProfile() {
                 className="object-cover object-center"
                 sizes="(min-width: 768px) 42vw, 100vw"
               />
-              <span
-                className="absolute top-4 left-4 display uppercase rounded-full"
-                style={{
-                  background: 'var(--red)',
-                  color: '#F9F9F9',
-                  fontFamily: 'General Sans, system-ui, sans-serif',
-                  fontSize: 12,
-                  fontWeight: 700,
-                  letterSpacing: '0.08em',
-                  padding: '6px 14px',
-                }}
-              >
-                {s.tag}
-              </span>
             </div>
 
             {/* Content */}
@@ -162,8 +150,8 @@ export default function GaryIllyesProfile() {
                 Speaker · {s.year}
               </span>
               <h1
-                className="display uppercase text-white mt-3"
-                style={{ fontSize: 'clamp(34px, 5.5vw, 72px)', fontWeight: 700, lineHeight: '100%', letterSpacing: '-0.02em' }}
+                className="display text-white mt-3"
+                style={{ fontSize: 'clamp(28px, 4vw, 50px)', fontWeight: 700, lineHeight: '100%', letterSpacing: '-0.02em' }}
               >
                 {s.name}
               </h1>
@@ -184,23 +172,20 @@ export default function GaryIllyesProfile() {
               </p>
 
               {/* Actions — each social link shows only if the speaker has one */}
-              <div className="mt-8 md:mt-10 flex flex-col sm:flex-row gap-4">
+              <div className="mt-8 md:mt-10 flex flex-row gap-3">
                 {s.linkedin && (
-                  <a href={s.linkedin} target="_blank" rel="noopener noreferrer" className={btnBase} style={{ background: '#2563EB' }}>
-                    <LinkedInIcon className="w-4 h-4" />
-                    LinkedIn
+                  <a href={s.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn" className={iconBtn} style={{ background: '#2563EB' }}>
+                    <LinkedInIcon className="w-5 h-5" />
                   </a>
                 )}
                 {s.x && (
-                  <a href={s.x} target="_blank" rel="noopener noreferrer" className={`${btnBase} border border-white/25`} style={{ background: '#000000' }}>
-                    <XIcon className="w-4 h-4" />
-                    X
+                  <a href={s.x} target="_blank" rel="noopener noreferrer" aria-label="X" title="X" className={`${iconBtn} border border-white/25`} style={{ background: '#000000' }}>
+                    <XIcon className="w-5 h-5" />
                   </a>
                 )}
                 {s.youtube && (
-                  <a href={s.youtube} target="_blank" rel="noopener noreferrer" className={btnBase} style={{ background: '#FF0000' }}>
-                    <YouTubeIcon className="w-4 h-4" />
-                    YouTube
+                  <a href={s.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube" className={iconBtn} style={{ background: '#FF0000' }}>
+                    <YouTubeIcon className="w-5 h-5" />
                   </a>
                 )}
               </div>
