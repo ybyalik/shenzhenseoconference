@@ -24,6 +24,7 @@ const COUNTRY_CODES: Record<string, string> = {
   france: 'FR',
   switzerland: 'CH',
   japan: 'JP',
+  'south korea': 'KR',
   germany: 'DE',
   russia: 'RU',
   luxembourg: 'LU',

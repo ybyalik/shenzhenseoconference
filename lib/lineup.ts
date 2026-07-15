@@ -36,6 +36,8 @@ export const FIELD_TALKS: Speaker[] = [
   { name: 'Mao Kawana', country: 'Japan', title: 'Project Manager, Faber Company', img: '/assets/mao-kawana.jpg' },
   { name: 'Polina Kogan', country: 'Luxembourg & Russia', title: 'SEO Consultant, Ayudante', img: '/assets/polina-kogan.webp' },
   { name: 'Victor Huynh', country: 'USA', title: 'CEO & Head of Digital Strategy, Ready Artwork', img: '/assets/victor-huynh.jpg' },
+  { name: 'Cristina Song', country: 'South Korea', title: 'SEO Lead & Co-Founder, Xpandir', img: '/assets/cristina-song.jpg' },
+  { name: 'Jiyoung Lee', country: 'South Korea', title: 'Co-Founder & Digital Growth Strategist, Xpandir', img: '/assets/jiyoung-lee.jpg' },
   { name: 'Owain Lloyd-Williams', country: 'UK', title: 'Independent SEO Consultant', img: '/assets/owain-lloyd-williams.jpg' },
   { name: 'Sebastien Edgar', country: 'USA', title: 'Global VP of Digital Marketing, Liferay', img: '/assets/sebastien-edgar.jpg' },
   { name: 'Max Kuch', country: 'Germany', title: 'Digital Entrepreneur', img: '/assets/max-kuch.webp' },

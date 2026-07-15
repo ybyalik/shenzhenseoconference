@@ -423,11 +423,35 @@ function Visa() {
             {[
               {
                 label: 'General Transit Requirements',
-                body: 'Enter and exit China from the same province. You must hold a confirmed onward flight to a third country (different from your original departure country) within 240 hours (10 days).',
+                body: (
+                  <>
+                    Enter and exit via designated ports across <strong style={{ fontWeight: 700 }}>24 provinces</strong> (
+                    <a
+                      href="https://www.visaforchina.cn/YYC3_EN/qianzhengyewu/jichuzhishi/changjianwenti/362332771198308352.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: '#5DAEDB', textDecoration: 'underline' }}
+                    >
+                      source
+                    </a>
+                    ). Multi-province itineraries are fully permitted (e.g., enter via Province A, exit
+                    via Province B). You must hold a confirmed ticket to a third country within{' '}
+                    <strong style={{ fontWeight: 700 }}>240 hours (10 days)</strong>.
+                  </>
+                ),
               },
               {
                 label: 'The Hong Kong Routing Rule',
-                body: 'You cannot use this visa-free transit if arriving from Hong Kong by land or ferry. You must fly into an eligible mainland airport (e.g., Guangzhou) and travel to Shenzhen. Your exit flight must depart from Guangdong province.',
+                body: (
+                  <>
+                    HK-Shenzhen Transit: Land and ferry entries are permitted{' '}
+                    <strong style={{ fontWeight: 700 }}>ONLY</strong> via{' '}
+                    <strong style={{ fontWeight: 700 }}>Shekou Port</strong> (ferry) or{' '}
+                    <strong style={{ fontWeight: 700 }}>West Kowloon Station</strong> (High-Speed
+                    Rail). Confirmed ferry or high-speed rail tickets must be presented/shown upon
+                    entry.
+                  </>
+                ),
               },
             ].map((r) => (
               <div
@@ -505,14 +529,14 @@ function Visa() {
                   note: 'Does not continue to a third country; returns to the country of origin.',
                 },
                 {
-                  ok: false,
-                  route: 'London ➔ Hong Kong ➔ Shenzhen (by land or ferry) ➔ Singapore',
-                  note: 'You cannot enter mainland China via a land or ferry border crossing under this specific air transit scheme.',
+                  ok: true,
+                  route: 'London ➔ Hong Kong ➔ Shenzhen (by ferry or rail) ➔ Singapore',
+                  note: 'Valid only when you enter/exit Shenzhen exclusively via Shekou Port (ferry) or West Kowloon Station (High-Speed Rail).',
                 },
                 {
                   ok: true,
-                  route: 'London ➔ Hong Kong ➔ Guangzhou (by flight) ➔ Shenzhen ➔ Singapore',
-                  note: 'Enters mainland China by flight, stays within Guangdong province, and flies out to a third country.',
+                  route: 'London ➔ Hong Kong ➔ Mainland China (by flight) ➔ Shenzhen ➔ Singapore',
+                  note: 'Enters mainland China by flight and departs to a third country. You are free to travel across any of the 24 eligible provinces/municipalities.',
                 },
               ].map((it) => {
                 const accent = it.ok ? '#2BB673' : '#EB3030';
