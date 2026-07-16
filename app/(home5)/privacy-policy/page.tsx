@@ -121,6 +121,14 @@ export default function PrivacyPolicyPage() {
                     purchase a ticket.
                   </>,
                   <>
+                    <strong style={{ color: '#F9F9F9', fontWeight: 600 }}>
+                      Contact &amp; Newsletter Data:
+                    </strong>{' '}
+                    If you contact us through our website or subscribe to our newsletter, we collect
+                    the information you provide, such as your name, email address, company (if
+                    applicable), and your message and subscription preferences.
+                  </>,
+                  <>
                     <strong style={{ color: '#F9F9F9', fontWeight: 600 }}>Event Requirements:</strong>{' '}
                     Dietary restrictions, accessibility needs, and visa letter request information (if
                     applicable).
@@ -142,6 +150,8 @@ export default function PrivacyPolicyPage() {
                   'Providing essential event updates, schedules, and venue information.',
                   'Facilitating networking opportunities (only with your explicit consent).',
                   'Issuing official visa invitation letters upon request.',
+                  'Responding to inquiries submitted through our contact form.',
+                  'Sending newsletters, conference announcements, promotional offers, and event updates to individuals who have opted in to receive marketing communications. You may unsubscribe at any time using the link included in every email.',
                 ]}
               />
             </Section>
@@ -159,6 +169,15 @@ export default function PrivacyPolicyPage() {
                     <strong style={{ color: '#F9F9F9', fontWeight: 600 }}>Sponsor Sharing:</strong> If
                     you allow your badge to be scanned by a sponsor at the event, you consent to
                     sharing your contact information directly with them.
+                  </>,
+                  <>
+                    <strong style={{ color: '#F9F9F9', fontWeight: 600 }}>
+                      Email Marketing Provider:
+                    </strong>{' '}
+                    We use AWeber to manage our mailing list and distribute newsletters and marketing
+                    communications. If you subscribe to our newsletter or otherwise consent to receive
+                    marketing emails, your contact information will be processed by AWeber on our
+                    behalf.
                   </>,
                 ]}
               />

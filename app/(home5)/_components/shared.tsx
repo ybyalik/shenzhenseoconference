@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { useEffect, useState, type RefObject } from 'react';
 
+import { NewsletterModal } from './newsletter-modal';
+
 /** Tracks which carousel card is currently in view inside a scroll-snap container. */
 export function useCarouselActive(trackRef: RefObject<HTMLDivElement | null>) {
   const [activeIdx, setActiveIdx] = useState(0);
@@ -91,6 +93,14 @@ export function CloseIcon({ className = '' }: { className?: string }) {
         strokeLinecap="round"
         d="M6 6l12 12M18 6L6 18"
       />
+    </svg>
+  );
+}
+export function EmailIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true" fill="none">
+      <rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" strokeWidth="1.7" />
+      <path d="M4 7.5l8 5.5 8-5.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -197,6 +207,7 @@ export function Nav({ linkBase = '', current }: { linkBase?: string; current?: s
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeHref, setActiveHref] = useState('#top');
   const [scrolled, setScrolled] = useState(false);
+  const [subscribeOpen, setSubscribeOpen] = useState(false);
 
   useEffect(() => {
     if (typeof document === 'undefined') return;
@@ -264,24 +275,45 @@ export function Nav({ linkBase = '', current }: { linkBase?: string; current?: s
                 );
               })}
             </nav>
-            <Link
-              href={ticketsHref}
-              className="display inline-flex items-center gap-3 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white gradient-cta"
-            >
-              GET TICKETS
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
+            <div className="flex items-center gap-5">
+              <button
+                type="button"
+                aria-label="Subscribe to our newsletter"
+                title="Subscribe to our newsletter"
+                onClick={() => setSubscribeOpen(true)}
+                className="grid place-items-center w-9 h-9 rounded-full text-[#F9F9F9] hover:text-[#EB3030] transition-colors"
+              >
+                <EmailIcon className="w-[19px] h-[19px]" />
+              </button>
+              <Link
+                href={ticketsHref}
+                className="display inline-flex items-center gap-3 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white gradient-cta"
+              >
+                GET TICKETS
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
 
-          <button
-            type="button"
-            aria-label="Open menu"
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen(true)}
-            className="lg:hidden grid place-items-center w-10 h-10 -mr-2 text-white"
-          >
-            <MenuIcon className="w-6 h-6" />
-          </button>
+          <div className="flex items-center gap-1 lg:hidden">
+            <button
+              type="button"
+              aria-label="Subscribe to our newsletter"
+              onClick={() => setSubscribeOpen(true)}
+              className="grid place-items-center w-10 h-10 text-white"
+            >
+              <EmailIcon className="w-[22px] h-[22px]" />
+            </button>
+            <button
+              type="button"
+              aria-label="Open menu"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen(true)}
+              className="grid place-items-center w-10 h-10 -mr-2 text-white"
+            >
+              <MenuIcon className="w-6 h-6" />
+            </button>
+          </div>
         </div>
       </header>
 
@@ -379,6 +411,8 @@ export function Nav({ linkBase = '', current }: { linkBase?: string; current?: s
           </div>
         </div>
       )}
+
+      <NewsletterModal open={subscribeOpen} onClose={() => setSubscribeOpen(false)} />
     </>
   );
 }
