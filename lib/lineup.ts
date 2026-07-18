@@ -41,6 +41,7 @@ export const FIELD_TALKS: Speaker[] = [
   { name: 'Owain Lloyd-Williams', country: 'UK', title: 'Independent SEO Consultant', img: '/assets/owain-lloyd-williams.jpg' },
   { name: 'Sebastien Edgar', country: 'USA', title: 'Global VP of Digital Marketing, Liferay', img: '/assets/sebastien-edgar.jpg' },
   { name: 'Max Kuch', country: 'Germany', title: 'Digital Entrepreneur', img: '/assets/max-kuch.webp' },
+  { name: 'Kun Tang', country: 'China', title: 'Founder and CEO, Jademond', img: '/assets/kun-tang.webp' },
 ];
 export const LIGHTNING_TALKS: Speaker[] = [
   { name: 'Apurva Bose', country: 'USA', title: 'VP of Operations & Strategy, Overtake Digital', img: '/assets/apurva-bose.jpg' },

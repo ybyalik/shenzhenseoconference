@@ -614,6 +614,73 @@ function Visa() {
           </div>
         </div>
 
+        {/* Alternative: 5-Day Shenzhen Port Visa (Visa on Arrival) */}
+        <div className="mt-12 md:mt-16">
+          <div
+            className="flex flex-col gap-4 p-6 md:p-8"
+            style={{
+              borderRadius: 24,
+              border: '1px solid rgba(17, 139, 172, 0.35)',
+              background: 'rgba(17, 139, 172, 0.06)',
+            }}
+          >
+            <h3
+              className="display uppercase text-[18px] md:text-[22px] leading-[130%]"
+              style={{ color: '#F9F9F9', fontWeight: 700 }}
+            >
+              Alternative: 5-Day Shenzhen Port Visa (Visa on Arrival)
+            </h3>
+            <p style={{ color: '#F9F9F9', opacity: 0.78, fontFamily: 'General Sans, system-ui, sans-serif', fontSize: 15, fontWeight: 500, lineHeight: '170%' }}>
+              If you are flying round-trip into Hong Kong and your itinerary doesn&apos;t qualify for the{' '}
+              <strong style={{ color: '#F9F9F9', fontWeight: 600 }}>240-hour (10-day)</strong> transit policy (which
+              strictly requires onward travel to a third country), a{' '}
+              <strong style={{ color: '#F9F9F9', fontWeight: 600 }}>5-Day Shenzhen Visa on Arrival (VOA)</strong> is your
+              best option.
+            </p>
+            <p style={{ color: '#F9F9F9', opacity: 0.78, fontFamily: 'General Sans, system-ui, sans-serif', fontSize: 15, fontWeight: 500, lineHeight: '170%' }}>
+              <strong style={{ color: '#F9F9F9', fontWeight: 600 }}>How it works:</strong> You bypass the embassy entirely
+              and apply directly at designated border checkpoints (like the{' '}
+              <strong style={{ color: '#F9F9F9', fontWeight: 600 }}>Shekou Ferry Port</strong> or{' '}
+              <strong style={{ color: '#F9F9F9', fontWeight: 600 }}>Luohu Land Port</strong>) after arriving in Hong Kong.
+            </p>
+            <p style={{ color: '#F9F9F9', opacity: 0.78, fontFamily: 'General Sans, system-ui, sans-serif', fontSize: 15, fontWeight: 500, lineHeight: '170%' }}>
+              <strong style={{ color: '#F9F9F9', fontWeight: 600 }}>The Catch:</strong> This visa restricts you strictly to
+              Shenzhen; you cannot leave the city boundaries to visit other parts of mainland China.
+            </p>
+            <p style={{ color: '#F9F9F9', opacity: 0.78, fontFamily: 'General Sans, system-ui, sans-serif', fontSize: 15, fontWeight: 500, lineHeight: '170%' }}>
+              To see if your nationality qualifies and to map out your crossing, check out these two excellent resources:
+            </p>
+            <ul className="flex flex-col gap-3 list-disc pl-5" style={{ color: '#F9F9F9', opacity: 0.78 }}>
+              <li style={{ fontFamily: 'General Sans, system-ui, sans-serif', fontSize: 15, fontWeight: 500, lineHeight: '170%' }}>
+                <strong style={{ color: '#F9F9F9', fontWeight: 600 }}>Step-by-Step Requirements:</strong> Read the
+                comprehensive{' '}
+                <a
+                  href="https://www.chinadiscovery.com/shenzhen-tours/shenzhen-visa-on-arrival.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#5DAEDB', textDecoration: 'underline', fontWeight: 600 }}
+                >
+                  China Discovery Shenzhen VOA Guide
+                </a>
+                .
+              </li>
+              <li style={{ fontFamily: 'General Sans, system-ui, sans-serif', fontSize: 15, fontWeight: 500, lineHeight: '170%' }}>
+                <strong style={{ color: '#F9F9F9', fontWeight: 600 }}>Real-World Experience:</strong> Check out this
+                community-compiled{' '}
+                <a
+                  href="https://www.reddit.com/r/shenzhen/comments/1ptwzwe/shenzhen_5day_visa_on_arrival_tips_and_tricks/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#5DAEDB', textDecoration: 'underline', fontWeight: 600 }}
+                >
+                  Reddit Shenzhen 5-Day VOA Tips &amp; Tricks Thread
+                </a>{' '}
+                for up-to-date border wait times and payment advice.
+              </li>
+            </ul>
+          </div>
+        </div>
+
         {/* Below the card: two callouts */}
         <div className="mt-10 md:mt-14 grid gap-8 md:gap-12 md:grid-cols-2">
           <div

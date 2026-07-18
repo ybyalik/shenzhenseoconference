@@ -409,15 +409,15 @@ function PreConferenceSection() {
 /* ───────────────────────────── CONFERENCE EVENTS ─────────────────────────── */
 
 type AgendaItem = { time: string; title: string; body: React.ReactNode };
-type TabSet = { label: string; items: AgendaItem[]; note?: React.ReactNode };
+type TabSet = { label: string; items?: AgendaItem[]; content?: React.ReactNode; note?: React.ReactNode };
 
 /* ─────────────────────── MAIN-STAGE TIMELINE (Day 3 & 4) ─────────────────────── */
 
-type TalkType = 'Keynote' | 'Field Talk' | 'Lightning' | 'Remarks';
+type TalkType = 'Keynote' | 'Field Talk' | 'Lightning' | 'Remarks' | 'Workshop';
 type ScheduleTalk = { title: string; type: TalkType; speakers: string[] };
 type ScheduleRow =
-  | { kind: 'section'; icon: string; label: string }
-  | { kind: 'break'; time: string; end: string; icon: string; label: string }
+  | { kind: 'section'; icon?: string; label: string }
+  | { kind: 'break'; time: string; end: string; icon?: string; label: string }
   | { kind: 'slot'; time: string; end: string; talks: ScheduleTalk[] };
 
 // Resolve a schedule speaker name to their headshot + role. Most come straight from
@@ -431,7 +431,6 @@ const NAME_ALIASES: Record<string, string> = {
 };
 const EXTRA_SPEAKERS: Record<string, { title: string; img: string }> = {
   'jp zhang': { title: 'Host & Organizer', img: '/assets/JP-Zhang-5.jpg' },
-  'kun tang': { title: 'Jademond Digital', img: '/assets/kun-tang.webp' },
 };
 function resolveSpeaker(name: string): { name: string; title: string; img: string } | null {
   const key = name.trim().toLowerCase();
@@ -566,6 +565,7 @@ const TYPE_STYLE: Record<TalkType, { bg: string; color: string }> = {
   Keynote: { bg: 'rgba(235, 48, 48, 0.14)', color: '#F19A9A' },
   'Field Talk': { bg: 'rgba(17, 139, 172, 0.18)', color: '#6FC1E0' },
   Lightning: { bg: 'rgba(224, 166, 75, 0.16)', color: '#E4BA6C' },
+  Workshop: { bg: 'rgba(43, 182, 115, 0.16)', color: '#6FCF9A' },
   Remarks: { bg: 'rgba(249, 249, 249, 0.08)', color: 'rgba(249, 249, 249, 0.6)' },
 };
 
@@ -593,7 +593,6 @@ function TypeBadge({ type }: { type: TalkType }) {
 function SpeakerLine({ names }: { names: string[] }) {
   const people = names.map(resolveSpeaker).filter(Boolean) as { name: string; title: string; img: string }[];
   if (people.length === 0) return null;
-  const showTitle = people.length === 1;
   return (
     <div className="mt-2.5 flex items-center gap-x-4 gap-y-2 flex-wrap">
       {people.map((p) => (
@@ -603,7 +602,7 @@ function SpeakerLine({ names }: { names: string[] }) {
           </span>
           <span className="text-[13px] leading-tight min-w-0" style={{ fontFamily: 'General Sans, system-ui, sans-serif' }}>
             <span className="font-semibold text-white">{p.name}</span>
-            {showTitle && p.title ? <span className="text-white/45"> · {p.title}</span> : null}
+            {p.title ? <span className="text-white/45"> · {p.title}</span> : null}
           </span>
         </span>
       ))}
@@ -640,12 +639,9 @@ function DayTimeline({ schedule }: { schedule: ScheduleRow[] }) {
           return (
             <div
               key={`sec-${i}`}
-              className="display uppercase flex items-center gap-2.5 pt-7 pb-3 first:pt-0"
+              className="display uppercase pt-7 pb-3 first:pt-0"
               style={{ color: '#F9F9F9', fontWeight: 700, fontSize: 13, letterSpacing: '0.06em' }}
             >
-              <span aria-hidden style={{ fontSize: 15 }}>
-                {row.icon}
-              </span>
               {row.label}
             </div>
           );
@@ -658,10 +654,9 @@ function DayTimeline({ schedule }: { schedule: ScheduleRow[] }) {
             >
               <TimeCell time={row.time} end={row.end} muted />
               <div
-                className="flex items-center gap-2 text-[13px] md:text-[14px]"
+                className="text-[13px] md:text-[14px]"
                 style={{ color: 'rgba(249, 249, 249, 0.55)', fontFamily: 'General Sans, system-ui, sans-serif', fontWeight: 500 }}
               >
-                <span aria-hidden>{row.icon}</span>
                 {row.label}
               </div>
             </div>
@@ -710,6 +705,221 @@ type ConferenceDay = {
   defaultOpen?: boolean;
 };
 
+// Day 1 workshops, shown in the same timeline format as Day 3 / Day 4.
+const WORKSHOP_SCHEDULE: ScheduleRow[] = [
+  { kind: 'section', label: 'Morning Workshops · Two run in parallel, choose one' },
+  {
+    kind: 'slot',
+    time: '9:00 AM',
+    end: '12:00 PM',
+    talks: [
+      { title: 'From Traffic to Pipeline: Fixing the Messaging Gaps That Hurt Conversions', type: 'Workshop', speakers: ['Jessica Malnik'] },
+      { title: 'GEO: Why 90% of Chinese B2B & SaaS Brands Are Invisible & Step-by-Step Solution', type: 'Workshop', speakers: ['Marc Moeller'] },
+    ],
+  },
+  { kind: 'break', time: '12:30 PM', end: '2:00 PM', label: 'Lunch · at the conference hotel' },
+  { kind: 'section', label: 'Afternoon Workshops · Two run in parallel, choose one' },
+  {
+    kind: 'slot',
+    time: '2:30 PM',
+    end: '5:30 PM',
+    talks: [
+      { title: 'Trust at Scale: The YouTube Framework for Winning American Buyers', type: 'Workshop', speakers: ['Megan Gougeon'] },
+      { title: 'AI Automation at Shenzhen Speed for SEO, Websites, and Ecom', type: 'Workshop', speakers: ['Zack Franklin'] },
+    ],
+  },
+  { kind: 'break', time: '6:00 PM', end: '7:30 PM', label: 'Networking Dinner · at the conference hotel' },
+];
+
+/* ─────────────────────── DAY 1 CITY TOUR MATRIX ─────────────────────── */
+
+type TourOption = { title: string; cn?: string; summary: string; rain?: string };
+type TourBand = { roman: string; label: string; time: string; blurb?: string; options: TourOption[] };
+
+const TOUR_BANDS: TourBand[] = [
+  {
+    roman: 'I',
+    label: 'Full-Day "Tech + Heritage" Hybrid Tracks',
+    time: '10:00 – 19:30',
+    blurb: 'Premium tracks combining high-level corporate visits with iconic city landmarks.',
+    options: [
+      {
+        title: 'Digital Innovation & Coastal Skyline',
+        cn: '企业参访与海岸天际线之旅',
+        summary:
+          "Premium tech campus visit (Insta360, Huawei, or Tencent), a coastal walk along Nanshan's world-class skyline with a live Meituan drone-delivery demo, and Nantou Ancient City with dinner.",
+      },
+      {
+        title: 'The Creator Tech & Folk Custom Track',
+        cn: '前沿科创与中华民俗之旅',
+        summary:
+          'Premium tech campus visit, then Splendid China and the Folk Culture Village for traditional architecture and minority ethnic customs, with dinner included.',
+      },
+    ],
+  },
+  {
+    roman: 'II',
+    label: 'Morning Specialist Tracks',
+    time: '09:00 – 12:00',
+    options: [
+      {
+        title: 'Cantonese Morning Tea Experience',
+        cn: '粤式早茶与粤海文化体验',
+        summary:
+          'A local-led deep dive into the "Dim Sum" slow-life philosophy, with bilingual commentary on the evolution of Cantonese culinary culture.',
+      },
+      {
+        title: 'Lianhua Mountain & Smart UAV Delivery',
+        cn: '自然休闲：莲花山公园 + 无人机外卖',
+        summary:
+          "A gentle hike to Lianhua Mountain's summit for a panorama of the Futian CBD, with autonomous drones delivering refreshments to the hilltop kiosk.",
+      },
+    ],
+  },
+  {
+    roman: 'III',
+    label: 'Afternoon Specialist Tracks',
+    time: '14:00 – 17:00',
+    options: [
+      { title: 'Tech Company Visit', cn: '科技企业商务参访', summary: 'To be confirmed.' },
+      { title: 'Factory Tour', cn: '智能工厂制造考察', summary: 'To be confirmed.' },
+      {
+        title: 'Ancient Roots & National Calligraphy Workshop',
+        cn: '古城寻根与国潮书法体验',
+        summary:
+          'A walking tour of 1,700-year-old Nantou Ancient City, followed by a hands-on brush-and-ink calligraphy masterclass in a private courtyard.',
+      },
+      {
+        title: 'Coastal Landmarks & "Bay Glory"',
+        cn: '滨海地标与"湾区之光"',
+        summary:
+          'Sunset views from the iconic 128-meter "Bay Glory" Ferris wheel at OH Bay, overlooking the Qianhai financial zone.',
+      },
+    ],
+  },
+  {
+    roman: 'IV',
+    label: 'Evening Nightlife & Leisure Tracks',
+    time: '19:00 – 21:30',
+    blurb: 'Built-in weather contingencies keep the evening seamless, rain or shine.',
+    options: [
+      {
+        title: 'Tech-Skyline & Waterfront Relaxation',
+        cn: '科技天际线与水岸休闲',
+        summary: 'A scenic walk along the Shenzhen Bay Park boardwalk, then networking and nightlife at Sea World.',
+        rain: 'Rainy-day pivot: the UpperHills indoor cultural corridor and its high-end loft streets.',
+      },
+      {
+        title: 'Lingnan Water-town Aesthetics & Sensory Traditions',
+        cn: '岭南水乡夜景与精神传统',
+        summary: 'A heritage walk through OCT Harbour, with lakeside executive social lounges.',
+        rain: 'Rainy-day pivot: a premium indoor tea salon paired with an incense-ceremony masterclass.',
+      },
+    ],
+  },
+];
+
+const TOUR_NOTES: [string, string][] = [
+  [
+    'Corporate Security',
+    'Tech campus visits (Tencent, Huawei, Insta360) require a full attendee manifest with passport or ID numbers, submitted at least 7 business days in advance.',
+  ],
+  [
+    'Lunch Policy',
+    'All full-day tours use a self-paid model at premium shopping centers, for maximum dining flexibility and choice.',
+  ],
+  [
+    'Weather Policy',
+    'All outdoor activities have pre-planned "Rainy Day Pivots" to indoor cultural or high-tech venues.',
+  ],
+];
+
+function CityToursMatrix() {
+  const sans = 'General Sans, system-ui, sans-serif';
+  return (
+    <div className="mt-2 flex flex-col gap-10 md:gap-12">
+      <p style={{ color: '#F9F9F9', opacity: 0.75, fontFamily: sans, fontSize: 15, fontWeight: 500, lineHeight: '170%', maxWidth: 760 }}>
+        A curated matrix of premium tour options blending Shenzhen&apos;s high-tech innovation, Lingnan cultural
+        heritage, and coastal vistas, with a focus on executive networking. Pick whichever track fits your schedule.
+      </p>
+
+      {TOUR_BANDS.map((band) => (
+        <div key={band.roman} className="flex flex-col gap-4">
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <span
+              className="display uppercase text-[14px] md:text-[16px]"
+              style={{ color: '#F9F9F9', fontWeight: 700, letterSpacing: '0.04em' }}
+            >
+              {band.roman}. {band.label}
+            </span>
+            <span className="text-[12px] md:text-[13px]" style={{ color: '#5DAEDB', fontFamily: sans, fontWeight: 700 }}>
+              {band.time}
+            </span>
+          </div>
+          {band.blurb ? (
+            <p style={{ color: '#F9F9F9', opacity: 0.6, fontFamily: sans, fontSize: 13, fontWeight: 500, lineHeight: '160%' }}>
+              {band.blurb}
+            </p>
+          ) : null}
+          <div className="grid gap-4 md:gap-5 sm:grid-cols-2">
+            {band.options.map((o, idx) => (
+              <div
+                key={o.title}
+                className="flex flex-col gap-2 p-5 md:p-6"
+                style={{ borderRadius: 20, border: '1px solid rgba(249, 249, 249, 0.1)', background: '#070c15' }}
+              >
+                <span
+                  className="uppercase text-[11px]"
+                  style={{ color: '#5DAEDB', fontFamily: sans, fontWeight: 700, letterSpacing: '0.12em' }}
+                >
+                  Option {idx + 1}
+                </span>
+                <span className="text-[15px] md:text-[16px] font-bold text-white leading-snug">{o.title}</span>
+                {o.cn ? (
+                  <span className="text-[13px]" style={{ color: 'rgba(249, 249, 249, 0.45)', fontFamily: sans, fontWeight: 500 }}>
+                    {o.cn}
+                  </span>
+                ) : null}
+                <p
+                  className="mt-1 text-[14px]"
+                  style={{ color: '#F9F9F9', opacity: 0.72, fontFamily: sans, fontWeight: 500, lineHeight: '165%' }}
+                >
+                  {o.summary}
+                </p>
+                {o.rain ? (
+                  <p className="text-[13px]" style={{ color: '#6FC1E0', fontFamily: sans, fontWeight: 500, lineHeight: '160%' }}>
+                    {o.rain}
+                  </p>
+                ) : null}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <div className="flex flex-col gap-3 pt-2">
+        <span
+          className="display uppercase text-[13px] md:text-[14px]"
+          style={{ color: '#F9F9F9', fontWeight: 700, letterSpacing: '0.06em' }}
+        >
+          Important Notes
+        </span>
+        <ul className="flex flex-col gap-2.5">
+          {TOUR_NOTES.map(([label, text]) => (
+            <li
+              key={label}
+              className="text-[13px]"
+              style={{ color: '#F9F9F9', opacity: 0.6, fontFamily: sans, fontWeight: 500, lineHeight: '165%' }}
+            >
+              <strong style={{ color: 'rgba(249, 249, 249, 0.85)', fontWeight: 600 }}>{label}:</strong> {text}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
 const CONFERENCE_DAYS: ConferenceDay[] = [
   {
     dayLabel: 'Day 1 · Mon Sep 14',
@@ -727,93 +937,11 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
     tabs: [
       {
         label: 'City Tours',
-        items: [
-          {
-            time: '09:00 – 12:00',
-            title: 'Morning Tours',
-            body: 'Detailed itineraries coming soon',
-          },
-          {
-            time: '12:30 – 14:00',
-            title: 'Lunch',
-            body: 'Served at the conference hotel',
-          },
-          {
-            time: '14:30 – 17:30',
-            title: 'Afternoon Tours',
-            body: 'Detailed itineraries coming soon',
-          },
-          {
-            time: '18:00 – 19:30',
-            title: 'Networking Dinner',
-            body: 'Served at the conference hotel',
-          },
-          {
-            time: '19:30 – 22:00',
-            title: 'Night Tours',
-            body: 'Detailed itineraries coming soon',
-          },
-        ],
-        note: (
-          <p>
-            <span className="font-semibold">Note:</span> We are also designing curated full-day
-            tour options. Complete details and itinerary choices for all tracks will be announced
-            soon.
-          </p>
-        ),
+        content: <CityToursMatrix />,
       },
       {
         label: 'Workshops',
-        items: [
-          {
-            time: '09:00 – 12:00',
-            title: 'Morning Workshops',
-            body: (
-              <>
-                Two concurrent sessions; choose one.
-                <ul className="mt-2 flex flex-col gap-2 list-disc pl-5">
-                  <li>
-                    <span className="font-semibold text-white">Jessica Malnik:</span> From Traffic
-                    to Pipeline: Fixing the Messaging Gaps That Hurt Conversions
-                  </li>
-                  <li>
-                    <span className="font-semibold text-white">Marc Moeller:</span> GEO: Why 90% of
-                    Chinese B2B &amp; SaaS Brands Are Invisible &amp; Step-by-Step Solution
-                  </li>
-                </ul>
-              </>
-            ),
-          },
-          {
-            time: '12:30 – 14:00',
-            title: 'Lunch',
-            body: 'Served at the conference hotel',
-          },
-          {
-            time: '14:30 – 17:30',
-            title: 'Afternoon Workshops',
-            body: (
-              <>
-                Two concurrent sessions; choose one.
-                <ul className="mt-2 flex flex-col gap-2 list-disc pl-5">
-                  <li>
-                    <span className="font-semibold text-white">Megan Gougeon:</span> Trust at Scale:
-                    The YouTube Framework for Winning American Buyers
-                  </li>
-                  <li>
-                    <span className="font-semibold text-white">Zack Franklin:</span> AI Automation at
-                    Shenzhen Speed for SEO, Websites, and Ecom
-                  </li>
-                </ul>
-              </>
-            ),
-          },
-          {
-            time: '18:00 – 19:30',
-            title: 'Networking Dinner',
-            body: 'Served at the conference hotel',
-          },
-        ],
+        content: <DayTimeline schedule={WORKSHOP_SCHEDULE} />,
         note: (
           <p>
             <span className="font-semibold">Note:</span> Workshop attendees are warmly welcome to
@@ -1026,8 +1154,9 @@ function ConferenceDayCard({ day, activeTier }: { day: ConferenceDay; activeTier
 
   if (activeTier !== 'ALL' && !day.tiers.includes(activeTier)) return null;
 
-  const items: AgendaItem[] = day.tabs ? day.tabs[activeTab].items : day.items ?? [];
+  const items: AgendaItem[] = day.tabs ? day.tabs[activeTab].items ?? [] : day.items ?? [];
   const note: React.ReactNode = day.tabs ? day.tabs[activeTab].note : day.note;
+  const content: React.ReactNode = day.tabs ? day.tabs[activeTab].content : undefined;
   const showItems = !isCollapsible || open;
 
   return (
@@ -1148,6 +1277,8 @@ function ConferenceDayCard({ day, activeTier }: { day: ConferenceDay; activeTier
       )}
 
       {showItems && day.schedule && <DayTimeline schedule={day.schedule} />}
+
+      {showItems && content}
 
       {showItems && note && (
         <div
