@@ -55,7 +55,7 @@ export const LIGHTNING_TALKS: Speaker[] = [
   { name: 'Max Hobbs', country: 'UK', title: 'Global Head of Marketing, LTL School', img: '/assets/max-hobbs.jpg' },
   { name: 'Konstantin Sadekov', country: 'Estonia', title: 'Founder & CEO, Ethical SEO', img: '/assets/konstantin-sadekov.jpg' },
   { name: 'Gabriele Kahlout', country: 'Qatar', title: 'Head of Audience Development, Al Jazeera', img: '/assets/gabriele-kahlout.jpg' },
-  { name: 'Sam Penny', country: 'Australia', title: 'SEO Manager, Rest', img: '/assets/sam-penny.webp' },
+  { name: 'Sam Penny', country: 'Australia', title: 'SEO & Growth Manager', img: '/assets/sam-penny.webp' },
   { name: 'Helen Han', country: 'China & Australia', title: 'Technical SEO Executive, Easygo', img: '/assets/helen-han.jpg' },
   { name: 'Jine Wu', country: 'China & Australia', title: 'SEO Operations Manager, REA Group', img: '/assets/jine-wu.jpg' },
   { name: 'Henry Dalziel', country: 'UK & Hong Kong', title: 'SEO Lead, Publicis Media', img: '/assets/henry-dalziel.webp' },

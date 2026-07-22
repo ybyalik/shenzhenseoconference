@@ -205,72 +205,128 @@ type SideEvent = {
   details: { label: string; value: React.ReactNode }[];
 };
 
-const SAT_SEP_12_TALKS: [string, string][] = [
-  ['Tanya Van Gastel', 'Winning AI Search: A 4-Step Guide for Chinese Companies'],
-  ['Mudi Elsaid', 'AI Partner Discovery: Finding Qualified Affiliates & Influencers at Scale'],
-  ['Jacky Lin', 'From AI Tools to B2B Growth Systems: Building Workflows That Actually Run'],
-  ['Sacha Fournier', 'Winning in the West: Agentic Digital PR for Chinese Brands'],
-  ['Vinayak Gupta & Sharoz Dawa', 'Build Your AI Workforce: a 24/7 Multi-agent Chief of Staff'],
+type SideEventRow = { time: string; title: string; speaker?: string; sub?: string };
+
+function SideEventSchedule({ rows }: { rows: SideEventRow[] }) {
+  return (
+    <ul className="mt-3 flex flex-col">
+      {rows.map((r) => (
+        <li
+          key={r.time}
+          className="flex flex-col sm:flex-row sm:gap-4 py-3 border-t border-white/[0.08] first:border-t-0 first:pt-0"
+        >
+          <div
+            className="shrink-0 sm:w-[150px] mb-1 sm:mb-0 text-[13px] md:text-[14px]"
+            style={{ color: '#5DAEDB', fontWeight: 600 }}
+          >
+            {r.time}
+          </div>
+          <div className="min-w-0">
+            <div className="text-[14px] md:text-[15px] font-semibold text-white leading-snug">{r.title}</div>
+            {r.speaker ? <div className="mt-0.5 text-[13px] text-white/55">{r.speaker}</div> : null}
+            {r.sub ? <div className="mt-0.5 text-[13px] text-white/45">{r.sub}</div> : null}
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+const SAT_SEP_12_SCHEDULE: SideEventRow[] = [
+  {
+    time: '12:30 PM – 1:00 PM',
+    title: 'Doors Open & Check-in',
+    sub: 'Attendee registration, badge pickup, and early networking.',
+  },
+  { time: '1:00 PM – 1:10 PM', title: 'Opening Remarks', speaker: 'Event Host (JP/John Zhang)' },
+  {
+    time: '1:10 PM – 1:50 PM',
+    title: 'Winning AI Search: A 4-Step Guide for Chinese Companies',
+    speaker: 'Tanya Van Gastel',
+  },
+  {
+    time: '1:50 PM – 2:30 PM',
+    title: 'AI Partner Discovery: Finding Qualified Affiliates & Influencers at Scale',
+    speaker: 'Mudi Elsaid',
+  },
+  { time: '2:30 PM – 2:50 PM', title: 'Casual Networking & Coffee Break' },
+  {
+    time: '2:50 PM – 3:30 PM',
+    title: 'From AI Tools to B2B Growth Systems: Building Workflows That Actually Run',
+    speaker: 'Jacky Lin',
+  },
+  {
+    time: '3:30 PM – 4:10 PM',
+    title: 'Winning in the West: Agentic Digital PR for Chinese Brands',
+    speaker: 'Sacha Fournier',
+  },
+  { time: '4:10 PM – 4:30 PM', title: 'Casual Networking & Coffee Break' },
+  {
+    time: '4:30 PM – 5:10 PM',
+    title: 'Build Your AI Workforce: A 24/7 Multi-agent Chief of Staff',
+    speaker: 'Vinayak Gupta & Sharoz Dawa',
+  },
+  { time: '5:10 PM – 5:20 PM', title: 'Closing Remarks', speaker: 'Event Host (JP/John Zhang)' },
 ];
 
 const SAT_SEP_12_DETAILS = [
-  { label: 'Time', value: '1:00 PM – 5:00 PM' },
-  { label: 'Venue', value: 'To be announced (Nanshan or Futian area)' },
+  { label: 'Time', value: '12:30 PM – 5:20 PM' },
+  { label: 'Venue', value: 'To Be Announced (Nanshan / Futian Area, off-site, not at the St. Regis)' },
   {
-    label: 'Note',
+    label: 'Language',
     value:
-      'These events will be held off-site and will not take place at the main conference hotel.',
+      'English (Real-time, AI-powered live captions and translated subtitles will be displayed instantly on-screen so Chinese attendees can follow along seamlessly without any language barriers).',
   },
-  {
-    label: 'Schedule',
-    value: (
-      <ul className="mt-2 flex flex-col gap-2 list-disc pl-5">
-        {SAT_SEP_12_TALKS.map(([speaker, talk]) => (
-          <li key={speaker}>
-            <span className="font-semibold text-white">{speaker}:</span> {talk}
-          </li>
-        ))}
-      </ul>
-    ),
-  },
+  { label: 'Schedule', value: <SideEventSchedule rows={SAT_SEP_12_SCHEDULE} /> },
 ];
 
-const SUN_SEP_13_TALKS: [string, string][] = [
-  [
-    'Jamie I.F.',
-    'How Chinese Brands Can Use Affiliates & Influencers To Grow AI Visibility & Revenue in USA',
-  ],
-  [
-    'Tori Long',
-    "S.P.A.C.E.: A Five-Dimension Framework for Exporters Who've Hit a Growth Ceiling",
-  ],
-  [
-    'Ilman Akbar',
-    'How to Talk So the C-Suites Will Listen: Lessons Learned from Teaching & Implementing SEO for 12+ Years',
-  ],
-  ['Jabez Reuben', 'Dominating LLMs, AiO & Google Rankings with Consensus'],
+const SUN_SEP_13_SCHEDULE: SideEventRow[] = [
+  {
+    time: '12:30 PM – 1:00 PM',
+    title: 'Doors Open & Check-in',
+    sub: 'Arrival, registration, and initial afternoon mixing.',
+  },
+  { time: '1:00 PM – 1:10 PM', title: 'Opening Remarks', speaker: 'Event Host (JP/John Zhang)' },
+  {
+    time: '1:10 PM – 1:50 PM',
+    title: 'How Chinese Brands Can Use Affiliates & Influencers To Grow AI Visibility & Revenue in USA',
+    speaker: 'Jamie I.F.',
+  },
+  {
+    time: '1:50 PM – 2:30 PM',
+    title: "S.P.A.C.E.: A Five-Dimension Framework for Exporters Who've Hit a Growth Ceiling",
+    speaker: 'Tori Long',
+  },
+  { time: '2:30 PM – 2:50 PM', title: 'Casual Networking & Coffee Break' },
+  {
+    time: '2:50 PM – 3:30 PM',
+    title: 'How to Talk So the C-Suites Will Listen: Lessons Learned from Teaching & Implementing SEO for 12+ Years',
+    speaker: 'Ilman Akbar',
+  },
+  {
+    time: '3:30 PM – 4:10 PM',
+    title: 'Dominating LLMs, AiO & Google Rankings with Consensus',
+    speaker: 'Jabez Reuben',
+  },
+  { time: '4:10 PM – 4:30 PM', title: 'Casual Networking & Coffee Break' },
+  {
+    time: '4:30 PM – 5:10 PM',
+    title: 'Guest Session',
+    speaker: 'TBC',
+    sub: 'Final Open Slot, topic to be announced.',
+  },
+  { time: '5:10 PM – 5:20 PM', title: 'Side-Event Wrap-up', speaker: 'Event Host (JP/John Zhang)' },
 ];
 
 const SUN_SEP_13_DETAILS = [
-  { label: 'Time', value: '1:00 PM – 5:00 PM' },
-  { label: 'Venue', value: 'To be announced (Nanshan or Futian area)' },
+  { label: 'Time', value: '12:30 PM – 5:20 PM' },
+  { label: 'Venue', value: 'To Be Announced (Nanshan / Futian Area, off-site, not at the St. Regis)' },
   {
-    label: 'Note',
+    label: 'Language',
     value:
-      'These events will be held off-site and will not take place at the main conference hotel.',
+      'English (Real-time, AI-powered live captions and translated subtitles will be displayed instantly on-screen so Chinese attendees can follow along seamlessly without any language barriers).',
   },
-  {
-    label: 'Schedule',
-    value: (
-      <ul className="mt-2 flex flex-col gap-2 list-disc pl-5">
-        {SUN_SEP_13_TALKS.map(([speaker, talk]) => (
-          <li key={speaker}>
-            <span className="font-semibold text-white">{speaker}:</span> {talk}
-          </li>
-        ))}
-      </ul>
-    ),
-  },
+  { label: 'Schedule', value: <SideEventSchedule rows={SUN_SEP_13_SCHEDULE} /> },
 ];
 
 const SIDE_EVENTS: SideEvent[] = [
@@ -386,8 +442,9 @@ function PreConferenceSection() {
                 lineHeight: '24px',
               }}
             >
-              Two afternoon side events before the conference starts. Free and open to anyone.
-              No conference ticket required.
+              Two exclusive afternoon sessions before the main event kicks off. Free to attend with
+              no conference ticket required, but registration approval is required. The application
+              form will be released soon. Stay tuned!
             </p>
           </div>
         </div>
