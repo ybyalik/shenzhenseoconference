@@ -5,7 +5,15 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import { ArrowUpRight, BackToTop, Footer, Nav } from '../_components/shared';
-import { KEYNOTES, WORKSHOPS, FIELD_TALKS, LIGHTNING_TALKS, type Speaker } from '@/lib/lineup';
+import {
+  KEYNOTES,
+  WORKSHOPS,
+  FIELD_TALKS,
+  LIGHTNING_TALKS,
+  VIP_NETWORKING as VIP_SPEAKERS,
+  SIDE_EVENTS as SIDE_EVENT_SPEAKERS,
+  type Speaker,
+} from '@/lib/lineup';
 
 /* ────────────────────────────────── TIERS ────────────────────────────────── */
 
@@ -205,7 +213,9 @@ type SideEvent = {
   details: { label: string; value: React.ReactNode }[];
 };
 
-type SideEventRow = { time: string; title: string; speaker?: string; sub?: string };
+// `speakers` are names resolved to headshot + title via the shared lineup (same as
+// Day 3 / Day 4). `speakerText` is a plain fallback for non-people (e.g. TBD/TBC).
+type SideEventRow = { time: string; title: string; speakers?: string[]; speakerText?: string; sub?: string };
 
 function SideEventSchedule({ rows }: { rows: SideEventRow[] }) {
   return (
@@ -213,7 +223,7 @@ function SideEventSchedule({ rows }: { rows: SideEventRow[] }) {
       {rows.map((r) => (
         <li
           key={r.time}
-          className="flex flex-col sm:flex-row sm:gap-4 py-3 border-t border-white/[0.08] first:border-t-0 first:pt-0"
+          className="flex flex-col sm:flex-row sm:gap-4 py-4 border-t border-white/[0.08] first:border-t-0 first:pt-0"
         >
           <div
             className="shrink-0 sm:w-[150px] mb-1 sm:mb-0 text-[13px] md:text-[14px]"
@@ -223,8 +233,9 @@ function SideEventSchedule({ rows }: { rows: SideEventRow[] }) {
           </div>
           <div className="min-w-0">
             <div className="text-[14px] md:text-[15px] font-semibold text-white leading-snug">{r.title}</div>
-            {r.speaker ? <div className="mt-0.5 text-[13px] text-white/55">{r.speaker}</div> : null}
-            {r.sub ? <div className="mt-0.5 text-[13px] text-white/45">{r.sub}</div> : null}
+            {r.sub ? <div className="mt-1 text-[13px] text-white/45 leading-snug">{r.sub}</div> : null}
+            {r.speakers ? <SpeakerLine names={r.speakers} /> : null}
+            {r.speakerText ? <div className="mt-2 text-[13px] text-white/55">{r.speakerText}</div> : null}
           </div>
         </li>
       ))}
@@ -236,37 +247,37 @@ const SAT_SEP_12_SCHEDULE: SideEventRow[] = [
   {
     time: '12:30 PM – 1:00 PM',
     title: 'Doors Open & Check-in',
-    sub: 'Attendee registration, badge pickup, and early networking.',
+    sub: 'Arrival, registration, and early afternoon networking.',
   },
-  { time: '1:00 PM – 1:10 PM', title: 'Opening Remarks', speaker: 'Event Host (JP/John Zhang)' },
+  { time: '1:00 PM – 1:10 PM', title: 'Opening Remarks', speakers: ['JP Zhang'] },
   {
     time: '1:10 PM – 1:50 PM',
     title: 'Winning AI Search: A 4-Step Guide for Chinese Companies',
-    speaker: 'Tanya Van Gastel',
+    speakers: ['Tanya Van Gastel'],
   },
   {
     time: '1:50 PM – 2:30 PM',
-    title: 'AI Partner Discovery: Finding Qualified Affiliates & Influencers at Scale',
-    speaker: 'Mudi Elsaid',
+    title: 'TBD',
+    speakerText: 'TBD',
   },
   { time: '2:30 PM – 2:50 PM', title: 'Casual Networking & Coffee Break' },
   {
     time: '2:50 PM – 3:30 PM',
     title: 'From AI Tools to B2B Growth Systems: Building Workflows That Actually Run',
-    speaker: 'Jacky Lin',
+    speakers: ['Jacky Lin'],
   },
   {
     time: '3:30 PM – 4:10 PM',
     title: 'Winning in the West: Agentic Digital PR for Chinese Brands',
-    speaker: 'Sacha Fournier',
+    speakers: ['Sacha Fournier'],
   },
   { time: '4:10 PM – 4:30 PM', title: 'Casual Networking & Coffee Break' },
   {
     time: '4:30 PM – 5:10 PM',
     title: 'Build Your AI Workforce: A 24/7 Multi-agent Chief of Staff',
-    speaker: 'Vinayak Gupta & Sharoz Dawa',
+    speakers: ['Vinayak Gupta', 'Sharoz Dawa'],
   },
-  { time: '5:10 PM – 5:20 PM', title: 'Closing Remarks', speaker: 'Event Host (JP/John Zhang)' },
+  { time: '5:10 PM – 5:20 PM', title: 'Closing Remarks', speakers: ['JP Zhang'] },
 ];
 
 const SAT_SEP_12_DETAILS = [
@@ -284,38 +295,38 @@ const SUN_SEP_13_SCHEDULE: SideEventRow[] = [
   {
     time: '12:30 PM – 1:00 PM',
     title: 'Doors Open & Check-in',
-    sub: 'Arrival, registration, and initial afternoon mixing.',
+    sub: 'Arrival, registration, and early afternoon networking.',
   },
-  { time: '1:00 PM – 1:10 PM', title: 'Opening Remarks', speaker: 'Event Host (JP/John Zhang)' },
+  { time: '1:00 PM – 1:10 PM', title: 'Opening Remarks', speakers: ['JP Zhang'] },
   {
     time: '1:10 PM – 1:50 PM',
     title: 'How Chinese Brands Can Use Affiliates & Influencers To Grow AI Visibility & Revenue in USA',
-    speaker: 'Jamie I.F.',
+    speakers: ['Jamie I.F.'],
   },
   {
     time: '1:50 PM – 2:30 PM',
     title: "S.P.A.C.E.: A Five-Dimension Framework for Exporters Who've Hit a Growth Ceiling",
-    speaker: 'Tori Long',
+    speakers: ['Tori Long'],
   },
   { time: '2:30 PM – 2:50 PM', title: 'Casual Networking & Coffee Break' },
   {
     time: '2:50 PM – 3:30 PM',
     title: 'How to Talk So the C-Suites Will Listen: Lessons Learned from Teaching & Implementing SEO for 12+ Years',
-    speaker: 'Ilman Akbar',
+    speakers: ['Ilman Akbar'],
   },
   {
     time: '3:30 PM – 4:10 PM',
     title: 'Dominating LLMs, AiO & Google Rankings with Consensus',
-    speaker: 'Jabez Reuben',
+    speakers: ['Jabez Reuben'],
   },
   { time: '4:10 PM – 4:30 PM', title: 'Casual Networking & Coffee Break' },
   {
     time: '4:30 PM – 5:10 PM',
     title: 'Guest Session',
-    speaker: 'TBC',
+    speakerText: 'TBC',
     sub: 'Final Open Slot, topic to be announced.',
   },
-  { time: '5:10 PM – 5:20 PM', title: 'Side-Event Wrap-up', speaker: 'Event Host (JP/John Zhang)' },
+  { time: '5:10 PM – 5:20 PM', title: 'Side-Event Wrap-up', speakers: ['JP Zhang'] },
 ];
 
 const SUN_SEP_13_DETAILS = [
@@ -481,7 +492,10 @@ type ScheduleRow =
 // the shared lineup; a few (host, and Kun Tang) aren't public speakers, and one name
 // is spelled differently on the agenda than in the lineup.
 const LINEUP_BY_NAME = new Map<string, Speaker>(
-  [...KEYNOTES, ...WORKSHOPS, ...FIELD_TALKS, ...LIGHTNING_TALKS].map((s) => [s.name.toLowerCase(), s]),
+  [...KEYNOTES, ...WORKSHOPS, ...FIELD_TALKS, ...LIGHTNING_TALKS, ...VIP_SPEAKERS, ...SIDE_EVENT_SPEAKERS].map((s) => [
+    s.name.toLowerCase(),
+    s,
+  ]),
 );
 const NAME_ALIASES: Record<string, string> = {
   'joshua blyskal': 'Josh Blyskal',
@@ -977,6 +991,60 @@ function CityToursMatrix() {
   );
 }
 
+// Day 5 (VIP Networking) sub-schedules, rendered inside their block bodies.
+const DAY5_EXCHANGE: SideEventRow[] = [
+  { time: '3:00 PM – 3:05 PM', title: 'Opening Remarks', speakers: ['JP Zhang'] },
+  {
+    time: '3:05 PM – 3:25 PM',
+    title: 'VIP Keynote',
+    sub: 'Topic to be confirmed soon.',
+    speakerText: 'Nick White',
+  },
+  {
+    time: '3:25 PM – 3:55 PM',
+    title: 'Speed Roundtable Networking #1',
+    sub: 'Two rounds, 15 minutes each.',
+  },
+  { time: '3:55 PM – 4:15 PM', title: 'Coffee & Tea Break' },
+  {
+    time: '4:15 PM – 4:35 PM',
+    title: 'Executive Insight: How Search Is Fragmented in China',
+    speakers: ['Marcus Pentzek'],
+  },
+  {
+    time: '4:35 PM – 5:05 PM',
+    title: 'Speed Roundtable Networking #2',
+    sub: 'Two rounds, 15 minutes each.',
+  },
+  { time: '5:05 PM – 5:20 PM', title: 'Premium Coffee & Tea Break' },
+  {
+    time: '5:20 PM – 5:40 PM',
+    title: 'Agency Owners Panel: Chinese Manufacturing vs. Silicon Valley SaaS (An Agency Reality Check)',
+    sub: 'Panel with Tom So & Tanya Van Gastel, moderated by JP / John Zhang. A raw operational look at what it really takes to close and retain high-ticket clients in Eastern manufacturing vs. Western SaaS.',
+    speakers: ['Tom So', 'Tanya Van Gastel', 'JP Zhang'],
+  },
+  {
+    time: '5:40 PM – 6:10 PM',
+    title: 'Speed Roundtable Networking #3',
+    sub: 'Two rounds, 15 minutes each.',
+  },
+  { time: '6:10 PM – 6:15 PM', title: 'Closing Remarks & Gala Briefing', speakers: ['JP Zhang'] },
+];
+
+const DAY5_GALA: SideEventRow[] = [
+  {
+    time: '6:30 PM – 7:00 PM',
+    title: 'Sunset Golden Hour & Open Cocktails',
+    sub: 'High-end open bar.',
+  },
+  { time: '7:00 PM – 9:30 PM', title: 'Beachfront VIP Dinner', sub: 'With live jazz band sets.' },
+  {
+    time: '9:30 PM',
+    title: 'The Closing Toast',
+    sub: 'Final celebratory champagne toast and official conclusion of the 5-day summit.',
+  },
+];
+
 const CONFERENCE_DAYS: ConferenceDay[] = [
   {
     dayLabel: 'Day 1 · Mon Sep 14',
@@ -1082,8 +1150,8 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
         Different venue. Different register. This is where the actual deals get signed.
         <br />
         <span className="italic text-white/65">
-          ~100 people: VIP ticket holders, speakers, sponsors. Includes 1 night at MGM and
-          all meals.
+          Exclusive to VIP ticket holders and speakers. Includes a 1-night stay at MGM and all
+          meals.
         </span>
       </>
     ),
@@ -1098,33 +1166,43 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
         body: (
           <>
             <span className="block">
-              <strong className="text-white font-semibold">Group size -</strong> ~100 people
-              (VIP ticket holders, speakers, sponsors)
+              <strong className="text-white font-semibold">Access -</strong> exclusive to VIP
+              ticket holders and speakers
             </span>
             <span className="block mt-1">
-              <strong className="text-white font-semibold">Included -</strong> 1 night stay
-              at MGM, all meals, curated networking activities
+              <strong className="text-white font-semibold">Included -</strong> 1-night stay at
+              MGM and all meals
             </span>
           </>
         ),
       },
       {
         time: '12:00 PM – 3:00 PM',
-        title: 'The Transition, Lunch & Check-In',
+        title: 'The Transition & Check-In',
         body:
-          'Luxury coach transfer from The St. Regis to MGM Shenzhen (lunch provided), followed by check-in and local welcome tea.',
+          'Luxury coach transfer from The St. Regis Shenzhen to MGM Shenzhen (lunch provided), followed by check-in and local welcome tea.',
       },
       {
-        time: '3:00 PM – 6:00 PM',
+        time: '3:00 PM – 6:15 PM',
         title: 'The Strategic Exchange (Indoor)',
-        body:
-          'A high-energy, structured afternoon featuring expert talks and panels, with three rounds of speed roundtable networking.',
+        body: (
+          <>
+            A high-energy, structured afternoon featuring focused expert sessions, tactical
+            industry debates, and three rounds of dedicated speed roundtable networking.
+            <SideEventSchedule rows={DAY5_EXCHANGE} />
+          </>
+        ),
       },
       {
-        time: '6:00 PM – 9:30 PM',
+        time: '6:30 PM – 9:30 PM',
         title: 'The Beachfront Gala (MGM Lawn)',
-        body:
-          'Sunset cocktail hour with professional beachside portrait photography, followed by a curated, premium VIP dinner by the ocean.',
+        body: (
+          <>
+            An exclusive beachside evening shifting from formal conference metrics to relaxed,
+            high-end luxury by the ocean waves.
+            <SideEventSchedule rows={DAY5_GALA} />
+          </>
+        ),
       },
     ],
   },

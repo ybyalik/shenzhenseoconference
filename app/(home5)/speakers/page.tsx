@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRef, useState, type FormEvent } from 'react';
 
 import { ArrowUpRight, BackToTop, Footer, Nav } from '../_components/shared';
-import { KEYNOTES, WORKSHOPS, FIELD_TALKS, LIGHTNING_TALKS, type Speaker } from '@/lib/lineup';
+import { KEYNOTES, WORKSHOPS, FIELD_TALKS, LIGHTNING_TALKS, VIP_NETWORKING, SIDE_EVENTS, type Speaker } from '@/lib/lineup';
 
 /* ────────────────────── DATA (placeholder — swap with real list) ─────────────────── */
 
@@ -79,24 +79,6 @@ const SPEAKER_POOL: Speaker[] = [
 function pickSpeakers(start: number, count: number): Speaker[] {
   return Array.from({ length: count }, (_, i) => SPEAKER_POOL[(start + i) % SPEAKER_POOL.length]);
 }
-
-const VIP_NETWORKING: Speaker[] = [
-  { name: 'Tanya Van Gastel', country: 'Belgium', title: 'Founder, Rankingonai.com', img: '/assets/tanya-van-gastel.webp' },
-  { name: 'Marcus Pentzek', country: 'Germany & China', title: 'Partner & Director SEO, Jademond Digital', img: '/assets/marcus-pentzek.jpg' },
-  { name: 'Tom So', country: 'China', title: 'Founder & CEO, MML Digital (慢慢来)', img: '/assets/tom-so.jpg' },
-];
-const SIDE_EVENTS: Speaker[] = [
-  { name: 'Tanya Van Gastel', country: 'Belgium', title: 'Founder, Rankingonai.com', img: '/assets/tanya-van-gastel.webp' },
-  { name: 'Mudi Elsaid', country: 'Egypt & Italy', title: 'Founder, Tasken.ai', img: '/assets/mudi-elsaid.jpg' },
-  { name: 'Sacha Fournier', country: 'UK', title: 'Founder, JournoFinder.com', img: '/assets/sacha-fournier.jpg' },
-  { name: 'Jamie I.F.', country: 'UK', title: 'Founder, AffiliateFinder.ai', img: '/assets/jamie-if.webp' },
-  { name: 'Vinayak Gupta', country: 'India', title: 'Founder, Serpbays', img: '/assets/vinayak-gupta.webp' },
-  { name: 'Sharoz Dawa', country: 'India', title: 'SEO Lead, Fynd', img: '/assets/sharoz-dawa.jpg' },
-  { name: 'Jabez Reuben', country: 'India', title: 'Founder, The Blueprints', img: '/assets/jabez-reuben.jpg' },
-  { name: 'Ilman Akbar', country: 'Indonesia', title: 'Founder & CEO, DailySEO ID & DLYS Consulting', img: '/assets/ilman-akbar.webp' },
-  { name: 'Tori Long', country: 'China', title: 'Marketing Director, GWTime', img: '/assets/tori-long.webp' },
-  { name: 'Jacky Lin', country: 'China', title: 'Founder, Wingfuture', img: '/assets/jacky-lin.webp' },
-];
 
 const WHO_TOOK_STAGE = [
   { name: 'Terry Kyle', title: 'Ex-eBay, WPX.net', img: '/figma-assets/jp-avatar.png' },

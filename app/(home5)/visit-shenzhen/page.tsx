@@ -531,7 +531,17 @@ function Visa() {
                 {
                   ok: true,
                   route: 'London ➔ Hong Kong ➔ Shenzhen (by ferry or rail) ➔ Singapore',
-                  note: 'Valid only when you enter/exit Shenzhen exclusively via Shekou Port (ferry) or West Kowloon Station (High-Speed Rail).',
+                  note: (
+                    <>
+                      Valid only for entry into Shenzhen via{' '}
+                      <strong style={{ color: '#F9F9F9', fontWeight: 700 }}>Shekou Port (ferry)</strong> or{' '}
+                      <strong style={{ color: '#F9F9F9', fontWeight: 700 }}>
+                        West Kowloon Station (High-Speed Rail)
+                      </strong>
+                      . You must depart mainland China by air to a third country or region (excluding
+                      Hong Kong).
+                    </>
+                  ),
                 },
                 {
                   ok: true,
