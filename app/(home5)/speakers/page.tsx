@@ -1247,7 +1247,7 @@ function Criteria() {
                   className="text-[15px] leading-[150%] text-[#eb3030]"
                   style={{ fontFamily: 'General Sans, system-ui, sans-serif' }}
                 >
-                  Something went wrong. Please try again or email amanda@shenzhenseoconference.com.
+                  Something went wrong. Please try again or email jp@shenzhenseoconference.com.
                 </p>
               )}
             </form>

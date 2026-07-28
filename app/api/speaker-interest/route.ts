@@ -10,7 +10,7 @@ const speakerInterestSchema = z.object({
 });
 
 const RECIPIENTS = [
-  'amanda@shenzhenseoconference.com',
+  'jp@shenzhenseoconference.com',
   'mengying@shenzhenseoconference.com',
 ];
 
