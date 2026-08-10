@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import Script from 'next/script';
 
 /**
@@ -15,7 +16,37 @@ import Script from 'next/script';
  */
 const SDK_SRC = 'https://websdk.kingswayvideo.com/video-widgets/latest/video-widgets.min.js';
 
+/**
+ * The SDK scans for its containers exactly once, when the script runs, then sets
+ * this flag on window and refuses to scan again.
+ */
+const SDK_INIT_FLAG = '__kingsway_video_list_extend_initialized_prod';
+
 function KingswaySdk() {
+  // Next navigates between pages without reloading the document, so by the time a
+  // second page mounts the SDK has already run and flagged itself. Its one-shot
+  // scan never sees the new page's container and the widget stays empty until a
+  // manual refresh. There is no public re-init call, so clear the flag and run
+  // the script again, which makes it rescan.
+  useEffect(() => {
+    const w = window as unknown as Record<string, unknown>;
+
+    // Not yet initialised means this is a fresh document; the script's own
+    // startup will handle the scan.
+    if (!w[SDK_INIT_FLAG]) return;
+
+    delete w[SDK_INIT_FLAG];
+
+    const script = document.createElement('script');
+    script.src = SDK_SRC;
+    script.defer = true;
+    document.head.appendChild(script);
+
+    return () => {
+      script.remove();
+    };
+  }, []);
+
   return <Script id="kingsway-video-widgets" src={SDK_SRC} strategy="afterInteractive" />;
 }
 
