@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, BackToTop, CarouselDots, Footer, Nav, useCarouselActive } from './_components/shared';
+import { KingswayFloat } from './_components/KingswayVideo';
 import { SPONSORS_2026 as SPONSORS } from './_components/sponsors-data';
 
 const A = {
@@ -961,8 +962,8 @@ function Speakers() {
     { country: 'US', name: 'Eli Schwartz', sub: 'Author, Product-Led SEO', img: '/assets/eli-schwartz.jpg' },
     { country: 'AU', name: 'Sasha Gusain', sub: 'Head of Logged Out Experience, Canva', img: '/assets/sasha-gusain.jpg' },
     { country: 'US', name: 'Lars Lofgren', sub: 'Fractional VP of Marketing', img: '/assets/lars-lofgren.jpg' },
-    { country: 'US', name: 'Bernard Huang', sub: 'Co-founder, Clearscope', img: '/assets/bernard-huang.jpg' },
     { country: 'AU', name: 'Nick Drewe', sub: 'Founder & CEO, Wethrift', img: '/assets/nick-drewe.jpg' },
+    { country: 'US', name: 'Josh Blyskal', sub: 'AI Strategy & Research, Profound', img: '/assets/josh-blyskal.png' },
     { country: 'CA', name: 'Megan Gougeon', sub: 'Founder, Portable Professional', img: '/assets/megan-gougeon-2026.jpg' },
     { country: 'AU', name: 'Nik Ranger', sub: 'Senior Growth Consultant, Dejan', img: '/assets/nik-ranger-2026.jpg' },
     { country: 'UK', name: 'Owain Lloyd-Williams', sub: 'Independent SEO Consultant', img: '/assets/owain-lloyd-williams.jpg' },
@@ -2463,6 +2464,7 @@ export default function Home5Page() {
       <Contact />
       <Footer />
       <BackToTop />
+      <KingswayFloat listId="25010" />
     </main>
   );
 }

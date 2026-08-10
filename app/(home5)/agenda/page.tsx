@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import { ArrowUpRight, BackToTop, Footer, Nav } from '../_components/shared';
+import { KingswayCarousel } from '../_components/KingswayVideo';
 import {
   KEYNOTES,
   WORKSHOPS,
@@ -1715,6 +1716,7 @@ export default function AgendaPage() {
       <TierFilter active={tier} onChange={setTier} />
       <PreConferenceSection />
       <ConferenceEventsSection activeTier={tier} />
+      <KingswayCarousel listId="25693" title="What Did Our Attendees Say About the Conference?" />
       <EventApp />
       <FinalCta />
       <Footer linkBase="/" />

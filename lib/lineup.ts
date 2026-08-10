@@ -9,6 +9,13 @@ export type Speaker = {
   title: string;
   img: string;
   tag?: string;
+  /**
+   * Kept in the data but not shown in the public lineup. The agenda resolves a
+   * talk's headshot and title by name from this file, so a speaker who is off
+   * the lineup but still on the schedule has to stay here or their talk loses
+   * its photo and job title.
+   */
+  hiddenFromLineup?: boolean;
 };
 
 export type Category = 'Keynote' | 'Workshop' | 'Field Talk' | 'Lightning Talk';
@@ -19,7 +26,7 @@ export const KEYNOTES: Speaker[] = [
   { name: 'Eli Schwartz', country: 'USA', title: 'Author, Product-Led SEO', img: '/assets/eli-schwartz.jpg' },
   { name: 'Sasha Gusain', country: 'Australia', title: 'Head of Logged Out Experience, Canva', img: '/assets/sasha-gusain.jpg' },
   { name: 'Lars Lofgren', country: 'USA', title: 'Fractional VP of Marketing', img: '/assets/lars-lofgren.jpg' },
-  { name: 'Bernard Huang', country: 'USA', title: 'Co-founder, Clearscope', img: '/assets/bernard-huang.jpg' },
+  { name: 'Bernard Huang', country: 'USA', title: 'Co-founder, Clearscope', img: '/assets/bernard-huang.jpg', hiddenFromLineup: true },
 ];
 export const WORKSHOPS: Speaker[] = [
   { name: 'Marc Moeller', country: 'Germany & Australia', title: 'Founder, Ecomexperts', img: '/assets/marc-moeller.jpg' },
@@ -108,5 +115,12 @@ export const speakerSlug = (name: string) =>
 export function sameCategorySpeakers(name: string, limit = 8): Speaker[] {
   const group = LINEUP.find((g) => g.speakers.some((s) => s.name === name));
   if (!group) return [];
-  return group.speakers.filter((s) => s.name !== name).slice(0, limit);
+  return group.speakers
+    .filter((s) => s.name !== name && !s.hiddenFromLineup)
+    .slice(0, limit);
+}
+
+/** The speakers shown publicly. Use this anywhere the lineup is displayed. */
+export function visibleSpeakers(speakers: Speaker[]): Speaker[] {
+  return speakers.filter((s) => !s.hiddenFromLineup);
 }

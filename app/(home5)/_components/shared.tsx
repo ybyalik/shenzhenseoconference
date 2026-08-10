@@ -138,6 +138,25 @@ export function YouTubeIcon({ className = '' }: { className?: string }) {
   );
 }
 
+export function InstagramIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
+      <circle cx="12" cy="12" r="4.4" />
+      <circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+export function RedNoteIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
+      <path d="M7.5 9h3.2M7.5 12h9M7.5 15h6" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export function FacebookIcon({ className = '' }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
@@ -451,6 +470,20 @@ export function Footer({ linkBase = '' }: { linkBase?: string } = {}) {
               GET YOUR TICKETS TODAY
               <ArrowUpRight className="w-4 h-4" />
             </Link>
+
+            <div className="mt-9">
+              <div className="display text-[14px] font-semibold tracking-[0.2em] mb-4">WECHAT</div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/wechat-official-account.png"
+                alt="WeChat QR code for the Shenzhen SEO Conference official account"
+                className="w-full max-w-[320px] h-auto rounded-lg"
+              />
+              <p className="mt-3 text-[13px] leading-[150%] text-white/60 max-w-[320px]">
+                Scan the code, or search{' '}
+                <span className="text-white/85">深圳SEO大会主办方</span> in WeChat.
+              </p>
+            </div>
           </div>
 
           <div>
@@ -476,6 +509,9 @@ export function Footer({ linkBase = '' }: { linkBase?: string } = {}) {
                 { label: 'LINKEDIN', href: 'https://www.linkedin.com/company/shenzhen-seo-conference/', Icon: LinkedInIcon },
                 { label: 'X', href: 'https://x.com/shenzhenseoconf', Icon: XIcon },
                 { label: 'FACEBOOK', href: 'https://www.facebook.com/shenzhenseoconference/', Icon: FacebookIcon },
+                { label: 'RED NOTE (小红书)', href: 'https://xhslink.cn/m/AEIahOL98cU', Icon: RedNoteIcon },
+                { label: 'INSTAGRAM', href: 'https://www.instagram.com/shenzhenseoconference', Icon: InstagramIcon },
+                { label: 'YOUTUBE', href: 'https://youtube.com/@shenzhen-seo-conference', Icon: YouTubeIcon },
               ].map((lnk) => (
                 <li key={lnk.label}>
                   <a

@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { useRef, useState, type FormEvent } from 'react';
 
 import { ArrowUpRight, BackToTop, Footer, Nav } from '../_components/shared';
-import { KEYNOTES, WORKSHOPS, FIELD_TALKS, LIGHTNING_TALKS, VIP_NETWORKING, SIDE_EVENTS, type Speaker } from '@/lib/lineup';
+import { KingswayCarousel } from '../_components/KingswayVideo';
+import { KEYNOTES, WORKSHOPS, FIELD_TALKS, LIGHTNING_TALKS, VIP_NETWORKING, SIDE_EVENTS, visibleSpeakers, type Speaker } from '@/lib/lineup';
 
 /* ────────────────────── DATA (placeholder — swap with real list) ─────────────────── */
 
@@ -62,7 +63,6 @@ const SPEAKER_POOL: Speaker[] = [
   { name: 'Eli Schwartz', country: 'United States', title: 'Growth Advisor, Author of Product-Led SEO', img: '/assets/eli-schwartz.jpg' },
   { name: 'Lars Lofgren', country: 'United States', title: 'CEO, Stone Press', img: '/assets/lars-lofgren.jpg' },
   { name: 'Aleyda Solis', country: 'Spain', title: 'Founder, Orainti', img: '/figma-assets/a98cc2407eac3ef826ce296466a19c22b89a4777.jpg' },
-  { name: 'Bernard Huang', country: 'United States', title: 'Co-founder, Clearscope', img: '/assets/bernard-huang.jpg' },
   { name: 'Doug Pierce', country: 'United States', title: 'SEO Consultant', img: '/assets/doug-pierce.jpg' },
   { name: 'Loki Yan', country: 'China', title: 'SEO Practitioner', img: '/assets/loki-yan.jpg' },
   { name: 'Mads Singers', country: 'Denmark', title: 'Management Consultant', img: '/assets/mads-singers.jpg' },
@@ -466,7 +466,7 @@ function LineupSection({
         {title}
       </h3>
       <div className={gridClass}>
-        {speakers.map((s, i) => (
+        {visibleSpeakers(speakers).map((s, i) => (
           <SpeakerCard key={`${title}-${s.name}-${i}`} s={s} />
         ))}
       </div>
@@ -1308,6 +1308,7 @@ export default function Speakers5Page() {
       <Hero />
       <Lineup />
       <Room2025 />
+      <KingswayCarousel listId="25009" title="Past Speaker Insights" />
       <SpeakersGet />
       <Criteria />
       <FinalCta />
