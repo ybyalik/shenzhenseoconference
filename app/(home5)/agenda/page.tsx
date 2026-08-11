@@ -796,7 +796,7 @@ const WORKSHOP_SCHEDULE: ScheduleRow[] = [
     time: '2:30 PM',
     end: '5:30 PM',
     talks: [
-      { title: 'Trust at Scale: The YouTube Framework for Winning American Buyers', type: 'Workshop', speakers: ['Megan Gougeon'] },
+      { title: "SEO Meets CRO: Why Your Traffic Isn't Converting (& How to Fix It)", type: 'Workshop', speakers: ['Tom Qiao'] },
       { title: 'AI Automation at Shenzhen Speed for SEO, Websites, and Ecom', type: 'Workshop', speakers: ['Zack Franklin'] },
     ],
   },

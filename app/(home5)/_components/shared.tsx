@@ -157,6 +157,97 @@ export function RedNoteIcon({ className = '' }: { className?: string }) {
   );
 }
 
+export function WeChatIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      aria-hidden="true"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M9.1 3.5c-3.7 0-6.6 2.4-6.6 5.3 0 1.7.9 3.2 2.4 4.2l-.7 2.1 2.4-1.2c.7.2 1.5.3 2.3.3" />
+      <path d="M21.5 14.4c0-2.6-2.6-4.7-5.7-4.7s-5.7 2.1-5.7 4.7 2.6 4.7 5.7 4.7c.7 0 1.4-.1 2-.3l2.1 1-.6-1.8c1.3-.9 2.2-2.2 2.2-3.6Z" />
+    </svg>
+  );
+}
+
+/**
+ * WeChat is a QR code rather than a link, so it opens a small popover instead of
+ * navigating: hover on desktop, tap on touch devices. Escape and an outside
+ * click close it, so it is not a trap on mobile.
+ */
+function WeChatQrLink() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    const onPointerDown = (e: Event) => {
+      const target = e.target as HTMLElement | null;
+      if (!target?.closest('[data-wechat-qr]')) setOpen(false);
+    };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('pointerdown', onPointerDown);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('pointerdown', onPointerDown);
+    };
+  }, [open]);
+
+  return (
+    <div
+      data-wechat-qr
+      className="relative"
+      // Gated to a real mouse. On touch the browser also fires an emulated
+      // enter, which combined with a toggling click opened and instantly closed
+      // the popover, so a tap appeared to do nothing.
+      onPointerEnter={(e) => {
+        if (e.pointerType === 'mouse') setOpen(true);
+      }}
+      onPointerLeave={(e) => {
+        if (e.pointerType === 'mouse') setOpen(false);
+      }}
+    >
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        onFocus={() => setOpen(true)}
+        aria-expanded={open}
+        className="inline-flex items-center gap-2 text-[14px] font-semibold tracking-[0.06em] text-white/75 hover:text-white cursor-pointer"
+      >
+        <WeChatIcon className="w-4 h-4" />
+        WECHAT (微信)
+      </button>
+
+      {open && (
+        <div
+          // The supplied graphic is about 4:1, so the code itself is only a
+          // quarter of this width. Kept as wide as it can go without spilling
+          // out of a phone screen.
+          className="absolute bottom-full left-0 z-50 mb-3 rounded-xl bg-white p-3 shadow-2xl"
+          style={{ width: 'min(380px, 88vw)' }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/wechat-official-account.png"
+            alt="WeChat QR code for the Shenzhen SEO Conference official account"
+            className="w-full h-auto"
+          />
+          <p className="mt-2 text-[12px] leading-[150%] text-black/60">
+            Scan the code, or search 深圳SEO大会主办方 in WeChat.
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function FacebookIcon({ className = '' }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
@@ -471,19 +562,6 @@ export function Footer({ linkBase = '' }: { linkBase?: string } = {}) {
               <ArrowUpRight className="w-4 h-4" />
             </Link>
 
-            <div className="mt-9">
-              <div className="display text-[14px] font-semibold tracking-[0.2em] mb-4">WECHAT</div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/assets/wechat-official-account.png"
-                alt="WeChat QR code for the Shenzhen SEO Conference official account"
-                className="w-full max-w-[320px] h-auto rounded-lg"
-              />
-              <p className="mt-3 text-[13px] leading-[150%] text-white/60 max-w-[320px]">
-                Scan the code, or search{' '}
-                <span className="text-white/85">深圳SEO大会主办方</span> in WeChat.
-              </p>
-            </div>
           </div>
 
           <div>
@@ -509,9 +587,9 @@ export function Footer({ linkBase = '' }: { linkBase?: string } = {}) {
                 { label: 'LINKEDIN', href: 'https://www.linkedin.com/company/shenzhen-seo-conference/', Icon: LinkedInIcon },
                 { label: 'X', href: 'https://x.com/shenzhenseoconf', Icon: XIcon },
                 { label: 'FACEBOOK', href: 'https://www.facebook.com/shenzhenseoconference/', Icon: FacebookIcon },
-                { label: 'RED NOTE (小红书)', href: 'https://xhslink.cn/m/AEIahOL98cU', Icon: RedNoteIcon },
                 { label: 'INSTAGRAM', href: 'https://www.instagram.com/shenzhenseoconference', Icon: InstagramIcon },
                 { label: 'YOUTUBE', href: 'https://youtube.com/@shenzhen-seo-conference', Icon: YouTubeIcon },
+                { label: 'RED NOTE (小红书)', href: 'https://xhslink.cn/m/AEIahOL98cU', Icon: RedNoteIcon },
               ].map((lnk) => (
                 <li key={lnk.label}>
                   <a
@@ -525,6 +603,9 @@ export function Footer({ linkBase = '' }: { linkBase?: string } = {}) {
                   </a>
                 </li>
               ))}
+              <li>
+                <WeChatQrLink />
+              </li>
             </ul>
           </div>
 

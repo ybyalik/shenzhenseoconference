@@ -55,31 +55,6 @@ const countryFlags = (country: string) =>
     .map((c) => flagEmoji(c))
     .join(' ');
 
-// Real headshots we have available, used to populate the section grids below.
-// Replace with the actual lineup as content lands.
-const SPEAKER_POOL: Speaker[] = [
-  { name: 'Gary Illyes', country: 'United States', title: 'Search Relations, Google', img: '/assets/gary-illyes.jpg' },
-  { name: 'Lily Ray', country: 'United States', title: 'VP SEO Strategy & Research', img: '/assets/lily-ray.jpg' },
-  { name: 'Eli Schwartz', country: 'United States', title: 'Growth Advisor, Author of Product-Led SEO', img: '/assets/eli-schwartz.jpg' },
-  { name: 'Lars Lofgren', country: 'United States', title: 'CEO, Stone Press', img: '/assets/lars-lofgren.jpg' },
-  { name: 'Aleyda Solis', country: 'Spain', title: 'Founder, Orainti', img: '/figma-assets/a98cc2407eac3ef826ce296466a19c22b89a4777.jpg' },
-  { name: 'Doug Pierce', country: 'United States', title: 'SEO Consultant', img: '/assets/doug-pierce.jpg' },
-  { name: 'Loki Yan', country: 'China', title: 'SEO Practitioner', img: '/assets/loki-yan.jpg' },
-  { name: 'Mads Singers', country: 'Denmark', title: 'Management Consultant', img: '/assets/mads-singers.jpg' },
-  { name: 'Megan Gougeon', country: 'United States', title: 'SEO Strategist', img: '/assets/megan-gougeon-2026.jpg' },
-  { name: 'Mike Dee', country: 'United States', title: 'SEO Consultant', img: '/assets/mike-dee.jpg' },
-  { name: 'Nick Drewe', country: 'United Kingdom', title: 'Founder, WeThrift', img: '/assets/nick-drewe.jpg' },
-  { name: 'Owain Lloyd-Williams', country: 'United Kingdom', title: 'SEO Practitioner', img: '/assets/owain-lloyd-williams.jpg' },
-  { name: 'Victor Huynh', country: 'United States', title: 'SEO Consultant', img: '/assets/victor-huynh.jpg' },
-  { name: 'Zack Franklin', country: 'United States', title: 'SEO agency owner, 7-figures', img: '/assets/zack-franklin.jpg' },
-  { name: 'Gael Breton', country: 'France', title: 'Co-founder, Authority Hacker', img: '/figma-assets/4b767e80b2b757091a90554414ca31841996deeb.jpg' },
-  { name: 'Charles Floate', country: 'United Kingdom', title: 'SEO Practitioner', img: '/figma-assets/a1bad36616537f10b8dfb095a790d57f0a93de74.jpg' },
-];
-
-function pickSpeakers(start: number, count: number): Speaker[] {
-  return Array.from({ length: count }, (_, i) => SPEAKER_POOL[(start + i) % SPEAKER_POOL.length]);
-}
-
 const WHO_TOOK_STAGE = [
   { name: 'Terry Kyle', title: 'Ex-eBay, WPX.net', img: '/figma-assets/jp-avatar.png' },
   { name: 'Stewart Vickers', title: 'SEO Practitioner', img: '/assets/stewart-vickers.jpg' },

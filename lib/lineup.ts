@@ -30,13 +30,13 @@ export const KEYNOTES: Speaker[] = [
 ];
 export const WORKSHOPS: Speaker[] = [
   { name: 'Marc Moeller', country: 'Germany & Australia', title: 'Founder, Ecomexperts', img: '/assets/marc-moeller.jpg' },
-  { name: 'Megan Gougeon', country: 'Canada', title: 'Founder, Portable Professional', img: '/assets/megan-gougeon-2026.jpg' },
+  { name: 'Tom Qiao', country: 'Canada', title: 'Founder, Convert Better', img: '/assets/tom-qiao.jpg' },
   { name: 'Jessica Malnik', country: 'USA', title: 'Founder, Remote Work Tribe & Clarity Briefs', img: '/assets/jessica-malnik.jpeg' },
   { name: 'Zack Franklin', country: 'USA', title: 'Founder, SmartEcomSEO', img: '/assets/zack-franklin.jpg' },
 ];
 export const FIELD_TALKS: Speaker[] = [
   { name: 'Nick Drewe', country: 'Australia', title: 'Founder & CEO, Wethrift', img: '/assets/nick-drewe.jpg' },
-  { name: 'Josh Blyskal', country: 'USA', title: 'AI Strategy & Research, Profound', img: '/assets/josh-blyskal.png' },
+  { name: 'Josh Blyskal', country: 'USA', title: 'AI Strategy & Research, Profound', img: '/assets/josh-blyskal.jpg' },
   { name: 'Nik Ranger', country: 'Australia', title: 'Senior Growth Consultant, Dejan', img: '/assets/nik-ranger-2026.jpg' },
   { name: 'Loki Yan', country: 'China & Australia', title: 'Co-founder, First Optimise (壹优化)', img: '/assets/loki-yan.jpg' },
   { name: 'Doug Pierce', country: 'USA', title: 'Founder, Cogney', img: '/assets/doug-pierce.jpg' },
@@ -54,7 +54,6 @@ export const LIGHTNING_TALKS: Speaker[] = [
   { name: 'Apurva Bose', country: 'USA', title: 'VP of Operations & Strategy, Overtake Digital', img: '/assets/apurva-bose.jpg' },
   { name: 'Johann Sathianathen', country: 'USA', title: 'Co-founder, Cyndra AI', img: '/assets/johann-sathianathen.webp' },
   { name: 'Roger Yin', country: 'Canada', title: 'SEO Partner, HashMatrix', img: '/assets/roger-yin.jpg' },
-  { name: 'Tom Qiao', country: 'Canada', title: 'Founder, Convert Better', img: '/assets/tom-qiao.jpg' },
   { name: 'Begum Kaya', country: 'Turkey', title: 'Organic Growth Strategist, Omniscient Digital', img: '/assets/begum-kaya.webp' },
   { name: 'David Carrasco', country: 'Spain', title: 'Freelance SEO Consultant', img: '/assets/david-carrasco.jpg' },
   { name: 'Andrea Abbondanza', country: 'Italy', title: 'Founder, Abbondanza Marketing', img: '/assets/andrea-abbondanza.webp' },
@@ -78,9 +77,11 @@ export const LIGHTNING_TALKS: Speaker[] = [
 // Networking and pre-conference side-event speakers (not part of the main-stage
 // categories). Shared so both /speakers and the agenda resolve their headshots/titles.
 export const VIP_NETWORKING: Speaker[] = [
-  { name: 'Tanya Van Gastel', country: 'Belgium', title: 'Founder, Rankingonai.com', img: '/assets/tanya-van-gastel.webp' },
+  { name: 'Nick White', country: 'USA', title: 'General Manager, ABC Tools (U.S. Office)', img: '/assets/nick-white.jpg' },
   { name: 'Marcus Pentzek', country: 'Germany & China', title: 'Partner & Director SEO, Jademond Digital', img: '/assets/marcus-pentzek.jpg' },
+  { name: 'Tanya Van Gastel', country: 'Belgium', title: 'Founder, Rankingonai.com', img: '/assets/tanya-van-gastel.webp' },
   { name: 'Tom So', country: 'China', title: 'Founder & CEO, MML Digital (慢慢来)', img: '/assets/tom-so.jpg' },
+  { name: 'Kiana Shen', country: 'China', title: 'Founder, OMGrowth.ai (济谦AI)', img: '/assets/kiana-shen.jpg' },
 ];
 export const SIDE_EVENTS: Speaker[] = [
   { name: 'Tanya Van Gastel', country: 'Belgium', title: 'Founder, Rankingonai.com', img: '/assets/tanya-van-gastel.webp' },

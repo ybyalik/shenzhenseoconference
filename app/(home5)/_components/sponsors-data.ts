@@ -28,5 +28,6 @@ export const SPONSORS_2026: {
   ],
   bronze: [
     { src: '/assets/advanced-web-ranking.webp', alt: 'Advanced Web Rankings', h: 32, href: 'https://www.advancedwebranking.com/' },
+    { src: '/assets/outreacher-io.webp', alt: 'Outreacher.io', h: 30, href: 'https://outreacher.io/' },
   ],
 };
