@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, BackToTop, CarouselDots, Footer, Nav, useCarouselActive } from './_components/shared';
-import { KingswayFloat } from './_components/KingswayVideo';
+import { KingswayFloat, KingswayPlayer } from './_components/KingswayVideo';
 import { SPONSORS_2026 as SPONSORS } from './_components/sponsors-data';
 
 const A = {
@@ -12,7 +12,6 @@ const A = {
   founderPortrait: '/figma-assets/jp-portrait.png',
   founderAvatar: '/figma-assets/jp-avatar.webp',
   founderSignature: '/figma-assets/jp-signature.png',
-  recap: '/assets/video-cover.webp',
   audInternational: '/figma-assets/audience-international.png',
   audChinese: '/figma-assets/audience-chinese.png',
   why1: '/assets/why-silicon-valley.webp',
@@ -475,79 +474,16 @@ function FounderLetter() {
 
 /* ───────────────────────────── 2025 RECAP (28:153) ───────────────────────────── */
 function Recap() {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const handlePlay = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.play().catch(() => {});
-  };
-
   return (
     <section className="bg-[#03060d] py-8 lg:py-24">
       <div className="container">
-        <div className="relative rounded-2xl overflow-hidden aspect-[1248/702] mx-auto bg-white/5 lg:max-w-[80%]">
-          <video
-            ref={videoRef}
-            className="absolute inset-0 w-full h-full object-cover"
-            preload="metadata"
-            playsInline
-            controls={isPlaying}
-            poster={A.recap}
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
-            onEnded={() => setIsPlaying(false)}
-            aria-label="Shenzhen SEO Conference 2025 recap video"
-          >
-            <source
-              src="https://yuryfiles.s3.ap-southeast-2.amazonaws.com/2025-seo-conference-recap.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-
-          {!isPlaying && (
-            <>
-              {/* subtle bottom-only darken */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    'linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%)',
-                }}
-              />
-
-              {/* full-card click target to start playback */}
-              <button
-                type="button"
-                aria-label="Play 2025 Recap video"
-                onClick={handlePlay}
-                className="absolute inset-0"
-              />
-
-              {/* visible play affordance */}
-              <div className="absolute left-5 bottom-5 md:left-8 md:bottom-8 inline-flex items-center gap-3 lg:gap-4 pointer-events-none">
-                <span
-                  className="flex items-center justify-center w-10 h-10 lg:w-16 lg:h-16 rounded-full"
-                  style={{ background: '#118BAC' }}
-                >
-                  <PlayIcon className="w-4 h-4 lg:w-6 lg:h-6 text-white translate-x-[1px]" />
-                </span>
-                <span
-                  className="display uppercase text-[8px] lg:text-[18px]"
-                  style={{
-                    color: '#F9F9F9',
-                    fontWeight: 700,
-                    lineHeight: '160%',
-                  }}
-                >
-                  Watch the 2025 Recap
-                </span>
-              </div>
-
-            </>
-          )}
+        <div className="relative rounded-2xl overflow-hidden mx-auto bg-white/5 lg:max-w-[80%]">
+          <KingswayPlayer
+            playerId="6e2a90f096"
+            poster="https://static.kingswayvideo.com/6foxq91e/vod/6e2a90f096/cover.jpg?imageMogr2/format/webp/thumbnail/!30p?t=1786591068972"
+            className="w-full"
+            label="Shenzhen SEO Conference 2025 recap video"
+          />
         </div>
       </div>
     </section>

@@ -50,6 +50,67 @@ function KingswaySdk() {
   return <Script id="kingsway-video-widgets" src={SDK_SRC} strategy="afterInteractive" />;
 }
 
+/** Single on-page video. A different SDK from the list widgets above. */
+const PLAYER_SDK_SRC = 'https://websdk.kingswayvideo.com/vod-player/latest/vod-player.min.js';
+
+/** Same one-shot pattern as the list widgets, under a different name. */
+const PLAYER_INIT_FLAG = '__KINGSWAY_EMBED_INIT_DONE__';
+
+export function KingswayPlayer({
+  playerId,
+  poster,
+  className = '',
+  label,
+}: {
+  /** The vendor's player id, from the embed snippet. */
+  playerId: string;
+  /** Cover image shown before playback, from the vendor's CDN. */
+  poster: string;
+  className?: string;
+  label?: string;
+}) {
+  // The player SDK scans for [data-kingsway-player] once and then sets a flag on
+  // window. Next swaps pages without reloading, so arriving here by clicking a
+  // link would leave the video unbuilt until a manual refresh. Clearing the flag
+  // and running the script again makes it rescan. Same fix as the carousels.
+  useEffect(() => {
+    const w = window as unknown as Record<string, unknown>;
+    if (!w[PLAYER_INIT_FLAG]) return;
+
+    delete w[PLAYER_INIT_FLAG];
+
+    const script = document.createElement('script');
+    script.src = PLAYER_SDK_SRC;
+    script.defer = true;
+    document.head.appendChild(script);
+
+    return () => {
+      script.remove();
+    };
+  }, []);
+
+  return (
+    <>
+      <div
+        data-kingsway-player={playerId}
+        data-width="100%"
+        data-height="100%"
+        aria-label={label}
+        className={className}
+        style={{
+          aspectRatio: '16 / 9',
+          backgroundImage: `url('${poster}')`,
+          backgroundSize: 'auto 100%',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: '#000',
+        }}
+      />
+      <Script id="kingsway-vod-player" src={PLAYER_SDK_SRC} strategy="afterInteractive" />
+    </>
+  );
+}
+
 /**
  * Floating video that the SDK positions over the page. It has no section of its
  * own, so mount it once near the end of the page body.
