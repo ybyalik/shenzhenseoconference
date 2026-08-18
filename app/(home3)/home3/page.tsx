@@ -1090,7 +1090,7 @@ function FAQSection() {
 
         <div className="text-center mt-8 md:mt-10">
           <Link
-            href="/contact"
+            href="/#contact"
             className="inline-flex items-center justify-center px-5 py-3 md:py-3.5 bg-[#020725] text-white text-sm md:text-base rounded leading-[1.2] hover:bg-[#4657db] transition-colors"
           >
             View All Questions & Answers

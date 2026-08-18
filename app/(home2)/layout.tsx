@@ -104,10 +104,10 @@ export default function Home2RootLayout({
                   <Link href="/sponsors" className="font-body text-sm text-white/70 hover:text-[#a0cc3b] transition-colors duration-300 uppercase tracking-wider">
                     Sponsors
                   </Link>
-                  <Link href="/plan-your-trip" className="font-body text-sm text-white/70 hover:text-[#a0cc3b] transition-colors duration-300 uppercase tracking-wider">
+                  <Link href="/visit-shenzhen" className="font-body text-sm text-white/70 hover:text-[#a0cc3b] transition-colors duration-300 uppercase tracking-wider">
                     Travel
                   </Link>
-                  <Link href="/contact" className="font-body text-sm text-white/70 hover:text-[#a0cc3b] transition-colors duration-300 uppercase tracking-wider">
+                  <Link href="/#contact" className="font-body text-sm text-white/70 hover:text-[#a0cc3b] transition-colors duration-300 uppercase tracking-wider">
                     Contact
                   </Link>
                 </div>
@@ -163,8 +163,8 @@ export default function Home2RootLayout({
                     <ul className="space-y-4 font-body text-sm">
                       <li><Link href="/speakers" className="text-white/50 hover:text-[#a0cc3b] transition-colors">Speakers</Link></li>
                       <li><Link href="/sponsors" className="text-white/50 hover:text-[#a0cc3b] transition-colors">Sponsors</Link></li>
-                      <li><Link href="/plan-your-trip" className="text-white/50 hover:text-[#a0cc3b] transition-colors">Plan Your Trip</Link></li>
-                      <li><Link href="/contact" className="text-white/50 hover:text-[#a0cc3b] transition-colors">Contact Us</Link></li>
+                      <li><Link href="/visit-shenzhen" className="text-white/50 hover:text-[#a0cc3b] transition-colors">Plan Your Trip</Link></li>
+                      <li><Link href="/#contact" className="text-white/50 hover:text-[#a0cc3b] transition-colors">Contact Us</Link></li>
                     </ul>
                   </div>
 

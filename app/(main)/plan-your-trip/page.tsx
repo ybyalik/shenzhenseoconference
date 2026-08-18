@@ -95,7 +95,7 @@ export default function PlanYourTrip() {
           <Card className="bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800">
             <CardContent className="p-6">
               <p className="text-sm">
-                <strong>Note:</strong> if you need a business invitation letter, our team is more than happy to provide one for you. Please <a href="/contact/" className="text-primary underline">contact us</a> with your personal information and we'll issue the letter promptly.
+                <strong>Note:</strong> if you need a business invitation letter, our team is more than happy to provide one for you. Please <a href="/#contact" className="text-primary underline">contact us</a> with your personal information and we'll issue the letter promptly.
               </p>
             </CardContent>
           </Card>
