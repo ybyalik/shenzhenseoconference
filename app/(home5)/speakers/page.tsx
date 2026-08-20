@@ -257,9 +257,11 @@ function SpeakerCard({ s }: { s: Speaker }) {
       <div className="mt-3 text-[16px] md:text-[20px] font-bold text-white leading-tight">
         {s.name}
       </div>
-      <div className="mt-1.5 text-[12px] md:text-[14px] text-white/55 leading-snug line-clamp-2">
-        {s.title}
-      </div>
+      {s.title ? (
+        <div className="mt-1.5 text-[12px] md:text-[14px] text-white/55 leading-snug line-clamp-2">
+          {s.title}
+        </div>
+      ) : null}
     </div>
   );
 }
