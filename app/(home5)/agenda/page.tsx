@@ -250,7 +250,7 @@ const SAT_SEP_12_SCHEDULE: SideEventRow[] = [
     title: 'Doors Open & Check-in',
     sub: 'Arrival, registration, and early afternoon networking.',
   },
-  { time: '1:00 PM – 1:10 PM', title: 'Opening Remarks', speakers: ['JP Zhang'] },
+  { time: '1:00 PM – 1:10 PM', title: 'Opening Remarks', speakers: ['JP/John Zhang'] },
   {
     time: '1:10 PM – 1:50 PM',
     title: 'Winning AI Search: A 4-Step Guide for Chinese Companies',
@@ -258,8 +258,8 @@ const SAT_SEP_12_SCHEDULE: SideEventRow[] = [
   },
   {
     time: '1:50 PM – 2:30 PM',
-    title: 'TBD',
-    speakerText: 'TBD',
+    title: 'From JSON to Markdown: Cutting the Cost of AI-Powered SEO Analysis by Up to 90%',
+    speakers: ['Magenta Qin'],
   },
   { time: '2:30 PM – 2:50 PM', title: 'Casual Networking & Coffee Break' },
   {
@@ -278,7 +278,7 @@ const SAT_SEP_12_SCHEDULE: SideEventRow[] = [
     title: 'Build Your AI Workforce: A 24/7 Multi-agent Chief of Staff',
     speakers: ['Vinayak Gupta', 'Sharoz Dawa'],
   },
-  { time: '5:10 PM – 5:20 PM', title: 'Closing Remarks', speakers: ['JP Zhang'] },
+  { time: '5:10 PM – 5:20 PM', title: 'Closing Remarks', speakers: ['JP/John Zhang'] },
 ];
 
 const SAT_SEP_12_DETAILS = [
@@ -298,7 +298,7 @@ const SUN_SEP_13_SCHEDULE: SideEventRow[] = [
     title: 'Doors Open & Check-in',
     sub: 'Arrival, registration, and early afternoon networking.',
   },
-  { time: '1:00 PM – 1:10 PM', title: 'Opening Remarks', speakers: ['JP Zhang'] },
+  { time: '1:00 PM – 1:10 PM', title: 'Opening Remarks', speakers: ['JP/John Zhang'] },
   {
     time: '1:10 PM – 1:50 PM',
     title: 'How Chinese Brands Can Use Affiliates & Influencers To Grow AI Visibility & Revenue in USA',
@@ -320,18 +320,12 @@ const SUN_SEP_13_SCHEDULE: SideEventRow[] = [
     title: 'Dominating LLMs, AiO & Google Rankings with Consensus',
     speakers: ['Jabez Reuben'],
   },
-  { time: '4:10 PM – 4:30 PM', title: 'Casual Networking & Coffee Break' },
-  {
-    time: '4:30 PM – 5:10 PM',
-    title: 'Guest Session',
-    speakerText: 'TBC',
-    sub: 'Final Open Slot, topic to be announced.',
-  },
-  { time: '5:10 PM – 5:20 PM', title: 'Side-Event Wrap-up', speakers: ['JP Zhang'] },
+  { time: '4:10 PM – 4:20 PM', title: 'Side Event Wrap-up', speakers: ['JP/John Zhang'] },
+  { time: '4:20 PM – 5:00 PM', title: 'Casual Networking' },
 ];
 
 const SUN_SEP_13_DETAILS = [
-  { label: 'Time', value: '12:30 PM – 5:20 PM' },
+  { label: 'Time', value: '12:30 PM – 5:00 PM' },
   { label: 'Venue', value: 'To Be Announced (Nanshan / Futian Area, off-site, not at the St. Regis)' },
   {
     label: 'Language',
@@ -502,7 +496,7 @@ const NAME_ALIASES: Record<string, string> = {
   'joshua blyskal': 'Josh Blyskal',
 };
 const EXTRA_SPEAKERS: Record<string, { title: string; img: string }> = {
-  'jp zhang': { title: 'Host & Organizer', img: '/assets/JP-Zhang-5.jpg' },
+  'jp/john zhang': { title: 'Host & Organizer', img: '/assets/JP-Zhang-5.jpg' },
 };
 function resolveSpeaker(name: string): { name: string; title: string; img: string } | null {
   const key = name.trim().toLowerCase();
@@ -514,122 +508,117 @@ function resolveSpeaker(name: string): { name: string; title: string; img: strin
 }
 
 const DAY3_SCHEDULE: ScheduleRow[] = [
-  { kind: 'section', icon: '🌅', label: 'Morning · The Changing Landscape' },
-  { kind: 'slot', time: '9:30 AM', end: '9:40 AM', talks: [{ title: 'Opening Remarks', type: 'Remarks', speakers: ['JP Zhang'] }] },
+  { kind: 'section', icon: '🌅', label: 'Morning · Search Shifts & GEO Realities' },
+  { kind: 'slot', time: '9:30 AM', end: '9:40 AM', talks: [{ title: 'What is Shenzhen SEO Conference and Why I Restarted It', type: 'Remarks', speakers: ['JP/John Zhang'] }] },
   { kind: 'slot', time: '9:40 AM', end: '10:20 AM', talks: [{ title: "Don't Panic. Search is Always Changing", type: 'Keynote', speakers: ['Gary Illyes'] }] },
-  { kind: 'slot', time: '10:25 AM', end: '10:45 AM', talks: [{ title: 'The Invisible Penalty: Detecting and Recovering from Algorithmic Suppression', type: 'Field Talk', speakers: ['Nik Ranger'] }] },
+  { kind: 'slot', time: '10:20 AM', end: '10:40 AM', talks: [{ title: 'The Invisible Penalty: Detecting and Recovering from Algorithmic Suppression', type: 'Field Talk', speakers: ['Nik Ranger'] }] },
   {
     kind: 'slot',
-    time: '10:45 AM',
+    time: '10:40 AM',
     end: '11:00 AM',
     talks: [
-      { title: 'Pace Yourself: Staying Sharp When Everything Is Changing', type: 'Lightning', speakers: ['Begum Kaya'] },
       { title: 'SEO is Marketing: A Proven Framework to See the Big Picture & Unlock Growth', type: 'Lightning', speakers: ['Sam Penny'] },
+      { title: 'SEO is a Product Outcome, Not an SEO Outcome', type: 'Lightning', speakers: ['Jine Wu'] },
     ],
   },
   { kind: 'break', time: '11:00 AM', end: '11:20 AM', icon: '☕', label: 'Morning Coffee Break' },
   { kind: 'slot', time: '11:20 AM', end: '12:00 PM', talks: [{ title: 'How to Do GEO Without Destroying Your SEO: How Google is Cracking Down on GEO Spam', type: 'Keynote', speakers: ['Lily Ray'] }] },
-  { kind: 'slot', time: '12:05 PM', end: '12:25 PM', talks: [{ title: "Ranked Nowhere: The International SEO Mistakes of China's Biggest Global Brands", type: 'Field Talk', speakers: ['Doug Pierce'] }] },
+  { kind: 'slot', time: '12:00 PM', end: '12:20 PM', talks: [{ title: "Ranked Nowhere: The International SEO Mistakes of China's Biggest Global Brands", type: 'Field Talk', speakers: ['Doug Pierce'] }] },
   {
     kind: 'slot',
-    time: '12:25 PM',
+    time: '12:20 PM',
     end: '12:40 PM',
     talks: [
-      { title: 'SEO is a Product Outcome, Not an SEO Outcome', type: 'Lightning', speakers: ['Jine Wu'] },
       { title: "The Validation Gap: Why SEO Doesn't End When the User Clicks", type: 'Lightning', speakers: ['David Carrasco'] },
-    ],
-  },
-  { kind: 'break', time: '12:40 PM', end: '2:00 PM', icon: '🍱', label: 'Lunch Break' },
-  { kind: 'section', icon: '☀️', label: 'Afternoon · SEO Strategy, Conversion, Revenue' },
-  { kind: 'slot', time: '2:00 PM', end: '2:20 PM', talks: [{ title: 'How to Get SEO Moving Inside Large Organisations', type: 'Field Talk', speakers: ['Owain Lloyd-Williams'] }] },
-  { kind: 'slot', time: '2:20 PM', end: '2:40 PM', talks: [{ title: 'What Happens When SEO Stops Working - Lessons from Gaining and Losing 80 Million Visitors', type: 'Field Talk', speakers: ['Nick Drewe'] }] },
-  {
-    kind: 'slot',
-    time: '2:45 PM',
-    end: '3:00 PM',
-    talks: [
-      { title: 'AI Is Making B2B Trust Harder: How Embedded Video Turns SEO Pages into Proof Pages', type: 'Lightning', speakers: ['Ben Fang'] },
       { title: 'Build an Audience, Not Just Traffic: Rethinking Organic ROI', type: 'Lightning', speakers: ['Divya Jain'] },
     ],
   },
-  { kind: 'break', time: '3:10 PM', end: '3:30 PM', icon: '☕', label: 'Afternoon Coffee Break' },
-  { kind: 'slot', time: '3:30 PM', end: '3:50 PM', talks: [{ title: 'Revenue-First SEO: Connecting Organic, Paid, Campaigns & CRO Into One Growth Engine', type: 'Field Talk', speakers: ['Sebastien Edgar'] }] },
-  { kind: 'slot', time: '3:50 PM', end: '4:10 PM', talks: [{ title: "You Don't Have a B2B SEO Problem. You Have a Website Problem", type: 'Field Talk', speakers: ['Victor Huynh'] }] },
-  {
-    kind: 'slot',
-    time: '4:10 PM',
-    end: '4:40 PM',
-    talks: [
-      { title: 'The Power of Compounding - Why Every Business Needs A/B Testing', type: 'Lightning', speakers: ['Tom Qiao'] },
-      { title: 'Protecting the Pages That Pay the Bills', type: 'Lightning', speakers: ['Henry Dalziel'] },
-      { title: 'Traffic Down, No Problem: We Did These Six Things and Tripled Our Revenue', type: 'Lightning', speakers: ['Roger Yin'] },
-    ],
-  },
-  { kind: 'break', time: '4:40 PM', end: '5:00 PM', icon: '☕', label: 'Afternoon Coffee Break' },
-  { kind: 'section', icon: '🏆', label: 'Grand Finale' },
-  { kind: 'slot', time: '5:00 PM', end: '5:45 PM', talks: [{ title: 'AI Visibility Is Not SEO (And Pretending It Is Will Cost You)', type: 'Keynote', speakers: ['Bernard Huang'] }] },
-  { kind: 'break', time: '7:00 PM', end: '10:30 PM', icon: '🎉', label: 'Opening Party · light dinner included' },
-];
-
-const DAY4_SCHEDULE: ScheduleRow[] = [
-  { kind: 'section', icon: '🌅', label: 'Morning · Winning AI Search & Scaling Brands' },
-  { kind: 'slot', time: '9:30 AM', end: '10:10 AM', talks: [{ title: 'The 3 Pillars of AEO', type: 'Keynote', speakers: ['Eli Schwartz'] }] },
-  { kind: 'slot', time: '10:15 AM', end: '10:35 AM', talks: [{ title: 'The New Citation Economy: How ChatGPT, Google AI Mode, and Claude Pick Sources', type: 'Field Talk', speakers: ['Joshua Blyskal'] }] },
-  {
-    kind: 'slot',
-    time: '10:35 AM',
-    end: '11:00 AM',
-    talks: [
-      { title: '3 Signals That Made AI Start Recommending Our Client', type: 'Lightning', speakers: ['Jonathan Kiekbusch'] },
-      { title: 'Mixed Signals: How Brand Inconsistencies Confuse AI Search', type: 'Lightning', speakers: ['Apurva Bose'] },
-      { title: 'B2B SaaS Case Study: How Strategic Link Building Drives LLM Visibility', type: 'Lightning', speakers: ['Konstantin Sadekov'] },
-    ],
-  },
-  { kind: 'break', time: '11:00 AM', end: '11:20 AM', icon: '☕', label: 'Morning Coffee Break' },
-  { kind: 'slot', time: '11:20 AM', end: '12:00 PM', talks: [{ title: 'Radical Localisation: How Canva Blends Product, Brand, and Local Growth for Global Scale', type: 'Keynote', speakers: ['Sasha Gusain'] }] },
-  { kind: 'slot', time: '12:05 PM', end: '12:25 PM', talks: [{ title: 'From 6-Figure/Month Affiliate SEO to AI Solopreneur: Why I Switched Tracks and What I Learned', type: 'Field Talk', speakers: ['Max Kuch'] }] },
-  {
-    kind: 'slot',
-    time: '12:25 PM',
-    end: '12:50 PM',
-    talks: [
-      { title: 'How a Cartoon Lion Changed Our Brand Forever', type: 'Lightning', speakers: ['Max Hobbs'] },
-      { title: 'Ecommerce SEO Growth Roadmap: 10x Organic Traffic with Product-led Content & Community Backlinks', type: 'Lightning', speakers: ['Tupa Lee'] },
-      { title: 'How a $5K Digital PR Campaign Secured $80K Worth of Media Coverage (And Backlinks)', type: 'Lightning', speakers: ['Killian Kostiha'] },
-    ],
-  },
-  { kind: 'break', time: '12:50 PM', end: '2:00 PM', icon: '🍱', label: 'Lunch Break' },
-  { kind: 'section', icon: '☀️', label: 'Afternoon · Regional Nuances, Technical SEO' },
+  { kind: 'break', time: '12:40 PM', end: '2:00 PM', icon: '🍱', label: 'Lunch' },
+  { kind: 'section', icon: '☀️', label: 'Afternoon · APAC Markets, Technical SEO & Links' },
   { kind: 'slot', time: '2:00 PM', end: '2:20 PM', talks: [{ title: 'Cracking the China GEO Code: What DeepSeek, Doubao, and Yuanbao Really Cite', type: 'Field Talk', speakers: ['Kun Tang'] }] },
   { kind: 'slot', time: '2:20 PM', end: '2:40 PM', talks: [{ title: 'The Unwritten Rules of Japanese SEO: From Search Behavior to Business Culture', type: 'Field Talk', speakers: ['Mao Kawana', 'Polina Kogan'] }] },
-  { kind: 'slot', time: '2:45 PM', end: '3:05 PM', talks: [{ title: 'Expand into Korea with Search: From Naver to AI', type: 'Field Talk', speakers: ['Cristina Song', 'Jiyoung Lee'] }] },
+  { kind: 'slot', time: '2:40 PM', end: '3:00 PM', talks: [{ title: 'Expand into Korea with Search: From Naver to AI', type: 'Field Talk', speakers: ['Cristina Song', 'Jiyoung Lee'] }] },
   {
     kind: 'slot',
-    time: '3:05 PM',
+    time: '3:00 PM',
     end: '3:20 PM',
     talks: [
       { title: 'Winning Italy: An AI Search Case Study for Chinese Brands', type: 'Lightning', speakers: ['Andrea Abbondanza'] },
       { title: 'Decoding China Web Performance for Marketers', type: 'Lightning', speakers: ['Jodie Chan'] },
     ],
   },
-  { kind: 'break', time: '3:20 PM', end: '3:40 PM', icon: '☕', label: 'Afternoon Coffee Break' },
-  { kind: 'slot', time: '3:40 PM', end: '4:00 PM', talks: [{ title: 'An Actionable Deep Dive into E-E-A-T', type: 'Field Talk', speakers: ['Loki Yan'] }] },
+  { kind: 'break', time: '3:20 PM', end: '3:50 PM', icon: '☕', label: 'Afternoon Coffee Break' },
+  { kind: 'slot', time: '3:50 PM', end: '4:10 PM', talks: [{ title: 'An Actionable Deep Dive into E-E-A-T', type: 'Field Talk', speakers: ['Loki Yan'] }] },
+  {
+    kind: 'slot',
+    time: '4:10 PM',
+    end: '4:50 PM',
+    talks: [
+      { title: 'B2B SaaS Case Study: How Strategic Link Building Drives LLM Visibility', type: 'Lightning', speakers: ['Konstantin Sadekov'] },
+      { title: 'How a $5K Digital PR Campaign Secured $80K Worth of Media Coverage (And Backlinks)', type: 'Lightning', speakers: ['Killian Kostiha'] },
+      { title: "AI Search Can't Render Your JavaScript-Heavy Website? SEO Can Fix That", type: 'Lightning', speakers: ['Wasin Mekkit'] },
+      { title: 'Automating Technical SEO: GROQ, Sanity CMS & Hreflang Management at Scale', type: 'Lightning', speakers: ['Helen Han'] },
+    ],
+  },
+  { kind: 'slot', time: '4:50 PM', end: '5:10 PM', talks: [{ title: 'How I Automated 144 Ahrefs Blog Updates a Year with AI', type: 'Field Talk', speakers: ['Si Quan Ong'] }] },
+  { kind: 'break', time: '7:00 PM', end: '10:30 PM', icon: '🎉', label: 'Opening Party · light dinner included' },
+];
+
+const DAY4_SCHEDULE: ScheduleRow[] = [
+  { kind: 'section', icon: '🌅', label: 'Morning · AI SEO, Brand & Growth' },
+  { kind: 'slot', time: '9:30 AM', end: '10:10 AM', talks: [{ title: 'The 3 Pillars of AEO', type: 'Keynote', speakers: ['Eli Schwartz'] }] },
+  { kind: 'slot', time: '10:10 AM', end: '10:30 AM', talks: [{ title: 'The New Citation Economy: How ChatGPT, Google AI Mode, and Claude Pick Sources', type: 'Field Talk', speakers: ['Joshua Blyskal'] }] },
+  {
+    kind: 'slot',
+    time: '10:30 AM',
+    end: '11:00 AM',
+    talks: [
+      { title: 'Perception Engineering: How to Change What AI Says About Your Brand', type: 'Lightning', speakers: ['Jonathan Kiekbusch'] },
+      { title: 'Mixed Signals: How Brand Inconsistencies Confuse AI Search', type: 'Lightning', speakers: ['Apurva Bose'] },
+      { title: '10x Organic Traffic for Ecommerce with Product-led Content & Community Backlinks', type: 'Lightning', speakers: ['Tupa Lee'] },
+    ],
+  },
+  { kind: 'break', time: '11:00 AM', end: '11:20 AM', icon: '☕', label: 'Morning Coffee Break' },
+  { kind: 'slot', time: '11:20 AM', end: '12:00 PM', talks: [{ title: 'Radical Localisation: How Canva Blends Product, Brand, and Local Growth for Global Scale', type: 'Keynote', speakers: ['Sasha Gusain'] }] },
+  { kind: 'slot', time: '12:00 PM', end: '12:20 PM', talks: [{ title: 'What Happens When SEO Stops Working - Lessons from Gaining and Losing 80 Million Visitors', type: 'Field Talk', speakers: ['Nick Drewe'] }] },
+  {
+    kind: 'slot',
+    time: '12:20 PM',
+    end: '12:50 PM',
+    talks: [
+      { title: 'How a Cartoon Lion Changed Our Brand Forever', type: 'Lightning', speakers: ['Max Hobbs'] },
+      { title: 'Detecting Google Updates Without Third-Party Tools: An Analytical Approach', type: 'Lightning', speakers: ['Gabriele Kahlout'] },
+      { title: "We Posted 3,000 Times on Reddit: Here's Exactly Why Only Some of Them Rank", type: 'Lightning', speakers: ['Mayi'] },
+    ],
+  },
+  { kind: 'break', time: '12:50 PM', end: '2:00 PM', icon: '🍱', label: 'Lunch' },
+  { kind: 'section', icon: '☀️', label: 'Afternoon · Enterprise SEO, AI Automation' },
+  { kind: 'slot', time: '2:00 PM', end: '2:20 PM', talks: [{ title: 'Revenue-First SEO: Connecting Organic, Paid, Campaigns & CRO Into One Growth Engine', type: 'Field Talk', speakers: ['Sebastien Edgar'] }] },
+  { kind: 'slot', time: '2:20 PM', end: '2:40 PM', talks: [{ title: "You Don't Have a B2B SEO Problem. You Have a Website Problem", type: 'Field Talk', speakers: ['Victor Huynh'] }] },
+  {
+    kind: 'slot',
+    time: '2:40 PM',
+    end: '3:00 PM',
+    talks: [
+      { title: 'Traffic Down, No Problem: We Did These Six Things and Tripled Our Revenue', type: 'Lightning', speakers: ['Roger Yin'] },
+      { title: 'Protecting the Pages That Pay the Bills', type: 'Lightning', speakers: ['Henry Dalziel'] },
+    ],
+  },
+  { kind: 'break', time: '3:00 PM', end: '3:20 PM', icon: '☕', label: 'Afternoon Coffee Break 1' },
+  { kind: 'slot', time: '3:20 PM', end: '3:40 PM', talks: [{ title: 'How to Get SEO Moving Inside Large Organisations', type: 'Field Talk', speakers: ['Owain Lloyd-Williams'] }] },
+  { kind: 'slot', time: '3:40 PM', end: '4:00 PM', talks: [{ title: 'From 6-Figure/Month Affiliate SEO to AI Solopreneur: Why I Switched Tracks and What I Learned', type: 'Field Talk', speakers: ['Max Kuch'] }] },
   {
     kind: 'slot',
     time: '4:00 PM',
-    end: '4:45 PM',
+    end: '4:20 PM',
     talks: [
-      { title: "AI Search Can't Render Your JavaScript-Heavy Website? SEO Can Fix That", type: 'Lightning', speakers: ['Wasin Mekkit'] },
-      { title: 'Automating Technical SEO: GROQ, Sanity CMS & Hreflang Management at Scale', type: 'Lightning', speakers: ['Helen Han'] },
-      { title: "We Posted 3,000 Times on Reddit: Here's Exactly Why Only Some of Them Rank", type: 'Lightning', speakers: ['Mayi'] },
       { title: 'AI Agents for SEO: Automating Backlinks, Content, and 24/7 Optimization with Real Data', type: 'Lightning', speakers: ['Johann Sathianathen'] },
-      { title: 'Detecting Google Updates Without Third-Party Tools: An Analytical Approach', type: 'Lightning', speakers: ['Gabriele Kahlout'] },
+      { title: 'AI Is Making B2B Trust Harder: How Embedded Video Turns SEO Pages into Proof Pages', type: 'Lightning', speakers: ['Ben Fang'] },
     ],
   },
-  { kind: 'break', time: '4:45 PM', end: '5:05 PM', icon: '☕', label: 'Afternoon Coffee Break' },
-  { kind: 'section', icon: '🏆', label: 'Grand Finale & Closing' },
-  { kind: 'slot', time: '5:05 PM', end: '5:50 PM', talks: [{ title: 'Narrative Manipulation: When Google, Reddit, and LLMs Become Weapons and How to Fight Back', type: 'Keynote', speakers: ['Lars Lofgren'] }] },
-  { kind: 'slot', time: '5:50 PM', end: '6:00 PM', talks: [{ title: 'Closing Remarks', type: 'Remarks', speakers: ['JP Zhang'] }] },
+  { kind: 'break', time: '4:20 PM', end: '4:40 PM', icon: '☕', label: 'Afternoon Coffee Break 2' },
+  { kind: 'slot', time: '4:40 PM', end: '5:20 PM', talks: [{ title: 'Narrative Manipulation: When Google, Reddit, and LLMs Become Weapons and How to Fight Back', type: 'Keynote', speakers: ['Lars Lofgren'] }] },
+  { kind: 'slot', time: '5:20 PM', end: '5:35 PM', talks: [{ title: 'From Courage to Freedom: What 16 Years in SEO Really Taught Me', type: 'Remarks', speakers: ['JP/John Zhang'] }] },
   { kind: 'break', time: '8:00 PM', end: '11:00 PM', icon: '🎉', label: 'Closing Party · light dinner included' },
 ];
 
@@ -994,12 +983,11 @@ function CityToursMatrix() {
 
 // Day 5 (VIP Networking) sub-schedules, rendered inside their block bodies.
 const DAY5_EXCHANGE: SideEventRow[] = [
-  { time: '3:00 PM – 3:05 PM', title: 'Opening Remarks', speakers: ['JP Zhang'] },
+  { time: '3:00 PM – 3:05 PM', title: 'Opening Remarks', speakers: ['JP/John Zhang'] },
   {
     time: '3:05 PM – 3:25 PM',
-    title: 'VIP Keynote',
-    sub: 'Topic to be confirmed soon.',
-    speakerText: 'Nick White',
+    title: 'VIP Keynote: What Makes Buyers in Any Country, Say "Yes"',
+    speakers: ['Nick White'],
   },
   {
     time: '3:25 PM – 3:55 PM',
@@ -1022,14 +1010,14 @@ const DAY5_EXCHANGE: SideEventRow[] = [
     time: '5:20 PM – 5:40 PM',
     title: 'Agency Owners Panel: Chinese Manufacturing vs. Silicon Valley SaaS (An Agency Reality Check)',
     sub: 'Panel with Tom So & Tanya Van Gastel, moderated by JP / John Zhang. A raw operational look at what it really takes to close and retain high-ticket clients in Eastern manufacturing vs. Western SaaS.',
-    speakers: ['Tom So', 'Tanya Van Gastel', 'JP Zhang'],
+    speakers: ['Tom So', 'Tanya Van Gastel', 'JP/John Zhang'],
   },
   {
     time: '5:40 PM – 6:10 PM',
     title: 'Speed Roundtable Networking #3',
     sub: 'Two rounds, 15 minutes each.',
   },
-  { time: '6:10 PM – 6:15 PM', title: 'Closing Remarks & Gala Briefing', speakers: ['JP Zhang'] },
+  { time: '6:10 PM – 6:15 PM', title: 'Closing Remarks & Gala Briefing', speakers: ['JP/John Zhang'] },
 ];
 
 const DAY5_GALA: SideEventRow[] = [

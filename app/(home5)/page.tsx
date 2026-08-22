@@ -900,7 +900,7 @@ function Speakers() {
     { country: 'US', name: 'Lars Lofgren', sub: 'Fractional VP of Marketing', img: '/assets/lars-lofgren.jpg' },
     { country: 'AU', name: 'Nick Drewe', sub: 'Founder & CEO, Wethrift', img: '/assets/nick-drewe.jpg' },
     { country: 'US', name: 'Josh Blyskal', sub: 'AI Strategy & Research, Profound', img: '/assets/josh-blyskal.jpg' },
-    { country: 'US', name: 'Jessica Malnik', sub: 'Founder, Remote Work Tribe & Clarity Briefs', img: '/assets/jessica-malnik.jpeg' },
+    { country: 'US', name: 'Nick White', sub: 'Author / Founder, Castle Trade Agency', img: '/assets/nick-white.jpg' },
     { country: 'AU', name: 'Nik Ranger', sub: 'Senior Growth Consultant, Dejan', img: '/assets/nik-ranger-2026.jpg' },
     { country: 'UK', name: 'Owain Lloyd-Williams', sub: 'Independent SEO Consultant', img: '/assets/owain-lloyd-williams.jpg' },
     { country: 'JP', name: 'Mao Kawana', sub: 'Project Manager, Faber Company', img: '/assets/mao-kawana.jpg' },

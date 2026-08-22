@@ -38,6 +38,7 @@ export const FIELD_TALKS: Speaker[] = [
   { name: 'Nick Drewe', country: 'Australia', title: 'Founder & CEO, Wethrift', img: '/assets/nick-drewe.jpg' },
   { name: 'Josh Blyskal', country: 'USA', title: 'AI Strategy & Research, Profound', img: '/assets/josh-blyskal.jpg' },
   { name: 'Nik Ranger', country: 'Australia', title: 'Senior Growth Consultant, Dejan', img: '/assets/nik-ranger-2026.jpg' },
+  { name: 'Si Quan Ong', country: 'Singapore', title: 'Senior Content Marketer, Ahrefs', img: '/assets/speaker-placeholder.webp' },
   { name: 'Loki Yan', country: 'China & Australia', title: 'Co-founder, First Optimise (壹优化)', img: '/assets/loki-yan.jpg' },
   { name: 'Doug Pierce', country: 'USA', title: 'Founder, Cogney', img: '/assets/doug-pierce.jpg' },
   { name: 'Mao Kawana', country: 'Japan', title: 'Project Manager, Faber Company', img: '/assets/mao-kawana.jpg' },
@@ -54,13 +55,15 @@ export const LIGHTNING_TALKS: Speaker[] = [
   { name: 'Apurva Bose', country: 'USA', title: 'VP of Operations & Strategy, Overtake Digital', img: '/assets/apurva-bose.jpg' },
   { name: 'Johann Sathianathen', country: 'USA', title: 'Co-founder, Cyndra AI', img: '/assets/johann-sathianathen.webp' },
   { name: 'Roger Yin', country: 'Canada', title: 'SEO Partner, HashMatrix', img: '/assets/roger-yin.jpg' },
-  { name: 'Begum Kaya', country: 'Turkey', title: 'Organic Growth Strategist, Omniscient Digital', img: '/assets/begum-kaya.webp' },
+  // Off the public lineup but still on the agenda, which resolves a talk's
+  // headshot and title by name from this file.
+  { name: 'Begum Kaya', country: 'Turkey', title: 'Organic Growth Strategist, Omniscient Digital', img: '/assets/begum-kaya.webp', hiddenFromLineup: true },
   { name: 'David Carrasco', country: 'Spain', title: 'Freelance SEO Consultant', img: '/assets/david-carrasco.jpg' },
   { name: 'Andrea Abbondanza', country: 'Italy', title: 'Founder, Abbondanza Marketing', img: '/assets/andrea-abbondanza.webp' },
   { name: 'Jonathan Kiekbusch', country: 'UK & Germany', title: 'Founder, SwishDM', img: '/assets/jonathan-kiekbusch.jpg' },
   { name: 'Max Hobbs', country: 'UK', title: 'Global Head of Marketing, LTL School', img: '/assets/max-hobbs.jpg' },
   { name: 'Konstantin Sadekov', country: 'Estonia', title: 'Founder & CEO, Ethical SEO', img: '/assets/konstantin-sadekov.jpg' },
-  { name: 'Gabriele Kahlout', country: 'Qatar', title: '', img: '/assets/gabriele-kahlout.jpg' },
+  { name: 'Gabriele Kahlout', country: 'Italy & Qatar', title: 'International SEO Specialist', img: '/assets/gabriele-kahlout.jpg' },
   { name: 'Sam Penny', country: 'Australia', title: 'SEO & Growth Manager', img: '/assets/sam-penny.webp' },
   { name: 'Helen Han', country: 'China & Australia', title: 'Technical SEO Executive, Easygo', img: '/assets/helen-han.jpg' },
   { name: 'Jine Wu', country: 'China & Australia', title: 'SEO Operations Manager, REA Group', img: '/assets/jine-wu.jpg' },
@@ -77,7 +80,7 @@ export const LIGHTNING_TALKS: Speaker[] = [
 // Networking and pre-conference side-event speakers (not part of the main-stage
 // categories). Shared so both /speakers and the agenda resolve their headshots/titles.
 export const VIP_NETWORKING: Speaker[] = [
-  { name: 'Nick White', country: 'USA', title: 'General Manager, ABC Tools (U.S. Office)', img: '/assets/nick-white.jpg' },
+  { name: 'Nick White', country: 'USA', title: 'Author / Founder, Castle Trade Agency', img: '/assets/nick-white.jpg' },
   { name: 'Marcus Pentzek', country: 'Germany & China', title: 'Partner & Director SEO, Jademond Digital', img: '/assets/marcus-pentzek.jpg' },
   { name: 'Tanya Van Gastel', country: 'Belgium', title: 'Founder, Rankingonai.com', img: '/assets/tanya-van-gastel.webp' },
   { name: 'Tom So', country: 'China', title: 'Founder & CEO, MML Digital (慢慢来)', img: '/assets/tom-so.jpg' },
@@ -89,6 +92,7 @@ export const SIDE_EVENTS: Speaker[] = [
   { name: 'Jamie I.F.', country: 'UK', title: 'Founder, AffiliateFinder.ai', img: '/assets/jamie-if.webp' },
   { name: 'Vinayak Gupta', country: 'India', title: 'Founder, Serpbays', img: '/assets/vinayak-gupta.webp' },
   { name: 'Sharoz Dawa', country: 'India', title: 'SEO Lead, Fynd', img: '/assets/sharoz-dawa.jpg' },
+  { name: 'Magenta Qin', country: 'China & Germany', title: 'Developer Advocate, SerpApi', img: '/assets/speaker-placeholder.webp' },
   { name: 'Jabez Reuben', country: 'India', title: 'Founder, The Blueprints', img: '/assets/jabez-reuben.jpg' },
   { name: 'Ilman Akbar', country: 'Indonesia', title: 'Founder & CEO, DailySEO ID & DLYS Consulting', img: '/assets/ilman-akbar.webp' },
   { name: 'Tori Long', country: 'China', title: 'Marketing Director, GWTime', img: '/assets/tori-long.webp' },

@@ -36,6 +36,7 @@ const COUNTRY_CODES: Record<string, string> = {
   india: 'IN',
   indonesia: 'ID',
   qatar: 'QA',
+  singapore: 'SG',
   sweden: 'SE',
   thailand: 'TH',
   turkey: 'TR',
