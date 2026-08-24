@@ -1872,13 +1872,12 @@ function Sponsors() {
         : tier === 'silver'
         ? `${baseFlatten} brightness(0.82)`
         : baseFlatten;
-    // Per-tier logo height (smaller on mobile) so platinum reads largest, then gold, then silver.
-    const logoSize =
-      tier === 'platinum'
-        ? 'max-h-[56px] md:max-h-[64px]'
-        : tier === 'gold'
-        ? 'max-h-[38px] md:max-h-[42px]'
-        : 'max-h-[30px] md:max-h-[34px]';
+    // Each logo carries its own optically balanced height (see sponsors-data.ts).
+    // One shared height per tier used to make tight-cropped logos shout and
+    // heavily-padded ones vanish, so the per-logo value is what we honour here.
+    // Mobile renders the same logos at 78% so the balance survives the smaller
+    // column; --logo-h is set per image below.
+    const logoSize = 'h-[calc(var(--logo-h)*0.78)] md:h-[var(--logo-h)]';
     // Up to 5 logos fit on one row; >5 means a second row, so top-align the label.
     const hasTwoRows = items.length > 5;
     return (
@@ -1910,12 +1909,9 @@ function Sponsors() {
               <img
                 src={s.src}
                 alt={s.alt}
-                className={`block ${logoSize}`}
+                className={`block w-auto max-w-full ${logoSize}`}
                 style={{
-                  height: 'auto',
-                  width: 'auto',
-                  maxWidth: '100%',
-                  maxHeight: s.alt === 'MeUP' ? 27 : undefined,
+                  ['--logo-h' as string]: `${s.h}px`,
                   objectFit: 'contain',
                   filter: baseFlatten,
                   opacity: 0.5,
