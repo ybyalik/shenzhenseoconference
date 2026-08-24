@@ -15,6 +15,7 @@ import {
   SIDE_EVENTS as SIDE_EVENT_SPEAKERS,
   type Speaker,
 } from '@/lib/lineup';
+import { PROFILE_BY_NAME } from '@/lib/speaker-profiles';
 
 /* ────────────────────────────────── TIERS ────────────────────────────────── */
 
@@ -498,12 +499,17 @@ const NAME_ALIASES: Record<string, string> = {
 const EXTRA_SPEAKERS: Record<string, { title: string; img: string }> = {
   'jp/john zhang': { title: 'Host & Organizer', img: '/assets/JP-Zhang-5.jpg' },
 };
-function resolveSpeaker(name: string): { name: string; title: string; img: string } | null {
+type ResolvedSpeaker = { name: string; title: string; img: string; slug?: string };
+
+function resolveSpeaker(name: string): ResolvedSpeaker | null {
   const key = name.trim().toLowerCase();
-  const lineup = LINEUP_BY_NAME.get(NAME_ALIASES[key]?.toLowerCase() ?? key);
-  if (lineup) return { name, title: lineup.title, img: lineup.img };
+  const canonical = NAME_ALIASES[key]?.toLowerCase() ?? key;
+  // Anyone with a profile page gets their agenda name linked to it.
+  const slug = PROFILE_BY_NAME.get(canonical)?.slug;
+  const lineup = LINEUP_BY_NAME.get(canonical);
+  if (lineup) return { name, title: lineup.title, img: lineup.img, slug };
   const extra = EXTRA_SPEAKERS[key];
-  if (extra) return { name, title: extra.title, img: extra.img };
+  if (extra) return { name, title: extra.title, img: extra.img, slug };
   return null;
 }
 
@@ -652,21 +658,32 @@ function TypeBadge({ type }: { type: TalkType }) {
 }
 
 function SpeakerLine({ names }: { names: string[] }) {
-  const people = names.map(resolveSpeaker).filter(Boolean) as { name: string; title: string; img: string }[];
+  const people = names.map(resolveSpeaker).filter(Boolean) as ResolvedSpeaker[];
   if (people.length === 0) return null;
   return (
     <div className="mt-2.5 flex items-center gap-x-4 gap-y-2 flex-wrap">
-      {people.map((p) => (
-        <span key={p.name} className="flex items-center gap-2 min-w-0">
-          <span className="relative w-7 h-7 rounded-full overflow-hidden bg-white/10 shrink-0">
-            <Image src={p.img} alt={p.name} fill className="object-cover" sizes="28px" />
+      {people.map((p) => {
+        const inner = (
+          <>
+            <span className="relative w-7 h-7 rounded-full overflow-hidden bg-white/10 shrink-0">
+              <Image src={p.img} alt={p.name} fill className="object-cover" sizes="28px" />
+            </span>
+            <span className="text-[13px] leading-tight min-w-0" style={{ fontFamily: 'General Sans, system-ui, sans-serif' }}>
+              <span className="font-semibold text-white group-hover:text-[#5DAEDB] transition-colors">{p.name}</span>
+              {p.title ? <span className="text-white/45"> · {p.title}</span> : null}
+            </span>
+          </>
+        );
+        return p.slug ? (
+          <Link key={p.name} href={`/speakers/${p.slug}`} className="group flex items-center gap-2 min-w-0">
+            {inner}
+          </Link>
+        ) : (
+          <span key={p.name} className="flex items-center gap-2 min-w-0">
+            {inner}
           </span>
-          <span className="text-[13px] leading-tight min-w-0" style={{ fontFamily: 'General Sans, system-ui, sans-serif' }}>
-            <span className="font-semibold text-white">{p.name}</span>
-            {p.title ? <span className="text-white/45"> · {p.title}</span> : null}
-          </span>
-        </span>
-      ))}
+        );
+      })}
     </div>
   );
 }
@@ -1009,8 +1026,8 @@ const DAY5_EXCHANGE: SideEventRow[] = [
   {
     time: '5:20 PM – 5:40 PM',
     title: 'Agency Owners Panel: Chinese Manufacturing vs. Silicon Valley SaaS (An Agency Reality Check)',
-    sub: 'Panel with Tom So & Tanya Van Gastel, moderated by JP / John Zhang. A raw operational look at what it really takes to close and retain high-ticket clients in Eastern manufacturing vs. Western SaaS.',
-    speakers: ['Tom So', 'Tanya Van Gastel', 'JP/John Zhang'],
+    sub: 'A raw operational look at what it really takes to close and retain high-ticket clients in Eastern manufacturing vs. Western SaaS.',
+    speakers: ['Tom So', 'Tanya Van Gastel', 'Kiana Shen'],
   },
   {
     time: '5:40 PM – 6:10 PM',

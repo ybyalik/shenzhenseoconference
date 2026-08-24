@@ -92,7 +92,7 @@ export const SIDE_EVENTS: Speaker[] = [
   { name: 'Jamie I.F.', country: 'UK', title: 'Founder, AffiliateFinder.ai', img: '/assets/jamie-if.webp' },
   { name: 'Vinayak Gupta', country: 'India', title: 'Founder, Serpbays', img: '/assets/vinayak-gupta.webp' },
   { name: 'Sharoz Dawa', country: 'India', title: 'SEO Lead, Fynd', img: '/assets/sharoz-dawa.jpg' },
-  { name: 'Magenta Qin', country: 'China & Germany', title: 'Developer Advocate, SerpApi', img: '/assets/speaker-placeholder.webp' },
+  { name: 'Magenta Qin', country: 'China & Germany', title: 'Developer Advocate, SerpApi', img: '/assets/magenta-qin.webp' },
   { name: 'Jabez Reuben', country: 'India', title: 'Founder, The Blueprints', img: '/assets/jabez-reuben.jpg' },
   { name: 'Ilman Akbar', country: 'Indonesia', title: 'Founder & CEO, DailySEO ID & DLYS Consulting', img: '/assets/ilman-akbar.webp' },
   { name: 'Tori Long', country: 'China', title: 'Marketing Director, GWTime', img: '/assets/tori-long.webp' },

@@ -7,6 +7,7 @@ import { useRef, useState, type FormEvent } from 'react';
 import { ArrowUpRight, BackToTop, Footer, Nav } from '../_components/shared';
 import { KingswayCarousel } from '../_components/KingswayVideo';
 import { KEYNOTES, WORKSHOPS, FIELD_TALKS, LIGHTNING_TALKS, VIP_NETWORKING, SIDE_EVENTS, visibleSpeakers, type Speaker } from '@/lib/lineup';
+import { PROFILE_BY_NAME } from '@/lib/speaker-profiles';
 
 /* ────────────────────── DATA (placeholder — swap with real list) ─────────────────── */
 
@@ -234,8 +235,14 @@ function ArrowRightIcon({ className = '' }: { className?: string }) {
 /* ─────────────────────────────── SPEAKER CARD ─────────────────────────────── */
 
 function SpeakerCard({ s }: { s: Speaker }) {
-  return (
-    <div className="rounded-2xl bg-[#06101a]/60 p-4 md:p-6 border border-white/[0.06] hover:border-[var(--red)] transition-colors">
+  // Everyone with a profile page gets a linked card; anyone still without one
+  // renders exactly as before, so an added profile turns the link on by itself.
+  const profile = PROFILE_BY_NAME.get(s.name.toLowerCase());
+  const cardClass =
+    'group block rounded-2xl bg-[#06101a]/60 p-4 md:p-6 border border-white/[0.06] hover:border-[var(--red)] transition-colors';
+
+  const inner = (
+    <>
       <div className="relative aspect-square rounded-xl overflow-hidden bg-white/5">
         <Image
           src={s.img}
@@ -255,7 +262,7 @@ function SpeakerCard({ s }: { s: Speaker }) {
           </span>
         )}
       </div>
-      <div className="mt-3 text-[16px] md:text-[20px] font-bold text-white leading-tight">
+      <div className="mt-3 text-[16px] md:text-[20px] font-bold text-white leading-tight group-hover:text-[var(--red)] transition-colors">
         {s.name}
       </div>
       {s.title ? (
@@ -263,7 +270,15 @@ function SpeakerCard({ s }: { s: Speaker }) {
           {s.title}
         </div>
       ) : null}
-    </div>
+    </>
+  );
+
+  return profile ? (
+    <Link href={`/speakers/${profile.slug}`} className={cardClass}>
+      {inner}
+    </Link>
+  ) : (
+    <div className={cardClass}>{inner}</div>
   );
 }
 
