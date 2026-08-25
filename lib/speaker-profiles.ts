@@ -28,7 +28,8 @@ export type SpeakerProfile = {
   linkedin?: string;
   x?: string;
   youtube?: string;
-  bio?: string;
+  /** One string for a single block, or an array to render one paragraph each. */
+  bio?: string | string[];
   sessions: ProfileSession[];
   /** Session description, one entry per paragraph or bullet line. */
   description: string[];
@@ -168,12 +169,16 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     country: "USA",
     linkedin: "https://www.linkedin.com/in/schwartze/",
     x: "https://x.com/5le",
-    bio: "Eli Schwartz is a renowned digital marketing thought leader, marketing consultant, author of the best-selling book Product-Led SEO, and an upcoming book to be published with Wiley: Customer Intelligence. With over a decade of experience helping companies like Linkedin, Tinder, Wordpress, Quora, Coinbase and more transition from traditional organic marketing tactics to strategic, product-centric growth models. He is a frequent speaker at major industry conferences globally, including at Google's campus on multiple occasions, Stanford, Duke, and various technology summits on five continents, where he shares actionable frameworks for building sustainable organic channels.",
+    bio: [
+      "Eli Schwartz is a renowned digital marketing thought leader, marketing consultant, author of the best-selling book Product-Led SEO, and an upcoming book to be published with Wiley: Customer Intelligence. With over a decade of experience helping companies like LinkedIn, Tinder, Wordpress, Quora, Coinbase and more transition from traditional organic marketing tactics to strategic, product-centric growth models.",
+      "He is a frequent speaker at major industry conferences globally, including at Google's campus on multiple occasions, Stanford, Duke, and various technology summits on five continents, where he shares actionable frameworks for building sustainable organic channels.",
+    ],
     sessions: [
       { title: "The 3 Pillars of AEO", when: "Day 4 / Sep. 17 / 9:30 AM", where: "The St. Regis Shenzhen (Grand Astor Ballroom, 5F)", start: "20260917T013000Z" },
     ],
     description: [
-      "AEO is not like SEO where you can do one think exceptionally well and generate search traffic. In AEO, you must invest in all three pillars or your AEO efforts will collapse. Users should be the center of your AEO strategy, but your strategy must still stand on the two other pillars of product and awareness. Walk away from this session knowing exactly how to invest in AEO.",
+      "AEO is not like SEO where you can do one think exceptionally well and generate search traffic. In AEO, you must invest in all three pillars or your AEO efforts will collapse. Users should be the center of your AEO strategy, but your strategy must still stand on the two other pillars of product and awareness.",
+      "Walk away from this session knowing exactly how to invest in AEO.",
     ],
   },
   {
@@ -201,12 +206,18 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     country: "Switzerland",
     linkedin: "https://www.linkedin.com/in/garyillyes/",
     x: "https://x.com/methode",
-    bio: "Gary Illyes serves as an Analyst on the Google Search Relations team, operating as a bridge between webmasters, developers, and internal engineering groups. Based in Switzerland, he frequently represents Google at international technology conferences, detailing mechanics behind web crawling, indexing, rendering pipelines, and technical optimization. Beyond public advocacy, Gary contributes to foundational web standards, notably co-authoring RFC 9309 to formalize the Robots Exclusion Protocol as an IETF standard. He leads efforts to establish modern web crawler best practices, guiding how automated systems navigate, respect, and interact with online infrastructure. Through his standardizations work and co-hosting the Search Off the Record podcast, Gary continues shaping technical web protocols while demystifying search architecture for the global developer community",
+    bio: [
+      "Gary Illyes serves as an Analyst on the Google Search Relations team, operating as a bridge between webmasters, developers, and internal engineering groups. Based in Switzerland, he frequently represents Google at international technology conferences, detailing mechanics behind web crawling, indexing, rendering pipelines, and technical optimization.",
+      "Beyond public advocacy, Gary contributes to foundational web standards, notably co-authoring RFC 9309 to formalize the Robots Exclusion Protocol as an IETF standard. He leads efforts to establish modern web crawler best practices, guiding how automated systems navigate, respect, and interact with online infrastructure.",
+      "Through his standardizations work and co-hosting the Search Off the Record podcast, Gary continues shaping technical web protocols while demystifying search architecture for the global developer community.",
+    ],
     sessions: [
       { title: "Don't Panic. Search is Always Changing", when: "Day 3 / Sep. 16 / 9:40 AM", where: "The St. Regis Shenzhen (Grand Astor Ballroom, 5F)", start: "20260916T014000Z" },
     ],
     description: [
-      "Processing over five trillion annual queries, search systems constantly adapt to shifting user behaviors. Every architectural shift across thirty years traces back to a fundamental goal: satisfying evolving information needs. Like last year, this session explores the technical trajectory of search across three core pillars: content formats, content breadth, and content issues. However this year we will review how infrastructure evolved from early text indexing to neural retrieval, multimodal processing, and real-time generative synthesis to manage expanding formats and scaled web spam. With younger demographics driving visual queries through Google Lens and gesture inputs like Circle to Search, retrieval patterns continue to shift. Attendees will gain insight into how underlying systems adapt to emerging user habits, providing a practical perspective on where search architecture is heading next.",
+      "Processing over five trillion annual queries, search systems constantly adapt to shifting user behaviors. Every architectural shift across thirty years traces back to a fundamental goal: satisfying evolving information needs.",
+      "Like last year, this session explores the technical trajectory of search across three core pillars: content formats, content breadth, and content issues. However this year we will review how infrastructure evolved from early text indexing to neural retrieval, multimodal processing, and real-time generative synthesis to manage expanding formats and scaled web spam.",
+      "With younger demographics driving visual queries through Google Lens and gesture inputs like Circle to Search, retrieval patterns continue to shift. Attendees will gain insight into how underlying systems adapt to emerging user habits, providing a practical perspective on where search architecture is heading next.",
     ],
   },
   {
@@ -219,7 +230,7 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     linkedin: "https://www.linkedin.com/in/helenhanau/",
     bio: "Helen Han is a Melbourne-based Technical SEO Executive known for transforming complex SEO challenges into scalable, automated solutions. With a background in business and marketing, she blends strategic thinking with hands-on execution, leveraging tools like Sanity, GROQ, and data-driven workflows to drive organic growth across global markets. She engineered a world-first GROQ query that extracts anchor text and paired URLs in seconds, processing over 200,000 URLs with exceptional speed and precision. Helen is a winner of the B&T 30 Under 30 Award (Tech category), a finalist for the Women Leading Tech Awards 2026, and the youngest speaker at WTSFest Melbourne 2025. She is passionate about pushing the boundaries of automation in SEO and sharing innovative, scalable approaches with the industry.",
     sessions: [
-      { title: "Automating Technical SEO: GROQ, Sanity CMS & Hreflang Management at Scale", when: "Day 3 / Sep. 16 / 4:10 PM", where: "The St. Regis Shenzhen (Grand Astor Ballroom, 5F)", start: "20260916T081000Z" },
+      { title: "Stop Crawling, Start Querying: A New Way to Do Technical SEO at Scale", when: "Day 3 / Sep. 16 / 4:10 PM", where: "The St. Regis Shenzhen (Grand Astor Ballroom, 5F)", start: "20260916T081000Z" },
     ],
     description: [
       "This talk explores how to leverage GROQ queries within Sanity CMS to surface SEO errors, content gaps, and linking issues in seconds, replacing slow, reactive workflows with fast, proactive monitoring. It also covers the development of a custom hreflang mapping tool, integrated directly with Sanity CMS, that streamlines the uploading and management of hreflang tags, significantly improving efficiency and reducing errors across large, multilingual sites.",
@@ -475,8 +486,9 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     title: "Founder, OMGrowth.ai (\u6d4e\u8c26AI)",
     img: "/assets/kiana-shen.jpg",
     country: "China",
+    linkedin: "https://www.linkedin.com/in/kiana-shen-6054b11b6/",
     sessions: [
-      { title: "VIP Networking Panel: Agency Owners Panel: Chinese Manufacturing vs. Silicon Valley SaaS (An Agency Reality Check)", when: "Day 5 / Sep. 18 / 5:20 PM", where: "MGM Shenzhen (Grand Ballroom)", start: "20260918T092000Z" },
+      { title: "Agency Owners Panel: Chinese Manufacturing vs. Silicon Valley SaaS (An Agency Reality Check)", when: "Day 5 / Sep. 18 / 5:20 PM", where: "MGM Shenzhen (Grand Ballroom)", start: "20260918T092000Z" },
     ],
     description: [
       "A raw operational look at what it really takes to close and retain high-ticket clients in Eastern manufacturing vs. Western SaaS.",
@@ -560,7 +572,11 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     linkedin: "https://www.linkedin.com/in/lily-ray-44755615/",
     x: "https://x.com/lilyraynyc",
     youtube: "https://www.youtube.com/@lilyray",
-    bio: "Lily Ray is the Vice President of SEO Strategy & Research at Amsive, where she provides strategic leadership for the agency\u2019s SEO client programs. Born into a family of software engineers, web developers and technical writers, Lily brings a strong technical background, performance-driven habits and forward-thinking creativity to all programs she oversees. Lily began her SEO career in 2010 in a fast-paced start-up environment and moved quickly into the agency world, where she helped grow and establish an award-winning SEO department that delivered high impact work for a fast-growing list of notable clients, including Fortune 500 companies. Lily has worked across a variety of verticals with a focus on retail, e-commerce, B2B and CPG sites. She loves diving into algorithm updates, assessing quality issues and solving technical SEO mysteries.",
+    bio: [
+      "Lily Ray is the Vice President of SEO Strategy & Research at Amsive, where she provides strategic leadership for the agency\u2019s SEO client programs. Born into a family of software engineers, web developers and technical writers, Lily brings a strong technical background, performance-driven habits and forward-thinking creativity to all programs she oversees.",
+      "Lily began her SEO career in 2010 in a fast-paced start-up environment and moved quickly into the agency world, where she helped grow and establish an award-winning SEO department that delivered high impact work for a fast-growing list of notable clients, including Fortune 500 companies.",
+      "Lily has worked across a variety of verticals with a focus on retail, e-commerce, B2B and CPG sites. She loves diving into algorithm updates, assessing quality issues and solving technical SEO mysteries.",
+    ],
     sessions: [
       { title: "How to Do GEO Without Destroying Your SEO: How Google is Cracking Down on GEO Spam", when: "Day 3 / Sep. 16 / 11:20 AM", where: "The St. Regis Shenzhen (Grand Astor Ballroom, 5F)", start: "20260916T032000Z" },
     ],
@@ -593,6 +609,8 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     title: "Developer Advocate, SerpApi",
     img: "/assets/magenta-qin.webp",
     country: "China & Germany",
+    linkedin: "https://www.linkedin.com/in/mu-qin-0a29621b8/",
+    bio: "Magenta Qin is a Developer Advocate at SerpApi, where she helps developers and marketers integrate real-time search data into AI-powered applications and SEO workflows. Before joining SerpApi, she worked as a software engineer at Tencent and RedNote, building developer-facing tools and infrastructure. She now focuses on making complex search and AI technologies practical and accessible through technical content, tutorials, open-source demos, and community education.",
     sessions: [
       { title: "From JSON to Markdown: Cutting the Cost of AI-Powered SEO Analysis by Up to 90%", when: "Sep. 12 / 1:50 PM", where: "TBD", start: "20260912T055000Z" },
     ],
@@ -628,13 +646,17 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     country: "Germany & Australia",
     linkedin: "https://www.linkedin.com/in/marcmoeller-seo/",
     youtube: "https://www.youtube.com/@moellerseo",
-    bio: "Marc Moeller is the founder of Ecomexperts (Perth, Western Australia), with 10+ years of SEO experience helping clients solve complex search challenges across B2B, gaming, and SaaS. Trusted by brands ranging from fast-growing companies to stock market listed enterprises, his work is highly outcome-driven\u2014improving rankings, organic revenue, and lead generation by diagnosing technical issues, building scalable content systems, and aligning SEO strategy with real business goals. Marc also teaches practical SEO on YouTube to ~20k subscribers and has spoken to the Shenzhen WordPress community, sharing hands-on approaches to building and scaling SEO systems. In his workshops and talks, Marc delivers the same client-tested frameworks he uses day-to-day. Attendees get a practical, step-by-step operating system for running SEO efficiently. This is not theory: every section is designed for immediate implementation, with ready-to-use templates, checklists, and SOP structures provided so you can apply the process the moment you leave the room.",
+    bio: [
+      "Marc Moeller is the founder of Ecomexperts (Perth, Western Australia), with 10+ years of SEO experience helping clients solve complex search challenges across B2B, gaming, and SaaS. Trusted by brands ranging from fast-growing companies to stock market listed enterprises, his work is highly outcome-driven\u2014improving rankings, organic revenue, and lead generation by diagnosing technical issues, building scalable content systems, and aligning SEO strategy with real business goals.",
+      "Marc also teaches practical SEO on YouTube to ~20k subscribers and has spoken to the Shenzhen WordPress community, sharing hands-on approaches to building and scaling SEO systems.",
+      "In his workshops and talks, Marc delivers the same client-tested frameworks he uses day-to-day. Attendees get a practical, step-by-step operating system for running SEO efficiently. This is not theory: every section is designed for immediate implementation, with ready-to-use templates, checklists, and SOP structures provided so you can apply the process the moment you leave the room.",
+    ],
     sessions: [
       { title: "GEO: Why 90% of Chinese B2B & SaaS Brands Are Invisible & Step-by-Step Solution", when: "Day 1 / Sep. 14 / 9:00 AM", where: "The St. Regis Shenzhen (Grand Astor Ballroom, 5F)", start: "20260914T010000Z" },
     ],
     description: [
       "This hands-on workshop helps your brand to go from being invisible to being the top-recommended brand in your industry. You'll get a repeatable system built across 25+ China-to-West projects to diagnose why large language models overlook you, then build the plan to fix it. It\u2019s a step by step process, that has been proven in the real world to work.",
-      "Together we'll work through: 1) How LLMs actually perceive your brand \u2014 and the technical and content signals that make them trust you as a topical authority. 2) Truth alignment \u2014 manipulation vs factually correct answers: How to win the LLMs trust. 3) Audit the negative statements competitors weaponize against you. 4) Audience research over keyword research \u2014 mapping the real questions and buying journey your customers ask AI. 5) Content strategy hole detection \u2014 mapping the questions your audience asks to your content strategy to find critical holes. 6) Trusted-source strategy \u2014 why you need to stop writing new guest posts and what to do instead",
+      "Together we'll work through: 1) How LLMs actually perceive your brand \u2014 and the technical and content signals that make them trust you as a topical authority. 2) Truth alignment \u2014 manipulation vs factually correct answers: How to win the LLMs trust. 3) Audit the negative statements competitors weaponize against you. 4) Audience research over keyword research \u2014 mapping the real questions and buying journey your customers ask AI. 5) Content strategy hole detection \u2014 mapping the questions your audience asks to your content strategy to find critical holes. 6) Trusted-source strategy \u2014 why you need to stop writing new guest posts and what to do instead.",
       "You'll leave with: a completed AI-visibility audit of your own brand and a prioritized 90-day action plan you can hand to your team on Monday.",
     ],
   },
@@ -730,6 +752,14 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     title: "Author / Founder, Castle Trade Agency",
     img: "/assets/nick-white.jpg",
     country: "USA",
+    bio: [
+      "Nick White has been in B2B Sales for 30 years. He is the author of the book “Questions are the Answers…how elite sales people lead buyers to self-discover” and also “Why Salespeople Fail…the top 10 mistakes foreign salespeople make”",
+      "When he learned a selling system that got amazing results and removed the pressure from selling, he started teaching it to salespeople around the world.",
+      "In 2016, Nick started Castle Trade Agency LLC as a manufacturer rep for Chinese companies and immediately saw success contacting and winning the target customers who had previously been ignoring the supplier.",
+      "Nick started teaching the Chinese sales teams the selling system and then in 2024, started public sales training seminars quarterly in China.",
+      "Over the course of 30 years, Nick has worked in multiple industries such as retail, aerospace, automobile manufacturing, HVAC, building materials and service-based sales, reaching success with the biggest fortune 500 companies and small companies alike proving that these sales success principles he teaches, works regardless of the industry or product/service.",
+      "His value-focused, questions-based sales training provides very tactical solutions that salespeople can use to solve the common problems they face in B2B Selling. It’s a non-traditional approach to sales which gets better than traditional results.",
+    ],
     sessions: [
       { title: "What Makes Buyers in Any Country, Say \"Yes\"", when: "Day 5 / Sep. 18 / 3:05 PM", where: "MGM Shenzhen (Grand Ballroom)", start: "20260918T070500Z" },
     ],
@@ -853,12 +883,17 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     country: "Australia",
     linkedin: "https://www.linkedin.com/in/sashagusain/",
     x: "https://x.com/SashG",
-    bio: "Sasha leads Organic Growth and the Logged Out Experience at Canva, where she is responsible for the experiences that connect millions of people to Canva every day. Her remit spans SEO, AI-powered discovery, homepage experiences, authentication and marketplace organic growth, bringing together product, engineering, design, data science, operations and SEO to build growth systems that scale globally while remaining locally relevant. Over nearly a decade at Canva, Sasha has helped evolve organic growth from a search channel into a full stack product org, building many of the systems, operating models and growth loops that have supported Canva's international expansion across 40 markets. Her work explores how product, brand and growth reinforce one another, and why winning globally requires far more than last mile localisation. Before returning to Canva to lead its global SEO organisation and later the Logged Out Experience group, Sasha held leadership roles at Houzz and hipages, and advised high-growth companies including Clipchamp, Airtasker, Honey Insurance and Vero.",
+    bio: [
+      "Sasha leads Organic Growth and the Logged Out Experience at Canva, where she is responsible for the experiences that connect millions of people to Canva every day. Her remit spans SEO, AI-powered discovery, homepage experiences, authentication and marketplace organic growth, bringing together product, engineering, design, data science, operations and SEO to build growth systems that scale globally while remaining locally relevant.",
+      "Over nearly a decade at Canva, Sasha has helped evolve organic growth from a search channel into a full stack product org, building many of the systems, operating models and growth loops that have supported Canva's international expansion across 40 markets. Her work explores how product, brand and growth reinforce one another, and why winning globally requires far more than last mile localisation.",
+      "Before returning to Canva to lead its global SEO organisation and later the Logged Out Experience group, Sasha held leadership roles at Houzz and hipages, and advised high-growth companies including Clipchamp, Airtasker, Honey Insurance and Vero.",
+    ],
     sessions: [
       { title: "Radical Localisation: How Canva Blends Product, Brand, and Local Growth for Global Scale", when: "Day 4 / Sep. 17 / 11:20 AM", where: "The St. Regis Shenzhen (Grand Astor Ballroom, 5F)", start: "20260917T032000Z" },
     ],
     description: [
-      "Most teams doing international SEO are actually doing international translation. Same page types, same funnel logic, same conversion assumptions - just in a different language. It doesn't work. Some markets (such as India, Japan, Indonesia, Korea, Germany) may have unique search behaviours, local language mixes per JTBD, user intent patterns, and conversion triggers that are structurally different, not just linguistically different. This talk is about how Canva navigates this incredibly rich and deep world of local expansion: a hybrid model where global infrastructure enables scale, and local teams have the autonomy and resources to go deep. The result is a growth engine where more than half our global conversions come from international markets, and we're just getting started.",
+      "Most teams doing international SEO are actually doing international translation. Same page types, same funnel logic, same conversion assumptions - just in a different language. It doesn't work. Some markets (such as India, Japan, Indonesia, Korea, Germany) may have unique search behaviours, local language mixes per JTBD, user intent patterns, and conversion triggers that are structurally different, not just linguistically different.",
+      "This talk is about how Canva navigates this incredibly rich and deep world of local expansion: a hybrid model where global infrastructure enables scale, and local teams have the autonomy and resources to go deep. The result is a growth engine where more than half our global conversions come from international markets, and we're just getting started.",
     ],
   },
   {
@@ -900,8 +935,10 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     slug: "si-quan-ong",
     tag: "Field Talk",
     title: "Senior Content Marketer, Ahrefs",
-    img: "/assets/speaker-placeholder.webp",
+    img: "/assets/si-quan-ong.webp",
     country: "Singapore",
+    linkedin: "https://www.linkedin.com/in/si-quan-ong/",
+    x: "https://x.com/siquanong",
     bio: "Si Quan (SQ) is a senior content marketer at Ahrefs, the AI marketing platform powered by big data. He focuses on publishing content that'll help other marketers do their job better or spark new ideas. He's also the main curator of Ahrefs' Digest, the company's weekly newsletter featuring the best content in the industry.",
     sessions: [
       { title: "How I Automated 144 Ahrefs Blog Updates a Year with AI", when: "Day 3 / Sep. 16 / 4:50 PM", where: "The St. Regis Shenzhen (Grand Astor Ballroom, 5F)", start: "20260916T085000Z" },
@@ -922,7 +959,7 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     bio: "Tanya Van Gastel is the Founder of Rankingonai.com, AI visibility & SEO for high-growth SaaS. Her clients include Cal.com (raised +$30M), Suno (raised +$200M), HappyRobot (raised +$40M) and other high-growth SaaS companies. She's helped her clients triple AI referrals and become the top AI-recommended product in their category. Van Gastel previously built an AI photography startup that grew purely through SEO with clients like Walmart and Google, then exited it. She's also a Forbes 20 Women in Tech honoree and has been featured in Forbes, Inc. Magazine, The Wall Street Journal, BBC, and Digital Trends. Previously, she lived in Shanghai and Shenzhen working in Chinese tech.",
     sessions: [
       { title: "Side Event: Winning AI Search: A 4-Step Guide for Chinese Companies", when: "Sep. 12 / 1:10 PM", where: "Side Event: TBD", start: "20260912T051000Z" },
-      { title: "VIP Networking Panel: TBD", when: "Day 5 / Sep. 18 / 5:20 PM", where: "VIP Networking: MGM Shenzhen (Grand Ballroom)", start: "20260918T092000Z" },
+      { title: "Agency Owners Panel: Chinese Manufacturing vs. Silicon Valley SaaS (An Agency Reality Check)", when: "Day 5 / Sep. 18 / 5:20 PM", where: "MGM Shenzhen (Grand Ballroom)", start: "20260918T092000Z" },
     ],
     description: [
       "A practical framework for getting your company recommended by ChatGPT and other AI search engines. Tanya spent four years in Shenzhen at OnePlus and OPPO. Now, she runs Rankingonai.com, helping companies like Suno (+$200M raised), HappyRobots (+$40M raised) and Cal.com (+$30M raised) grow through SEO and AI search. Tanya shares the four-step framework they use, common mistakes, and the unique challenges Chinese companies face when building visibility outside China.",
@@ -956,7 +993,7 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     linkedin: "https://www.linkedin.com/in/tom-so/",
     bio: "Tom So is the Founder and CEO of MML Digital Marketing, an agency helping Chinese B2B manufacturers build stronger brands and generate growth in global markets. With 20 years of experience in international trade and 10 years in digital marketing, Tom has helped more than 2,000 export businesses develop conversion-focused websites and content marketing strategies. Under his leadership, MML has been recognized as a National High-Tech Enterprise for nine consecutive years and has collaborated with leading organizations including Huawei, OPPO, the Canton Fair, and BOE. A hands-on entrepreneur, Tom specializes in B2B export marketing, digital growth, and turning global marketing ideas into practical, results-oriented strategies for Chinese manufacturers.",
     sessions: [
-      { title: "VIP Networking Panel: Agency Owners Panel: Chinese Manufacturing vs. Silicon Valley SaaS (An Agency Reality Check)", when: "Day 5 / Sep. 18 / 5:20 PM", where: "MGM Shenzhen (Grand Ballroom)", start: "20260918T092000Z" },
+      { title: "Agency Owners Panel: Chinese Manufacturing vs. Silicon Valley SaaS (An Agency Reality Check)", when: "Day 5 / Sep. 18 / 5:20 PM", where: "MGM Shenzhen (Grand Ballroom)", start: "20260918T092000Z" },
     ],
     description: [
       "A raw operational look at what it really takes to close and retain high-ticket clients in Eastern manufacturing vs. Western SaaS.",
@@ -1059,7 +1096,11 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     img: "/assets/zack-franklin.jpg",
     country: "USA",
     linkedin: "https://www.linkedin.com/in/zackjf/",
-    bio: "Zack's goal is to make Chinese rich. He's doing a great job. In his ten years in China, he's worked with hundreds of ecommerce brands including many of the 8 and 9 figure brands in Shenzhen. His agency SmartEcomSEO is the leading Shopify SEO Agency in Shenzhen. SESEO generates almost 2 million clicks a month for Chinese brands, and has ranked the hardest ecommerce keywords out there. Zack is on the cutting edge of AI, if a new model or technique comes out, he's probably tried it and implemented it within one hour of release. If you need automation or AI consulting in Shenzhen, there\u2019s no better choice. One of his newer AI projects is localsites.dev, a website builder for the home service business market, building a great website for a local business within 10 minutes. Zack is also passionate about making Shenzhen a better place and a thriving community. He organizes the most popular monthly meetup for foreigners doing business in the city (Shenzhen Marketing Meetups) and also SZMeetups.com, a platform to easily discover events and communities in this city.",
+    bio: [
+      "Zack's goal is to make Chinese rich. He's doing a great job. In his ten years in China, he's worked with hundreds of ecommerce brands including many of the 8 and 9 figure brands in Shenzhen. His agency SmartEcomSEO is the leading Shopify SEO Agency in Shenzhen. SESEO generates almost 2 million clicks a month for Chinese brands, and has ranked the hardest ecommerce keywords out there.",
+      "Zack is on the cutting edge of AI, if a new model or technique comes out, he's probably tried it and implemented it within one hour of release. If you need automation or AI consulting in Shenzhen, there\u2019s no better choice. One of his newer AI projects is localsites.dev, a website builder for the home service business market, building a great website for a local business within 10 minutes.",
+      "Zack is also passionate about making Shenzhen a better place and a thriving community. He organizes the most popular monthly meetup for foreigners doing business in the city (Shenzhen Marketing Meetups) and also SZMeetups.com, a platform to easily discover events and communities in this city.",
+    ],
     sessions: [
       { title: "AI Automation at Shenzhen Speed for SEO, Websites, and Ecom", when: "Day 1 / Sep. 14 / 2:30 PM", where: "The St. Regis Shenzhen (Grand Astor Ballroom, 5F)", start: "20260914T063000Z" },
     ],
@@ -1070,6 +1111,17 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     ],
   },
 ];
+
+/** A bio as a list of paragraphs, whichever way it was written. */
+export function bioParagraphs(bio: SpeakerProfile['bio']): string[] {
+  if (!bio) return [];
+  return Array.isArray(bio) ? bio : [bio];
+}
+
+/** A bio as one plain line, for meta descriptions and structured data. */
+export function bioText(bio: SpeakerProfile['bio']): string {
+  return bioParagraphs(bio).join(' ');
+}
 
 export const PROFILE_BY_SLUG = new Map(SPEAKER_PROFILES.map((p) => [p.slug, p]));
 export const PROFILE_BY_NAME = new Map(SPEAKER_PROFILES.map((p) => [p.name.toLowerCase(), p]));

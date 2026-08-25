@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, BackToTop, CarouselDots, Footer, Nav, useCarouselActive } from './_components/shared';
-import { KingswayFloat, KingswayPlayer } from './_components/KingswayVideo';
+import { ArrowUpRight, BackToTop, CarouselDots, Footer, Nav, WeChatIcon, WeChatQrPopover, useCarouselActive } from './_components/shared';
+import { KingswayPlayer } from './_components/KingswayVideo';
 import { SPONSORS_2026 as SPONSORS } from './_components/sponsors-data';
 
 const A = {
@@ -2154,6 +2154,21 @@ function Contact() {
                     </a>
                   </div>
                 </li>
+                {/* A WeChat ID isn't a link, so instead of navigating it shows
+                    the same scannable QR popover the footer uses. */}
+                <li className="flex items-start gap-3">
+                  <WeChatIcon className="w-5 h-5 flex-none mt-1 text-white" />
+                  <div className="flex flex-col">
+                    <span className="text-white/55 text-[12px] font-semibold uppercase tracking-[0.12em]">
+                      WeChat
+                    </span>
+                    <WeChatQrPopover placement="bottom">
+                      <button type="button" className="cursor-pointer hover:underline text-left">
+                        ShenzhenSEOConf
+                      </button>
+                    </WeChatQrPopover>
+                  </div>
+                </li>
               </ul>
             </div>
             <form className="space-y-4" onSubmit={handleSubmit}>
@@ -2396,7 +2411,6 @@ export default function Home5Page() {
       <Contact />
       <Footer />
       <BackToTop />
-      <KingswayFloat listId="25010" />
     </main>
   );
 }

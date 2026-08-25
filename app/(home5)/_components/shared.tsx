@@ -179,8 +179,21 @@ export function WeChatIcon({ className = '' }: { className?: string }) {
  * WeChat is a QR code rather than a link, so it opens a small popover instead of
  * navigating: hover on desktop, tap on touch devices. Escape and an outside
  * click close it, so it is not a trap on mobile.
+ *
+ * Wraps whatever trigger you pass as children, so the footer link and the
+ * home-page contact line share one implementation and stay in step.
  */
-function WeChatQrLink() {
+export function WeChatQrPopover({
+  children,
+  className = '',
+  placement = 'top',
+}: {
+  children: React.ReactNode;
+  className?: string;
+  /** 'top' suits the footer, where there is nothing below. 'bottom' suits
+   *  mid-page triggers, so the panel doesn't cover the lines above it. */
+  placement?: 'top' | 'bottom';
+}) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -203,7 +216,7 @@ function WeChatQrLink() {
   return (
     <div
       data-wechat-qr
-      className="relative"
+      className={`relative ${className}`}
       // Gated to a real mouse. On touch the browser also fires an emulated
       // enter, which combined with a toggling click opened and instantly closed
       // the popover, so a tap appeared to do nothing.
@@ -213,38 +226,47 @@ function WeChatQrLink() {
       onPointerLeave={(e) => {
         if (e.pointerType === 'mouse') setOpen(false);
       }}
+      onClick={() => setOpen(true)}
+      onFocus={() => setOpen(true)}
     >
+      {children}
+
+      {open && (
+        <div
+          // The supplied graphic is about 3:1, so the code itself is only a
+          // third of this width. Kept as wide as it can go without spilling
+          // out of a phone screen.
+          className={`absolute left-0 z-50 rounded-xl bg-white p-3 shadow-2xl ${
+            placement === 'bottom' ? 'top-full mt-3' : 'bottom-full mb-3'
+          }`}
+          style={{ width: 'min(380px, 88vw)' }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/wechat-contact.webp"
+            alt="WeChat QR code for the Shenzhen SEO Conference official account"
+            className="w-full h-auto"
+          />
+          <p className="mt-2 text-[12px] leading-[150%] text-black/60">
+            Scan the code, or search 深圳SEO大会 in WeChat.
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function WeChatQrLink() {
+  return (
+    <WeChatQrPopover>
       <button
         type="button"
-        onClick={() => setOpen(true)}
-        onFocus={() => setOpen(true)}
-        aria-expanded={open}
         className="inline-flex items-center gap-2 text-[14px] font-semibold tracking-[0.06em] text-white/75 hover:text-white cursor-pointer"
       >
         <WeChatIcon className="w-4 h-4" />
         WECHAT (微信)
       </button>
-
-      {open && (
-        <div
-          // The supplied graphic is about 4:1, so the code itself is only a
-          // quarter of this width. Kept as wide as it can go without spilling
-          // out of a phone screen.
-          className="absolute bottom-full left-0 z-50 mb-3 rounded-xl bg-white p-3 shadow-2xl"
-          style={{ width: 'min(380px, 88vw)' }}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/assets/wechat-official-account.png"
-            alt="WeChat QR code for the Shenzhen SEO Conference official account"
-            className="w-full h-auto"
-          />
-          <p className="mt-2 text-[12px] leading-[150%] text-black/60">
-            Scan the code, or search 深圳SEO大会主办方 in WeChat.
-          </p>
-        </div>
-      )}
-    </div>
+    </WeChatQrPopover>
   );
 }
 

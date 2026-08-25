@@ -38,7 +38,7 @@ export const FIELD_TALKS: Speaker[] = [
   { name: 'Nick Drewe', country: 'Australia', title: 'Founder & CEO, Wethrift', img: '/assets/nick-drewe.jpg' },
   { name: 'Josh Blyskal', country: 'USA', title: 'AI Strategy & Research, Profound', img: '/assets/josh-blyskal.jpg' },
   { name: 'Nik Ranger', country: 'Australia', title: 'Senior Growth Consultant, Dejan', img: '/assets/nik-ranger-2026.jpg' },
-  { name: 'Si Quan Ong', country: 'Singapore', title: 'Senior Content Marketer, Ahrefs', img: '/assets/speaker-placeholder.webp' },
+  { name: 'Si Quan Ong', country: 'Singapore', title: 'Senior Content Marketer, Ahrefs', img: '/assets/si-quan-ong.webp' },
   { name: 'Loki Yan', country: 'China & Australia', title: 'Co-founder, First Optimise (壹优化)', img: '/assets/loki-yan.jpg' },
   { name: 'Doug Pierce', country: 'USA', title: 'Founder, Cogney', img: '/assets/doug-pierce.jpg' },
   { name: 'Mao Kawana', country: 'Japan', title: 'Project Manager, Faber Company', img: '/assets/mao-kawana.jpg' },

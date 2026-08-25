@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 
 import { ArrowUpRight, BackToTop, Footer, LinkedInIcon, Nav, XIcon, YouTubeIcon } from '../../_components/shared';
 import { KEYNOTES, sameCategorySpeakers, speakerSlug, visibleSpeakers } from '@/lib/lineup';
-import { PROFILE_BY_SLUG, SPEAKER_PROFILES, type ProfileSession } from '@/lib/speaker-profiles';
+import { bioParagraphs, bioText, PROFILE_BY_SLUG, SPEAKER_PROFILES, type ProfileSession } from '@/lib/speaker-profiles';
 
 /* ─────────────────────────────────── ICONS ──────────────────────────────── */
 
@@ -89,8 +89,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!p) return { title: 'Speaker Not Found' };
 
   const first = p.sessions[0];
-  const description = p.bio
-    ? p.bio.slice(0, 155)
+  const flatBio = bioText(p.bio);
+  const description = flatBio
+    ? flatBio.slice(0, 155)
     : `${p.name}, ${p.title}, speaking at the Shenzhen SEO Conference 2026.`;
 
   return {
@@ -128,6 +129,7 @@ export default async function SpeakerProfile({ params }: { params: Promise<{ slu
   // than leaving the page without onward links.
   const recommended =
     fromLineup.length > 0 ? fromLineup : sameTag.length > 0 ? sameTag : visibleSpeakers(KEYNOTES).slice(0, 8);
+  const bio = bioParagraphs(s.bio);
   const btnBase =
     'display inline-flex w-full sm:w-auto items-center justify-center gap-2.5 px-7 py-4 rounded-full text-[13px] font-bold tracking-[0.18em] uppercase text-white';
   const iconBtn =
@@ -140,7 +142,7 @@ export default async function SpeakerProfile({ params }: { params: Promise<{ slu
     jobTitle: s.title,
     image: `https://shenzhenseoconference.com${s.img}`,
     url: `https://shenzhenseoconference.com/speakers/${s.slug}`,
-    ...(s.bio ? { description: s.bio } : {}),
+    ...(bio.length ? { description: bioText(s.bio) } : {}),
     sameAs: [s.linkedin, s.x, s.youtube].filter(Boolean),
     performerIn: s.sessions.map((sess) => ({
       '@type': 'Event',
@@ -187,14 +189,16 @@ export default async function SpeakerProfile({ params }: { params: Promise<{ slu
               </p>
 
               {/* Divider only earns its place when something follows it. */}
-              {(s.bio || s.linkedin || s.x || s.youtube) && (
+              {(bio.length > 0 || s.linkedin || s.x || s.youtube) && (
                 <div className="mt-8 md:mt-10 border-t border-white/10" />
               )}
 
-              {s.bio && (
-                <p className="mt-8 text-white/70" style={{ fontFamily: 'General Sans, system-ui, sans-serif', fontSize: 16, fontWeight: 400, lineHeight: '175%' }}>
-                  {s.bio}
-                </p>
+              {bio.length > 0 && (
+                <div className="mt-8 space-y-4 text-white/70" style={{ fontFamily: 'General Sans, system-ui, sans-serif', fontSize: 16, fontWeight: 400, lineHeight: '175%' }}>
+                  {bio.map((para, k) => (
+                    <p key={k}>{para}</p>
+                  ))}
+                </div>
               )}
 
               {(s.linkedin || s.x || s.youtube) && (

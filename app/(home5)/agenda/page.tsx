@@ -451,7 +451,16 @@ function PreConferenceSection() {
             >
               Two exclusive afternoon sessions before the main event kicks off. Free to attend with
               no conference ticket required, but registration approval is required. The application
-              form will be released soon. Stay tuned!
+              form can be found{' '}
+              <a
+                href="https://forms.gle/EjTtwuxvPJRC8Qje7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-[#5DAEDB] transition-colors"
+              >
+                HERE
+              </a>
+              .
             </p>
           </div>
         </div>
@@ -563,7 +572,7 @@ const DAY3_SCHEDULE: ScheduleRow[] = [
       { title: 'B2B SaaS Case Study: How Strategic Link Building Drives LLM Visibility', type: 'Lightning', speakers: ['Konstantin Sadekov'] },
       { title: 'How a $5K Digital PR Campaign Secured $80K Worth of Media Coverage (And Backlinks)', type: 'Lightning', speakers: ['Killian Kostiha'] },
       { title: "AI Search Can't Render Your JavaScript-Heavy Website? SEO Can Fix That", type: 'Lightning', speakers: ['Wasin Mekkit'] },
-      { title: 'Automating Technical SEO: GROQ, Sanity CMS & Hreflang Management at Scale', type: 'Lightning', speakers: ['Helen Han'] },
+      { title: 'Stop Crawling, Start Querying: A New Way to Do Technical SEO at Scale', type: 'Lightning', speakers: ['Helen Han'] },
     ],
   },
   { kind: 'slot', time: '4:50 PM', end: '5:10 PM', talks: [{ title: 'How I Automated 144 Ahrefs Blog Updates a Year with AI', type: 'Field Talk', speakers: ['Si Quan Ong'] }] },

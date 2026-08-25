@@ -33,7 +33,9 @@ export const SPONSORS_2026: {
     { src: '/assets/serpapi-logo.webp', alt: 'SerpApi', h: 34, href: 'https://serpapi.com/' },
     { src: '/assets/notta-logo.webp', alt: 'Notta', h: 40, href: 'https://www.notta.ai/' },
     { src: '/figma-assets/sponsor-dynadot.png', alt: 'Dynadot', h: 35, href: 'https://www.dynadot.com/' },
-    { src: '/assets/odys.png', alt: 'Odys', h: 34, href: 'https://odys.global/' },
+    // Taller than its neighbours because this logo stacks the "blue ocean"
+    // tagline under the wordmark, so the mark itself is only the top ~70%.
+    { src: '/assets/odys-blue-ocean.webp', alt: 'Odys', h: 49, href: 'https://odys.global/' },
     // Held below its balanced size (29) because the source file is only 100x20;
     // scaling it further just makes it blurry. Ask ProDENT for a larger logo.
     { src: '/assets/prodent.webp', alt: 'ProDENT', h: 24, href: 'https://www.prodentshop.com/' },
