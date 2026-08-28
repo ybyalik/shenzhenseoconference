@@ -48,5 +48,6 @@ export const SPONSORS_2026: {
     { src: '/assets/advanced-web-ranking.webp', alt: 'Advanced Web Rankings', h: 29, href: 'https://www.advancedwebranking.com/' },
     { src: '/assets/outreacher-io.webp', alt: 'Outreacher.io', h: 32, href: 'https://outreacher.io/' },
     { src: '/assets/presshero-logo.webp', alt: 'PressHERO', h: 24, href: 'https://presshero.io/' },
+    { src: '/assets/bridge-the-gap.webp', alt: 'Bridge the Gap', h: 30, href: 'https://bridgethegap.ai/' },
   ],
 };

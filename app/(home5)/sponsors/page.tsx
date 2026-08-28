@@ -397,7 +397,7 @@ function Confirmed2026() {
           <Tier title="Platinum Sponsors" tier="platinum" logos={SPONSORS_2026.platinum} cols="grid-cols-1 max-w-[372px] mx-auto" />
           <Tier title="Gold Sponsors" tier="gold" logos={SPONSORS_2026.gold} cols="grid-cols-1 sm:grid-cols-3 max-w-[1140px] mx-auto" />
           <Tier title="Silver Sponsors" tier="silver" logos={SPONSORS_2026.silver} cols="grid-cols-2 sm:grid-cols-4" />
-          <Tier title="Bronze Sponsors" tier="bronze" logos={SPONSORS_2026.bronze} cols="grid-cols-1 sm:grid-cols-3 max-w-[1140px] mx-auto" />
+          <Tier title="Bronze Sponsors" tier="bronze" logos={SPONSORS_2026.bronze} cols="grid-cols-2 sm:grid-cols-4" />
         </div>
       </div>
     </section>

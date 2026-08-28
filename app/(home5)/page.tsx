@@ -1863,7 +1863,7 @@ function Sponsors() {
   }: {
     label: [string, string];
     items: { src: string; alt: string; h: number; href?: string }[];
-    tier: 'platinum' | 'gold' | 'silver';
+    tier: 'platinum' | 'gold' | 'silver' | 'bronze';
   }) => {
     const baseFlatten = 'brightness(0) invert(1)';
     const hoverFilter =
@@ -1999,6 +1999,10 @@ function Sponsors() {
           {SPONSORS.gold.length > 0 && SPONSORS.silver.length > 0 && <Divider />}
           {SPONSORS.silver.length > 0 && (
             <Row label={['Silver', 'Sponsors']} items={SPONSORS.silver} tier="silver" />
+          )}
+          {SPONSORS.silver.length > 0 && SPONSORS.bronze.length > 0 && <Divider />}
+          {SPONSORS.bronze.length > 0 && (
+            <Row label={['Bronze', 'Sponsors']} items={SPONSORS.bronze} tier="bronze" />
           )}
         </div>
       </div>
