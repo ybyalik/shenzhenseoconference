@@ -589,7 +589,7 @@ const DAY4_SCHEDULE: ScheduleRow[] = [
     end: '11:00 AM',
     talks: [
       { title: 'Perception Engineering: How to Change What AI Says About Your Brand', type: 'Lightning', speakers: ['Jonathan Kiekbusch'] },
-      { title: 'Mixed Signals: How Brand Inconsistencies Confuse AI Search', type: 'Lightning', speakers: ['Apurva Bose'] },
+      { title: 'Stop Writing Ecommerce Product Descriptions: Let AI Find What’s Missing From Your Catalog', type: 'Lightning', speakers: ['Andy Wu'] },
       { title: '10x Organic Traffic for Ecommerce with Product-led Content & Community Backlinks', type: 'Lightning', speakers: ['Tupa Lee'] },
     ],
   },

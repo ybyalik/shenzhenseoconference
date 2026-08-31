@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, BackToTop, CarouselDots, Footer, Nav, WeChatIcon, WeChatQrPopover, useCarouselActive } from './_components/shared';
+import { ArrowUpRight, BackToTop, CarouselDots, Footer, Nav, WeChatIcon, useCarouselActive } from './_components/shared';
 import { KingswayPlayer } from './_components/KingswayVideo';
 import { SPONSORS_2026 as SPONSORS } from './_components/sponsors-data';
 
@@ -2158,19 +2158,17 @@ function Contact() {
                     </a>
                   </div>
                 </li>
-                {/* A WeChat ID isn't a link, so instead of navigating it shows
-                    the same scannable QR popover the footer uses. */}
+                {/* A WeChat ID isn't a link, so this one is plain selectable text.
+                    Label and handle sit on one line rather than stacked like the
+                    emails above, which are long enough to need their own row.
+                    The scannable QR lives in the footer. */}
                 <li className="flex items-start gap-3">
                   <WeChatIcon className="w-5 h-5 flex-none mt-1 text-white" />
-                  <div className="flex flex-col">
+                  <div className="flex flex-wrap items-baseline gap-x-2">
                     <span className="text-white/55 text-[12px] font-semibold uppercase tracking-[0.12em]">
-                      WeChat
+                      WeChat (微信):
                     </span>
-                    <WeChatQrPopover placement="bottom">
-                      <button type="button" className="cursor-pointer hover:underline text-left">
-                        ShenzhenSEOConf
-                      </button>
-                    </WeChatQrPopover>
+                    <span className="select-all">ShenzhenSEOConf</span>
                   </div>
                 </li>
               </ul>

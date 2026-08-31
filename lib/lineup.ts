@@ -26,7 +26,6 @@ export const KEYNOTES: Speaker[] = [
   { name: 'Eli Schwartz', country: 'USA', title: 'Author, Product-Led SEO', img: '/assets/eli-schwartz.jpg' },
   { name: 'Sasha Gusain', country: 'Australia', title: 'Head of Logged Out Experience, Canva', img: '/assets/sasha-gusain.jpg' },
   { name: 'Lars Lofgren', country: 'USA', title: 'Fractional VP of Marketing', img: '/assets/lars-lofgren.jpg' },
-  { name: 'Bernard Huang', country: 'USA', title: 'Co-founder, Clearscope', img: '/assets/bernard-huang.jpg', hiddenFromLineup: true },
 ];
 export const WORKSHOPS: Speaker[] = [
   { name: 'Marc Moeller', country: 'Germany & Australia', title: 'Founder, Ecomexperts', img: '/assets/marc-moeller.jpg' },
@@ -52,12 +51,9 @@ export const FIELD_TALKS: Speaker[] = [
   { name: 'Kun Tang', country: 'China', title: 'Founder and CEO, Jademond', img: '/assets/kun-tang.webp' },
 ];
 export const LIGHTNING_TALKS: Speaker[] = [
-  { name: 'Apurva Bose', country: 'USA', title: 'VP of Operations & Strategy, Overtake Digital', img: '/assets/apurva-bose.jpg' },
+  { name: 'Andy Wu', country: 'USA', title: 'Founder, Wuberlife Brands', img: '/assets/andy-wu.webp' },
   { name: 'Johann Sathianathen', country: 'USA', title: 'Co-founder, Cyndra AI', img: '/assets/johann-sathianathen.webp' },
   { name: 'Roger Yin', country: 'Canada', title: 'SEO Partner, HashMatrix', img: '/assets/roger-yin.jpg' },
-  // Off the public lineup but still on the agenda, which resolves a talk's
-  // headshot and title by name from this file.
-  { name: 'Begum Kaya', country: 'Turkey', title: 'Organic Growth Strategist, Omniscient Digital', img: '/assets/begum-kaya.webp', hiddenFromLineup: true },
   { name: 'David Carrasco', country: 'Spain', title: 'Freelance SEO Consultant', img: '/assets/david-carrasco.jpg' },
   { name: 'Andrea Abbondanza', country: 'Italy', title: 'Founder, Abbondanza Marketing', img: '/assets/andrea-abbondanza.webp' },
   { name: 'Jonathan Kiekbusch', country: 'UK & Germany', title: 'Founder, SwishDM', img: '/assets/jonathan-kiekbusch.jpg' },

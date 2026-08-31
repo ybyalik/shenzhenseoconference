@@ -56,21 +56,21 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     ],
   },
   {
-    name: "Apurva Bose",
-    slug: "apurva-bose",
+    name: "Andy Wu",
+    slug: "andy-wu",
     tag: "Lightning Talk",
-    title: "VP of Operations & Strategy, Overtake Digital",
-    img: "/assets/apurva-bose.jpg",
+    title: "Founder, Wuberlife Brands",
+    img: "/assets/andy-wu.webp",
     country: "USA",
-    linkedin: "https://www.linkedin.com/in/boseapurva/",
-    bio: "Apurva Bose is Vice President of Operations & Strategy at Overtake Digital, where he leads a multidisciplinary team across SEO, paid media, content, and web. Over the past decade, he has built a career at the intersection of search, strategy, and leadership, helping brands adapt to a digital landscape shaped by changing consumer behavior, new technology, and AI-driven discovery. As a first-generation immigrant, he brings a multicultural perspective and an international lens to his work. Based in the Chicago area, he is also an international speaker who has presented at events including BrightonSEO and BarbadosSEO. Outside of work, he follows Arsenal, Chicago White Sox & Chicago Bears, still plays soccer, and spends as much time as possible with his family.",
+    linkedin: "https://www.linkedin.com/in/andywu1/",
+    bio: "Andy Wu is the Founder of Wuberlife Brands, an ecommerce operator focused on SEO, automation, data, and AI. After starting his career in online brokerages, he moved into entrepreneurship, building businesses across Amazon FBA and ecommerce. Today, he focuses on using AI and data to uncover growth opportunities, improve operations, and scale online businesses more efficiently.",
     sessions: [
-      { title: "Mixed Signals: How Brand Inconsistencies Confuse AI Search", when: "Day 4 / Sep. 17 / 10:30 AM", where: "The St. Regis Shenzhen (Grand Astor Ballroom, 5F)", start: "20260917T023000Z" },
+      { title: "Stop Writing Ecommerce Product Descriptions: Let AI Find What’s Missing From Your Catalog", when: "Day 4 / Sep. 17 / 10:30 AM", where: "The St. Regis Shenzhen (Grand Astor Ballroom, 5F)", start: "20260917T023000Z" },
     ],
     description: [
-      "AI Search is changing how people discover brands, but the bigger challenge for global companies is simple: would AI Search understand and recommend your brand correctly across different markets? I'll focus on one practical idea: how inconsistent brand signals can confuse AI-driven search.",
-      "When your website, location pages, structured data, local listings, reviews, and third-party mentions tell slightly different stories, AI systems may struggle to understand who you are, what you offer, where you operate, and why you should be trusted.",
-      "This session will show a simple way to spot the gaps that make a brand harder to understand and recommend, especially for companies expanding across regions, languages, or international markets. In addition, attendees will leave with a quick brand signal checklist they can use to tighten how their brand is represented across AI-driven search experiences.",
+      "Most ecommerce teams use AI one page at a time: rewriting product descriptions, optimizing titles, or generating FAQs. This talk explores a different approach—using AI to analyze an entire product catalog as a dataset.",
+      "I’ll show how an LLM can compare hundreds of products at once to identify missing attributes, inconsistent product information, and gaps that may affect SEO, usability, and conversion. Using a commercial espresso machine catalog as an example, I’ll demonstrate how overlooked details like voltage, boiler configuration, plumbing requirements, output capacity, certifications, and warranty information can be surfaced across a category.",
+      "The key takeaway is simple: instead of using AI only to create more content, use it to understand the product data you already have. Page-level AI helps you write faster; catalog-level AI can help you make better SEO decisions.",
     ],
   },
   {
@@ -471,12 +471,17 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     country: "USA",
     linkedin: "https://www.linkedin.com/in/joshua-blyskal/",
     x: "https://x.com/JBlyskal",
-    bio: "Josh Blyskal was working on Answer Engine Optimization before the category had a name. He leads AI Strategy & Research at Profound, where he has analyzed more than 250 million AI search responses across ChatGPT, Perplexity, and the major answer engines. The body of work behind it is among the largest empirical studies of AI search anyone has published. He built the AI Search Grader, one of the first tools to let marketers see how they show up in AI, and has been studying the space since the week ChatGPT launched. His research shapes how Fortune 500 brands like Ramp, Indeed, and US Bank approach AI visibility, and his work is frequently cited by other researchers and operators in the field. Based in NYC, Josh speaks at BrightonSEO, TechSEO Connect, and Zero Click, among others. He joins the speaker lineup at the 2026 Shenzhen SEO Conference.\u200b\u200b\u200b\u200b\u200b\u200b\u200b\u200b\u200b\u200b\u200b\u200b\u200b\u200b\u200b\u200b",
+    bio: [
+      "Josh Blyskal was working on Answer Engine Optimization before the category had a name. He leads AI Strategy & Research at Profound, where he has analyzed more than 250 million AI search responses across ChatGPT, Perplexity, and the major answer engines. The body of work behind it is among the largest empirical studies of AI search anyone has published. He built the AI Search Grader, one of the first tools to let marketers see how they show up in AI, and has been studying the space since the week ChatGPT launched.",
+      "His research shapes how Fortune 500 brands like Ramp, Indeed, and US Bank approach AI visibility, and his work is frequently cited by other researchers and operators in the field. Based in NYC, Josh speaks at BrightonSEO, TechSEO Connect, and Zero Click, among others.",
+    ],
     sessions: [
       { title: "The New Citation Economy: How ChatGPT, Google AI Mode, and Claude Pick Sources", when: "Day 4 / Sep. 17 / 10:10 AM", where: "The St. Regis Shenzhen (Grand Astor Ballroom, 5F)", start: "20260917T021000Z" },
     ],
     description: [
-      "Three answer engines now sit between brands and their customers: ChatGPT, Google AI Mode, and Claude. Each one picks its sources differently, and most brands are optimizing for assumptions that don't hold. This session breaks down how each engine actually chooses what to cite, based on a dataset of real AI search results built at Profound. You'll see why Claude is the most predictable engine to win and the one almost everyone overlooks, what changed when ChatGPT opened its ads to self-serve, and how Google AI Mode reads a page differently depending on whether you're asking about a place or a product. The takeaway is practical: what to change on your pages so a model reads you cleanly and names you in the answer.",
+      "Three answer engines now sit between brands and their customers: ChatGPT, Google AI Mode, and Claude. Each one picks its sources differently, and most brands are optimizing for assumptions that don't hold.",
+      "This session breaks down how each engine actually chooses what to cite, based on a dataset of real AI search results built at Profound. You'll see why Claude is the most predictable engine to win and the one almost everyone overlooks, what changed when ChatGPT opened its ads to self-serve, and how Google AI Mode reads a page differently depending on whether you're asking about a place or a product.",
+      "The takeaway is practical: what to change on your pages so a model reads you cleanly and names you in the answer.",
     ],
   },
   {
@@ -487,6 +492,10 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     img: "/assets/kiana-shen.jpg",
     country: "China",
     linkedin: "https://www.linkedin.com/in/kiana-shen-6054b11b6/",
+    bio: [
+      "Kiana Shen is the founder of OMGrowth.ai (济谦AI), an AI-native organic growth company helping brands expand globally and SaaS teams grow through organic search and AI discovery. Her work focuses on technical SEO and content strategy, while she is actively exploring the emerging field of GEO. Her client portfolio spans the U.S. East and West Coasts, Canada, and China.",
+      "Having grown up across cultures, Kiana is committed to building cultural and commercial bridges between China and the United States. She helps brands enter unfamiliar markets without losing what makes them distinctive. She believes meaningful marketing should be built from the inside out—starting with a brand’s identity and authentic strengths, then translating them into stories that feel native to each market without losing the brand’s original voice, rather than imposing an external marketing playbook on it.",
+    ],
     sessions: [
       { title: "Agency Owners Panel: Chinese Manufacturing vs. Silicon Valley SaaS (An Agency Reality Check)", when: "Day 5 / Sep. 18 / 5:20 PM", where: "MGM Shenzhen (Grand Ballroom)", start: "20260918T092000Z" },
     ],
