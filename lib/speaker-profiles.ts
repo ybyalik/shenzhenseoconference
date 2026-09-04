@@ -820,7 +820,11 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     img: "/assets/polina-kogan.webp",
     country: "Luxembourg & Russia",
     linkedin: "https://www.linkedin.com/in/polina-kogan-53965074/",
-    bio: "Polina Kogan is an enterprise SEO and analytics consultant at Ayudante, specializing in search strategy, large-scale website migrations, and international SEO for both B2C and B2B businesses. She works with Japanese domestic brands expanding into global markets, as well as overseas companies entering Japan, giving her a unique perspective on multilingual and cross-market search strategy. Her work focuses particularly on complex technical SEO challenges, enterprise-scale website structures, and aligning SEO strategy with user behavior and search intent across different markets and languages. Based in Japan, Polina has co-authored three books on SEO and analytics, co-hosts meetups for women in SEO, and regularly speaks at industry conferences and events.",
+    x: "https://x.com/PolinaKogan",
+    bio: [
+      "Polina Kogan is an enterprise SEO and analytics consultant at Ayudante, specializing in search strategy, large-scale website migrations, and international SEO for both B2C and B2B businesses. She works with Japanese domestic brands expanding into global markets, as well as overseas companies entering Japan, giving her a unique perspective on multilingual and cross-market search strategy.",
+      "Her work focuses particularly on complex technical SEO challenges, enterprise-scale website structures, and aligning SEO strategy with user behavior and search intent across different markets and languages. Based in Japan, Polina has co-authored three books on SEO and analytics, co-hosts meetups for women in SEO, and regularly speaks at industry conferences and events.",
+    ],
     sessions: [
       { title: "The Unwritten Rules of Japanese SEO: From Search Behavior to Business Culture", when: "Day 3 / Sep. 16 / 2:20 PM", where: "The St. Regis Shenzhen (Grand Astor Ballroom, 5F)", start: "20260916T062000Z" },
     ],
@@ -931,7 +935,11 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     country: "India",
     linkedin: "https://www.linkedin.com/in/sharozdawa/",
     x: "https://x.com/SharozDawa",
-    // No bio supplied yet.
+    bio: [
+      "Sharoz Dawa is the SEO Lead at Fynd, where he owns organic growth across Fynd's commerce platform and its merchant storefronts, and leads AI-powered marketing tooling for the Studio product line. He works at the intersection of technical SEO, programmatic content, and software engineering, building the systems he uses rather than buying them.",
+      "He has shipped an in-house SEO crawler and audit engine, a zero-404 migration framework that has remapped thousands of legacy URLs for enterprise replatforming clients, storefront SSR and structured-data defaults now running as a baseline across Fynd merchants, and an ads intelligence platform that manages multi-crore monthly spend across Google and Meta.",
+      "Alongside his work at Fynd, he builds and operates his own SaaS products and a large collection of Model Context Protocol servers that connect Claude to real business systems. His expertise spans technical SEO at scale, entity and topical authority, link acquisition, marketing automation, and AI-assisted development.",
+    ],
     sessions: [
       { title: "Build Your AI Workforce: A 24/7 Multi-agent Chief of Staff", when: "Sep. 12 / 4:30 PM", where: "TBD", start: "20260912T083000Z" },
     ],

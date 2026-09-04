@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Unbounded } from 'next/font/google';
 import Script from 'next/script';
+import { CountdownBar } from './_components/CountdownBar';
 import '../globals.css';
 import './home5.css';
 
@@ -66,6 +67,7 @@ export default function Home5Layout({ children }: { children: React.ReactNode })
           />
         </noscript>
         {children}
+        <CountdownBar />
       </body>
     </html>
   );

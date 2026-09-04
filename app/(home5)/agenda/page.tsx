@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 
 import { ArrowUpRight, BackToTop, Footer, Nav } from '../_components/shared';
 import { KingswayCarousel } from '../_components/KingswayVideo';
@@ -167,7 +167,7 @@ function TierFilter({
   onChange: (t: Tier) => void;
 }) {
   return (
-    <div className="container pt-2 pb-10 md:pb-14">
+    <div className="container pt-2 pb-8 md:pb-10">
       <div
         className="text-left md:text-center uppercase mb-5"
         style={{
@@ -280,16 +280,32 @@ const SAT_SEP_12_SCHEDULE: SideEventRow[] = [
     speakers: ['Vinayak Gupta', 'Sharoz Dawa'],
   },
   { time: '5:10 PM – 5:20 PM', title: 'Closing Remarks', speakers: ['JP/John Zhang'] },
+  { time: '5:20 PM – 6:00 PM', title: 'Casual Networking' },
 ];
 
 const SAT_SEP_12_DETAILS = [
-  { label: 'Time', value: '12:30 PM – 5:20 PM' },
-  { label: 'Venue', value: 'To Be Announced (Nanshan / Futian Area, off-site, not at the St. Regis)' },
+  { label: 'Time', value: '12:30 PM – 6:00 PM' },
+  {
+    label: 'Venue',
+    value: (
+      <span className="inline-block align-top">
+        Wuzhou Sports Center Hotel (Olympia Hall A)
+        <br />
+        2013 Nigang West Road, Futian District, Shenzhen
+        <span className="mt-1 block">
+          五洲体育中心酒店（奥林匹亚A厅）
+          <br />
+          深圳市福田区泥岗西路2013号
+        </span>
+      </span>
+    ),
+  },
   {
     label: 'Language',
     value:
-      'English (Real-time, AI-powered live captions and translated subtitles will be displayed instantly on-screen so Chinese attendees can follow along seamlessly without any language barriers).',
+      'English (Real-time, AI-powered live captions and translated subtitles will be displayed instantly on-screen).',
   },
+  { label: 'How to Register', value: 'fill the form (see the link above).' },
   { label: 'Schedule', value: <SideEventSchedule rows={SAT_SEP_12_SCHEDULE} /> },
 ];
 
@@ -321,18 +337,35 @@ const SUN_SEP_13_SCHEDULE: SideEventRow[] = [
     title: 'Dominating LLMs, AiO & Google Rankings with Consensus',
     speakers: ['Jabez Reuben'],
   },
-  { time: '4:10 PM – 4:20 PM', title: 'Side Event Wrap-up', speakers: ['JP/John Zhang'] },
-  { time: '4:20 PM – 5:00 PM', title: 'Casual Networking' },
+  { time: '4:10 PM – 4:30 PM', title: 'Casual Networking & Coffee Break' },
+  { time: '4:30 PM – 5:10 PM', title: 'Talk (Secret Speaker)' },
+  { time: '5:10 PM – 5:20 PM', title: 'Side Event Wrap-up', speakers: ['JP/John Zhang'] },
+  { time: '5:20 PM – 6:00 PM', title: 'Casual Networking' },
 ];
 
 const SUN_SEP_13_DETAILS = [
-  { label: 'Time', value: '12:30 PM – 5:00 PM' },
-  { label: 'Venue', value: 'To Be Announced (Nanshan / Futian Area, off-site, not at the St. Regis)' },
+  { label: 'Time', value: '12:30 PM – 6:00 PM' },
+  {
+    label: 'Venue',
+    value: (
+      <span className="inline-block align-top">
+        The Westin Shenzhen Nanshan (3F, Ballroom)
+        <br />
+        9028-2 Shennan Road, Nanshan District, Shenzhen, 518053
+        <span className="mt-1 block">
+          深圳益田威斯汀酒店（三楼宴会厅）
+          <br />
+          深圳市南山区深南大道9028-2号
+        </span>
+      </span>
+    ),
+  },
   {
     label: 'Language',
     value:
-      'English (Real-time, AI-powered live captions and translated subtitles will be displayed instantly on-screen so Chinese attendees can follow along seamlessly without any language barriers).',
+      'English (Real-time, AI-powered live captions and translated subtitles will be displayed instantly on-screen).',
   },
+  { label: 'How to Register', value: 'fill the form (see the link above).' },
   { label: 'Schedule', value: <SideEventSchedule rows={SUN_SEP_13_SCHEDULE} /> },
 ];
 
@@ -347,16 +380,19 @@ const SIDE_EVENTS: SideEvent[] = [
     badge: 'Free · Open',
     details: SUN_SEP_13_DETAILS,
   },
-  {
-    dayLabel: 'Sun Sep 13',
-    title: 'Pre-event Speaker Dinner',
-    badge: 'Speakers Only',
-    details: [
-      { label: 'Time', value: '19:00 – 21:00' },
-      { label: 'Venue', value: 'To be announced' },
-    ],
-  },
 ];
+
+// Sits with the conference days (just before Day 3) rather than with the
+// pre-conference side events, because it happens on the Tuesday.
+const SPEAKER_DINNER: SideEvent = {
+  dayLabel: 'Tue Sep 15',
+  title: 'Speaker Dinner',
+  badge: 'Speakers Only',
+  details: [
+    { label: 'Time', value: '19:00 – 21:30' },
+    { label: 'Venue', value: 'The St. Regis Shenzhen (Grand Astor Ballroom, 5F)' },
+  ],
+};
 
 function TierBadge({ label }: { label: string }) {
   return (
@@ -1479,9 +1515,19 @@ function ConferenceEventsSection({ activeTier }: { activeTier: Tier }) {
           className="mt-10 flex flex-col items-start self-stretch gap-10 md:gap-16"
         >
           {CONFERENCE_DAYS.map((d) => (
-            <div key={d.dayLabel} className="w-full">
-              <ConferenceDayCard day={d} activeTier={activeTier} />
-            </div>
+            <Fragment key={d.dayLabel}>
+              <div className="w-full">
+                <ConferenceDayCard day={d} activeTier={activeTier} />
+              </div>
+              {/* Speakers Only, so it isn't something any ticket tier grants
+                  access to; shown on the unfiltered view rather than under a
+                  tier the reader might think they can buy into. */}
+              {d.dayLabel.startsWith('Day 2') && activeTier === 'ALL' && (
+                <div className="w-full">
+                  <SideEventCard event={SPEAKER_DINNER} />
+                </div>
+              )}
+            </Fragment>
           ))}
         </div>
       </div>
@@ -1727,8 +1773,11 @@ export default function AgendaPage() {
     <main className="home5-root">
       <Nav linkBase="/" current="AGENDA" />
       <Hero />
-      <TierFilter active={tier} onChange={setTier} />
       <PreConferenceSection />
+      {/* Sits directly above the conference days because that is the only
+          section it filters; up by the hero it looked broken, since clicking
+          it changed nothing within three screens. */}
+      <TierFilter active={tier} onChange={setTier} />
       <ConferenceEventsSection activeTier={tier} />
       <KingswayCarousel listId="25693" title="What Did Our Attendees Say About the Conference?" />
       <EventApp />

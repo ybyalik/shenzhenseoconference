@@ -1045,7 +1045,7 @@ function Agenda() {
       date: 'WEDNESDAY, SEP 16',
       title: 'Main Conference',
       desc: '3 Keynotes. 6 Field Talks. 9 Lightning Talks. Opening party at night.',
-      tier: 'Standard',
+      tier: 'All Attendees',
       note: '',
     },
     {
@@ -1053,7 +1053,7 @@ function Agenda() {
       date: 'THURSDAY, SEP 17',
       title: 'Main Conference',
       desc: '3 Keynotes. 6 Field Talks. 9 Lightning Talks. Closing party.',
-      tier: 'Standard',
+      tier: 'All Attendees',
       note: '',
     },
     {
@@ -1065,6 +1065,18 @@ function Agenda() {
       note: 'Includes one night stay',
     },
   ];
+
+  // Rendered twice: above the list on desktop, below Day 5 on mobile, where a
+  // "see everything" link only makes sense after you've scrolled the days.
+  const fullAgendaCta = (
+    <a
+      href="/agenda"
+      className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-semibold tracking-[0.16em] text-white border border-white/40 hover:bg-white/5 uppercase w-fit"
+    >
+      VIEW FULL AGENDA
+      <ArrowUpRight className="w-3 h-3" />
+    </a>
+  );
 
   return (
     <section id="agenda" className="bg-[#03060d] py-12 lg:py-24">
@@ -1088,13 +1100,7 @@ function Agenda() {
               <span className="block md:inline" style={{ opacity: 0.3 }}>Pick Your Depth</span>
             </h2>
           </div>
-          <a
-            href="/agenda"
-            className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-semibold tracking-[0.16em] text-white border border-white/40 hover:bg-white/5 self-start md:self-end uppercase w-fit"
-          >
-            VIEW FULL AGENDA
-            <ArrowUpRight className="w-3 h-3" />
-          </a>
+          <div className="hidden md:block self-end">{fullAgendaCta}</div>
         </div>
 
         {/* Side events banner */}
@@ -1106,7 +1112,17 @@ function Agenda() {
             Sat (Sep 12) + Sun (Sep 13) Afternoons
           </p>
           <p className="mt-2 text-[13px] md:text-[14px] text-white/55 leading-[1.55]">
-            Two free side events open to everyone — no conference ticket required. Details TBD.
+            Two free side events open to everyone, no conference ticket required, but
+            registration approval is required (fill the application form{' '}
+            <a
+              href="https://forms.gle/EjTtwuxvPJRC8Qje7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 hover:text-[#5DAEDB] transition-colors"
+            >
+              here
+            </a>
+            ).
           </p>
         </div>
 
@@ -1144,6 +1160,8 @@ function Agenda() {
             </li>
           ))}
         </ul>
+
+        <div className="mt-8 md:hidden">{fullAgendaCta}</div>
       </div>
     </section>
   );
