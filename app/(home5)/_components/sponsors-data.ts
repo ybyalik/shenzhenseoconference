@@ -36,9 +36,13 @@ export const SPONSORS_2026: {
     // Taller than its neighbours because this logo stacks the "blue ocean"
     // tagline under the wordmark, so the mark itself is only the top ~70%.
     { src: '/assets/odys-blue-ocean.webp', alt: 'Odys', h: 49, href: 'https://odys.global/' },
-    // Held below its balanced size (29) because the source file is only 100x20;
-    // scaling it further just makes it blurry. Ask ProDENT for a larger logo.
-    { src: '/assets/prodent.webp', alt: 'ProDENT', h: 24, href: 'https://www.prodentshop.com/' },
+    // Taller than the wordmarks around it because this is an icon-only mark:
+    // matching it on ink area alone would need ~80px and tower over the row,
+    // so it is sized to sit at a comparable height instead.
+    // No href yet: the sponsor hasn't supplied a URL, and both pages fall back
+    // to a plain (unlinked) logo when href is absent.
+    { src: '/assets/pod-queen.webp', alt: 'Pod Queen', h: 54 },
+    { src: '/assets/eclicktech.webp', alt: 'eClickTech', h: 52, href: 'https://en.eclicktech.com.cn/' },
     { src: '/assets/meup.png', alt: 'MeUP', h: 25, href: 'https://meup.com/' },
     { src: '/assets/ecomexperts.webp', alt: 'EcomExperts', h: 31, href: 'https://ecomexperts.au/' },
     { src: '/figma-assets/sponsor-convertbetter.png', alt: 'Convert Better', h: 42, href: 'https://convertbetter.co/' },

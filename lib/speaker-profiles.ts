@@ -266,7 +266,7 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     youtube: "https://www.youtube.com/@ilmanakbar/",
     bio: "Ilman Akbar is an SEO professional with over 13 years of experience. He founded DailySEO ID, a media & education company, and DLYS Consulting, a consulting firm, both are specializing in Search Engine Optimization (SEO). Before DailySEO ID & DLYS, Ilman worked at various regional tech startups, including Traveloka & Glints. He has also served as an SEO consultant for numerous startups in Indonesia, such as Flip, Sayurbox, Mamikos, Cove, RevoU, Sribu, Rata.id, and many more. In DLYS, his team serves clients like Mitsubishi Indonesia, Lalamove Indonesia, and Pika Sushi Australia, among others. With ten years of experience as an SEO trainer, Ilman has been sharing his expertise & experience with thousands of individuals across Indonesia, Thailand, and Singapore. He also considers himself a content creator through DailySEO ID's social accounts.",
     sessions: [
-      { title: "How to Talk So the C-Suites Will Listen: Lessons Learned from Teaching & Implementing SEO for 12+ Years", when: "Sep. 13 / 2:50 PM", where: "TBD", start: "20260913T065000Z" },
+      { title: "How to Talk So the C-Suites Will Listen: Lessons Learned from Teaching & Implementing SEO for 12+ Years", when: "Sep. 13 / 2:50 PM", where: "The Westin Shenzhen Nanshan (3F, Ballroom)", start: "20260913T065000Z" },
     ],
     description: [
       "SEO isn't ignored because C-level executives don't care or won't spend \u2014 it's ignored because we explain it poorly. This session breaks down how to convert SEO's technical complexities into business narratives that earn C-level attention and commitment.",
@@ -316,7 +316,7 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     x: "https://x.com/jabezreuben",
     bio: "Jabez Reuben is the founder of LLM Mastery, The Blueprints and LinkValidator. He has been in the SEO space for over 8 years now. His current interest is reverse engineering how various LLMs process and recommend brands and then create sustainable strategies for clients to improve their visibility across LLMs. He is based out of Chiang Mai, Thailand.",
     sessions: [
-      { title: "Dominating LLMs, AiO & Google Rankings with Consensus", when: "Sep. 13 / 3:30 PM", where: "TBD", start: "20260913T073000Z" },
+      { title: "Dominating LLMs, AiO & Google Rankings with Consensus", when: "Sep. 13 / 3:30 PM", where: "The Westin Shenzhen Nanshan (3F, Ballroom)", start: "20260913T073000Z" },
     ],
     description: [
       "In my presentation, I'll cover how to build off-page topical authority/consensus, that will help you rank across LLMs, Google AI overview results, and also rank in Google SERPs as well.",
@@ -332,7 +332,7 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     linkedin: "https://www.linkedin.com/in/jacky-l-326ab2b8/",
     bio: "Jacky Lin is the founder of Wingfuture, an AI automation company helping global trade and B2B companies build practical AI systems for sales, marketing, lead generation, and workflow automation. With over 10 years of experience in international trade and consumer product supply chains, he focuses on turning real business processes into repeatable AI-powered workflows. Jacky is also the founder of the Global Trade AI Conference in China, where he brings together founders, marketers, exporters, and AI practitioners to explore how AI is changing global business. His work sits at the intersection of international trade, AI automation, content systems, and founder-led growth.",
     sessions: [
-      { title: "From AI Tools to B2B Growth Systems: Building Workflows That Actually Run", when: "Sep. 12 / 2:50 PM", where: "TBD", start: "20260912T065000Z" },
+      { title: "From AI Tools to B2B Growth Systems: Building Workflows That Actually Run", when: "Sep. 12 / 2:50 PM", where: "Wuzhou Sports Center Hotel (Olympia Hall A)", start: "20260912T065000Z" },
     ],
     description: [
       "AI tools are easy to try, but much harder to turn into systems that teams can use every day. In this session, I will share a practical framework for B2B and global trade companies to turn repetitive sales and marketing work into AI-powered workflows \u2014 from lead research and customer profiling to outreach, follow-up, content production, and CRM updates.",
@@ -351,7 +351,7 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     youtube: "https://www.youtube.com/channel/UCUYu4XfhuiuWwzhLka2L9Pw",
     bio: "Jamie I.F. is an AI visibility and affiliate and influencer growth specialist, and the founder of AffiliateFinder.ai - and AI-powered affiliate and influencer recruitment platform. He has spoken in more than 10 countries about how affiliates and influencers are essential to your AI visibility growth via brand mentions from trusted sources. AffiliateFinder.ai is one of the fastest-growing affiliate software, and is used by some of the world\u2019s biggest brands, including Google, Jotform, and more than 2,400 other brands.",
     sessions: [
-      { title: "How Chinese Brands Can Use Affiliates & Influencers To Grow AI Visibility & Revenue in USA", when: "Sep. 13 / 1:10 PM", where: "TBD", start: "20260913T051000Z" },
+      { title: "How Chinese Brands Can Use Affiliates & Influencers To Grow AI Visibility & Revenue in USA", when: "Sep. 13 / 1:10 PM", where: "The Westin Shenzhen Nanshan (3F, Ballroom)", start: "20260913T051000Z" },
     ],
     description: [
       "AI visibility and recommendations are becoming a major part of the shopping experience in the West - but most brands are just optimising their own website for this, and not using other partners to boost their visibility. This talk shows you exactly how to use your influencer and affiliate program to scale not just your revenue, but your AI visibility as well.",
@@ -621,7 +621,7 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     linkedin: "https://www.linkedin.com/in/mu-qin-0a29621b8/",
     bio: "Magenta Qin is a Developer Advocate at SerpApi, where she helps developers and marketers integrate real-time search data into AI-powered applications and SEO workflows. Before joining SerpApi, she worked as a software engineer at Tencent and RedNote, building developer-facing tools and infrastructure. She now focuses on making complex search and AI technologies practical and accessible through technical content, tutorials, open-source demos, and community education.",
     sessions: [
-      { title: "From JSON to Markdown: Cutting the Cost of AI-Powered SEO Analysis by Up to 90%", when: "Sep. 12 / 1:50 PM", where: "TBD", start: "20260912T055000Z" },
+      { title: "From JSON to Markdown: Cutting the Cost of AI-Powered SEO Analysis by Up to 90%", when: "Sep. 12 / 1:50 PM", where: "Wuzhou Sports Center Hotel (Olympia Hall A)", start: "20260912T055000Z" },
     ],
     description: [
       "Modern search results contain increasingly complex data, but sending large, nested JSON responses directly to an LLM can consume a significant amount of its context window. Using Google News, Google Trends, Amazon Shopping, Google Hotels, and Apple App Store as practical examples, this session will demonstrate how Markdown can preserve essential SEO signals while reducing token usage, lowering model costs, and allowing teams to analyze more competitors and search results in a single workflow.",
@@ -661,7 +661,7 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
       "In his workshops and talks, Marc delivers the same client-tested frameworks he uses day-to-day. Attendees get a practical, step-by-step operating system for running SEO efficiently. This is not theory: every section is designed for immediate implementation, with ready-to-use templates, checklists, and SOP structures provided so you can apply the process the moment you leave the room.",
     ],
     sessions: [
-      { title: "GEO: Why 90% of Chinese B2B & SaaS Brands Are Invisible & Step-by-Step Solution", when: "Day 1 / Sep. 14 / 9:00 AM", where: "The St. Regis Shenzhen (Grand Astor Ballroom, 5F)", start: "20260914T010000Z" },
+      { title: "Own AI Search: The GEO Workshop to Get Your Brand Recommended", when: "Day 1 / Sep. 14 / 9:00 AM", where: "The St. Regis Shenzhen (Grand Astor Ballroom, 5F)", start: "20260914T010000Z" },
     ],
     description: [
       "This hands-on workshop helps your brand to go from being invisible to being the top-recommended brand in your industry. You'll get a repeatable system built across 25+ China-to-West projects to diagnose why large language models overlook you, then build the plan to fix it. It\u2019s a step by step process, that has been proven in the real world to work.",
@@ -864,7 +864,7 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     x: "https://x.com/sachf_",
     bio: "Sacha Fournier is the founder of JournoFinder, an AI-powered tool that helps businesses get featured in the press without the agency price tag. Before building it, Sacha was running his own digital PR campaigns and getting fed up with the clunky, inaccurate, and overpriced platforms the industry treats as standard. So he built something better. Today JournoFinder helps companies around the world find the right journalists and earn real coverage, the kind that builds authority, drives links, and moves rankings. Sacha has spoken at SEO Estonia, Chiang Mai SEO Conference, and Shenzhen SEO Conference, where he breaks down exactly how to get your business into the press.",
     sessions: [
-      { title: "Winning in the West: Agentic Digital PR for Chinese Brands", when: "Sep. 12 / 3:30 PM", where: "TBD", start: "20260912T073000Z" },
+      { title: "Winning in the West: Agentic Digital PR for Chinese Brands", when: "Sep. 12 / 3:30 PM", where: "Wuzhou Sports Center Hotel (Olympia Hall A)", start: "20260912T073000Z" },
     ],
     description: [
       "Digital PR lives or dies on the news cycle. For a Chinese brand, staying on top of a Western one is the hard part. This session shows how agentic AI watches the Western news cycle for you, spots the stories worth reacting to, finds the right journalists, personalizes each pitch, and runs the outreach end to end. Coverage and links in markets you've never set foot in.",
@@ -941,7 +941,7 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
       "Alongside his work at Fynd, he builds and operates his own SaaS products and a large collection of Model Context Protocol servers that connect Claude to real business systems. His expertise spans technical SEO at scale, entity and topical authority, link acquisition, marketing automation, and AI-assisted development.",
     ],
     sessions: [
-      { title: "Build Your AI Workforce: A 24/7 Multi-agent Chief of Staff", when: "Sep. 12 / 4:30 PM", where: "TBD", start: "20260912T083000Z" },
+      { title: "Build Your AI Workforce: A 24/7 Multi-agent Chief of Staff", when: "Sep. 12 / 4:30 PM", where: "Wuzhou Sports Center Hotel (Olympia Hall A)", start: "20260912T083000Z" },
     ],
     description: [
       "A team of specialised AI agents that runs your sales, ops, and research around the clock \u2014 coordinated by one AI Chief of Staff.",
@@ -975,7 +975,7 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     youtube: "https://www.youtube.com/@foundertanya",
     bio: "Tanya Van Gastel is the Founder of Rankingonai.com, AI visibility & SEO for high-growth SaaS. Her clients include Cal.com (raised +$30M), Suno (raised +$200M), HappyRobot (raised +$40M) and other high-growth SaaS companies. She's helped her clients triple AI referrals and become the top AI-recommended product in their category. Van Gastel previously built an AI photography startup that grew purely through SEO with clients like Walmart and Google, then exited it. She's also a Forbes 20 Women in Tech honoree and has been featured in Forbes, Inc. Magazine, The Wall Street Journal, BBC, and Digital Trends. Previously, she lived in Shanghai and Shenzhen working in Chinese tech.",
     sessions: [
-      { title: "Side Event: Winning AI Search: A 4-Step Guide for Chinese Companies", when: "Sep. 12 / 1:10 PM", where: "Side Event: TBD", start: "20260912T051000Z" },
+      { title: "Side Event: Winning AI Search: A 4-Step Guide for Chinese Companies", when: "Sep. 12 / 1:10 PM", where: "Wuzhou Sports Center Hotel (Olympia Hall A)", start: "20260912T051000Z" },
       { title: "Agency Owners Panel: Chinese Manufacturing vs. Silicon Valley SaaS (An Agency Reality Check)", when: "Day 5 / Sep. 18 / 5:20 PM", where: "MGM Shenzhen (Grand Ballroom)", start: "20260918T092000Z" },
     ],
     description: [
@@ -1026,7 +1026,7 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     linkedin: "https://www.linkedin.com/in/yaping-long-59373b87/",
     bio: "\u00b7 Eight-figure international deal closer with 13 years across 50+ markets \u00b7 Co-author of the bestselling book The Compound Effect of Action \u00b7 Helps B2B SME exporters build overseas trust that compounds \u2014 turning real export experience into frameworks that convert, market by market",
     sessions: [
-      { title: "S.P.A.C.E.: A Five-Dimension Framework for Exporters Who've Hit a Growth Ceiling", when: "Sep. 13 / 1:50 PM", where: "TBD", start: "20260913T055000Z" },
+      { title: "S.P.A.C.E.: A Five-Dimension Framework for Exporters Who've Hit a Growth Ceiling", when: "Sep. 13 / 1:50 PM", where: "The Westin Shenzhen Nanshan (3F, Ballroom)", start: "20260913T055000Z" },
     ],
     description: [
       "When core markets slow down, most exporters do what they've always done: better pricing, faster samples, more follow-ups.",
@@ -1080,7 +1080,7 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     linkedin: "https://www.linkedin.com/in/vin-wordscloud/",
     bio: "Vinayak Gupta is the founder of Serpbays.com, a link-building marketplace designed to make buying and selling backlinks more transparent. He is also the founder of Wordscloud, a content marketing agency, and SaaSlinks.net, a dedicated marketplace for SaaS backlinks. He works at the intersection of SEO, content marketing, link building, AI, and product development. With a background in software development and quality analysis, Vinayak brings a technical and analytical approach to building digital businesses. Over the years, he has managed multiple affiliate websites and SaaS projects, gaining hands-on experience in traffic growth, content monetization, scalable SEO systems, backlink strategy, and digital product execution. He is currently doing extensive vibe coding with Claude Code and has built multiple internal systems and everyday business tools using AI-assisted development workflows. His expertise includes SEO strategy, content operations, link acquisition, publisher marketplace development, automation, SaaS workflows, and using AI to build practical tools that improve business efficiency.",
     sessions: [
-      { title: "Build Your AI Workforce: A 24/7 Multi-agent Chief of Staff", when: "Sep. 12 / 4:30 PM", where: "TBD", start: "20260912T083000Z" },
+      { title: "Build Your AI Workforce: A 24/7 Multi-agent Chief of Staff", when: "Sep. 12 / 4:30 PM", where: "Wuzhou Sports Center Hotel (Olympia Hall A)", start: "20260912T083000Z" },
     ],
     description: [
       "A team of specialised AI agents that runs your sales, ops, and research around the clock \u2014 coordinated by one AI Chief of Staff.",

@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { Fragment, useState } from 'react';
 
 import { ArrowUpRight, BackToTop, Footer, Nav } from '../_components/shared';
-import { KingswayCarousel } from '../_components/KingswayVideo';
 import {
   KEYNOTES,
   WORKSHOPS,
@@ -167,7 +166,7 @@ function TierFilter({
   onChange: (t: Tier) => void;
 }) {
   return (
-    <div className="container pt-2 pb-8 md:pb-10">
+    <div className="container pt-2 pb-10 md:pb-14">
       <div
         className="text-left md:text-center uppercase mb-5"
         style={{
@@ -212,7 +211,15 @@ type SideEvent = {
   dayLabel: string;
   badge?: string;
   title?: string;
+  /** Short facts shown as tiles: time, venue, language, how to register. */
   details: { label: string; value: React.ReactNode }[];
+  /** Kept apart from the facts so it can sit behind a Hide/View Schedule
+   *  button, the same way the conference day cards work. */
+  schedule?: React.ReactNode;
+  /** The tile grid suits the two side events, which carry four facts each
+   *  including bilingual addresses. A card with only a time and a venue reads
+   *  better as plain lines. */
+  plainDetails?: boolean;
 };
 
 // `speakers` are names resolved to headshot + title via the shared lineup (same as
@@ -306,7 +313,6 @@ const SAT_SEP_12_DETAILS = [
       'English (Real-time, AI-powered live captions and translated subtitles will be displayed instantly on-screen).',
   },
   { label: 'How to Register', value: 'fill the form (see the link above).' },
-  { label: 'Schedule', value: <SideEventSchedule rows={SAT_SEP_12_SCHEDULE} /> },
 ];
 
 const SUN_SEP_13_SCHEDULE: SideEventRow[] = [
@@ -366,7 +372,6 @@ const SUN_SEP_13_DETAILS = [
       'English (Real-time, AI-powered live captions and translated subtitles will be displayed instantly on-screen).',
   },
   { label: 'How to Register', value: 'fill the form (see the link above).' },
-  { label: 'Schedule', value: <SideEventSchedule rows={SUN_SEP_13_SCHEDULE} /> },
 ];
 
 const SIDE_EVENTS: SideEvent[] = [
@@ -374,11 +379,13 @@ const SIDE_EVENTS: SideEvent[] = [
     dayLabel: 'Sat Sep 12',
     badge: 'Free · Open',
     details: SAT_SEP_12_DETAILS,
+    schedule: <SideEventSchedule rows={SAT_SEP_12_SCHEDULE} />,
   },
   {
     dayLabel: 'Sun Sep 13',
     badge: 'Free · Open',
     details: SUN_SEP_13_DETAILS,
+    schedule: <SideEventSchedule rows={SUN_SEP_13_SCHEDULE} />,
   },
 ];
 
@@ -388,6 +395,7 @@ const SPEAKER_DINNER: SideEvent = {
   dayLabel: 'Tue Sep 15',
   title: 'Speaker Dinner',
   badge: 'Speakers Only',
+  plainDetails: true,
   details: [
     { label: 'Time', value: '19:00 – 21:30' },
     { label: 'Venue', value: 'The St. Regis Shenzhen (Grand Astor Ballroom, 5F)' },
@@ -409,8 +417,10 @@ function TierBadge({ label }: { label: string }) {
 }
 
 function SideEventCard({ event }: { event: SideEvent }) {
+  const [open, setOpen] = useState(true);
+
   return (
-    <div className="rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:p-9">
+    <div className="rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:px-9 md:pt-9" style={{ paddingBottom: 48 }}>
       <div className="flex flex-col items-start gap-3 md:flex-row md:items-start md:justify-between md:flex-wrap">
         {event.badge && (
           <span className="order-1 md:order-2">
@@ -440,22 +450,62 @@ function SideEventCard({ event }: { event: SideEvent }) {
           {event.title}
         </h3>
       )}
-      <dl className="mt-4 flex flex-col gap-2 max-w-[820px]">
-        {event.details.map((d) => (
-          <div
-            key={d.label}
-            className="text-white/75"
-            style={{
-              fontFamily: 'General Sans, system-ui, sans-serif',
-              fontSize: 16,
-              fontWeight: 400,
-              lineHeight: '160%',
-            }}
-          >
-            <span className="font-semibold text-white">{d.label}:</span> {d.value}
+      {/* Label column on the left, value on the right, split by hairline rules.
+          Stacking them as "Label: value" lines ran together into a block of
+          text once the venues gained bilingual addresses. A card with only a
+          couple of short facts keeps the plain lines. */}
+      {event.plainDetails ? (
+        <dl className="mt-4 flex flex-col gap-2 max-w-[820px]">
+          {event.details.map((d) => (
+            <div
+              key={d.label}
+              className="text-white/75 text-[13px] md:text-[14px]"
+              style={{ fontFamily: 'General Sans, system-ui, sans-serif', fontWeight: 400, lineHeight: '170%' }}
+            >
+              <span className="font-semibold text-white">{d.label}:</span> {d.value}
+            </div>
+          ))}
+        </dl>
+      ) : (
+        <dl className="mt-5 max-w-[860px]">
+          {event.details.map((d) => (
+            <div
+              key={d.label}
+              className="grid grid-cols-1 sm:grid-cols-[128px_1fr] gap-1 sm:gap-6 py-4 border-t border-white/[0.08] first:border-t-0 first:pt-0"
+            >
+              <dt
+                className="uppercase text-white/45 text-[10px] md:text-[11px] font-semibold sm:pt-[3px]"
+                style={{ fontFamily: 'General Sans, system-ui, sans-serif', letterSpacing: '0.14em' }}
+              >
+                {d.label}
+              </dt>
+              <dd
+                className="text-white/80 text-[13px] md:text-[14px]"
+                style={{ fontFamily: 'General Sans, system-ui, sans-serif', fontWeight: 400, lineHeight: '170%' }}
+              >
+                {d.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      )}
+
+      {event.schedule && (
+        <>
+          <div className="mt-6 block">
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase text-white border border-white/40 hover:border-white transition-colors"
+            >
+              {open ? 'Hide Schedule' : 'View Schedule'}
+              <ChevronDown className={`w-4 h-4 transition-transform ${open ? 'rotate-180' : ''}`} />
+            </button>
           </div>
-        ))}
-      </dl>
+          {open && <div className="mt-6">{event.schedule}</div>}
+        </>
+      )}
     </div>
   );
 }
@@ -837,7 +887,7 @@ const WORKSHOP_SCHEDULE: ScheduleRow[] = [
     end: '12:00 PM',
     talks: [
       { title: 'From Traffic to Pipeline: Fixing the Messaging Gaps That Hurt Conversions', type: 'Workshop', speakers: ['Jessica Malnik'] },
-      { title: 'GEO: Why 90% of Chinese B2B & SaaS Brands Are Invisible & Step-by-Step Solution', type: 'Workshop', speakers: ['Marc Moeller'] },
+      { title: 'Own AI Search: The GEO Workshop to Get Your Brand Recommended', type: 'Workshop', speakers: ['Marc Moeller'] },
     ],
   },
   { kind: 'break', time: '12:30 PM', end: '2:00 PM', label: 'Lunch · at the conference hotel' },
@@ -1563,70 +1613,24 @@ function PlayStoreLogo({ className = '' }: { className?: string }) {
 }
 
 function PhoneMockup() {
-  const slots = [
-    { time: '09:30', label: 'Keynote · Gary Illyes' },
-    { time: '10:30', label: 'Field talk · Lily Ray' },
-    { time: '12:30', label: 'Lunch buffet' },
-    { time: '14:00', label: 'Lightning · 6 talks' },
-    { time: '19:30', label: 'Rooftop opening party' },
-  ];
-
   return (
     <div className="relative mx-auto w-[240px] sm:w-[280px] md:w-[300px]">
+      {/* Same white phone frame as before, now holding a real screenshot of the
+          event app rather than a mocked-up day. The frame's aspect ratio matches
+          the source image so nothing is cropped. */}
       <div
-        className="rounded-[44px] border-[6px] border-white/85 p-5 shadow-xl"
-        style={{ background: '#0a0d14', aspectRatio: '9 / 19' }}
+        className="overflow-hidden rounded-[44px] border-[6px] border-white/85 shadow-xl"
+        style={{ background: '#0a0d14', aspectRatio: '1080 / 2340' }}
       >
-        <div
-          className="uppercase text-[#EB3030]"
-          style={{
-            fontFamily: 'General Sans, system-ui, sans-serif',
-            fontSize: 11,
-            fontWeight: 700,
-            letterSpacing: '0.2em',
-          }}
-        >
-          Wed Sep 16
-        </div>
-        <div
-          className="display uppercase text-white mt-1.5"
-          style={{
-            fontSize: 18,
-            fontWeight: 700,
-            letterSpacing: '0.02em',
-          }}
-        >
-          Your Day
-        </div>
-
-        <ul className="mt-5 flex flex-col gap-3">
-          {slots.map((s) => (
-            <li key={s.time} className="flex items-center gap-3">
-              <div
-                className="display text-white/70 w-[44px] shrink-0"
-                style={{
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: '0.08em',
-                }}
-              >
-                {s.time}
-              </div>
-              <div
-                className="flex-1 rounded-full px-3 py-2 text-white/85 border border-white/15"
-                style={{
-                  background: 'rgba(255, 255, 255, 0.04)',
-                  fontFamily: 'General Sans, system-ui, sans-serif',
-                  fontSize: 11,
-                  fontWeight: 500,
-                  lineHeight: '120%',
-                }}
-              >
-                {s.label}
-              </div>
-            </li>
-          ))}
-        </ul>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/assets/event-app-screen.webp"
+          alt="The Shenzhen SEO Conference event app, showing its menu of Home, Announcements, Community, Agenda, Speakers, Attendees and Sponsors"
+          className="w-full h-full object-cover"
+          loading="lazy"
+          width={600}
+          height={1300}
+        />
       </div>
     </div>
   );
@@ -1669,20 +1673,25 @@ function EventApp() {
                   lineHeight: '160%',
                 }}
               >
-                Every session, speaker, and attendee in one app. Build your personal
-                schedule, message other attendees, find the room, view your ticket QR.
+                See all sessions, speakers, and event activities in one place. Explore the
+                full agenda, build your personal schedule, sign up for city tours, join
+                community discussions and connect with other attendees.
               </p>
 
               <div className="mt-7 flex flex-wrap gap-3">
                 <a
-                  href="#"
+                  href="https://apps.apple.com/us/app/event-app-by-eventmobi/id1276348688"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="display flex w-full md:w-auto md:inline-flex items-center justify-center gap-3 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase text-white border border-white/40 hover:border-white transition-colors"
                 >
                   <AppleLogo className="w-5 h-5" />
                   Download on iOS
                 </a>
                 <a
-                  href="#"
+                  href="https://play.google.com/store/apps/details?id=com.eventmobi.multieventapp.meaidfa33d52eb4374fdb891ab905fa3a72e7"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="display flex w-full md:w-auto md:inline-flex items-center justify-center gap-3 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase text-white border border-white/40 hover:border-white transition-colors"
                 >
                   <PlayStoreLogo className="w-5 h-5" />
@@ -1691,15 +1700,26 @@ function EventApp() {
               </div>
 
               <p
-                className="mt-5 text-white/55"
+                className="mt-5 max-w-[520px] text-white/55"
                 style={{
                   fontFamily: 'General Sans, system-ui, sans-serif',
                   fontSize: 14,
                   fontWeight: 400,
-                  lineHeight: '150%',
+                  lineHeight: '160%',
                 }}
               >
-                Live by August 2026. Every ticket holder gets access automatically.
+                Search for &ldquo;szseo26&rdquo; and add it to the list of events. Use the same
+                email address you used to purchase your ticket or the email address provided for
+                your additional attendee pass to login in. Full guide{' '}
+                <a
+                  href="https://drive.google.com/file/d/1AHCmOmJWGOsBoHgm6BZpAG_ey7CSJdc1/view"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 underline underline-offset-2 hover:text-[#5DAEDB] transition-colors"
+                >
+                  here
+                </a>
+                .
               </p>
             </div>
 
@@ -1773,13 +1793,9 @@ export default function AgendaPage() {
     <main className="home5-root">
       <Nav linkBase="/" current="AGENDA" />
       <Hero />
-      <PreConferenceSection />
-      {/* Sits directly above the conference days because that is the only
-          section it filters; up by the hero it looked broken, since clicking
-          it changed nothing within three screens. */}
       <TierFilter active={tier} onChange={setTier} />
+      <PreConferenceSection />
       <ConferenceEventsSection activeTier={tier} />
-      <KingswayCarousel listId="25693" title="What Did Our Attendees Say About the Conference?" />
       <EventApp />
       <FinalCta />
       <Footer linkBase="/" />

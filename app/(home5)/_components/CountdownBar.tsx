@@ -7,8 +7,7 @@ import { ArrowUpRight } from './shared';
 
 /**
  * Floating countdown to the first session (Day 1 workshops, 9:00 AM Shenzhen
- * time, which is UTC+8). Pinned bottom-left so it clears the back-to-top
- * button in the bottom-right corner.
+ * time, which is UTC+8). Centred along the bottom of the viewport.
  *
  * It hides itself once the conference has finished, and can be dismissed; the
  * dismissal is remembered in this browser so it doesn't nag on every page.
@@ -78,21 +77,21 @@ export function CountdownBar() {
   );
 
   return (
-    <div className="fixed z-40 left-3 bottom-3 lg:left-[50px] lg:bottom-[50px] max-w-[calc(100vw-5.5rem)]">
+    <div className="fixed z-40 left-1/2 -translate-x-1/2 bottom-3 max-[420px]:bottom-20 lg:bottom-[50px] max-w-[calc(100vw-1.5rem)]">
       <div
         className="flex items-center gap-3 md:gap-4 rounded-2xl border border-white/15 pl-4 pr-2 py-2.5 md:pl-5 md:pr-3 md:py-3 shadow-2xl"
         style={{ background: 'rgba(6, 12, 21, 0.92)', backdropFilter: 'blur(10px)' }}
       >
         <div className="flex flex-col">
           <span
-            className="uppercase text-[9px] md:text-[10px] font-bold"
+            className="uppercase text-[9px] md:text-[10px] font-bold whitespace-nowrap"
             style={{
               color: '#EB3030',
               fontFamily: 'General Sans, system-ui, sans-serif',
               letterSpacing: '0.16em',
             }}
           >
-            {live ? 'Happening now' : 'Shenzhen SEO 2026'}
+            {live ? 'Happening now' : 'Shenzhen SEO Conference 2026'}
           </span>
 
           {live ? (
