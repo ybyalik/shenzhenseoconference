@@ -310,7 +310,7 @@ export function BackToTop() {
         typeof window !== 'undefined' &&
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }
-      className={`fixed grid place-items-center w-12 h-12 rounded-full text-white shadow-lg z-40 right-4 bottom-4 lg:right-[50px] lg:bottom-[50px] btn-back-to-top ${
+      className={`fixed grid place-items-center w-12 h-12 rounded-full text-white shadow-lg z-40 right-4 bottom-4 max-[420px]:bottom-[96px] lg:right-[50px] lg:bottom-[50px] btn-back-to-top ${
         show ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
       }`}
       style={{ aspectRatio: '1 / 1' }}

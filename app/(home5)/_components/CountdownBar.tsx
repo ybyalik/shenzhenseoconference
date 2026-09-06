@@ -77,7 +77,7 @@ export function CountdownBar() {
   );
 
   return (
-    <div className="fixed z-40 left-1/2 -translate-x-1/2 bottom-3 max-[420px]:bottom-20 lg:bottom-[50px] max-w-[calc(100vw-1.5rem)]">
+    <div className="fixed z-40 left-1/2 -translate-x-1/2 bottom-3 lg:bottom-[50px] max-w-[calc(100vw-1.5rem)]">
       <div
         className="flex items-center gap-3 md:gap-4 rounded-2xl border border-white/15 pl-4 pr-2 py-2.5 md:pl-5 md:pr-3 md:py-3 shadow-2xl"
         style={{ background: 'rgba(6, 12, 21, 0.92)', backdropFilter: 'blur(10px)' }}

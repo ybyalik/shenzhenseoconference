@@ -21,6 +21,15 @@ import { PROFILE_BY_NAME } from '@/lib/speaker-profiles';
 type Tier = 'ALL' | 'FREE' | 'STANDARD' | 'DELUXE' | 'VIP';
 const TIERS: Tier[] = ['ALL', 'FREE', 'STANDARD', 'DELUXE', 'VIP'];
 
+function ClockIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7.5V12l3 1.8" />
+    </svg>
+  );
+}
+
 function ChevronDown({ className = '' }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
@@ -416,45 +425,46 @@ function TierBadge({ label }: { label: string }) {
   );
 }
 
+const WEEKDAYS: Record<string, string> = {
+  Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday',
+  Fri: 'Friday', Sat: 'Saturday', Sun: 'Sunday',
+};
+
+/** "Sat Sep 12" -> { weekday: 'Saturday', month: 'Sep', day: '12' } */
+function splitDayLabel(label: string) {
+  const [wd, month, day] = label.trim().split(/\s+/);
+  return { weekday: WEEKDAYS[wd] ?? wd, month, day };
+}
+
 function SideEventCard({ event }: { event: SideEvent }) {
   const [open, setOpen] = useState(true);
 
-  return (
-    <div className="rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:px-9 md:pt-9" style={{ paddingBottom: 48 }}>
-      <div className="flex flex-col items-start gap-3 md:flex-row md:items-start md:justify-between md:flex-wrap">
-        {event.badge && (
-          <span className="order-1 md:order-2">
-            <TierBadge label={event.badge} />
-          </span>
-        )}
-        <div
-          className="order-2 md:order-1 uppercase text-[14px] md:text-[16px] tracking-[0.7px] md:tracking-[0.8px]"
-          style={{
-            color: '#EB3030',
-            fontFamily: 'General Sans, system-ui, sans-serif',
-            fontWeight: 700,
-            lineHeight: '150%',
-          }}
-        >
-          {event.dayLabel}
+  // Cards flagged plainDetails (the Speaker Dinner) keep the original simple
+  // header. The two side events use the date-rail layout below.
+  if (event.plainDetails) {
+    return (
+      <div className="rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:px-9 md:pt-9" style={{ paddingBottom: 48 }}>
+        <div className="flex flex-col items-start gap-3 md:flex-row md:items-start md:justify-between md:flex-wrap">
+          {event.badge && (
+            <span className="order-1 md:order-2">
+              <TierBadge label={event.badge} />
+            </span>
+          )}
+          <div
+            className="order-2 md:order-1 uppercase text-[14px] md:text-[16px] tracking-[0.7px] md:tracking-[0.8px]"
+            style={{ color: '#EB3030', fontFamily: 'General Sans, system-ui, sans-serif', fontWeight: 700, lineHeight: '150%' }}
+          >
+            {event.dayLabel}
+          </div>
         </div>
-      </div>
-      {event.title && (
-        <h3
-          className="display uppercase mt-3 text-[20px] md:text-[28px] leading-normal md:leading-[40px]"
-          style={{
-            color: '#F9F9F9',
-            fontWeight: 700,
-          }}
-        >
-          {event.title}
-        </h3>
-      )}
-      {/* Label column on the left, value on the right, split by hairline rules.
-          Stacking them as "Label: value" lines ran together into a block of
-          text once the venues gained bilingual addresses. A card with only a
-          couple of short facts keeps the plain lines. */}
-      {event.plainDetails ? (
+        {event.title && (
+          <h3
+            className="display uppercase mt-3 text-[20px] md:text-[28px] leading-normal md:leading-[40px]"
+            style={{ color: '#F9F9F9', fontWeight: 700 }}
+          >
+            {event.title}
+          </h3>
+        )}
         <dl className="mt-4 flex flex-col gap-2 max-w-[820px]">
           {event.details.map((d) => (
             <div
@@ -466,46 +476,109 @@ function SideEventCard({ event }: { event: SideEvent }) {
             </div>
           ))}
         </dl>
-      ) : (
-        <dl className="mt-5 max-w-[860px]">
-          {event.details.map((d) => (
-            <div
-              key={d.label}
-              className="grid grid-cols-1 sm:grid-cols-[128px_1fr] gap-1 sm:gap-6 py-4 border-t border-white/[0.08] first:border-t-0 first:pt-0"
-            >
-              <dt
-                className="uppercase text-white/45 text-[10px] md:text-[11px] font-semibold sm:pt-[3px]"
-                style={{ fontFamily: 'General Sans, system-ui, sans-serif', letterSpacing: '0.14em' }}
-              >
-                {d.label}
-              </dt>
-              <dd
-                className="text-white/80 text-[13px] md:text-[14px]"
-                style={{ fontFamily: 'General Sans, system-ui, sans-serif', fontWeight: 400, lineHeight: '170%' }}
-              >
-                {d.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      )}
+      </div>
+    );
+  }
 
-      {event.schedule && (
-        <>
-          <div className="mt-6 block">
-            <button
-              type="button"
-              onClick={() => setOpen((v) => !v)}
-              aria-expanded={open}
-              className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase text-white border border-white/40 hover:border-white transition-colors"
+  const { weekday, month, day } = splitDayLabel(event.dayLabel);
+  const time = event.details.find((d) => d.label === 'Time');
+  const rest = event.details.filter((d) => d.label !== 'Time');
+
+  return (
+    <div className="rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:p-9">
+      <div className="flex flex-col md:flex-row md:gap-9">
+        {/* Date rail. On mobile it lies flat across the top instead of
+            standing in its own column. */}
+        <div className="shrink-0 md:w-[150px] md:border-r md:border-white/10 md:pr-9 pb-5 md:pb-0">
+          <div className="flex items-baseline gap-3 md:block">
+            <div
+              className="uppercase"
+              style={{ color: '#EB3030', fontFamily: 'General Sans, system-ui, sans-serif', fontSize: 11, fontWeight: 700, letterSpacing: '0.18em' }}
             >
-              {open ? 'Hide Schedule' : 'View Schedule'}
-              <ChevronDown className={`w-4 h-4 transition-transform ${open ? 'rotate-180' : ''}`} />
-            </button>
+              {weekday}
+            </div>
+            <div className="flex items-baseline gap-2 md:block">
+              <div
+                className="display text-white md:mt-2 leading-none"
+                style={{ fontSize: 'clamp(38px, 6vw, 64px)', fontWeight: 700, letterSpacing: '-0.02em' }}
+              >
+                {day}
+              </div>
+              <div
+                className="uppercase text-white/45 md:mt-2"
+                style={{ fontFamily: 'General Sans, system-ui, sans-serif', fontSize: 11, fontWeight: 600, letterSpacing: '0.2em' }}
+              >
+                {month}
+              </div>
+            </div>
           </div>
-          {open && <div className="mt-6">{event.schedule}</div>}
-        </>
-      )}
+          <div className="hidden md:block mt-5 h-[2px] w-12" style={{ background: '#EB3030' }} />
+        </div>
+
+        <div className="flex-1 min-w-0">
+          <div className="flex items-start justify-between gap-4 flex-wrap">
+            {time && (
+              <div className="flex items-center gap-3 min-w-0">
+                <ClockIcon className="w-5 h-5 md:w-6 md:h-6 text-white/50 shrink-0" />
+                <span
+                  className="display text-white"
+                  style={{ fontSize: 'clamp(20px, 2.6vw, 28px)', fontWeight: 700, letterSpacing: '-0.01em' }}
+                >
+                  {time.value}
+                </span>
+              </div>
+            )}
+            {event.badge && <TierBadge label={event.badge} />}
+          </div>
+
+          {event.title && (
+            <h3
+              className="display uppercase mt-4 text-[20px] md:text-[26px] leading-tight"
+              style={{ color: '#F9F9F9', fontWeight: 700 }}
+            >
+              {event.title}
+            </h3>
+          )}
+
+          <dl className="mt-6">
+            {rest.map((d) => (
+              <div
+                key={d.label}
+                className="grid grid-cols-1 sm:grid-cols-[132px_1fr] gap-1 sm:gap-6 py-4 border-t border-white/[0.08] first:border-t-0 first:pt-0"
+              >
+                <dt
+                  className="uppercase text-white/45 text-[10px] md:text-[11px] font-semibold sm:pt-[3px]"
+                  style={{ fontFamily: 'General Sans, system-ui, sans-serif', letterSpacing: '0.14em' }}
+                >
+                  {d.label}
+                </dt>
+                <dd
+                  className="text-white/80 text-[13px] md:text-[14px]"
+                  style={{ fontFamily: 'General Sans, system-ui, sans-serif', fontWeight: 400, lineHeight: '170%' }}
+                >
+                  {d.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+
+          {event.schedule && (
+            <div className="mt-6 flex md:justify-end">
+              <button
+                type="button"
+                onClick={() => setOpen((v) => !v)}
+                aria-expanded={open}
+                className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase text-white gradient-cta"
+              >
+                {open ? 'Hide Full Schedule' : 'View Full Schedule'}
+                <ChevronDown className={`w-4 h-4 transition-transform ${open ? 'rotate-180' : ''}`} />
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {event.schedule && open && <div className="mt-7">{event.schedule}</div>}
     </div>
   );
 }
@@ -1557,8 +1630,7 @@ function ConferenceEventsSection({ activeTier }: { activeTier: Tier }) {
             lineHeight: '24px',
           }}
         >
-          The five working days of the conference. Sessions are tagged by ticket tier; use the
-          filter above to narrow the view to what you have access to.
+          The five working days of the conference.
         </p>
 
         <div
