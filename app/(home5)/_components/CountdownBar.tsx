@@ -9,12 +9,20 @@ import { ArrowUpRight } from './shared';
  * Floating countdown to the first session (Day 1 workshops, 9:00 AM Shenzhen
  * time, which is UTC+8). Centred along the bottom of the viewport.
  *
- * It hides itself once the conference has finished, and can be dismissed; the
- * dismissal is remembered in this browser so it doesn't nag on every page.
+ * It hides itself once the conference has finished, and can be dismissed.
+ * Dismissing it is remembered for the rest of that browsing session only, so it
+ * doesn't nag while someone reads through the site, but a visitor who comes
+ * back another day sees the countdown again.
  */
 const EVENT_START = Date.parse('2026-09-14T01:00:00Z'); // 9:00 AM Sep 14, Shenzhen
 const EVENT_END = Date.parse('2026-09-18T14:00:00Z'); // 10:00 PM Sep 18, Shenzhen
+// sessionStorage, not localStorage: it survives navigation and reloads but is
+// cleared when the browser tab is closed, which is the behaviour we want.
 const DISMISS_KEY = 'szseo-countdown-dismissed';
+// The first version of this stored the dismissal in localStorage, which never
+// expires. Clear that key so anyone who dismissed it back then isn't hidden
+// from the countdown forever. Safe to delete once the event has passed.
+const LEGACY_DISMISS_KEY = 'szseo-countdown-dismissed';
 
 function parts(ms: number) {
   const s = Math.max(0, Math.floor(ms / 1000));
@@ -36,7 +44,8 @@ export function CountdownBar() {
 
   useEffect(() => {
     try {
-      setDismissed(window.localStorage.getItem(DISMISS_KEY) === '1');
+      window.localStorage.removeItem(LEGACY_DISMISS_KEY);
+      setDismissed(window.sessionStorage.getItem(DISMISS_KEY) === '1');
     } catch {
       setDismissed(false);
     }
@@ -53,7 +62,7 @@ export function CountdownBar() {
   const close = () => {
     setDismissed(true);
     try {
-      window.localStorage.setItem(DISMISS_KEY, '1');
+      window.sessionStorage.setItem(DISMISS_KEY, '1');
     } catch {
       /* private browsing: it just reappears next page, which is fine */
     }
