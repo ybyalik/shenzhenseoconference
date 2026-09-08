@@ -55,7 +55,7 @@ export default function SideEventDecks() {
             {
               slug: '../seo-happiness',
               day: 'Sunday 13 September',
-              kind: 'Talk · Engineering SEO happiness',
+              kind: 'Talk · Stress-free SEO',
               slides: SEO_HAPPINESS,
             },
           ].map((d) => (

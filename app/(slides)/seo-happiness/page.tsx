@@ -10,7 +10,7 @@ export default function Page() {
         slug: 'seo-happiness',
         day: 'Sunday 13 September',
         kind: 'Talk',
-        title: 'Sun 13 Sep · SEO Happiness',
+        title: 'Sun 13 Sep · Stress-free SEO',
         slides: SEO_HAPPINESS,
       }}
     />
