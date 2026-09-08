@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 export default function SlidesLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${unbounded.variable} home5-root`} style={{ overflow: 'hidden' }}>
+      <body className={`${unbounded.variable} home5-root`}>
         {children}
       </body>
     </html>

@@ -93,11 +93,27 @@ const CENTER = `h-full flex flex-col items-center justify-center text-center ${P
 
 /* ──────────────────────────── REUSABLE SLIDE SHAPES ────────────────────────── */
 
-function TitleSlide({ line, sub }: { line: React.ReactNode; sub: string }) {
+function TitleSlide({ line, sub }: { line: React.ReactNode; sub?: string }) {
   return (
-    <div className="relative h-full">
-      <Image src="/assets/slide-bg-title.webp" alt="" fill priority className="object-cover" sizes="100vw" />
+    <div className="relative h-full overflow-hidden">
+      {/* The backdrop drifts almost imperceptibly for the length of the slide,
+          so the title card feels alive without pulling focus. */}
+      <div className="absolute inset-0 t-drift">
+        <Image src="/assets/slide-bg-title.webp" alt="" fill priority className="object-cover" sizes="100vw" />
+      </div>
       <div className="absolute inset-0" style={{ background: 'rgba(3,6,13,0.55)' }} />
+
+      {/* A soft breath of brand light behind the logo. */}
+      <div
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 t-glow pointer-events-none"
+        style={{
+          width: 'min(70vw, 900px)',
+          height: 'min(70vw, 900px)',
+          background: 'radial-gradient(circle, rgba(17,139,172,0.28) 0%, rgba(235,48,48,0.12) 42%, transparent 68%)',
+          filter: 'blur(20px)',
+        }}
+      />
+
       <div className={`relative ${CENTER}`}>
         <Image
           src="/logo-white.webp"
@@ -105,10 +121,11 @@ function TitleSlide({ line, sub }: { line: React.ReactNode; sub: string }) {
           width={480}
           height={89}
           priority
-          className="w-[min(40vw,460px)] h-auto"
+          className="w-[min(40vw,460px)] h-auto t-rise"
         />
+
         <h1
-          className="display mt-[6vh]"
+          className="display mt-[6vh] t-rise t-rise-2"
           style={{
             color: 'var(--fg)',
             fontSize: 'clamp(38px, 5.6vw, 92px)',
@@ -120,25 +137,48 @@ function TitleSlide({ line, sub }: { line: React.ReactNode; sub: string }) {
         >
           {line}
         </h1>
-        <p
-          className="mt-7"
+
+        {/* The brand gradient, drawn as a rule that opens under the title. */}
+        <div
+          className="mt-[5vh] t-rule"
           style={{
-            color: 'var(--muted)',
-            fontFamily: 'General Sans, system-ui, sans-serif',
-            fontSize: 'clamp(16px, 1.9vw, 28px)',
-            fontWeight: 500,
+            width: 'min(46vw, 480px)',
+            height: 3,
+            borderRadius: 3,
+            background: 'linear-gradient(90deg, transparent 0%, var(--teal) 22%, var(--red) 78%, transparent 100%)',
           }}
-        >
-          {sub}
-        </p>
+        />
+
+        {sub && (
+          <p
+            className="mt-7 t-rise t-rise-3"
+            style={{
+              color: 'var(--muted)',
+              fontFamily: 'General Sans, system-ui, sans-serif',
+              fontSize: 'clamp(16px, 1.9vw, 28px)',
+              fontWeight: 500,
+            }}
+          >
+            {sub}
+          </p>
+        )}
       </div>
     </div>
   );
 }
 
-function HostSlide({ rows }: { rows: [string, React.ReactNode][] }) {
+function HostSlide({
+  summary,
+  roles,
+  brands,
+}: {
+  /** The headline claim. The roles below are the breakdown of it. */
+  summary: string;
+  roles?: [string, string][];
+  brands: string[];
+}) {
   return (
-    <div className="h-full grid md:grid-cols-[minmax(0,36%)_1fr]">
+    <div className="h-full grid md:grid-cols-[minmax(0,34%)_1fr]">
       <div className="relative hidden md:block">
         <Image
           src="/figma-assets/jp-portrait.png"
@@ -146,17 +186,18 @@ function HostSlide({ rows }: { rows: [string, React.ReactNode][] }) {
           fill
           priority
           className="object-cover object-center"
-          sizes="36vw"
+          sizes="34vw"
         />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, transparent 50%, var(--bg) 100%)' }} />
       </div>
+
       <div className={`flex flex-col justify-center ${PAD}`}>
         <Eyebrow>Your host</Eyebrow>
         <h2
-          className="display mt-5"
+          className="display mt-4"
           style={{
             color: 'var(--fg)',
-            fontSize: 'clamp(38px, 5vw, 82px)',
+            fontSize: 'clamp(34px, 4.4vw, 72px)',
             fontWeight: 700,
             lineHeight: 0.98,
             letterSpacing: '-0.025em',
@@ -164,40 +205,96 @@ function HostSlide({ rows }: { rows: [string, React.ReactNode][] }) {
         >
           John / JP Zhang
         </h2>
-        <dl className="mt-[5vh] flex flex-col">
-          {rows.map(([k, v], i) => (
-            <div
-              key={k}
-              className="grid grid-cols-[7.5rem_1fr] gap-6 items-baseline py-[1.6vh]"
-              style={{ borderTop: i === 0 ? 'none' : '1px solid var(--line)' }}
-            >
-              <dt
-                className="uppercase"
+
+        {/* Experience: one claim, with the three places it came from nested
+            beneath it so the hierarchy is obvious. */}
+        <div className="mt-[5vh]">
+          <div
+            className="uppercase"
+            style={{
+              color: 'var(--muted-2)',
+              fontFamily: 'General Sans, system-ui, sans-serif',
+              fontSize: 'clamp(9px, 0.9vw, 12px)',
+              fontWeight: 600,
+              letterSpacing: '0.2em',
+            }}
+          >
+            Experience
+          </div>
+          <div
+            className="display mt-2.5"
+            style={{ color: 'var(--fg)', fontSize: 'clamp(19px, 2.3vw, 36px)', fontWeight: 700, letterSpacing: '-0.015em', lineHeight: 1.15 }}
+          >
+            {summary}
+          </div>
+
+          {roles && (
+            <ul className="mt-5 pl-5 flex flex-col gap-3" style={{ borderLeft: '2px solid rgba(235,48,48,0.5)' }}>
+              {roles.map(([k, v]) => (
+                <li key={k} className="grid grid-cols-[5.5rem_1fr] gap-4 items-baseline">
+                  <span
+                    className="uppercase"
+                    style={{
+                      color: 'var(--red)',
+                      fontFamily: 'General Sans, system-ui, sans-serif',
+                      fontSize: 'clamp(9px, 0.85vw, 12px)',
+                      fontWeight: 700,
+                      letterSpacing: '0.16em',
+                    }}
+                  >
+                    {k}
+                  </span>
+                  <span
+                    style={{
+                      color: 'var(--muted)',
+                      fontFamily: 'General Sans, system-ui, sans-serif',
+                      fontSize: 'clamp(12px, 1.2vw, 18px)',
+                      fontWeight: 400,
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {v}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        {/* The brands he owns are a separate thing from the CV above, so they
+            get a rule and their own treatment: one chip per brand. */}
+        <div className="mt-[5vh] pt-[4vh]" style={{ borderTop: '1px solid var(--line-2)' }}>
+          <div
+            className="uppercase"
+            style={{
+              color: 'var(--muted-2)',
+              fontFamily: 'General Sans, system-ui, sans-serif',
+              fontSize: 'clamp(9px, 0.9vw, 12px)',
+              fontWeight: 600,
+              letterSpacing: '0.2em',
+            }}
+          >
+            Owned brands
+          </div>
+          <ul className="mt-4 flex flex-wrap gap-2.5">
+            {brands.map((brand) => (
+              <li
+                key={brand}
+                className="display rounded-full px-4 py-2"
                 style={{
-                  color: 'var(--muted-2)',
-                  fontFamily: 'General Sans, system-ui, sans-serif',
-                  fontSize: 'clamp(9px, 0.9vw, 12px)',
-                  fontWeight: 600,
-                  letterSpacing: '0.18em',
-                }}
-              >
-                {k}
-              </dt>
-              <dd
-                className="display"
-                style={{
+                  border: '1px solid var(--line-2)',
+                  background: 'rgba(249,249,249,0.04)',
                   color: 'var(--fg)',
-                  fontSize: 'clamp(15px, 1.75vw, 27px)',
+                  fontSize: 'clamp(12px, 1.25vw, 19px)',
                   fontWeight: 700,
-                  letterSpacing: '-0.01em',
-                  lineHeight: 1.25,
+                  letterSpacing: '-0.005em',
                 }}
               >
-                {v}
-              </dd>
-            </div>
-          ))}
-        </dl>
+                {brand}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
@@ -205,116 +302,183 @@ function HostSlide({ rows }: { rows: [string, React.ReactNode][] }) {
 
 /** Mission / vision / values, over the generated East–West artwork. */
 function DnaSlide() {
+  // DNA, vision and values are three peers, so they share one size and weight.
+  // The values get the brand gradient and a staggered entrance instead of extra
+  // size, so they carry more energy without breaking that parity.
+  const VALUES = ['Growth.', 'Entrepreneurship.', 'Partnership.'];
+  const PILLARS: [string, React.ReactNode][] = [
+    ['DNA', <>Connecting Eastern &amp; Western SEOs</>],
+    ['Vision', 'China’s most international SEO conference'],
+    [
+      'Values',
+      <span
+        key="values"
+        className="block"
+        style={{
+          backgroundImage: 'linear-gradient(150deg, #86dff7 0%, #f9f9f9 45%, #fd4c4c 100%)',
+          WebkitBackgroundClip: 'text',
+          backgroundClip: 'text',
+          color: 'transparent',
+        }}
+      >
+        {VALUES.map((v, i) => (
+          <span key={v} className={`block v-pop${i === 1 ? ' v-pop-2' : i === 2 ? ' v-pop-3' : ''}`}>
+            {v}
+          </span>
+        ))}
+      </span>,
+    ],
+  ];
+
   return (
     <div className="relative h-full">
       <Image src="/assets/slide-bg-bridge.webp" alt="" fill className="object-cover" sizes="100vw" />
-      <div className="absolute inset-0" style={{ background: 'rgba(3,6,13,0.62)' }} />
+      <div className="absolute inset-0" style={{ background: 'rgba(3,6,13,0.78)' }} />
+      <div
+        className="absolute inset-0"
+        style={{ background: 'radial-gradient(ellipse at center, rgba(3,6,13,0.6) 0%, transparent 72%)' }}
+      />
+
       <div className={`relative ${CENTER}`}>
-        <Eyebrow center>Our DNA</Eyebrow>
-        <Headline center>
-          Connecting Eastern &amp;<br />Western SEOs
-        </Headline>
-        <div className="mt-[8vh] grid gap-[5vh] sm:grid-cols-2 w-full" style={{ maxWidth: 980 }}>
-          <Stat size="md" label="Vision" value="China’s most international SEO conference" />
-          <Stat size="md" label="Values" value="Growth. Entrepreneurship. Partnership." />
+        <Headline center>What is Shenzhen SEO Conference?</Headline>
+
+        <div className="mt-[8vh] grid gap-[5vh] md:gap-[2.5vw] md:grid-cols-3 w-full" style={{ maxWidth: 1480 }}>
+          {PILLARS.map(([label, value]) => (
+            <div key={label} className="text-center">
+              <div
+                className="uppercase"
+                style={{
+                  color: 'var(--red)',
+                  fontFamily: 'General Sans, system-ui, sans-serif',
+                  fontSize: 'clamp(10px, 1vw, 14px)',
+                  fontWeight: 700,
+                  letterSpacing: '0.2em',
+                }}
+              >
+                {label}
+              </div>
+              <div
+                className="display mt-4"
+                style={{
+                  color: 'var(--fg)',
+                  fontSize: 'clamp(17px, 2vw, 32px)',
+                  fontWeight: 700,
+                  lineHeight: 1.25,
+                  letterSpacing: '-0.015em',
+                  textWrap: 'balance',
+                }}
+              >
+                {value}
+              </div>
+            </div>
+          ))}
         </div>
+
+        <p
+          className="display mt-[8vh] flex flex-wrap items-baseline justify-center gap-x-3.5 gap-y-2"
+          style={{ fontWeight: 700, letterSpacing: '-0.015em' }}
+        >
+          <span style={{ color: 'var(--muted-2)', fontSize: 'clamp(13px, 1.4vw, 20px)' }}>Goal</span>
+          <span style={{ color: 'var(--red)', fontSize: 'clamp(24px, 3vw, 46px)', lineHeight: 1 }}>50%+</span>
+          <span style={{ color: 'var(--fg)', fontSize: 'clamp(15px, 1.7vw, 27px)' }}>international attendees</span>
+        </p>
       </div>
     </div>
   );
 }
 
-/** The barrier on the left, the way past it on the right. */
+/** Told as a story rather than a comparison table: the barrier, the questions
+ *  people actually asked, and what we built in response. */
 function WhySlide({ extra }: { extra?: string }) {
-  const panels = [
-    {
-      tag: 'The main conference',
-      accent: false,
-      rows: [
-        ['When', 'Weekdays'],
-        ['Ticket', '$600'],
-        ['So', 'Time off work, and a real spend'],
-      ] as [string, string][],
-    },
-    {
-      tag: 'This side event',
-      accent: true,
-      rows: [
-        ['When', 'A weekend afternoon'],
-        ['Ticket', 'Free'],
-        ['So', 'No sponsors, no upsells, no spam'],
-      ] as [string, string][],
-    },
-  ];
+  const ASKED = ['Can you make a cheaper one?', 'Is it really worth it?', 'How was it last year?'];
+
   return (
     <div className={CENTER}>
-      <Eyebrow center>Why we do this</Eyebrow>
-      <Headline center>Bridging the information gap</Headline>
-      <div className="mt-[6vh] grid gap-6 md:grid-cols-2 w-full text-left" style={{ maxWidth: 1250 }}>
-        {panels.map((panel) => (
+      <Eyebrow center>Why this event exists</Eyebrow>
+      <Headline center>Five days already. Why add two afternoons?</Headline>
+
+      <div className="mt-[7vh] w-full flex flex-col items-center gap-[5vh]" style={{ maxWidth: 1250 }}>
+        {/* 1. The barrier */}
+        <div className="text-center">
           <div
-            key={panel.tag}
-            className="rounded-2xl p-[3vw] md:p-9"
+            className="uppercase"
             style={{
-              border: `1px solid ${panel.accent ? 'rgba(235,48,48,0.45)' : 'var(--line-2)'}`,
-              background: panel.accent ? 'rgba(235,48,48,0.06)' : 'transparent',
+              color: 'var(--muted-2)',
+              fontFamily: 'General Sans, system-ui, sans-serif',
+              fontSize: 'clamp(10px, 1vw, 13px)',
+              fontWeight: 600,
+              letterSpacing: '0.2em',
             }}
           >
-            <div
-              className="uppercase"
-              style={{
-                color: panel.accent ? 'var(--red)' : 'var(--muted-2)',
-                fontFamily: 'General Sans, system-ui, sans-serif',
-                fontSize: 'clamp(10px, 1vw, 14px)',
-                fontWeight: 700,
-                letterSpacing: '0.18em',
-              }}
-            >
-              {panel.tag}
-            </div>
-            <dl className="mt-6 flex flex-col">
-              {panel.rows.map(([k, v], i) => (
-                <div
-                  key={k}
-                  className="grid grid-cols-[5.5rem_1fr] gap-5 items-baseline py-[1.4vh]"
-                  style={{ borderTop: i === 0 ? 'none' : '1px solid var(--line)' }}
-                >
-                  <dt
-                    className="uppercase"
-                    style={{
-                      color: 'var(--muted-2)',
-                      fontFamily: 'General Sans, system-ui, sans-serif',
-                      fontSize: 'clamp(9px, 0.85vw, 12px)',
-                      fontWeight: 600,
-                      letterSpacing: '0.16em',
-                    }}
-                  >
-                    {k}
-                  </dt>
-                  <dd
-                    className="display"
-                    style={{ color: 'var(--fg)', fontSize: 'clamp(16px, 1.85vw, 29px)', fontWeight: 700, letterSpacing: '-0.01em' }}
-                  >
-                    {v}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+            The barrier
           </div>
-        ))}
-      </div>
-      {extra && (
+          <p
+            className="display mt-3 flex flex-wrap items-baseline justify-center gap-x-4 gap-y-1"
+            style={{ color: 'var(--fg)', fontSize: 'clamp(17px, 2vw, 32px)', fontWeight: 700, letterSpacing: '-0.015em' }}
+          >
+            <span>Weekdays</span>
+            <span style={{ color: 'var(--muted-2)' }}>·</span>
+            <span>$600 minimum</span>
+            <span style={{ color: 'var(--muted-2)' }}>·</span>
+            <span>Time off and travel</span>
+          </p>
+        </div>
+
+        {/* 2. What people actually asked. The quotes are the story. */}
+        <div className="w-full">
+          <div
+            className="uppercase text-center"
+            style={{
+              color: 'var(--muted-2)',
+              fontFamily: 'General Sans, system-ui, sans-serif',
+              fontSize: 'clamp(10px, 1vw, 13px)',
+              fontWeight: 600,
+              letterSpacing: '0.2em',
+            }}
+          >
+            So people kept asking
+          </div>
+          <ul className="mt-4 grid gap-3 md:grid-cols-3">
+            {ASKED.map((q) => (
+              <li
+                key={q}
+                className="rounded-2xl px-5 py-6 flex items-center justify-center text-center"
+                style={{ border: '1px solid var(--line-2)', background: 'rgba(249,249,249,0.03)' }}
+              >
+                <span
+                  className="display"
+                  style={{ color: 'var(--fg)', fontSize: 'clamp(14px, 1.55vw, 24px)', fontWeight: 700, letterSpacing: '-0.01em', lineHeight: 1.25 }}
+                >
+                  <span style={{ color: 'var(--red)' }}>“</span>
+                  {q}
+                  <span style={{ color: 'var(--red)' }}>”</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* 3. The answer */}
         <p
-          className="mt-[5vh]"
-          style={{
-            color: 'var(--fg)',
-            fontFamily: 'General Sans, system-ui, sans-serif',
-            fontSize: 'clamp(16px, 1.8vw, 27px)',
-            fontWeight: 500,
-          }}
+          className="display text-center"
+          style={{ color: 'var(--fg)', fontSize: 'clamp(19px, 2.4vw, 40px)', fontWeight: 700, letterSpacing: '-0.02em', textWrap: 'balance' }}
         >
-          {extra}
+          So we built a <span style={{ color: 'var(--red)' }}>free sample</span> of it.
         </p>
-      )}
+
+        {extra && (
+          <p
+            style={{
+              color: 'var(--muted)',
+              fontFamily: 'General Sans, system-ui, sans-serif',
+              fontSize: 'clamp(13px, 1.4vw, 20px)',
+              fontWeight: 500,
+            }}
+          >
+            {extra}
+          </p>
+        )}
+      </div>
     </div>
   );
 }
@@ -362,30 +526,65 @@ function SurpriseSlide() {
           </div>
         ))}
       </div>
+      {/* The point of the slide: what we did about it, and that the change of
+          venue is a change of vibe, not of purpose. */}
       <p
-        className="mt-[6vh]"
+        className="display mt-[6vh]"
         style={{
           color: 'var(--fg)',
+          fontSize: 'clamp(19px, 2.4vw, 40px)',
+          fontWeight: 700,
+          letterSpacing: '-0.02em',
+          textWrap: 'balance',
+        }}
+      >
+        So we built <span style={{ color: 'var(--red)' }}>two casual afternoons</span> for the rest.
+      </p>
+      <p
+        className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-2"
+        style={{
+          color: 'var(--muted)',
           fontFamily: 'General Sans, system-ui, sans-serif',
-          fontSize: 'clamp(17px, 2vw, 30px)',
+          fontSize: 'clamp(13px, 1.45vw, 21px)',
           fontWeight: 500,
         }}
       >
-        So we built a weekend stage for East–West exchange.
+        <span>Main stage: formal, business.</span>
+        <span style={{ color: 'var(--muted-2)' }}>·</span>
+        <span>Side event: casual.</span>
+        <span style={{ color: 'var(--muted-2)' }}>·</span>
+        <span style={{ color: 'var(--fg)', fontWeight: 700 }}>Same goal: East meets West.</span>
       </p>
     </div>
   );
 }
 
-type Speaker = { name: string; img: string; topic: string };
+type Speaker = { name: string; img: string; topic: string; country: string };
 
-function LineupSlide({ date, speakers }: { date: string; speakers: Speaker[] }) {
+// 2-letter code -> flag emoji. UK is GB in the standard.
+const FLAG: Record<string, string> = {
+  Belgium: 'BE', China: 'CN', Germany: 'DE', UK: 'GB', India: 'IN', Indonesia: 'ID', USA: 'US',
+};
+const flag = (country: string) =>
+  country
+    .split('&')
+    .map((c) => FLAG[c.trim()])
+    .filter(Boolean)
+    .map((cc) => String.fromCodePoint(...[...cc].map((ch) => 0x1f1e6 + ch.charCodeAt(0) - 65)))
+    .join(' ');
+
+function LineupSlide({ speakers }: { speakers: Speaker[] }) {
   return (
     <div className={CENTER}>
-      <Eyebrow center>Today · {date}</Eyebrow>
-      <Headline center>Today’s lineup</Headline>
+      {/* Deliberately small: the speakers are the slide, not the word "lineup". */}
+      <h2
+        className="display"
+        style={{ color: 'var(--fg)', fontSize: 'clamp(20px, 2.4vw, 38px)', fontWeight: 700, letterSpacing: '-0.02em' }}
+      >
+        Today’s lineup
+      </h2>
       <ol
-        className="mt-[6vh] grid gap-[2vw] w-full text-left"
+        className="mt-[5vh] grid gap-[2vw] w-full text-left"
         style={{ gridTemplateColumns: `repeat(${Math.min(speakers.length, 5)}, minmax(0, 1fr))`, maxWidth: 1500 }}
       >
         {speakers.map((sp, i) => (
@@ -393,8 +592,16 @@ function LineupSlide({ date, speakers }: { date: string; speakers: Speaker[] }) 
             <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden" style={{ background: 'rgba(249,249,249,0.05)' }}>
               <Image src={sp.img} alt={sp.name} fill className="object-cover" sizes="20vw" />
             </div>
-            <div className="display mt-4" style={{ color: 'var(--red)', fontSize: 'clamp(11px, 1.05vw, 15px)', fontWeight: 700, letterSpacing: '0.08em' }}>
-              {String(i + 1).padStart(2, '0')}
+            <div className="mt-4 flex items-center gap-2.5">
+              <span
+                className="display"
+                style={{ color: 'var(--red)', fontSize: 'clamp(11px, 1.05vw, 15px)', fontWeight: 700, letterSpacing: '0.08em' }}
+              >
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span style={{ fontSize: 'clamp(14px, 1.4vw, 22px)', lineHeight: 1 }} title={sp.country}>
+                {flag(sp.country)}
+              </span>
             </div>
             <div
               className="display mt-1.5"
@@ -425,12 +632,18 @@ function LineupSlide({ date, speakers }: { date: string; speakers: Speaker[] }) 
 function StatementSlide({
   eyebrow,
   lines,
+  photo,
+  art,
 }: {
   eyebrow: string;
   lines: { text: React.ReactNode; muted?: boolean }[];
+  /** Dimmed full-bleed photograph behind the words. */
+  photo?: string;
+  /** Illustration standing beside the words rather than behind them. */
+  art?: string;
 }) {
-  return (
-    <div className={CENTER}>
+  const words = (
+    <>
       <Eyebrow center>{eyebrow}</Eyebrow>
       <div className="mt-[6vh] flex flex-col gap-[3.5vh]">
         {lines.map((l, i) => (
@@ -439,19 +652,44 @@ function StatementSlide({
             className="display"
             style={{
               color: l.muted ? 'var(--muted)' : 'var(--fg)',
-              fontSize: l.muted ? 'clamp(20px, 2.6vw, 42px)' : 'clamp(38px, 5.4vw, 88px)',
+              fontSize: l.muted ? 'clamp(17px, 2.2vw, 34px)' : 'clamp(34px, 5vw, 82px)',
               fontWeight: 700,
-              lineHeight: 1.02,
+              lineHeight: l.muted ? 1.3 : 1.02,
               letterSpacing: '-0.025em',
               textWrap: 'balance',
+              maxWidth: l.muted ? '26ch' : undefined,
             }}
           >
             {l.text}
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
+
+  if (art) {
+    return (
+      <div className="h-full grid md:grid-cols-[1fr_minmax(0,38%)]">
+        <div className={CENTER}>{words}</div>
+        <div className="relative hidden md:block">
+          <Image src={art} alt="" fill className="object-cover object-center" sizes="38vw" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, var(--bg) 0%, transparent 38%)' }} />
+        </div>
+      </div>
+    );
+  }
+
+  if (photo) {
+    return (
+      <div className="relative h-full">
+        <Image src={photo} alt="" fill className="object-cover" sizes="100vw" />
+        <div className="absolute inset-0" style={{ background: 'rgba(3,6,13,0.78)' }} />
+        <div className={`relative ${CENTER}`}>{words}</div>
+      </div>
+    );
+  }
+
+  return <div className={CENTER}>{words}</div>;
 }
 
 /** The five conference days, as five columns rather than a bulleted list. */
@@ -516,6 +754,109 @@ function FiveDaySlide({ pillars }: { pillars: [string, string] }) {
   );
 }
 
+/** Who the main conference is for. Shown as a grid of days by tier, because
+ *  "Days 3–4" as a line of text does not answer "what do I actually get". */
+function TiersSlide() {
+  const DAYS = [
+    { n: '1', label: 'Workshops & city tours' },
+    { n: '2', label: 'SEO masterminds' },
+    { n: '3', label: 'Main conference' },
+    { n: '4', label: 'Main conference' },
+    { n: '5', label: 'VIP networking' },
+  ];
+  const TIERS = [
+    { name: 'Standard', price: '$600', who: 'SEO practitioners', has: [false, false, true, true, false] },
+    { name: 'Deluxe', price: '$900', who: 'Marketing directors, agency leads', has: [true, true, true, true, false], featured: true },
+    { name: 'VIP', price: '$1,800', who: 'Executives and founders', has: [true, true, true, true, true] },
+  ];
+
+  const label = {
+    fontFamily: 'General Sans, system-ui, sans-serif',
+    fontSize: 'clamp(9px, 0.85vw, 12px)',
+    fontWeight: 600,
+    letterSpacing: '0.16em',
+  } as const;
+
+  return (
+    <div className={CENTER}>
+      <Eyebrow center>Who it’s for</Eyebrow>
+      <h2
+        className="display mt-4"
+        style={{ color: 'var(--fg)', fontSize: 'clamp(22px, 2.8vw, 46px)', fontWeight: 700, letterSpacing: '-0.025em' }}
+      >
+        What each ticket gets you
+      </h2>
+
+      <div className="mt-[6vh] w-full text-left" style={{ maxWidth: 1400 }}>
+        {/* Column headers: the five days */}
+        <div className="grid gap-2" style={{ gridTemplateColumns: '11rem repeat(5, minmax(0, 1fr))' }}>
+          <div />
+          {DAYS.map((d) => (
+            <div key={d.n} className="text-center pb-3">
+              <div className="uppercase" style={{ ...label, color: 'var(--muted-2)' }}>
+                Day {d.n}
+              </div>
+              <div
+                className="mt-1.5"
+                style={{
+                  color: 'var(--muted)',
+                  fontFamily: 'General Sans, system-ui, sans-serif',
+                  fontSize: 'clamp(9px, 0.9vw, 13px)',
+                  lineHeight: 1.3,
+                }}
+              >
+                {d.label}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* One row per tier; a filled bar means that day is included */}
+        {TIERS.map((t) => (
+          <div
+            key={t.name}
+            className="grid gap-2 items-center py-[2vh]"
+            style={{ gridTemplateColumns: '11rem repeat(5, minmax(0, 1fr))', borderTop: '1px solid var(--line-2)' }}
+          >
+            <div>
+              <div className="uppercase" style={{ ...label, color: t.featured ? 'var(--red)' : 'var(--muted-2)' }}>
+                {t.name}
+              </div>
+              <div
+                className="display mt-1.5"
+                style={{ color: 'var(--fg)', fontSize: 'clamp(20px, 2.3vw, 36px)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1 }}
+              >
+                {t.price}
+              </div>
+              <div
+                className="mt-1.5"
+                style={{ color: 'var(--muted-2)', fontFamily: 'General Sans, system-ui, sans-serif', fontSize: 'clamp(9px, 0.9vw, 13px)', lineHeight: 1.35 }}
+              >
+                {t.who}
+              </div>
+            </div>
+            {t.has.map((included, i) => (
+              <div
+                key={i}
+                className="rounded-lg"
+                style={{
+                  height: 'clamp(28px, 4.5vh, 46px)',
+                  background: included
+                    ? t.featured
+                      ? 'linear-gradient(135deg, #eb3030 0%, #fd4c4c 100%)'
+                      : 'rgba(249,249,249,0.9)'
+                    : 'transparent',
+                  border: included ? 'none' : '1px dashed rgba(249,249,249,0.16)',
+                }}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /** Closing call to action: the QR is the whole point, so it gets the space. */
 function CtaSlide({
   eyebrow,
@@ -567,31 +908,39 @@ function CtaSlide({
 /* ─────────────────────────────────── DATA ──────────────────────────────────── */
 
 const DAY1_LINEUP: Speaker[] = [
-  { name: 'Tanya Van Gastel', img: '/assets/tanya-van-gastel.webp', topic: 'Winning AI search: a 4-step guide for Chinese companies' },
-  { name: 'Magenta Qin', img: '/assets/magenta-qin.webp', topic: 'From JSON to Markdown: cutting the cost of AI-powered SEO analysis' },
-  { name: 'Jacky Lin', img: '/assets/jacky-lin.webp', topic: 'From AI tools to B2B growth systems' },
-  { name: 'Sacha Fournier', img: '/assets/sacha-fournier.jpg', topic: 'Winning in the West: agentic digital PR for Chinese brands' },
-  { name: 'Vinayak Gupta & Sharoz Dawa', img: '/assets/vinayak-gupta.webp', topic: 'Build your AI workforce: a 24/7 multi-agent chief of staff' },
+  { name: 'Tanya Van Gastel', img: '/assets/tanya-van-gastel.webp', country: 'Belgium', topic: 'Winning AI search: a 4-step guide for Chinese companies' },
+  { name: 'Magenta Qin', img: '/assets/magenta-qin.webp', country: 'China & Germany', topic: 'From JSON to Markdown: cutting the cost of AI-powered SEO analysis' },
+  { name: 'Jacky Lin', img: '/assets/jacky-lin.webp', country: 'China', topic: 'From AI tools to B2B growth systems' },
+  { name: 'Sacha Fournier', img: '/assets/sacha-fournier.jpg', country: 'UK', topic: 'Winning in the West: agentic digital PR for Chinese brands' },
+  { name: 'Vinayak Gupta & Sharoz Dawa', img: '/assets/vinayak-gupta.webp', country: 'India', topic: 'Build your AI workforce: a 24/7 multi-agent chief of staff' },
 ];
 
 const DAY2_LINEUP: Speaker[] = [
-  { name: 'Jamie I.F.', img: '/assets/jamie-if.webp', topic: 'Affiliates & influencers to grow AI visibility in the USA' },
-  { name: 'Tori Long', img: '/assets/tori-long.webp', topic: 'S.P.A.C.E.: a framework for exporters at a growth ceiling' },
-  { name: 'Ilman Akbar', img: '/assets/ilman-akbar.webp', topic: 'How to talk so the C-suite will listen' },
-  { name: 'Jabez Reuben', img: '/assets/jabez-reuben.jpg', topic: 'Dominating LLMs, AiO & Google rankings with consensus' },
-  { name: 'Secret Speaker', img: '/assets/speaker-placeholder.webp', topic: 'Revealed on the day' },
+  { name: 'Jamie I.F.', img: '/assets/jamie-if.webp', country: 'UK', topic: 'Affiliates & influencers to grow AI visibility in the USA' },
+  { name: 'Tori Long', img: '/assets/tori-long.webp', country: 'China', topic: 'S.P.A.C.E.: a framework for exporters at a growth ceiling' },
+  { name: 'Ilman Akbar', img: '/assets/ilman-akbar.webp', country: 'Indonesia', topic: 'How to talk so the C-suite will listen' },
+  { name: 'Jabez Reuben', img: '/assets/jabez-reuben.jpg', country: 'India', topic: 'Dominating LLMs, AiO & Google rankings with consensus' },
+  { name: 'Secret Speaker', img: '/assets/speaker-placeholder.webp', country: '', topic: 'Revealed on the day' },
 ];
 
-export type Slide = { id: string; section: string; notes: string; body: React.ReactNode };
+export type Slide = { id: string; notes: string; body: React.ReactNode };
+export type Deck = { slug: string; title: string; day: string; kind: string; slides: Slide[] };
 
-export const SLIDES: Slide[] = [
+const ALL: (Slide & { section: string })[] = [
   /* ───────────── Sat 12 Sep · Opening ───────────── */
   {
     id: 'd1-welcome',
     section: 'Sat 12 Sep · Opening',
     notes:
       'Hello everyone, and welcome! Thank you so much for taking the time out of your weekend to join us for this Shenzhen SEO Conference Side Event. My name is John, also known as JP Zhang, and I am absolutely thrilled to see all of you here today. Before we dive into the amazing sessions our guest speakers have prepared, I want to take a few minutes to introduce myself, share the story behind the main conference, and explain exactly why we created this free event.',
-    body: <TitleSlide line="Side Event" sub="Hosted by John / JP Zhang" />,
+    body: <TitleSlide line="Side Event" />,
+  },
+  {
+    id: 'd1-surprise',
+    section: 'Sat 12 Sep · Opening',
+    notes:
+      'Let me start with a very happy problem we encountered this year. We initially planned for about 30 to 40 speakers on the main stage. Instead, we were overwhelmed by more than 150 speaker applications. There were so many incredible experts we desperately wanted to give a stage to, but we couldn’t fit them all, especially since we have to carefully balance the ratio of returning speakers. So, we connected the dots. You want to learn without spending $600 or taking time off work, and we have an abundance of brilliant speakers eager to share. This side event became the perfect bridge. It allows domestic and international practitioners to share the same stage, exchange ideas directly, and truly fulfill our mission. We hope you enjoy today’s sessions, and thank you for supporting this initiative.',
+    body: <SurpriseSlide />,
   },
   {
     id: 'd1-host',
@@ -600,13 +949,13 @@ export const SLIDES: Slide[] = [
       'For those I haven’t met yet, here is a quick background on who I am. I’m a serial entrepreneur deeply rooted in this industry. I’ve been in the SEO game for 16 years, experiencing it from every angle—in-house at companies like Wondershare, working at a Silicon Valley agency, and running my own affiliate content sites. Today, I manage several brands, including my blog, our paid community, and of course, the Shenzhen SEO Conference.',
     body: (
       <HostSlide
-        rows={[
-          ['Experience', '16 years in SEO, as a serial SEO entrepreneur'],
+        summary="16 years in SEO, as a serial SEO entrepreneur"
+        roles={[
           ['In-house', 'Wondershare, Shenzhen (2010) · Whova, San Diego (2016)'],
           ['Agency', 'Baunfire, San Jose (2014–2015)'],
           ['Affiliate', 'Self-employed (2012–13, 2017–now)'],
-          ['Brands', '英文SEO实战派 · SEO实战学院 · Shenzhen SEO Conf · SEO Connector'],
         ]}
+        brands={['英文SEO实战派', 'SEO实战学院', 'Shenzhen SEO Conf', 'SEO Connector']}
       />
     ),
   },
@@ -621,22 +970,15 @@ export const SLIDES: Slide[] = [
     id: 'd1-why',
     section: 'Sat 12 Sep · Opening',
     notes:
-      'Let’s be completely honest about why this side event exists. Attending the main conference is a significant commitment. It takes place on weekdays, and the tickets are around $600. We know many of you are deeply curious about what overseas SEO professionals are doing, but you might be hesitating, wondering if the main event is worth the investment and time off work. We wanted to give you a risk-free weekend afternoon to experience our value firsthand. This event is 100% free, with zero sponsors, zero upsells, and zero spam. We are absorbing the costs for the venue and organization because we want to present this exclusively to the right people. That is exactly why we required an application form—not to be elitist, but as a filter. As long as you filled it out seriously, you were approved. We wanted to ensure this room is filled with practitioners who genuinely care.',
+      'Let’s be completely honest about why this side event exists. Attending the main conference is a significant commitment. It takes place on weekdays, and the tickets are around $600. We know many of you are deeply curious about what overseas SEO professionals are doing, but you might be hesitating, wondering if the main event is worth the investment and time off work. We wanted to give you a risk-free weekend afternoon to experience our value firsthand. This event is 100% free, with zero sponsors and zero spam. We are absorbing the costs for the venue and organization because we want to present this exclusively to the right people. That is exactly why we required an application form—not to be elitist, but as a filter. As long as you filled it out seriously, you were approved. We wanted to ensure this room is filled with practitioners who genuinely care.',
     body: <WhySlide extra="Application-only, so the room is all practitioners." />,
-  },
-  {
-    id: 'd1-surprise',
-    section: 'Sat 12 Sep · Opening',
-    notes:
-      'The second reason is a very happy problem we encountered this year. We initially planned for about 30 to 40 speakers on the main stage. Instead, we were overwhelmed by more than 150 speaker applications. There were so many incredible experts we desperately wanted to give a stage to, but we couldn’t fit them all, especially since we have to carefully balance the ratio of returning speakers. So, we connected the dots. You want to learn without spending $600 or taking time off work, and we have an abundance of brilliant speakers eager to share. This side event became the perfect bridge. It allows domestic and international practitioners to share the same stage, exchange ideas directly, and truly fulfill our mission. We hope you enjoy today’s sessions, and thank you for supporting this initiative.',
-    body: <SurpriseSlide />,
   },
   {
     id: 'd1-lineup',
     section: 'Sat 12 Sep · Opening',
     notes:
       'Which brings us to today. We have a fantastic lineup of experts ready to share their first-hand strategies with you. My only goal today is for you to enjoy the experience, learn something new, and connect with each other. If you love the vibe today and feel like it’s a good fit, we would love to see you at the main Shenzhen SEO Conference. Let’s get started and welcome our first speaker to the stage!',
-    body: <LineupSlide date="Saturday 12 September" speakers={DAY1_LINEUP} />,
+    body: <LineupSlide speakers={DAY1_LINEUP} />,
   },
 
   /* ───────────── Sat 12 Sep · Closing ───────────── */
@@ -644,14 +986,14 @@ export const SLIDES: Slide[] = [
     id: 'd1c-thanks',
     section: 'Sat 12 Sep · Closing',
     notes:
-      'Thank you all for spending your Saturday afternoon with us. When we opened this event a few hours ago, I promised you a space with zero sponsors, zero upsells, and 100% pure value. Looking at the conversations and the energy in this room today, I believe we delivered exactly that—a genuine exchange between East and West. But we are only halfway there. We have another incredible lineup of speakers tomorrow from 1:00 PM to 6:00 PM right here, and I highly encourage you to come back for part two.',
+      'Thank you all for spending your Saturday afternoon with us. When we opened this event a few hours ago, I promised you a space with zero sponsors, zero spam, and 100% pure value. Looking at the conversations and the energy in this room today, I believe we delivered exactly that—a genuine exchange between East and West. But we are only halfway there. We have another incredible lineup of speakers tomorrow from 1:00 PM to 6:00 PM right here, and I highly encourage you to come back for part two.',
     body: (
       <StatementSlide
+        photo="/assets/chinese-audience.webp"
         eyebrow="That’s a wrap on day one"
         lines={[
           { text: 'Thank you for today' },
-          { text: 'We are only halfway there' },
-          { text: 'See you tomorrow, 1:00 PM – 6:00 PM', muted: true },
+          { text: 'We are only halfway there', muted: true },
         ]}
       />
     ),
@@ -663,10 +1005,11 @@ export const SLIDES: Slide[] = [
       'What you experienced today is just the tip of the iceberg. Remember those 150+ speaker applications I mentioned at the beginning? Today was just a small glimpse into that talent pool. Everything you heard today ladders up to our three core values: SEO & Organic Growth, SEO Entrepreneurship, and International Partnership. If you found today’s strategies valuable, I want you to know that the depth of knowledge and the level of networking we dive into at the main conference goes infinitely deeper.',
     body: (
       <StatementSlide
+        art="/assets/slide-bg-iceberg.webp"
         eyebrow="What you saw today"
         lines={[
           { text: <span style={{ color: 'var(--red)' }}>The tip of the iceberg</span> },
-          { text: 'Growth. Entrepreneurship. Partnership.', muted: true },
+          { text: 'The main conference runs five days: more talks, more speakers, far more depth.', muted: true },
         ]}
       />
     ),
@@ -679,11 +1022,18 @@ export const SLIDES: Slide[] = [
     body: <FiveDaySlide pillars={['Deep dives & advanced strategies', 'Global networking']} />,
   },
   {
+    id: 'd1c-tiers',
+    section: 'Sat 12 Sep · Closing',
+    notes:
+      'There are three ways in. Standard is $600 and covers the two main conference days. Deluxe is $900 and adds the workshops, the city tours and the masterminds. VIP is $1,800 and adds the fifth day, the VIP networking day. Pick the one that matches how deep you want to go.',
+    body: <TiersSlide />,
+  },
+  {
     id: 'd1c-cta',
     section: 'Sat 12 Sep · Closing',
     notes:
       'We know taking time off work and investing $600 for a ticket is a big commitment. That is exactly why we hosted this free side event—so you could test our standard and feel the atmosphere yourself. If today proved to you that we prioritize real signal over noise, then I can confidently say the 5-day main event is an investment that will return its value many times over. The QR code on the screen has all the details for the main conference. Scan it, look at the full agenda, and if you are ready to step into that room, we would be honored to welcome you. Have a great evening, and I will see you all back here tomorrow at 1:00 PM!',
-    body: <CtaSlide eyebrow="Join the right room" headline="Invest in your growth" />,
+    body: <CtaSlide eyebrow="Join the right room" headline="Invest in your growth" footer="See you tomorrow, 1:00 PM" />,
   },
 
   /* ───────────── Sun 13 Sep · Opening ───────────── */
@@ -699,9 +1049,15 @@ export const SLIDES: Slide[] = [
             Side Event <span style={{ color: 'var(--red)' }}>Day 2</span>
           </>
         }
-        sub="Hosted by John / JP Zhang"
       />
     ),
+  },
+  {
+    id: 'd2-surprise',
+    section: 'Sun 13 Sep · Opening',
+    notes:
+      'Let me start with an incredible surprise. We initially planned for 40 speakers on the main stage, but we received over 150 applications from brilliant global experts. We couldn’t fit them all on the main stage, so we created this side event as a bridge. It allows domestic and international practitioners to share the same stage and exchange ideas directly.',
+    body: <SurpriseSlide />,
   },
   {
     id: 'd2-host',
@@ -710,10 +1066,13 @@ export const SLIDES: Slide[] = [
       'For the new faces in the room, here is a quick background on who I am. I’m a serial entrepreneur deeply rooted in this industry. I’ve been in the SEO game for 16 years, experiencing it from every angle—in-house, working at a Silicon Valley agency, and running my own affiliate content sites. Today, I manage several brands, including my blog, our paid community, and the Shenzhen SEO Conference.',
     body: (
       <HostSlide
-        rows={[
-          ['Experience', '16 years in SEO'],
-          ['Brands', '英文SEO实战派 · SEO实战学院 · Shenzhen SEO Conf · SEO Connector'],
+        summary="16 years in SEO, as a serial SEO entrepreneur"
+        roles={[
+          ['In-house', 'Wondershare, Shenzhen (2010) · Whova, San Diego (2016)'],
+          ['Agency', 'Baunfire, San Jose (2014–2015)'],
+          ['Affiliate', 'Self-employed (2012–13, 2017–now)'],
         ]}
+        brands={['英文SEO实战派', 'SEO实战学院', 'Shenzhen SEO Conf', 'SEO Connector']}
       />
     ),
   },
@@ -728,22 +1087,15 @@ export const SLIDES: Slide[] = [
     id: 'd2-why',
     section: 'Sun 13 Sep · Opening',
     notes:
-      'Attending the main conference is a significant commitment. It takes place on weekdays, and the tickets are around $600. We know many of you want to learn from overseas SEO professionals but might be hesitating to take time off work or make that investment. We wanted to give you a risk-free weekend to experience our standard firsthand. This event is 100% free, with zero sponsors, zero upsells, and zero spam. We require an application simply to filter the room and ensure everyone here is a dedicated practitioner.',
+      'Attending the main conference is a significant commitment. It takes place on weekdays, and the tickets are around $600. We know many of you want to learn from overseas SEO professionals but might be hesitating to take time off work or make that investment. We wanted to give you a risk-free weekend to experience our standard firsthand. This event is 100% free, with zero sponsors and zero spam. We require an application simply to filter the room and ensure everyone here is a dedicated practitioner.',
     body: <WhySlide extra="A risk-free weekend to see the standard for yourself." />,
-  },
-  {
-    id: 'd2-surprise',
-    section: 'Sun 13 Sep · Opening',
-    notes:
-      'The second reason we are here is because of an incredible surprise. We initially planned for 40 speakers on the main stage, but we received over 150 applications from brilliant global experts. We couldn’t fit them all on the main stage, so we created this side event as a bridge. It allows domestic and international practitioners to share the same stage and exchange ideas directly.',
-    body: <SurpriseSlide />,
   },
   {
     id: 'd2-lineup',
     section: 'Sun 13 Sep · Opening',
     notes:
       'That brings us to our agenda for today, September 13th. We have a completely different, yet equally fantastic lineup of experts ready to share their strategies with you this afternoon. My goal for you is to learn, connect, and enjoy the vibe. If you find value today, we would love to see you at the main Shenzhen SEO Conference. Let’s get started and welcome our first speaker for Day 2 to the stage!',
-    body: <LineupSlide date="Sunday 13 September" speakers={DAY2_LINEUP} />,
+    body: <LineupSlide speakers={DAY2_LINEUP} />,
   },
 
   /* ───────────── Sun 13 Sep · Closing ───────────── */
@@ -751,9 +1103,10 @@ export const SLIDES: Slide[] = [
     id: 'd2c-thanks',
     section: 'Sun 13 Sep · Closing',
     notes:
-      'And just like that, our two-day side event comes to a close. Whether you were here for just today or spent your entire weekend with us, thank you. When we kicked this off, I promised you an environment with zero sponsors, zero upsells, and pure, actionable value. Looking at the conversations sparked in this room between domestic and international practitioners, I am incredibly proud of what this community just built together over the last 48 hours.',
+      'And just like that, our two-day side event comes to a close. Whether you were here for just today or spent your entire weekend with us, thank you. When we kicked this off, I promised you an environment with zero sponsors, zero spam, and pure, actionable value. Looking at the conversations sparked in this room between domestic and international practitioners, I am incredibly proud of what this community just built together over the last 48 hours.',
     body: (
       <StatementSlide
+        photo="/assets/chinese-audience.webp"
         eyebrow="That’s a wrap"
         lines={[
           { text: 'Thank you for your weekend' },
@@ -769,10 +1122,11 @@ export const SLIDES: Slide[] = [
       'We created this event because we had over 150 brilliant speaker applications and wanted to give you a risk-free taste of our standard. But I want to be very clear: what you experienced this weekend is just the tip of the iceberg. Every strategy you heard today ladders up to our three core values of Growth, Entrepreneurship, and Partnership. If you found these sessions valuable, the depth we reach at the main conference goes infinitely further.',
     body: (
       <StatementSlide
+        art="/assets/slide-bg-iceberg.webp"
         eyebrow="What you saw this weekend"
         lines={[
           { text: <span style={{ color: 'var(--red)' }}>The tip of the iceberg</span> },
-          { text: 'Growth. Entrepreneurship. Partnership.', muted: true },
+          { text: 'The main conference runs five days: more talks, more speakers, far more depth.', muted: true },
         ]}
       />
     ),
@@ -785,6 +1139,13 @@ export const SLIDES: Slide[] = [
     body: <FiveDaySlide pillars={['Advanced global systems', 'High-signal networking']} />,
   },
   {
+    id: 'd2c-tiers',
+    section: 'Sun 13 Sep · Closing',
+    notes:
+      'There are three ways in. Standard is $600 and covers the two main conference days. Deluxe is $900 and adds the workshops, the city tours and the masterminds. VIP is $1,800 and adds the fifth day, the VIP networking day. Pick the one that matches how deep you want to go.',
+    body: <TiersSlide />,
+  },
+  {
     id: 'd2c-cta',
     section: 'Sun 13 Sep · Closing',
     notes:
@@ -792,3 +1153,16 @@ export const SLIDES: Slide[] = [
     body: <CtaSlide eyebrow="Final call" headline="Step into the main room" footer="See you next week" />,
   },
 ];
+
+function pick(section: string): Slide[] {
+  return ALL.filter((s) => s.section === section).map(({ section: _section, ...rest }) => rest);
+}
+
+export const DECKS: Deck[] = [
+  { slug: 'sat-opening', day: 'Saturday 12 September', kind: 'Opening remarks', title: 'Sat 12 Sep · Opening', slides: pick('Sat 12 Sep · Opening') },
+  { slug: 'sat-closing', day: 'Saturday 12 September', kind: 'Closing remarks', title: 'Sat 12 Sep · Closing', slides: pick('Sat 12 Sep · Closing') },
+  { slug: 'sun-opening', day: 'Sunday 13 September', kind: 'Opening remarks', title: 'Sun 13 Sep · Opening', slides: pick('Sun 13 Sep · Opening') },
+  { slug: 'sun-closing', day: 'Sunday 13 September', kind: 'Closing remarks', title: 'Sun 13 Sep · Closing', slides: pick('Sun 13 Sep · Closing') },
+];
+
+export const DECK_BY_SLUG = Object.fromEntries(DECKS.map((d) => [d.slug, d]));
