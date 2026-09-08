@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 import { DECKS } from './deck';
 import { NINE_STEPS } from '../nine-steps/deck';
+import { SEO_HAPPINESS } from '../seo-happiness/deck';
 
 function ArrowUpRight({ className = '' }: { className?: string }) {
   return (
@@ -50,6 +51,12 @@ export default function SideEventDecks() {
               day: 'Saturday 12 September',
               kind: 'Talk · 9 steps with AI',
               slides: NINE_STEPS,
+            },
+            {
+              slug: '../seo-happiness',
+              day: 'Sunday 13 September',
+              kind: 'Talk · Engineering SEO happiness',
+              slides: SEO_HAPPINESS,
             },
           ].map((d) => (
             <li key={d.slug}>
