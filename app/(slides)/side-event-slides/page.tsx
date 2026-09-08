@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { DECKS } from './deck';
+import { NINE_STEPS } from '../nine-steps/deck';
 
 function ArrowUpRight({ className = '' }: { className?: string }) {
   return (
@@ -42,10 +43,18 @@ export default function SideEventDecks() {
         </p>
 
         <ul className="mt-12 grid gap-4 sm:grid-cols-2">
-          {DECKS.map((d) => (
+          {[
+            ...DECKS,
+            {
+              slug: '../nine-steps',
+              day: 'Saturday 12 September',
+              kind: 'Talk · 9 steps with AI',
+              slides: NINE_STEPS,
+            },
+          ].map((d) => (
             <li key={d.slug}>
               <Link
-                href={`/side-event-slides/${d.slug}`}
+                href={d.slug.startsWith('..') ? `/${d.slug.replace('../', '')}` : `/side-event-slides/${d.slug}`}
                 className="group flex flex-col justify-between h-full rounded-2xl p-7 transition-colors"
                 style={{ border: '1px solid var(--line-2)' }}
               >

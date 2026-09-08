@@ -307,8 +307,30 @@ export function Player({ deck }: { deck: Deck }) {
           }
         }
 
+        /* Generic staggered entrance, used to bring a slide's parts in one
+           after another rather than all at once. */
+        .st {
+          animation: tRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        .st-1 { animation-delay: 0.05s; }
+        .st-2 { animation-delay: 0.15s; }
+        .st-3 { animation-delay: 0.25s; }
+        .st-4 { animation-delay: 0.35s; }
+        .st-5 { animation-delay: 0.45s; }
+
+        /* Diagrams settle in with a slight scale so they feel placed. */
+        .dia-in {
+          animation: diaIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+        }
+        @keyframes diaIn {
+          from { opacity: 0; transform: scale(0.965); }
+          to { opacity: 1; transform: none; }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .slide-in,
+          .st,
+          .dia-in,
           .v-pop,
           .t-drift,
           .t-rise,

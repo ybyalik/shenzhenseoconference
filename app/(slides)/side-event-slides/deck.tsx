@@ -167,7 +167,7 @@ function TitleSlide({ line, sub }: { line: React.ReactNode; sub?: string }) {
   );
 }
 
-function HostSlide({
+export function HostSlide({
   summary,
   roles,
   brands,
