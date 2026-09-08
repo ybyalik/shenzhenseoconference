@@ -233,7 +233,17 @@ type SideEvent = {
 
 // `speakers` are names resolved to headshot + title via the shared lineup (same as
 // Day 3 / Day 4). `speakerText` is a plain fallback for non-people (e.g. TBD/TBC).
-type SideEventRow = { time: string; title: string; speakers?: string[]; speakerText?: string; sub?: string };
+// `backup` is a talk held in reserve for this slot. It hangs off the row it
+// backs up rather than sitting on its own line, so it reads as the understudy
+// for that talk instead of another item on the clock.
+type SideEventRow = {
+  time: string;
+  title: string;
+  speakers?: string[];
+  speakerText?: string;
+  sub?: string;
+  backup?: { title: string; speakers?: string[] };
+};
 
 function SideEventSchedule({ rows }: { rows: SideEventRow[] }) {
   return (
@@ -254,6 +264,20 @@ function SideEventSchedule({ rows }: { rows: SideEventRow[] }) {
             {r.sub ? <div className="mt-1 text-[13px] text-white/45 leading-snug">{r.sub}</div> : null}
             {r.speakers ? <SpeakerLine names={r.speakers} /> : null}
             {r.speakerText ? <div className="mt-2 text-[13px] text-white/55">{r.speakerText}</div> : null}
+            {r.backup ? (
+              <div className="mt-3 pl-4 border-l border-white/[0.14]">
+                <div
+                  className="display uppercase text-[10px] md:text-[11px] tracking-[0.14em]"
+                  style={{ color: 'rgba(249, 249, 249, 0.42)', fontWeight: 700 }}
+                >
+                  Backup Talk
+                </div>
+                <div className="mt-1 text-[13px] md:text-[14px] font-semibold text-white/85 leading-snug">
+                  {r.backup.title}
+                </div>
+                {r.backup.speakers ? <SpeakerLine names={r.backup.speakers} /> : null}
+              </div>
+            ) : null}
           </div>
         </li>
       ))}
@@ -294,6 +318,10 @@ const SAT_SEP_12_SCHEDULE: SideEventRow[] = [
     time: '4:30 PM – 5:10 PM',
     title: 'Build Your AI Workforce: A 24/7 Multi-agent Chief of Staff',
     speakers: ['Vinayak Gupta', 'Sharoz Dawa'],
+    backup: {
+      title: 'How to Build an SEO Strategy & Execution Plan in 9 Steps with AI (Live Demo)',
+      speakers: ['JP/John Zhang'],
+    },
   },
   { time: '5:10 PM – 5:20 PM', title: 'Closing Remarks', speakers: ['JP/John Zhang'] },
   { time: '5:20 PM – 6:00 PM', title: 'Casual Networking' },
@@ -353,7 +381,11 @@ const SUN_SEP_13_SCHEDULE: SideEventRow[] = [
     speakers: ['Jabez Reuben'],
   },
   { time: '4:10 PM – 4:30 PM', title: 'Casual Networking & Coffee Break' },
-  { time: '4:30 PM – 5:10 PM', title: 'Talk (Secret Speaker)' },
+  {
+    time: '4:30 PM – 5:10 PM',
+    title: 'The “SEO Happiness 😀” Formula: 3 Steps to Better Results and Less Stress',
+    speakers: ['JP/John Zhang'],
+  },
   { time: '5:10 PM – 5:20 PM', title: 'Side Event Wrap-up', speakers: ['JP/John Zhang'] },
   { time: '5:20 PM – 6:00 PM', title: 'Casual Networking' },
 ];
