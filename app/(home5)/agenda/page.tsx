@@ -967,6 +967,148 @@ function DayTimeline({ schedule }: { schedule: ScheduleRow[] }) {
   );
 }
 
+/* ─────────────────────────── DAY 1: TWO COLUMNS ──────────────────────────── */
+
+/** Heading for one column, colour-coded so the two programmes read as two
+ *  different things at a glance rather than one long run of cards. */
+function ColumnHead({ label, accent, blurb }: { label: string; accent: string; blurb: string }) {
+  return (
+    <div className="pb-4 mb-6 border-b" style={{ borderColor: 'rgba(249, 249, 249, 0.12)' }}>
+      <div className="flex items-center gap-2.5">
+        <span className="block w-1.5 h-1.5 rounded-full" style={{ background: accent }} />
+        <span
+          className="display uppercase text-[14px] md:text-[17px]"
+          style={{ color: '#F9F9F9', fontWeight: 700, letterSpacing: '0.02em' }}
+        >
+          {label}
+        </span>
+      </div>
+      <p
+        className="mt-2 text-[12px] md:text-[13px] leading-[165%]"
+        style={{ color: '#F9F9F9', opacity: 0.6, fontFamily: 'General Sans, system-ui, sans-serif' }}
+      >
+        {blurb}
+      </p>
+    </div>
+  );
+}
+
+/**
+ * One tour band. No box: just a heading and a list of names, so ten tours read
+ * as a short list rather than a stack of cards.
+ *
+ * The description is hidden until you hover, which is what keeps the column
+ * short. That only applies where hovering is possible: on a phone or tablet
+ * there is no hover, so the text stays visible and nothing becomes unreachable.
+ */
+function TourBandCard({ band }: { band: TourBand }) {
+  const sans = 'General Sans, system-ui, sans-serif';
+  return (
+    <div>
+      {/* Time on its own line rather than trailing the label: a short label
+          leaves room for it to sit inline, a long one doesn't, and the times
+          then failed to line up down the column. */}
+      <div>
+        <div
+          className="display uppercase text-[12px] md:text-[13px] leading-[140%]"
+          style={{ color: '#F9F9F9', fontWeight: 700, letterSpacing: '0.03em' }}
+        >
+          {band.roman}. {band.label}
+        </div>
+        <div
+          className="mt-1 text-[11px] md:text-[12px]"
+          style={{ color: '#5DAEDB', fontFamily: sans, fontWeight: 700 }}
+        >
+          {band.time}
+        </div>
+      </div>
+
+      <ul className="mt-3 flex flex-col">
+        {band.options.map((o) => (
+          <li
+            key={o.title}
+            className="group -mx-3 px-3 py-3 rounded-xl border-t border-white/[0.07] first:border-t-0 transition-colors hover:bg-white/[0.035]"
+          >
+            <div className="text-[14px] font-semibold text-white leading-snug">{o.title}</div>
+            <div className="mt-0.5 text-[12px]" style={{ color: 'rgba(249, 249, 249, 0.38)', fontFamily: sans }}>
+              {o.cn}
+            </div>
+
+            {/* Collapsing a row from 0fr to 1fr is the one way to animate to a
+                height nobody knows in advance. Open by default, and only
+                closed where a pointer can actually open it again. */}
+            <div
+              className="grid grid-rows-[1fr] [@media(hover:hover)]:grid-rows-[0fr] [@media(hover:hover)]:group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none"
+            >
+              <div className="overflow-hidden">
+                <p
+                  className="pt-2 text-[12.5px] leading-[168%]"
+                  style={{ color: 'rgba(249, 249, 249, 0.58)', fontFamily: sans }}
+                >
+                  {o.summary}
+                </p>
+                {o.rain && (
+                  <p
+                    className="pt-2 text-[11.5px] leading-[160%]"
+                    style={{ color: 'rgba(93, 174, 219, 0.75)', fontFamily: sans }}
+                  >
+                    {o.rain}
+                  </p>
+                )}
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function Day1TwoColumn() {
+  return (
+    // The tours column is fixed-width so the workshop timeline keeps the room
+    // it needs for long talk titles and speaker rows. Below lg they stack,
+    // workshops first, which is the half people were missing.
+    //
+    // The wide gutter only starts at xl. At lg the two columns are already
+    // tight, and taking another 32px out of the left one wraps the workshop
+    // titles onto four lines.
+    <div className="mt-2 grid gap-10 lg:gap-12 xl:gap-20 lg:grid-cols-[minmax(0,1fr)_340px] xl:grid-cols-[minmax(0,1fr)_400px]">
+      <div id="day-1-workshops" className="scroll-mt-[110px] min-w-0">
+        <div>
+        <ColumnHead
+          label="Workshops"
+          accent="#6FCF9A"
+          blurb="Four hands-on sessions, two in the morning and two in the afternoon. Each pair runs at the same time, so you pick one from each half of the day. Tailored for Chinese attendees."
+        />
+        <DayTimeline schedule={WORKSHOP_SCHEDULE} />
+        <p
+          className="mt-7 text-[12px] md:text-[13px] leading-[170%]"
+          style={{ color: '#F9F9F9', opacity: 0.8, fontFamily: 'General Sans, system-ui, sans-serif' }}
+        >
+          <span className="font-semibold">Note:</span> Workshop attendees are warmly welcome to join
+          the evening Night Tours to network and mingle with our international attendees.
+        </p>
+        </div>
+      </div>
+
+      <aside id="day-1-city-tours" className="scroll-mt-[110px] min-w-0">
+        <ColumnHead
+          label="City Tours"
+          accent="#5DAEDB"
+          blurb="Premium tours blending Shenzhen's high-tech innovation, Lingnan cultural heritage, and coastal vistas. Curated for international attendees."
+        />
+        {/* One band per row, all the way up. Two across read as stuffed. */}
+        <div className="flex flex-col gap-8">
+          {TOUR_BANDS.map((band) => (
+            <TourBandCard key={band.roman} band={band} />
+          ))}
+        </div>
+      </aside>
+    </div>
+  );
+}
+
 type ConferenceDay = {
   /** Link target, so a speaker can be sent straight to their own day from
    *  their profile rather than hunting down a very long page. */
@@ -1252,40 +1394,27 @@ const DAY5_GALA: SideEventRow[] = [
 ];
 
 const CONFERENCE_DAYS: ConferenceDay[] = [
-  // Day 1 runs two separate programmes side by side. They used to share one
-  // card behind a two-pill tab switch, which defaulted to City Tours, so the
-  // workshops were one click away and people missed them entirely (including a
-  // workshop speaker looking for his own session). Two cards instead: nothing
-  // to discover, and each half gets a heading you can scroll past and see.
+  // Day 1's two programmes sit side by side in one card. They used to share a
+  // two-pill tab switch that opened on City Tours, so the workshops were one
+  // click away and people missed them entirely, including a workshop speaker
+  // looking for his own session. Side by side, neither half can be missed, and
+  // each column keeps its own anchor id so speaker profiles can deep link to
+  // the right one.
   {
-    anchor: 'day-1-workshops',
+    anchor: 'day-1',
     dayLabel: 'Day 1 · Mon Sep 14',
-    title: 'Workshops',
-    body:
-      'Four hands-on workshops, two in the morning and two in the afternoon. Each pair runs at the same time, so you pick one from each half of the day. Tailored for Chinese attendees. City tours run the same day, and you are welcome to mix and match.',
-    badge: 'Deluxe + VIP',
-    tiers: ['DELUXE', 'VIP'],
-    collapsible: true,
-    defaultOpen: true,
-    content: <DayTimeline schedule={WORKSHOP_SCHEDULE} />,
-    note: (
-      <p>
-        <span className="font-semibold">Note:</span> Workshop attendees are warmly welcome to join
-        the evening Night Tours to network and mingle with our international attendees.
-      </p>
+    title: (
+      <>
+        Workshops &amp;<br className="md:hidden" /> City Tours
+      </>
     ),
-  },
-  {
-    anchor: 'day-1-city-tours',
-    dayLabel: 'Day 1 · Mon Sep 14',
-    title: 'City Tours',
     body:
-      "A curated matrix of premium tours blending Shenzhen's high-tech innovation, Lingnan cultural heritage, and coastal vistas, with a focus on executive networking. Curated for international attendees. Workshops run the same day, and you are welcome to mix and match.",
+      'Two programmes run side by side all day. Workshops are tailored for Chinese attendees, city tours are curated for international attendees, and you are welcome to mix and match.',
     badge: 'Deluxe + VIP',
     tiers: ['DELUXE', 'VIP'],
     collapsible: true,
     defaultOpen: true,
-    content: <CityToursMatrix />,
+    content: <Day1TwoColumn />,
   },
   {
     anchor: 'day-2',
