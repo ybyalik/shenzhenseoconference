@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 
 import { ArrowUpRight, BackToTop, Footer, LinkedInIcon, Nav, XIcon, YouTubeIcon } from '../../_components/shared';
 import { KEYNOTES, sameCategorySpeakers, speakerSlug, visibleSpeakers } from '@/lib/lineup';
-import { bioParagraphs, bioText, PROFILE_BY_SLUG, SPEAKER_PROFILES, type ProfileSession } from '@/lib/speaker-profiles';
+import { agendaAnchor, bioParagraphs, bioText, PROFILE_BY_SLUG, SPEAKER_PROFILES, type ProfileSession } from '@/lib/speaker-profiles';
 
 /* ─────────────────────────────────── ICONS ──────────────────────────────── */
 
@@ -288,8 +288,11 @@ export default async function SpeakerProfile({ params }: { params: Promise<{ slu
                           Add to Calendar
                         </a>
                       )}
-                      <Link href="/agenda" className={`${btnBase} border border-white/40 hover:bg-white hover:text-[#03060d] transition-colors`}>
-                        View Full Agenda
+                      {/* Deep link, not just /agenda: the agenda page is very
+                          long and a speaker looking for their own slot should
+                          land on it rather than start scrolling. */}
+                      <Link href={agendaAnchor(sess.when)} className={`${btnBase} border border-white/40 hover:bg-white hover:text-[#03060d] transition-colors`}>
+                        See It On The Agenda
                         <ArrowUpRight className="w-4 h-4" />
                       </Link>
                     </div>

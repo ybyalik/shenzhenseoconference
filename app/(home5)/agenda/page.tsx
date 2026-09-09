@@ -617,7 +617,7 @@ function SideEventCard({ event }: { event: SideEvent }) {
 
 function PreConferenceSection() {
   return (
-    <section className="bg-[#03060d]">
+    <section id="side-events" className="scroll-mt-[110px] bg-[#03060d]">
       <div className="container pb-14 md:pb-20">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
           <div>
@@ -968,6 +968,9 @@ function DayTimeline({ schedule }: { schedule: ScheduleRow[] }) {
 }
 
 type ConferenceDay = {
+  /** Link target, so a speaker can be sent straight to their own day from
+   *  their profile rather than hunting down a very long page. */
+  anchor: string;
   dayLabel: string;
   title: React.ReactNode;
   body: React.ReactNode;
@@ -978,6 +981,8 @@ type ConferenceDay = {
   tabs?: TabSet[];
   items?: AgendaItem[];
   schedule?: ScheduleRow[];
+  /** Custom body for a day whose programme isn't a plain list of slots. */
+  content?: React.ReactNode;
   note?: React.ReactNode;
   collapsible?: boolean;
   defaultOpen?: boolean;
@@ -1116,11 +1121,6 @@ function CityToursMatrix() {
   const sans = 'General Sans, system-ui, sans-serif';
   return (
     <div className="mt-2 flex flex-col gap-10 md:gap-12">
-      <p style={{ color: '#F9F9F9', opacity: 0.75, fontFamily: sans, fontSize: 15, fontWeight: 500, lineHeight: '170%', maxWidth: 760 }}>
-        A curated matrix of premium tour options blending Shenzhen&apos;s high-tech innovation, Lingnan cultural
-        heritage, and coastal vistas, with a focus on executive networking. Pick whichever track fits your schedule.
-      </p>
-
       {TOUR_BANDS.map((band) => (
         <div key={band.roman} className="flex flex-col gap-4">
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
@@ -1252,37 +1252,43 @@ const DAY5_GALA: SideEventRow[] = [
 ];
 
 const CONFERENCE_DAYS: ConferenceDay[] = [
+  // Day 1 runs two separate programmes side by side. They used to share one
+  // card behind a two-pill tab switch, which defaulted to City Tours, so the
+  // workshops were one click away and people missed them entirely (including a
+  // workshop speaker looking for his own session). Two cards instead: nothing
+  // to discover, and each half gets a heading you can scroll past and see.
   {
+    anchor: 'day-1-workshops',
     dayLabel: 'Day 1 · Mon Sep 14',
-    title: (
-      <>
-        City Tours &amp;<br className="md:hidden" /> Workshops
-      </>
-    ),
+    title: 'Workshops',
     body:
-      'Kick off the week at your own pace with workshops (tailored for Chinese attendees) or city tours (curated for international attendees). You can mix, match, and choose whichever exclusive experiences that best fit your schedule.',
+      'Four hands-on workshops, two in the morning and two in the afternoon. Each pair runs at the same time, so you pick one from each half of the day. Tailored for Chinese attendees. City tours run the same day, and you are welcome to mix and match.',
     badge: 'Deluxe + VIP',
     tiers: ['DELUXE', 'VIP'],
     collapsible: true,
     defaultOpen: true,
-    tabs: [
-      {
-        label: 'City Tours',
-        content: <CityToursMatrix />,
-      },
-      {
-        label: 'Workshops',
-        content: <DayTimeline schedule={WORKSHOP_SCHEDULE} />,
-        note: (
-          <p>
-            <span className="font-semibold">Note:</span> Workshop attendees are warmly welcome to
-            join the evening Night Tours to network and mingle with our international attendees.
-          </p>
-        ),
-      },
-    ],
+    content: <DayTimeline schedule={WORKSHOP_SCHEDULE} />,
+    note: (
+      <p>
+        <span className="font-semibold">Note:</span> Workshop attendees are warmly welcome to join
+        the evening Night Tours to network and mingle with our international attendees.
+      </p>
+    ),
   },
   {
+    anchor: 'day-1-city-tours',
+    dayLabel: 'Day 1 · Mon Sep 14',
+    title: 'City Tours',
+    body:
+      "A curated matrix of premium tours blending Shenzhen's high-tech innovation, Lingnan cultural heritage, and coastal vistas, with a focus on executive networking. Curated for international attendees. Workshops run the same day, and you are welcome to mix and match.",
+    badge: 'Deluxe + VIP',
+    tiers: ['DELUXE', 'VIP'],
+    collapsible: true,
+    defaultOpen: true,
+    content: <CityToursMatrix />,
+  },
+  {
+    anchor: 'day-2',
     dayLabel: 'Day 2 · Tue Sep 15',
     title: 'SEO Mastermind',
     body:
@@ -1319,6 +1325,7 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
     ),
   },
   {
+    anchor: 'day-3',
     dayLabel: 'Day 3 · Wed Sep 16',
     title: (
       <>
@@ -1334,6 +1341,7 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
     schedule: DAY3_SCHEDULE,
   },
   {
+    anchor: 'day-4',
     dayLabel: 'Day 4 · Thu Sep 17',
     title: (
       <>
@@ -1349,6 +1357,7 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
     schedule: DAY4_SCHEDULE,
   },
   {
+    anchor: 'day-5',
     dayLabel: 'Day 5 · Fri Sep 18',
     title: 'VIP Networking',
     body: (
@@ -1497,12 +1506,13 @@ function ConferenceDayCard({ day, activeTier }: { day: ConferenceDay; activeTier
 
   const items: AgendaItem[] = day.tabs ? day.tabs[activeTab].items ?? [] : day.items ?? [];
   const note: React.ReactNode = day.tabs ? day.tabs[activeTab].note : day.note;
-  const content: React.ReactNode = day.tabs ? day.tabs[activeTab].content : undefined;
+  const content: React.ReactNode = day.tabs ? day.tabs[activeTab].content : day.content;
   const showItems = !isCollapsible || open;
 
   return (
     <div
-      className="rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:px-9 md:pt-9"
+      id={day.anchor}
+      className="scroll-mt-[110px] rounded-[32px] border border-white/10 bg-[#03060d] p-6 md:px-9 md:pt-9"
       style={{ paddingBottom: 48 }}
     >
       <div className="flex items-start justify-between gap-3 flex-wrap">
@@ -1669,7 +1679,7 @@ function ConferenceEventsSection({ activeTier }: { activeTier: Tier }) {
           className="mt-10 flex flex-col items-start self-stretch gap-10 md:gap-16"
         >
           {CONFERENCE_DAYS.map((d) => (
-            <Fragment key={d.dayLabel}>
+            <Fragment key={d.anchor}>
               <div className="w-full">
                 <ConferenceDayCard day={d} activeTier={activeTier} />
               </div>

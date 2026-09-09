@@ -1130,6 +1130,20 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
 ];
 
 /** A bio as a list of paragraphs, whichever way it was written. */
+/**
+ * Which part of /agenda a session lives in, so a speaker can jump from their own
+ * profile straight to their slot instead of scrolling a very long page looking
+ * for it. Driven by the `when` string, which always leads with the day.
+ * Day 1 has two cards, workshops and city tours; only the workshops have
+ * speakers, so Day 1 sessions always point at the workshops card.
+ */
+export function agendaAnchor(when: string): string {
+  const day = when.match(/^Day (\d)/)?.[1];
+  if (day === '1') return '/agenda#day-1-workshops';
+  if (day) return `/agenda#day-${day}`;
+  return '/agenda#side-events';
+}
+
 export function bioParagraphs(bio: SpeakerProfile['bio']): string[] {
   if (!bio) return [];
   return Array.isArray(bio) ? bio : [bio];
