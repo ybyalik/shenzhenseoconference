@@ -282,17 +282,21 @@ function PrincipleCard({
             flexShrink: 0,
           }}
         />
-        <div className="flex flex-col gap-5 flex-1">
+        {/* One short declaration per card rather than a paragraph, so the type
+            is set larger and tighter: at body size and 180% leading a single
+            line looked like an orphaned sentence in a very large card. */}
+        <div className="flex flex-col gap-5 flex-1 justify-center">
           {paragraphs?.map((p, i) => (
             <p
               key={i}
+              className="text-[20px] md:text-[26px]"
               style={{
                 color: '#F9F9F9',
-                opacity: 0.8,
+                opacity: 0.9,
                 fontFamily: 'General Sans, system-ui, sans-serif',
-                fontSize: 18,
                 fontWeight: 500,
-                lineHeight: '180%',
+                lineHeight: '145%',
+                letterSpacing: '-0.01em',
               }}
             >
               {p}
@@ -305,22 +309,18 @@ function PrincipleCard({
 }
 
 function VisionMission() {
-  const themes = ['Global Organic Growth', 'SEO Entrepreneurship', 'Cross-Border Partnership'];
+  const themes = ['Growth', 'Entrepreneurship', 'Partnership'];
   return (
     <section className="bg-[#03060d]">
       <div className="container pb-16 md:pb-24">
         <div className="grid gap-6 md:gap-8 md:grid-cols-2 auto-rows-fr">
           <PrincipleCard
             heading="Our Vision"
-            paragraphs={[
-              'A world where SEO professionals, organic growth marketers, and global entrepreneurs learn from each other, work together, and build businesses without borders.',
-            ]}
+            paragraphs={['To become the most international SEO event in Asia.']}
           />
           <PrincipleCard
             heading="Our Mission"
-            paragraphs={[
-              'We bridge Eastern and Western SEO professionals, marketers, and entrepreneurs in Shenzhen. Through this in-person event, we exchange actionable knowledge and build real cross-border partnerships.',
-            ]}
+            paragraphs={['Connecting Eastern and Western SEO professionals and entrepreneurs.']}
           />
         </div>
 
@@ -332,7 +332,7 @@ function VisionMission() {
             className="display uppercase"
             style={{ color: '#F9F9F9', fontSize: 18, fontWeight: 600, lineHeight: '130%', letterSpacing: '0.02em' }}
           >
-            Keywords / Core Themes
+            Core Themes
           </h3>
           <div className="flex flex-wrap gap-3">
             {themes.map((t) => (
@@ -340,13 +340,13 @@ function VisionMission() {
                 key={t}
                 className="display uppercase inline-flex items-center gap-2.5"
                 style={{
-                  padding: '12px 20px',
+                  padding: '14px 26px',
                   borderRadius: 9999,
                   border: '1px solid rgba(17, 139, 172, 0.45)',
                   background: 'rgba(17, 139, 172, 0.10)',
                   color: '#F9F9F9',
-                  fontSize: 13,
-                  fontWeight: 600,
+                  fontSize: 16,
+                  fontWeight: 700,
                   letterSpacing: '0.06em',
                   lineHeight: '130%',
                 }}
