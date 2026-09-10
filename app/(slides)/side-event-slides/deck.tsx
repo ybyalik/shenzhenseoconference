@@ -696,11 +696,29 @@ function WhySlide({ extra }: { extra?: string }) {
 }
 
 /** One dot per application: 40 made the main stage, the rest are why we are here. */
-function SurpriseSlide() {
+/**
+ * Builds in three beats, because the whole point is the question he asks the
+ * room before the answer is on screen:
+ *   0 · the dots alone. "What does this mean?"
+ *   1 · the two numbers behind them.
+ *   2 · what we did about it, which is why this side event exists.
+ *
+ * Everything is rendered at every step and hidden with opacity, never
+ * unmounted: mounting it late would reflow the slide under the audience.
+ */
+function SurpriseSlide({ step = 3 }: { step?: number }) {
+  const reveal = (at: number) => ({
+    opacity: step >= at ? 1 : 0,
+    transition: 'opacity 420ms ease-out',
+  });
   return (
     <div className={CENTER}>
       <Eyebrow center>The surprise</Eyebrow>
-      <Headline center>150+ applied for 40 slots</Headline>
+
+      <div style={reveal(1)}>
+        <Headline center>150+ applied for 40 slots</Headline>
+      </div>
+
       <div className="mt-[6vh] flex flex-wrap justify-center gap-[0.6vw]" style={{ maxWidth: 1150 }}>
         {Array.from({ length: 150 }).map((_, n) => (
           <span
@@ -714,59 +732,60 @@ function SurpriseSlide() {
           />
         ))}
       </div>
-      <div className="mt-[6vh] flex flex-wrap justify-center gap-x-[6vw] gap-y-[3vh]">
+
+      <div className="mt-[6vh] flex flex-wrap justify-center gap-x-[6vw] gap-y-[3vh]" style={reveal(1)}>
         {[
-          { dot: 'var(--fg)', n: '40', label: 'Main stage slots', accent: false },
-          { dot: 'rgba(235,48,48,0.85)', n: '110+', label: 'Couldn’t fit on it', accent: true },
+          { n: '40', label: 'Main stage slots', accent: false },
+          { n: '150+', label: 'Speakers applied', accent: true },
         ].map((g) => (
-          <div key={g.label} className="flex items-center gap-3.5">
-            <span className="rounded-full shrink-0" style={{ width: 16, height: 16, background: g.dot }} />
-            <span className="text-left">
-              <span
-                className="display block"
-                style={{ color: g.accent ? 'var(--red)' : 'var(--fg)', fontSize: 'clamp(26px, 3vw, 48px)', fontWeight: 700, lineHeight: 1 }}
-              >
-                {g.n}
-              </span>
-              <span
-                className="uppercase block mt-2"
-                style={{ color: 'var(--muted-2)', fontFamily: 'General Sans, system-ui, sans-serif', fontSize: 'clamp(10px, 1vw, 13px)', fontWeight: 600, letterSpacing: '0.18em' }}
-              >
-                {g.label}
-              </span>
+          <div key={g.label} className="text-center">
+            <span
+              className="display block"
+              style={{ color: g.accent ? 'var(--red)' : 'var(--fg)', fontSize: 'clamp(26px, 3vw, 48px)', fontWeight: 700, lineHeight: 1 }}
+            >
+              {g.n}
+            </span>
+            <span
+              className="uppercase block mt-2"
+              style={{ color: 'var(--muted-2)', fontFamily: 'General Sans, system-ui, sans-serif', fontSize: 'clamp(10px, 1vw, 13px)', fontWeight: 600, letterSpacing: '0.18em' }}
+            >
+              {g.label}
             </span>
           </div>
         ))}
       </div>
+
       {/* The point of the slide: what we did about it, and that the change of
           venue is a change of vibe, not of purpose. */}
-      <p
-        className="display mt-[6vh]"
-        style={{
-          color: 'var(--fg)',
-          fontSize: 'clamp(19px, 2.4vw, 40px)',
-          fontWeight: 700,
-          letterSpacing: '-0.02em',
-          textWrap: 'balance',
-        }}
-      >
-        So we built <span style={{ color: 'var(--red)' }}>two casual afternoons</span> for the rest.
-      </p>
-      <p
-        className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-2"
-        style={{
-          color: 'var(--muted)',
-          fontFamily: 'General Sans, system-ui, sans-serif',
-          fontSize: 'clamp(13px, 1.45vw, 21px)',
-          fontWeight: 500,
-        }}
-      >
-        <span>Main stage: formal, business.</span>
-        <span style={{ color: 'var(--muted-2)' }}>·</span>
-        <span>Side event: casual.</span>
-        <span style={{ color: 'var(--muted-2)' }}>·</span>
-        <span style={{ color: 'var(--fg)', fontWeight: 700 }}>Same goal: East meets West.</span>
-      </p>
+      <div style={reveal(2)}>
+        <p
+          className="display mt-[6vh]"
+          style={{
+            color: 'var(--fg)',
+            fontSize: 'clamp(19px, 2.4vw, 40px)',
+            fontWeight: 700,
+            letterSpacing: '-0.02em',
+            textWrap: 'balance',
+          }}
+        >
+          So we built <span style={{ color: 'var(--red)' }}>two casual afternoons</span> for the rest.
+        </p>
+        <p
+          className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-2"
+          style={{
+            color: 'var(--muted)',
+            fontFamily: 'General Sans, system-ui, sans-serif',
+            fontSize: 'clamp(13px, 1.45vw, 21px)',
+            fontWeight: 500,
+          }}
+        >
+          <span>Main stage: formal, business.</span>
+          <span style={{ color: 'var(--muted-2)' }}>·</span>
+          <span>Side event: casual.</span>
+          <span style={{ color: 'var(--muted-2)' }}>·</span>
+          <span style={{ color: 'var(--fg)', fontWeight: 700 }}>Same goal: East meets West.</span>
+        </p>
+      </div>
     </div>
   );
 }
@@ -1135,7 +1154,14 @@ const DAY2_LINEUP: Speaker[] = [
   { name: 'Secret Speaker', img: '/assets/speaker-placeholder.webp', country: '', topic: 'Revealed on the day' },
 ];
 
-export type Slide = { id: string; notes: string; body: React.ReactNode };
+export type Slide = {
+  id: string;
+  notes: string;
+  /** A function when the slide builds: it receives the current reveal step. */
+  body: React.ReactNode | ((step: number) => React.ReactNode);
+  /** How many reveals after the initial state. Omit for a slide shown whole. */
+  steps?: number;
+};
 export type Deck = { slug: string; title: string; day: string; kind: string; slides: Slide[] };
 
 const ALL: (Slide & { section: string })[] = [
@@ -1150,9 +1176,10 @@ const ALL: (Slide & { section: string })[] = [
   {
     id: 'd1-surprise',
     section: 'Sat 12 Sep · Opening',
+    steps: 2,
     notes:
-      'Let me start with a very happy problem we encountered this year. We initially planned for about 30 to 40 speakers on the main stage. Instead, we were overwhelmed by more than 150 speaker applications. There were so many incredible experts we desperately wanted to give a stage to, but we couldn’t fit them all, especially since we have to carefully balance the ratio of returning speakers. So, we connected the dots. You want to learn without spending $600 or taking time off work, and we have an abundance of brilliant speakers eager to share. This side event became the perfect bridge. It allows domestic and international practitioners to share the same stage, exchange ideas directly, and truly fulfill our mission. We hope you enjoy today’s sessions, and thank you for supporting this initiative.',
-    body: <SurpriseSlide />,
+      'Let me start with a very happy problem. Before I tell you what this is, look at the screen. What do you think these dots mean? Don\u2019t try to count them, I\u2019ll tell you the number. [REVEAL] We planned for about 40 speakers on the main stage. We received more than 150 applications. [REVEAL] So many brilliant people we wanted to give a stage to, and no room for them. So we connected the dots. You want to learn without spending 600 dollars or taking time off work, and we have an abundance of speakers eager to share. That is exactly why this side event exists.',
+    body: (step: number) => <SurpriseSlide step={step} />,
   },
   {
     id: 'd1-name',
@@ -1288,7 +1315,8 @@ const ALL: (Slide & { section: string })[] = [
     section: 'Sun 13 Sep · Opening',
     notes:
       'Let me start with an incredible surprise. We initially planned for 40 speakers on the main stage, but we received over 150 applications from brilliant global experts. We couldn’t fit them all on the main stage, so we created this side event as a bridge. It allows domestic and international practitioners to share the same stage and exchange ideas directly.',
-    body: <SurpriseSlide />,
+    steps: 2,
+    body: (step: number) => <SurpriseSlide step={step} />,
   },
   {
     id: 'd2-name',

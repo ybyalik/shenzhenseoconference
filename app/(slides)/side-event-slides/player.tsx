@@ -21,10 +21,45 @@ function Arrow({ dir }: { dir: 'left' | 'right' }) {
 export function Player({ deck }: { deck: Deck }) {
   const SLIDES = deck.slides;
   const [i, setI] = useState(0);
+  // Reveal position inside the current slide. Most slides declare no steps and
+  // this stays 0; a slide with steps: 2 builds through 0, 1, 2 before the deck
+  // moves on, the way a PowerPoint build does.
+  const [step, setStep] = useState(0);
   const [notes, setNotes] = useState(false);
   const last = SLIDES.length - 1;
+  const stepsOf = useCallback((n: number) => SLIDES[n]?.steps ?? 0, [SLIDES]);
 
-  const go = useCallback((n: number) => setI((v) => Math.min(last, Math.max(0, n))), [last]);
+  const go = useCallback(
+    (n: number) => {
+      const t = Math.min(last, Math.max(0, n));
+      setI(t);
+      // Jumping backwards lands on a finished slide, not a half-built one.
+      setStep(t < i ? stepsOf(t) : 0);
+    },
+    [last, i, stepsOf],
+  );
+
+  const next = useCallback(() => {
+    setStep((sv) => {
+      if (sv < stepsOf(i)) return sv + 1;
+      if (i < last) {
+        setI(i + 1);
+        return 0;
+      }
+      return sv;
+    });
+  }, [i, last, stepsOf]);
+
+  const prev = useCallback(() => {
+    setStep((sv) => {
+      if (sv > 0) return sv - 1;
+      if (i > 0) {
+        setI(i - 1);
+        return stepsOf(i - 1);
+      }
+      return sv;
+    });
+  }, [i, stepsOf]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -34,19 +69,21 @@ export function Player({ deck }: { deck: Deck }) {
         case 'PageDown':
         case ' ':
           e.preventDefault();
-          setI((v) => Math.min(last, v + 1));
+          next();
           break;
         case 'ArrowLeft':
         case 'ArrowUp':
         case 'PageUp':
           e.preventDefault();
-          setI((v) => Math.max(0, v - 1));
+          prev();
           break;
         case 'Home':
           setI(0);
+          setStep(0);
           break;
         case 'End':
           setI(last);
+          setStep(stepsOf(last));
           break;
         case 'f':
         case 'F':
@@ -68,13 +105,13 @@ export function Player({ deck }: { deck: Deck }) {
     };
     window.addEventListener('keydown', onKey);
     // A deck fills the viewport, so nothing behind it should scroll.
-    const prev = document.body.style.overflow;
+    const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
       window.removeEventListener('keydown', onKey);
-      document.body.style.overflow = prev;
+      document.body.style.overflow = prevOverflow;
     };
-  }, [last]);
+  }, [last, next, prev, stepsOf]);
 
   const slide = SLIDES[i];
 
@@ -103,8 +140,10 @@ export function Player({ deck }: { deck: Deck }) {
         style={{ opacity: 0.75 }}
       />
 
+      {/* Keyed on the slide, not the step: re-keying per step would replay the
+          slide's entrance animation on every build. */}
       <section key={slide.id} className="flex-1 min-h-0 slide-in">
-        {slide.body}
+        {typeof slide.body === 'function' ? slide.body(step) : slide.body}
       </section>
 
       {/* Controls sit on the slide rather than in it, so they stay out of the
@@ -150,8 +189,8 @@ export function Player({ deck }: { deck: Deck }) {
           </span>
           <button
             type="button"
-            onClick={() => go(i - 1)}
-            disabled={i === 0}
+            onClick={prev}
+            disabled={i === 0 && step === 0}
             aria-label="Previous slide"
             className="grid place-items-center w-10 h-10 rounded-full border transition-colors disabled:opacity-25"
             style={{ borderColor: 'var(--line-2)', color: 'var(--fg)' }}
@@ -160,8 +199,8 @@ export function Player({ deck }: { deck: Deck }) {
           </button>
           <button
             type="button"
-            onClick={() => go(i + 1)}
-            disabled={i === last}
+            onClick={next}
+            disabled={i === last && step === stepsOf(last)}
             aria-label="Next slide"
             className="grid place-items-center w-10 h-10 rounded-full border transition-colors disabled:opacity-25"
             style={{ borderColor: 'var(--line-2)', color: 'var(--fg)' }}
