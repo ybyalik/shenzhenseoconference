@@ -167,15 +167,184 @@ function TitleSlide({ line, sub }: { line: React.ReactNode; sub?: string }) {
   );
 }
 
+/**
+ * Self-intro, part one: the name. Three names for one person confuses a mixed
+ * room, so each gets its own column with the reason it exists rather than
+ * being listed as aliases.
+ */
+export function NameSlide() {
+  const names: [string, string][] = [
+    ['John', 'What readers of my Chinese blog have called me for years.'],
+    ['JP', 'For international friends, after one too many attempts at “Jiangpeng”.'],
+    ['Zhang 章', 'My family name. In China it comes first.'],
+  ];
+  return (
+    <div className={CENTER}>
+      <Eyebrow center>Who is talking</Eyebrow>
+
+      <h2
+        className="display mt-5"
+        style={{
+          color: 'var(--fg)',
+          fontSize: 'clamp(44px, 7vw, 116px)',
+          fontWeight: 700,
+          lineHeight: 0.95,
+          letterSpacing: '-0.02em',
+        }}
+      >
+        章江鹏
+      </h2>
+      <div
+        className="display mt-3"
+        style={{
+          color: 'var(--muted)',
+          fontSize: 'clamp(20px, 2.6vw, 40px)',
+          fontWeight: 500,
+          letterSpacing: '-0.01em',
+        }}
+      >
+        Jiangpeng Zhang
+      </div>
+
+      <div className="mt-[6vh] grid gap-x-[3vw] gap-y-6 sm:grid-cols-3 w-full" style={{ maxWidth: 1100 }}>
+        {names.map(([name, why]) => (
+          <div key={name} className="text-center">
+            <div
+              className="display"
+              style={{ color: 'var(--red)', fontSize: 'clamp(24px, 3vw, 46px)', fontWeight: 700, letterSpacing: '-0.015em' }}
+            >
+              {name}
+            </div>
+            <p
+              className="mt-2.5 mx-auto"
+              style={{
+                color: 'var(--muted-2)',
+                fontFamily: 'General Sans, system-ui, sans-serif',
+                fontSize: 'clamp(12px, 1.15vw, 17px)',
+                lineHeight: 1.5,
+                maxWidth: '26ch',
+              }}
+            >
+              {why}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Self-intro, part two: where he is actually from, and the English disclaimer.
+ * It exists to set expectations early and get a laugh, so the joke is the
+ * last thing on the slide rather than buried in the middle.
+ */
+export function OriginSlide() {
+  const facts: [string, string][] = [
+    ['38', 'years old'],
+    ['3.5', 'of them in the US'],
+    ['27', 'before my first flight'],
+  ];
+  return (
+    <div className={`h-full flex flex-col justify-center ${PAD}`}>
+      <Eyebrow>Before we start</Eyebrow>
+
+      <h2
+        className="display mt-4"
+        style={{
+          color: 'var(--fg)',
+          fontSize: 'clamp(36px, 5.4vw, 88px)',
+          fontWeight: 700,
+          lineHeight: 0.98,
+          letterSpacing: '-0.025em',
+        }}
+      >
+        92% <span style={{ color: 'var(--red)' }}>made in China</span>
+      </h2>
+
+      {/* Two columns under the headline: the facts on the left, the joke on the
+          right. Stacked in one column they filled the left half and left the
+          right half of a 16:9 frame empty. */}
+      <div className="mt-[6vh] grid gap-x-[6vw] gap-y-[5vh] lg:grid-cols-2 items-start">
+        <div>
+          <div className="flex flex-wrap gap-x-[3.5vw] gap-y-5">
+            {facts.map(([n, label]) => (
+              <div key={label}>
+                <div
+                  className="display tabular-nums"
+                  style={{ color: 'var(--fg)', fontSize: 'clamp(28px, 3.6vw, 58px)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1 }}
+                >
+                  {n}
+                </div>
+                <div
+                  className="uppercase mt-2"
+                  style={{
+                    color: 'var(--muted-2)',
+                    fontFamily: 'General Sans, system-ui, sans-serif',
+                    fontSize: 'clamp(9px, 0.9vw, 12px)',
+                    fontWeight: 600,
+                    letterSpacing: '0.18em',
+                  }}
+                >
+                  {label}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p
+            className="mt-[4vh]"
+            style={{
+              color: 'var(--muted)',
+              fontFamily: 'General Sans, system-ui, sans-serif',
+              fontSize: 'clamp(13px, 1.35vw, 21px)',
+              lineHeight: 1.6,
+            }}
+          >
+            A countryside boy from Hubei. Not American-born, not Hong Kong, Singapore, Malaysia or
+            Japan. English is my second language.
+          </p>
+        </div>
+
+        <div className="pl-5" style={{ borderLeft: '2px solid rgba(235,48,48,0.5)' }}>
+          <p
+            className="display"
+            style={{ color: 'var(--fg)', fontSize: 'clamp(17px, 2.1vw, 34px)', fontWeight: 700, lineHeight: 1.3, letterSpacing: '-0.015em' }}
+          >
+            “JP, you should start with A to Z.”
+          </p>
+          <p
+            className="mt-3"
+            style={{
+              color: 'var(--muted-2)',
+              fontFamily: 'General Sans, system-ui, sans-serif',
+              fontSize: 'clamp(12px, 1.2vw, 18px)',
+              lineHeight: 1.55,
+            }}
+          >
+            My MBA classmate from India, 2013. So please lower your expectations for my English.
+            My Mandarin is excellent.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function HostSlide({
   summary,
   roles,
   brands,
+  demoBrands,
 }: {
   /** The headline claim. The roles below are the breakdown of it. */
   summary: string;
   roles?: [string, string][];
-  brands: string[];
+  /** [English name, Chinese name]. Both, because the room is half and half. */
+  brands: [string, string][];
+  /** Invented brands used as examples during a talk. Off for the opening
+   *  remarks, where he is hosting rather than demonstrating anything. */
+  demoBrands?: string[];
 }) {
   return (
     <div className="h-full grid md:grid-cols-[minmax(0,34%)_1fr]">
@@ -277,23 +446,66 @@ export function HostSlide({
             Owned brands
           </div>
           <ul className="mt-4 flex flex-wrap gap-2.5">
-            {brands.map((brand) => (
+            {brands.map(([en, zh]) => (
               <li
-                key={brand}
-                className="display rounded-full px-4 py-2"
+                key={en}
+                className="rounded-full px-4 py-2 flex items-baseline gap-2"
                 style={{
                   border: '1px solid var(--line-2)',
                   background: 'rgba(249,249,249,0.04)',
-                  color: 'var(--fg)',
-                  fontSize: 'clamp(12px, 1.25vw, 19px)',
-                  fontWeight: 700,
-                  letterSpacing: '-0.005em',
                 }}
               >
-                {brand}
+                <span
+                  className="display"
+                  style={{
+                    color: 'var(--fg)',
+                    fontSize: 'clamp(12px, 1.25vw, 19px)',
+                    fontWeight: 700,
+                    letterSpacing: '-0.005em',
+                  }}
+                >
+                  {en}
+                </span>
+                <span
+                  style={{
+                    color: 'var(--muted-2)',
+                    fontFamily: 'General Sans, system-ui, sans-serif',
+                    fontSize: 'clamp(10px, 1vw, 15px)',
+                    fontWeight: 500,
+                  }}
+                >
+                  {zh}
+                </span>
               </li>
             ))}
           </ul>
+
+          {demoBrands && (
+            <div className="mt-4">
+              <span
+                className="uppercase"
+                style={{
+                  color: 'var(--muted-2)',
+                  fontFamily: 'General Sans, system-ui, sans-serif',
+                  fontSize: 'clamp(9px, 0.85vw, 12px)',
+                  fontWeight: 600,
+                  letterSpacing: '0.16em',
+                }}
+              >
+                Made up for my talks ·{' '}
+              </span>
+              <span
+                style={{
+                  color: 'var(--muted)',
+                  fontFamily: 'General Sans, system-ui, sans-serif',
+                  fontSize: 'clamp(11px, 1.05vw, 16px)',
+                  fontWeight: 500,
+                }}
+              >
+                {demoBrands.join(' · ')}
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -943,19 +1155,38 @@ const ALL: (Slide & { section: string })[] = [
     body: <SurpriseSlide />,
   },
   {
+    id: 'd1-name',
+    section: 'Sat 12 Sep · Opening',
+    notes:
+      'My name causes some confusion, so let me clear it up first. My full name is Jiangpeng Zhang. Zhang is my family name, and in China the family name comes first. If you read my Chinese blog you know me as John. Everyone else calls me JP, because Jiangpeng is hard to say. Any of the three is fine.',
+    body: <NameSlide />,
+  },
+  {
+    id: 'd1-origin',
+    section: 'Sat 12 Sep · Opening',
+    notes:
+      'A little about where I am actually from, because people often guess wrong. I am ninety-two percent made in China. I am thirty-eight, and three and a half of those years were spent studying, working and living in the US. The rest has been China, or travelling. Before twenty-seven I had never been abroad, and had never even been on a plane. I am a countryside boy from Hubei. I am not American-born Chinese, and I am not from Hong Kong, Singapore, Malaysia or Japan. English is my second language. When I arrived in the US in 2013 I struggled badly with accents, and one of my MBA classmates from India joked that I should start again with A to Z. So please lower your expectations for my English today. My Mandarin, on the other hand, is excellent.',
+    body: <OriginSlide />,
+  },
+  {
     id: 'd1-host',
     section: 'Sat 12 Sep · Opening',
     notes:
       'For those I haven’t met yet, here is a quick background on who I am. I’m a serial entrepreneur deeply rooted in this industry. I’ve been in the SEO game for 16 years, experiencing it from every angle—in-house at companies like Wondershare, working at a Silicon Valley agency, and running my own affiliate content sites. Today, I manage several brands, including my blog, our paid community, and of course, the Shenzhen SEO Conference.',
     body: (
       <HostSlide
-        summary="16 years in SEO, as a serial SEO entrepreneur"
+        summary="16 years in SEO. I call myself an SEO entrepreneur and content creator."
         roles={[
           ['In-house', 'Wondershare, Shenzhen (2010) · Whova, San Diego (2016)'],
           ['Agency', 'Baunfire, San Jose (2014–2015)'],
           ['Affiliate', 'Self-employed (2012–13, 2017–now)'],
         ]}
-        brands={['英文SEO实战派', 'SEO实战学院', 'Shenzhen SEO Conf', 'SEO Connector']}
+        brands={[
+          ['Shenzhen SEO Conference', '深圳SEO大会'],
+          ['SEO Action Blog', '英文SEO实战派'],
+          ['SEO Action School', 'SEO实战学院'],
+          ['SEO Connector', 'SEO资源对接'],
+        ]}
       />
     ),
   },
@@ -1060,19 +1291,38 @@ const ALL: (Slide & { section: string })[] = [
     body: <SurpriseSlide />,
   },
   {
+    id: 'd2-name',
+    section: 'Sun 13 Sep · Opening',
+    notes:
+      'My name causes some confusion, so let me clear it up first. My full name is Jiangpeng Zhang. Zhang is my family name, and in China the family name comes first. If you read my Chinese blog you know me as John. Everyone else calls me JP, because Jiangpeng is hard to say. Any of the three is fine.',
+    body: <NameSlide />,
+  },
+  {
+    id: 'd2-origin',
+    section: 'Sun 13 Sep · Opening',
+    notes:
+      'A little about where I am actually from, because people often guess wrong. I am ninety-two percent made in China. I am thirty-eight, and three and a half of those years were spent studying, working and living in the US. The rest has been China, or travelling. Before twenty-seven I had never been abroad, and had never even been on a plane. I am a countryside boy from Hubei. I am not American-born Chinese, and I am not from Hong Kong, Singapore, Malaysia or Japan. English is my second language. When I arrived in the US in 2013 I struggled badly with accents, and one of my MBA classmates from India joked that I should start again with A to Z. So please lower your expectations for my English today. My Mandarin, on the other hand, is excellent.',
+    body: <OriginSlide />,
+  },
+  {
     id: 'd2-host',
     section: 'Sun 13 Sep · Opening',
     notes:
       'For the new faces in the room, here is a quick background on who I am. I’m a serial entrepreneur deeply rooted in this industry. I’ve been in the SEO game for 16 years, experiencing it from every angle—in-house, working at a Silicon Valley agency, and running my own affiliate content sites. Today, I manage several brands, including my blog, our paid community, and the Shenzhen SEO Conference.',
     body: (
       <HostSlide
-        summary="16 years in SEO, as a serial SEO entrepreneur"
+        summary="16 years in SEO. I call myself an SEO entrepreneur and content creator."
         roles={[
           ['In-house', 'Wondershare, Shenzhen (2010) · Whova, San Diego (2016)'],
           ['Agency', 'Baunfire, San Jose (2014–2015)'],
           ['Affiliate', 'Self-employed (2012–13, 2017–now)'],
         ]}
-        brands={['英文SEO实战派', 'SEO实战学院', 'Shenzhen SEO Conf', 'SEO Connector']}
+        brands={[
+          ['Shenzhen SEO Conference', '深圳SEO大会'],
+          ['SEO Action Blog', '英文SEO实战派'],
+          ['SEO Action School', 'SEO实战学院'],
+          ['SEO Connector', 'SEO资源对接'],
+        ]}
       />
     ),
   },

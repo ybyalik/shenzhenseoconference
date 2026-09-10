@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-import { Eyebrow, HostSlide, type Slide } from '../side-event-slides/deck';
+import { Eyebrow, HostSlide, NameSlide, OriginSlide, type Slide } from '../side-event-slides/deck';
 import { FullBleedStep, PAD, SplitStep, StageStep, StatementStep } from './layouts';
 
 const CENTER = `h-full flex flex-col items-center justify-center text-center ${PAD}`;
@@ -50,18 +50,36 @@ export const NINE_STEPS: Slide[] = [
   },
 
   {
+    id: 'ns-name',
+    notes:
+      'My name causes some confusion, so let me clear it up first. My full name is Jiangpeng Zhang. Zhang is my family name, and in China the family name comes first. If you read my Chinese blog you know me as John. Everyone else calls me JP, because Jiangpeng is hard to say. Any of the three is fine.',
+    body: <NameSlide />,
+  },
+  {
+    id: 'ns-origin',
+    notes:
+      'A little about where I am actually from, because people often guess wrong. I am ninety-two percent made in China. I am thirty-eight, and three and a half of those years were spent studying, working and living in the US. The rest has been China, or travelling. Before twenty-seven I had never been abroad, and had never even been on a plane. I am a countryside boy from Hubei. I am not American-born Chinese, and I am not from Hong Kong, Singapore, Malaysia or Japan. English is my second language. When I arrived in the US in 2013 I struggled badly with accents, and one of my MBA classmates from India joked that I should start again with A to Z. So please lower your expectations for my English today. My Mandarin, on the other hand, is excellent.',
+    body: <OriginSlide />,
+  },
+  {
     id: 'ns-host',
     notes:
       'A quick word on who is saying this. Sixteen years in SEO: in-house, agency side, and running my own affiliate sites. Today I run several brands, including this conference.',
     body: (
       <HostSlide
-        summary="16 years in SEO, as a serial SEO entrepreneur"
+        summary="16 years in SEO. I call myself an SEO entrepreneur and content creator."
         roles={[
           ['In-house', 'Wondershare, Shenzhen (2010) · Whova, San Diego (2016)'],
           ['Agency', 'Baunfire, San Jose (2014–2015)'],
           ['Affiliate', 'Self-employed (2012–13, 2017–now)'],
         ]}
-        brands={['英文SEO实战派', 'SEO实战学院', 'Shenzhen SEO Conf', 'SEO Connector']}
+        brands={[
+          ['Shenzhen SEO Conference', '深圳SEO大会'],
+          ['SEO Action Blog', '英文SEO实战派'],
+          ['SEO Action School', 'SEO实战学院'],
+          ['SEO Connector', 'SEO资源对接'],
+        ]}
+        demoBrands={['JP Basketball', 'JP Humanizer', 'JP Power']}
       />
     ),
   },
