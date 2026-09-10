@@ -969,9 +969,32 @@ function DayTimeline({ schedule }: { schedule: ScheduleRow[] }) {
 
 /* ─────────────────────────── DAY 1: TWO COLUMNS ──────────────────────────── */
 
+function DocIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+      <path d="M14 3v5h5M9 13h6M9 17h4" />
+    </svg>
+  );
+}
+
 /** Heading for one column, colour-coded so the two programmes read as two
- *  different things at a glance rather than one long run of cards. */
-function ColumnHead({ label, accent, blurb }: { label: string; accent: string; blurb: string }) {
+ *  different things at a glance rather than one long run of cards.
+ *
+ *  `cta` is an optional call-out under the blurb, given a tinted panel rather
+ *  than being an inline link, because the tour list below it is quiet by
+ *  design and a plain link would disappear into it. */
+function ColumnHead({
+  label,
+  accent,
+  blurb,
+  cta,
+}: {
+  label: string;
+  accent: string;
+  blurb: string;
+  cta?: { href: string; text: string; sub?: string };
+}) {
   return (
     <div className="pb-4 mb-6 border-b" style={{ borderColor: 'rgba(249, 249, 249, 0.12)' }}>
       <div className="flex items-center gap-2.5">
@@ -989,6 +1012,41 @@ function ColumnHead({ label, accent, blurb }: { label: string; accent: string; b
       >
         {blurb}
       </p>
+
+      {cta && (
+        // target=_blank so nobody loses their place on the agenda, and the
+        // file opens in the browser's own PDF viewer rather than downloading
+        // straight away, which is friendlier on a phone.
+        <a
+          href={cta.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group mt-4 flex items-center gap-3 rounded-xl px-4 py-3 transition-colors hover:bg-[rgba(93,174,219,0.14)]"
+          style={{
+            background: 'rgba(93, 174, 219, 0.08)',
+            border: '1px solid rgba(93, 174, 219, 0.30)',
+          }}
+        >
+          <DocIcon className="w-[18px] h-[18px] shrink-0 text-[#5DAEDB]" />
+          <span className="min-w-0">
+            <span
+              className="block text-[13px] md:text-[13.5px] font-semibold leading-snug"
+              style={{ color: '#9FD3EE', fontFamily: 'General Sans, system-ui, sans-serif' }}
+            >
+              {cta.text}
+            </span>
+            {cta.sub && (
+              <span
+                className="block mt-0.5 text-[11.5px] leading-snug"
+                style={{ color: 'rgba(249, 249, 249, 0.45)', fontFamily: 'General Sans, system-ui, sans-serif' }}
+              >
+                {cta.sub}
+              </span>
+            )}
+          </span>
+          <ArrowUpRight className="w-4 h-4 shrink-0 ml-auto text-[#5DAEDB] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </a>
+      )}
     </div>
   );
 }
@@ -1047,12 +1105,12 @@ function TourBandCard({ band }: { band: TourBand }) {
                 >
                   {o.summary}
                 </p>
-                {o.rain && (
+                {o.note && (
                   <p
                     className="pt-2 text-[11.5px] leading-[160%]"
                     style={{ color: 'rgba(93, 174, 219, 0.75)', fontFamily: sans }}
                   >
-                    {o.rain}
+                    {o.note}
                   </p>
                 )}
               </div>
@@ -1066,14 +1124,13 @@ function TourBandCard({ band }: { band: TourBand }) {
 
 function Day1TwoColumn() {
   return (
-    // The tours column is fixed-width so the workshop timeline keeps the room
-    // it needs for long talk titles and speaker rows. Below lg they stack,
-    // workshops first, which is the half people were missing.
+    // Equal halves. Below lg they stack, workshops first, which is the half
+    // people were missing.
     //
     // The wide gutter only starts at xl. At lg the two columns are already
-    // tight, and taking another 32px out of the left one wraps the workshop
-    // titles onto four lines.
-    <div className="mt-2 grid gap-10 lg:gap-12 xl:gap-20 lg:grid-cols-[minmax(0,1fr)_340px] xl:grid-cols-[minmax(0,1fr)_400px]">
+    // tight, and taking another 32px out of them wraps the workshop titles
+    // onto four lines.
+    <div className="mt-2 grid gap-10 lg:gap-12 xl:gap-20 lg:grid-cols-2">
       <div id="day-1-workshops" className="scroll-mt-[110px] min-w-0">
         <div>
         <ColumnHead
@@ -1097,6 +1154,11 @@ function Day1TwoColumn() {
           label="City Tours"
           accent="#5DAEDB"
           blurb="Premium tours blending Shenzhen's high-tech innovation, Lingnan cultural heritage, and coastal vistas. Curated for international attendees."
+          cta={{
+            href: '/2026-shenzhen-seo-city-tour-catalog.pdf',
+            text: 'Read the full tour catalog and how to sign up',
+            sub: 'PDF · every itinerary, meeting points, meals, and FAQs',
+          }}
         />
         {/* One band per row, all the way up. Two across read as stuffed. */}
         <div className="flex flex-col gap-8">
@@ -1158,7 +1220,10 @@ const WORKSHOP_SCHEDULE: ScheduleRow[] = [
 
 /* ─────────────────────── DAY 1 CITY TOUR MATRIX ─────────────────────── */
 
-type TourOption = { title: string; cn?: string; summary: string; rain?: string };
+// `note` is a secondary line under the summary, shown in blue. Its meaning
+// lives in the string itself ("Rainy-day pivot: ...", "Protective coveralls
+// ..."), so one field covers every kind of aside a tour needs.
+type TourOption = { title: string; cn?: string; summary: string; note?: string };
 type TourBand = { roman: string; label: string; time: string; blurb?: string; options: TourOption[] };
 
 const TOUR_BANDS: TourBand[] = [
@@ -1206,8 +1271,19 @@ const TOUR_BANDS: TourBand[] = [
     label: 'Afternoon Specialist Tracks',
     time: '14:00 – 17:00',
     options: [
-      { title: 'Tech Company Visit', cn: '科技企业商务参访', summary: 'To be confirmed.' },
-      { title: 'Factory Tour', cn: '智能工厂制造考察', summary: 'To be confirmed.' },
+      {
+        title: 'FS Tech Company Visit',
+        cn: '科技企业商务参访',
+        summary:
+          "An exclusive behind-the-scenes tour of FS TECH, Shenzhen's premier one-stop PCB and PCBA manufacturer. Walk the floor of a Fortune 500 supplier and see how electronics go from raw files to finished product. Best suited to attendees with a hardware, electronics, or supply chain interest.",
+        note: 'Protective coveralls are required on the factory floor and are provided on site.',
+      },
+      {
+        title: 'SunOn Factory Tour',
+        cn: '智能工厂制造考察',
+        summary:
+          'A behind-the-scenes look at Sun On Enterprises Group, with live 3D printing, CNC machining, 2K injection moulding, and advanced QA testing labs in action. Best suited to attendees who market physical products and want to see how they get made.',
+      },
       {
         title: 'Ancient Roots & National Calligraphy Workshop',
         cn: '古城寻根与国潮书法体验',
@@ -1232,13 +1308,13 @@ const TOUR_BANDS: TourBand[] = [
         title: 'Tech-Skyline & Waterfront Relaxation',
         cn: '科技天际线与水岸休闲',
         summary: 'A scenic walk along the Shenzhen Bay Park boardwalk, then networking and nightlife at Sea World.',
-        rain: 'Rainy-day pivot: the UpperHills indoor cultural corridor and its high-end loft streets.',
+        note: 'Rainy-day pivot: the UpperHills indoor cultural corridor and its high-end loft streets.',
       },
       {
         title: 'Lingnan Water-town Aesthetics & Sensory Traditions',
         cn: '岭南水乡夜景与精神传统',
         summary: 'A heritage walk through OCT Harbour, with lakeside executive social lounges.',
-        rain: 'Rainy-day pivot: a premium indoor tea salon paired with an incense-ceremony masterclass.',
+        note: 'Rainy-day pivot: a premium indoor tea salon paired with an incense-ceremony masterclass.',
       },
     ],
   },
@@ -1258,87 +1334,6 @@ const TOUR_NOTES: [string, string][] = [
     'All outdoor activities have pre-planned "Rainy Day Pivots" to indoor cultural or high-tech venues.',
   ],
 ];
-
-function CityToursMatrix() {
-  const sans = 'General Sans, system-ui, sans-serif';
-  return (
-    <div className="mt-2 flex flex-col gap-10 md:gap-12">
-      {TOUR_BANDS.map((band) => (
-        <div key={band.roman} className="flex flex-col gap-4">
-          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <span
-              className="display uppercase text-[14px] md:text-[16px]"
-              style={{ color: '#F9F9F9', fontWeight: 700, letterSpacing: '0.04em' }}
-            >
-              {band.roman}. {band.label}
-            </span>
-            <span className="text-[12px] md:text-[13px]" style={{ color: '#5DAEDB', fontFamily: sans, fontWeight: 700 }}>
-              {band.time}
-            </span>
-          </div>
-          {band.blurb ? (
-            <p style={{ color: '#F9F9F9', opacity: 0.6, fontFamily: sans, fontSize: 13, fontWeight: 500, lineHeight: '160%' }}>
-              {band.blurb}
-            </p>
-          ) : null}
-          <div className="grid gap-4 md:gap-5 sm:grid-cols-2">
-            {band.options.map((o, idx) => (
-              <div
-                key={o.title}
-                className="flex flex-col gap-2 p-5 md:p-6"
-                style={{ borderRadius: 20, border: '1px solid rgba(249, 249, 249, 0.1)', background: '#070c15' }}
-              >
-                <span
-                  className="uppercase text-[11px]"
-                  style={{ color: '#5DAEDB', fontFamily: sans, fontWeight: 700, letterSpacing: '0.12em' }}
-                >
-                  Option {idx + 1}
-                </span>
-                <span className="text-[15px] md:text-[16px] font-bold text-white leading-snug">{o.title}</span>
-                {o.cn ? (
-                  <span className="text-[13px]" style={{ color: 'rgba(249, 249, 249, 0.45)', fontFamily: sans, fontWeight: 500 }}>
-                    {o.cn}
-                  </span>
-                ) : null}
-                <p
-                  className="mt-1 text-[14px]"
-                  style={{ color: '#F9F9F9', opacity: 0.72, fontFamily: sans, fontWeight: 500, lineHeight: '165%' }}
-                >
-                  {o.summary}
-                </p>
-                {o.rain ? (
-                  <p className="text-[13px]" style={{ color: '#6FC1E0', fontFamily: sans, fontWeight: 500, lineHeight: '160%' }}>
-                    {o.rain}
-                  </p>
-                ) : null}
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
-
-      <div className="flex flex-col gap-3 pt-2">
-        <span
-          className="display uppercase text-[13px] md:text-[14px]"
-          style={{ color: '#F9F9F9', fontWeight: 700, letterSpacing: '0.06em' }}
-        >
-          Important Notes
-        </span>
-        <ul className="flex flex-col gap-2.5">
-          {TOUR_NOTES.map(([label, text]) => (
-            <li
-              key={label}
-              className="text-[13px]"
-              style={{ color: '#F9F9F9', opacity: 0.6, fontFamily: sans, fontWeight: 500, lineHeight: '165%' }}
-            >
-              <strong style={{ color: 'rgba(249, 249, 249, 0.85)', fontWeight: 600 }}>{label}:</strong> {text}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-}
 
 // Day 5 (VIP Networking) sub-schedules, rendered inside their block bodies.
 const DAY5_EXCHANGE: SideEventRow[] = [
