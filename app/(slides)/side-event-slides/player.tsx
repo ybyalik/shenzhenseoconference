@@ -91,6 +91,18 @@ export function Player({ deck }: { deck: Deck }) {
         />
       </div>
 
+      {/* Conference wordmark in the top corner of every slide, in every deck.
+          pointer-events-none so it can never intercept a click meant for the
+          slide, and served unoptimised like the other slide art: it is 8KB and
+          the optimiser has flattened alpha on this deck's images before. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/logo-white.webp"
+        alt="Shenzhen SEO Conference"
+        className="absolute top-[3vh] right-[3vw] z-20 pointer-events-none select-none h-[18px] md:h-[22px] w-auto"
+        style={{ opacity: 0.75 }}
+      />
+
       <section key={slide.id} className="flex-1 min-h-0 slide-in">
         {slide.body}
       </section>
