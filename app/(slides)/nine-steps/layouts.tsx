@@ -113,20 +113,26 @@ export function FullBleedStep({
 }) {
   return (
     <div className="relative h-full overflow-hidden">
-      <Image src={art} alt="" fill priority className="object-contain dia-in" sizes="100vw" />
+      {/* The art used to span the full slide, and the scrim was supposed to
+          keep the left readable. A bright diagram still pushed through it and
+          collided with the headline, so the art is confined to the right side
+          and the text column keeps the left to itself. */}
+      <div className="absolute inset-y-[6vh] right-[2vw] left-[42%]">
+        <Image src={art} alt="" fill priority className="object-contain dia-in" sizes="58vw" />
+      </div>
       <div
         className="absolute inset-0"
         style={{
           background:
             corner === 'top-left'
-              ? 'linear-gradient(160deg, rgba(3,6,13,0.94) 0%, rgba(3,6,13,0.7) 42%, transparent 68%)'
-              : 'linear-gradient(20deg, rgba(3,6,13,0.94) 0%, rgba(3,6,13,0.7) 42%, transparent 68%)',
+              ? 'linear-gradient(160deg, rgba(3,6,13,0.9) 0%, rgba(3,6,13,0.45) 38%, transparent 58%)'
+              : 'linear-gradient(20deg, rgba(3,6,13,0.9) 0%, rgba(3,6,13,0.45) 38%, transparent 58%)',
         }}
       />
       <div
         className={`absolute inset-0 flex flex-col ${corner === 'top-left' ? 'justify-start pt-[9vh]' : 'justify-end pb-[15vh]'} px-[5vw]`}
       >
-        <div style={{ maxWidth: 'min(52ch, 52vw)' }}>
+        <div style={{ maxWidth: 'min(46ch, 36vw)' }}>
           <StepHeading step={step} title={title} />
           <div className="mt-[4vh]">
             <Points items={points} />

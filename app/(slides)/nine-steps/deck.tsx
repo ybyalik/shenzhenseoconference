@@ -3,9 +3,284 @@
 import Image from 'next/image';
 
 import { Eyebrow, HostSlide, NameSlide, OriginSlide, type Slide } from '../side-event-slides/deck';
-import { FullBleedStep, PAD, SplitStep, StageStep, StatementStep } from './layouts';
+import { FullBleedStep, PAD, SplitStep, StageStep, StatementStep, StepHeading, StepRail } from './layouts';
 
 const CENTER = `h-full flex flex-col items-center justify-center text-center ${PAD}`;
+
+/**
+ * Step 1 worked through on a real business: the conference itself. Uses the
+ * same five slots as the template on the previous slide, so the audience sees
+ * the blanks filled rather than a second, unrelated framework.
+ */
+function PositioningExample() {
+  const sans = 'General Sans, system-ui, sans-serif';
+  const slot = {
+    color: 'var(--red)',
+    fontFamily: sans,
+    fontSize: 'clamp(9px, 0.9vw, 12px)',
+    fontWeight: 700,
+    letterSpacing: '0.2em',
+  } as const;
+  const body = {
+    color: 'var(--muted)',
+    fontFamily: sans,
+    fontSize: 'clamp(11px, 1.1vw, 17px)',
+    lineHeight: 1.5,
+  } as const;
+  const Slot = ({ label, children }: { label: string; children: React.ReactNode }) => (
+    <div>
+      <div className="uppercase">
+        <span style={slot}>{label}</span>
+      </div>
+      <div className="mt-2" style={body}>
+        {children}
+      </div>
+    </div>
+  );
+  const usps: [string, string][] = [
+    ['East meets West', 'The largest SEO conference putting Eastern and Western professionals in one room, at scale.'],
+    ['Entrepreneurship & partnership', 'Every speaker, partner and attendee is an active practitioner who believes in global partnerships.'],
+    ['Shenzhen', 'China’s Silicon Valley of hardware, across two five-star venues: The St. Regis and MGM.'],
+  ];
+  return (
+    <div className={`h-full flex flex-col justify-center ${PAD}`}>
+      <div className="flex items-center gap-4">
+        <span
+          className="uppercase"
+          style={{ color: 'var(--red)', fontFamily: sans, fontSize: 'clamp(10px, 1vw, 14px)', fontWeight: 700, letterSpacing: '0.2em' }}
+        >
+          Step 1 · worked example
+        </span>
+        <StepRail step={1} />
+      </div>
+      <h2
+        className="display mt-3"
+        style={{
+          color: 'var(--fg)',
+          fontSize: 'clamp(26px, 3.5vw, 58px)',
+          fontWeight: 700,
+          lineHeight: 1,
+          letterSpacing: '-0.025em',
+        }}
+      >
+        Example: Shenzhen SEO Conference
+      </h2>
+
+      <div className="mt-[5vh] grid gap-x-[5vw] gap-y-[3.5vh] lg:grid-cols-2 items-start" style={{ maxWidth: 1500 }}>
+        <div className="flex flex-col gap-[3.2vh]">
+          <Slot label="We provide">
+            A <strong style={{ color: 'var(--fg)', fontWeight: 700 }}>5-day, English-only international SEO event</strong>{' '}
+            in Shenzhen. Actionable talks, masterminds, city tours, and networking.
+          </Slot>
+          <Slot label="For">
+            <strong style={{ color: 'var(--fg)', fontWeight: 700 }}>600 SEO professionals and entrepreneurs.</strong>{' '}
+            Chinese brands targeting global markets, and international brands entering China and the
+            wider APAC market.
+          </Slot>
+          <Slot label="And save them">
+            <span className="block">
+              <strong style={{ color: 'var(--fg)', fontWeight: 700 }}>Chinese attendees:</strong> the cost and time of
+              going abroad.
+            </span>
+            <span className="block mt-1">
+              <strong style={{ color: 'var(--fg)', fontWeight: 700 }}>International attendees:</strong> the risk of
+              entering a new market.
+            </span>
+          </Slot>
+        </div>
+
+        <div className="flex flex-col gap-[3.2vh]">
+          <Slot label="Unlike other SEO events">
+            Most stay local, or go deep on one corner of search. Nobody is addressing the cross-border
+            part.
+          </Slot>
+          <div>
+            <div className="uppercase">
+              <span style={slot}>We are different because</span>
+            </div>
+            <ul className="mt-3 flex flex-col gap-2.5">
+              {usps.map(([title, text], n) => (
+                <li key={title} className="grid grid-cols-[1.6rem_1fr] gap-x-3 items-baseline">
+                  <span
+                    className="display tabular-nums"
+                    style={{ color: 'var(--red)', fontFamily: sans, fontSize: 'clamp(10px, 0.95vw, 13px)', fontWeight: 700, letterSpacing: '0.1em' }}
+                  >
+                    {String(n + 1).padStart(2, '0')}
+                  </span>
+                  <span style={body}>
+                    <strong style={{ color: 'var(--fg)', fontWeight: 700 }}>{title}.</strong> {text}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * The business model canvas worked through on the conference. The artwork
+ * carries its own title and is dense, so the slide gives it nearly the whole
+ * frame and keeps the chrome to one line.
+ */
+function CanvasExample() {
+  return (
+    <div className="h-full flex flex-col px-[3vw] pt-[4vh] pb-[9vh]">
+      <div className="flex items-center gap-4 shrink-0">
+        <span
+          className="uppercase"
+          style={{
+            color: 'var(--red)',
+            fontFamily: 'General Sans, system-ui, sans-serif',
+            fontSize: 'clamp(10px, 1vw, 14px)',
+            fontWeight: 700,
+            letterSpacing: '0.2em',
+          }}
+        >
+          Step 2 · worked example
+        </span>
+        <StepRail step={2} />
+      </div>
+      <div className="relative flex-1 min-h-0 mt-[2.5vh] dia-in">
+        <Image
+          src="/assets/dia-canvas-example.webp"
+          alt="Business model canvas for the Shenzhen SEO Conference"
+          fill
+          className="object-contain object-top"
+          sizes="94vw"
+        />
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Step 8 is the one the room came for, so it is a clean sequence rather than a
+ * diagram: five moves down the left, and the honest caveat plus tomorrow's talk
+ * on the right. The caveat is the reason the teaser belongs here at all.
+ */
+function SeoPlanStep() {
+  const sans = 'General Sans, system-ui, sans-serif';
+  const moves = [
+    'Define SEO’s exact share of total customer acquisition',
+    'Set the right SEO goals',
+    'Create a strategy to achieve the SEO goals',
+    'Break down the SEO strategy into an actionable plan',
+    'Execute the SEO plan',
+  ];
+  return (
+    <div className={`h-full flex flex-col justify-center ${PAD}`}>
+      <StepHeading step={8} title="Build SEO strategy and execution plan" />
+
+      <div className="mt-[5vh] grid gap-x-[5vw] gap-y-[4vh] lg:grid-cols-[1.1fr_1fr] items-start" style={{ maxWidth: 1500 }}>
+        <ol className="flex flex-col gap-[2.2vh]">
+          {moves.map((m, i) => (
+            <li key={m} className="grid grid-cols-[2rem_1fr] gap-x-4 items-baseline">
+              <span
+                className="display tabular-nums"
+                style={{ color: 'var(--red)', fontFamily: sans, fontSize: 'clamp(11px, 1.05vw, 15px)', fontWeight: 700, letterSpacing: '0.1em' }}
+              >
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span
+                style={{ color: 'var(--fg)', fontFamily: sans, fontSize: 'clamp(13px, 1.35vw, 21px)', fontWeight: 500, lineHeight: 1.4 }}
+              >
+                {m}
+              </span>
+            </li>
+          ))}
+        </ol>
+
+        <div
+          className="rounded-2xl p-6 lg:p-7"
+          style={{ border: '1px solid var(--line-2)', background: 'rgba(249,249,249,0.03)' }}
+        >
+          <p
+            className="display"
+            style={{ color: 'var(--fg)', fontSize: 'clamp(15px, 1.7vw, 27px)', fontWeight: 700, lineHeight: 1.25, letterSpacing: '-0.015em' }}
+          >
+            SEO results? They are{' '}
+            <span style={{ color: 'var(--red)' }}>often out of our control.</span>
+          </p>
+
+          <div className="mt-5 pt-5" style={{ borderTop: '1px solid var(--line-2)' }}>
+            <div
+              className="uppercase"
+              style={{ color: 'var(--red)', fontFamily: sans, fontSize: 'clamp(9px, 0.9vw, 12px)', fontWeight: 700, letterSpacing: '0.18em' }}
+            >
+              More on this tomorrow · Sunday side event
+            </div>
+            <div
+              className="display mt-2.5"
+              style={{ color: 'var(--fg)', fontSize: 'clamp(14px, 1.5vw, 23px)', fontWeight: 700, lineHeight: 1.25, letterSpacing: '-0.01em' }}
+            >
+              The “SEO Happiness 😀” Formula
+            </div>
+            <div
+              className="mt-1"
+              style={{ color: 'var(--muted)', fontFamily: sans, fontSize: 'clamp(12px, 1.15vw, 18px)', fontWeight: 500 }}
+            >
+              3 steps to better results and less stress
+            </div>
+            <p
+              className="mt-4"
+              style={{ color: 'var(--muted-2)', fontFamily: sans, fontSize: 'clamp(11px, 1.05vw, 16px)', lineHeight: 1.5 }}
+            >
+              You will learn my SEO formulas, and exactly how to break SEO goals into actionable steps
+              with measurable KPIs. Less stress.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Closing slide: three ways to stay in touch, each as a scannable card. Cards
+ * rather than a contact list because a room full of phones can act on a QR and
+ * cannot act on a WeChat ID read off a screen.
+ */
+function ContactCards() {
+  const sans = 'General Sans, system-ui, sans-serif';
+  const cards: [string, string, string][] = [
+    ['Personal WeChat', '我的个人微信', '/assets/qr-wechat-personal.webp'],
+    ['WeChat blog', '微信公众号', '/assets/qr-wechat-blog.webp'],
+    ['LinkedIn', '我的个人领英', '/assets/qr-linkedin.webp'],
+  ];
+  return (
+    <div className="grid grid-cols-3 gap-[2vw] w-full" style={{ maxWidth: 1100 }}>
+      {cards.map(([en, zh, src], i) => (
+        <div key={en} className={`flex flex-col items-center text-center st st-${i + 2}`}>
+          <div className="rounded-2xl p-[1vw]" style={{ background: 'var(--fg)', lineHeight: 0 }}>
+            {/* Unoptimised on purpose: resampling a QR can stop it scanning. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={src}
+              alt={`${en} QR code`}
+              className="block"
+              style={{ width: 'clamp(110px, 17vh, 210px)', height: 'auto', imageRendering: 'pixelated' }}
+            />
+          </div>
+          <div
+            className="display mt-4"
+            style={{ color: 'var(--fg)', fontSize: 'clamp(12px, 1.3vw, 20px)', fontWeight: 700, letterSpacing: '-0.005em' }}
+          >
+            {en}
+          </div>
+          <div
+            className="mt-1"
+            style={{ color: 'var(--muted-2)', fontFamily: sans, fontSize: 'clamp(11px, 1.1vw, 16px)', fontWeight: 500 }}
+          >
+            {zh}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export const NINE_STEPS: Slide[] = [
   {
@@ -113,13 +388,19 @@ export const NINE_STEPS: Slide[] = [
 
   /* 2 — diagram centre stage, points beneath in columns */
   {
+    id: 'ns-step1-example',
+    notes:
+      'That is the template. Now let me fill it in with a real business, this conference. We provide a five-day, English-only international SEO event in Shenzhen: talks, masterminds, city tours and networking. For six hundred SEO professionals and entrepreneurs, connecting Chinese brands going global with international brands coming into China and APAC. It saves Chinese attendees the cost and the time of travelling abroad, and it saves international attendees the risk of walking blind into a new market. Unlike other SEO events, which stay local or go deep on one corner of search, we address the cross-border part. And we are different for three reasons: East meets West at scale, everybody in the room is an active practitioner with an entrepreneurial spirit, and the location, Shenzhen, across two five-star venues. Every one of you can write this same paragraph about your own business.',
+    body: <PositioningExample />,
+  },
+  {
     id: 'ns-step2',
     notes:
       'Step two. The business model canvas is the engine underneath the strategy. Nine boxes: who you partner with, what you actually do, what you own, what you promise, how you keep customers, how you reach them, who they are, what it costs, and where the money comes from.',
     body: (
       <StageStep
         step={2}
-        title="Draw the business model"
+        title="Draw business model"
         art="/assets/dia-canvas.webp"
         points={[
           'One page, nine boxes. The foundational engine for everything downstream.',
@@ -132,14 +413,20 @@ export const NINE_STEPS: Slide[] = [
 
   /* 3 — split, diagram on the LEFT */
   {
+    id: 'ns-step2-example',
+    notes:
+      'And here is that canvas filled in for this conference. Our key partners are the speakers, the venues and the industry communities. Key activities are curating speakers, running a five-day event, and acquiring the audience. Key resources are the content and the location itself. The value propositions differ by side: Chinese attendees get global strategies and reliable partners without flying; international attendees get de-risked APAC entry. Customer relationships are high touch, masterminds and dinners. Channels are direct marketing plus our speaker and partner networks. Segments are Chinese brands going out, international teams coming in, and sponsors. Costs are speakers, venue, staff and marketing. Revenue is tickets and sponsorship. Nine boxes, one page, and now you can see where every decision comes from.',
+    body: <CanvasExample />,
+  },
+  {
     id: 'ns-step3',
     notes:
       'Step three. Validate product market fit using cheap, fast channels before you commit. Then define two or three ideal customer profiles precisely, based on pain points and buying motives. And define the negative ones too, the customers you actively do not want, the high-refund high-maintenance ones.',
     body: (
       <SplitStep
         step={3}
-        side="left"
-        title="Validate PMF, then define who you say no to"
+        side="right"
+        title="Validate PMF & define ICPs (and non-ICPs)"
         art="/assets/dia-icp.webp"
         points={[
           'Test market response with low-cost, fast channels before committing budget.',
@@ -161,7 +448,7 @@ export const NINE_STEPS: Slide[] = [
     body: (
       <FullBleedStep
         step={4}
-        title="Map the customer journey"
+        title="Map customer journey"
         art="/assets/dia-loop.webp"
         corner="top-left"
         points={[
@@ -204,7 +491,7 @@ export const NINE_STEPS: Slide[] = [
       <SplitStep
         step={6}
         side="right"
-        title="Create the go-to-market strategy"
+        title="Create go-to-market strategy"
         art="/assets/dia-phases.webp"
         points={[
           'Control the pace. Do not let competitors or consultants set your rhythm.',
@@ -226,7 +513,7 @@ export const NINE_STEPS: Slide[] = [
     body: (
       <StatementStep
         step={7}
-        title="Confirm the marketing budget"
+        title="Confirm marketing budget"
         art="/assets/dia-budget.webp"
         statement={
           <>
@@ -237,26 +524,15 @@ export const NINE_STEPS: Slide[] = [
     ),
   },
 
-  /* 8 — the equations, centre stage and large */
+  /* 8 — a clean sequence, with the caveat and tomorrow's talk alongside */
   {
     id: 'ns-step8',
     notes:
-      'Step eight, and only now do we talk about SEO. Define what share of acquisition SEO is actually responsible for, then set phased goals, then break those into an execution plan. And notice the equation has changed: traditional SEO plus rented land optimization, which is content plus brand reputation on platforms you do not own.',
-    body: (
-      <StageStep
-        step={8}
-        title="Build the SEO strategy and execution plan"
-        art="/assets/dia-seo.webp"
-        points={[
-          'Define SEO’s exact share of total acquisition before setting any goal.',
-          'Break macro targets into a plan someone can run on Monday.',
-          'The equation changed: the new SEO adds rented land on top of the traditional four.',
-        ]}
-      />
-    ),
+      'Step eight, and only now do we talk about SEO itself. Five moves. First, define exactly what share of total customer acquisition SEO is responsible for. Second, set the right SEO goals. Third, create a strategy to hit them. Fourth, break that strategy into an actionable plan. Fifth, execute it. Now, notice what is missing from that list: the results. SEO results are often out of our control, and pretending otherwise is where most of the stress comes from. That is the whole subject of my talk tomorrow at the Sunday side event, the SEO Happiness Formula. I will show you my formulas and exactly how to break SEO goals into steps with measurable KPIs, so you can judge your own work on what you actually control.',
+    body: <SeoPlanStep />,
   },
 
-  /* 9 — split, diagram on the LEFT, mirroring step 3 */
+  /* 9 — split, diagram on the right */
   {
     id: 'ns-step9',
     notes:
@@ -264,7 +540,7 @@ export const NINE_STEPS: Slide[] = [
     body: (
       <SplitStep
         step={9}
-        side="left"
+        side="right"
         title="Create a strategy review mechanism"
         art="/assets/dia-cycle.webp"
         points={[
@@ -321,73 +597,18 @@ export const NINE_STEPS: Slide[] = [
   {
     id: 'ns-qa',
     notes:
-      'That is the nine steps. Questions, and here is how to reach me afterwards. And if this was useful, the main conference in September goes far deeper than one session can.',
+      'That is the nine steps. Questions? And if you want to stay in touch afterwards, there are three codes on the screen. The first is my personal WeChat. The second is my WeChat blog, the public account. The third is my LinkedIn. Scan whichever fits how you prefer to keep in contact.',
     body: (
-      <div className="h-full grid md:grid-cols-[1.25fr_1fr]">
-        <div className={`flex flex-col justify-center ${PAD}`}>
-          <Eyebrow>Over to you</Eyebrow>
-          <h2
-            className="display mt-5 st st-1"
-            style={{ color: 'var(--fg)', fontSize: 'clamp(44px, 6.5vw, 118px)', fontWeight: 700, letterSpacing: '-0.035em', lineHeight: 1 }}
-          >
-            Questions?
-          </h2>
-          <dl className="mt-[6vh] grid gap-x-8 gap-y-7 sm:grid-cols-2">
-            {[
-              ['WeChat', 'ShenzhenSEOConf'],
-              ['Email', 'support@shenzhenseoconference.com'],
-              ['Blog', '英文SEO实战派'],
-              ['Conference', 'shenzhenseoconference.com'],
-            ].map(([label, value], i) => (
-              <div key={label} className={`st st-${i + 2}`}>
-                <dt
-                  className="uppercase"
-                  style={{
-                    color: 'var(--red)',
-                    fontFamily: 'General Sans, system-ui, sans-serif',
-                    fontSize: 'clamp(9px, 0.95vw, 13px)',
-                    fontWeight: 700,
-                    letterSpacing: '0.2em',
-                  }}
-                >
-                  {label}
-                </dt>
-                <dd
-                  className="display mt-2"
-                  style={{
-                    color: 'var(--fg)',
-                    // Sized so the long email and domain each sit on one line
-                    // rather than breaking mid-word.
-                    fontSize: 'clamp(11px, 1.15vw, 17px)',
-                    fontWeight: 700,
-                    letterSpacing: '-0.005em',
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {value}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-
-        <div className="hidden md:flex flex-col items-center justify-center gap-6 dia-in">
-          <div className="rounded-3xl p-[1.6vw]" style={{ background: 'var(--fg)', lineHeight: 0 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/qr-conference.webp"
-              alt="QR code linking to shenzhenseoconference.com"
-              width={740}
-              height={740}
-              style={{ width: 'clamp(130px, 20vh, 250px)', height: 'auto', imageRendering: 'pixelated' }}
-            />
-          </div>
-          <span
-            className="display"
-            style={{ color: 'var(--muted)', fontSize: 'clamp(11px, 1.15vw, 17px)', fontWeight: 700, letterSpacing: '0.02em' }}
-          >
-            Scan for the main conference
-          </span>
+      <div className={CENTER}>
+        <Eyebrow center>Over to you</Eyebrow>
+        <h2
+          className="display mt-4 st st-1"
+          style={{ color: 'var(--fg)', fontSize: 'clamp(40px, 5.8vw, 104px)', fontWeight: 700, letterSpacing: '-0.035em', lineHeight: 1 }}
+        >
+          Questions?
+        </h2>
+        <div className="mt-[6vh] flex justify-center w-full">
+          <ContactCards />
         </div>
       </div>
     ),

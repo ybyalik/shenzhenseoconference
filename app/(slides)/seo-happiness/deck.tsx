@@ -7,6 +7,51 @@ import { ByRole, CENTER, GoalsCompare, Kicker, PAD, Statement } from './layouts'
 
 export const SEO_HAPPINESS: Slide[] = [
   {
+    id: 'hap-poll',
+    steps: 1,
+    notes:
+      'Before anything else, two questions, hands up. First: who here is an SEO? Keep your hand up. [REVEAL] Second, and keep it up only if this is true too: who here is happy? Look around the room. That gap, between the hands that stayed up and the hands that went down, is what this whole talk is about.',
+    body: (step: number) => (
+      <div className={CENTER}>
+        <Kicker center>Hands up</Kicker>
+        {/* Both rows are always rendered and the second is hidden with opacity,
+            so the first question does not jump up the slide when the second
+            arrives. */}
+        <div className="mt-[7vh] flex flex-col gap-[6vh] w-full" style={{ maxWidth: 1100 }}>
+          {[
+            { q: 'Are you an SEO?', n: '01', accent: false },
+            { q: 'Are you happy?', n: '02', accent: true },
+          ].map((row, i) => (
+            <div
+              key={row.n}
+              className={`flex items-baseline justify-center gap-6 ${i === 0 ? 'st st-1' : ''}`}
+              style={i === 0 ? undefined : { opacity: step >= 1 ? 1 : 0, transition: 'opacity 420ms ease-out' }}
+            >
+              <span
+                className="display"
+                style={{ color: 'var(--muted-2)', fontSize: 'clamp(14px, 1.5vw, 22px)', fontWeight: 700, letterSpacing: '0.1em' }}
+              >
+                {row.n}
+              </span>
+              <span
+                className="display"
+                style={{
+                  color: row.accent ? 'var(--red)' : 'var(--fg)',
+                  fontSize: 'clamp(34px, 5.4vw, 92px)',
+                  fontWeight: 700,
+                  lineHeight: 1,
+                  letterSpacing: '-0.035em',
+                }}
+              >
+                {row.q}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    ),
+  },
+  {
     id: 'hap-title',
     notes:
       'Good afternoon. I want to talk about something we do not talk about at SEO conferences, which is whether doing this work actually makes you happy. And I am going to argue that happiness in SEO is not luck, it is engineered, in three steps.',
@@ -22,15 +67,22 @@ export const SEO_HAPPINESS: Slide[] = [
             className="display mt-6 t-rise"
             style={{
               color: 'var(--fg)',
-              fontSize: 'clamp(38px, 5.8vw, 100px)',
+              // Smaller than a two-word title would be: this one is a full
+              // phrase and has to hold on two lines without crowding the rule.
+              fontSize: 'clamp(30px, 4.4vw, 76px)',
               fontWeight: 700,
-              lineHeight: 1,
-              letterSpacing: '-0.035em',
+              lineHeight: 1.05,
+              letterSpacing: '-0.03em',
               textWrap: 'balance',
-              maxWidth: '15ch',
+              maxWidth: '20ch',
             }}
           >
-<span style={{ color: 'var(--red)' }}>Stress-free</span> SEO
+            {/* The quoted phrase must not break: left to wrap freely it split
+                after "Happiness" and stranded the emoji and closing quote at
+                the start of line two. */}
+            The{' '}
+            <span style={{ color: 'var(--red)', whiteSpace: 'nowrap' }}>“SEO Happiness 😀”</span>{' '}
+            Formula
           </h1>
           <div
             className="mt-[5vh] t-rule"
@@ -50,7 +102,7 @@ export const SEO_HAPPINESS: Slide[] = [
               fontWeight: 500,
             }}
           >
-            Three steps to better results and a calmer life
+            3 steps to better results and less stress
           </p>
         </div>
       </div>
@@ -93,43 +145,6 @@ export const SEO_HAPPINESS: Slide[] = [
   },
 
   /* ── The hook: a live poll ── */
-  {
-    id: 'hap-poll',
-    notes:
-      'Two questions, hands up. First: who here is an SEO? Keep your hand up. Second: who here is happy? Look around the room. That gap is what this talk is about.',
-    body: (
-      <div className={CENTER}>
-        <Kicker center>Hands up</Kicker>
-        <div className="mt-[7vh] flex flex-col gap-[6vh] w-full" style={{ maxWidth: 1100 }}>
-          {[
-            { q: 'Are you an SEO?', n: '01', accent: false },
-            { q: 'Are you happy?', n: '02', accent: true },
-          ].map((row, i) => (
-            <div key={row.n} className={`flex items-baseline justify-center gap-6 st st-${i + 1}`}>
-              <span
-                className="display"
-                style={{ color: 'var(--muted-2)', fontSize: 'clamp(14px, 1.5vw, 22px)', fontWeight: 700, letterSpacing: '0.1em' }}
-              >
-                {row.n}
-              </span>
-              <span
-                className="display"
-                style={{
-                  color: row.accent ? 'var(--red)' : 'var(--fg)',
-                  fontSize: 'clamp(34px, 5.4vw, 92px)',
-                  fontWeight: 700,
-                  lineHeight: 1,
-                  letterSpacing: '-0.035em',
-                }}
-              >
-                {row.q}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    ),
-  },
 
   {
     id: 'hap-equation',
