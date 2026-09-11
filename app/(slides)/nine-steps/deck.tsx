@@ -342,7 +342,7 @@ export const NINE_STEPS: Slide[] = [
       'A quick word on who is saying this. Sixteen years in SEO: in-house, agency side, and running my own affiliate sites. Today I run several brands, including this conference.',
     body: (
       <HostSlide
-        summary="16 years in SEO. I call myself an SEO entrepreneur and content creator."
+        summary="16 years in SEO."
         roles={[
           ['In-house', 'Wondershare, Shenzhen (2010) · Whova, San Diego (2016)'],
           ['Agency', 'Baunfire, San Jose (2014–2015)'],
@@ -449,7 +449,7 @@ export const NINE_STEPS: Slide[] = [
       <FullBleedStep
         step={4}
         title="Map customer journey"
-        art="/assets/dia-loop.webp"
+        art="/assets/dia-loop-v2.webp"
         corner="top-left"
         points={[
           'B2C is simple. High-ticket B2B is complex and impossible to track end to end.',
@@ -515,7 +515,7 @@ export const NINE_STEPS: Slide[] = [
         step={7}
         side="right"
         title="Confirm marketing budget"
-        art="/assets/dia-budget.webp"
+        art="/assets/dia-budget-chart.webp"
         points={[
           <>
             Set the <strong style={{ color: 'var(--fg)' }}>target</strong> (business goal) before you set the

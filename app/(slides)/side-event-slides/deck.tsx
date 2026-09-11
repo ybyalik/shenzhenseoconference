@@ -179,23 +179,23 @@ export function NameSlide() {
     ['Zhang 章', 'My family name. In China it comes first.'],
   ];
   return (
-    <div className={CENTER}>
-      {/* The face belongs on the slide that introduces him, not two slides
-          later next to his CV. */}
-      <div
-        className="relative rounded-full overflow-hidden"
-        style={{
-          width: 'clamp(84px, 13vh, 165px)',
-          height: 'clamp(84px, 13vh, 165px)',
-          border: '2px solid rgba(235,48,48,0.55)',
-        }}
-      >
-        <Image src="/assets/jp-face.webp" alt="JP Zhang" fill className="object-cover" sizes="180px" priority />
+    // Same split as the host slide three on: the stage portrait down the left,
+    // the words to its right.
+    <div className="h-full grid md:grid-cols-[minmax(0,34%)_1fr]">
+      <div className="relative hidden md:block">
+        <Image
+          src="/figma-assets/jp-portrait.png"
+          alt="JP Zhang speaking on stage"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="34vw"
+        />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, transparent 50%, var(--bg) 100%)' }} />
       </div>
 
-      <div className="mt-[3.5vh]">
-        <Eyebrow center>Who is talking</Eyebrow>
-      </div>
+      <div className={`h-full flex flex-col items-center justify-center text-center ${PAD}`}>
+      <Eyebrow center>Who is talking</Eyebrow>
 
       <h2
         className="display mt-4"
@@ -244,6 +244,7 @@ export function NameSlide() {
             </p>
           </div>
         ))}
+      </div>
       </div>
     </div>
   );
@@ -307,18 +308,41 @@ export function OriginSlide() {
             ))}
           </div>
 
-          <p
-            className="mt-[4vh]"
-            style={{
-              color: 'var(--muted)',
-              fontFamily: 'General Sans, system-ui, sans-serif',
-              fontSize: 'clamp(13px, 1.35vw, 21px)',
-              lineHeight: 1.6,
-            }}
-          >
-            A countryside boy from Hubei. Not American-born, not Hong Kong, Singapore, Malaysia or
-            Japan. English is my second language.
-          </p>
+          {/* Three separate facts rather than one run-on sentence. The last is
+              the setup for the joke, so it carries the weight. */}
+          <ul className="mt-[4vh] flex flex-col gap-2.5">
+            {[
+              { t: 'A countryside boy from Hubei.', lead: false },
+              { t: 'Not American-born, not Hong Kong, Singapore, Malaysia or Japan.', lead: false },
+              { t: 'English is my second language.', lead: true },
+            ].map((row) => (
+              <li key={row.t} className="grid grid-cols-[0.9rem_1fr] gap-x-3 items-baseline">
+                <span
+                  aria-hidden
+                  className="block rounded-full"
+                  style={{
+                    width: row.lead ? 9 : 6,
+                    height: row.lead ? 9 : 6,
+                    background: row.lead ? 'var(--red)' : 'rgba(249, 249, 249, 0.35)',
+                    transform: 'translateY(-0.25em)',
+                  }}
+                />
+                <span
+                  className={row.lead ? 'display' : ''}
+                  style={{
+                    color: row.lead ? 'var(--fg)' : 'var(--muted)',
+                    fontFamily: row.lead ? undefined : 'General Sans, system-ui, sans-serif',
+                    fontSize: row.lead ? 'clamp(15px, 1.8vw, 29px)' : 'clamp(13px, 1.35vw, 21px)',
+                    fontWeight: row.lead ? 700 : 400,
+                    letterSpacing: row.lead ? '-0.015em' : undefined,
+                    lineHeight: 1.45,
+                  }}
+                >
+                  {row.t}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="pl-5" style={{ borderLeft: '2px solid rgba(235,48,48,0.5)' }}>
@@ -337,8 +361,19 @@ export function OriginSlide() {
               lineHeight: 1.55,
             }}
           >
-            My MBA classmate from India, 2013. So please lower your expectations for my English.
-            My Mandarin is excellent.
+            My MBA classmate from India, 2013.
+          </p>
+          <p
+            className="display mt-[3vh]"
+            style={{
+              color: 'var(--red)',
+              fontSize: 'clamp(14px, 1.7vw, 27px)',
+              fontWeight: 700,
+              letterSpacing: '-0.015em',
+              lineHeight: 1.3,
+            }}
+          >
+            Please lower your expectations for my English speech!
           </p>
         </div>
       </div>
@@ -362,21 +397,11 @@ export function HostSlide({
   demoBrands?: string[];
 }) {
   return (
-    <div className="h-full grid md:grid-cols-[minmax(0,34%)_1fr]">
-      <div className="relative hidden md:block">
-        <Image
-          src="/figma-assets/jp-portrait.png"
-          alt="JP Zhang speaking on stage"
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="34vw"
-        />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, transparent 50%, var(--bg) 100%)' }} />
-      </div>
-
-      <div className={`flex flex-col justify-center ${PAD}`}>
-        <Eyebrow>Your host</Eyebrow>
+    // Full width: the portrait is on the name slide two earlier, and the
+    // experience and brands read better with the whole frame.
+    <div className="h-full">
+      <div className={`h-full flex flex-col justify-center ${PAD}`}>
+        <Eyebrow>My core identity</Eyebrow>
         <h2
           className="display mt-4"
           style={{
@@ -387,7 +412,7 @@ export function HostSlide({
             letterSpacing: '-0.025em',
           }}
         >
-          John / JP Zhang
+          SEO Entrepreneur + Content Creator
         </h2>
 
         {/* Experience: one claim, with the three places it came from nested
@@ -630,30 +655,51 @@ function PositioningSlide() {
  */
 function DifferentSlide() {
   const usps: [string, string][] = [
-    ['East meets West', 'The largest SEO conference putting Eastern and Western professionals in one room, at scale.'],
-    ['Entrepreneurship & partnership', 'Every speaker, partner and attendee is an active practitioner with an entrepreneurial spirit.'],
-    ['Shenzhen', 'China’s Silicon Valley of hardware. Two five-star venues: The St. Regis and MGM.'],
+    ['East Meets West', 'The largest SEO conference bringing Eastern and Western professionals together at scale, in one room.'],
+    ['SEO Entrepreneurship & Partnership', 'Every speaker, partner and attendee is an active practitioner with an entrepreneurial spirit, who believes in global partnerships.'],
+    ['Location', 'Hosted in China’s “Silicon Valley of Hardware” (Shenzhen), across two 5-star venues: The St. Regis and MGM.'],
   ];
   return (
+    // Same heading as the slide before it: these two and the mission slide are
+    // one argument, so they should not look like three different sections.
     <div className={`h-full flex flex-col justify-center ${PAD}`}>
-      <Eyebrow>Unlike other SEO events</Eyebrow>
+      <Eyebrow>Who we are, and who we serve</Eyebrow>
       <h2
         className="display mt-3"
         style={{
           color: 'var(--fg)',
-          fontSize: 'clamp(24px, 3.3vw, 54px)',
+          fontSize: 'clamp(28px, 3.9vw, 64px)',
           fontWeight: 700,
-          lineHeight: 1.1,
+          lineHeight: 1,
           letterSpacing: '-0.025em',
-          maxWidth: '20ch',
         }}
       >
-        Most stay local, or go deep on one corner of search.{' '}
-        <span style={{ color: 'var(--muted-2)' }}>Nobody is doing the cross-border part.</span>
+        What is Shenzhen SEO Conference? <span style={{ color: 'var(--muted-2)' }}>(continued)</span>
       </h2>
 
+      <div className="mt-[5vh]" style={{ maxWidth: 1500 }}>
+        <FormulaLabel>Unlike other SEO events (differentiation)</FormulaLabel>
+        <p
+          className="mt-2"
+          style={{
+            color: 'var(--fg)',
+            fontFamily: 'General Sans, system-ui, sans-serif',
+            fontSize: 'clamp(13px, 1.5vw, 24px)',
+            fontWeight: 500,
+            lineHeight: 1.45,
+          }}
+        >
+          Most SEO events stay local or hyper-focus on single search aspects, without addressing{' '}
+          <strong style={{ fontWeight: 700 }}>cross-border collaboration</strong>.
+        </p>
+      </div>
+
+      <div className="mt-[4vh]" style={{ maxWidth: 1500 }}>
+        <FormulaLabel>We are unique because (USPs)</FormulaLabel>
+      </div>
+
       <div
-        className="mt-[6vh] grid gap-[2.5vw] md:grid-cols-3"
+        className="mt-3 grid gap-[2.5vw] md:grid-cols-3"
         style={{ maxWidth: 1500 }}
       >
         {usps.map(([title, text], n) => (
@@ -730,20 +776,34 @@ function DnaSlide() {
         style={{ background: 'radial-gradient(ellipse at center, rgba(3,6,13,0.6) 0%, transparent 72%)' }}
       />
 
-      <div className={`relative ${CENTER}`}>
-        <Headline center>Mission, vision, values</Headline>
+      <div className={`relative h-full flex flex-col justify-center ${PAD}`}>
+        <Eyebrow>Who we are, and who we serve</Eyebrow>
+        <h2
+          className="display mt-3"
+          style={{
+            color: 'var(--fg)',
+            fontSize: 'clamp(28px, 3.9vw, 64px)',
+            fontWeight: 700,
+            lineHeight: 1,
+            letterSpacing: '-0.025em',
+          }}
+        >
+          What is Shenzhen SEO Conference? <span style={{ color: 'var(--muted-2)' }}>(continued)</span>
+        </h2>
 
-        <div className="mt-[8vh] grid gap-[5vh] md:gap-[2.5vw] md:grid-cols-3 w-full" style={{ maxWidth: 1480 }}>
+        <div className="mt-[7vh] grid gap-[5vh] md:gap-[2.5vw] md:grid-cols-3 w-full" style={{ maxWidth: 1480 }}>
           {PILLARS.map(([label, value]) => (
             <div key={label} className="text-center">
+              {/* Bigger than a normal label: with the white headline gone,
+                  these three words are what names each column. */}
               <div
                 className="uppercase"
                 style={{
                   color: 'var(--red)',
                   fontFamily: 'General Sans, system-ui, sans-serif',
-                  fontSize: 'clamp(10px, 1vw, 14px)',
+                  fontSize: 'clamp(13px, 1.5vw, 22px)',
                   fontWeight: 700,
-                  letterSpacing: '0.2em',
+                  letterSpacing: '0.18em',
                 }}
               >
                 {label}
@@ -1449,7 +1509,7 @@ const ALL: (Slide & { section: string })[] = [
       'For those I haven’t met yet, here is a quick background on who I am. I’m a serial entrepreneur deeply rooted in this industry. I’ve been in the SEO game for 16 years, experiencing it from every angle—in-house at companies like Wondershare, working at a Silicon Valley agency, and running my own affiliate content sites. Today, I manage several brands, including my blog, our paid community, and of course, the Shenzhen SEO Conference.',
     body: (
       <HostSlide
-        summary="16 years in SEO. I call myself an SEO entrepreneur and content creator."
+        summary="16 years in SEO."
         roles={[
           ['In-house', 'Wondershare, Shenzhen (2010) · Whova, San Diego (2016)'],
           ['Agency', 'Baunfire, San Jose (2014–2015)'],
@@ -1613,7 +1673,7 @@ const ALL: (Slide & { section: string })[] = [
       'For the new faces in the room, here is a quick background on who I am. I’m a serial entrepreneur deeply rooted in this industry. I’ve been in the SEO game for 16 years, experiencing it from every angle—in-house, working at a Silicon Valley agency, and running my own affiliate content sites. Today, I manage several brands, including my blog, our paid community, and the Shenzhen SEO Conference.',
     body: (
       <HostSlide
-        summary="16 years in SEO. I call myself an SEO entrepreneur and content creator."
+        summary="16 years in SEO."
         roles={[
           ['In-house', 'Wondershare, Shenzhen (2010) · Whova, San Diego (2016)'],
           ['Agency', 'Baunfire, San Jose (2014–2015)'],

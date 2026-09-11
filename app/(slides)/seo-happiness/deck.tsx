@@ -37,9 +37,9 @@ function GoalsTable({ step = 1 }: { step?: number }) {
     { goal: '“2x our organic traffic”', good: false, why: 'Traffic isn’t guaranteed, and double the traffic is not double the sales.' },
     { goal: '“Double SEO-driven sales”', good: false, why: 'Attribution is too hard, especially in B2B. SEO facilitates, it rarely closes.' },
     { goal: '“Top 3 rankings in 30 days”', good: false, why: 'Unrealistic timeline. We don’t control Google’s algorithm.' },
-    { goal: '“#1 for brand, and positive LLM sentiment within 3 months, then hold it”', good: true, why: 'High business impact. Measurable, and it breaks down into clear action items.' },
+    { goal: '“Rank 20 branded keywords #1, and positive LLM sentiment within 3 months, then hold it”', good: true, why: 'High business impact. Measurable, and it breaks down into clear action items.' },
     { goal: '“Recover from the August 2026 core update hit in 9 months”', good: true, why: 'Clear objective, realistic timeframe, easy to benchmark.' },
-    { goal: '“Grow indexed pages by 50% by the end of this quarter”', good: true, why: 'Specific, time-bound, and actionable.' },
+    { goal: '“Increase indexed pages by 50% by the end of this quarter”', good: true, why: 'Specific, time-bound, and actionable.' },
   ];
   const cols = 'grid-cols-[minmax(0,1.05fr)_5.5rem_minmax(0,1.15fr)]';
   const head = {
@@ -65,11 +65,11 @@ function GoalsTable({ step = 1 }: { step?: number }) {
         Setting SEO goals (the good vs the bad)
       </h2>
 
-      <div className="mt-[4vh]">
+      <div className="mt-[6vh]">
         <div className={`grid ${cols} gap-x-[2.5vw] pb-2.5`} style={{ borderBottom: '1px solid var(--line-2)' }}>
           <div className="uppercase" style={head}>The goal</div>
           <div className="uppercase" style={head}>Status</div>
-          <div className="uppercase" style={head}>The reality</div>
+          <div className="uppercase" style={head}>The reason why</div>
         </div>
 
         {rows.map((r, i) => (
@@ -168,13 +168,28 @@ function SlideNote({ children }: { children: React.ReactNode }) {
   );
 }
 
-/** One numbered input in an execution breakdown. */
+/**
+ * One numbered input in an execution breakdown. The number sits in its own
+ * tinted chip and the label is set apart from the detail, so six of these read
+ * as six steps rather than as a paragraph with digits in it.
+ */
 function InputRow({ n, k, children }: { n: number; k: string; children: React.ReactNode }) {
   return (
-    <li className="grid grid-cols-[1.7rem_1fr] gap-x-3 items-baseline">
+    <li
+      className="grid grid-cols-[2.4rem_1fr] gap-x-4 items-baseline py-[1.4vh]"
+      style={{ borderTop: n === 1 ? 'none' : '1px solid rgba(249,249,249,0.07)' }}
+    >
       <span
-        className="display tabular-nums"
-        style={{ color: 'var(--red)', fontFamily: 'General Sans, system-ui, sans-serif', fontSize: 'clamp(9px, 0.9vw, 12px)', fontWeight: 700, letterSpacing: '0.1em' }}
+        className="display tabular-nums text-center rounded-md"
+        style={{
+          color: 'var(--red)',
+          background: 'rgba(235,48,48,0.10)',
+          fontFamily: 'General Sans, system-ui, sans-serif',
+          fontSize: 'clamp(11px, 1.15vw, 17px)',
+          fontWeight: 700,
+          letterSpacing: '0.06em',
+          padding: '0.25em 0',
+        }}
       >
         {String(n).padStart(2, '0')}
       </span>
@@ -182,7 +197,7 @@ function InputRow({ n, k, children }: { n: number; k: string; children: React.Re
         style={{
           color: 'var(--muted)',
           fontFamily: 'General Sans, system-ui, sans-serif',
-          fontSize: 'clamp(10px, 1.1vw, 17px)',
+          fontSize: 'clamp(13px, 1.42vw, 23px)',
           lineHeight: 1.45,
         }}
       >
@@ -196,7 +211,7 @@ function InputRow({ n, k, children }: { n: number; k: string; children: React.Re
 function GoalLine({ children }: { children: React.ReactNode }) {
   return (
     <p
-      className="display mt-[3vh] st st-2"
+      className="display mt-[4.5vh] st st-2"
       style={{ color: 'var(--fg)', fontSize: 'clamp(13px, 1.5vw, 24px)', fontWeight: 700, letterSpacing: '-0.015em', lineHeight: 1.3 }}
     >
       <span style={{ color: 'var(--red)' }}>Goal:</span> {children}
@@ -326,7 +341,7 @@ export const SEO_HAPPINESS: Slide[] = [
       'Sixteen years in SEO: in-house, agency side, and running my own affiliate sites. I have been unhappy in all three, which is partly why I care about this.',
     body: (
       <HostSlide
-        summary="16 years in SEO. I call myself an SEO entrepreneur and content creator."
+        summary="16 years in SEO."
         roles={[
           ['In-house', 'Wondershare, Shenzhen (2010) · Whova, San Diego (2016)'],
           ['Agency', 'Baunfire, San Jose (2014–2015)'],
@@ -391,34 +406,45 @@ export const SEO_HAPPINESS: Slide[] = [
   {
     id: 'hap-definition',
     notes:
-      'So here is my definition, and it is three things at once, not one. SEO happiness equals one plus two plus three. One: having supreme confidence in achieving your SEO goals. Two: remaining completely stress-free while you do it. Three: living a better lifestyle. You need all three at the same time. If you already have all three, you can leave now and enjoy your Sunday. If not, the good news is that it can be engineered, and that is what the rest of this talk is about.',
+      'So here is my definition, and it is three things at once, not one. SEO happiness equals confidence, plus stress-free, plus a better life. One: having supreme confidence in achieving your SEO goals. Two: remaining completely stress-free while you do it. Three: living a better lifestyle. You need all three at the same time. If you already have all three, you can leave now and enjoy your Sunday. If not, the good news is that it can be engineered, and that is what the rest of this talk is about.',
     body: (
       <div className={`h-full flex flex-col justify-center ${PAD}`}>
         <Kicker>My definition</Kicker>
 
-        {/* The formula names the three parts before they arrive, so the columns
-            below read as its terms rather than as an unrelated list. */}
+        {/* The three terms are named here rather than numbered, so the numbers
+            appear once, on the cards, instead of three times over. */}
         <div className="mt-5 flex flex-wrap items-baseline gap-x-4 gap-y-2 st st-1">
           {[
             { t: 'SEO Happiness', c: 'var(--fg)' },
             { t: '=', c: 'var(--muted-2)' },
-            { t: '01', c: 'var(--red)' },
+            { t: 'Confidence', c: 'var(--red)' },
             { t: '+', c: 'var(--muted-2)' },
-            { t: '02', c: 'var(--red)' },
+            { t: 'Stress-Free', c: 'var(--red)' },
             { t: '+', c: 'var(--muted-2)' },
-            { t: '03', c: 'var(--red)' },
+            { t: 'Better Life', c: 'var(--red)' },
           ].map((part, i) => (
             <span
               key={i}
               className="display"
-              style={{ color: part.c, fontSize: 'clamp(22px, 3vw, 50px)', fontWeight: 700, letterSpacing: '-0.028em', lineHeight: 1.1 }}
+              style={{ color: part.c, fontSize: 'clamp(18px, 2.5vw, 42px)', fontWeight: 700, letterSpacing: '-0.028em', lineHeight: 1.1 }}
             >
               {part.t}
             </span>
           ))}
         </div>
 
-        <div className="mt-[5vh] grid gap-6 md:grid-cols-3">
+        {/* Straight under the title and roughly twice the size it was: this is
+            the picture of the definition, not a footnote to it. */}
+        <div className="mt-[4vh] flex justify-center">
+          <div
+            className="relative hidden md:block dia-in"
+            style={{ width: 'clamp(520px, 66vw, 1180px)', height: 'clamp(180px, 30vh, 330px)' }}
+          >
+            <Image src="/assets/dia-definition-v2.webp" alt="" fill className="object-contain" sizes="66vw" />
+          </div>
+        </div>
+
+        <div className="mt-[4vh] grid gap-6 md:grid-cols-3">
           {[
             ['01', 'Having supreme confidence in achieving your SEO goals'],
             ['02', 'Remaining completely stress-free'],
@@ -433,7 +459,7 @@ export const SEO_HAPPINESS: Slide[] = [
               </div>
               <div
                 className="display mt-3"
-                style={{ color: 'var(--fg)', fontSize: 'clamp(15px, 1.75vw, 28px)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.2 }}
+                style={{ color: 'var(--fg)', fontSize: 'clamp(14px, 1.6vw, 25px)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.2 }}
               >
                 {h}
               </div>
@@ -441,22 +467,12 @@ export const SEO_HAPPINESS: Slide[] = [
           ))}
         </div>
 
-        {/* Diagram centred and given real size: tucked in the bottom corner it
-            read as decoration rather than as the picture of the definition. */}
-        <div className="mt-[4vh] flex flex-col items-center">
-          <div
-            className="relative hidden md:block dia-in"
-            style={{ width: 'clamp(320px, 40vw, 620px)', height: 'clamp(120px, 21vh, 230px)' }}
-          >
-            <Image src="/assets/dia-definition.webp" alt="" fill className="object-contain" sizes="40vw" />
-          </div>
-          <p
-            className="display mt-[3vh] text-center st st-5"
-            style={{ color: 'var(--fg)', fontSize: 'clamp(17px, 2vw, 32px)', fontWeight: 700, letterSpacing: '-0.02em' }}
-          >
-            Not there yet? <span style={{ color: 'var(--red)' }}>It can be engineered.</span>
-          </p>
-        </div>
+        <p
+          className="display mt-[4vh] st st-5"
+          style={{ color: 'var(--fg)', fontSize: 'clamp(15px, 1.8vw, 29px)', fontWeight: 700, letterSpacing: '-0.02em' }}
+        >
+          Not there yet? <span style={{ color: 'var(--red)' }}>It can be engineered.</span>
+        </p>
       </div>
     ),
   },
@@ -655,10 +671,10 @@ export const SEO_HAPPINESS: Slide[] = [
           <SectionLabel>The methodology</SectionLabel>
           <div className="relative mt-3 dia-in w-full" style={{ height: 'clamp(90px, 19vh, 210px)' }}>
             <Image
-              src="/assets/dia-goalflow-trim.webp"
+              src="/assets/dia-goalflow-v2.webp"
               alt="Customer journey, then marketing strategy, then marketing goal, then SEO’s role and goals"
               fill
-              className="object-contain object-left"
+              className="object-contain"
               sizes="92vw"
             />
           </div>
@@ -666,7 +682,9 @@ export const SEO_HAPPINESS: Slide[] = [
 
         <div className="mt-[4vh] st st-4">
           <SectionLabel>Key lessons</SectionLabel>
-          <ul className="mt-3 grid gap-x-[4vw] gap-y-3 md:grid-cols-2">
+          {/* Stacked, not side by side: in two columns the second lesson sat
+              halfway across the slide, far from the first. */}
+          <ul className="mt-3 flex flex-col gap-3" style={{ maxWidth: '80ch' }}>
             {[
               <>
                 <strong style={{ color: 'var(--fg)', fontWeight: 700 }}>Never work backward.</strong> You will
@@ -688,7 +706,7 @@ export const SEO_HAPPINESS: Slide[] = [
                   style={{
                     color: 'var(--muted)',
                     fontFamily: 'General Sans, system-ui, sans-serif',
-                    fontSize: 'clamp(12px, 1.3vw, 20px)',
+                    fontSize: 'clamp(13px, 1.5vw, 24px)',
                     lineHeight: 1.5,
                   }}
                 >
@@ -744,7 +762,10 @@ export const SEO_HAPPINESS: Slide[] = [
 
         {/* The two terms you own are lit; the one you do not is greyed. The
             colours carry straight down into the two columns below. */}
-        <div className="mt-[3.5vh] flex flex-wrap items-baseline gap-x-3 gap-y-2 st st-2">
+        <div
+          className="mt-[6vh] flex flex-wrap items-baseline gap-x-3 gap-y-2 st st-2 pl-5"
+          style={{ borderLeft: '2px solid rgba(235,48,48,0.45)' }}
+        >
           {[
             { t: 'SEO Result', c: 'var(--fg)' },
             { t: '=', c: 'var(--muted-2)' },
@@ -764,11 +785,17 @@ export const SEO_HAPPINESS: Slide[] = [
           ))}
         </div>
 
-        <div className="mt-[4vh] grid gap-x-[4vw] gap-y-[3vh] md:grid-cols-2 st st-3">
+        {/* Two panels rather than two text columns: the one you own is lit and
+            solid, the one you don't is dimmed and dashed. The border carries
+            the argument, so the words don't have to work as hard. */}
+        <div className="mt-[6vh] grid gap-[2.5vw] md:grid-cols-2 st st-3">
           {[
             {
               label: 'What you control · your inputs',
               accent: 'var(--teal-2)',
+              border: '1px solid rgba(134, 223, 247, 0.45)',
+              bg: 'rgba(134, 223, 247, 0.05)',
+              dim: false,
               items: [
                 ['Strategy', 'Product-led content, topic selection, partner-led link building.'],
                 ['Execution', 'Content production, link building, technical fixes, CRO testing.'],
@@ -777,38 +804,52 @@ export const SEO_HAPPINESS: Slide[] = [
             {
               label: 'What you don’t · external factors',
               accent: 'rgba(249, 249, 249, 0.45)',
+              border: '1px dashed rgba(249, 249, 249, 0.22)',
+              bg: 'transparent',
+              dim: true,
               items: [
                 ['Luck & algorithms', 'Core updates, competitor shifts, and market trends.'],
                 ['Patience & time', 'Google’s crawling schedules and indexing lag.'],
               ] as [string, string][],
             },
           ].map((col) => (
-            <div key={col.label} className="pl-4" style={{ borderLeft: `2px solid ${col.accent}` }}>
+            <div
+              key={col.label}
+              className="rounded-2xl p-6 lg:p-7"
+              style={{ border: col.border, background: col.bg, opacity: col.dim ? 0.72 : 1 }}
+            >
               <div
                 className="uppercase"
                 style={{
                   color: col.accent,
                   fontFamily: 'General Sans, system-ui, sans-serif',
-                  fontSize: 'clamp(9px, 0.9vw, 12px)',
+                  fontSize: 'clamp(10px, 1vw, 14px)',
                   fontWeight: 700,
                   letterSpacing: '0.18em',
                 }}
               >
                 {col.label}
               </div>
-              <ul className="mt-3 flex flex-col gap-2.5">
+              <ul className="mt-4 flex flex-col gap-3">
                 {col.items.map(([k, v]) => (
                   <li key={k}>
-                    <span
+                    <div
+                      className="display"
+                      style={{ color: 'var(--fg)', fontSize: 'clamp(14px, 1.6vw, 25px)', fontWeight: 700, letterSpacing: '-0.015em', lineHeight: 1.2 }}
+                    >
+                      {k}
+                    </div>
+                    <p
+                      className="mt-1"
                       style={{
                         color: 'var(--muted)',
                         fontFamily: 'General Sans, system-ui, sans-serif',
-                        fontSize: 'clamp(11px, 1.2vw, 18px)',
+                        fontSize: 'clamp(12px, 1.3vw, 20px)',
                         lineHeight: 1.45,
                       }}
                     >
-                      <strong style={{ color: 'var(--fg)', fontWeight: 700 }}>{k}:</strong> {v}
-                    </span>
+                      {v}
+                    </p>
                   </li>
                 ))}
               </ul>
@@ -816,7 +857,7 @@ export const SEO_HAPPINESS: Slide[] = [
           ))}
         </div>
 
-        <div className="mt-[4vh] pt-[3vh] st st-4" style={{ borderTop: '1px solid var(--line-2)' }}>
+        <div className="mt-[6vh] pt-[3vh] st st-4" style={{ borderTop: '1px solid var(--line-2)' }}>
           <SectionLabel>Key takeaway</SectionLabel>
           <p
             className="display mt-2.5"
@@ -849,53 +890,68 @@ export const SEO_HAPPINESS: Slide[] = [
     body: (
       <div className={`h-full flex flex-col justify-center ${PAD}`}>
         <S3Title sub="My SEO formulas" />
-        <div className="mt-[5vh] flex flex-col gap-[4vh] st st-2">
+        {/* One row per formula, each on its own rule with the name set apart
+            from the terms. Three bare lines floating in the middle of the
+            frame left a third of the slide empty and nothing to look at. */}
+        <div className="mt-[6vh] flex flex-col st st-2" style={{ maxWidth: 1500 }}>
           {[
             ['Traditional SEO', ['(Content)', '×', '(Links)', '×', '(Technicals)', '×', '(User Engagement)']],
             ['New SEO / GEO', ['Traditional SEO', '+', 'RLO (Rented Land Optimization)']],
             ['RLO', ['Platform Content', '+', 'BRO (Brand Reputation Optimization)']],
-          ].map(([label, parts]) => (
-            <div key={label as string} className="flex flex-wrap items-baseline gap-x-3 gap-y-2">
-              <span
-                className="display"
-                style={{ color: 'var(--fg)', fontSize: 'clamp(15px, 2vw, 34px)', fontWeight: 700, letterSpacing: '-0.02em' }}
+          ].map(([label, parts], row) => (
+            <div
+              key={label as string}
+              className="py-[3vh]"
+              style={{ borderTop: row === 0 ? 'none' : '1px solid var(--line-2)' }}
+            >
+              <div
+                className="uppercase"
+                style={{
+                  color: 'var(--red)',
+                  fontFamily: 'General Sans, system-ui, sans-serif',
+                  fontSize: 'clamp(10px, 1vw, 14px)',
+                  fontWeight: 700,
+                  letterSpacing: '0.18em',
+                }}
               >
                 {label as string}
-              </span>
-              <span
-                className="display"
-                style={{ color: 'var(--muted-2)', fontSize: 'clamp(15px, 2vw, 34px)', fontWeight: 700 }}
-              >
-                =
-              </span>
-              {(parts as string[]).map((t, i) => (
-                <span
-                  key={i}
-                  className="display"
-                  style={{
-                    color: t === '×' || t === '+' ? 'var(--muted-2)' : 'var(--teal-2)',
-                    fontSize: 'clamp(15px, 2vw, 34px)',
-                    fontWeight: 700,
-                    letterSpacing: '-0.02em',
-                  }}
-                >
-                  {t}
-                </span>
-              ))}
+              </div>
+              <div className="mt-2.5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                {(parts as string[]).map((t, i) => {
+                  const op = t === '×' || t === '+';
+                  const isNew = t.startsWith('RLO') || t.startsWith('BRO');
+                  return (
+                    <span
+                      key={i}
+                      className="display"
+                      style={{
+                        color: op ? 'var(--muted-2)' : isNew ? 'var(--red)' : 'var(--fg)',
+                        fontSize: 'clamp(16px, 2.2vw, 38px)',
+                        fontWeight: 700,
+                        letterSpacing: '-0.02em',
+                      }}
+                    >
+                      {t}
+                    </span>
+                  );
+                })}
+              </div>
             </div>
           ))}
         </div>
+
         <p
-          className="mt-[5vh] st st-3"
+          className="mt-[4vh] st st-3"
           style={{
-            color: 'var(--muted-2)',
+            color: 'var(--muted)',
             fontFamily: 'General Sans, system-ui, sans-serif',
-            fontSize: 'clamp(11px, 1.2vw, 18px)',
+            fontSize: 'clamp(13px, 1.4vw, 22px)',
             lineHeight: 1.5,
           }}
         >
-          Every term on the right of those equals signs is an input. Every one is something you can go and do
-          this week.
+          Every term on the right of those equals signs is an{' '}
+          <strong style={{ color: 'var(--fg)', fontWeight: 700 }}>input</strong>. Every one is something you can
+          go and do this week.
         </p>
       </div>
     ),
@@ -909,12 +965,14 @@ export const SEO_HAPPINESS: Slide[] = [
       <div className={`h-full flex flex-col justify-center ${PAD}`}>
         <S3Title sub="Execution breakdown · example 1" />
         <GoalLine>Rank #1 for branded keywords, with positive LLM sentiment, on a 3-month horizon.</GoalLine>
-        <ul className="mt-[3vh] grid gap-x-[4vw] gap-y-2.5 md:grid-cols-2 st st-3">
+        {/* One column, 01 through 06 in order. Split across two it read as two
+            unrelated lists and the numbers jumped around. */}
+        <ul className="mt-[4vh] flex flex-col st st-3" style={{ maxWidth: 1560 }}>
           <InputRow n={1} k="Baseline audit.">Benchmark current branded rankings and LLM sentiment.</InputRow>
-          <InputRow n={4} k="Technicals.">Clear GSC errors, resolve every Ahrefs and Semrush audit flag.</InputRow>
           <InputRow n={2} k="Content.">Refresh 10 existing pages, publish 20 new ones.</InputRow>
-          <InputRow n={5} k="RLO &amp; BRO.">2 YouTube videos, 3 LinkedIn posts, 5 Reddit replies, 3 guest posts.</InputRow>
           <InputRow n={3} k="Links.">20 foundation links to the homepage, 5 niche-relevant to product pages, 1 digital PR campaign.</InputRow>
+          <InputRow n={4} k="Technicals.">Clear GSC errors, resolve every Ahrefs and Semrush audit flag.</InputRow>
+          <InputRow n={5} k="RLO &amp; BRO.">2 YouTube videos, 3 LinkedIn posts, 5 Reddit replies, 3 guest posts.</InputRow>
           <InputRow n={6} k="Check &amp; iterate.">Track branded rankings and LLM sentiment every 30 days, then adjust.</InputRow>
         </ul>
         <SlideNote>
@@ -935,12 +993,12 @@ export const SEO_HAPPINESS: Slide[] = [
       <div className={`h-full flex flex-col justify-center ${PAD}`}>
         <S3Title sub="Execution breakdown · example 2" />
         <GoalLine>Recover from a Google core update within 9 months.</GoalLine>
-        <ul className="mt-[3vh] grid gap-x-[4vw] gap-y-2.5 md:grid-cols-2 st st-3">
+        <ul className="mt-[4vh] flex flex-col st st-3" style={{ maxWidth: 1560 }}>
           <InputRow n={1} k="Diagnosis.">Wait for the rollout to finish, plus a week of stability. Use GSC to find the lost pages and queries, and see who was re-rated above you.</InputRow>
-          <InputRow n={4} k="RLO &amp; BRO.">Build off-site presence on LinkedIn, YouTube and Reddit to hold brand trust and leads while you wait.</InputRow>
           <InputRow n={2} k="Content &amp; E-E-A-T.">Delete 20% of low-quality pages, heavily update the 20% that used to earn traffic, publish 5 pieces with proprietary data and real information gain.</InputRow>
-          <InputRow n={5} k="Track the cycle.">Monitor GSC against Google’s 3–4 month rollout schedule and keep refining the inputs.</InputRow>
           <InputRow n={3} k="Technicals &amp; UX.">Remove friction, and make indexing clean across Search and Discover.</InputRow>
+          <InputRow n={4} k="RLO &amp; BRO.">Build off-site presence on LinkedIn, YouTube and Reddit to hold brand trust and leads while you wait.</InputRow>
+          <InputRow n={5} k="Track the cycle.">Monitor GSC against Google’s 3–4 month rollout schedule and keep refining the inputs.</InputRow>
         </ul>
         <SlideNote>
           A core update isn’t a penalty, it’s a{' '}
@@ -1125,17 +1183,29 @@ export const SEO_HAPPINESS: Slide[] = [
         {/* The portrait holds its space from the start, so the quote does not
             jump up the slide when the answer arrives. No name: the face is the
             punchline, and saying it out loud lands better than reading it. */}
+        {/* The portrait and the name arrive together on the second beat, and
+            hold their space from the first so the quote never moves. */}
         <div
-          className="mt-[6vh] rounded-full overflow-hidden relative"
-          style={{
-            width: 'clamp(96px, 15vh, 190px)',
-            height: 'clamp(96px, 15vh, 190px)',
-            border: '2px solid rgba(235,48,48,0.55)',
-            opacity: step >= 1 ? 1 : 0,
-            transition: 'opacity 450ms ease-out',
-          }}
+          className="mt-[5vh] flex flex-col items-center"
+          style={{ opacity: step >= 1 ? 1 : 0, transition: 'opacity 450ms ease-out' }}
         >
-          <Image src="/assets/warren-buffett-portrait.webp" alt="" fill className="object-cover" sizes="200px" />
+          <div
+            className="rounded-full overflow-hidden relative"
+            style={{
+              width: 'clamp(120px, 20vh, 250px)',
+              height: 'clamp(120px, 20vh, 250px)',
+              border: '2px solid rgba(235,48,48,0.55)',
+            }}
+          >
+            <Image src="/assets/warren-buffett-portrait.webp" alt="Warren Buffett" fill className="object-cover" sizes="260px" />
+          </div>
+          <div
+            className="display mt-[2.5vh]"
+            style={{ color: 'var(--fg)', fontSize: 'clamp(14px, 1.7vw, 27px)', fontWeight: 700, letterSpacing: '-0.01em' }}
+          >
+            Warren Buffett{' '}
+            <span style={{ color: 'var(--muted)' }}>「股神」巴菲特</span>
+          </div>
         </div>
       </div>
     ),
@@ -1146,49 +1216,113 @@ export const SEO_HAPPINESS: Slide[] = [
     notes:
       'Happiness is not higher rankings or more traffic. It is closing the gap between what you expected and what is real. Why bother lowering expectations? Two reasons. It prevents burnout: unrealistic targets guarantee daily stress the moment an algorithm shifts. And it protects relationships: mismatched expectations ruin client and executive trust faster than bad rankings ever do. So how do you do it? Lower the SEO goal: stop chasing viral traffic spikes, focus on steady input execution. Lower the marketing goal: position SEO as a steady pipeline engine, not a silver bullet. And lower the business goal: base revenue forecasts on the worst-case algorithm scenario, not best-case guesswork.',
     body: (
-      <div className={`h-full flex flex-col justify-center ${PAD}`}>
-        <h2
-          className="display st st-1"
-          style={{
-            color: 'var(--fg)',
-            fontSize: 'clamp(22px, 2.8vw, 46px)',
-            fontWeight: 700,
-            lineHeight: 1.1,
-            letterSpacing: '-0.028em',
-          }}
-        >
-          Lower Your Expectations
-        </h2>
-        <p
-          className="mt-3 st st-2"
-          style={{
-            color: 'var(--muted)',
-            fontFamily: 'General Sans, system-ui, sans-serif',
-            fontSize: 'clamp(12px, 1.35vw, 21px)',
-            lineHeight: 1.5,
-            maxWidth: '62ch',
-          }}
-        >
-          Happiness isn’t higher rankings or more traffic. It’s{' '}
-          <strong style={{ color: 'var(--fg)', fontWeight: 700 }}>closing the gap between expectations and
-          reality</strong>.
-        </p>
+      // Two columns, not four stacked bands. The argument lives on the left and
+      // the action plan on the right, so the eye has two places to go instead
+      // of four, and everything can run larger.
+      <div className={`h-full grid lg:grid-cols-[1fr_1.05fr] gap-x-[5vw] gap-y-[4vh] items-center ${PAD}`}>
+        <div>
+          <h2
+            className="display st st-1"
+            style={{
+              color: 'var(--fg)',
+              fontSize: 'clamp(26px, 3.4vw, 56px)',
+              fontWeight: 700,
+              lineHeight: 1.08,
+              letterSpacing: '-0.028em',
+            }}
+          >
+            Lower Your Expectations
+          </h2>
+          <p
+            className="display mt-[3vh] st st-2"
+            style={{
+              color: 'var(--fg)',
+              fontSize: 'clamp(15px, 1.8vw, 29px)',
+              fontWeight: 700,
+              letterSpacing: '-0.015em',
+              lineHeight: 1.35,
+            }}
+          >
+            Happiness isn’t higher rankings or more traffic. It’s{' '}
+            <span style={{ color: 'var(--red)' }}>closing the gap between expectations and reality</span>.
+          </p>
 
-        <div className="mt-[4.5vh] grid gap-x-[4vw] gap-y-[3.5vh] lg:grid-cols-[1fr_1.15fr] items-start st st-3">
-          <div>
+          <div className="mt-[4.5vh] st st-3">
             <SectionLabel>Why lower them?</SectionLabel>
-            <ul className="mt-3 flex flex-col gap-2.5">
-              <InputRow n={1} k="Prevent burnout.">Unrealistic targets guarantee daily stress the moment algorithms shift.</InputRow>
-              <InputRow n={2} k="Protect relationships.">Mismatched expectations ruin client and executive trust faster than bad rankings do.</InputRow>
+            <ul className="mt-3.5 flex flex-col gap-3">
+              {[
+                ['Prevent burnout.', 'Unrealistic targets guarantee daily stress the moment algorithms shift.'],
+                ['Protect relationships.', 'Mismatched expectations ruin trust faster than bad rankings do.'],
+              ].map(([k, v]) => (
+                <li
+                  key={k}
+                  className="pl-4"
+                  style={{ borderLeft: '2px solid rgba(235,48,48,0.4)' }}
+                >
+                  <span
+                    style={{
+                      color: 'var(--muted)',
+                      fontFamily: 'General Sans, system-ui, sans-serif',
+                      fontSize: 'clamp(12px, 1.35vw, 21px)',
+                      lineHeight: 1.45,
+                    }}
+                  >
+                    <strong style={{ color: 'var(--fg)', fontWeight: 700 }}>{k}</strong> {v}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
-          <div>
-            <SectionLabel>How to lower them · action plan</SectionLabel>
-            <ul className="mt-3 flex flex-col gap-2.5">
-              <InputRow n={1} k="The SEO goal.">Stop chasing viral traffic spikes. Focus on steady input execution and baseline momentum.</InputRow>
-              <InputRow n={2} k="The marketing goal.">Position SEO as a steady pipeline engine, not a quick-fix silver bullet.</InputRow>
-              <InputRow n={3} k="The business goal.">Base revenue forecasts on worst-case algorithm scenarios, not best-case guesswork.</InputRow>
-            </ul>
+        </div>
+
+        <div className="st st-4">
+          <SectionLabel>How to lower them · action plan</SectionLabel>
+          <div className="mt-4 flex flex-col">
+            {[
+              ['The SEO goal', 'Stop chasing viral traffic spikes. Focus on steady input execution and baseline momentum.'],
+              ['The marketing goal', 'Position SEO as a steady pipeline engine, not a quick-fix silver bullet.'],
+              ['The business goal', 'Base revenue forecasts on worst-case algorithm scenarios, not best-case guesswork.'],
+            ].map(([title, text], n) => (
+              <div
+                key={title}
+                className="grid grid-cols-[2.4rem_1fr] gap-x-4 items-baseline py-[2vh]"
+                style={{ borderTop: n === 0 ? 'none' : '1px solid rgba(249,249,249,0.08)' }}
+              >
+                <span
+                  className="display tabular-nums text-center rounded-md"
+                  style={{
+                    color: 'var(--red)',
+                    background: 'rgba(235,48,48,0.10)',
+                    fontFamily: 'General Sans, system-ui, sans-serif',
+                    fontSize: 'clamp(11px, 1.15vw, 17px)',
+                    fontWeight: 700,
+                    letterSpacing: '0.06em',
+                    padding: '0.25em 0',
+                  }}
+                >
+                  {String(n + 1).padStart(2, '0')}
+                </span>
+                <div>
+                  <div
+                    className="display"
+                    style={{ color: 'var(--fg)', fontSize: 'clamp(15px, 1.7vw, 27px)', fontWeight: 700, letterSpacing: '-0.015em', lineHeight: 1.2 }}
+                  >
+                    {title}
+                  </div>
+                  <p
+                    className="mt-1.5"
+                    style={{
+                      color: 'var(--muted)',
+                      fontFamily: 'General Sans, system-ui, sans-serif',
+                      fontSize: 'clamp(12px, 1.3vw, 20px)',
+                      lineHeight: 1.45,
+                    }}
+                  >
+                    {text}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
