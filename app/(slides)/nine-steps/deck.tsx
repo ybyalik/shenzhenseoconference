@@ -243,7 +243,7 @@ function SeoPlanStep() {
  * rather than a contact list because a room full of phones can act on a QR and
  * cannot act on a WeChat ID read off a screen.
  */
-function ContactCards() {
+export function ContactCards() {
   const sans = 'General Sans, system-ui, sans-serif';
   const cards: [string, string, string][] = [
     ['Personal WeChat', '我的个人微信', '/assets/qr-wechat-personal.webp'],
@@ -509,22 +509,25 @@ export const NINE_STEPS: Slide[] = [
   {
     id: 'ns-step7',
     notes:
-      'Step seven. Set the acquisition and growth target before you decide what to spend. Then choose your posture, aggressive, conservative or hold, based on what competitors are doing and what you can actually sustain. Then cost each node of the funnel honestly, in people and in money.',
+      'Step seven, the budget. And the order matters here too. First, set the target, the business goal, before you set the marketing spend. Second, analyse your competitors and your own context to confirm the posture: are you being aggressive, conservative, or holding at status quo? Third, estimate the actual headcount and financial cost for each node of the funnel, not one number for the whole thing. And fourth, run a scenario analysis, optimistic, pessimistic and realistic, and then plan for the worst case.',
     body: (
-      <StatementStep
+      <SplitStep
         step={7}
+        side="right"
         title="Confirm marketing budget"
         art="/assets/dia-budget.webp"
-        statement={
+        points={[
           <>
-            Set the target <span style={{ color: 'var(--red)' }}>before</span> you set the spend.
-          </>
-        }
+            Set the <strong style={{ color: 'var(--fg)' }}>target</strong> (business goal) before you set the
+            marketing spend.
+          </>,
+          'Analyse competitors and your current context to confirm the posture: aggressive, conservative, or status quo.',
+          'Estimate the specific headcount and financial cost required at each node of the funnel.',
+          'Run a scenario analysis (optimistic, pessimistic, realistic) and prepare for the worst case.',
+        ]}
       />
     ),
   },
-
-  /* 8 — a clean sequence, with the caveat and tomorrow's talk alongside */
   {
     id: 'ns-step8',
     notes:

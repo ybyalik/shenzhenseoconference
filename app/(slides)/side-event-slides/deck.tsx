@@ -180,10 +180,25 @@ export function NameSlide() {
   ];
   return (
     <div className={CENTER}>
-      <Eyebrow center>Who is talking</Eyebrow>
+      {/* The face belongs on the slide that introduces him, not two slides
+          later next to his CV. */}
+      <div
+        className="relative rounded-full overflow-hidden"
+        style={{
+          width: 'clamp(84px, 13vh, 165px)',
+          height: 'clamp(84px, 13vh, 165px)',
+          border: '2px solid rgba(235,48,48,0.55)',
+        }}
+      >
+        <Image src="/assets/jp-face.webp" alt="JP Zhang" fill className="object-cover" sizes="180px" priority />
+      </div>
+
+      <div className="mt-[3.5vh]">
+        <Eyebrow center>Who is talking</Eyebrow>
+      </div>
 
       <h2
-        className="display mt-5"
+        className="display mt-4"
         style={{
           color: 'var(--fg)',
           fontSize: 'clamp(44px, 7vw, 116px)',

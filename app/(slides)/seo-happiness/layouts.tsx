@@ -91,37 +91,63 @@ export function Statement({
  *  find their own column instantly. */
 const ROLE_ART: Record<string, string> = {
   'In-house SEO': '/assets/role-inhouse.webp',
-  'Agency or owner': '/assets/role-agency.webp',
-  Affiliate: '/assets/role-affiliate.webp',
+  'SEO Agency/Consultants': '/assets/role-agency.webp',
+  'Affiliate SEO': '/assets/role-affiliate.webp',
 };
 
 export function ByRole({
   kicker,
   title,
+  heading,
+  intro,
   rows,
+  footer,
 }: {
-  kicker: string;
-  title: string;
+  /** Omit where the title already carries the section name. */
+  kicker?: string;
+  title?: string;
+  /** Replaces kicker + title outright, so a slide can share another slide's
+   *  exact heading treatment rather than approximating it. */
+  heading?: React.ReactNode;
+  /** Optional paragraph between the title and the cards. */
+  intro?: React.ReactNode;
   rows: [string, string][];
+  /** Optional closing line under the three cards. */
+  footer?: React.ReactNode;
 }) {
   return (
     <div className={`h-full flex flex-col justify-center ${PAD}`}>
-      <Kicker>{kicker}</Kicker>
-      <h2
-        className="display mt-5 st st-1"
-        style={{ color: 'var(--fg)', fontSize: 'clamp(26px, 3.2vw, 52px)', fontWeight: 700, letterSpacing: '-0.028em', lineHeight: 1.05 }}
-      >
-        {title}
-      </h2>
-      <div className="mt-[6vh] grid gap-4 md:grid-cols-3">
+      {heading ?? (
+        <>
+          {kicker && <Kicker>{kicker}</Kicker>}
+          <h2
+            className={`display st st-1 ${kicker ? 'mt-5' : ''}`}
+            style={{ color: 'var(--fg)', fontSize: 'clamp(22px, 2.9vw, 47px)', fontWeight: 700, letterSpacing: '-0.028em', lineHeight: 1.08 }}
+          >
+            {title}
+          </h2>
+        </>
+      )}
+      {intro && (
+        <p
+          className="mt-3 st st-1"
+          style={{
+            color: 'var(--muted)',
+            fontFamily: 'General Sans, system-ui, sans-serif',
+            fontSize: 'clamp(11px, 1.25vw, 19px)',
+            lineHeight: 1.5,
+            maxWidth: '82ch',
+          }}
+        >
+          {intro}
+        </p>
+      )}
+      <div className={`${intro ? 'mt-[4vh]' : 'mt-[6vh]'} grid gap-4 md:grid-cols-3`}>
         {rows.map(([role, action], i) => (
           <div
             key={role}
             className={`rounded-2xl p-6 st st-${i + 2}`}
-            style={{
-              border: `1px solid ${i === 1 ? 'rgba(235,48,48,0.4)' : 'var(--line-2)'}`,
-              background: i === 1 ? 'rgba(235,48,48,0.05)' : 'rgba(249,249,249,0.03)',
-            }}
+            style={{ border: '1px solid var(--line-2)', background: 'rgba(249,249,249,0.03)' }}
           >
             {/* Served unoptimised on purpose: Next's image optimiser flattens
                 the alpha channel on these at some widths, which puts a solid
@@ -132,13 +158,16 @@ export function ByRole({
                 src={ROLE_ART[role]}
                 alt=""
                 className="block object-contain object-left"
-                style={{ height: 'clamp(72px, 15vh, 150px)', width: 'auto' }}
+                // Smaller than they were: with longer role copy and a proverb
+                // underneath, 15vh of icon pushed the cards into the controls
+                // on a 720-tall screen.
+                style={{ height: 'clamp(56px, 11vh, 112px)', width: 'auto' }}
               />
             )}
             <div
               className="uppercase mt-5"
               style={{
-                color: i === 1 ? 'var(--red)' : 'var(--muted-2)',
+                color: 'var(--muted-2)',
                 fontFamily: 'General Sans, system-ui, sans-serif',
                 fontSize: 'clamp(9px, 0.95vw, 13px)',
                 fontWeight: 700,
@@ -151,10 +180,10 @@ export function ByRole({
               className="display mt-4"
               style={{
                 color: 'var(--fg)',
-                fontSize: 'clamp(14px, 1.5vw, 23px)',
+                fontSize: 'clamp(13px, 1.35vw, 21px)',
                 fontWeight: 700,
                 letterSpacing: '-0.01em',
-                lineHeight: 1.3,
+                lineHeight: 1.35,
               }}
             >
               {action}
@@ -162,6 +191,55 @@ export function ByRole({
           </div>
         ))}
       </div>
+      {footer && <div className="mt-[3vh] st st-5">{footer}</div>}
+    </div>
+  );
+}
+
+/**
+ * A Chinese saying, presented the way one is: a seal mark, then the characters,
+ * then the sense of it in English for the half of the room that needs it.
+ */
+export function Proverb({ cn, en }: { cn: string; en: string }) {
+  return (
+    <div
+      className="flex items-center gap-5 pt-[2.2vh]"
+      style={{ borderTop: '1px solid var(--line-2)' }}
+    >
+      <span
+        className="display shrink-0 grid place-items-center rounded-md"
+        style={{
+          width: 'clamp(30px, 3.2vw, 52px)',
+          height: 'clamp(30px, 3.2vw, 52px)',
+          background: 'var(--red)',
+          color: 'var(--fg)',
+          fontSize: 'clamp(16px, 1.8vw, 28px)',
+          fontWeight: 700,
+          lineHeight: 1,
+        }}
+        aria-hidden
+      >
+        谚
+      </span>
+      <span className="min-w-0">
+        <span
+          className="display block"
+          style={{ color: 'var(--fg)', fontSize: 'clamp(16px, 1.9vw, 30px)', fontWeight: 700, letterSpacing: '0.02em' }}
+        >
+          {cn}
+        </span>
+        <span
+          className="block mt-1.5"
+          style={{
+            color: 'var(--muted-2)',
+            fontFamily: 'General Sans, system-ui, sans-serif',
+            fontSize: 'clamp(11px, 1.15vw, 17px)',
+            lineHeight: 1.45,
+          }}
+        >
+          {en}
+        </span>
+      </span>
     </div>
   );
 }

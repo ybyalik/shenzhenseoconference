@@ -732,7 +732,7 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     linkedin: "https://www.linkedin.com/in/yiwanning-ma-642b52218/",
     bio: "Mayi is the founder & CEO of InnoHunts, a Shenzhen-based agency boldly dedicated solely to Reddit marketing. Specializing in community-driven growth, brand storytelling, and GEO strategy, building global influence for forward-thinking brands through the power of Reddit.",
     sessions: [
-      { title: "We Posted 3,000 Times on Reddit: Here's Exactly Why Only Some of Them Rank", when: "Day 4 / Sep. 17 / 12:20 PM", where: "The St. Regis Shenzhen (Grand Astor Ballroom, 5F)", start: "20260917T042000Z" },
+      { title: "How to Earn Your Way into Reddit Conversation", when: "Day 4 / Sep. 17 / 12:20 PM", where: "The St. Regis Shenzhen (Grand Astor Ballroom, 5F)", start: "20260917T042000Z" },
     ],
     description: [
       "We burned through 3,000 Reddit posts so you don't have to. In this quick 8-minute session, we're sharing the funny, painful, and highly profitable lessons of what it takes to actually rank on Google's favorite forum today.",
@@ -927,27 +927,6 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     ],
   },
   {
-    name: "Sharoz Dawa",
-    slug: "sharoz-dawa",
-    tag: "Side Event",
-    title: "SEO Lead, Fynd",
-    img: "/assets/sharoz-dawa.jpg",
-    country: "India",
-    linkedin: "https://www.linkedin.com/in/sharozdawa/",
-    x: "https://x.com/SharozDawa",
-    bio: [
-      "Sharoz Dawa is the SEO Lead at Fynd, where he owns organic growth across Fynd's commerce platform and its merchant storefronts, and leads AI-powered marketing tooling for the Studio product line. He works at the intersection of technical SEO, programmatic content, and software engineering, building the systems he uses rather than buying them.",
-      "He has shipped an in-house SEO crawler and audit engine, a zero-404 migration framework that has remapped thousands of legacy URLs for enterprise replatforming clients, storefront SSR and structured-data defaults now running as a baseline across Fynd merchants, and an ads intelligence platform that manages multi-crore monthly spend across Google and Meta.",
-      "Alongside his work at Fynd, he builds and operates his own SaaS products and a large collection of Model Context Protocol servers that connect Claude to real business systems. His expertise spans technical SEO at scale, entity and topical authority, link acquisition, marketing automation, and AI-assisted development.",
-    ],
-    sessions: [
-      { title: "Build Your AI Workforce: A 24/7 Multi-agent Chief of Staff", when: "Sep. 12 / 4:30 PM", where: "Wuzhou Sports Center Hotel (Olympia Hall A)", start: "20260912T083000Z" },
-    ],
-    description: [
-      "A team of specialised AI agents that runs your sales, ops, and research around the clock \u2014 coordinated by one AI Chief of Staff.",
-    ],
-  },
-  {
     name: "Si Quan Ong",
     slug: "si-quan-ong",
     tag: "Field Talk",
@@ -1068,22 +1047,6 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
       "Everyone's working to rank for keywords. Almost no one builds a website that turns those visitors into leads. Ranking and converting are two different jobs, and most B2B companies only pay for one.",
       "Victor Huynh breaks down why your website, not your keyword rankings, decides who gets chosen, and how AI search changed the question buyers are asking. AI recommends the companies it clearly understands, so the visibility work everyone is chasing only pays off if the website underneath it is built to be chosen.",
       "Real B2B manufacturer examples. Three fixes you can run on your own site this week.",
-    ],
-  },
-  {
-    name: "Vinayak Gupta",
-    slug: "vinayak-gupta",
-    tag: "Side Event",
-    title: "Founder, Serpbays",
-    img: "/assets/vinayak-gupta.webp",
-    country: "India",
-    linkedin: "https://www.linkedin.com/in/vin-wordscloud/",
-    bio: "Vinayak Gupta is the founder of Serpbays.com, a link-building marketplace designed to make buying and selling backlinks more transparent. He is also the founder of Wordscloud, a content marketing agency, and SaaSlinks.net, a dedicated marketplace for SaaS backlinks. He works at the intersection of SEO, content marketing, link building, AI, and product development. With a background in software development and quality analysis, Vinayak brings a technical and analytical approach to building digital businesses. Over the years, he has managed multiple affiliate websites and SaaS projects, gaining hands-on experience in traffic growth, content monetization, scalable SEO systems, backlink strategy, and digital product execution. He is currently doing extensive vibe coding with Claude Code and has built multiple internal systems and everyday business tools using AI-assisted development workflows. His expertise includes SEO strategy, content operations, link acquisition, publisher marketplace development, automation, SaaS workflows, and using AI to build practical tools that improve business efficiency.",
-    sessions: [
-      { title: "Build Your AI Workforce: A 24/7 Multi-agent Chief of Staff", when: "Sep. 12 / 4:30 PM", where: "Wuzhou Sports Center Hotel (Olympia Hall A)", start: "20260912T083000Z" },
-    ],
-    description: [
-      "A team of specialised AI agents that runs your sales, ops, and research around the clock \u2014 coordinated by one AI Chief of Staff.",
     ],
   },
   {

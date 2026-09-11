@@ -316,12 +316,8 @@ const SAT_SEP_12_SCHEDULE: SideEventRow[] = [
   { time: '4:10 PM – 4:30 PM', title: 'Casual Networking & Coffee Break' },
   {
     time: '4:30 PM – 5:10 PM',
-    title: 'Build Your AI Workforce: A 24/7 Multi-agent Chief of Staff',
-    speakers: ['Vinayak Gupta', 'Sharoz Dawa'],
-    backup: {
-      title: 'How to Build an SEO Strategy & Execution Plan in 9 Steps with AI (Live Demo)',
-      speakers: ['JP/John Zhang'],
-    },
+    title: 'How to Build an SEO Strategy & Execution Plan in 9 Steps with AI (Live Demo)',
+    speakers: ['JP/John Zhang'],
   },
   { time: '5:10 PM – 5:20 PM', title: 'Closing Remarks', speakers: ['JP/John Zhang'] },
   { time: '5:20 PM – 6:00 PM', title: 'Casual Networking' },
@@ -794,7 +790,7 @@ const DAY4_SCHEDULE: ScheduleRow[] = [
     talks: [
       { title: 'How a Cartoon Lion Changed Our Brand Forever', type: 'Lightning', speakers: ['Max Hobbs'] },
       { title: 'Detecting Google Updates Without Third-Party Tools: An Analytical Approach', type: 'Lightning', speakers: ['Gabriele Kahlout'] },
-      { title: "We Posted 3,000 Times on Reddit: Here's Exactly Why Only Some of Them Rank", type: 'Lightning', speakers: ['Mayi'] },
+      { title: 'How to Earn Your Way into Reddit Conversation', type: 'Lightning', speakers: ['Mayi'] },
     ],
   },
   { kind: 'break', time: '12:50 PM', end: '2:00 PM', icon: '🍱', label: 'Lunch' },
@@ -1230,7 +1226,7 @@ const TOUR_BANDS: TourBand[] = [
   {
     roman: 'I',
     label: 'Full-Day "Tech + Heritage" Hybrid Tracks',
-    time: '10:00 – 19:30',
+    time: '09:30 – 19:30',
     blurb: 'Premium tracks combining high-level corporate visits with iconic city landmarks.',
     options: [
       {
@@ -1240,7 +1236,7 @@ const TOUR_BANDS: TourBand[] = [
           "Premium tech campus visit (Insta360, Huawei, or Tencent), a coastal walk along Nanshan's world-class skyline with a live Meituan drone-delivery demo, and Nantou Ancient City with dinner.",
       },
       {
-        title: 'The Creator Tech & Folk Custom Track',
+        title: 'Digital Innovation & Folk Custom Track',
         cn: '前沿科创与中华民俗之旅',
         summary:
           'Premium tech campus visit, then Splendid China and the Folk Culture Village for traditional architecture and minority ethnic customs, with dinner included.',
