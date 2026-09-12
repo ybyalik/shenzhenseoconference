@@ -436,7 +436,7 @@ export const SEO_HAPPINESS: Slide[] = [
         {/* The artwork, the arrows and the sentences all share one width, and
             the three ring centres sit within a percent of equal thirds, so a
             plain 3-column grid lines each sentence up under its own ring. */}
-        <div className="mt-[3.5vh] flex flex-col items-center">
+        <div className="mt-[6vh] flex flex-col items-center">
           <div
             className="relative hidden md:block dia-in w-full"
             style={{ maxWidth: 'clamp(420px, 42vw, 700px)', aspectRatio: '1157 / 539' }}
@@ -465,7 +465,7 @@ export const SEO_HAPPINESS: Slide[] = [
 
             <div className="mt-2 grid gap-x-5 md:grid-cols-3">
               {[
-                'Having supreme confidence in achieving your SEO goals',
+                'Confidence in achieving your SEO goals',
                 'Remaining completely stress-free',
                 'Living a better lifestyle',
               ].map((h, i) => (
@@ -1121,13 +1121,15 @@ export const SEO_HAPPINESS: Slide[] = [
           className="display mt-5 st st-1"
           style={{ color: 'var(--fg)', fontSize: 'clamp(28px, 4vw, 68px)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1 }}
         >
-          Closing the <span style={{ color: 'var(--red)' }}>20%</span> Gap
+          Closing the <span style={{ color: 'var(--teal-2)' }}>20%</span> Gap
         </h2>
 
         <div className="mt-[6vh] flex flex-col items-center gap-[2.5vh] w-full" style={{ maxWidth: 1250 }}>
+          {/* Steps red, bonuses teal: the same split the recap slide uses, so
+              the two halves of the talk keep one colour each throughout. */}
           {[
-            { what: '3 Steps', paren: '(System)', pct: '80%', tail: 'of your SEO results', hot: false },
-            { what: '2 Bonuses', paren: '(Mindset)', pct: '100%', tail: 'of your SEO happiness', hot: true },
+            { what: '3 Steps', paren: '(System)', pct: '80%', tail: 'of your SEO results', accent: 'var(--red)' },
+            { what: '2 Bonuses', paren: '(Mindset)', pct: '100%', tail: 'of your SEO happiness', accent: 'var(--teal-2)' },
           ].map((row, i) => (
             <div key={row.pct} className="contents">
               <div className={`flex flex-wrap items-baseline justify-center gap-x-4 gap-y-2 st st-${i + 1}`}>
@@ -1139,7 +1141,7 @@ export const SEO_HAPPINESS: Slide[] = [
                 </span>
                 <span
                   className="display"
-                  style={{ color: row.hot ? 'var(--red)' : 'var(--muted-2)', fontSize: 'clamp(14px, 1.85vw, 31px)', fontWeight: 700, letterSpacing: '-0.025em' }}
+                  style={{ color: row.accent, fontSize: 'clamp(14px, 1.85vw, 31px)', fontWeight: 700, letterSpacing: '-0.025em' }}
                 >
                   {row.paren}
                 </span>
@@ -1151,7 +1153,7 @@ export const SEO_HAPPINESS: Slide[] = [
                 </span>
                 <span
                   className="display tabular-nums"
-                  style={{ color: 'var(--red)', fontSize: 'clamp(24px, 3.6vw, 62px)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1 }}
+                  style={{ color: row.accent, fontSize: 'clamp(24px, 3.6vw, 62px)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1 }}
                 >
                   {row.pct}
                 </span>
@@ -1186,7 +1188,7 @@ export const SEO_HAPPINESS: Slide[] = [
           }}
         >
           💡 Execution drives your results.{' '}
-          <span style={{ color: 'var(--red)' }}>The right mindset gives you peace of mind.</span>
+          <span style={{ color: 'var(--teal-2)' }}>The right mindset gives you peace of mind.</span>
         </p>
       </div>
     ),
@@ -1461,7 +1463,7 @@ export const SEO_HAPPINESS: Slide[] = [
             className="relative hidden md:block h-full"
             style={{ opacity: step >= 6 ? 1 : 0, transition: 'opacity 500ms ease-out' }}
           >
-            <Image src="/assets/dia-path.webp" alt="" fill className="object-contain" sizes="45vw" />
+            <Image src="/assets/dia-path-v2.webp" alt="" fill className="object-contain" sizes="45vw" />
           </div>
         </div>
 
