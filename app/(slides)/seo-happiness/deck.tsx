@@ -343,9 +343,9 @@ export const SEO_HAPPINESS: Slide[] = [
       <HostSlide
         summary="16 years in SEO."
         roles={[
-          ['In-house', 'Wondershare, Shenzhen (2010) · Whova, San Diego (2016)'],
+          ['In-house', 'Wondershare, Shenzhen (2010–2011) · Whova, San Diego (2016)'],
           ['Agency', 'Baunfire, San Jose (2014–2015)'],
-          ['Affiliate SEO', 'Self-employed (2012–13, 2017–now)'],
+          ['Affiliate SEO', 'Self-employed (2012–2013, 2017–now)'],
         ]}
         brands={[
           ['Shenzhen SEO Conference', '深圳SEO大会'],
@@ -433,45 +433,59 @@ export const SEO_HAPPINESS: Slide[] = [
           ))}
         </div>
 
-        {/* Straight under the title and roughly twice the size it was: this is
-            the picture of the definition, not a footnote to it. */}
-        <div className="mt-[4vh] flex justify-center">
+        {/* The artwork, the arrows and the sentences all share one width, and
+            the three ring centres sit within a percent of equal thirds, so a
+            plain 3-column grid lines each sentence up under its own ring. */}
+        <div className="mt-[3.5vh] flex flex-col items-center">
           <div
-            className="relative hidden md:block dia-in"
-            style={{ width: 'clamp(520px, 66vw, 1180px)', height: 'clamp(180px, 30vh, 330px)' }}
+            className="relative hidden md:block dia-in w-full"
+            style={{ maxWidth: 'clamp(420px, 42vw, 700px)', aspectRatio: '1157 / 539' }}
           >
-            <Image src="/assets/dia-definition-v2.webp" alt="" fill className="object-contain" sizes="66vw" />
+            <Image src="/assets/dia-definition-v3.webp" alt="" fill className="object-contain" sizes="55vw" />
+          </div>
+
+          <div className="w-full" style={{ maxWidth: 'clamp(420px, 42vw, 700px)' }}>
+            <div className="hidden md:grid grid-cols-3">
+              {[0, 1, 2].map((i) => (
+                <div key={i} className="flex justify-center">
+                  <svg width="14" height="30" viewBox="0 0 14 30" aria-hidden="true">
+                    <path
+                      d="M7 0 V22 M2 17 L7 23 L12 17"
+                      fill="none"
+                      stroke="var(--red)"
+                      strokeOpacity="0.65"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-2 grid gap-x-5 md:grid-cols-3">
+              {[
+                'Having supreme confidence in achieving your SEO goals',
+                'Remaining completely stress-free',
+                'Living a better lifestyle',
+              ].map((h, i) => (
+                <div
+                  key={h}
+                  className={`display text-center st st-${i + 2}`}
+                  style={{ color: 'var(--fg)', fontSize: 'clamp(13px, 1.45vw, 23px)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.25 }}
+                >
+                  {h}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="mt-[4vh] grid gap-6 md:grid-cols-3">
-          {[
-            ['01', 'Having supreme confidence in achieving your SEO goals'],
-            ['02', 'Remaining completely stress-free'],
-            ['03', 'Living a better lifestyle'],
-          ].map(([n, h], i) => (
-            <div key={n} className={`st st-${i + 2}`}>
-              <div
-                className="display"
-                style={{ color: 'var(--red)', fontSize: 'clamp(12px, 1.2vw, 17px)', fontWeight: 700, letterSpacing: '0.12em' }}
-              >
-                {n}
-              </div>
-              <div
-                className="display mt-3"
-                style={{ color: 'var(--fg)', fontSize: 'clamp(14px, 1.6vw, 25px)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.2 }}
-              >
-                {h}
-              </div>
-            </div>
-          ))}
-        </div>
-
         <p
-          className="display mt-[4vh] st st-5"
+          className="display mt-[6vh] st st-5"
           style={{ color: 'var(--fg)', fontSize: 'clamp(15px, 1.8vw, 29px)', fontWeight: 700, letterSpacing: '-0.02em' }}
         >
-          Not there yet? <span style={{ color: 'var(--red)' }}>It can be engineered.</span>
+          🤔 Not there yet? <span style={{ color: 'var(--red)' }}>It can be engineered.</span> 👉
         </p>
       </div>
     ),
@@ -490,11 +504,12 @@ export const SEO_HAPPINESS: Slide[] = [
             className="display st st-1"
             style={{
               color: 'var(--fg)',
-              fontSize: 'clamp(22px, 2.8vw, 46px)',
+              // Sized to hold on one line beside the Venn.
+              fontSize: 'clamp(18px, 2.25vw, 37px)',
               fontWeight: 700,
               lineHeight: 1.1,
               letterSpacing: '-0.028em',
-              textWrap: 'balance',
+              whiteSpace: 'nowrap',
             }}
           >
             Step 1: Positioning (Who Are You?)
@@ -737,9 +752,9 @@ export const SEO_HAPPINESS: Slide[] = [
         kicker="Step 2: Goal-Setting (by role)"
         title="Whose number are you carrying?"
         rows={[
-          ['In-house SEO', 'Align goals with marketing strategy and business priorities. Focus on brand visibility and pipeline impact rather than raw revenue.'],
-          ['SEO Agency/Consultants', 'Align with client expectations, project deliverables and retention metrics, to drive predictable agency growth.'],
-          ['Affiliate SEO', 'Align holistic targets: revenue, business growth and work-life balance. You are operating as a true entrepreneur.'],
+          ['In-house SEO', ['Align with marketing strategy and business priorities', 'Aim at brand visibility and pipeline impact', 'Not raw revenue']],
+          ['SEO Agency/Consultants', ['Align with client expectations', 'Scope deliverables and retention metrics', 'Drive predictable agency growth']],
+          ['Affiliate SEO', ['Set holistic targets', 'Revenue, growth and work-life balance', 'You are a true entrepreneur']],
         ]}
         footer={
           <Proverb
@@ -1019,9 +1034,9 @@ export const SEO_HAPPINESS: Slide[] = [
         heading={<S3Title main="Step 3: Controlling Your Inputs (Tailored by Role)" />}
         intro="Ship the inputs, whatever seat you are in."
         rows={[
-          ['In-house SEO', 'Drive internal execution velocity and manage upward, so leadership judges your team by what you ship, not by algorithm swings.'],
-          ['SEO Agency/Consultants', 'Scope contracts around strategy delivery and client implementation speed, never around guaranteed rankings.'],
-          ['Affiliate SEO', 'Diversify traffic across RLO channels (YouTube, Reddit, email) to build algorithm-proof assets.'],
+          ['In-house SEO', ['Drive internal execution velocity', 'Manage expectations upward', 'Be judged on what you ship, not algorithm swings']],
+          ['SEO Agency/Consultants', ['Scope contracts around strategy delivery', 'And client implementation speed', 'Never around guaranteed rankings']],
+          ['Affiliate SEO', ['Diversify across RLO channels', 'YouTube, Reddit, email', 'Build algorithm-proof assets']],
         ]}
         footer={
           <>
@@ -1041,9 +1056,10 @@ export const SEO_HAPPINESS: Slide[] = [
 
   {
     id: 'hap-checkin',
+    steps: 1,
     notes:
       'Alright, three steps complete. Quick raise of hands. Who feels happy right now? Who feels confident? Who feels completely stress-free? [pause, scan the room, react to the hands] If your hand isn\u2019t up, don\u2019t worry. You are not alone.',
-    body: (
+    body: (step: number) => (
       <div className={CENTER}>
         {/* Deliberately the same shape as the poll that opened the deck, so the
             room recognises it as the same question coming back. */}
@@ -1076,16 +1092,19 @@ export const SEO_HAPPINESS: Slide[] = [
             </div>
           ))}
         </div>
+        {/* Held back a beat: he scans the room first, then reassures them. */}
         <p
-          className="mt-[6vh] st st-5"
+          className="mt-[6vh]"
           style={{
             color: 'var(--muted-2)',
             fontFamily: 'General Sans, system-ui, sans-serif',
             fontSize: 'clamp(13px, 1.5vw, 23px)',
             fontWeight: 500,
+            opacity: step >= 1 ? 1 : 0,
+            transition: 'opacity 420ms ease-out',
           }}
         >
-          If your hand isn’t up, don’t worry. You are not alone.
+          If your hand isn’t up, don’t worry. You are not alone. 🤗
         </p>
       </div>
     ),
@@ -1094,63 +1113,80 @@ export const SEO_HAPPINESS: Slide[] = [
   {
     id: 'hap-bridge',
     notes:
-      'Here is why. Those three steps build a world-class SEO engine, and they get you eighty percent of your results. But execution alone will not protect your sanity. To close that final gap and reach a hundred percent SEO happiness, there is one more thing to cover. Let\u2019s look at the two bonuses.',
+      'Here is why. Those three steps build a world-class SEO engine, and they get you eighty percent of your results. But execution alone will not protect your sanity. The last twenty percent, the gap between good results and actually being happy, is mindset. That is what the two bonuses are for. Execution drives your results; the right mindset gives you peace of mind.',
     body: (
       <div className={CENTER}>
         <Kicker center>Why there is more</Kicker>
-        {/* Same treatment as "3 steps complete!" on the slide before, so the
-            two read as a pair. */}
         <h2
           className="display mt-5 st st-1"
           style={{ color: 'var(--fg)', fontSize: 'clamp(28px, 4vw, 68px)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1 }}
         >
-          The 80/20 Bridge
+          Closing the <span style={{ color: 'var(--red)' }}>20%</span> Gap
         </h2>
-        <div className="mt-[6vh] flex flex-col gap-[4.5vh] w-full" style={{ maxWidth: 1200 }}>
+
+        <div className="mt-[6vh] flex flex-col items-center gap-[2.5vh] w-full" style={{ maxWidth: 1250 }}>
           {[
-            { what: '3-step system', pct: '80%', tail: 'of your results', accent: 'var(--muted)' },
-            { what: '2 bonuses', pct: '100%', tail: 'of your SEO happiness', accent: 'var(--red)' },
+            { what: '3 Steps', paren: '(System)', pct: '80%', tail: 'of your SEO results', hot: false },
+            { what: '2 Bonuses', paren: '(Mindset)', pct: '100%', tail: 'of your SEO happiness', hot: true },
           ].map((row, i) => (
-            <div key={row.pct} className={`flex flex-wrap items-baseline justify-center gap-x-5 gap-y-2 st st-${i + 1}`}>
-              <span
-                className="display"
-                style={{ color: 'var(--fg)', fontSize: 'clamp(18px, 2.4vw, 40px)', fontWeight: 700, letterSpacing: '-0.025em' }}
-              >
-                {row.what}
-              </span>
-              <span
-                className="display"
-                style={{ color: 'var(--muted-2)', fontSize: 'clamp(18px, 2.4vw, 40px)', fontWeight: 700 }}
-              >
-                =
-              </span>
-              <span
-                className="display tabular-nums"
-                style={{ color: row.accent, fontSize: 'clamp(34px, 5.2vw, 90px)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1 }}
-              >
-                {row.pct}
-              </span>
-              <span
-                className="display"
-                style={{ color: 'var(--fg)', fontSize: 'clamp(18px, 2.4vw, 40px)', fontWeight: 700, letterSpacing: '-0.025em' }}
-              >
-                {row.tail}
-              </span>
+            <div key={row.pct} className="contents">
+              <div className={`flex flex-wrap items-baseline justify-center gap-x-4 gap-y-2 st st-${i + 1}`}>
+                <span
+                  className="display"
+                  style={{ color: 'var(--fg)', fontSize: 'clamp(14px, 1.85vw, 31px)', fontWeight: 700, letterSpacing: '-0.025em' }}
+                >
+                  {row.what}
+                </span>
+                <span
+                  className="display"
+                  style={{ color: row.hot ? 'var(--red)' : 'var(--muted-2)', fontSize: 'clamp(14px, 1.85vw, 31px)', fontWeight: 700, letterSpacing: '-0.025em' }}
+                >
+                  {row.paren}
+                </span>
+                <span
+                  className="display"
+                  style={{ color: 'var(--muted-2)', fontSize: 'clamp(13px, 1.6vw, 27px)', fontWeight: 700 }}
+                >
+                  ⇒
+                </span>
+                <span
+                  className="display tabular-nums"
+                  style={{ color: 'var(--red)', fontSize: 'clamp(24px, 3.6vw, 62px)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1 }}
+                >
+                  {row.pct}
+                </span>
+                <span
+                  className="display"
+                  style={{ color: 'var(--fg)', fontSize: 'clamp(14px, 1.85vw, 31px)', fontWeight: 700, letterSpacing: '-0.025em' }}
+                >
+                  {row.tail}
+                </span>
+              </div>
+              {i === 0 && (
+                <span
+                  className="display st st-2"
+                  style={{ color: 'var(--muted-2)', fontSize: 'clamp(20px, 2.6vw, 44px)', fontWeight: 700, lineHeight: 1 }}
+                >
+                  +
+                </span>
+              )}
             </div>
           ))}
         </div>
+
         <p
-          className="mt-[7vh] st st-3"
+          className="display mt-[6vh] st st-3"
           style={{
-            color: 'var(--muted)',
-            fontFamily: 'General Sans, system-ui, sans-serif',
-            fontSize: 'clamp(13px, 1.5vw, 23px)',
-            fontWeight: 500,
-            maxWidth: '54ch',
-            lineHeight: 1.55,
+            color: 'var(--fg)',
+            fontSize: 'clamp(14px, 1.65vw, 27px)',
+            fontWeight: 700,
+            letterSpacing: '-0.015em',
+            lineHeight: 1.4,
+            maxWidth: '56ch',
           }}
         >
-          Those three steps build a world-class SEO engine. But execution alone won’t protect your sanity.
+          💡 Execution drives your results.{' '}
+          <span style={{ color: 'var(--red)' }}>The right mindset gives you peace of mind.</span>
         </p>
       </div>
     ),
@@ -1336,18 +1372,23 @@ export const SEO_HAPPINESS: Slide[] = [
     body: (
       <ByRole
         title="Bonus #2: Surround Yourself with the Right People"
-        intro={
+        rows={[
+          ['In-house SEO', ['Step outside your comfort zone', 'Attend events for fresh ideas', 'Find talent and partners']],
+          ['SEO Agency/Consultants', ['Hire operators smarter than you', 'The right team gives you your business back', 'And your life back']],
+          ['Affiliate SEO', ['Escape the screen', 'Stop talking to AI in isolation', 'Join masterminds, travel, build a network']],
+        ]}
+        footer={
           <>
-            The 3 steps give you the system (positioning, goals, inputs). But you don’t have to carry the load
-            alone. You can find the right people to handle the execution for you.
+            <p
+              className="display pb-[2.5vh]"
+              style={{ color: 'var(--fg)', fontSize: 'clamp(13px, 1.5vw, 24px)', fontWeight: 700, letterSpacing: '-0.015em', lineHeight: 1.35 }}
+            >
+              💡 The 3-step system sets the foundation (positioning, goals, inputs).{' '}
+              <span style={{ color: 'var(--red)' }}>Find the right people to handle the execution.</span>
+            </p>
+            <Proverb cn="独行快，众行远" en="Go fast alone, go far together." />
           </>
         }
-        rows={[
-          ['In-house SEO', 'Step outside your comfort zone. Attend events for fresh ideas and strategies, and to find talent and partners.'],
-          ['SEO Agency/Consultants', 'Hire operators smarter than you. The right team gives you your business and your life back.'],
-          ['Affiliate SEO', 'Escape the screen. Stop talking to AI in isolation. Join masterminds, travel, and build a high-energy network.'],
-        ]}
-        footer={<Proverb cn="独行快，众行远" en="Go fast alone, go far together." />}
       />
     ),
   },

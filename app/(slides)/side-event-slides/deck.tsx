@@ -195,10 +195,8 @@ export function NameSlide() {
       </div>
 
       <div className={`h-full flex flex-col items-center justify-center text-center ${PAD}`}>
-      <Eyebrow center>Who is talking</Eyebrow>
-
       <h2
-        className="display mt-4"
+        className="display"
         style={{
           color: 'var(--fg)',
           fontSize: 'clamp(44px, 7vw, 116px)',
@@ -263,10 +261,8 @@ export function OriginSlide() {
   ];
   return (
     <div className={`h-full flex flex-col justify-center ${PAD}`}>
-      <Eyebrow>Before we start</Eyebrow>
-
       <h2
-        className="display mt-4"
+        className="display"
         style={{
           color: 'var(--fg)',
           fontSize: 'clamp(36px, 5.4vw, 88px)',
@@ -275,7 +271,7 @@ export function OriginSlide() {
           letterSpacing: '-0.025em',
         }}
       >
-        92% <span style={{ color: 'var(--red)' }}>made in China</span>
+        I am 92% <span style={{ color: 'var(--red)' }}>made in China</span>
       </h2>
 
       {/* Two columns under the headline: the facts on the left, the joke on the
@@ -345,10 +341,12 @@ export function OriginSlide() {
           </ul>
         </div>
 
-        <div className="pl-5" style={{ borderLeft: '2px solid rgba(235,48,48,0.5)' }}>
+        {/* Sits low on purpose: it is the payoff to "English is my second
+            language" in the list opposite, not a heading of its own. */}
+        <div className="pl-5 lg:mt-[15vh]" style={{ borderLeft: '2px solid rgba(235,48,48,0.5)' }}>
           <p
             className="display"
-            style={{ color: 'var(--fg)', fontSize: 'clamp(17px, 2.1vw, 34px)', fontWeight: 700, lineHeight: 1.3, letterSpacing: '-0.015em' }}
+            style={{ color: 'var(--fg)', fontSize: 'clamp(14px, 1.7vw, 27px)', fontWeight: 700, lineHeight: 1.3, letterSpacing: '-0.015em', whiteSpace: 'nowrap' }}
           >
             “JP, you should start with A to Z.”
           </p>
@@ -361,7 +359,7 @@ export function OriginSlide() {
               lineHeight: 1.55,
             }}
           >
-            My MBA classmate from India, 2013.
+            — My MBA classmate from India, 2013.
           </p>
           <p
             className="display mt-[3vh]"
@@ -373,7 +371,7 @@ export function OriginSlide() {
               lineHeight: 1.3,
             }}
           >
-            Please lower your expectations for my English speech!
+            Please lower your expectations for my English speech :)
           </p>
         </div>
       </div>
@@ -406,7 +404,8 @@ export function HostSlide({
           className="display mt-4"
           style={{
             color: 'var(--fg)',
-            fontSize: 'clamp(34px, 4.4vw, 72px)',
+            // Sized to hold on one line: it is a phrase, not a two-word name.
+            fontSize: 'clamp(22px, 2.9vw, 50px)',
             fontWeight: 700,
             lineHeight: 0.98,
             letterSpacing: '-0.025em',
@@ -485,11 +484,13 @@ export function HostSlide({
           >
             Owned brands
           </div>
-          <ul className="mt-4 flex flex-wrap gap-2.5">
+          {/* Two per row rather than letting them wrap 3 + 1, which left a
+              single chip stranded on the second line. */}
+          <ul className="mt-4 grid gap-2.5 sm:grid-cols-2 justify-items-start" style={{ maxWidth: 1180 }}>
             {brands.map(([en, zh]) => (
               <li
                 key={en}
-                className="rounded-full px-4 py-2 flex items-baseline gap-2"
+                className="rounded-full px-4 py-2 flex items-baseline gap-2 whitespace-nowrap"
                 style={{
                   border: '1px solid var(--line-2)',
                   background: 'rgba(249,249,249,0.04)',
@@ -1511,9 +1512,9 @@ const ALL: (Slide & { section: string })[] = [
       <HostSlide
         summary="16 years in SEO."
         roles={[
-          ['In-house', 'Wondershare, Shenzhen (2010) · Whova, San Diego (2016)'],
+          ['In-house', 'Wondershare, Shenzhen (2010–2011) · Whova, San Diego (2016)'],
           ['Agency', 'Baunfire, San Jose (2014–2015)'],
-          ['Affiliate', 'Self-employed (2012–13, 2017–now)'],
+          ['Affiliate', 'Self-employed (2012–2013, 2017–now)'],
         ]}
         brands={[
           ['Shenzhen SEO Conference', '深圳SEO大会'],
@@ -1675,9 +1676,9 @@ const ALL: (Slide & { section: string })[] = [
       <HostSlide
         summary="16 years in SEO."
         roles={[
-          ['In-house', 'Wondershare, Shenzhen (2010) · Whova, San Diego (2016)'],
+          ['In-house', 'Wondershare, Shenzhen (2010–2011) · Whova, San Diego (2016)'],
           ['Agency', 'Baunfire, San Jose (2014–2015)'],
-          ['Affiliate', 'Self-employed (2012–13, 2017–now)'],
+          ['Affiliate', 'Self-employed (2012–2013, 2017–now)'],
         ]}
         brands={[
           ['Shenzhen SEO Conference', '深圳SEO大会'],

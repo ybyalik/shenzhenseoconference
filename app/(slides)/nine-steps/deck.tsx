@@ -344,9 +344,9 @@ export const NINE_STEPS: Slide[] = [
       <HostSlide
         summary="16 years in SEO."
         roles={[
-          ['In-house', 'Wondershare, Shenzhen (2010) · Whova, San Diego (2016)'],
+          ['In-house', 'Wondershare, Shenzhen (2010–2011) · Whova, San Diego (2016)'],
           ['Agency', 'Baunfire, San Jose (2014–2015)'],
-          ['Affiliate', 'Self-employed (2012–13, 2017–now)'],
+          ['Affiliate', 'Self-employed (2012–2013, 2017–now)'],
         ]}
         brands={[
           ['Shenzhen SEO Conference', '深圳SEO大会'],

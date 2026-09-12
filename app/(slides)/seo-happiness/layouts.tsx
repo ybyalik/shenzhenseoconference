@@ -111,7 +111,9 @@ export function ByRole({
   heading?: React.ReactNode;
   /** Optional paragraph between the title and the cards. */
   intro?: React.ReactNode;
-  rows: [string, string][];
+  /** A string reads as a sentence; an array renders as bullets, which is
+   *  easier to scan when the card carries more than one idea. */
+  rows: [string, string | string[]][];
   /** Optional closing line under the three cards. */
   footer?: React.ReactNode;
 }) {
@@ -161,7 +163,7 @@ export function ByRole({
                 // Smaller than they were: with longer role copy and a proverb
                 // underneath, 15vh of icon pushed the cards into the controls
                 // on a 720-tall screen.
-                style={{ height: 'clamp(56px, 11vh, 112px)', width: 'auto' }}
+                style={{ height: 'clamp(48px, 9.5vh, 96px)', width: 'auto' }}
               />
             )}
             <div
@@ -176,18 +178,44 @@ export function ByRole({
             >
               {role}
             </div>
-            <p
-              className="display mt-4"
-              style={{
-                color: 'var(--fg)',
-                fontSize: 'clamp(13px, 1.35vw, 21px)',
-                fontWeight: 700,
-                letterSpacing: '-0.01em',
-                lineHeight: 1.35,
-              }}
-            >
-              {action}
-            </p>
+            {Array.isArray(action) ? (
+              <ul className="mt-4 flex flex-col gap-2">
+                {action.map((line) => (
+                  <li key={line} className="grid grid-cols-[0.8rem_1fr] gap-x-2.5 items-baseline">
+                    <span
+                      aria-hidden
+                      className="block rounded-full"
+                      style={{ width: 5, height: 5, background: 'var(--red)', transform: 'translateY(-0.3em)' }}
+                    />
+                    <span
+                      className="display"
+                      style={{
+                        color: 'var(--fg)',
+                        fontSize: 'clamp(12px, 1.2vw, 19px)',
+                        fontWeight: 700,
+                        letterSpacing: '-0.01em',
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {line}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p
+                className="display mt-4"
+                style={{
+                  color: 'var(--fg)',
+                  fontSize: 'clamp(13px, 1.35vw, 21px)',
+                  fontWeight: 700,
+                  letterSpacing: '-0.01em',
+                  lineHeight: 1.35,
+                }}
+              >
+                {action}
+              </p>
+            )}
           </div>
         ))}
       </div>
