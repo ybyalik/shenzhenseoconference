@@ -732,7 +732,7 @@ const DAY3_SCHEDULE: ScheduleRow[] = [
     end: '12:40 PM',
     talks: [
       { title: "The Validation Gap: Why SEO Doesn't End When the User Clicks", type: 'Lightning', speakers: ['David Carrasco'] },
-      { title: 'Build an Audience, Not Just Traffic: Rethinking Organic ROI', type: 'Lightning', speakers: ['Divya Jain'] },
+      { title: '“Recovering” from HCU & MCU within 7 Days: an SEO Experiment on Aggressive Content Pruning', type: 'Lightning', speakers: ['JP/John Zhang'] },
     ],
   },
   { kind: 'break', time: '12:40 PM', end: '2:00 PM', icon: '🍱', label: 'Lunch' },

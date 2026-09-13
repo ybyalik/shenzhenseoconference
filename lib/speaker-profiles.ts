@@ -127,24 +127,6 @@ export const SPEAKER_PROFILES: SpeakerProfile[] = [
     ],
   },
   {
-    name: "Divya Jain",
-    slug: "divya-jain",
-    tag: "Lightning Talk",
-    title: "Global Head of Organic Growth & Brand, Edvoy",
-    img: "/assets/divya-jain.jpg",
-    country: "India",
-    linkedin: "https://www.linkedin.com/in/divyajain3/",
-    bio: "I've spent 20 years turning organic search into a growth engine across fintech, travel, local discovery, and edtech. From building SEO teams at Paytm and Justdial to leading global organic growth and brand at Edvoy across India, South Asia, Africa, and MENA, I've seen what separates strategies that compound from those that plateau. Today, I work at the intersection of SEO, content, lifecycle, and brand. I also train SEO professionals and have been recognised as a Global Marketing Leader in India. Over the years, I've unlearned as much as I've learned \u2014 and I build my talks around real-world insights, experiments, and outcomes.",
-    sessions: [
-      { title: "Build an Audience, Not Just Traffic: Rethinking Organic ROI", when: "Day 3 / Sep. 16 / 12:20 PM", where: "The St. Regis Shenzhen (Grand Astor Ballroom, 5F)", start: "20260916T042000Z" },
-    ],
-    description: [
-      "Most SEO teams are after the wrong statistic. Sure, traffic increases and rankings change, but teams that successfully grow organic traffic understand that the goal isn\u2019t the number of sessions, but the number of build sessions.",
-      "At Edvoy, we realized that students who returned to our content before converting had much better app retention and lifetime value compared to those who came once through paid traffic. They had the same amount of traffic, but totally different business outcomes.",
-      "Returning visitors are not a hollow victory. They are the best converting and lowest cost acquisition visitors, and most teams are not tracking them. You will gain a new way of thinking about content and the organic ROI within the next eight minutes.",
-    ],
-  },
-  {
     name: "Doug Pierce",
     slug: "doug-pierce",
     tag: "Field Talk",

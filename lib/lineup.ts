@@ -66,7 +66,6 @@ export const LIGHTNING_TALKS: Speaker[] = [
   { name: 'Henry Dalziel', country: 'UK & Hong Kong', title: 'SEO Lead, Publicis Media', img: '/assets/henry-dalziel.webp' },
   { name: 'Killian Kostiha', country: 'France & Hong Kong', title: 'Founder, Get Clicks', img: '/assets/killian-kostiha.jpg' },
   { name: 'Jodie Chan', country: 'Hong Kong', title: 'SVP of Product & Strategic Partnerships, Chinafy', img: '/assets/jodie-chan.webp' },
-  { name: 'Divya Jain', country: 'India', title: 'Global Head of Organic Growth & Brand, Edvoy', img: '/assets/divya-jain.jpg' },
   { name: 'Wasin Mekkit', country: 'Thailand', title: 'Data & Growth Analyst, Statrys', img: '/assets/wasin-mekkit.webp' },
   { name: 'Mayi', country: 'China', title: 'Founder & CEO, InnoHunts', img: '/assets/mayi.jpg' },
   { name: 'Ben Fang', country: 'China', title: 'CEO & Co-founder, Kingsway Video', img: '/assets/ben-fang.jpg' },
