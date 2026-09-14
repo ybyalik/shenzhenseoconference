@@ -677,7 +677,25 @@ type TalkType = 'Keynote' | 'Field Talk' | 'Lightning' | 'Remarks' | 'Workshop';
 type ScheduleTalk = { title: string; type: TalkType; speakers: string[] };
 type ScheduleRow =
   | { kind: 'section'; icon?: string; label: string }
-  | { kind: 'break'; time: string; end: string; icon?: string; label: string }
+  | {
+      kind: 'break';
+      time: string;
+      end: string;
+      icon?: string;
+      label: string;
+      /** Only the two parties carry this. They are the only evening items that
+       *  happen away from the conference hotel, so attendees need the address,
+       *  how far it is, and how to find the room once they are in the building.
+       *  Bilingual for the same reason the side-event cards are: people show
+       *  the Chinese line to a taxi driver. */
+      venue?: {
+        name: string;
+        address: string;
+        distance: string;
+        access: string;
+        cn: { name: string; address: string; distance: string; access: string };
+      };
+    }
   | { kind: 'slot'; time: string; end: string; talks: ScheduleTalk[] };
 
 // Resolve a schedule speaker name to their headshot + role. Most come straight from
@@ -763,7 +781,25 @@ const DAY3_SCHEDULE: ScheduleRow[] = [
     ],
   },
   { kind: 'slot', time: '4:50 PM', end: '5:10 PM', talks: [{ title: 'How I Automated 144 Ahrefs Blog Updates a Year with AI', type: 'Field Talk', speakers: ['Si Quan Ong'] }] },
-  { kind: 'break', time: '7:00 PM', end: '10:30 PM', icon: '🎉', label: 'Opening Party · light dinner included' },
+  {
+    kind: 'break',
+    time: '7:00 PM',
+    end: '10:30 PM',
+    icon: '🎉',
+    label: 'Opening Party · light dinner included',
+    venue: {
+      name: 'Hui Hotel Shenzhen (9F Open-Air Bar)',
+      address: '3015 Hongli Road, Futian District, Shenzhen',
+      distance: '3 km from The St. Regis, about 8 minutes by taxi',
+      access: 'Elevator to 8F, then the stairs up to 9F',
+      cn: {
+        name: '深圳回酒店 · 9楼露天酒吧',
+        address: '深圳市福田区红荔路3015号',
+        distance: '距瑞吉酒店3公里（打车约8分钟）',
+        access: '电梯至8楼，步行至9楼',
+      },
+    },
+  },
 ];
 
 const DAY4_SCHEDULE: ScheduleRow[] = [
@@ -821,7 +857,25 @@ const DAY4_SCHEDULE: ScheduleRow[] = [
   { kind: 'break', time: '4:20 PM', end: '4:40 PM', icon: '☕', label: 'Afternoon Coffee Break 2' },
   { kind: 'slot', time: '4:40 PM', end: '5:20 PM', talks: [{ title: 'Narrative Manipulation: When Google, Reddit, and LLMs Become Weapons and How to Fight Back', type: 'Keynote', speakers: ['Lars Lofgren'] }] },
   { kind: 'slot', time: '5:20 PM', end: '5:35 PM', talks: [{ title: 'From Courage to Freedom: What 16 Years in SEO Really Taught Me', type: 'Remarks', speakers: ['JP/John Zhang'] }] },
-  { kind: 'break', time: '8:00 PM', end: '11:00 PM', icon: '🎉', label: 'Closing Party · light dinner included' },
+  {
+    kind: 'break',
+    time: '8:00 PM',
+    end: '11:00 PM',
+    icon: '🎉',
+    label: 'Closing Party · light dinner included',
+    venue: {
+      name: 'PPROOM · Peipei (Shopping Park Branch), 3F',
+      address: '339 North Area of Shopping Park, 138 Mintian Road, Futian District, Shenzhen',
+      distance: '6.8 km from The St. Regis, about 15 minutes by taxi',
+      access: 'Straight up to 3F when you arrive',
+      cn: {
+        name: 'PPROOM·佩佩 3楼（购物公园店）',
+        address: '深圳市福田区民田路138号城建购物公园北园',
+        distance: '距瑞吉酒店6.8公里（打车约15分钟）',
+        access: '到达后直上3楼',
+      },
+    },
+  },
 ];
 
 const TYPE_STYLE: Record<TalkType, { bg: string; color: string }> = {
@@ -905,6 +959,43 @@ function TimeCell({ time, end, muted = false }: { time: string; end?: string; mu
   );
 }
 
+/** Address panel for the two off-site parties. The English lines carry the
+ *  detail; the Chinese block underneath is there to be shown to a taxi driver,
+ *  so it is selectable text rather than an image and keeps the venue name and
+ *  street address on their own lines. */
+function PartyVenue({
+  venue,
+}: {
+  venue: NonNullable<Extract<ScheduleRow, { kind: 'break' }>['venue']>;
+}) {
+  return (
+    <div
+      className="mt-2.5 pl-3 border-l-2 flex flex-col gap-2"
+      style={{ borderColor: 'rgba(235, 48, 48, 0.5)', fontFamily: 'General Sans, system-ui, sans-serif' }}
+    >
+      <div className="text-[12.5px] md:text-[13.5px] leading-relaxed" style={{ color: 'rgba(249, 249, 249, 0.72)' }}>
+        <span style={{ fontWeight: 600 }}>{venue.name}</span>
+        <br />
+        {venue.address}
+        <span className="mt-1 block" style={{ color: 'rgba(249, 249, 249, 0.45)' }}>
+          {venue.distance}
+          <br />
+          {venue.access}
+        </span>
+      </div>
+      <div className="text-[12.5px] md:text-[13px] leading-relaxed" style={{ color: 'rgba(249, 249, 249, 0.4)' }}>
+        {venue.cn.name}
+        <br />
+        {venue.cn.address}
+        <br />
+        {venue.cn.distance}
+        <br />
+        {venue.cn.access}
+      </div>
+    </div>
+  );
+}
+
 function DayTimeline({ schedule }: { schedule: ScheduleRow[] }) {
   return (
     <div className="mt-8 md:mt-10 flex flex-col">
@@ -924,14 +1015,19 @@ function DayTimeline({ schedule }: { schedule: ScheduleRow[] }) {
           return (
             <div
               key={`brk-${i}`}
-              className="flex flex-col md:flex-row md:items-center py-3.5 border-t border-white/[0.08]"
+              className={`flex flex-col md:flex-row py-3.5 border-t border-white/[0.08] ${
+                row.venue ? 'md:items-start' : 'md:items-center'
+              }`}
             >
               <TimeCell time={row.time} end={row.end} muted />
-              <div
-                className="text-[13px] md:text-[14px]"
-                style={{ color: 'rgba(249, 249, 249, 0.55)', fontFamily: 'General Sans, system-ui, sans-serif', fontWeight: 500 }}
-              >
-                {row.label}
+              <div className="min-w-0">
+                <div
+                  className="text-[13px] md:text-[14px]"
+                  style={{ color: 'rgba(249, 249, 249, 0.55)', fontFamily: 'General Sans, system-ui, sans-serif', fontWeight: 500 }}
+                >
+                  {row.label}
+                </div>
+                {row.venue ? <PartyVenue venue={row.venue} /> : null}
               </div>
             </div>
           );
