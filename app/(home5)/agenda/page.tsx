@@ -464,8 +464,30 @@ function splitDayLabel(label: string) {
   return { weekday: WEEKDAYS[wd] ?? wd, month, day };
 }
 
+/** Collapses its children without unmounting them.
+
+ *  The obvious way to hide a schedule is `{open && <Schedule/>}`, but that
+ *  takes every talk title and speaker name out of the HTML entirely. This page
+ *  is one of the main reasons people search for the conference, so the content
+ *  has to stay in the markup and simply be out of view. The 1fr/0fr grid trick
+ *  collapses to zero height and animates, and `inert` keeps the hidden rows out
+ *  of keyboard and screen-reader order while they are closed. */
+function Collapsible({ open, children }: { open: boolean; children: React.ReactNode }) {
+  return (
+    <div
+      className={`grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none ${
+        open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+      }`}
+    >
+      <div className="overflow-hidden" inert={!open}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
 function SideEventCard({ event }: { event: SideEvent }) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   // Cards flagged plainDetails (the Speaker Dinner) keep the original simple
   // header. The two side events use the date-rail layout below.
@@ -606,7 +628,11 @@ function SideEventCard({ event }: { event: SideEvent }) {
         </div>
       </div>
 
-      {event.schedule && open && <div className="mt-7">{event.schedule}</div>}
+      {event.schedule && (
+        <Collapsible open={open}>
+          <div className="mt-7">{event.schedule}</div>
+        </Collapsible>
+      )}
     </div>
   );
 }
@@ -1500,7 +1526,6 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
     badge: 'Deluxe + VIP',
     tiers: ['DELUXE', 'VIP'],
     collapsible: true,
-    defaultOpen: true,
     content: <Day1TwoColumn />,
   },
   {
@@ -1512,7 +1537,6 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
     badge: 'Deluxe + VIP',
     tiers: ['DELUXE', 'VIP'],
     collapsible: true,
-    defaultOpen: true,
     items: [
       { time: '10:00 – 10:30', title: 'Mastermind Rules & On-site Grouping', body: '' },
       { time: '10:30 – 12:30', title: 'Morning Mastermind Sessions', body: '' },
@@ -1553,7 +1577,6 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
     tiers: ['STANDARD', 'DELUXE', 'VIP'],
     interpretation: true,
     collapsible: true,
-    defaultOpen: true,
     schedule: DAY3_SCHEDULE,
   },
   {
@@ -1569,7 +1592,6 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
     tiers: ['STANDARD', 'DELUXE', 'VIP'],
     interpretation: true,
     collapsible: true,
-    defaultOpen: true,
     schedule: DAY4_SCHEDULE,
   },
   {
@@ -1589,7 +1611,6 @@ const CONFERENCE_DAYS: ConferenceDay[] = [
     badge: 'Speakers + VIP',
     tiers: ['VIP'],
     collapsible: true,
-    defaultOpen: true,
     items: [
       {
         time: 'Venue',
@@ -1715,7 +1736,7 @@ function AgendaItemRow({ item }: { item: AgendaItem }) {
 
 function ConferenceDayCard({ day, activeTier }: { day: ConferenceDay; activeTier: Tier }) {
   const [activeTab, setActiveTab] = useState(0);
-  const [open, setOpen] = useState(day.defaultOpen ?? true);
+  const [open, setOpen] = useState(day.defaultOpen ?? false);
   const isCollapsible = day.collapsible ?? false;
 
   if (activeTier !== 'ALL' && !day.tiers.includes(activeTier)) return null;
@@ -1723,7 +1744,7 @@ function ConferenceDayCard({ day, activeTier }: { day: ConferenceDay; activeTier
   const items: AgendaItem[] = day.tabs ? day.tabs[activeTab].items ?? [] : day.items ?? [];
   const note: React.ReactNode = day.tabs ? day.tabs[activeTab].note : day.note;
   const content: React.ReactNode = day.tabs ? day.tabs[activeTab].content : day.content;
-  const showItems = !isCollapsible || open;
+  const showItems = !isCollapsible || open;   // a non-collapsible day is always shown
 
   return (
     <div
@@ -1835,32 +1856,34 @@ function ConferenceDayCard({ day, activeTier }: { day: ConferenceDay; activeTier
         </div>
       )}
 
-      {showItems && items.length > 0 && (
-        <ul className="flex flex-col gap-7" style={{ marginTop: 40 }}>
-          {items.map((item) => (
-            <AgendaItemRow key={`${item.time}-${item.title}`} item={item} />
-          ))}
-        </ul>
-      )}
+      <Collapsible open={showItems}>
+        {items.length > 0 && (
+          <ul className="flex flex-col gap-7" style={{ marginTop: 40 }}>
+            {items.map((item) => (
+              <AgendaItemRow key={`${item.time}-${item.title}`} item={item} />
+            ))}
+          </ul>
+        )}
 
-      {showItems && day.schedule && <DayTimeline schedule={day.schedule} />}
+        {day.schedule && <DayTimeline schedule={day.schedule} />}
 
-      {showItems && content}
+        {content}
 
-      {showItems && note && (
-        <div
-          className="text-[12px] md:text-[14px] leading-[170%]"
-          style={{
-            marginTop: 28,
-            color: '#F9F9F9',
-            opacity: 0.8,
-            fontFamily: 'General Sans, system-ui, sans-serif',
-            fontWeight: 400,
-          }}
-        >
-          {note}
-        </div>
-      )}
+        {note && (
+          <div
+            className="text-[12px] md:text-[14px] leading-[170%]"
+            style={{
+              marginTop: 28,
+              color: '#F9F9F9',
+              opacity: 0.8,
+              fontFamily: 'General Sans, system-ui, sans-serif',
+              fontWeight: 400,
+            }}
+          >
+            {note}
+          </div>
+        )}
+      </Collapsible>
     </div>
   );
 }
