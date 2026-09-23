@@ -284,7 +284,7 @@ function Hero() {
             </div>
             <CtaButton className="mt-7 w-full">Get your ticket</CtaButton>
             <p className="mt-4 text-[13px] text-white/50 leading-[1.6]">
-              Fully refundable or transferable until 31 August 2027. No risk in deciding today.
+              Fully refundable or transferable until 20 August 2027. No risk in deciding today.
             </p>
           </div>
         </div>
@@ -302,7 +302,7 @@ function Guarantees() {
       tint: 'text-[#86DFF7]',
       title: '100% refundable',
       body:
-        'Change your mind and you get your money back, or hand the ticket to someone else. Both stay open until 31 August 2027.',
+        'Change your mind and you get your money back, or hand the ticket to someone else. Both stay open until 20 August 2027.',
     },
     {
       icon: Target,
@@ -355,7 +355,7 @@ function WhyNow() {
       'The absolute lowest price',
       'Super Early Bird is 30% off. We may not even run a regular early bird this year.',
     ],
-    ['Zero risk', 'Fully refundable or transferable until 31 August 2027.'],
+    ['Zero risk', 'Fully refundable or transferable until 20 August 2027.'],
     ['Tax benefits', 'Buy this year and it lands in your 2026 taxes.'],
     ['Travel savings', 'Booking a year out saves a lot on flights and hotels.'],
     ['365 days of networking', 'You are in the 2027 attendee community from today.'],
@@ -716,7 +716,7 @@ function Pricing() {
             </h3>
             <p className="mt-3 text-[15px] text-white/65 leading-[1.65]">
               Scan the code, or use the button. Both land on the same checkout, and your seat is
-              refundable until 31 August 2027.
+              refundable until 20 August 2027.
             </p>
             <CtaButton className="mt-6 w-full md:w-auto">Go to checkout</CtaButton>
           </div>
@@ -982,7 +982,7 @@ function Faq() {
     },
     {
       q: 'Can I get a refund, or give my ticket to someone else?',
-      a: 'Both, right up to 31 August 2027. Refunds are returned to the card you paid with. Transfers just need the new attendee’s name and email. On top of that, our hit-your-goal guarantee means that if you come and do not get what you came for, you can still ask for a partial or full refund afterwards.',
+      a: 'Both, right up to 20 August 2027. Refunds are returned to the card you paid with. Transfers just need the new attendee’s name and email. On top of that, our hit-your-goal guarantee means that if you come and do not get what you came for, you can still ask for a partial or full refund afterwards.',
     },
     {
       q: 'Who actually shows up?',
@@ -1079,7 +1079,7 @@ function FinalCta() {
             </CtaButton>
           </div>
           <p className="mt-6 text-[14px] text-white/55">
-            Super Early Bird closes 30 September. Refundable until 31 August 2027.
+            Super Early Bird closes 30 September. Refundable until 20 August 2027.
           </p>
         </div>
       </div>
