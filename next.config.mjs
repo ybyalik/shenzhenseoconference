@@ -20,19 +20,6 @@ const nextConfig = {
         destination: '/#contact',
         statusCode: 301,
       },
-      // Short link printed on slides and shared in talks. Kept temporary (302)
-      // on purpose: a 301 sticks in people's browsers forever, so if the Luma
-      // event URL ever changes we could not fix it for anyone who had used it.
-      {
-        source: '/2027',
-        destination: 'https://luma.com/shenzhen-seo-conference-2027',
-        statusCode: 302,
-      },
-      {
-        source: '/2027/',
-        destination: 'https://luma.com/shenzhen-seo-conference-2027',
-        statusCode: 302,
-      },
     ];
   },
   async headers() {

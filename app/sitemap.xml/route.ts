@@ -5,6 +5,7 @@ import { SPEAKER_PROFILES } from '@/lib/speaker-profiles';
 // full of redirects wastes crawl budget.
 const PAGES: { path: string; changefreq: string; priority: string }[] = [
   { path: '/', changefreq: 'weekly', priority: '1.0' },
+  { path: '/2027', changefreq: 'weekly', priority: '0.9' },
   { path: '/agenda', changefreq: 'weekly', priority: '0.9' },
   { path: '/speakers', changefreq: 'weekly', priority: '0.9' },
   { path: '/sponsors', changefreq: 'monthly', priority: '0.8' },
