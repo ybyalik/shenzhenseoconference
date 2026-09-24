@@ -299,7 +299,11 @@ function Hero() {
                 and every bundle
               </span>
             </div>
-            <CtaButton className="mt-7 w-full">Get your ticket</CtaButton>
+            {/* Down to the tiers, not straight out to checkout: nobody has
+                seen a price yet at this point on the page. */}
+            <CtaButton href="#pricing" className="mt-7 w-full">
+              Get your ticket
+            </CtaButton>
             <p className="mt-4 text-[13px] text-white/50 leading-[1.6]">
               Fully refundable or transferable until 20 August 2027. No risk in deciding today.
             </p>
