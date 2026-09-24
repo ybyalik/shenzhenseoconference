@@ -547,7 +547,7 @@ const INDIVIDUAL: Tier[] = [
     price: '$500',
     was: '$700',
     forWho: 'For SEO practitioners',
-    bullets: ['The 2-day main conference'],
+    bullets: ['Main conference, both days (Day 3 + Day 4)'],
     cap: 150,
     sold: SOLD.standard,
     unit: 'tickets',
@@ -557,7 +557,11 @@ const INDIVIDUAL: Tier[] = [
     price: '$750',
     was: '$1,050',
     forWho: 'For marketing directors and agency leads',
-    bullets: ['Everything in Standard', '2 days of workshops', 'Mastermind and matchmaking'],
+    bullets: [
+      'Everything in Standard',
+      'SEO workshops (Day 1)',
+      'Mastermind + matchmaking (Day 2)',
+    ],
     cap: 90,
     sold: SOLD.deluxe,
     unit: 'tickets',
@@ -570,8 +574,9 @@ const INDIVIDUAL: Tier[] = [
     forWho: 'For executives and founders',
     bullets: [
       'Everything in Deluxe',
-      'VIP closed-door day',
-      'VIP dinner and airport transfer',
+      'VIP networking activities (Day 5)',
+      'One night at MGM (Day 5)',
+      'Airport transfer',
     ],
     cap: 25,
     sold: SOLD.vip,
@@ -768,12 +773,12 @@ function Pricing() {
 
 function Schedule() {
   const days = [
-    { day: 'Sun', date: '19 Sep', title: 'Free side event', note: 'Open to everyone.' },
-    { day: 'Mon', date: '20 Sep', title: 'City tours + SEO workshops', note: 'Running in parallel, pick your track.' },
-    { day: 'Tue', date: '21 Sep', title: 'SEO Mastermind + SEO Matchmaking', note: 'Mastermind in the morning, matchmaking after lunch.', accent: true },
-    { day: 'Wed', date: '22 Sep', title: 'Main stage talks', note: 'St. Regis.', main: true },
-    { day: 'Thu', date: '23 Sep', title: 'Main stage talks', note: 'St. Regis.', main: true },
-    { day: 'Fri', date: '24 Sep', title: 'VIP networking', note: 'MGM. VIP tickets only.' },
+    { day: 'Sun', date: '19 Sep', n: '', title: 'Free side event', note: 'Open to everyone.' },
+    { day: 'Mon', date: '20 Sep', n: 'Day 1', title: 'City tours + SEO workshops', note: 'Running in parallel, pick your track.' },
+    { day: 'Tue', date: '21 Sep', n: 'Day 2', title: 'SEO Mastermind + SEO Matchmaking', note: 'Mastermind in the morning, matchmaking after lunch.', accent: true },
+    { day: 'Wed', date: '22 Sep', n: 'Day 3', title: 'Main stage talks', note: 'St. Regis.', main: true },
+    { day: 'Thu', date: '23 Sep', n: 'Day 4', title: 'Main stage talks', note: 'St. Regis.', main: true },
+    { day: 'Fri', date: '24 Sep', n: 'Day 5', title: 'VIP networking', note: 'MGM. VIP tickets only.' },
   ];
   const trip = [
     { name: 'BrightonSEO', where: 'United States', when: '7–9 Sep', ours: false },
@@ -816,6 +821,11 @@ function Schedule() {
                   <span className="text-[12px] font-bold uppercase tracking-[0.14em] text-white/45 tabular-nums">
                     {d.day} {d.date}
                   </span>
+                  {d.n && (
+                    <span className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#86DFF7]">
+                      {d.n}
+                    </span>
+                  )}
                 </div>
                 <h3
                   className="mt-1.5 display text-[17px] md:text-[19px] font-semibold leading-[1.3]"
