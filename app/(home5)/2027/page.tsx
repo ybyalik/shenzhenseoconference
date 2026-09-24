@@ -559,8 +559,8 @@ const INDIVIDUAL: Tier[] = [
     forWho: 'For marketing directors and agency leads',
     bullets: [
       'Everything in Standard',
-      'SEO workshops (Day 1)',
-      'Mastermind + matchmaking (Day 2)',
+      'City tours / SEO workshops (Day 1)',
+      'SEO Mastermind + SEO Matchmaking (Day 2)',
     ],
     cap: 90,
     sold: SOLD.deluxe,
@@ -575,8 +575,8 @@ const INDIVIDUAL: Tier[] = [
     bullets: [
       'Everything in Deluxe',
       'VIP networking activities (Day 5)',
-      'One night at MGM (Day 5)',
-      'Airport transfer',
+      'One night stay at MGM hotel (Day 5)',
+      'Airport pick-up and drop-off',
     ],
     cap: 25,
     sold: SOLD.vip,
