@@ -210,27 +210,27 @@ function Hero() {
               <span className="font-bold">September 14–18, 2026</span>
               <span className="font-medium">The St. Regis Shenzhen + MGM Shenzhen</span>
             </div>
-            <a
-              href="#pricing"
+            <Link
+              href="/2027"
               className="hidden lg:inline-flex btn-outline-white display items-center gap-3 rounded-full text-[14px] font-semibold tracking-[0.18em] backdrop-blur-sm"
               style={{ padding: '12px 32px', lineHeight: '28px' }}
             >
-              GET TICKETS
+              GET 2027 TICKETS
               <ArrowUpRight className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
 
       {/* Mobile-only CTA */}
       <div className="lg:hidden mt-auto px-6">
-        <a
-          href="#pricing"
+        <Link
+          href="/2027"
           className="display inline-flex items-center justify-center gap-3 w-full px-7 py-3.5 rounded-full text-[13px] font-bold tracking-[0.18em] text-white gradient-cta"
         >
-          GET TICKETS
+          GET 2027 TICKETS
           <ArrowUpRight className="w-4 h-4" />
-        </a>
+        </Link>
       </div>
 
       {/* Mobile-only Gary quote below the CTA */}
@@ -1245,15 +1245,40 @@ function Pricing() {
             HOW MUCH IS IT
           </div>
           <h2 className="display text-[28px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9]">
-            Get Tickets
+            Tickets
           </h2>
-          <p className="md:mx-auto mt-5 max-w-[680px] md:max-w-none md:whitespace-nowrap text-[15px] md:text-[16px] text-white/70 leading-[1.6]">
-            One night at The St. Regis costs more than a Standard ticket. You get 5 days, every
-            meal, and two parties.
+          <p className="md:mx-auto mt-5 max-w-[680px] md:max-w-none text-[15px] md:text-[16px] text-white/70 leading-[1.6]">
+            The 2026 conference has finished. Super Early Bird for 2027 is open now.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
+        {/* The live offer. It leads the section because the 2026 prices below
+            are history now: nobody can buy them, they are only here so the
+            numbers are still on the record. */}
+        <div className="mt-12 rounded-2xl border border-[var(--red)]/45 bg-[#06101a]/70 p-7 md:p-9 md:flex md:items-center md:justify-between md:gap-10">
+          <div className="md:text-left">
+            <div className="display text-[20px] md:text-[24px] font-semibold text-white leading-[1.25]">
+              Shenzhen SEO Conference 2027
+            </div>
+            <p className="mt-3 text-[15px] md:text-[16px] text-white/65 leading-[1.6]">
+              19 to 24 September 2027. Super Early Bird is 30% off, strictly 400 tickets, and
+              fully refundable or transferable until 20 August 2027.
+            </p>
+          </div>
+          <Link
+            href="/2027"
+            className="display mt-7 md:mt-0 flex md:inline-flex flex-none items-center justify-center gap-3 px-7 py-4 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase gradient-cta text-white whitespace-nowrap"
+          >
+            See 2027 tickets
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="mt-16">
+          <div className="md:text-center text-[12px] font-bold uppercase tracking-[0.16em] text-white/40 mb-6">
+            For the record: 2026 prices
+          </div>
+          <div className="grid gap-5 md:grid-cols-3 opacity-55">
           {tiers.map((t) => (
             <div
               key={t.name}
@@ -1326,28 +1351,9 @@ function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="https://luma.com/shenzhen-seo-conference-2026"
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                className={`mt-8 display inline-flex items-center justify-center gap-3 w-full px-5 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase ${
-                  t.popular ? 'gradient-cta text-white' : 'btn-outline-white'
-                }`}
-              >
-                {t.cta}
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
             </div>
           ))}
-        </div>
-        <div className="mt-12 text-center">
-          <div className="display text-[14px] font-bold tracking-[0.18em] uppercase text-white">
-            100% Full Refund Policy
           </div>
-          <p className="mt-2 text-[14px] text-white/60 leading-[1.6] max-w-[640px] mx-auto">
-            Get a complete refund if you cancel 30 days or more before the conference starts.
-            <br className="hidden md:block" /> Risk-free ticket purchase with peace of mind.
-          </p>
         </div>
       </div>
     </section>
@@ -1819,7 +1825,7 @@ function FinalCta() {
         >
           <h2 className="display text-[28px] md:text-[40px] font-semibold leading-[1.1] uppercase tracking-[-0.005em] max-w-[920px] md:mx-auto text-white">
             <span className="block">One Room.</span>
-            <span className="block md:inline"> Five Days.</span>
+            <span className="block md:inline"> Six Days.</span>
             <span className="block">September.</span>
           </h2>
           <p
@@ -1842,11 +1848,11 @@ function FinalCta() {
               lineHeight: '160%',
             }}
           >
-            If the question is whether you should wait for 2027 — the answer is no. Seats cap
-            at 600.
+            Super Early Bird for 2027 is open now, and it is the lowest price this
+            conference will ever be. Strictly 400 seats.
           </p>
-          <a
-            href="#pricing"
+          <Link
+            href="/2027"
             className="mt-8 display flex w-full md:w-auto md:inline-flex rounded-full text-[12px] font-bold tracking-[0.18em] gradient-cta text-white"
             style={{
               padding: '16px 24px',
@@ -1855,9 +1861,9 @@ function FinalCta() {
               gap: 12,
             }}
           >
-            GET TICKETS TODAY
+            GET 2027 TICKETS
             <ArrowUpRight className="w-4 h-4" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

@@ -352,7 +352,9 @@ export function Nav({ linkBase = '', current }: { linkBase?: string; current?: s
     setMenuOpen(false);
   };
 
-  const ticketsHref = `${linkBase}#pricing`;
+  // Points at the 2027 presale rather than the 2026 pricing block: the 2026
+  // conference has happened, so the only ticket anyone can still buy is 2027.
+  const ticketsHref = '/2027';
 
   return (
     <>
@@ -411,7 +413,7 @@ export function Nav({ linkBase = '', current }: { linkBase?: string; current?: s
                 href={ticketsHref}
                 className="display inline-flex items-center gap-3 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white gradient-cta"
               >
-                GET TICKETS
+                2027 TICKETS
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
             </div>
@@ -514,7 +516,7 @@ export function Nav({ linkBase = '', current }: { linkBase?: string; current?: s
                   lineHeight: '28px',
                 }}
               >
-                GET TICKETS
+                2027 TICKETS
               </span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -548,7 +550,9 @@ export function Footer({ linkBase = '' }: { linkBase?: string } = {}) {
     { label: 'VISIT SHENZHEN', anchor: '/visit-shenzhen' },
     { label: 'CONTACT', anchor: '#contact' },
   ];
-  const ticketsHref = `${linkBase}#pricing`;
+  // Points at the 2027 presale rather than the 2026 pricing block: the 2026
+  // conference has happened, so the only ticket anyone can still buy is 2027.
+  const ticketsHref = '/2027';
 
   return (
     <footer className="bg-[#06222d]">
