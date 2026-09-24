@@ -963,7 +963,7 @@ function Speakers() {
           kicker="The lineup"
           title="The stage"
           dim="is setting."
-          sub="52 world-class speakers have already said they are interested in returning for 2027. Here are twelve of them."
+          sub="78 world-class speakers have already said they are interested in returning for 2027. Here are twelve of them."
         />
         <div className="mt-12 flex flex-wrap justify-center gap-2.5 max-w-[960px] mx-auto">
           {names.map((n) => (
@@ -975,7 +975,7 @@ function Speakers() {
             </span>
           ))}
           <span className="display rounded-full border border-dashed border-[var(--line-2)] px-5 py-2.5 text-[14px] md:text-[15px] font-semibold text-white/45">
-            and forty more
+            and 60 more
           </span>
         </div>
 
@@ -1021,7 +1021,11 @@ function Faq() {
     },
     {
       q: 'What language are the sessions in?',
-      a: 'Main conference sessions are in English. Simultaneous English to Mandarin translation is provided on the main stage days. Some side event sessions run in Chinese.',
+      a:
+        'Every session runs in English, on the main stage and at the side event alike. ' +
+        'Simultaneous English to Mandarin interpretation is provided for the main stage ' +
+        'talks on 22 and 23 September. We are looking at extending it to the workshops ' +
+        'and the free side event as well, and we will confirm that closer to the event.',
     },
     {
       q: 'Is the content Western SEO or China SEO?',
