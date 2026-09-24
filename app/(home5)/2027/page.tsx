@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Handshake, Lock, RotateCcw, Target } from 'lucide-react';
 
 import { ArrowUpRight, BackToTop, Footer, Nav } from '../_components/shared';
@@ -15,10 +15,21 @@ const CHECKOUT = 'https://luma.com/shenzhen-seo-conference-2027';
 // pinned to this one moment: after it, Super Early Bird pricing is gone.
 const SEB_ENDS = Date.parse('2026-09-30T15:59:00Z');
 
-// How many of each bonus tier have been taken. These are the only numbers on
-// the page that go stale, so they live here on their own: edit these four and
-// the bars, the counters and the "claimed" states all follow.
-const CLAIMED = { consult: 0, blanket: 0, school: 0, yearEnd: 0 };
+// Everything on this page that moves as tickets sell lives in these two
+// blocks. Nothing else needs touching: the bonus bars, the per-tier counters
+// and the seats-taken line are all worked out from these numbers.
+//
+// Bonus tiers are counted in attendees, not purchases, which is why a pair of
+// five-person bundles pushed the "first 20" tier over the line.
+const CLAIMED = { consult: 10, blanket: 20, school: 17, yearEnd: 17 };
+
+// Sold per tier. Bundle seats come out of the 135-seat bundle pool, so they do
+// not count against the individual ticket limits.
+const SOLD = { standard: 8, deluxe: 5, vip: 1, bundle3: 0, bundle5: 2, bundle8: 0 };
+const SEAT_CAP = 400;
+const SEATS_TAKEN =
+  SOLD.standard + SOLD.deluxe + SOLD.vip +
+  SOLD.bundle3 * 3 + SOLD.bundle5 * 5 + SOLD.bundle8 * 8;
 
 /* ───────────────────────────────── ICONS ─────────────────────────────────── */
 
@@ -120,17 +131,23 @@ function pad(n: number) {
   return String(n).padStart(2, '0');
 }
 
-/** Counts down to the Super Early Bird deadline. Rendered only after mount:
- *  the server has no clock in the visitor's timezone, so drawing it during the
- *  first paint guarantees a hydration mismatch. */
-function Countdown() {
+/** The current time, or null until the component has mounted. Null on the
+ *  first render on purpose: the server has no clock in the visitor's timezone,
+ *  so drawing a countdown during the first paint guarantees a mismatch when
+ *  React takes over in the browser. */
+function useNow() {
   const [now, setNow] = useState<number | null>(null);
-
   useEffect(() => {
     setNow(Date.now());
-    const id = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(id);
+    const id = window.setInterval(() => setNow(Date.now()), 1000);
+    return () => window.clearInterval(id);
   }, []);
+  return now;
+}
+
+/** Counts down to the Super Early Bird deadline, in the hero. */
+function Countdown() {
+  const now = useNow();
 
   if (now === null) return <div className="h-[74px]" aria-hidden />;
 
@@ -307,16 +324,16 @@ function Guarantees() {
     {
       icon: Target,
       tint: 'text-[#FD4C4C]',
-      title: 'The hit-your-goal guarantee',
+      title: 'Hit-your-goal guarantee',
       body:
-        'We ask what you came for. We help you put it into words, and we help you get it. Came and did not get there? Partial or full refund. That is a promise.',
+        'We ask what you came for. We help you put it into words, and we help you get it. Came and did not get there? Partial or full refund. Promise!',
     },
     {
       icon: Handshake,
       tint: 'text-[#86DFF7]',
-      title: 'The host’s partnership guarantee',
+      title: 'Partnership guarantee',
       body:
-        'We want cross-border deals to happen. If one made at this conference goes wrong, JP and the SEO Connector team step in and help with the communication, free.',
+        'We want cross-border deals to happen. If one made at this conference goes wrong, we step in and help with the communication, for free.',
     },
   ];
   return (
@@ -358,7 +375,8 @@ function WhyNow() {
     ['Zero risk', 'Fully refundable or transferable until 20 August 2027.'],
     ['Tax benefits', 'Buy this year and it lands in your 2026 taxes.'],
     ['Travel savings', 'Booking a year out saves a lot on flights and hotels.'],
-    ['365 days of networking', 'You are in the 2027 attendee community from today.'],
+    ['365 days of networking',
+      'You are in the 2027 attendee community (WeChat & WhatsApp) from today.'],
     ['Shape the agenda', 'Be first to help decide the 2027 topics and schedule.'],
     ['Lock in your growth', 'Commit to your own growth now, while it is still a decision and not a scramble.'],
   ];
@@ -513,7 +531,9 @@ type Tier = {
   was: string;
   forWho: string;
   bullets: string[];
-  limit: string;
+  cap: number;
+  sold: number;
+  unit: 'tickets' | 'bundles';
   popular?: boolean;
 };
 
@@ -524,7 +544,9 @@ const INDIVIDUAL: Tier[] = [
     was: '$700',
     forWho: 'For SEO practitioners',
     bullets: ['The 2-day main conference'],
-    limit: '150 tickets only',
+    cap: 150,
+    sold: SOLD.standard,
+    unit: 'tickets',
   },
   {
     name: 'Deluxe',
@@ -532,7 +554,9 @@ const INDIVIDUAL: Tier[] = [
     was: '$1,050',
     forWho: 'For marketing directors and agency leads',
     bullets: ['Everything in Standard', '2 days of workshops', 'Mastermind and matchmaking'],
-    limit: '90 tickets only',
+    cap: 90,
+    sold: SOLD.deluxe,
+    unit: 'tickets',
     popular: true,
   },
   {
@@ -545,7 +569,9 @@ const INDIVIDUAL: Tier[] = [
       'VIP closed-door day',
       'VIP dinner and airport transfer',
     ],
-    limit: '25 tickets only',
+    cap: 25,
+    sold: SOLD.vip,
+    unit: 'tickets',
   },
 ];
 
@@ -556,7 +582,9 @@ const CORPORATE: Tier[] = [
     was: '$3,000',
     forWho: 'For a small team',
     bullets: ['1 VIP ticket', '1 Deluxe ticket', '1 Standard ticket'],
-    limit: '15 bundles only',
+    cap: 15,
+    sold: SOLD.bundle3,
+    unit: 'bundles',
   },
   {
     name: '5-person',
@@ -564,7 +592,9 @@ const CORPORATE: Tier[] = [
     was: '$4,000',
     forWho: 'For a growing team',
     bullets: ['1 VIP ticket', '2 Deluxe tickets', '2 Standard tickets'],
-    limit: '10 bundles only',
+    cap: 10,
+    sold: SOLD.bundle5,
+    unit: 'bundles',
     popular: true,
   },
   {
@@ -573,7 +603,9 @@ const CORPORATE: Tier[] = [
     was: '$7,000',
     forWho: 'For a whole department',
     bullets: ['2 VIP tickets', '3 Deluxe tickets', '3 Standard tickets'],
-    limit: '5 bundles only',
+    cap: 5,
+    sold: SOLD.bundle8,
+    unit: 'bundles',
   },
 ];
 
@@ -623,7 +655,7 @@ function TierCard({ t }: { t: Tier }) {
       </ul>
       <div className="mt-7 flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.12em] text-[#86DFF7]">
         <Lock className="w-3.5 h-3.5" strokeWidth={2.2} />
-        {t.limit}
+        {t.cap - t.sold} of {t.cap} {t.unit} left
       </div>
       <a
         href={CHECKOUT}
@@ -690,6 +722,23 @@ function Pricing() {
           ))}
         </div>
 
+        <div className="mt-10 max-w-[560px] mx-auto">
+          <div className="flex items-baseline justify-between gap-4">
+            <span className="display text-[15px] font-semibold text-white">
+              {SEATS_TAKEN} of {SEAT_CAP} seats taken
+            </span>
+            <span className="text-[13px] text-white/50 tabular-nums">
+              {SEAT_CAP - SEATS_TAKEN} still available
+            </span>
+          </div>
+          <div className="mt-3 h-1.5 rounded-full bg-white/10 overflow-hidden">
+            <div
+              className="h-full rounded-full bg-[var(--red)]"
+              style={{ width: `${Math.max(1.5, (SEATS_TAKEN / SEAT_CAP) * 100)}%` }}
+            />
+          </div>
+        </div>
+
         <p className="mt-8 text-[14px] text-white/55 text-center max-w-[760px] mx-auto leading-[1.6]">
           265 individual seats plus 135 in bundles is the 400 cap. Bringing ten or more from one
           company?{' '}
@@ -699,28 +748,6 @@ function Pricing() {
           and we will build a custom package.
         </p>
 
-        {/* Checkout */}
-        <div className="mt-12 rounded-[24px] border border-[var(--line-2)] bg-[#03060d]/70 backdrop-blur-sm p-8 md:p-10 grid gap-8 md:grid-cols-[auto_1fr] md:items-center max-w-[900px] mx-auto">
-          <div className="justify-self-center rounded-2xl bg-white p-3">
-            <Image
-              src="/assets/qr-2027-tickets.png"
-              alt="QR code to the 2027 ticket checkout"
-              width={148}
-              height={148}
-              className="block w-[132px] h-[132px] md:w-[148px] md:h-[148px]"
-            />
-          </div>
-          <div className="text-center md:text-left">
-            <h3 className="display text-[20px] md:text-[24px] font-semibold uppercase text-white leading-[1.25]">
-              Ready when you are
-            </h3>
-            <p className="mt-3 text-[15px] text-white/65 leading-[1.65]">
-              Scan the code, or use the button. Both land on the same checkout, and your seat is
-              refundable until 20 August 2027.
-            </p>
-            <CtaButton className="mt-6 w-full md:w-auto">Go to checkout</CtaButton>
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -827,7 +854,7 @@ function Schedule() {
               ))}
             </ul>
             <p className="mt-6 text-[15px] text-white/70 leading-[1.65]">
-              Dubai, Shenzhen and Seoul inside two weeks. One trip covers all three.
+              Dubai, Shenzhen and Seoul inside three weeks. One trip covers all three.
             </p>
           </div>
         </div>
@@ -864,7 +891,7 @@ function Numbers() {
       <div className="container">
         <SectionHead
           kicker="2026 by the numbers"
-          title="What last year"
+          title="What this year"
           dim="actually looked like."
         />
         <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-px rounded-2xl overflow-hidden bg-[var(--line)] border border-[var(--line)]">
@@ -1087,6 +1114,143 @@ function FinalCta() {
   );
 }
 
+/* ─────────────────────────────── STICKY CTA ──────────────────────────────── */
+
+// Dismissal lives in sessionStorage, not localStorage: it survives navigation
+// and reloads but clears when the tab closes, so the bar stops nagging during
+// one visit without hiding itself forever.
+const STICKY_KEY = 'szseo-2027-cta-dismissed';
+
+/** A floating buy bar that appears once the hero has scrolled away.
+ *
+ *  It is deliberately absent above the fold: the hero already has the same
+ *  countdown and the same button, and stacking a second copy over them just
+ *  covers the page. It hides itself once Super Early Bird closes.
+ */
+function StickyCta() {
+  const now = useNow();
+  const [pastHero, setPastHero] = useState(false);
+  const [dismissed, setDismissed] = useState(true);
+
+  useEffect(() => {
+    try {
+      setDismissed(window.sessionStorage.getItem(STICKY_KEY) === '1');
+    } catch {
+      // private browsing: just show it
+      setDismissed(false);
+    }
+  }, []);
+
+  // Watching the hero itself rather than a pixel threshold, so the bar appears
+  // at the right moment on a phone, a laptop and a 4K monitor alike.
+  useEffect(() => {
+    const hero = document.getElementById('top');
+    if (!hero) return;
+    const io = new IntersectionObserver(([entry]) => setPastHero(!entry.isIntersecting), {
+      threshold: 0,
+    });
+    io.observe(hero);
+    return () => io.disconnect();
+  }, []);
+
+  if (now === null || dismissed || !pastHero || now >= SEB_ENDS) return null;
+
+  const s = Math.floor((SEB_ENDS - now) / 1000);
+  const units: [string, string][] = [
+    [pad(Math.floor(s / 86400)), 'Days'],
+    [pad(Math.floor((s % 86400) / 3600)), 'Hrs'],
+    [pad(Math.floor((s % 3600) / 60)), 'Min'],
+    [pad(s % 60), 'Sec'],
+  ];
+
+  const close = () => {
+    setDismissed(true);
+    try {
+      window.sessionStorage.setItem(STICKY_KEY, '1');
+    } catch {
+      /* private browsing: it comes back on the next page, which is fine */
+    }
+  };
+
+  return (
+    <div className="fixed z-40 left-1/2 -translate-x-1/2 bottom-3 lg:bottom-[50px] max-w-[calc(100vw-1.5rem)]">
+      <div
+        className="flex items-center gap-3 md:gap-4 rounded-2xl border border-white/15 pl-4 pr-2 py-2.5 md:pl-5 md:pr-3 md:py-3 shadow-2xl"
+        style={{ background: 'rgba(6, 12, 21, 0.92)', backdropFilter: 'blur(10px)' }}
+      >
+        <div className="flex flex-col">
+          <span
+            className="uppercase text-[9px] md:text-[10px] font-bold whitespace-nowrap"
+            style={{
+              color: '#EB3030',
+              fontFamily: 'General Sans, system-ui, sans-serif',
+              letterSpacing: '0.16em',
+            }}
+          >
+            Super Early Bird ends 30 September
+          </span>
+          <div className="flex items-end gap-2.5 md:gap-3.5 mt-1.5">
+            {units.map(([value, label], i) => (
+              <Fragment key={label}>
+                {i > 0 && (
+                  <span className="text-white/25 text-[15px] md:text-[18px] leading-none -mt-1">
+                    :
+                  </span>
+                )}
+                <span className="flex flex-col items-center leading-none">
+                  <span
+                    className="display text-white text-[15px] md:text-[18px] font-bold tabular-nums"
+                    style={{ letterSpacing: '0.01em' }}
+                  >
+                    {value}
+                  </span>
+                  <span
+                    className="mt-1 uppercase text-white/45 text-[8px] md:text-[9px] font-semibold"
+                    style={{
+                      fontFamily: 'General Sans, system-ui, sans-serif',
+                      letterSpacing: '0.12em',
+                    }}
+                  >
+                    {label}
+                  </span>
+                </span>
+              </Fragment>
+            ))}
+          </div>
+        </div>
+
+        <a
+          href={CHECKOUT}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="display shrink-0 hidden sm:inline-flex items-center justify-center gap-2 self-center rounded-full gradient-cta text-white text-[11px] font-bold uppercase px-5 py-3 whitespace-nowrap"
+          style={{ letterSpacing: '0.16em' }}
+        >
+          Get tickets
+          <ArrowUpRight className="w-3.5 h-3.5" />
+        </a>
+
+        <button
+          type="button"
+          onClick={close}
+          aria-label="Hide the ticket bar"
+          className="shrink-0 grid place-items-center w-7 h-7 rounded-full text-white/45 hover:text-white hover:bg-white/10 transition-colors"
+        >
+          <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" aria-hidden="true">
+            <path
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              d="M6 6l12 12M18 6L6 18"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
+}
+
 /* ────────────────────────────────── PAGE ─────────────────────────────────── */
 
 export default function Presale2027Page() {
@@ -1104,6 +1268,7 @@ export default function Presale2027Page() {
       <Faq />
       <FinalCta />
       <Footer linkBase="/" />
+      <StickyCta />
       <BackToTop />
     </main>
   );
