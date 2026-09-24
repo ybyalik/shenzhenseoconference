@@ -624,14 +624,21 @@ function TierCard({ t }: { t: Tier }) {
       <div className="display text-[18px] font-bold uppercase tracking-[0.04em] text-white">
         {t.name}
       </div>
-      <div className="mt-4 flex items-end gap-3">
+      {/* Three columns are at their narrowest between the md and lg breakpoints,
+          where a 40px price beside a struck-through one broke out of the card.
+          The type steps down through that range and the row may wrap, so a
+          longer price can never push past the edge. */}
+      <div className="mt-4 flex flex-wrap items-end gap-x-3 gap-y-1">
         <span
-          className="display text-[32px] md:text-[40px] font-semibold leading-none text-white uppercase"
+          className="display text-[32px] md:text-[28px] lg:text-[40px] font-semibold leading-none text-white uppercase"
           style={{ opacity: 0.95 }}
         >
           {t.price}
         </span>
-        <span className="display text-[15px] text-white line-through pb-1" style={{ opacity: 0.45 }}>
+        <span
+          className="display text-[15px] md:text-[13px] lg:text-[15px] text-white line-through pb-1"
+          style={{ opacity: 0.45 }}
+        >
           {t.was}
         </span>
       </div>
@@ -895,8 +902,16 @@ function Numbers() {
           dim="actually looked like."
         />
         <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-px rounded-2xl overflow-hidden bg-[var(--line)] border border-[var(--line)]">
-          {stats.map(([n, label, note]) => (
-            <div key={label} className="bg-[#03060d] px-4 py-7 text-center">
+          {/* Seven stats do not divide into two or four columns, so the last one
+              spans the gap it would otherwise leave. At seven columns it goes
+              back to a single cell. */}
+          {stats.map(([n, label, note], i) => (
+            <div
+              key={label}
+              className={`bg-[#03060d] px-4 py-7 text-center ${
+                i === stats.length - 1 ? 'col-span-2 lg:col-span-1' : ''
+              }`}
+            >
               <div className="display text-[30px] md:text-[34px] font-semibold text-white leading-none tabular-nums">
                 {n}
               </div>
@@ -1177,12 +1192,12 @@ function StickyCta() {
   };
 
   return (
-    <div className="fixed z-40 left-1/2 -translate-x-1/2 bottom-3 lg:bottom-[50px] max-w-[calc(100vw-1.5rem)]">
+    <div className="fixed z-40 left-1/2 -translate-x-1/2 bottom-3 lg:bottom-[50px] w-[calc(100vw-1.5rem)] sm:w-auto sm:max-w-[calc(100vw-1.5rem)]">
       <div
-        className="flex items-center gap-3 md:gap-4 rounded-2xl border border-white/15 pl-4 pr-2 py-2.5 md:pl-5 md:pr-3 md:py-3 shadow-2xl"
+        className="flex items-center gap-2 sm:gap-3 md:gap-4 rounded-2xl border border-white/15 pl-3 pr-2 py-2.5 sm:pl-4 md:pl-5 md:pr-3 md:py-3 shadow-2xl"
         style={{ background: 'rgba(6, 12, 21, 0.92)', backdropFilter: 'blur(10px)' }}
       >
-        <div className="flex flex-col">
+        <div className="flex flex-col min-w-0 flex-1 sm:flex-none">
           <span
             className="uppercase text-[9px] md:text-[10px] font-bold whitespace-nowrap"
             style={{
@@ -1191,17 +1206,28 @@ function StickyCta() {
               letterSpacing: '0.16em',
             }}
           >
-            Super Early Bird ends 30 September
+            <span className="sm:hidden">Ends 30 Sep</span>
+            <span className="hidden sm:inline">Super Early Bird ends 30 September</span>
           </span>
           <div className="flex items-end gap-2.5 md:gap-3.5 mt-1.5">
             {units.map(([value, label], i) => (
+              // seconds drop off on a phone: they buy nothing next to a
+              // seven-day countdown and they are what pushes the button out
               <Fragment key={label}>
                 {i > 0 && (
-                  <span className="text-white/25 text-[15px] md:text-[18px] leading-none -mt-1">
+                  <span
+                    className={`text-white/25 text-[15px] md:text-[18px] leading-none -mt-1 ${
+                      i === 3 ? 'hidden sm:inline' : ''
+                    }`}
+                  >
                     :
                   </span>
                 )}
-                <span className="flex flex-col items-center leading-none">
+                <span
+                  className={`flex flex-col items-center leading-none ${
+                    i === 3 ? 'hidden sm:flex' : ''
+                  }`}
+                >
                   <span
                     className="display text-white text-[15px] md:text-[18px] font-bold tabular-nums"
                     style={{ letterSpacing: '0.01em' }}
@@ -1227,10 +1253,11 @@ function StickyCta() {
           href={CHECKOUT}
           target="_blank"
           rel="noopener noreferrer"
-          className="display shrink-0 hidden sm:inline-flex items-center justify-center gap-2 self-center rounded-full gradient-cta text-white text-[11px] font-bold uppercase px-5 py-3 whitespace-nowrap"
+          className="display shrink-0 inline-flex items-center justify-center gap-2 self-center rounded-full gradient-cta text-white text-[11px] font-bold uppercase px-4 sm:px-5 py-3 whitespace-nowrap"
           style={{ letterSpacing: '0.16em' }}
         >
-          Get tickets
+          <span className="sm:hidden">Tickets</span>
+          <span className="hidden sm:inline">Get tickets</span>
           <ArrowUpRight className="w-3.5 h-3.5" />
         </a>
 
