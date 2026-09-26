@@ -21,15 +21,11 @@ const SEB_ENDS = Date.parse('2026-09-30T15:59:00Z');
 //
 // Bonus tiers are counted in attendees, not purchases, which is why a pair of
 // five-person bundles pushed the "first 20" tier over the line.
-const CLAIMED = { consult: 10, blanket: 20, school: 17, yearEnd: 17 };
+const CLAIMED = { consult: 10, blanket: 20, school: 18, yearEnd: 18 };
 
-// Sold per tier. Bundle seats come out of the 135-seat bundle pool, so they do
-// not count against the individual ticket limits.
-const SOLD = { standard: 8, deluxe: 5, vip: 1, bundle3: 0, bundle5: 2, bundle8: 0 };
+// Seats sold so far, across every tier and bundle. One number to keep current.
 const SEAT_CAP = 400;
-const SEATS_TAKEN =
-  SOLD.standard + SOLD.deluxe + SOLD.vip +
-  SOLD.bundle3 * 3 + SOLD.bundle5 * 5 + SOLD.bundle8 * 8;
+const SEATS_TAKEN = 42;
 
 /* ───────────────────────────────── ICONS ─────────────────────────────────── */
 
@@ -535,9 +531,6 @@ type Tier = {
   was: string;
   forWho: string;
   bullets: string[];
-  cap: number;
-  sold: number;
-  unit: 'tickets' | 'bundles';
   popular?: boolean;
 };
 
@@ -548,9 +541,6 @@ const INDIVIDUAL: Tier[] = [
     was: '$700',
     forWho: 'For SEO practitioners',
     bullets: ['Main conference, both days (Day 3 + Day 4)'],
-    cap: 150,
-    sold: SOLD.standard,
-    unit: 'tickets',
   },
   {
     name: 'Deluxe',
@@ -562,9 +552,6 @@ const INDIVIDUAL: Tier[] = [
       'City tours / SEO workshops (Day 1)',
       'SEO Mastermind + SEO Matchmaking (Day 2)',
     ],
-    cap: 90,
-    sold: SOLD.deluxe,
-    unit: 'tickets',
     popular: true,
   },
   {
@@ -578,9 +565,6 @@ const INDIVIDUAL: Tier[] = [
       'One night stay at MGM hotel (Day 5)',
       'Airport pick-up and drop-off',
     ],
-    cap: 25,
-    sold: SOLD.vip,
-    unit: 'tickets',
   },
 ];
 
@@ -591,9 +575,6 @@ const CORPORATE: Tier[] = [
     was: '$3,000',
     forWho: 'For a small team',
     bullets: ['1 VIP ticket', '1 Deluxe ticket', '1 Standard ticket'],
-    cap: 15,
-    sold: SOLD.bundle3,
-    unit: 'bundles',
   },
   {
     name: '5-person',
@@ -601,9 +582,6 @@ const CORPORATE: Tier[] = [
     was: '$4,000',
     forWho: 'For a growing team',
     bullets: ['1 VIP ticket', '2 Deluxe tickets', '2 Standard tickets'],
-    cap: 10,
-    sold: SOLD.bundle5,
-    unit: 'bundles',
     popular: true,
   },
   {
@@ -612,9 +590,6 @@ const CORPORATE: Tier[] = [
     was: '$7,000',
     forWho: 'For a whole department',
     bullets: ['2 VIP tickets', '3 Deluxe tickets', '3 Standard tickets'],
-    cap: 5,
-    sold: SOLD.bundle8,
-    unit: 'bundles',
   },
 ];
 
@@ -669,15 +644,11 @@ function TierCard({ t }: { t: Tier }) {
           </li>
         ))}
       </ul>
-      <div className="mt-7 flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.12em] text-[#86DFF7]">
-        <Lock className="w-3.5 h-3.5" strokeWidth={2.2} />
-        {t.cap - t.sold} of {t.cap} {t.unit} left
-      </div>
       <a
         href={CHECKOUT}
         target="_blank"
         rel="noopener noreferrer"
-        className={`mt-5 display inline-flex items-center justify-center gap-3 w-full px-5 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase ${
+        className={`mt-7 display inline-flex items-center justify-center gap-3 w-full px-5 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase ${
           t.popular ? 'gradient-cta text-white' : 'btn-outline-white'
         }`}
       >
