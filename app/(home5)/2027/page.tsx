@@ -132,12 +132,13 @@ function PlayIcon({ className = '' }: { className?: string }) {
 }
 
 /**
- * Self-hosted clip with a cover image and one big play button. Nothing is
- * fetched until someone presses play, so the three clips on this page cost
- * a visitor a cover image each, not tens of megabytes. Once playing, the
- * browser's own controls take over.
+ * Self-hosted clip with one big play button. Every clip opens on the logo
+ * over the room, so that first frame is the cover: no separate image. Only
+ * the file's header loads until someone presses play. The #t=0.001 on the
+ * source is for iOS Safari, which otherwise shows a black box instead of
+ * the first frame. Once playing, the browser's own controls take over.
  */
-function VideoBlock({ src, poster, label }: { src: string; poster: string; label: string }) {
+function VideoBlock({ src, label }: { src: string; label: string }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
   return (
@@ -145,14 +146,13 @@ function VideoBlock({ src, poster, label }: { src: string; poster: string; label
       <video
         ref={ref}
         className="h-full w-full object-cover"
-        poster={poster}
-        preload="none"
+        preload="metadata"
         playsInline
         controls={started}
         aria-label={label}
         onPlay={() => setStarted(true)}
       >
-        <source src={src} type="video/mp4" />
+        <source src={`${src}#t=0.001`} type="video/mp4" />
       </video>
       {!started && (
         <button
@@ -175,14 +175,12 @@ function VideoSection({
   title,
   dim,
   src,
-  poster,
   label,
 }: {
   kicker: string;
   title: string;
   dim?: string;
   src: string;
-  poster: string;
   label: string;
 }) {
   return (
@@ -190,7 +188,7 @@ function VideoSection({
       <div className="container">
         <SectionHead kicker={kicker} title={title} dim={dim} />
         <div className="mt-10 lg:mt-12">
-          <VideoBlock src={src} poster={poster} label={label} />
+          <VideoBlock src={src} label={label} />
         </div>
       </div>
     </section>
@@ -393,7 +391,6 @@ function Preview2027() {
       title="Watch before you decide."
       dim="Sound on."
       src="/video/2027-preview.mp4"
-      poster="/video/2027-preview.jpg"
       label="Shenzhen SEO Conference 2027 preview"
     />
   );
@@ -1035,7 +1032,6 @@ function Day3Recap() {
       title="Day 3, in a minute."
       dim="The stage, the sponsors, the room."
       src="/video/2026-day-3.mp4"
-      poster="/video/2026-day-3.jpg"
       label="Shenzhen SEO Conference 2026, Day 3 recap"
     />
   );
@@ -1107,7 +1103,6 @@ function Testimonials() {
       title="In their own words."
       dim="Straight from the 2026 floor."
       src="/video/2026-testimonials.mp4"
-      poster="/video/2026-testimonials.jpg"
       label="Shenzhen SEO Conference 2026 attendee testimonials"
     />
   );
