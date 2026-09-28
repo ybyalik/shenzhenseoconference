@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { Handshake, Lock, RotateCcw, Target } from 'lucide-react';
 
 import { ArrowUpRight, BackToTop, Footer, Nav } from '../_components/shared';
@@ -25,7 +25,7 @@ const CLAIMED = { consult: 10, blanket: 20, school: 30, yearEnd: 41 };
 
 // Seats sold so far, across every tier and bundle. One number to keep current.
 const SEAT_CAP = 400;
-const SEATS_TAKEN = 60;
+const SEATS_TAKEN = 64;
 
 /* ───────────────────────────────── ICONS ─────────────────────────────────── */
 
@@ -118,6 +118,82 @@ function CtaButton({
       {children}
       <ArrowUpRight className="w-4 h-4" />
     </a>
+  );
+}
+
+/* ────────────────────────────────── VIDEO ────────────────────────────────── */
+
+function PlayIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M8 5.5v13l11-6.5-11-6.5z" />
+    </svg>
+  );
+}
+
+/**
+ * Self-hosted clip with a cover image and one big play button. Nothing is
+ * fetched until someone presses play, so the three clips on this page cost
+ * a visitor a cover image each, not tens of megabytes. Once playing, the
+ * browser's own controls take over.
+ */
+function VideoBlock({ src, poster, label }: { src: string; poster: string; label: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [started, setStarted] = useState(false);
+  return (
+    <div className="relative mx-auto aspect-video overflow-hidden rounded-2xl border border-[var(--line)] bg-black lg:max-w-[80%]">
+      <video
+        ref={ref}
+        className="h-full w-full object-cover"
+        poster={poster}
+        preload="none"
+        playsInline
+        controls={started}
+        aria-label={label}
+        onPlay={() => setStarted(true)}
+      >
+        <source src={src} type="video/mp4" />
+      </video>
+      {!started && (
+        <button
+          type="button"
+          onClick={() => ref.current?.play()}
+          aria-label={`Play video: ${label}`}
+          className="group absolute inset-0 flex items-center justify-center bg-black/20 transition-colors hover:bg-black/30"
+        >
+          <span className="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-full bg-[var(--red)] text-white shadow-[0_10px_40px_rgba(235,48,48,0.45)] transition-transform group-hover:scale-105">
+            <PlayIcon className="ml-1 h-7 w-7 md:h-8 md:w-8" />
+          </span>
+        </button>
+      )}
+    </div>
+  );
+}
+
+function VideoSection({
+  kicker,
+  title,
+  dim,
+  src,
+  poster,
+  label,
+}: {
+  kicker: string;
+  title: string;
+  dim?: string;
+  src: string;
+  poster: string;
+  label: string;
+}) {
+  return (
+    <section className="bg-[#03060d] py-14 lg:py-24">
+      <div className="container">
+        <SectionHead kicker={kicker} title={title} dim={dim} />
+        <div className="mt-10 lg:mt-12">
+          <VideoBlock src={src} poster={poster} label={label} />
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -307,6 +383,19 @@ function Hero() {
         </div>
       </div>
     </section>
+  );
+}
+
+function Preview2027() {
+  return (
+    <VideoSection
+      kicker="2027 in 30 seconds"
+      title="Watch before you decide."
+      dim="Sound on."
+      src="/video/2027-preview.mp4"
+      poster="/video/2027-preview.jpg"
+      label="Shenzhen SEO Conference 2027 preview"
+    />
   );
 }
 
@@ -939,6 +1028,19 @@ function Numbers() {
   );
 }
 
+function Day3Recap() {
+  return (
+    <VideoSection
+      kicker="2026 recap"
+      title="Day 3, in a minute."
+      dim="The stage, the sponsors, the room."
+      src="/video/2026-day-3.mp4"
+      poster="/video/2026-day-3.jpg"
+      label="Shenzhen SEO Conference 2026, Day 3 recap"
+    />
+  );
+}
+
 /* ──────────────────────────────── SPEAKERS ───────────────────────────────── */
 
 function Speakers() {
@@ -995,6 +1097,19 @@ function Speakers() {
         </div>
       </div>
     </section>
+  );
+}
+
+function Testimonials() {
+  return (
+    <VideoSection
+      kicker="Attendees, unscripted"
+      title="In their own words."
+      dim="Straight from the 2026 floor."
+      src="/video/2026-testimonials.mp4"
+      poster="/video/2026-testimonials.jpg"
+      label="Shenzhen SEO Conference 2026 attendee testimonials"
+    />
   );
 }
 
@@ -1274,13 +1389,16 @@ export default function Presale2027Page() {
     <main className="home5-root">
       <Nav linkBase="/" />
       <Hero />
+      <Preview2027 />
       <Guarantees />
       <WhyNow />
       <Bonuses />
       <Pricing />
       <Schedule />
       <Numbers />
+      <Day3Recap />
       <Speakers />
+      <Testimonials />
       <Faq />
       <FinalCta />
       <Footer linkBase="/" />
