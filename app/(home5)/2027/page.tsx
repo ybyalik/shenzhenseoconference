@@ -21,11 +21,11 @@ const SEB_ENDS = Date.parse('2026-09-30T15:59:00Z');
 //
 // Bonus tiers are counted in attendees, not purchases, which is why a pair of
 // five-person bundles pushed the "first 20" tier over the line.
-const CLAIMED = { consult: 10, blanket: 20, school: 18, yearEnd: 18 };
+const CLAIMED = { consult: 10, blanket: 20, school: 30, yearEnd: 41 };
 
 // Seats sold so far, across every tier and bundle. One number to keep current.
 const SEAT_CAP = 400;
-const SEATS_TAKEN = 42;
+const SEATS_TAKEN = 60;
 
 /* ───────────────────────────────── ICONS ─────────────────────────────────── */
 
