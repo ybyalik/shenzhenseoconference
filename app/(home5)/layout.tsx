@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Unbounded } from 'next/font/google';
 import Script from 'next/script';
 import { CountdownBar } from './_components/CountdownBar';
-import { eventSeriesSchema } from '@/lib/event-series-schema';
 import '../globals.css';
 import './home5.css';
 
@@ -50,10 +49,6 @@ export default function Home5Layout({ children }: { children: React.ReactNode })
   return (
     <html lang="en">
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSeriesSchema) }}
-        />
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

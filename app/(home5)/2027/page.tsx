@@ -1377,11 +1377,78 @@ function StickyCta() {
   );
 }
 
+/* ───────────────────────────── STRUCTURED DATA ───────────────────────────── */
+
+// Google wants one event per page, on the page that sells it, with the ticket
+// offers on it. Prices and the checkout link come straight from the tier tables
+// above, so this can never disagree with what the cards show. The series block
+// with the founder and social profiles lives on the home page; superEvent
+// points back at it.
+const SITE = 'https://shenzhenseoconference.com';
+
+function tierOffer(t: Tier, kind: 'ticket' | 'bundle') {
+  return {
+    '@type': 'Offer',
+    name: `${t.name} ${kind}`,
+    price: Number(t.price.replace(/[^0-9.]/g, '')),
+    priceCurrency: 'USD',
+    url: CHECKOUT,
+    availability: 'https://schema.org/InStock',
+    // The day the presale opened, and the last day of Super Early Bird pricing.
+    validFrom: '2026-09-23T00:00:00+08:00',
+    priceValidUntil: new Date(SEB_ENDS).toISOString().slice(0, 10),
+  };
+}
+
+const EVENT_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'BusinessEvent',
+  '@id': `${SITE}/2027#event`,
+  name: 'Shenzhen SEO Conference 2027',
+  description:
+    'Six days connecting Eastern and Western SEO professionals and entrepreneurs in Shenzhen, ' +
+    '19 to 24 September 2027. Super Early Bird: 30% off, strictly 400 tickets, fully refundable ' +
+    'until 20 August 2027.',
+  url: `${SITE}/2027`,
+  image: `${SITE}/og-2027.jpg`,
+  startDate: '2027-09-19T09:00:00+08:00',
+  endDate: '2027-09-24T18:00:00+08:00',
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: {
+    '@type': 'Place',
+    name: 'The St. Regis Shenzhen',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'No. 5016 Shennan Road East, Luohu District',
+      addressLocality: 'Shenzhen',
+      addressRegion: 'Guangdong',
+      postalCode: '518001',
+      addressCountry: 'CN',
+    },
+  },
+  organizer: { '@type': 'Organization', name: 'Shenzhen SEO Conference', url: `${SITE}/` },
+  superEvent: {
+    '@type': 'EventSeries',
+    '@id': `${SITE}/#series`,
+    name: 'Shenzhen SEO Conference',
+    url: `${SITE}/`,
+  },
+  offers: [
+    ...INDIVIDUAL.map((t) => tierOffer(t, 'ticket')),
+    ...CORPORATE.map((t) => tierOffer(t, 'bundle')),
+  ],
+};
+
 /* ────────────────────────────────── PAGE ─────────────────────────────────── */
 
 export default function Presale2027Page() {
   return (
     <main className="home5-root">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(EVENT_SCHEMA) }}
+      />
       <Nav linkBase="/" />
       <Hero />
       <Preview2027 />

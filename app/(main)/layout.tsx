@@ -8,7 +8,6 @@ import StickyCTA from '@/components/sticky-cta'
 import { Toaster } from '@/components/ui/toaster'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { QueryClientProvider } from '@/components/providers/query-client-provider'
-import { eventSeriesSchema } from '@/lib/event-series-schema'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -47,10 +46,6 @@ export default function MainLayout({
   return (
     <html lang="en">
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSeriesSchema) }}
-        />
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

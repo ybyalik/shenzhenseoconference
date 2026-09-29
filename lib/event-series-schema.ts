@@ -1,7 +1,8 @@
 /**
- * Site-wide structured data: the conference as a series, its founder, and the
- * 2026 and 2027 editions. Printed into <head> by the (home5) layout so every
- * live page carries it. Speaker pages add their own Person block on top.
+ * The conference as a series, its founder, and the 2026 and 2027 editions.
+ * Printed on the home page only: Google asks for organisation-level markup on
+ * one page, not every page. The 2027 presale page carries its own single
+ * event block that points back here through the @id.
  *
  * Plain JSON, kept as data rather than markup so it can be checked and edited
  * without touching the layout.
@@ -9,6 +10,7 @@
 export const eventSeriesSchema = {
   "@context": "https://schema.org",
   "@type": "EventSeries",
+  "@id": "https://shenzhenseoconference.com/#series",
   "name": "Shenzhen SEO Conference",
   "description": "Asia's premier search engine optimization and digital marketing conference series.",
   "url": "https://shenzhenseoconference.com/",

@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, BackToTop, CarouselDots, Footer, Nav, WeChatIcon, useCarouselActive } from './_components/shared';
 import { KingswayPlayer } from './_components/KingswayVideo';
 import { SPONSORS_2026 as SPONSORS } from './_components/sponsors-data';
+import { eventSeriesSchema } from '@/lib/event-series-schema';
 
 const A = {
   heroBg: '/figma-assets/herohome.jpg',
@@ -2420,6 +2421,13 @@ function Contact() {
 export default function Home5Page() {
   return (
     <main className="home5-root">
+      {/* The conference as a series, on the home page only (Google asks for
+          organisation-level markup on one page). Each edition's own page
+          carries its own event block. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSeriesSchema) }}
+      />
       <Nav />
       <Hero />
       <FounderLetter />
