@@ -1265,7 +1265,7 @@ function Pricing() {
               Interested in attending in 2027?
             </div>
             <p className="mt-3 text-[15px] md:text-[16px] text-white/65 leading-[1.6]">
-              We sold 81 Super Early Bird tickets and that round is now closed. Leave your
+              We sold 114 Super Early Bird tickets and that round is now closed. Leave your
               email and you will be the first to hear when the next round of tickets opens.
             </p>
           </div>
@@ -1853,7 +1853,7 @@ function FinalCta() {
               lineHeight: '160%',
             }}
           >
-            Super Early Bird for 2027 is closed, with 81 tickets sold. The next round is
+            Super Early Bird for 2027 is closed, with 114 tickets sold. The next round is
             coming, and the people on our list hear about it first.
           </p>
           <button

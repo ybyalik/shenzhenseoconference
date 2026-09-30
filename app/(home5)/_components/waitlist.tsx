@@ -34,10 +34,11 @@ export function WaitlistModal() {
       open={open}
       onClose={() => setOpen(false)}
       heading="Get notified about 2027 tickets"
-      subheading="Super Early Bird is closed, with 81 tickets sold. Leave your email and you will be the first to hear when the next round opens."
+      subheading="Super Early Bird is closed, with 114 tickets sold. Leave your email and you will be the first to hear when the next round opens."
       thanksHeading="You're on the list"
       thanks="We will email you the moment the next round of 2027 tickets opens."
       tag="2027-waitlist"
+      field="name"
     />
   );
 }

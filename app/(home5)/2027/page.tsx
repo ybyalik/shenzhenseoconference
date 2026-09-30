@@ -24,7 +24,7 @@ const CLAIMED = { consult: 10, blanket: 20, school: 30, yearEnd: 50 };
 
 // Seats sold so far, across every tier and bundle. One number to keep current.
 const SEAT_CAP = 400;
-const SEATS_TAKEN = 93;
+const SEATS_TAKEN = 114;
 
 /* ───────────────────────────────── ICONS ─────────────────────────────────── */
 
@@ -324,7 +324,7 @@ function Hero() {
                 >
                   Super Early Bird
                 </span>{' '}
-                is open
+                is closed
               </span>
             </h1>
 

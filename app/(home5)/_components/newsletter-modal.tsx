@@ -16,6 +16,7 @@ export function NewsletterModal({
   thanksHeading = "You're subscribed!",
   thanks = 'Thanks for signing up. Watch your inbox for event updates, speakers, and exclusive news.',
   tag,
+  field = 'role',
 }: {
   open: boolean;
   onClose: () => void;
@@ -25,6 +26,8 @@ export function NewsletterModal({
   thanks?: string;
   /** Extra AWeber tag, so a sign-up from one place can be told apart later. */
   tag?: string;
+  /** Which second field to ask for. 'name' posts to AWeber's built-in name field. */
+  field?: 'role' | 'name';
 }) {
   const [submitted, setSubmitted] = useState(false);
   const submittedRef = useRef(false);
@@ -101,6 +104,23 @@ export function NewsletterModal({
               <h2 className="aw-heading">{heading}</h2>
               <p className="aw-subheading">{subheading}</p>
 
+              {field === 'name' && (
+                <div className="aw-field">
+                  <label htmlFor="aw-name" className="aw-label">
+                    Full name <span aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    id="aw-name"
+                    type="text"
+                    name="name"
+                    autoComplete="name"
+                    placeholder="Your full name"
+                    required
+                    className="aw-input"
+                  />
+                </div>
+              )}
+
               <div className="aw-field">
                 <label htmlFor="aw-email" className="aw-label">
                   Email <span aria-hidden="true">*</span>
@@ -116,6 +136,7 @@ export function NewsletterModal({
                 />
               </div>
 
+              {field === 'role' && (
               <div className="aw-field">
                 <label htmlFor="aw-job" className="aw-label">
                   What describes you best? <span aria-hidden="true">*</span>
@@ -134,6 +155,7 @@ export function NewsletterModal({
                   <option value="Other">Other</option>
                 </select>
               </div>
+              )}
 
               <div className="aw-consent-field">
                 <input
