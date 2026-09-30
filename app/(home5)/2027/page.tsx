@@ -6,10 +6,9 @@ import { Fragment, useEffect, useRef, useState } from 'react';
 import { Handshake, Lock, RotateCcw, Target } from 'lucide-react';
 
 import { ArrowUpRight, BackToTop, Footer, Nav } from '../_components/shared';
+import { openWaitlist } from '../_components/waitlist';
 
 /* ─────────────────────────────── CONSTANTS ───────────────────────────────── */
-
-const CHECKOUT = 'https://luma.com/shenzhen-seo-conference-2027';
 
 // 30 September 2026, 23:59 in Shenzhen (UTC+8). Everything about this page is
 // pinned to this one moment: after it, Super Early Bird pricing is gone.
@@ -95,12 +94,15 @@ function SectionHead({
 
 function CtaButton({
   children,
-  href = CHECKOUT,
+  href = '#pricing',
+  onClick,
   variant = 'red',
   className = '',
 }: {
   children: React.ReactNode;
   href?: string;
+  /** Given instead of a link, the button runs this (used to open the sign-up). */
+  onClick?: () => void;
   variant?: 'red' | 'outline';
   className?: string;
 }) {
@@ -109,11 +111,20 @@ function CtaButton({
     variant === 'red'
       ? 'gradient-cta text-white'
       : 'btn-outline-white backdrop-blur-sm';
+  const cls = `display inline-flex items-center justify-center gap-3 rounded-full px-7 py-4 text-[12px] md:text-[13px] font-bold tracking-[0.18em] uppercase ${style} ${className}`;
+  if (onClick) {
+    return (
+      <button type="button" onClick={onClick} className={cls}>
+        {children}
+        <ArrowUpRight className="w-4 h-4" />
+      </button>
+    );
+  }
   return (
     <a
       href={href}
       {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-      className={`display inline-flex items-center justify-center gap-3 rounded-full px-7 py-4 text-[12px] md:text-[13px] font-bold tracking-[0.18em] uppercase ${style} ${className}`}
+      className={cls}
     >
       {children}
       <ArrowUpRight className="w-4 h-4" />
@@ -371,8 +382,8 @@ function Hero() {
             </div>
             {/* Down to the tiers, not straight out to checkout: nobody has
                 seen a price yet at this point on the page. */}
-            <CtaButton href="#pricing" className="mt-7 w-full">
-              Get your ticket
+            <CtaButton onClick={openWaitlist} className="mt-7 w-full">
+              Get notified for the next round
             </CtaButton>
             <p className="mt-4 text-[13px] text-white/50 leading-[1.6]">
               Fully refundable or transferable until 20 August 2027. No risk in deciding today.
@@ -730,17 +741,13 @@ function TierCard({ t }: { t: Tier }) {
           </li>
         ))}
       </ul>
-      <a
-        href={CHECKOUT}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`mt-7 display inline-flex items-center justify-center gap-3 w-full px-5 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase ${
-          t.popular ? 'gradient-cta text-white' : 'btn-outline-white'
-        }`}
+      {/* Super Early Bird is closed and the checkout is gone with it. */}
+      <div
+        className="mt-7 display inline-flex items-center justify-center w-full px-5 py-3.5 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase border border-white/15 text-white/45"
+        aria-disabled="true"
       >
-        Buy {t.name}
-        <ArrowUpRight className="w-4 h-4" />
-      </a>
+        Sales closed
+      </div>
     </div>
   );
 }
@@ -1214,13 +1221,15 @@ function FinalCta() {
             400 seats, and the lowest price this conference will ever be.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 md:justify-center">
-            <CtaButton className="w-full sm:w-auto">Secure my 2027 ticket</CtaButton>
+            <CtaButton onClick={openWaitlist} className="w-full sm:w-auto">
+              Get notified for the next round
+            </CtaButton>
             <CtaButton href="#pricing" variant="outline" className="w-full sm:w-auto">
               See all tiers
             </CtaButton>
           </div>
           <p className="mt-6 text-[14px] text-white/55">
-            Super Early Bird closes 30 September. Refundable until 20 August 2027.
+            Super Early Bird is closed. Leave your email and you hear first when the next round opens.
           </p>
         </div>
       </div>
@@ -1344,17 +1353,16 @@ function StickyCta() {
           </div>
         </div>
 
-        <a
-          href={CHECKOUT}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          type="button"
+          onClick={openWaitlist}
           className="display shrink-0 inline-flex items-center justify-center gap-2 self-center rounded-full gradient-cta text-white text-[11px] font-bold uppercase px-4 sm:px-5 py-3 whitespace-nowrap"
           style={{ letterSpacing: '0.16em' }}
         >
-          <span className="sm:hidden">Tickets</span>
-          <span className="hidden sm:inline">Get tickets</span>
+          <span className="sm:hidden">Notify me</span>
+          <span className="hidden sm:inline">Get notified</span>
           <ArrowUpRight className="w-3.5 h-3.5" />
-        </a>
+        </button>
 
         <button
           type="button"
@@ -1379,26 +1387,11 @@ function StickyCta() {
 
 /* ───────────────────────────── STRUCTURED DATA ───────────────────────────── */
 
-// Google wants one event per page, on the page that sells it, with the ticket
-// offers on it. Prices and the checkout link come straight from the tier tables
-// above, so this can never disagree with what the cards show. The series block
+// One event per page, on the page about it. No ticket offers any more: the
+// Super Early Bird round is closed and nothing is on sale. The series block
 // with the founder and social profiles lives on the home page; superEvent
 // points back at it.
 const SITE = 'https://shenzhenseoconference.com';
-
-function tierOffer(t: Tier, kind: 'ticket' | 'bundle') {
-  return {
-    '@type': 'Offer',
-    name: `${t.name} ${kind}`,
-    price: Number(t.price.replace(/[^0-9.]/g, '')),
-    priceCurrency: 'USD',
-    url: CHECKOUT,
-    availability: 'https://schema.org/InStock',
-    // The day the presale opened, and the last day of Super Early Bird pricing.
-    validFrom: '2026-09-23T00:00:00+08:00',
-    priceValidUntil: new Date(SEB_ENDS).toISOString().slice(0, 10),
-  };
-}
 
 const EVENT_SCHEMA = {
   '@context': 'https://schema.org',
@@ -1434,10 +1427,6 @@ const EVENT_SCHEMA = {
     name: 'Shenzhen SEO Conference',
     url: `${SITE}/`,
   },
-  offers: [
-    ...INDIVIDUAL.map((t) => tierOffer(t, 'ticket')),
-    ...CORPORATE.map((t) => tierOffer(t, 'bundle')),
-  ],
 };
 
 /* ────────────────────────────────── PAGE ─────────────────────────────────── */

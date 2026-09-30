@@ -8,7 +8,24 @@ import { useEffect, useRef, useState } from 'react';
  * stays on the site and sees an inline "subscribed" message instead of being
  * redirected to AWeber's thank-you page.
  */
-export function NewsletterModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function NewsletterModal({
+  open,
+  onClose,
+  heading = 'Get Event Updates & Our Newsletter',
+  subheading = 'Be the first to know about upcoming events, speakers, and exclusive news.',
+  thanksHeading = "You're subscribed!",
+  thanks = 'Thanks for signing up. Watch your inbox for event updates, speakers, and exclusive news.',
+  tag,
+}: {
+  open: boolean;
+  onClose: () => void;
+  heading?: string;
+  subheading?: string;
+  thanksHeading?: string;
+  thanks?: string;
+  /** Extra AWeber tag, so a sign-up from one place can be told apart later. */
+  tag?: string;
+}) {
   const [submitted, setSubmitted] = useState(false);
   const submittedRef = useRef(false);
   const referrerRef = useRef<HTMLInputElement>(null);
@@ -23,13 +40,13 @@ export function NewsletterModal({ open, onClose }: { open: boolean; onClose: () 
     };
     window.addEventListener('keydown', onKey);
     if (referrerRef.current) {
-      referrerRef.current.value = 'referrer_' + (document.referrer || 'direct');
+      referrerRef.current.value = (tag ? tag + ',' : '') + 'referrer_' + (document.referrer || 'direct');
     }
     return () => {
       document.body.style.overflow = prevOverflow;
       window.removeEventListener('keydown', onKey);
     };
-  }, [open, onClose]);
+  }, [open, onClose, tag]);
 
   // Always start on the form view each time the popup is reopened.
   useEffect(() => {
@@ -46,7 +63,7 @@ export function NewsletterModal({ open, onClose }: { open: boolean; onClose: () 
       className="fixed inset-0 z-[60] flex items-center justify-center p-4 overflow-y-auto"
       role="dialog"
       aria-modal="true"
-      aria-label="Subscribe to our newsletter"
+      aria-label={heading}
       onClick={onClose}
     >
       <div className="absolute inset-0" style={{ background: 'rgba(3, 6, 13, 0.8)', backdropFilter: 'blur(4px)' }} />
@@ -67,9 +84,9 @@ export function NewsletterModal({ open, onClose }: { open: boolean; onClose: () 
         <div className="aw-container">
           {submitted ? (
             <div style={{ textAlign: 'center', padding: '8px 0' }}>
-              <h2 className="aw-heading">You&apos;re subscribed!</h2>
+              <h2 className="aw-heading">{thanksHeading}</h2>
               <p className="aw-subheading" style={{ marginBottom: 0 }}>
-                Thanks for signing up. Watch your inbox for event updates, speakers, and exclusive news.
+                {thanks}
               </p>
             </div>
           ) : (
@@ -81,10 +98,8 @@ export function NewsletterModal({ open, onClose }: { open: boolean; onClose: () 
                 submittedRef.current = true;
               }}
             >
-              <h2 className="aw-heading">Get Event Updates &amp; Our Newsletter</h2>
-              <p className="aw-subheading">
-                Be the first to know about upcoming events, speakers, and exclusive news.
-              </p>
+              <h2 className="aw-heading">{heading}</h2>
+              <p className="aw-subheading">{subheading}</p>
 
               <div className="aw-field">
                 <label htmlFor="aw-email" className="aw-label">

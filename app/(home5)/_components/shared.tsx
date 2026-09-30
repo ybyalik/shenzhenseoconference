@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState, type RefObject } from 'react';
 
 import { NewsletterModal } from './newsletter-modal';
+import { WaitlistModal, openWaitlist } from './waitlist';
 
 /** Tracks which carousel card is currently in view inside a scroll-snap container. */
 export function useCarouselActive(trackRef: RefObject<HTMLDivElement | null>) {
@@ -352,10 +353,6 @@ export function Nav({ linkBase = '', current }: { linkBase?: string; current?: s
     setMenuOpen(false);
   };
 
-  // Points at the 2027 presale rather than the 2026 pricing block: the 2026
-  // conference has happened, so the only ticket anyone can still buy is 2027.
-  const ticketsHref = '/2027';
-
   return (
     <>
       <header
@@ -409,13 +406,16 @@ export function Nav({ linkBase = '', current }: { linkBase?: string; current?: s
               >
                 <EmailIcon className="w-[19px] h-[19px]" />
               </button>
-              <Link
-                href={ticketsHref}
+              {/* The 2027 presale is closed, so this opens the "get notified"
+                  sign-up rather than linking to a page nobody can buy from. */}
+              <button
+                type="button"
+                onClick={openWaitlist}
                 className="display inline-flex items-center gap-3 px-5 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] text-white gradient-cta"
               >
                 2027 TICKETS
                 <ArrowUpRight className="w-4 h-4" />
-              </Link>
+              </button>
             </div>
           </div>
 
@@ -496,9 +496,12 @@ export function Nav({ linkBase = '', current }: { linkBase?: string; current?: s
           </nav>
 
           <div className="px-6 pb-8 pt-4">
-            <Link
-              href={ticketsHref}
-              onClick={() => setMenuOpen(false)}
+            <button
+              type="button"
+              onClick={() => {
+                setMenuOpen(false);
+                openWaitlist();
+              }}
               className="display rounded-full gradient-cta uppercase"
               style={{
                 display: 'flex',
@@ -506,6 +509,7 @@ export function Nav({ linkBase = '', current }: { linkBase?: string; current?: s
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 alignSelf: 'stretch',
+                width: '100%',
               }}
             >
               <span
@@ -531,12 +535,13 @@ export function Nav({ linkBase = '', current }: { linkBase?: string; current?: s
                   fill="currentColor"
                 />
               </svg>
-            </Link>
+            </button>
           </div>
         </div>
       )}
 
       <NewsletterModal open={subscribeOpen} onClose={() => setSubscribeOpen(false)} />
+      <WaitlistModal />
     </>
   );
 }
@@ -550,10 +555,6 @@ export function Footer({ linkBase = '' }: { linkBase?: string } = {}) {
     { label: 'VISIT SHENZHEN', anchor: '/visit-shenzhen' },
     { label: 'CONTACT', anchor: '#contact' },
   ];
-  // Points at the 2027 presale rather than the 2026 pricing block: the 2026
-  // conference has happened, so the only ticket anyone can still buy is 2027.
-  const ticketsHref = '/2027';
-
   return (
     <footer className="bg-[#06222d]">
       <div className="container py-16 md:py-20">
@@ -570,13 +571,14 @@ export function Footer({ linkBase = '' }: { linkBase?: string } = {}) {
             <p className="text-[16px] md:text-[18px] text-white/85 mb-6">
               Connecting Eastern and Western SEO
             </p>
-            <Link
-              href={ticketsHref}
+            <button
+              type="button"
+              onClick={openWaitlist}
               className="display inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] font-semibold tracking-[0.16em] gradient-cta text-white"
             >
-              GET YOUR TICKETS TODAY
+              GET NOTIFIED FOR 2027
               <ArrowUpRight className="w-4 h-4" />
-            </Link>
+            </button>
 
           </div>
 

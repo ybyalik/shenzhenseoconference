@@ -13,6 +13,8 @@ const OG_ALT =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESC,
+  // The presale is closed and the page is unlinked; it stays up but out of search.
+  robots: { index: false, follow: false },
   alternates: { canonical: 'https://shenzhenseoconference.com/2027' },
   openGraph: {
     title: TITLE,

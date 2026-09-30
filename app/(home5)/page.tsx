@@ -7,6 +7,7 @@ import { ArrowUpRight, BackToTop, CarouselDots, Footer, Nav, WeChatIcon, useCaro
 import { KingswayPlayer } from './_components/KingswayVideo';
 import { SPONSORS_2026 as SPONSORS } from './_components/sponsors-data';
 import { eventSeriesSchema } from '@/lib/event-series-schema';
+import { openWaitlist } from './_components/waitlist';
 
 const A = {
   heroBg: '/figma-assets/herohome.jpg',
@@ -211,27 +212,29 @@ function Hero() {
               <span className="font-bold">September 14–18, 2026</span>
               <span className="font-medium">The St. Regis Shenzhen + MGM Shenzhen</span>
             </div>
-            <Link
-              href="/2027"
+            <button
+              type="button"
+              onClick={openWaitlist}
               className="hidden lg:inline-flex btn-outline-white display items-center gap-3 rounded-full text-[14px] font-semibold tracking-[0.18em] backdrop-blur-sm"
               style={{ padding: '12px 32px', lineHeight: '28px' }}
             >
-              GET 2027 TICKETS
+              GET NOTIFIED FOR 2027
               <ArrowUpRight className="w-4 h-4" />
-            </Link>
+            </button>
           </div>
         </div>
       </div>
 
       {/* Mobile-only CTA */}
       <div className="lg:hidden mt-auto px-6">
-        <Link
-          href="/2027"
+        <button
+          type="button"
+          onClick={openWaitlist}
           className="display inline-flex items-center justify-center gap-3 w-full px-7 py-3.5 rounded-full text-[13px] font-bold tracking-[0.18em] text-white gradient-cta"
         >
-          GET 2027 TICKETS
+          GET NOTIFIED FOR 2027
           <ArrowUpRight className="w-4 h-4" />
-        </Link>
+        </button>
       </div>
 
       {/* Mobile-only Gary quote below the CTA */}
@@ -1243,36 +1246,37 @@ function Pricing() {
               letterSpacing: '0.9px',
             }}
           >
-            HOW MUCH IS IT
+            2027 TICKETS
           </div>
           <h2 className="display text-[28px] font-semibold uppercase leading-[1.2] self-stretch text-[#F9F9F9]">
             Tickets
           </h2>
           <p className="md:mx-auto mt-5 max-w-[680px] md:max-w-none text-[15px] md:text-[16px] text-white/70 leading-[1.6]">
-            The 2026 conference has finished. Super Early Bird for 2027 is open now.
+            The 2026 conference has finished, and the Super Early Bird round for 2027 has closed.
           </p>
         </div>
 
-        {/* The live offer. It leads the section because the 2026 prices below
-            are history now: nobody can buy them, they are only here so the
-            numbers are still on the record. */}
+        {/* The main call to action now that the presale is closed: nothing is
+            on sale, so the ask is an email address. The 2026 prices below are
+            history, kept only so the numbers stay on the record. */}
         <div className="mt-12 rounded-2xl border border-[var(--red)]/45 bg-[#06101a]/70 p-7 md:p-9 md:flex md:items-center md:justify-between md:gap-10">
           <div className="md:text-left">
             <div className="display text-[20px] md:text-[24px] font-semibold text-white leading-[1.25]">
-              Shenzhen SEO Conference 2027
+              Interested in attending in 2027?
             </div>
             <p className="mt-3 text-[15px] md:text-[16px] text-white/65 leading-[1.6]">
-              19 to 24 September 2027. Super Early Bird is 30% off, strictly 400 tickets, and
-              fully refundable or transferable until 20 August 2027.
+              We sold 81 Super Early Bird tickets and that round is now closed. Leave your
+              email and you will be the first to hear when the next round of tickets opens.
             </p>
           </div>
-          <Link
-            href="/2027"
+          <button
+            type="button"
+            onClick={openWaitlist}
             className="display mt-7 md:mt-0 flex md:inline-flex flex-none items-center justify-center gap-3 px-7 py-4 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase gradient-cta text-white whitespace-nowrap"
           >
-            See 2027 tickets
+            Get notified
             <ArrowUpRight className="w-4 h-4" />
-          </Link>
+          </button>
         </div>
 
         <div className="mt-16">
@@ -1849,11 +1853,12 @@ function FinalCta() {
               lineHeight: '160%',
             }}
           >
-            Super Early Bird for 2027 is open now, and it is the lowest price this
-            conference will ever be. Strictly 400 seats.
+            Super Early Bird for 2027 is closed, with 81 tickets sold. The next round is
+            coming, and the people on our list hear about it first.
           </p>
-          <Link
-            href="/2027"
+          <button
+            type="button"
+            onClick={openWaitlist}
             className="mt-8 display flex w-full md:w-auto md:inline-flex rounded-full text-[12px] font-bold tracking-[0.18em] gradient-cta text-white"
             style={{
               padding: '16px 24px',
@@ -1862,9 +1867,9 @@ function FinalCta() {
               gap: 12,
             }}
           >
-            GET 2027 TICKETS
+            GET NOTIFIED FOR 2027
             <ArrowUpRight className="w-4 h-4" />
-          </Link>
+          </button>
         </div>
       </div>
     </section>
